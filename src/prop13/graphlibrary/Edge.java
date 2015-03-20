@@ -3,11 +3,15 @@ package prop13.graphlibrary;
 /**
  * Created by miquel on 20/03/15.
  */
-public class Edge
+public abstract class Edge
 {
-    private Node n1;
-    private Node n2;
-    private int weight;
+    protected Node n1;
+    protected Node n2;
+    protected int weight;
+
+    public Edge()
+    {
+    }
 
     public Edge(Node m1,Node m2,int w)
     {
@@ -30,5 +34,17 @@ public class Edge
             System.out.println("Not part of the edge");
             return null;
         }
+    }
+
+    public Node getNode()
+    /* returns a RANDOM node of the edge*/
+    {
+        return n1;
+    }
+
+    public int getWeight()
+            /* Weight getter */
+    {
+        return weight;
     }
 }
