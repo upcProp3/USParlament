@@ -11,6 +11,6 @@ public final class TEdge extends Edge
 
 	@Override
 	public String toString() {
-		return "TEdge{n1:" + getN1() + ", n2:" + getN2() + "}";
+		return "TEdge{n1:" + getNode() + ", n2:" + getNeighbor(getNode()) + "}";
 	}
 }
