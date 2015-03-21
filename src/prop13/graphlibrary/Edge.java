@@ -10,10 +10,13 @@ public abstract class Edge
     protected int weight;
 
     public Edge()
+            //It shouldn't ever be used
     {
     }
 
     public Edge(Node m1,Node m2,int w)
+            //Pre: True
+            //Post: Creates an edge between m1 and m2 with weight w
     {
         n1 = m1;
         n2 = m2;
@@ -21,29 +24,27 @@ public abstract class Edge
     }
 
     public Node getNeighbor(Node n)
-    /* Given one of :the two nodes of the Edge, it returns the other one.
-       It is implemented like this due to the fact that it is not a directed edge
-       therefore there no "origin" or "destiny" node.
-     */
+            //Pre: n is one of the nodes of the edge
+            //Post: The other node from the edge is returned
     {
         if(n==n1){
             return n2;
         }else if(n==n2){
             return n1;
-        }else{
-            System.out.println("Not part of the edge");
-            return null;
         }
+        return null;
     }
 
     public Node getNode()
-    /* returns a RANDOM node of the edge*/
+            //Pre: True
+            //Post: Returns one of the nodes of the edges. It will always return the same one.
     {
         return n1;
     }
 
     public int getWeight()
-            /* Weight getter */
+            //Pre: True
+            //Post: Returns the edge's weight
     {
         return weight;
     }

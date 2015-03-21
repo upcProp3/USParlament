@@ -58,13 +58,21 @@ public class Main
         g.addEdge(new TEdge(vn.elementAt(1),vn.elementAt(3),0));
         g.addEdge(new TEdge(vn.elementAt(2),vn.elementAt(3),0));
         System.out.println("SECOND");
+         Set<Edge> se = g.nodeEdges(vn.elementAt(0));
+        System.out.print("0: ");
+        for(Edge e:se){
+            ((TEdge)e).printEdge();
+        }
+        System.out.println();
+        System.out.println("THIRD");
         g.printGraph();
         g.deleteEdge(vn.elementAt(0),vn.elementAt(1));
         g.deleteEdge(vn.elementAt(2),vn.elementAt(0));
-        System.out.println("THIRD");
+        System.out.println("FOURTH");
         g.printGraph();
-
-
+        System.out.println("FIFTH");
+        g.deleteNode(vn.elementAt(3));
+        g.printGraph();
         System.out.println("END OF GRAPH TESTING");
     }
 }
