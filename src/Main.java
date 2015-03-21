@@ -46,23 +46,23 @@ public class Main
         //Graph testing using TNode and TEdge
         TGraph g = new TGraph();
         Vector<TNode> vn = new Vector<TNode>();
-        for(int i = 0;i<4;i++){
+        for(int i = 0;i<4;i++) {
             vn.add(new TNode(i));
             g.addNode(vn.elementAt(i));
         }
         System.out.println("FIRST");
-        g.printGraph();
-        g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(1),0));
+        System.out.println(g);
+        g.addEdge(new TEdge(vn.elementAt(0), vn.elementAt(1), 0));
         g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(2),0));
         g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(3),0));
         g.addEdge(new TEdge(vn.elementAt(1),vn.elementAt(3),0));
         g.addEdge(new TEdge(vn.elementAt(2),vn.elementAt(3),0));
         System.out.println("SECOND");
-        g.printGraph();
+	    System.out.println(g);
         g.deleteEdge(vn.elementAt(0),vn.elementAt(1));
         g.deleteEdge(vn.elementAt(2),vn.elementAt(0));
         System.out.println("THIRD");
-        g.printGraph();
+	    System.out.println(g);
 
 
         System.out.println("END OF GRAPH TESTING");
