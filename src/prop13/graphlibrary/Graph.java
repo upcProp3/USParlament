@@ -7,53 +7,53 @@ import java.util.*;
  */
 public abstract class Graph
 {
-    /*
-        As you can see the graph is created using the interfaces Map and Set
-        (if you don't know what a java interface is google it), this way if you
-        need to keep the edges or the nodes in a certain order you can use
-        the type of Map/Set (See java.utils documentation) according to your needs,
-        In this implementation I will use LinkedHashedMap and LinkedHashedSet so it
-        keeps the entry order (easier to debug if we have a little consistency)
-
-        How to use this class:
-            -Add nodes and edges (to add an edge the nodes that form it must be pat of the graph).
-            -Get a set's neighbors by getting it's set of edges and using Edge.getNeighbor
-            -Delete Edges and Nodes if you need to modify the graph
-
-
-
-
-        If you want to change the type of map used, overload the constructors
-        If you want to change the type of set used, overload the addNode function
+    /**
+     * As you can see the graph is created using the interfaces Map and Set
+       (if you don't know what a java interface is google it), this way if you
+       need to keep the edges or the nodes in a certain order you can use
+       the type of Map/Set (See java.utils documentation) according to your needs,
+       In this implementation I will use LinkedHashedMap because I don't care much about the order
+       so it uses the entry one. If you are interested in a certain ordering consider using TreeMaps
+       (all valid for sets too)
      */
-    protected Map<Node,Set<Edge>> graph;
+    private Map<Node,Set<Edge>> graph;
 
+	public Map<Node, Set<Edge>> getGraph() {
+		return graph;
+	}
+
+	/**
+	 * Creates an empty graph
+	 */
     public Graph()
-            //Pre:True
-            //Post:An empty graph is created
     {
         graph = new LinkedHashMap<Node,Set<Edge>>();
     }
 
-    public boolean nodeExists(Node n)
-            //Pre:True
-            //Post: Return true if the node is part of the graph, false otherwise
-    {
+	/**
+	 * returns true if the node is in the graph, false otherwise
+	 * @param n
+	 * @return
+	 */
+    public boolean nodeExists(Node n) {
         return graph.containsKey(n);
     }
-    public void addNode(Node n)
-            //Pre: The node is NOT part of the graph
-            //Post: The node is added to the graph, without any edge connected to i
-            // If the node already exists its set of edges will be deleted but they will
-            // not be deleted from its neighbor's, therefore the graph will become unusable.
-            // It is not checked for speed's sake, if you want safety you can overload it.
-    {
+
+	/**
+	 * The argument is added to the graph, without adjacencies
+	 IF IT ALREADY EXISTS ALL OF ITS EDGES WILL BE DELETED, WITHOUT DELETING ITS NEIGHBORS EDGES
+	 AS A RESULT THE GRAPH WILL BE IN AN ERRONEOUS STATE. CONSIDER YOURSELF WARNED
+	 * @param n
+	 */
+    public void addNode(Node n) {
         graph.put(n,new LinkedHashSet<Edge>());
     }
-    public void deleteNode(Node n)
-            //Pre: The node n is part of the graph (I DO NOT KNOW IF IT WORKS WHEN n IS NOT PART OF THE GRAPH)
-            //Post: The node n is not part of the graph anymore
-    {
+
+	/**
+	 * The node n is deleted, so are all its edges, including its neighbors edges
+	 * @param n
+	 */
+    public void deleteNode(Node n) {
         //First we gotta delete all the neighbors edges
         Set<Edge> es = graph.get(n);
         //We look at each Edge and delete it from its neighbor's set
@@ -65,21 +65,25 @@ public abstract class Graph
 
     }
 
-    public void addEdge(Edge e)
-            //Pre: The edge e is not part of the graph AND there is NOT any edge between the nodes that
-            // form e
-            //Post: The edge e is added between n1 and n2
-    {
+	/**
+	 * If n1 and n2 are part of the graph, an edge between n1 and n2 with weight w is added to the graph
+	 A reference to the edge is returned
+	 * @param e
+	 */
+    public void addEdge(Edge e) {
         Node n1 = e.getNode();
         Node n2 = e.getNeighbor(n1);
         graph.get(n1).add(e);
         graph.get(n2).add(e);
     }
 
-    public void deleteEdge(Node n1,Node n2)
-            //Pre: n1 and n2 are part of the graph
-            //Post: The edge between n1 and n2 is deleted from the graph
-    {
+	/**
+	 * If n1 and n2 are part of the graph, an edge between n1 and n2 with weight w is deleted from the graph
+	 A reference to the edge is returned
+	 * @param n1
+	 * @param n2
+	 */
+    public void deleteEdge(Node n1,Node n2) {
         //We need to get the list of edges of both nodes and delete the edge
 
         Set<Edge> se1 = graph.get(n1);
@@ -101,9 +105,11 @@ public abstract class Graph
     }
 
 
+	/**
+	 * deletes the edge from the graph
+	 * @param e
+	 */
     public void deleteEdge(Edge e)
-            //Pre: The edge e is part of the graph
-            //Post: The edge e is deleted from the graph
     {
         Node n1 = e.getNode();
         Node n2 = e.getNeighbor(n1);
@@ -111,9 +117,12 @@ public abstract class Graph
         graph.get(n2).remove(e);
     }
 
+	/**
+	 * returns the set of edges of that node DO NOT MODIFY IT DIRECTLY
+	 * @param n
+	 * @return
+	 */
     public Set<Edge> nodeEdges(Node n)
-            //Pre: The node n is part of the graph
-            //Post: The set of edges of the node n is returned
     {
         return graph.get(n);
     }

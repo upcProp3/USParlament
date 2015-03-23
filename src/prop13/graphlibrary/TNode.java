@@ -6,17 +6,14 @@ package prop13.graphlibrary;
  */
 public final class TNode extends Node
 {
-     private int test;
+	private Integer id;
 
+	public TNode(int id) {
+		this.id = id;
+	}
 
-
-    public TNode(int i)
-    {
-        test = i;
-    }
-    public void printNode()
-    {
-        System.out.print(test);
-    }
-
+	@Override
+	public String toString() {
+		return id.toString();
+	}
 }

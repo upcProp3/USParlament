@@ -7,22 +7,19 @@ import java.util.Set;
 /**
  * Created by miquel on 20/03/15.
  */
-public final class TGraph extends Graph
-    //nomes fer servir amb TNodes i TEdges
-{
-    public void printGraph()
-    {
+public final class TGraph extends Graph {
 
-        for (Map.Entry<Node, Set<Edge>> entry : graph.entrySet()) {
-            ((TNode)entry.getKey()).printNode();
-            System.out.print(": ");
-            for(Edge e : entry.getValue()){
-                ((TEdge)e).printEdge();
-                System.out.print(", ");
-            }
-            System.out.println();
-        }
-
-    }
+	@Override
+	public String toString() {
+		String str = "TGraph{";
+		for (Map.Entry<Node, Set<Edge>> entry : getGraph().entrySet()) {
+			str += entry.getKey() + ": ";
+			for(Edge e : entry.getValue()){
+				str += e + ", ";
+			}
+			str += "\n";
+		}
+		return str + "}";
+	}
 
 }
