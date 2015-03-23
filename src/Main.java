@@ -1,15 +1,12 @@
 
-import prop13.graphlibrary.*;
+import es.upc.fib.prop.shared13.TEdge;
+import es.upc.fib.prop.shared13.TGraph;
+import es.upc.fib.prop.shared13.TNode;
 
 //In a future replace all this entries for import java.util.*
 //I am doing it this way to keep track of the used structures
 //so it will be easier to search for documentation.
-import java.util.IdentityHashMap;
 import java.util.Vector;
-import java.util.Dictionary;
-import java.util.Map;
-import java.util.Set;
-import java.util.HashMap;
 
 /**
  * Created by miquel on 20/03/15.
@@ -59,8 +56,8 @@ public class Main
         g.addEdge(new TEdge(vn.elementAt(2),vn.elementAt(3),0));
         System.out.println("SECOND");
 	    System.out.println(g);
-        g.deleteEdge(vn.elementAt(0),vn.elementAt(1));
-        g.deleteEdge(vn.elementAt(2),vn.elementAt(0));
+        g.removeEdge(vn.elementAt(0), vn.elementAt(1));
+        g.removeEdge(vn.elementAt(2), vn.elementAt(0));
         System.out.println("THIRD");
 	    System.out.println(g);
 

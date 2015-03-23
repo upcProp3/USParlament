@@ -1,4 +1,4 @@
-package prop13.graphlibrary;
+package es.upc.fib.prop.shared13;
 
 /**
  * Created by miquel on 20/03/15.

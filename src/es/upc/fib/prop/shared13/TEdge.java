@@ -1,4 +1,4 @@
-package prop13.graphlibrary;
+package es.upc.fib.prop.shared13;
 
 /**
  * Created by miquel on 20/03/15.
@@ -11,6 +11,6 @@ public final class TEdge extends Edge
 
 	@Override
 	public String toString() {
-		return "TEdge{n1:" + getNode() + ", n2:" + getNeighbor(getNode()) + "}";
+		return "(" + getNode() + "," + getNeighbor(getNode()) + ")";
 	}
 }

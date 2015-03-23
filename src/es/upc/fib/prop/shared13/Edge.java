@@ -1,4 +1,4 @@
-package prop13.graphlibrary;
+package es.upc.fib.prop.shared13;
 
 /**
  * Created by miquel on 20/03/15.
@@ -18,6 +18,13 @@ public abstract class Edge
 		this.weight = weight;
 	}
 
+    /**
+     * @pre True
+     * @post An Edge between the nodes n1 and n2 with weight w is created
+     * @param m1
+     * @param m2
+     * @param w
+     */
     public Edge(Node m1,Node m2,int w)
     {
         n1 = m1;
@@ -26,11 +33,13 @@ public abstract class Edge
     }
 
 	/**
-	 * Given one of :the two nodes of the Edge, it returns the other one.
+     * @pre The Node n is part of the Edge
+     * @post The other Node from the Edge is returned
+     * @param n
+     * @return
+	 * Given one of the two nodes of the Edge, it returns the other one.
 	 It is implemented like this due to the fact that it is not a directed edge
 	 therefore there no "origin" or "destiny" node.
-	 * @param n
-	 * @return
 	 */
     public Node getNeighbor(Node n)
     {
@@ -45,7 +54,6 @@ public abstract class Edge
     }
 
 	/**
-	 *
 	 * @return RANDOM node of the edge
 	 */
     public Node getNode()

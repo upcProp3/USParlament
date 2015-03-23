@@ -1,4 +1,4 @@
-package prop13.graphlibrary;
+package es.upc.fib.prop.shared13;
 
 import java.util.*;
 
@@ -18,11 +18,17 @@ public abstract class Graph
      */
     private Map<Node,Set<Edge>> graph;
 
-	public Map<Node, Set<Edge>> getGraph() {
-		return graph;
-	}
+    /**
+     * Graph getter for subclasses
+     */
+    protected Map<Node, Set<Edge>> getGraph()
+    {
+        return graph;
+    }
 
-	/**
+    /**
+     * @pre True
+     * @post An empty graph is created
 	 * Creates an empty graph
 	 */
     public Graph()
@@ -31,27 +37,33 @@ public abstract class Graph
     }
 
 	/**
-	 * returns true if the node is in the graph, false otherwise
+     * @pre True
+     * @post Returns true if the node is in the graph, false otherwise
 	 * @param n
 	 * @return
+     * Returns true if the node is in the graph, false otherwise
 	 */
     public boolean nodeExists(Node n) {
         return graph.containsKey(n);
     }
 
 	/**
+     * @pre The Node n is not part of the graph
+     * @post The Node n is part of the graph
+     * @param n
 	 * The argument is added to the graph, without adjacencies
 	 IF IT ALREADY EXISTS ALL OF ITS EDGES WILL BE DELETED, WITHOUT DELETING ITS NEIGHBORS EDGES
 	 AS A RESULT THE GRAPH WILL BE IN AN ERRONEOUS STATE. CONSIDER YOURSELF WARNED
-	 * @param n
 	 */
     public void addNode(Node n) {
         graph.put(n,new LinkedHashSet<Edge>());
     }
 
 	/**
+     * @pre The Node n is part of the graph
+     * @post The Node n is not a part of the graph
+     * @param n
 	 * The node n is deleted, so are all its edges, including its neighbors edges
-	 * @param n
 	 */
     public void deleteNode(Node n) {
         //First we gotta delete all the neighbors edges
@@ -66,9 +78,9 @@ public abstract class Graph
     }
 
 	/**
-	 * If n1 and n2 are part of the graph, an edge between n1 and n2 with weight w is added to the graph
-	 A reference to the edge is returned
-	 * @param e
+     * @pre Both Nodes from the Edge e are part of the graph
+     * @post The Edge e is added to the graph
+     * @param e
 	 */
     public void addEdge(Edge e) {
         Node n1 = e.getNode();
@@ -78,12 +90,13 @@ public abstract class Graph
     }
 
 	/**
-	 * If n1 and n2 are part of the graph, an edge between n1 and n2 with weight w is deleted from the graph
-	 A reference to the edge is returned
-	 * @param n1
-	 * @param n2
+     * @param n1
+     * @param n2
+     * @pre THe Nodes n1 and n2 are part of the graph and there is an Edge e between them
+     * @post The Edge e is removed from the Graph
 	 */
-    public void deleteEdge(Node n1,Node n2) {
+    //TODO: change name to remove
+    public void removeEdge(Node n1,Node n2) {
         //We need to get the list of edges of both nodes and delete the edge
 
         Set<Edge> se1 = graph.get(n1);
@@ -106,8 +119,10 @@ public abstract class Graph
 
 
 	/**
+     * @pre The Edge e is part of the graph
+     * @post The Edge e is deleted from the graph
+     * @param e
 	 * deletes the edge from the graph
-	 * @param e
 	 */
     public void deleteEdge(Edge e)
     {
@@ -118,9 +133,11 @@ public abstract class Graph
     }
 
 	/**
+     * @pre True
+     * @post Returns the set of edges of a node
+     * @param n
+     * @return
 	 * returns the set of edges of that node DO NOT MODIFY IT DIRECTLY
-	 * @param n
-	 * @return
 	 */
     public Set<Edge> nodeEdges(Node n)
     {
