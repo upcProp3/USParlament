@@ -9,11 +9,9 @@ public final class TEdge extends Edge
     {
         System.out.println("Sorry buddy, there is no default construcor.Check your code for errors");
     }
-     public TEdge(TNode m1,TNode m2,int w)
-    {
-        n1 = m1;
-        n2 = m2;
-        weight = w;
+
+    public TEdge(TNode m1, TNode m2, int w) {
+        super(m1, m2, w);
     }
 
     public void printEdge()

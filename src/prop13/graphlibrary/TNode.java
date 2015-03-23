@@ -8,6 +8,8 @@ public final class TNode extends Node
 {
      private int test;
 
+
+
     public TNode(int i)
     {
         test = i;
