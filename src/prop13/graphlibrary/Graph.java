@@ -7,8 +7,8 @@ import java.util.*;
  */
 public abstract class Graph
 {
-    /*
-       As you can see the graph is created using the interfaces Map and Set
+    /**
+     * As you can see the graph is created using the interfaces Map and Set
        (if you don't know what a java interface is google it), this way if you
        need to keep the edges or the nodes in a certain order you can use
        the type of Map/Set (See java.utils documentation) according to your needs,
@@ -16,32 +16,44 @@ public abstract class Graph
        so it uses the entry one. If you are interested in a certain ordering consider using TreeMaps
        (all valid for sets too)
      */
-    protected Map<Node,Set<Edge>> graph;
+    private Map<Node,Set<Edge>> graph;
 
+	public Map<Node, Set<Edge>> getGraph() {
+		return graph;
+	}
+
+	/**
+	 * Creates an empty graph
+	 */
     public Graph()
-        /* Creates an empty graph */
     {
         graph = new LinkedHashMap<Node,Set<Edge>>();
     }
 
-    public boolean nodeExists(Node n)
-           /*
-                 returns true if the node is in the graph, false otherwise
-           */
-    {
+	/**
+	 * returns true if the node is in the graph, false otherwise
+	 * @param n
+	 * @return
+	 */
+    public boolean nodeExists(Node n) {
         return graph.containsKey(n);
     }
-    public void addNode(Node n)
-        /* The argument is added to the graph, without adjacencies
-            IF IT ALREADY EXISTS ALL OF ITS EDGES WILL BE DELETED, WITHOUT DELETING ITS NEIGHBORS EDGES
-            AS A RESULT THE GRAPH WILL BE IN AN ERRONEOUS STATE. CONSIDER YOURSELF WARNED
-         */
-    {
+
+	/**
+	 * The argument is added to the graph, without adjacencies
+	 IF IT ALREADY EXISTS ALL OF ITS EDGES WILL BE DELETED, WITHOUT DELETING ITS NEIGHBORS EDGES
+	 AS A RESULT THE GRAPH WILL BE IN AN ERRONEOUS STATE. CONSIDER YOURSELF WARNED
+	 * @param n
+	 */
+    public void addNode(Node n) {
         graph.put(n,new LinkedHashSet<Edge>());
     }
-    public void deleteNode(Node n)
-            /*The node n is deleted, so are all its edges, including its neighbors edges*/
-    {
+
+	/**
+	 * The node n is deleted, so are all its edges, including its neighbors edges
+	 * @param n
+	 */
+    public void deleteNode(Node n) {
         //First we gotta delete all the neighbors edges
         Set<Edge> es = graph.get(n);
         //We look at each Edge and delete it from its neighbor's set
@@ -53,22 +65,25 @@ public abstract class Graph
 
     }
 
-    public void addEdge(Edge e)
-        /* If n1 and n2 are part of the graph, an edge between n1 and n2 with weight w is added to the graph
-            A reference to the edge is returned
-         */
-    {
+	/**
+	 * If n1 and n2 are part of the graph, an edge between n1 and n2 with weight w is added to the graph
+	 A reference to the edge is returned
+	 * @param e
+	 */
+    public void addEdge(Edge e) {
         Node n1 = e.getNode();
         Node n2 = e.getNeighbor(n1);
         graph.get(n1).add(e);
         graph.get(n2).add(e);
     }
 
-    public void deleteEdge(Node n1,Node n2)
-        /* If n1 and n2 are part of the graph, an edge between n1 and n2 with weight w is deleted from the graph
-            A reference to the edge is returned
-         */
-    {
+	/**
+	 * If n1 and n2 are part of the graph, an edge between n1 and n2 with weight w is deleted from the graph
+	 A reference to the edge is returned
+	 * @param n1
+	 * @param n2
+	 */
+    public void deleteEdge(Node n1,Node n2) {
         //We need to get the list of edges of both nodes and delete the edge
 
         Set<Edge> se1 = graph.get(n1);
@@ -90,8 +105,11 @@ public abstract class Graph
     }
 
 
+	/**
+	 * deletes the edge from the graph
+	 * @param e
+	 */
     public void deleteEdge(Edge e)
-        /*deletes the edge from the graph*/
     {
         Node n1 = e.getNode();
         Node n2 = e.getNeighbor(n1);
@@ -99,8 +117,12 @@ public abstract class Graph
         graph.get(n2).remove(e);
     }
 
+	/**
+	 * returns the set of edges of that node DO NOT MODIFY IT DIRECTLY
+	 * @param n
+	 * @return
+	 */
     public Set<Edge> nodeEdges(Node n)
-        /*returns the set of edges of that node DO NOT MODIFY IT DIRECTLY*/
     {
         return graph.get(n);
     }

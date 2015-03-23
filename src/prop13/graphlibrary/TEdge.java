@@ -5,23 +5,12 @@ package prop13.graphlibrary;
  */
 public final class TEdge extends Edge
 {
-    public TEdge()
-    {
-        System.out.println("Sorry buddy, there is no default construcor.Check your code for errors");
-    }
-     public TEdge(TNode m1,TNode m2,int w)
-    {
-        n1 = m1;
-        n2 = m2;
-        weight = w;
-    }
+	public TEdge(Node m1, Node m2, int w) {
+		super(m1, m2, w);
+	}
 
-    public void printEdge()
-    {
-        System.out.print("(");
-        ((TNode)n1).printNode();
-        System.out.print(",");
-        ((TNode)n2).printNode();
-        System.out.print(")");
-    }
+	@Override
+	public String toString() {
+		return "TEdge{n1:" + getNode() + ", n2:" + getNeighbor(getNode()) + "}";
+	}
 }

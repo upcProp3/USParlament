@@ -5,13 +5,18 @@ package prop13.graphlibrary;
  */
 public abstract class Edge
 {
-    protected Node n1;
-    protected Node n2;
-    protected int weight;
+    private Node n1;
+    private Node n2;
+    private int weight;
 
-    public Edge()
-    {
-    }
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
 
     public Edge(Node m1,Node m2,int w)
     {
@@ -20,11 +25,14 @@ public abstract class Edge
         weight = w;
     }
 
+	/**
+	 * Given one of :the two nodes of the Edge, it returns the other one.
+	 It is implemented like this due to the fact that it is not a directed edge
+	 therefore there no "origin" or "destiny" node.
+	 * @param n
+	 * @return
+	 */
     public Node getNeighbor(Node n)
-    /* Given one of :the two nodes of the Edge, it returns the other one.
-       It is implemented like this due to the fact that it is not a directed edge
-       therefore there no "origin" or "destiny" node.
-     */
     {
         if(n==n1){
             return n2;
@@ -36,15 +44,14 @@ public abstract class Edge
         }
     }
 
+	/**
+	 *
+	 * @return RANDOM node of the edge
+	 */
     public Node getNode()
-    /* returns a RANDOM node of the edge*/
     {
         return n1;
     }
 
-    public int getWeight()
-            /* Weight getter */
-    {
-        return weight;
-    }
+
 }
