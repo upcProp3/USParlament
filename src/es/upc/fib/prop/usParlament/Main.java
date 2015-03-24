@@ -1,7 +1,8 @@
+package es.upc.fib.prop.usParlament;
 
-import es.upc.fib.prop.shared13.TEdge;
-import es.upc.fib.prop.shared13.TGraph;
-import es.upc.fib.prop.shared13.TNode;
+import es.upc.fib.prop.usParlament.domain.TEdge;
+import es.upc.fib.prop.usParlament.domain.TGraph;
+import es.upc.fib.prop.usParlament.domain.TNode;
 
 //In a future replace all this entries for import java.util.*
 //I am doing it this way to keep track of the used structures
@@ -14,7 +15,7 @@ import java.util.Vector;
 public class Main
 {
     public static void main(String[] args)
-            /*Main with various testing code, temporary*/
+            /*es.upc.fib.prop.usParlament.Main with various testing code, temporary*/
     {
         System.out.println("Hello World!");
 

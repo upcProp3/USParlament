@@ -1,5 +1,9 @@
-package es.upc.fib.prop.shared13;
+package es.upc.fib.prop.usParlament.domain;
 
+
+import es.upc.fib.prop.shared13.Edge;
+import es.upc.fib.prop.shared13.Graph;
+import es.upc.fib.prop.shared13.Node;
 
 import java.util.Map;
 import java.util.Set;
