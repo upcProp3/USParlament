@@ -1,4 +1,7 @@
-package es.upc.fib.prop.shared13;
+package es.upc.fib.prop.usParlament.domain;
+
+import es.upc.fib.prop.shared13.Edge;
+import es.upc.fib.prop.shared13.Node;
 
 /**
  * Created by miquel on 20/03/15.

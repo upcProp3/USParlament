@@ -1,4 +1,6 @@
-package es.upc.fib.prop.shared13;
+package es.upc.fib.prop.usParlament.domain;
+
+import es.upc.fib.prop.shared13.Node;
 
 /**
  * version of node for testing purposes
