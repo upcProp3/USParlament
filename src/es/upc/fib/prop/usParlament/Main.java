@@ -61,7 +61,9 @@ public class Main
         g.removeEdge(vn.elementAt(2), vn.elementAt(0));
         System.out.println("THIRD");
 	    System.out.println(g);
-
+        System.out.println("FOURTH");
+        g.deleteNode(vn.elementAt(3));
+        System.out.println(g);
 
         System.out.println("END OF GRAPH TESTING");
     }

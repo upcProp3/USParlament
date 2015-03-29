@@ -95,7 +95,7 @@ public abstract class Graph
      * @pre THe Nodes n1 and n2 are part of the graph and there is an Edge e between them
      * @post The Edge e is removed from the Graph
 	 */
-    //TODO: change name to remove
+
     public void removeEdge(Node n1,Node n2) {
         //We need to get the list of edges of both nodes and delete the edge
 
