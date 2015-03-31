@@ -1,5 +1,7 @@
 package es.upc.fib.prop.usParlament;
 
+import es.upc.fib.prop.shared13.Edge;
+import es.upc.fib.prop.shared13.louvain.ALouvain;
 import es.upc.fib.prop.usParlament.domain.TEdge;
 import es.upc.fib.prop.usParlament.domain.TGraph;
 import es.upc.fib.prop.usParlament.domain.TNode;
@@ -40,7 +42,7 @@ public class Main
         */
         //End of GetNeighbor testing
 
-
+        /*
         //Graph testing using TNode and TEdge
         TGraph g = new TGraph();
         Vector<TNode> vn = new Vector<TNode>();
@@ -50,11 +52,11 @@ public class Main
         }
         System.out.println("FIRST");
         System.out.println(g);
-        g.addEdge(new TEdge(vn.elementAt(0), vn.elementAt(1), 0));
-        g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(2),0));
-        g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(3),0));
-        g.addEdge(new TEdge(vn.elementAt(1),vn.elementAt(3),0));
-        g.addEdge(new TEdge(vn.elementAt(2),vn.elementAt(3),0));
+        g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(1),1));
+        g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(2),2));
+        g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(3),3));
+        g.addEdge(new TEdge(vn.elementAt(1),vn.elementAt(3),4));
+        g.addEdge(new TEdge(vn.elementAt(2),vn.elementAt(3),5));
         System.out.println("SECOND");
 	    System.out.println(g);
         g.removeEdge(vn.elementAt(0), vn.elementAt(1));
@@ -62,9 +64,36 @@ public class Main
         System.out.println("THIRD");
 	    System.out.println(g);
         System.out.println("FOURTH");
-        g.deleteNode(vn.elementAt(3));
+        g.removeNode(vn.elementAt(3));
         System.out.println(g);
 
         System.out.println("END OF GRAPH TESTING");
+        System.out.println(g.totalWeight());*/
+
+
+        //Modularity test
+
+        TGraph g = new TGraph();
+        Vector<TNode> vn = new Vector<TNode>();
+        for(int i = 0;i<4;i++) {
+            vn.add(new TNode(i));
+            g.addNode(vn.elementAt(i));
+        }
+
+        g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(1),1));
+        g.addEdge(new TEdge(vn.elementAt(1),vn.elementAt(5),3));
+        g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(5),1));
+        g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(3),10));
+        g.addEdge(new TEdge(vn.elementAt(1),vn.elementAt(2),2));
+        g.addEdge(new TEdge(vn.elementAt(4),vn.elementAt(5),8));
+        g.addEdge(new TEdge(vn.elementAt(4),vn.elementAt(3),3));
+        g.addEdge(new TEdge(vn.elementAt(2),vn.elementAt(3),9));
+
+
+
+
+
+
+
     }
 }
