@@ -157,7 +157,7 @@ public abstract class Graph
     }
 
     //Temporary stuff may or may not add used for louvain algorithm mainly
-    //TODO: REALLY INEFFICIENT fix it or smth
+    //TODO: may be  INEFFICIENT fix it or smth
 
     public Set<Node> getNodeSet()
     {

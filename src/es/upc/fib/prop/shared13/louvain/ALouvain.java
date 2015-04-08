@@ -55,12 +55,15 @@ public class ALouvain
 
     public double calculateModularity(LouvainGraph g)
     {
+        Set<Edge> alreadyDone = new LinkedHashSet<Edge>();
         double m = g.getTotalWeight();
         System.out.println("Weight: "+m);
         double retorn = 0;
         for(Node i:og.getNodeSet()){
             for(Node j:og.getNodeSet()){
-                if((node2com.get(i) == node2com.get(j)) && (og.edgeExists(i,j))){//If they are on the same community
+                if((node2com.get(i) == node2com.get(j)) && (og.edgeExists(i,j))
+                        && !(alreadyDone.contains(og.getEdge(i,j)))){//If they are on the same community
+                    alreadyDone.add(og.getEdge(i,j));
                     double temp = og.getEdge(i,j).getWeight();
                     double temp2 = (og.getNeighborsWeight(i)*og.getNeighborsWeight(j))/(2*m);
                     temp -=temp2;
@@ -71,6 +74,39 @@ public class ALouvain
             }
         }
         return retorn/(2*m);
+    }
+
+    //returns the modularity Delta if we put the node n of the graph og to c
+    //c has to be one of the graph communities
+    public double modularityDelta(LouvainGraph og,Node n,Community c)
+    {
+        //It doesnt have a community Community oldCom = node2com.get(n);
+
+        node2com.put(n,c);
+        c.addNode(n);
+
+        double m = og.getTotalWeight();
+        double sumin = c.getInsideWeight();
+        double sumtot = 0;
+        for(Node i:og.getNodeSet()){
+            sumtot+=og.getNeighborsWeight(i);
+        }
+        double kiin = c.getNodeInsideWeight(n);
+        double ki = og.getNeighborsWeight(n);
+
+        double retorn = (sumin+kiin)/(2*m);
+        double temp1 = (sumtot+ki)/(2*m);
+        temp1*=temp1;
+        retorn -= temp1;
+
+        temp1 = sumin/(2*m);
+        double temp2 = sumtot/(2*m);
+        temp2 *=temp2;
+        double temp3 = ki/(2*m);
+        temp3*=temp3;
+        retorn -= (temp1-temp2-temp3);
+
+        return retorn;
     }
 
     public static void main(String[] args)
@@ -93,17 +129,17 @@ public class ALouvain
         og.addEdge(new TEdge(vn.elementAt(4),vn.elementAt(5),10));
 
 
-        og.addEdge(new TEdge(vn.elementAt(2),vn.elementAt(3),100));
-        og.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(5),200));
+        og.addEdge(new TEdge(vn.elementAt(2),vn.elementAt(3),50));
+        og.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(5),60));
 
-        og.addEdge(new TEdge(vn.elementAt(3),vn.elementAt(5),300));
+        og.addEdge(new TEdge(vn.elementAt(3),vn.elementAt(5),70));
 
         //comunitat per 0 1 2
         //comunitat per 3
         //comunitat per 4 5
-        Community com1 = new Community();
-        Community com2 = new Community();
-        Community com3 = new Community();
+        Community com1 = new Community(og);
+        Community com2 = new Community(og);
+        Community com3 = new Community(og);
 
         com1.addNode(vn.elementAt(0));
         com1.addNode(vn.elementAt(1));
@@ -142,6 +178,14 @@ public class ALouvain
         a.setNode2com(node2comL);
 
        System.out.println(a.calculateModularity(og));
+
+        node2comL.remove(vn.elementAt(3));
+        a.setNode2com(node2comL);
+
+        System.out.println(a.modularityDelta(og,vn.elementAt(3),com1));
+        System.out.println(a.calculateModularity(og));
+
+
     }
 
 

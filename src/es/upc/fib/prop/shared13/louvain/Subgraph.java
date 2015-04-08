@@ -7,14 +7,14 @@ import es.upc.fib.prop.shared13.*;
  */
 public class Subgraph extends LouvainGraph
 {
-    private Graph father;
+    private LouvainGraph father;
 
     /**
      * @pre g is not null
      * @post A graph is created with g set as its father
      * @param g
      */
-    public Subgraph(Graph g)
+    public Subgraph(LouvainGraph g)
     {
         super();
         father = g;
@@ -53,9 +53,10 @@ public class Subgraph extends LouvainGraph
     }
 
 
-
-
-
+    public LouvainGraph getFather()
+    {
+        return father;
+    }
 }
 
 
