@@ -39,6 +39,7 @@ public class Attribute  {
     /**
      * @pre True
      * @post Returns the name of the attribute.
+     * @return
      * Returns the name of the attribute.
      */
     public String getName() { return this.name; }
@@ -46,6 +47,7 @@ public class Attribute  {
     /**
      * @pre True
      * @post Returns true if the node is in the graph, false otherwise
+     * @return
      * @param n
      */
     public int getImportance() { return this.importance; }
@@ -53,6 +55,7 @@ public class Attribute  {
     /**
      * @pre The attribute type is either integer or boolean.
      * @post Returns the value of the attribute.
+     * @return
      * Returns de value of the attribute.
      */
     public int getValue1() { return this.value1; }
@@ -60,6 +63,7 @@ public class Attribute  {
     /**
      * @pre The attribute type is String.
      * @post Returns the value of the attribute.
+     * @return
      * Returns de value of the attribute.
      */
     public String getValue2() { return this.value2; }
@@ -67,6 +71,7 @@ public class Attribute  {
     /**
      * @pre True.
      * @post Returns true if the attribute type is integer or boolean, false otherwise.
+     * @return
      * Returns true if the attribute type is integer or boolean, false otherwise.
      */
     public Boolean getType() { return this.intType; }
@@ -103,6 +108,13 @@ public class Attribute  {
      */
     public void setValue2(String v) { this.value2 = v; }
 
+    /**
+     * @pre a is a non-empty attribute
+     * @post true iff a's value is equal to the attribute's value
+     * @param a
+     * @return
+     * Compares two attributes.
+     */
     public Boolean equals(Attribute a) {
         if (a.getType()) {
             return a.getValue1() == this.value1;
