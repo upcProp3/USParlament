@@ -10,6 +10,9 @@ import java.util.Vector;
 /**
  * Created by alexmirocat on 14/4/15.
  */
+
+//TODO: pre & posts
+
 public class AWeight {
 
     private Vector<Map.Entry<Attribute,Attribute>> ca; //Vector of common attributes.
