@@ -12,9 +12,7 @@ public class Attribute  {
 
     private String name;
     private int importance; //3: high; 2: medium; 1: low; 0: null
-    private Boolean intType; //true = integer/boolean type; false = string type
-    private int value1; //irrelevant iff intType = false
-    private String value2; //irrelevant iff intType = true;
+    private Object value;
 
     /**
      * @pre True
@@ -53,28 +51,12 @@ public class Attribute  {
     public int getImportance() { return this.importance; }
 
     /**
-     * @pre The attribute type is either integer or boolean.
-     * @post Returns the value of the attribute.
-     * @return
-     * Returns de value of the attribute.
-     */
-    public int getValue1() { return this.value1; }
-
-    /**
-     * @pre The attribute type is String.
-     * @post Returns the value of the attribute.
-     * @return
-     * Returns de value of the attribute.
-     */
-    public String getValue2() { return this.value2; }
-
-    /**
      * @pre True.
-     * @post Returns true if the attribute type is integer or boolean, false otherwise.
+     * @post Returns the value of the attribute.
      * @return
-     * Returns true if the attribute type is integer or boolean, false otherwise.
+     * Returns de value of the attribute.
      */
-    public Boolean getType() { return this.intType; }
+    public Object getValue() { return this.value; }
 
     /**
      * @pre True.
@@ -85,7 +67,7 @@ public class Attribute  {
     public void setName(String name) { this.name = name; }
 
     /**
-     * @pre True.
+     * @pre importance is an integer between 0 and 3, both included.
      * @post The value of the attribute's importance is 'importance'.
      * @param importance
      * Sets the value of attribute's importance.
@@ -93,33 +75,25 @@ public class Attribute  {
     public void setImportance(int importance) { this.importance = importance; }
 
     /**
-     * @pre The attribute type is either integer or boolean.
+     * @pre v is a correct value.
      * @post The value of the attribute is 'v'.
      * @param v
      * Sets the value of attribute.
      */
-    public void setValue1(int v) { this.value1 = v; }
+    public void setValue(String v) { this.value = v; }
 
     /**
-     * @pre The attribute type is string.
-     * @post The value of the attribute is 'v'.
-     * @param v
-     * Sets the value of attribute.
-     */
-    public void setValue2(String v) { this.value2 = v; }
-
-    /**
-     * @pre a is a non-empty attribute
+     * @pre a is the same type of attribute that the implicit one.
      * @post true iff a's value is equal to the attribute's value
      * @param a
      * @return
      * Compares two attributes.
-     */
+
     public Boolean equals(Attribute a) {
         if (a.getType()) {
             return a.getValue1() == this.value1;
         } else {
             return a.getValue2() == this.value2;
         }
-    }
+    }*/
 }
