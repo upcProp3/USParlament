@@ -43,8 +43,20 @@ public abstract class Graph
 	 * @return
      * Returns true if the node is in the graph, false otherwise
 	 */
-    public boolean nodeExists(Node n) {
+    public boolean nodeExists(Node n)
+    {
         return graph.containsKey(n);
+    }
+
+    /**
+     * @pre True
+     * @post Returns true if the edge is part of the graph, false otherwise
+     * @param e
+     * @return
+     */
+    public boolean edgeExists(Edge e)
+    {
+        return graph.get(e.getNode()).contains(e);
     }
 
 	/**
@@ -65,7 +77,7 @@ public abstract class Graph
      * @param n
 	 * The node n is deleted, so are all its edges, including its neighbors edges
 	 */
-    public void deleteNode(Node n) {
+    public void removeNode(Node n) {
         //First we gotta delete all the neighbors edges
         Set<Edge> es = graph.get(n);
         //We look at each Edge and delete it from its neighbor's set
@@ -95,7 +107,7 @@ public abstract class Graph
      * @pre THe Nodes n1 and n2 are part of the graph and there is an Edge e between them
      * @post The Edge e is removed from the Graph
 	 */
-    //TODO: change name to remove
+
     public void removeEdge(Node n1,Node n2) {
         //We need to get the list of edges of both nodes and delete the edge
 
@@ -124,7 +136,7 @@ public abstract class Graph
      * @param e
 	 * deletes the edge from the graph
 	 */
-    public void deleteEdge(Edge e)
+    public void removeEdge(Edge e)
     {
         Node n1 = e.getNode();
         Node n2 = e.getNeighbor(n1);
@@ -143,5 +155,34 @@ public abstract class Graph
     {
         return graph.get(n);
     }
+
+    //Temporary stuff may or may not add used for louvain algorithm mainly
+    //TODO: may be  INEFFICIENT fix it or smth
+
+    public Set<Node> getNodeSet()
+    {
+        return graph.keySet();
+    }
+
+    public boolean edgeExists(Node n1,Node n2)
+    {
+        for(Edge e:graph.get(n1)){
+            if(e.getNeighbor(n1) == n2){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Edge getEdge(Node n1,Node n2)
+    {
+        for(Edge e:graph.get(n1)){
+            if(e.getNeighbor(n1) == n2){
+                return e;
+            }
+        }
+        return null;
+    }
+
 
 }
