@@ -15,9 +15,10 @@ public class MPDriver
     {
         Graph g = new TGraph();
         Scanner reader = new Scanner(System.in);
-        while(true){
+        Boolean active = true;
+        while(active){
             int input;
-            System.out.println("Entra 1 per crear MP, 2 per imprimir");
+            System.out.println("Entra 1 per crear MP, 2 per imprimir, 0 per sortir");
             input = reader.nextInt();
             if(input == 1) {
                 System.out.println("Entra el nom ,l'estat i el districte(numero) en aquest ordre");
@@ -25,6 +26,9 @@ public class MPDriver
                 g.addNode(new MP(reader.nextLine(), reader.nextLine(), Integer.parseInt(reader.nextLine())));
             }else if(input == 2) {
                 System.out.println(g);
+            }else if(input == 0) {
+                active = false;
+                System.out.println("Fi del driver");
             }else{
                 System.out.println("Comanda dsconeguda");
             }

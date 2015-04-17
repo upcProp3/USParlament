@@ -13,13 +13,12 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.Vector;
 
-//TODO: translate all comments to english ( too hard to think directly in english :/)
 public class ALouvain
 {
     private LouvainGraph og;
-    private Vector<LouvainGraph> vg; //Conte els grafs que es van formant a cada fase
-    private LinkedHashMap<LouvainGraph,Set<Community>> comMap;//Obtenir comunitats d'un dels grafs
-    private LinkedHashMap<Node,Community> node2com;//Obtenir comunitat d'un node
+    private Vector<LouvainGraph> vg; //It stores the "new" graphs formed in every step of the algorithm
+    private LinkedHashMap<LouvainGraph,Set<Community>> comMap;//Get communities from any specified graph
+    private LinkedHashMap<Node,Community> node2com;//Get the community a node is in
     private int levels;
 
 
@@ -134,9 +133,9 @@ public class ALouvain
 
         og.addEdge(new TEdge(vn.elementAt(3),vn.elementAt(5),70));
 
-        //comunitat per 0 1 2
-        //comunitat per 3
-        //comunitat per 4 5
+        //community of 0 1 2
+        //community of 3
+        //community of 4 5
         Community com1 = new Community(og);
         Community com2 = new Community(og);
         Community com3 = new Community(og);
