@@ -34,8 +34,7 @@ public class MP extends Node
      * @pre True
      * @post Returns the full name of the implicit MP
      * @return
-     * Returns the full name of the implicit MP
-     */
+     * Returns the full name of the implicit MP*/
     public String getFullname()
     {
         return fullname;
@@ -148,5 +147,4 @@ public class MP extends Node
     public String toString() {
         return "Fullname: " + this.fullname + "\nState: " + this.state + "\nDistrict: " + this.district + "\n";
     }
-
 }
