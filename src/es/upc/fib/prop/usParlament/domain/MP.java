@@ -148,4 +148,5 @@ public class MP extends Node
     public String toString() {
         return "Fullname: " + this.fullname + "\nState: " + this.state + "\nDistrict: " + this.district + "\n";
     }
+
 }
