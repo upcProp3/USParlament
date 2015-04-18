@@ -130,10 +130,10 @@ public class MP extends Node
 
     /**
      * @pre mp is an existing MP
-     * @post Returns a set with the common attributes between the implicit MP and mp.
+     * @post Returns a set with the common attributes between the implicit MP and mp
      * @param mp
      * @return
-     * Returns a set with the common attributes between the implicit MP and mp.
+     * Returns a set with the common attributes between the implicit MP and mp
      */
     public Set<String> getCommonAttributes(MP mp) {
         Set<String> s = atts.keySet();
