@@ -23,7 +23,7 @@ public class GraphDriver {
 
         System.out.println("This is a Driver for the class Graph");
         Scanner read = new Scanner(System.in);
-        System.out.println("What do you want to do? Enter the key and press enter");
+        System.out.println("What do you want to do? Enter the key and press Enter");
         Boolean seguir = true;
         while(seguir) {
             int num;
