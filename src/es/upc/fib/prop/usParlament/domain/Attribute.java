@@ -46,7 +46,6 @@ public class Attribute  {
      * @pre True
      * @post Returns true if the node is in the graph, false otherwise
      * @return
-     * @param n
      */
     public int getImportance() { return this.importance; }
 
