@@ -1,7 +1,5 @@
 package es.upc.fib.prop.usParlament;
 
-import es.upc.fib.prop.shared13.Edge;
-import es.upc.fib.prop.shared13.louvain.ALouvain;
 import es.upc.fib.prop.usParlament.domain.TEdge;
 import es.upc.fib.prop.usParlament.domain.TGraph;
 import es.upc.fib.prop.usParlament.domain.TNode;

@@ -1,9 +1,5 @@
 package es.upc.fib.prop.usParlament.domain;
 
-import es.upc.fib.prop.shared13.*;
-import es.upc.fib.prop.usParlament.domain.TEdge;
-import es.upc.fib.prop.usParlament.domain.TNode;
-
 import java.util.Map;
 import java.util.Vector;
 
