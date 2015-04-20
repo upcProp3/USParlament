@@ -1,18 +1,16 @@
 package es.upc.fib.prop.usParlament.domain;
 
 
-import es.upc.fib.prop.usParlament.domain.MP;
-import es.upc.fib.prop.usParlament.domain.MPManager;
-import es.upc.fib.prop.usParlament.domain.MPManagerImpl;
-import es.upc.fib.prop.usParlament.domain.State;
+import es.upc.fib.prop.usParlament.data.MPManager;
+import es.upc.fib.prop.usParlament.data.MPManagerImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import javax.sql.DataSource;
 
-import static es.upc.fib.prop.usParlament.domain.DBUtils.executeSqlScript;
-import static es.upc.fib.prop.usParlament.domain.DBUtils.prepareDataSource;
+import static es.upc.fib.prop.usParlament.data.DBUtils.executeSqlScript;
+import static es.upc.fib.prop.usParlament.data.DBUtils.prepareDataSource;
 import static org.junit.Assert.*;
 
 public class MPManagerTest {

@@ -1,4 +1,4 @@
-package es.upc.fib.prop.usParlament.domain;
+package es.upc.fib.prop.usParlament.data;
 
 import org.apache.commons.dbcp.BasicDataSource;
 

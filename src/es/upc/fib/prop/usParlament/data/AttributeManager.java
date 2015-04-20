@@ -1,4 +1,4 @@
-package es.upc.fib.prop.usParlament.domain;
+package es.upc.fib.prop.usParlament.data;
 
 import es.upc.fib.prop.usParlament.domain.Attribute;
 
