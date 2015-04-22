@@ -7,23 +7,16 @@ import es.upc.fib.prop.shared13.Node;
  */
 public class MP extends Node
 {
-	private Long id;
     private String fullname;
     private int district;
     private State state;
 
-    public MP(String fullname, State state, int district)
+    public MP(String fullname,State state,int district)
     {
-	    this.id = null;
         this.fullname = fullname;
         this.district = district;
         this.state = state;
     }
-
-	public Long getId()
-	{
-		return id;
-	}
 
     public String getFullname()
     {

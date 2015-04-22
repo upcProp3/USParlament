@@ -1,7 +1,9 @@
 package es.upc.fib.prop.usParlament.domain;
 
-import es.upc.fib.prop.shared13.Edge;
 import java.util.*;
+
+//TODO: IS THAT CLASS NECESSARY??
+
 
 
 /**
@@ -11,7 +13,6 @@ import java.util.*;
 public class Attribute  {
 
     private String name;
-    private int importance; //3: high; 2: medium; 1: low; 0: null
     private Object value;
 
     /**
@@ -23,15 +24,13 @@ public class Attribute  {
 
     /**
      * @pre importance is an integer between 0 and 3, both included.
-     * @post An empty graph is created
+     * @post an attribute is created with name 'name'.
      * @param name
-     * @param importance
      * Creates an attribute of name 'name' and importance 'importance'.
      */
-    public Attribute(String name, int importance)
+    public Attribute(String name)
     {
         this.name = name;
-        this.importance = importance;
     }
 
     /**
@@ -41,14 +40,6 @@ public class Attribute  {
      * Returns the name of the attribute.
      */
     public String getName() { return this.name; }
-
-    /**
-     * @pre True
-     * @post Returns true if the node is in the graph, false otherwise
-     * @return
-     * @param n
-     */
-    public int getImportance() { return this.importance; }
 
     /**
      * @pre True.
@@ -65,14 +56,6 @@ public class Attribute  {
      * Sets the value of the attribute's name.
      */
     public void setName(String name) { this.name = name; }
-
-    /**
-     * @pre importance is an integer between 0 and 3, both included.
-     * @post The value of the attribute's importance is 'importance'.
-     * @param importance
-     * Sets the value of attribute's importance.
-     */
-    public void setImportance(int importance) { this.importance = importance; }
 
     /**
      * @pre v is a correct value.

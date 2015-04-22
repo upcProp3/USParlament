@@ -1,5 +1,9 @@
 package es.upc.fib.prop.usParlament.domain;
 
+import es.upc.fib.prop.shared13.*;
+import es.upc.fib.prop.usParlament.domain.TEdge;
+import es.upc.fib.prop.usParlament.domain.TNode;
+
 import java.util.Map;
 import java.util.Vector;
 
@@ -21,7 +25,8 @@ public class AWeight {
         int w = 0; //0 = no relationship
         for (Map.Entry<Attribute,Attribute> aa : ca) {
             if (aa.getKey().equals(aa.getValue())) {
-                w += aa.getKey().getImportance();
+                //TODO reimplement it
+                //w += aa.getKey().getImportance();
             }
         }
         if (div != 0) {
