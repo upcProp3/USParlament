@@ -33,8 +33,8 @@ public class TNode extends Node {
     }
 
     @Override
-    public boolean isGreater(Node n) {
-        return ((TNode) n).getKey() < this.key;
+    public int compareTo(Node n) {
+        return ((TNode) n).getKey() - this.key;
     }
 
     public int getKey() {

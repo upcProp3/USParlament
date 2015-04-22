@@ -29,12 +29,14 @@ public abstract class Edge {
      * strictly positive number.
      */
     public Edge(Node m1, Node m2, double w, boolean valid) {
-        if (m1 == null || m2 == null) throw new NullPointerException();
+        if (m1 == null || m2 == null) {
+	        throw new NullPointerException();
+        }
 
         setWeight(w);
         setValidity(valid);
 
-        if (m2.isGreater(m1)) {
+        if (m2.compareTo(m1) > 0) {
             n1 = m1;
             n2 = m2;
         }
@@ -83,9 +85,12 @@ public abstract class Edge {
      * number.
      */
     public void setWeight(double w) {
-        if (Double.isNaN(w) || w <= 0)
-            throw new IllegalArgumentException(ERR_WEIGHT);
-        else weight = w;
+        if (Double.isNaN(w) || w <= 0) {
+	        throw new IllegalArgumentException(ERR_WEIGHT);
+        }
+        else {
+	        weight = w;
+        }
     }
 
     /**
@@ -106,11 +111,19 @@ public abstract class Edge {
      * edge.
      */
     public Node getNeighbor(Node n) {
-        if (n == null) throw new NullPointerException();
+        if (n == null) {
+	        throw new NullPointerException();
+        }
 
-        if (n.equals(n1)) return n2;
-        else if (n.equals(n2)) return n1;
-        else throw new IllegalArgumentException(ERR_NOT_PART_EDGE);
+        if (n.equals(n1)) {
+	        return n2;
+        }
+        else if (n.equals(n2)) {
+	        return n1;
+        }
+        else {
+	        throw new IllegalArgumentException(ERR_NOT_PART_EDGE);
+        }
     }
 
     /**
@@ -127,11 +140,16 @@ public abstract class Edge {
      * it is not null and it contains the same nodes as the edge o (no matter
      * the order).
      */
-    @Override public boolean equals(Object o) {
+    @Override
+    public boolean equals(Object o) {
         // We don't check the weight as we don't expect to have two edges
         // with different weights joining the same pair of nodes in the graph
-        if (this == o) return true;
-        if (o == null || !(o instanceof Edge)) return false;
+        if (this == o) {
+	        return true;
+        }
+        if (o == null || !(o instanceof Edge)) {
+	        return false;
+        }
 
         final Edge e = (Edge) o;
 
@@ -142,7 +160,8 @@ public abstract class Edge {
      * Returns a hash code value for this edge.
      * @return returns a hash code value for this edge.
      */
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         int hash = n1.hashCode();
         hash = 31*hash + n2.hashCode();
 
@@ -155,7 +174,8 @@ public abstract class Edge {
      * integers both edge 3,2 and edge 2,3 would be printed as 2,3.
      * @return a String representation of the edge.
      */
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return "{" + n1 + ", " + n2 + ", " + weight + "}";
     }
 

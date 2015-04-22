@@ -2,14 +2,14 @@ package es.upc.fib.prop.usParlament.data;
 
 import es.upc.fib.prop.shared13.CommunityAlgorithm;
 import es.upc.fib.prop.shared13.CommunitySet;
-import es.upc.fib.prop.shared13.GraphOld;
+import es.upc.fib.prop.shared13.Graph;
 
 /**
  * Created by ondrej on 17.4.15.
  */
 public interface CongressManager {
 
-	public CommunitySet calculateCommunitySet(CommunityAlgorithm algorithm, GraphOld graphOld);
+	public CommunitySet calculateCommunitySet(CommunityAlgorithm algorithm, Graph graph);
 
 	public void saveCommunitySet(CommunitySet community);
 

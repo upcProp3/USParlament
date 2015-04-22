@@ -1,82 +1,58 @@
 package es.upc.fib.prop.usParlament.domain;
 
-import java.util.*;
-
-//TODO: IS THAT CLASS NECESSARY??
-
-
-
 /**
  * Created by alexmiro9 on 8/4/15.
  */
 
 public class Attribute  {
-
-    private String name;
+	private Long id;
+    private AttrDefinition definition;
     private Object value;
 
-    /**
-     * @pre True
-     * @post An empty attribute is created
-     * Creates an empty attribute
-     */
-    public Attribute() {}
+	public Attribute(AttrDefinition definition, Object value) {
+		this.definition = definition;
+		this.value = value;
+	}
 
-    /**
-     * @pre importance is an integer between 0 and 3, both included.
-     * @post an attribute is created with name 'name'.
-     * @param name
-     * Creates an attribute of name 'name' and importance 'importance'.
-     */
-    public Attribute(String name)
-    {
-        this.name = name;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    /**
-     * @pre True
-     * @post Returns the name of the attribute.
-     * @return
-     * Returns the name of the attribute.
-     */
-    public String getName() { return this.name; }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    /**
-     * @pre True.
-     * @post Returns the value of the attribute.
-     * @return
-     * Returns de value of the attribute.
-     */
-    public Object getValue() { return this.value; }
+	public Object getValue() {
+		return value;
+	}
 
-    /**
-     * @pre True.
-     * @post The value of the attribute's name is 'name'.
-     * @param name
-     * Sets the value of the attribute's name.
-     */
-    public void setName(String name) { this.name = name; }
+	public void setValue(Object value) {
+		this.value = value;
+	}
 
-    /**
-     * @pre v is a correct value.
-     * @post The value of the attribute is 'v'.
-     * @param v
-     * Sets the value of attribute.
-     */
-    public void setValue(String v) { this.value = v; }
+	public AttrDefinition getDefinition() {
+		return definition;
+	}
 
-    /**
-     * @pre a is the same type of attribute that the implicit one.
-     * @post true iff a's value is equal to the attribute's value
-     * @param a
-     * @return
-     * Compares two attributes.
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
 
-    public Boolean equals(Attribute a) {
-        if (a.getType()) {
-            return a.getValue1() == this.value1;
-        } else {
-            return a.getValue2() == this.value2;
-        }
-    }*/
+		Attribute attribute = (Attribute) o;
+
+		if (id != null ? !id.equals(attribute.id) : attribute.id != null) return false;
+
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return id != null ? id.hashCode() : 0;
+	}
+
+	@Override
+	public String toString() {
+		return definition.getName() + ": " + value;
+	}
 }

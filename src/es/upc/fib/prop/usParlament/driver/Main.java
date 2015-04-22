@@ -1,8 +1,8 @@
-package es.upc.fib.prop.usParlament;
+package es.upc.fib.prop.usParlament.driver;
 
-import es.upc.fib.prop.usParlament.domain.TEdgeOld;
-import es.upc.fib.prop.usParlament.domain.TGraphOld;
-import es.upc.fib.prop.usParlament.domain.TNodeOld;
+import es.upc.fib.prop.usParlament.driver.TEdge;
+import es.upc.fib.prop.usParlament.driver.TGraph;
+import es.upc.fib.prop.usParlament.driver.TNode;
 
 //In a future replace all this entries for import java.util.*
 //I am doing it this way to keep track of the used structures
@@ -15,7 +15,7 @@ import java.util.Vector;
 public class Main
 {
     public static void main(String[] args)
-            /*es.upc.fib.prop.usParlament.Main with various testing code, temporary*/
+            /*es.upc.fib.prop.usParlament.driver.Main with various testing code, temporary*/
     {
         System.out.println("Hello World!");
 
@@ -71,21 +71,21 @@ public class Main
 
         //Modularity test
 
-        TGraphOld g = new TGraphOld();
-        Vector<TNodeOld> vn = new Vector<TNodeOld>();
+        TGraph g = new TGraph();
+        Vector<TNode> vn = new Vector<TNode>();
         for(int i = 0;i<4;i++) {
-            vn.add(new TNodeOld(i));
+            vn.add(new TNode(i));
             g.addNode(vn.elementAt(i));
         }
 
-        g.addEdge(new TEdgeOld(vn.elementAt(0),vn.elementAt(1),1));
-        g.addEdge(new TEdgeOld(vn.elementAt(1),vn.elementAt(5),3));
-        g.addEdge(new TEdgeOld(vn.elementAt(0),vn.elementAt(5),1));
-        g.addEdge(new TEdgeOld(vn.elementAt(0),vn.elementAt(3),10));
-        g.addEdge(new TEdgeOld(vn.elementAt(1),vn.elementAt(2),2));
-        g.addEdge(new TEdgeOld(vn.elementAt(4),vn.elementAt(5),8));
-        g.addEdge(new TEdgeOld(vn.elementAt(4),vn.elementAt(3),3));
-        g.addEdge(new TEdgeOld(vn.elementAt(2),vn.elementAt(3),9));
+        g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(1),1));
+        g.addEdge(new TEdge(vn.elementAt(1),vn.elementAt(5),3));
+        g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(5),1));
+        g.addEdge(new TEdge(vn.elementAt(0),vn.elementAt(3),10));
+        g.addEdge(new TEdge(vn.elementAt(1),vn.elementAt(2),2));
+        g.addEdge(new TEdge(vn.elementAt(4),vn.elementAt(5),8));
+        g.addEdge(new TEdge(vn.elementAt(4),vn.elementAt(3),3));
+        g.addEdge(new TEdge(vn.elementAt(2),vn.elementAt(3),9));
 
 
 
