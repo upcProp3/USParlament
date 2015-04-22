@@ -1,14 +1,15 @@
-package es.upc.fib.prop.usParlament.aleix;
+package es.upc.fib.prop.usParlament.driver;
 
 
+import es.upc.fib.prop.shared13.Node;
 
 /**
  * Created by albert on 16/04/15.
  */
-public class tNode extends Node {
+public class TNode extends Node {
     private final int key;
 
-    public tNode(int key) {
+    public TNode(int key) {
         this.key = key;
     }
 
@@ -16,7 +17,7 @@ public class tNode extends Node {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || o.getClass() != getClass()) return false;
-        return ((tNode) o).getKey() == this.key;
+        return ((TNode) o).getKey() == this.key;
     }
 
 
@@ -33,7 +34,7 @@ public class tNode extends Node {
 
     @Override
     public boolean isGreater(Node n) {
-        return ((tNode) n).getKey() < this.key;
+        return ((TNode) n).getKey() < this.key;
     }
 
     public int getKey() {
