@@ -5,6 +5,6 @@ package es.upc.fib.prop.shared13;
  */
 public abstract class CommunityAlgorithm {
 
-	public abstract CommunitySet compute(GraphOld graphOld);
+	public abstract CommunitySet compute(Graph graph);
 
 }

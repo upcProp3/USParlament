@@ -1,7 +1,5 @@
 package es.upc.fib.prop.usParlament.data;
 
-import org.apache.commons.dbcp.BasicDataSource;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -16,7 +14,7 @@ import javax.sql.DataSource;
  * @author Petr Adamek 
  */
 public class DBUtils {
-
+	/* TODO
     private static final Logger logger = Logger.getLogger(
             DBUtils.class.getName());
     
@@ -65,5 +63,5 @@ public class DBUtils {
             }
         }
     } 
-    
+    */
 }

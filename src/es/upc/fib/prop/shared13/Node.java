@@ -25,7 +25,8 @@ public abstract class Node {
      * @return true if o is a instance of Node, it's not null and is equal
      * to this node.
      */
-    @Override public abstract boolean equals(Object o);
+    @Override
+    public abstract boolean equals(Object o);
 
     /**
      * Returns a hash code value for this Node. It <strong>must</strong>
@@ -39,13 +40,15 @@ public abstract class Node {
      *
      * @return a hash code value for the Node.
      */
-    @Override public abstract int hashCode();
+    @Override
+    public abstract int hashCode();
 
     /**
      * Returns a string representation of this Node.
      * @return a string representation of this Node.
      */
-    @Override public abstract String toString();
+    @Override
+    public abstract String toString();
 
     /**
      * Returns whether this Node is greater than the parameter node.

@@ -11,5 +11,8 @@ public class TEdge extends Edge {
     public TEdge(Node m1, Node m2, double w, boolean valid) {
         super(m1, m2, w, valid);
     }
+	public TEdge(Node m1, Node m2, double w) {
+		super(m1, m2, w);
+	}
     //public tEdge(Node m1, Node m2, double w) {super(m1, m2, w);}
 }
