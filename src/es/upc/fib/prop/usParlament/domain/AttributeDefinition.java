@@ -20,6 +20,9 @@ public class AttributeDefinition {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	public void setId(int id) {
+		setId((long) id);
+	}
 
 	public String getName() {
 		return name;
@@ -52,5 +55,12 @@ public class AttributeDefinition {
 	@Override
 	public int hashCode() {
 		return id != null ? id.hashCode() : 0;
+	}
+
+	@Override
+	public String toString() {
+		return "id: " + id +
+				"\nname: " + name +
+				"\nimportance: " + importance;
 	}
 }

@@ -2,6 +2,7 @@ package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.shared13.Node;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class MP extends Node {
         this.fullname = fullname;
         this.district = district;
         this.state = state;
+	    this.attributes = new ArrayList<>();
     }
 
 	public Long getId() {
@@ -27,6 +29,9 @@ public class MP extends Node {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public void setId(Integer id) {
+		setId((long) id);
 	}
 
 	public String getFullname()
@@ -89,7 +94,13 @@ public class MP extends Node {
 	@Override
     public String toString()
     {
-        return "Fullname: "+this.fullname+"\nState: "+this.state+"\nDistrict: "+this.district+"\n";
+	    String r = "id: "+this.id+"\nFullname: "+this.fullname+"\nState: "+this.state+"\nDistrict: "+this.district;
+	    r += "\nattributes: [ ";
+	    for (Attribute attr : attributes) {
+		    r += attr + ", ";
+	    }
+	    r += "]";
+        return r;
     }
 
 	@Override
