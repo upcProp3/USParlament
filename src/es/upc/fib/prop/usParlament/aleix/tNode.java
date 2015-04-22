@@ -6,7 +6,7 @@ package es.upc.fib.prop.usParlament.aleix;
  * Created by albert on 16/04/15.
  */
 public class tNode extends Node {
-    private final int key;
+    private final Integer key;
 
     public tNode(int key) {
         this.key = key;
@@ -23,7 +23,7 @@ public class tNode extends Node {
     @Override
     public int hashCode() {
         //return Integer.hashCode(key);
-        return 3;
+        return key.hashCode();
     }
 
     @Override

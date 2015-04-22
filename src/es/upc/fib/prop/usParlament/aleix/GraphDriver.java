@@ -26,7 +26,7 @@ public class GraphDriver {
             num = read.nextInt();
             if (num == 1) node_management();  //operations related with nodes
             else if (num == 2) edge_management(); //operations related with edges
-            else if (num == 3) {g.toString(); System.out.println('\n');} //TODO: g.toString() is ignored
+            else if (num == 3) {System.out.println(g+"\n");} //TODO: g.toString() is ignored
             else if (num == 4) seguir = false; //end program
             else System.out.println("Enter a valid number");
         }
