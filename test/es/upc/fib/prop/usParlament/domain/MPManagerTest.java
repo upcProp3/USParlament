@@ -6,11 +6,7 @@ import es.upc.fib.prop.usParlament.data.MPManagerImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import javax.sql.DataSource;
-
-import static es.upc.fib.prop.usParlament.data.DBUtils.executeSqlScript;
-import static es.upc.fib.prop.usParlament.data.DBUtils.prepareDataSource;
 import static org.junit.Assert.*;
 
 public class MPManagerTest {
@@ -20,14 +16,16 @@ public class MPManagerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		ds = prepareDataSource();
-		executeSqlScript(ds, MPManager.class.getResource("createTables.sql"));
-		manager = new MPManagerImpl(ds);
+		//TODO
+		//ds = prepareDataSource();
+		//executeSqlScript(ds, MPManager.class.getResource("createTables.sql"));
+		//manager = new MPManagerImpl(ds);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		executeSqlScript(ds, MPManager.class.getResource("dropTables.sql"));
+		//TODO
+		//executeSqlScript(ds, MPManager.class.getResource("dropTables.sql"));
 	}
 
 	@Test
