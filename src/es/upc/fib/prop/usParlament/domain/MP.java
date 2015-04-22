@@ -2,6 +2,8 @@ package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.shared13.Node;
 
+import java.util.List;
+
 /**
  * Created by miquel on 7/04/15.
  */
@@ -10,6 +12,7 @@ public class MP extends Node {
     private String fullname;
     private int district;
     private State state;
+	private List<Attribute> attributes;
 
     public MP(String fullname,State state,int district)
     {
@@ -56,6 +59,14 @@ public class MP extends Node {
         this.state = state;
     }
 
+	public List<Attribute> getAttributes() {
+		return attributes;
+	}
+
+	public void addAttribute(Attribute attr) {
+		attributes.add(attr);
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof MP)) {
@@ -71,7 +82,7 @@ public class MP extends Node {
 	// TODO
 	@Override
 	public int hashCode() {
-		int hash = 53 * 5 + (this.id == null ? 0 : this.id.hashCode());
+		int hash = this.id == null ? 0 : this.id.hashCode();
 		return hash;
 	}
 
@@ -81,7 +92,6 @@ public class MP extends Node {
         return "Fullname: "+this.fullname+"\nState: "+this.state+"\nDistrict: "+this.district+"\n";
     }
 
-	// TODO
 	@Override
 	public int compareTo(Node n) {
 		if (this.equals(n)) {
