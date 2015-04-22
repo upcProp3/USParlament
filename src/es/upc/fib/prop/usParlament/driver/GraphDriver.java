@@ -1,5 +1,8 @@
-package es.upc.fib.prop.usParlament.aleix;
+package es.upc.fib.prop.usParlament.driver;
 
+
+import es.upc.fib.prop.shared13.Edge;
+import es.upc.fib.prop.shared13.Node;
 
 import java.lang.System;
 import java.util.*;
@@ -12,7 +15,7 @@ import java.util.*;
  */
 public class GraphDriver {
 
-    static tGraph g = new tGraph();
+    static TGraph g = new TGraph();
 
     public static void main(String[] args) {
 
@@ -67,9 +70,9 @@ public class GraphDriver {
             id1 = read.nextInt();
             id2 = read.nextInt();
             w = read.nextInt();
-            tNode n1 = new tNode(id1);
-            tNode n2 = new tNode(id2);
-            tEdge e = new tEdge(n1, n2, w, true);
+            TNode n1 = new TNode(id1);
+            TNode n2 = new TNode(id2);
+            TEdge e = new TEdge(n1, n2, w, true);
             g.addEdge(e);
             System.out.println("edge added successfully!"+'\n');
         }
@@ -78,8 +81,8 @@ public class GraphDriver {
             int id1, id2;
             id1 = read.nextInt();
             id2 = read.nextInt();
-            tNode n1 = new tNode(id1);
-            tNode n2 = new tNode(id2);
+            TNode n1 = new TNode(id1);
+            TNode n2 = new TNode(id2);
             if (g.hasEdge(n1, n2)) {
                 System.out.println(g.getEdge(n1, n2).toString());
             }
@@ -91,8 +94,8 @@ public class GraphDriver {
             int id1, id2;
             id1 = read.nextInt();
             id2 = read.nextInt();
-            tNode n1 = new tNode(id1);
-            tNode n2 = new tNode(id2);
+            TNode n1 = new TNode(id1);
+            TNode n2 = new TNode(id2);
             if (g.hasEdge(n1, n2)) System.out.println("the edge exists");
             else System.out.println("the edge doesn't exist");
             System.out.println();
@@ -102,8 +105,8 @@ public class GraphDriver {
             int id1, id2;
             id1 = read.nextInt();
             id2 = read.nextInt();
-            tNode n1 = new tNode(id1);
-            tNode n2 = new tNode(id2);
+            TNode n1 = new TNode(id1);
+            TNode n2 = new TNode(id2);
             if (g.hasValidEdge(n1, n2)) System.out.println("the edge exists and is valid");
             else if (g.hasEdge(n1, n2)) System.out.println("the edge exists, but is not valid");
             else System.out.println("the edge doesn't exist");
@@ -114,8 +117,8 @@ public class GraphDriver {
             int id1, id2;
             id1 = read.nextInt();
             id2 = read.nextInt();
-            tNode n1 = new tNode(id1);
-            tNode n2 = new tNode(id2);
+            TNode n1 = new TNode(id1);
+            TNode n2 = new TNode(id2);
             if (g.hasEdge(n1, n2)) g.removeEdge(n1, n2);
             else System.out.println("The edge was not in the graph");
             System.out.println("Edge erased successfully"+'\n');
@@ -123,14 +126,14 @@ public class GraphDriver {
         else if (num == 10) {//remove all edges from a node
             System.out.println("enter the id of the node");
             int id = read.nextInt();
-            tNode n = new tNode(id);
+            TNode n = new TNode(id);
             g.removeAllNodeEdges(n);
             System.out.println("successful"+'\n');
         }
         else if (num == 11) {//Adjacency List
             System.out.println("enter the id of the node");
             int id = read.nextInt();
-            tNode n = new tNode(id);
+            TNode n = new TNode(id);
             if (g.hasNode(n)) {
                 Collection<Edge> s = g.getAdjacencyList(n);
                 System.out.println("The edges adjacent to the node " + id + " are:");
@@ -142,7 +145,7 @@ public class GraphDriver {
         else if (num == 12) {//Adjacency List of ValidEdges
             System.out.println("enter the id of the node");
             int id = read.nextInt();
-            tNode n = new tNode(id);
+            TNode n = new TNode(id);
             if (g.hasNode(n)) {
                 Collection<Edge> s = g.getValidAdjacencyList(n);
                 System.out.println("The valid edges adjacent to the node "+id+" are:");
@@ -156,8 +159,8 @@ public class GraphDriver {
             int id1, id2;
             id1 = read.nextInt();
             id2 = read.nextInt();
-            tNode n1 = new tNode(id1);
-            tNode n2 = new tNode(id2);
+            TNode n1 = new TNode(id1);
+            TNode n2 = new TNode(id2);
             if (g.hasEdge(n1, n1)) System.out.println(g.getEdge(n1, n2).toString());
             else System.out.println("There is not such an edge");
             System.out.println();
@@ -184,28 +187,28 @@ public class GraphDriver {
         else if (num == 2) {
             System.out.println("Enter the id of the node, whose degree you want to know");
             int id = read.nextInt();
-            tNode n = new tNode(id);
+            TNode n = new TNode(id);
             g.getNodeDegree(n);
             System.out.println('\n');
         }
         else if (num == 3) {
             System.out.println("Enter the id of the node, whose degree you want to know");
             int id = read.nextInt();
-            tNode n = new tNode(id);
+            TNode n = new TNode(id);
             g.getValidNodeDegree(n);
             System.out.println('\n');
         }
         else if (num == 4) { //Add a node to the graph
             System.out.println("enter the id of the node you want to add, it is assumed it is not currently part of the graph");
             int id = read.nextInt();
-            tNode n = new tNode(id);
+            TNode n = new TNode(id);
             g.addNode(n);
             System.out.println("node added succesfully"+'\n'+'\n');
         }
         else if (num == 5) {
             System.out.println("enter id of the node you want to verify if it is in the graph");
             int id = read.nextInt();
-            tNode n = new tNode(id);
+            TNode n = new TNode(id);
             System.out.print("The node with id " + n.toString());
             if(g.hasNode(n)) System.out.println(" is in the graph"+'\n');
             else System.out.println(" is not in the graph"+'\n');
@@ -213,7 +216,7 @@ public class GraphDriver {
         else if (num == 6) {
             System.out.println("enter the id of the node you want to delete, the node has to be contained in the graph");
             int id = read.nextInt();
-            tNode n = new tNode(id);
+            TNode n = new TNode(id);
             if (g.hasNode(n)) {
                 g.removeNode(n);
                 System.out.println("node deleted"+'\n');

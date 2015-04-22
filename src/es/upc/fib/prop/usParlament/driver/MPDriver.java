@@ -3,7 +3,6 @@ package es.upc.fib.prop.usParlament.driver;
 import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.usParlament.domain.MP;
 import es.upc.fib.prop.usParlament.domain.State;
-import es.upc.fib.prop.usParlament.domain.TGraph;
 
 import java.util.Scanner;
 
