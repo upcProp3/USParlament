@@ -100,8 +100,9 @@ public class MP extends Node
      * @post Returns a set with the names of the attributes of the implicit MP
      * @return
      * Returns a set with the names of the attributes of the implicit MP
+     * @param m2
      */
-    public Set<String> getAttributeList() {
+    public Set<String> getAttributeList(MP m2) {
         return atts.keySet();
     }
 
@@ -136,7 +137,7 @@ public class MP extends Node
      */
     public Set<String> getCommonAttributes(MP mp) {
         Set<String> s = atts.keySet();
-        Set<String> s2 = mp.getAttributeList();
+        Set<String> s2 = mp.getAttributeList(m2);
         Set<String> ret = new HashSet<>();
         for (String i : s) {
             if (s2.contains(i)) ret.add(i);
