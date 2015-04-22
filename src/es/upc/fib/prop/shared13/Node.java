@@ -12,7 +12,7 @@ package es.upc.fib.prop.shared13;
  *  as it could not be retrieved. A translation must be done instead in another
  *  class (graph class maybe) from node identifiers to node data.
  */
-public abstract class Node {
+public abstract class Node implements Comparable<Node> {
 
     /**
      * Compares the specified object with this Node for equality.
@@ -50,12 +50,15 @@ public abstract class Node {
     @Override
     public abstract String toString();
 
-    /**
-     * Returns whether this Node is greater than the parameter node.
-     * This function is necessary for the Edge class to define edges
-     * to be truly undirected (no sense of source and destination).
-     * @param n the node to compare.
-     * @return true if this node is greater than n.
-     */
-    public abstract boolean isGreater(Node n);
+	/**
+	 * Returns whether this Node is greater, equal or smaller than the
+	 * parameter node. This function is necessary for the Edge class to
+	 * define edges to be truly undirected (no sense of source and destination).
+	 * @param n the node to compare.
+	 * @return a negative integer, zero, or a positive integer as this node
+	 * is less than, equal to, or greater than the specified node.
+	 * @throws NullPointerException if n is null
+	 */
+	@Override
+	public abstract int compareTo(Node n);
 }

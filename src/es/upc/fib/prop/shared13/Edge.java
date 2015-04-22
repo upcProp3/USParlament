@@ -36,7 +36,7 @@ public abstract class Edge {
         setWeight(w);
         setValidity(valid);
 
-        if (m2.isGreater(m1)) {
+        if (m2.compareTo(m1) > 0) {
             n1 = m1;
             n2 = m2;
         }
