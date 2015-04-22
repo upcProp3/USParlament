@@ -1,17 +1,15 @@
 package es.upc.fib.prop.usParlament.domain;
 
-import java.util.*;
-
 /**
  * Created by alexmiro9 on 8/4/15.
  */
 
 public class Attribute  {
 	private Long id;
-    private AttributeDefinition definition;
+    private AttrDefinition definition;
     private Object value;
 
-	public Attribute(AttributeDefinition definition, Object value) {
+	public Attribute(AttrDefinition definition, Object value) {
 		this.definition = definition;
 		this.value = value;
 	}
@@ -30,6 +28,10 @@ public class Attribute  {
 
 	public void setValue(Object value) {
 		this.value = value;
+	}
+
+	public AttrDefinition getDefinition() {
+		return definition;
 	}
 
 	@Override

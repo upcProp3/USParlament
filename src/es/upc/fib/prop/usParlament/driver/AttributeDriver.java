@@ -1,12 +1,10 @@
 package es.upc.fib.prop.usParlament.driver;
 
-import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.usParlament.domain.Attribute;
-import es.upc.fib.prop.usParlament.domain.AttributeDefinition;
+import es.upc.fib.prop.usParlament.domain.AttrDefinition;
 import es.upc.fib.prop.usParlament.domain.MP;
 import es.upc.fib.prop.usParlament.domain.State;
 
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -15,7 +13,9 @@ import java.util.*;
 public class AttributeDriver {
 
 	private static List<MP> mps = new ArrayList<>();;
-	private static List<AttributeDefinition> definitions = new ArrayList<>();;
+	private static List<AttrDefinition> definitions = new ArrayList<>();
+	private static Long attrId = (long) 10;
+	private static Long defId = (long) 10;
 
 	public static void main(String[] args)
 	{
@@ -33,6 +33,8 @@ public class AttributeDriver {
 			System.out.println("2 - show list of attributes definitions");
 			System.out.println("3 - add attribute definition");
 			System.out.println("4 - remove attribute definition");
+			System.out.println("5 - add attribute to MP");
+			System.out.println("6 - remove attribute from MP");
 			System.out.println("0 - exit");
 			try {
 				input = reader.nextInt();
@@ -54,6 +56,12 @@ public class AttributeDriver {
 				case 4:
 					removeDefinition(reader);
 					break;
+				case 5:
+					addAttribute(reader);
+					break;
+				case 6:
+					removeAttribute(reader);
+					break;
 				case 0:
 					System.out.println("Bye Bye");
 					active = false;
@@ -66,8 +74,129 @@ public class AttributeDriver {
 
 	}
 
+	private static void removeAttribute(Scanner reader) {
+		System.out.println("Put MP id: ");
+		int mpId;
+		while(true) {
+			try {
+				mpId = reader.nextInt();
+				break;
+			} catch (InputMismatchException e) {
+				reader.nextLine();
+				System.out.println("Id has to be integer. Try it again.");
+				continue;
+			}
+		}
+
+		MP mp = null;
+		for (MP m : mps) {
+			if (m.getId() == mpId) {
+				mp = m;
+			}
+		}
+		if (mp == null) {
+			System.out.println("MP with id " + mpId + " does not exist.");
+			return;
+		}
+
+		System.out.println("=====================================");
+		System.out.println(mp);
+		for (AttrDefinition def : mp.getAttributes().keySet()) {
+			System.out.println("-------------------------------------");
+			System.out.println(def);
+		}
+
+		System.out.println("=====================================");
+		System.out.println("Put attribute definition id: ");
+		int defId;
+		while(true) {
+			try {
+				defId = reader.nextInt();
+				break;
+			} catch (InputMismatchException e) {
+				reader.nextLine();
+				System.out.println("Id has to be integer. Try it again.");
+				continue;
+			}
+		}
+
+		AttrDefinition def = null;
+		for (AttrDefinition d : mp.getAttributes().keySet()) {
+			if (d.getId() == defId) {
+				def = d;
+			}
+		}
+		if (def == null) {
+			System.out.println("MP " +mp.getFullname()+ " does not contains Attribute definition with id " + defId);
+			return;
+		}
+
+		mp.removeAttribute(def);
+		System.out.println("Removed successfully");
+	}
+
+
+	private static void addAttribute(Scanner reader) {
+		System.out.println("Put MP id: ");
+		int mpId;
+		while(true) {
+			try {
+				mpId = reader.nextInt();
+				break;
+			} catch (InputMismatchException e) {
+				reader.nextLine();
+				System.out.println("Id has to be integer. Try it again.");
+				continue;
+			}
+		}
+
+		MP mp = null;
+		for (MP m : mps) {
+			if (m.getId() == mpId) {
+				mp = m;
+			}
+		}
+		if (mp == null) {
+			System.out.println("MP with id " + mpId + " does not exist.");
+			return;
+		}
+
+		System.out.println("=====================================");
+		System.out.println(mp);
+		showDefinitions();
+
+		System.out.println("=====================================");
+		System.out.println("Put attribute definition id: ");
+		int defId;
+		while(true) {
+			try {
+				defId = reader.nextInt();
+				break;
+			} catch (InputMismatchException e) {
+				reader.nextLine();
+				System.out.println("Id has to be integer. Try it again.");
+				continue;
+			}
+		}
+
+		AttrDefinition def = null;
+		for (AttrDefinition d : definitions) {
+			if (d.getId() == defId) {
+				def = d;
+			}
+		}
+		if (def == null) {
+			System.out.println("Attribute definition with id " + defId + " does not exist.");
+			return;
+		}
+
+		System.out.println("Set attribute value: ");
+		String value = reader.next();
+		mp.addAttribute(new Attribute(def, value));
+	}
+
 	private static void removeDefinition(Scanner reader) {
-		System.out.println("Define id: ");
+		System.out.println("Put attribute definition id: ");
 		int id;
 		while(true) {
 			try {
@@ -79,8 +208,8 @@ public class AttributeDriver {
 				continue;
 			}
 		}
-		for (Iterator<AttributeDefinition> i = definitions.listIterator(); i.hasNext(); ) {
-			AttributeDefinition def = i.next();
+		for (Iterator<AttrDefinition> i = definitions.listIterator(); i.hasNext(); ) {
+			AttrDefinition def = i.next();
 			if (def.getId() == id) {
 				i.remove();
 			}
@@ -102,20 +231,9 @@ public class AttributeDriver {
 				continue;
 			}
 		}
-		System.out.println("Set id: ");
-		int id;
-		while(true) {
-			try {
-				id = reader.nextInt();
-				break;
-			} catch (InputMismatchException e) {
-				reader.nextLine();
-				System.out.println("id has to be integer. Try it again.");
-				continue;
-			}
-		}
-		AttributeDefinition def = new AttributeDefinition(name, importance);
-		def.setId(id);
+		AttrDefinition def = new AttrDefinition(name, importance);
+		def.setId(defId);
+		defId++;
 		definitions.add(def);
 	}
 
@@ -127,7 +245,7 @@ public class AttributeDriver {
 	}
 
 	private static void showDefinitions() {
-		for (AttributeDefinition def : definitions) {
+		for (AttrDefinition def : definitions) {
 			System.out.println("-------------------------------------");
 			System.out.println(def);
 		}
@@ -149,11 +267,11 @@ public class AttributeDriver {
 		mps.add(mp4);
 
 
-		AttributeDefinition sex = new AttributeDefinition("sex", 1);
+		AttrDefinition sex = new AttrDefinition("sex", 1);
 		sex.setId(3);
-		AttributeDefinition religion = new AttributeDefinition("religion", 3);
+		AttrDefinition religion = new AttrDefinition("religion", 3);
 		religion.setId(6);
-		AttributeDefinition age = new AttributeDefinition("age", 2);
+		AttrDefinition age = new AttrDefinition("age", 2);
 		age.setId(9);
 
 		definitions.add(sex);
@@ -164,7 +282,7 @@ public class AttributeDriver {
 		mp1.addAttribute(new Attribute(sex, "male"));
 		mp1.addAttribute(new Attribute(religion, "atheist"));
 		mp1.addAttribute(new Attribute(age, "21"));
-		mp2.addAttribute(new Attribute(sex, "male"));
+		mp2.addAttribute(new Attribute(sex, "female"));
 		mp2.addAttribute(new Attribute(religion, "catolic"));
 		mp3.addAttribute(new Attribute(sex, "male"));
 		mp3.addAttribute(new Attribute(religion, "catolic"));

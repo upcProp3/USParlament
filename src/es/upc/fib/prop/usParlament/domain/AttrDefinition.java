@@ -3,12 +3,12 @@ package es.upc.fib.prop.usParlament.domain;
 /**
  * Created by ondrej on 22.4.15.
  */
-public class AttributeDefinition {
+public class AttrDefinition {
 	private Long id;
 	private String name;
 	private int importance;
 
-	public AttributeDefinition(String name, int importance) {
+	public AttrDefinition(String name, int importance) {
 		this.name = name;
 		this.importance = importance;
 	}
@@ -43,9 +43,9 @@ public class AttributeDefinition {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof AttributeDefinition)) return false;
+		if (!(o instanceof AttrDefinition)) return false;
 
-		AttributeDefinition that = (AttributeDefinition) o;
+		AttrDefinition that = (AttrDefinition) o;
 
 		if (id != null ? !id.equals(that.id) : that.id != null) return false;
 

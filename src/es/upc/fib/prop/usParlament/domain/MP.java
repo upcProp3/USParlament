@@ -2,8 +2,8 @@ package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.shared13.Node;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by miquel on 7/04/15.
@@ -13,14 +13,15 @@ public class MP extends Node {
     private String fullname;
     private int district;
     private State state;
-	private List<Attribute> attributes;
+	// TODO redundant information. AttrDefinition is also in Attribute.
+	private Map<AttrDefinition, Attribute> attributes;
 
     public MP(String fullname,State state,int district)
     {
         this.fullname = fullname;
         this.district = district;
         this.state = state;
-	    this.attributes = new ArrayList<>();
+	    this.attributes = new HashMap<>();
     }
 
 	public Long getId() {
@@ -64,12 +65,19 @@ public class MP extends Node {
         this.state = state;
     }
 
-	public List<Attribute> getAttributes() {
+	public Map<AttrDefinition, Attribute> getAttributes() {
 		return attributes;
 	}
 
 	public void addAttribute(Attribute attr) {
-		attributes.add(attr);
+		attributes.put(attr.getDefinition(), attr);
+	}
+
+	public void removeAttribute(AttrDefinition def) {
+		attributes.remove(def);
+	}
+	public void removeAttribute(Attribute attr) {
+		removeAttribute(attr.getDefinition());
 	}
 
 	@Override
@@ -96,7 +104,7 @@ public class MP extends Node {
     {
 	    String r = "id: "+this.id+"\nFullname: "+this.fullname+"\nState: "+this.state+"\nDistrict: "+this.district;
 	    r += "\nattributes: [ ";
-	    for (Attribute attr : attributes) {
+	    for (Attribute attr : attributes.values()) {
 		    r += attr + ", ";
 	    }
 	    r += "]";
