@@ -1,10 +1,5 @@
 package es.upc.fib.prop.usParlament.domain;
 
-import es.upc.fib.prop.shared13.*;
-import es.upc.fib.prop.usParlament.domain.TEdge;
-import es.upc.fib.prop.usParlament.domain.TNode;
-
-import java.util.Map;
 import java.util.Vector;
 
 /**
@@ -15,17 +10,19 @@ import java.util.Vector;
 
 public class AWeight {
 
-    private Vector<Map.Entry<Attribute,Attribute>> ca; //Vector of common attributes.
+    private AttributeManager AIList; //Map of attributes' importances.
 
-    public Vector<Map.Entry<Attribute,Attribute>> getCommonAttributes() { return ca; }
+    private Vector<String> ca; //Vector of common attributes (names).
 
-    public void setCommonAttributes(Vector<Map.Entry<Attribute,Attribute>> ca) { this.ca = ca; }
+    public Vector<String> getCommonAttributes() { return ca; }
 
-    public int computeWeight(int div) {
+    public void setCommonAttributes(Vector<String> ca) { this.ca = ca; }
+
+    public int computeWeight(MP m1, MP m2, int div) {
         int w = 0; //0 = no relationship
-        for (Map.Entry<Attribute,Attribute> aa : ca) {
-            if (aa.getKey().equals(aa.getValue())) {
-                w += aa.getKey().getImportance();
+        for (String a : ca) {
+            if (m1.getValue(a).equals(m2.getValue(a))) {
+                w += AIList.getImportance(a);
             }
         }
         if (div != 0) {
