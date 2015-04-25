@@ -38,7 +38,7 @@ public class LCommunity extends Node
     @Override
     public String toString()
     {
-        return id.toString();
+        return "c"+id.toString();
     }
 
     @Override
