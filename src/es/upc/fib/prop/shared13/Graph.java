@@ -1,9 +1,9 @@
 package es.upc.fib.prop.shared13;
 
-import java.util.*;
-
 import com.google.common.base.Predicate;
 import com.google.common.collect.*;
+
+import java.util.*;
 
 /**
  * Abstract graph class representing undirected weighted graphs.
@@ -301,11 +301,11 @@ public abstract class Graph {
         Map<Node, Edge> adjList = G.get(n);
         final boolean existed = adjList != null;
         if (existed) {
-            V.remove(n);
             for (Map.Entry<Node, Edge> pair : adjList.entrySet()) {
                 G.get(pair.getKey()).remove(n);
                 E.remove(pair.getValue());
             }
+            V.remove(n);
         }
         return existed;
     }
