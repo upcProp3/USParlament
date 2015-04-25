@@ -48,7 +48,20 @@ public class LouvainAlgorithm extends CommunityAlgorithm
         particio.put(nodes[4],2);
         particio.put(nodes[5],2);
 
-        System.out.println(alg.Modularity(particio));
+        System.out.println(alg.Modularity(particio,L));
+
+        System.out.println("PROVA FUNCIO nou Graph");
+        System.out.println("PARTICIO: "+particio);
+        LouvainGraph nou = alg.nouGraph(particio,L);
+        System.out.println(nou);
+
+        Partition<Node,Integer> particio2 = new Partition<>();
+        int i = 0;
+        for(Node n:nou.getNodes()){
+            particio2.put(n,i++);
+        }
+        System.out.println(particio2);
+        System.out.println(alg.Modularity(particio2,nou));
     }
 
     private LouvainGraph lg;
@@ -65,9 +78,9 @@ public class LouvainAlgorithm extends CommunityAlgorithm
         lg = g;
     }
 
-    public double Modularity(Partition<Node,Integer> c)
+    public double Modularity(Partition<Node,Integer> c,LouvainGraph lg1)
     {
-        Double pesT = lg.getPes();
+        Double pesT = lg1.getPes();
         LinkedHashMap<Integer,Double> inc = new LinkedHashMap<>();
         LinkedHashMap<Integer,Double> deg = new LinkedHashMap<>();
         for(Integer i:c.values()){
@@ -76,13 +89,13 @@ public class LouvainAlgorithm extends CommunityAlgorithm
         }
 
 
-        for(Node n:lg.getNodes()){
+        for(Node n:lg1.getNodes()){
             Integer com = (Integer)c.get(n);
-            deg.put(com,deg.get(com)+lg.getWDegree(n));
-            for(Edge e:lg.getAdjacencyList(n)){
+            deg.put(com,deg.get(com)+lg1.getWDegree(n));
+            for(Edge e:lg1.getAdjacencyList(n)){
                 Double pes = e.getWeight();
                 Node neighbor = e.getNeighbor(n);
-                if(com == c.get(neighbor)){
+                if(com.equals(c.get(neighbor))){
                     if(n.equals(neighbor)) {
                         inc.put(com, inc.get(com) + pes);
                     }else{
@@ -96,6 +109,36 @@ public class LouvainAlgorithm extends CommunityAlgorithm
             mod+=(inc.get(com)/pesT - Math.pow(deg.get(com)/(2*pesT),2.));
         }
         return mod;
+    }
+
+    private LouvainGraph nouGraph(Partition<Node,Integer> c,LouvainGraph lgraph)
+    {//TODO:the recaculate weight is an ugly af solution
+        LouvainGraph nou = new LouvainGraph();
+        LinkedHashMap<Integer,LCommunity> lnk = new LinkedHashMap<>();//pas de numeros a comuntiats reals
+        for(Integer i:c.values()){
+            lnk.put(i, new LCommunity());
+        }//Nou graf amb els nodes, cal calular les arestes
+
+        for(Node n:lnk.values()){
+            nou.addNode(n);
+        }
+
+        for(Edge e:lgraph.getEdges()){
+            LCommunity com1,com2;
+            com1 = lnk.get(c.get(e.getNode()));
+            com2 = lnk.get(c.get(e.getNeighbor(e.getNode())));
+            Double pes = e.getWeight();
+            if(!nou.hasEdge(com1,com2)){
+                nou.addEdge(new TEdge(com1,com2,pes));//TODO: change TEDGE for smthn else
+            }else{
+                Edge ee = nou.getEdge(com1,com2);
+                ee.setWeight(ee.getWeight()+e.getWeight());
+            }
+
+        }
+        nou.recalculate();
+        return nou;
+
     }
 
 
