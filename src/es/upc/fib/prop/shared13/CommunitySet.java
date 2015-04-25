@@ -5,4 +5,5 @@ package es.upc.fib.prop.shared13;
  */
 public class CommunitySet {
 
+
 }
