@@ -26,6 +26,7 @@ public class LCommunity extends Node
     @Override
     public boolean equals(Object o)
     {
+        if(! o.getClass().equals(this.getClass())) return false;
         return ((LCommunity)o).id == this.id;
     }
 

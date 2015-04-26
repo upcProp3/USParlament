@@ -30,7 +30,7 @@ public class LouvainAlgorithm extends CommunityAlgorithm
 
         L.addEdge(new TEdge(nodes[2],nodes[2],4));
 
-        L.addEdge(new TEdge(nodes[2],nodes[3],10));
+        L.addEdge(new TEdge(nodes[2],nodes[3],20));//Era 10
         L.addEdge(new TEdge(nodes[3],nodes[4],16));
         L.addEdge(new TEdge(nodes[3],nodes[5],15));
         L.addEdge(new TEdge(nodes[4],nodes[5],18));
@@ -69,7 +69,7 @@ public class LouvainAlgorithm extends CommunityAlgorithm
     }
 
     private LouvainGraph lg;//Base graph
-    private Vector<LCommunity> levels;
+    private LinkedList<LCommunity> levels;
     private LinkedHashMap<LCommunity,Set<Node>> com2sons;
 
     private class Status
@@ -82,18 +82,21 @@ public class LouvainAlgorithm extends CommunityAlgorithm
     public LouvainAlgorithm(LouvainGraph g)
     {
         lg = g;
-        levels = new Vector<LCommunity>();
+        levels = new LinkedList<LCommunity>();
         com2sons = new LinkedHashMap<>();
     }
 
-    public Map<Node,LCommunity> louvainAlgorithm()
+    public Set<Set<Node>> louvainAlgorithm()
     {
         LouvainGraph current = lg;
         Partition<Node,Integer> currentPartition = new Partition<Node,Integer>();
         boolean gain = true;
+        int i = 0;
+        int levels = 0;
         while(gain){
+            levels++;
             //Inicialitzacio, cada node es la seva comunitat
-            int i = 0;
+            gain = false;
             for(Node n:current.getNodes()){
                 currentPartition.put(n,i++);
             }
@@ -113,6 +116,7 @@ public class LouvainAlgorithm extends CommunityAlgorithm
                                 /////TEST MESSAGES START
                                 System.out.println("Old Mod: "+localmod+"\nNew Mod: "+newmod+"\n");
                                 ////TEST MESSAGES END
+                                gain = true;
                                 localgain = true;
                                 localmod = newmod;
                             }else {//if there is no increase we roll back the modularity increase
@@ -124,10 +128,42 @@ public class LouvainAlgorithm extends CommunityAlgorithm
 
                 }
             }
-            gain = false;
+            if(gain){//If there was gain we keep aplying the algorithm
+                //Convert currentpartition to Lpartition
+
+                //
+                current = nouGraph(currentPartition,current);
+            }
         }
+
+        System.out.println("aqui");
         System.out.println(currentPartition);
-        return null;
+        System.out.println(current);
+        System.out.println(com2sons);
+        System.out.println("levels:"+levels);
+
+        Map<Node,Integer> resultat = new LinkedHashMap<>();
+        //Want to give from a node of the original node to its community
+        int k = 0;
+        Set<Set<Node>> retorn = new LinkedHashSet<>();
+        for(Node l:current.getNodes()){//Each of these nodes is a community
+            retorn.add(getCommunityNodes((LCommunity)l));
+            System.out.println(l+": "+getCommunityNodes((LCommunity)l));
+        }
+        System.out.println(retorn);
+        return retorn;
+    }
+
+    private Set<Node> getCommunityNodes(LCommunity l){
+        Set<Node> retorn = new LinkedHashSet<>();
+        for(Node n:com2sons.get(l)){
+            if(n.getClass() == l.getClass()){
+                retorn.addAll(getCommunityNodes(l));
+            }else{
+                retorn.add(n);
+            }
+        }
+    return retorn;
     }
 
     public double Modularity(Partition<Node,Integer> c,LouvainGraph lg1)
@@ -175,7 +211,6 @@ public class LouvainAlgorithm extends CommunityAlgorithm
 
 
 
-
         for(Integer i:c.values()){
             lnk.put(i, new LCommunity());
         }//Nou graf amb els nodes, cal calular les arestes
@@ -205,6 +240,7 @@ public class LouvainAlgorithm extends CommunityAlgorithm
             }
 
         }
+
         nou.recalculate();
         return nou;
 
