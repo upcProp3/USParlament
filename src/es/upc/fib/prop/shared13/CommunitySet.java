@@ -1,9 +1,8 @@
 package es.upc.fib.prop.shared13;
 
 /**
- * Created by ondrej on 15.4.15.
+ * Created by miquel on 28/04/15.
  */
-public class CommunitySet {
-
-
+public class CommunitySet
+{
 }

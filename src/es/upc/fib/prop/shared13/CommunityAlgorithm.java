@@ -7,7 +7,6 @@ import es.upc.fib.prop.shared13.louvain.LouvainGraph;
  */
 public abstract class CommunityAlgorithm {
 
-    public abstract CommunitySet compute(Graph graph);
 
 
 

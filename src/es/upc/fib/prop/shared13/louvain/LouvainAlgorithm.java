@@ -77,8 +77,6 @@ public class LouvainAlgorithm extends CommunityAlgorithm
 
     }
 
-    public CommunitySet compute(Graph g){return null;};
-
     public LouvainAlgorithm(LouvainGraph g)
     {
         lg = g;
