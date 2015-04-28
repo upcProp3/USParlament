@@ -2,6 +2,7 @@ package es.upc.fib.prop.usParlament.data;
 
 import es.upc.fib.prop.shared13.CommunityAlgorithm;
 import es.upc.fib.prop.shared13.CommunitySet;
+import es.upc.fib.prop.shared13.CommunitySet;
 import es.upc.fib.prop.shared13.Graph;
 
 /**
@@ -10,7 +11,8 @@ import es.upc.fib.prop.shared13.Graph;
 public class CongressManagerImpl implements CongressManager {
 	@Override
 	public CommunitySet calculateCommunitySet(CommunityAlgorithm algorithm, Graph graph) {
-		return algorithm.compute(graph);
+		//return algorithm.compute(graph);
+        return null;
 	}
 
 	@Override
