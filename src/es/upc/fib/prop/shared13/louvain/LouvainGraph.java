@@ -127,4 +127,23 @@ public class LouvainGraph extends Graph
         s+=super.toString();
         return s;
     }
+    public void recalculate()
+    {
+        Double npes = 0.;
+        for(Edge e:this.getEdges()){
+            npes+=e.getWeight();
+        }
+        this.pes = npes;
+
+        for(Node n:grauNode.keySet()){
+            Double temp = 0.;
+            for(Edge e:super.getAdjacencyList(n)){
+                temp+=e.getWeight();
+                if(e.getNode().equals(e.getNeighbor(e.getNode()))){
+                    temp+=e.getWeight();
+                }
+            }
+            grauNode.put(n,temp);
+        }
+    }
 }
