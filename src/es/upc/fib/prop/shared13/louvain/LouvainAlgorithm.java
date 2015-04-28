@@ -30,7 +30,7 @@ public class LouvainAlgorithm extends CommunityAlgorithm
 
         L.addEdge(new TEdge(nodes[2],nodes[2],4));
 
-        L.addEdge(new TEdge(nodes[2],nodes[3],20));//Era 10
+        L.addEdge(new TEdge(nodes[2],nodes[3],10));//Era 10
         L.addEdge(new TEdge(nodes[3],nodes[4],16));
         L.addEdge(new TEdge(nodes[3],nodes[5],15));
         L.addEdge(new TEdge(nodes[4],nodes[5],18));
