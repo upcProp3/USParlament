@@ -49,6 +49,11 @@ public class LouvainAlgorithm
         System.out.println(new Estat(g));
     }
 
+
+    static public Double calculateModularity(Graph g,Map<Node,Integer> part)
+    {
+        return -1.;//TODO: DO ALL PROCESS HERE CANT REUSE CODE :(
+    }
     private class Estat
     {
         //Creates the status and initializes it with the data of the graph g
@@ -107,7 +112,23 @@ public class LouvainAlgorithm
             +"\nPartition:"+partition
             +"\nNDegree:"+ndegree
             +"\nInc:"+inc
-            +"\nDec:"+dec;
+            +"\nDec:"+dec
+            +"\nModularity:" +this.modularity();
+        }
+
+        public Double modularity(Map<Node,Integer> part)
+        {
+            double mod = 0.;
+            for(Integer i:part.values()){
+                mod+= (inc.get(i)/m)-(java.lang.Math.pow(dec.get(i)/(2*m),2));
+            }
+            return mod;
+        }
+
+
+        public Double modularity()
+        {
+            return modularity(partition);
         }
     }
 
