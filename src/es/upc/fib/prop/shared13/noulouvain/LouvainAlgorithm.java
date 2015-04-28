@@ -46,7 +46,7 @@ public class LouvainAlgorithm
 
     public void testEstat(Graph g)
     {
-        Estat e = new Estat(g);
+        System.out.println(new Estat(g));
     }
 
     private class Estat
@@ -76,8 +76,8 @@ public class LouvainAlgorithm
             for(Edge e:g.getEdges()){
                 m+=e.getWeight();
                 Node n1,n2;
-                n1 = e.getNode();
-                n2 = e.getNeighbor(e.getNode());
+                n2 = e.getNode();
+                n1 = e.getNeighbor(e.getNode());
 
                 if(!ndegree.containsKey(n1)) ndegree.put(n1,0.);
                 if(!ndegree.containsKey(n2)) ndegree.put(n2,0.);
@@ -98,13 +98,16 @@ public class LouvainAlgorithm
                 }
                 npart++;
             }
-            //TODO:delete, for testing
-            System.out.println("m:"+m);
-            System.out.println("Partition:"+partition);
-            System.out.println("NDegree:"+ndegree);
-            System.out.println("Inc:"+inc);
-            System.out.println("Dec:"+dec);
 
+        }
+
+        public String toString()
+        {
+            return "m:"+m
+            +"\nPartition:"+partition
+            +"\nNDegree:"+ndegree
+            +"\nInc:"+inc
+            +"\nDec:"+dec;
         }
     }
 
