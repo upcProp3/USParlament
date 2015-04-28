@@ -1,10 +1,8 @@
-package es.upc.fib.prop.usParlament;
+package es.upc.fib.prop.usParlament.driver;
 
-import es.upc.fib.prop.shared13.Edge;
-import es.upc.fib.prop.shared13.louvain.ALouvain;
-import es.upc.fib.prop.usParlament.domain.TEdge;
-import es.upc.fib.prop.usParlament.domain.TGraph;
-import es.upc.fib.prop.usParlament.domain.TNode;
+import es.upc.fib.prop.usParlament.driver.TEdge;
+import es.upc.fib.prop.usParlament.driver.TGraph;
+import es.upc.fib.prop.usParlament.driver.TNode;
 
 //In a future replace all this entries for import java.util.*
 //I am doing it this way to keep track of the used structures
@@ -17,7 +15,7 @@ import java.util.Vector;
 public class Main
 {
     public static void main(String[] args)
-            /*es.upc.fib.prop.usParlament.Main with various testing code, temporary*/
+            /*es.upc.fib.prop.usParlament.driver.Main with various testing code, temporary*/
     {
         System.out.println("Hello World!");
 

@@ -1,109 +1,130 @@
 package es.upc.fib.prop.shared13.louvain;
 
-import es.upc.fib.prop.shared13.*;
+import es.upc.fib.prop.shared13.Edge;
+import es.upc.fib.prop.shared13.Graph;
+import es.upc.fib.prop.shared13.Node;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
- * Created by miquel on 30/03/15.
+ * Created by miquel on 24/04/15.
  */
 public class LouvainGraph extends Graph
 {
-    private Map<Node,Integer> nw;
-    int weight;
-
-    public LouvainGraph()
-    {
+    private Map<Node,Double> grauNode;
+    private Double pes;
+    public LouvainGraph(){
         super();
-        weight = 0;
-        nw = new LinkedHashMap<Node,Integer>();
+        pes = 0.;
+        grauNode = new LinkedHashMap<>();
     }
 
-    //TODO: add  a way to create a Louvaingraph from a graph
-
-    /**
-     * @pre The Node n is not part of the graph
-     * @post The Node n is part of the graph
-     * @param n
-	 * The argument is added to the graph, without adjacencies
-	 IF IT ALREADY EXISTS ALL OF ITS EDGES WILL BE DELETED, WITHOUT DELETING ITS NEIGHBORS EDGES
-	 AS A RESULT THE GRAPH WILL BE IN AN ERRONEOUS STATE. CONSIDER YOURSELF WARNED
-	 */
-    @Override
-    public void addNode(Node n)
+    public LouvainGraph(Graph g)
     {
-        super.addNode(n);
-        nw.put(n,0);
-    }
 
-    @Override
-    public void removeNode(Node n)
-    {
-        weight-=nw.get(n);
-        nw.remove(n);
-        for(Edge e:super.nodeEdges(n)) {
-            nw.put(e.getNeighbor(n),nw.get(e.getNeighbor(n))-e.getWeight());
+        grauNode = new LinkedHashMap<>();
+
+        pes = 0.;
+        for(Node n:g.getNodes()){
+            grauNode.put(n,0.);
         }
-        super.removeNode(n);
-    }
 
 
-    //We update the weights and call the superclass
-    @Override
-    public void addEdge(Edge e)
-    {
-        weight+=e.getWeight();
-        Node n1 = e.getNode();
-        Node n2 = e.getNeighbor(n1);
-        nw.put(n1,new Integer(nw.get(n1)+e.getWeight()));
-        nw.put(n2,new Integer(nw.get(n2)+e.getWeight()));
-        super.addEdge(e);
-    }
-
-    @Override
-    public void removeEdge(Node n1, Node n2)
-    {
-        Set<Edge> se1 = super.nodeEdges(n1);
-        Set<Edge> se2 = super.nodeEdges(n2);
-
-        for(Edge e:se1){
-            if(e.getNeighbor(n1)==n2) {
-                nw.put(n1,nw.get(n1)-e.getWeight());
-                break;
-            }
+        for(Edge e:g.getEdges()){
+            pes+=e.getWeight();
+            double temp1 = grauNode.get(e.getNode())+e.getWeight();
+            grauNode.put(e.getNode(),temp1);
+            double temp2 = grauNode.get(e.getNeighbor(e.getNode())) + e.getWeight();
+            grauNode.put(e.getNode(),temp2);
         }
-        for(Edge e:se2){
-            if(e.getNeighbor(n2)==n1){
-                nw.put(n2,nw.get(n1)-e.getWeight());
-                break;
-            }
+    }
+
+    public Double getPes()
+    {
+        return pes;
+    }
+    public Double getWDegree(Node n){return grauNode.get(n);}
+    @Override
+    public void removeAllNodeEdges(Node n)
+    {
+        Collection<Edge> conj = super.getAdjacencyList(n);
+        for(Edge e:conj){
+            double temp = grauNode.get(e.getNeighbor(n))-e.getWeight();
+            grauNode.put(e.getNeighbor(n),temp);
+            pes-=e.getWeight();
         }
-        super.removeEdge(n1, n2);
+        grauNode.put(n,0.);
+        super.removeAllNodeEdges(n);
     }
 
     @Override
-    public void removeEdge(Edge e)
+    public boolean removeNode(Node n)
     {
-        weight+=e.getWeight();
-        Node n1 = e.getNode();
-        Node n2 = e.getNeighbor(n1);
-        nw.put(n1,new Integer(nw.get(n1)-e.getWeight()));
-        nw.put(n2,new Integer(nw.get(n2)-e.getWeight()));
-        super.removeEdge(e);
-    }
-    
-    public int getTotalWeight()
-    {
-        return weight;
+        Collection<Edge> conj = super.getAdjacencyList(n);
+        for(Edge e:conj){
+            double temp = grauNode.get(e.getNeighbor(n))-e.getWeight();
+            grauNode.put(e.getNeighbor(n),temp);
+            pes-=e.getWeight();
+        }
+
+        grauNode.remove(n);
+        return super.removeNode(n);
     }
 
-    public int getNeighborsWeight(Node n)
+    @Override
+    public boolean removeEdge(Node n1, Node n2)
     {
-        return nw.get(n);
-    }
-    
-    
+        Edge e = getEdge(n1,n2);
+        double temp1 = grauNode.get(n1)-e.getWeight();
+        double temp2 = grauNode.get(n2)-e.getWeight();
+        if(n1.equals(n2)){
+            temp1-=e.getWeight();
+            temp2-=e.getWeight();
+        }
+        grauNode.put(n1,temp1);
+        grauNode.put(n2,temp2);
+        pes-=e.getWeight();
 
+        return super.removeEdge(n1, n2);
+    }
+
+    @Override
+    public boolean addEdge(Edge e)
+    {
+
+        pes+=e.getWeight();
+        double temp1 = grauNode.get(e.getNode());
+        double temp2 = grauNode.get(e.getNeighbor(e.getNode()));
+        temp1+=e.getWeight();
+        temp2+=e.getWeight();
+        if(e.getNode().equals(e.getNeighbor(e.getNode()))){
+            temp1+=e.getWeight();
+            temp2+=e.getWeight();
+        }
+        grauNode.put(e.getNode(),temp1);
+        grauNode.put(e.getNeighbor(e.getNode()),temp2);
+        return super.addEdge(e);
+    }
+
+    @Override
+    public boolean addNode(Node n)
+    {
+        grauNode.put(n, 0.);
+        return super.addNode(n);
+    }
+
+    @Override
+    public String toString()
+    {
+        String s;
+        s="Printing Weighted Graph info\n";
+        s+="Total weight: "+pes+"\n";
+        s+="Node Degrees:\n";
+        for(Node n:super.getNodes()){
+           s+=(n+": "+grauNode.get(n));
+            s+="\n";
+        }
+        s+=super.toString();
+        return s;
+    }
 }
