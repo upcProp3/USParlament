@@ -1,248 +1,330 @@
 package es.upc.fib.prop.shared13.louvain;
 
-import es.upc.fib.prop.shared13.*;
+import es.upc.fib.prop.shared13.Edge;
+import es.upc.fib.prop.shared13.Graph;
+import es.upc.fib.prop.shared13.Node;
 import es.upc.fib.prop.usParlament.driver.TEdge;
 import es.upc.fib.prop.usParlament.driver.TNode;
-import sun.awt.image.ImageWatched;
 
 import java.util.*;
 
-/**
- * Created by miquel on 25/04/15.
- */
-public class LouvainAlgorithm extends CommunityAlgorithm
+public class LouvainAlgorithm
 {
+    Graph original;
+    Map<Node,Set<Node>> com2sons;
+    ArrayList<Set<Node>> bestPartition;
 
+
+    public LouvainAlgorithm(Graph g)
+    {
+        original = g;
+        com2sons = new LinkedHashMap<>();
+        bestPartition = null;
+    }
 
     public static void main(String[] args)
     {
-        LouvainGraph L = new LouvainGraph();
+        Graph L = new LGraph();
         Node[] nodes = new Node[6];
-        for(int i = 0;i<6;i++){
-            nodes[i] = new TNode(i+1);
+        for (int i = 0; i < 6; i++) {
+            nodes[i] = new TNode(i + 1);
             L.addNode(nodes[i]);
         }
 
-        L.addEdge(new TEdge(nodes[0],nodes[1],20));
-        L.addEdge(new TEdge(nodes[1],nodes[1],10));
-        L.addEdge(new TEdge(nodes[0],nodes[2],13));
-        L.addEdge(new TEdge(nodes[1],nodes[2],12));
+        L.addEdge(new TEdge(nodes[0], nodes[1], 20));
+        L.addEdge(new TEdge(nodes[1], nodes[1], 10));
+        L.addEdge(new TEdge(nodes[0], nodes[2], 13));
+        L.addEdge(new TEdge(nodes[1], nodes[2], 12));
 
-        L.addEdge(new TEdge(nodes[2],nodes[2],4));
+        L.addEdge(new TEdge(nodes[2], nodes[2], 4));
 
-        L.addEdge(new TEdge(nodes[2],nodes[3],10));//Era 10
-        L.addEdge(new TEdge(nodes[3],nodes[4],16));
-        L.addEdge(new TEdge(nodes[3],nodes[5],15));
-        L.addEdge(new TEdge(nodes[4],nodes[5],18));
-        L.addEdge(new TEdge(nodes[5],nodes[5],8));
-        System.out.println(L);
-        LouvainAlgorithm alg = new LouvainAlgorithm(L);
+        L.addEdge(new TEdge(nodes[2], nodes[3], 10));//Era 10
+        L.addEdge(new TEdge(nodes[3], nodes[4], 16));
+        L.addEdge(new TEdge(nodes[3], nodes[5], 15));
+        L.addEdge(new TEdge(nodes[4], nodes[5], 18));
+        L.addEdge(new TEdge(nodes[5], nodes[5], 8));
 
-        Partition<Node,Integer> particio = new Partition<>();
+
+        Map<Node,Integer> particio = new LinkedHashMap<>();
 
         particio.put(nodes[0],0);
         particio.put(nodes[1],0);
-        particio.put(nodes[2],0);
+        particio.put(nodes[2],1);
         particio.put(nodes[3],2);
         particio.put(nodes[4],2);
         particio.put(nodes[5],2);
 
-        System.out.println(alg.Modularity(particio,L));
-        alg.louvainAlgorithm();
+        Graph go = new LGraph();
+        go.addNode(nodes[0]);
+        go.addNode(nodes[1]);
+        go.addEdge(new LEdge(nodes[0],nodes[1],300));
+        go.addEdge(new LEdge(nodes[0],nodes[0],100));
+        go.addEdge(new LEdge(nodes[1],nodes[1],200));
 
-        /*
-        System.out.println("PROVA FUNCIO nou Graph");
-        System.out.println("PARTICIO: "+particio);
-        LouvainGraph nou = alg.nouGraph(particio,L);
-        System.out.println(nou);
-
-        Partition<Node,Integer> particio2 = new Partition<>();
-        int i = 0;
-        for(Node n:nou.getNodes()){
-            particio2.put(n,i++);
-        }
-        System.out.println(particio2);
-        System.out.println(alg.Modularity(particio2,nou));
-        System.out.println(alg.getCom2sons());
-        alg.nouGraph(particio2,nou);
-        System.out.println(alg.getCom2sons());*/
+        System.out.println(go);
+        LouvainAlgorithm l = new LouvainAlgorithm(go);
+        l.calculate();
     }
 
-    private LouvainGraph lg;//Base graph
-    private LinkedList<LCommunity> levels;
-    private LinkedHashMap<LCommunity,Set<Node>> com2sons;
-
-    private class Status
+    //Calculates the modularity of a partition of the graph g
+    static public Double calculateModularity(Graph g,Map<Node,Integer> part)
     {
+        Map<Node,Double> ndegree = new LinkedHashMap<>();
+        Map<Integer,Double> inc = new LinkedHashMap<>();
+        Map<Integer,Double> dec = new LinkedHashMap<>();
+        Double m;
 
-    }
+        m = 0.;
 
-    public LouvainAlgorithm(LouvainGraph g)
-    {
-        lg = g;
-        levels = new LinkedList<LCommunity>();
-        com2sons = new LinkedHashMap<>();
-    }
-
-    public Set<Set<Node>> louvainAlgorithm()
-    {
-        LouvainGraph current = lg;
-        Partition<Node,Integer> currentPartition = new Partition<Node,Integer>();
-        boolean gain = true;
-        int i = 0;
-        int levels = 0;
-        while(gain){
-            levels++;
-            //Inicialitzacio, cada node es la seva comunitat
-            gain = false;
-            for(Node n:current.getNodes()){
-                currentPartition.put(n,i++);
-            }
-            Double modu = this.Modularity(currentPartition,current);
-            boolean localgain=true;
-            while(localgain) {//repeat until there is no local gain
-                localgain = false;
-                Double localmod = this.Modularity(currentPartition,current);
-                for(Node n:current.getNodes()){
-                    for(Edge e:current.getAdjacencyList(n)){
-                        int com = currentPartition.get(n);
-                        Node neigh = e.getNeighbor(n);
-                        if(com != currentPartition.get(neigh)){
-                            currentPartition.put(n,currentPartition.get(neigh));
-                            Double newmod = this.Modularity(currentPartition,current);
-                            if(newmod>localmod){
-                                /////TEST MESSAGES START
-                                System.out.println("Old Mod: "+localmod+"\nNew Mod: "+newmod+"\n");
-                                ////TEST MESSAGES END
-                                gain = true;
-                                localgain = true;
-                                localmod = newmod;
-                            }else {//if there is no increase we roll back the modularity increase
-                                currentPartition.put(n,com);
-                            }
-
-                        }
-                    }
-
-                }
-            }
-            if(gain){//If there was gain we keep aplying the algorithm
-                //Convert currentpartition to Lpartition
-
-                //
-                current = nouGraph(currentPartition,current);
-            }
-        }
-
-        System.out.println("aqui");
-        System.out.println(currentPartition);
-        System.out.println(current);
-        System.out.println(com2sons);
-        System.out.println("levels:"+levels);
-
-        Map<Node,Integer> resultat = new LinkedHashMap<>();
-        //Want to give from a node of the original node to its community
-        int k = 0;
-        Set<Set<Node>> retorn = new LinkedHashSet<>();
-        for(Node l:current.getNodes()){//Each of these nodes is a community
-            retorn.add(getCommunityNodes((LCommunity)l));
-            System.out.println(l+": "+getCommunityNodes((LCommunity)l));
-        }
-        System.out.println(retorn);
-        return retorn;
-    }
-
-    private Set<Node> getCommunityNodes(LCommunity l){
-        Set<Node> retorn = new LinkedHashSet<>();
-        for(Node n:com2sons.get(l)){
-            if(n.getClass() == l.getClass()){
-                retorn.addAll(getCommunityNodes(l));
-            }else{
-                retorn.add(n);
-            }
-        }
-    return retorn;
-    }
-
-    public double Modularity(Partition<Node,Integer> c,LouvainGraph lg1)
-    {
-        Double pesT = lg1.getPes();
-        LinkedHashMap<Integer,Double> inc = new LinkedHashMap<>();
-        LinkedHashMap<Integer,Double> deg = new LinkedHashMap<>();
-        for(Integer i:c.values()){
+        for(Integer i:part.values()){
             inc.put(i,0.);
-            deg.put(i,0.);
+            dec.put(i,0.);
         }
 
+        //Initialize degrees and weight
+        for(Edge e:g.getEdges()){
+            m+=e.getWeight();
+            Node n1,n2;
+            n2 = e.getNode();
+            n1 = e.getNeighbor(e.getNode());
 
-        for(Node n:lg1.getNodes()){
-            Integer com = (Integer)c.get(n);
-            deg.put(com,deg.get(com)+lg1.getWDegree(n));
-            for(Edge e:lg1.getAdjacencyList(n)){
-                Double pes = e.getWeight();
-                Node neighbor = e.getNeighbor(n);
-                if(com.equals(c.get(neighbor))){
-                    if(n.equals(neighbor)) {
-                        inc.put(com, inc.get(com) + pes);
-                    }else{
-                        inc.put(com, inc.get(com) + pes/2);
-                    }
-                }
+            if(!ndegree.containsKey(n1)) ndegree.put(n1,0.);
+            if(!ndegree.containsKey(n2)) ndegree.put(n2,0.);
+
+            ndegree.put(n1,ndegree.get(n1)+e.getWeight());
+            ndegree.put(n2,ndegree.get(n2)+e.getWeight());
+
+            Integer com1,com2;
+            com1 = part.get(n1);
+            com2 = part.get(n2);
+            if(com1.equals(com2)){
+                inc.put(com1,inc.get(com1)+e.getWeight());
             }
         }
+
+        for(Node n:g.getNodes()){
+            Integer com = part.get(n);
+            dec.put(com,dec.get(com)+ndegree.get(n));
+        }
+
         double mod = 0.;
-        for(Integer com:inc.keySet()){
-            mod+=(inc.get(com)/pesT - Math.pow(deg.get(com)/(2*pesT),2.));
+        LinkedHashSet<Integer> s = new LinkedHashSet<>();
+        s.addAll(part.values());
+        for(Integer i:s){
+            mod+= (inc.get(i)/m)-(java.lang.Math.pow(dec.get(i)/(2*m),2));
         }
         return mod;
     }
 
-    public LinkedHashMap<LCommunity, Set<Node>> getCom2sons()
+    public ArrayList<Set<Node>> calculate()
     {
-        return com2sons;
+        if(bestPartition != null) return bestPartition;
+        Graph current = original;
+        Estat currentState;
+        boolean gain = true;
+        while(gain) {//While there is gain
+            gain = false;
+            currentState = new Estat(current);//Initialization
+            boolean localgain = true;
+            //Start of first phase, get best partition
+            while(localgain) {//while there is local gain
+                localgain = false;
+                double bMod = currentState.modularity();
+                for (Node n : current.getNodes()) {
+                    Integer com = currentState.getCommunity(n);
+                    for (Node neigh : currentState.getNeighborsDiffCommuntity(n)) {
+                        currentState.changeCommunity(n, currentState.getCommunity(neigh));
+                        double mod = currentState.modularity();
+                        if (mod > bMod) {//New best partition
+                            localgain = true;
+                            gain = true;
+                            bMod = mod;
+                            com = currentState.getCommunity(neigh);
+
+                        } else {
+                            currentState.changeCommunity(n, com);
+                        }
+                    }
+                }
+            }
+            //Start of second phase, create new graph
+            //if(gain){//If there was a gain
+                current = calculateNewGraph(current,currentState);
+            //}
+        }
+        for(Node n:current.getNodes()){
+            System.out.println(getComNodes(n));
+        }
+        return null;
     }
 
-    private LouvainGraph nouGraph(Partition<Node,Integer> c,LouvainGraph lgraph)
-    {//TODO:the recaculate weight is an ugly af solution
-        LouvainGraph nou = new LouvainGraph();
-        LinkedHashMap<Integer,LCommunity> lnk = new LinkedHashMap<>();//pas de numeros a comuntiats reals
+    private Set<Node> getComNodes(Node n)
+    {
+        Set<Node> retorn = new LinkedHashSet<>();
+        for(Node s:com2sons.get(n)){
+            if(!com2sons.containsKey(s)){
+                retorn.add(s);
+            }else {
+                retorn.addAll(getComNodes(s));
+            }
+        }
+        return retorn;
+    }
 
+    private Graph calculateNewGraph(Graph g,Estat state)
+    {
+        Graph nou = new LGraph();
+        Map<Integer,CNode> lnk = new LinkedHashMap<>();
 
-
-        for(Integer i:c.values()){
-            lnk.put(i, new LCommunity());
-        }//Nou graf amb els nodes, cal calular les arestes
-
+        //Create link between integers and communities
+        for(Integer i:state.getCommunities()){
+            lnk.put(i,new CNode());
+        }
+        //Add all the new nodes to the graph
         for(Node n:lnk.values()){
             nou.addNode(n);
         }
-        //////////////Make com2sons calculations
-        for(Node n:c.keySet()){
-            LCommunity father = lnk.get(c.get(n));
-            if(com2sons.get(father) == null){
-                com2sons.put(father,new LinkedHashSet<Node>());
-            }
+        //Make com2sons calculations
+        for(Node n:g.getNodes()){
+            Node father = lnk.get(state.getCommunity(n));
+            if(!com2sons.containsKey(father)) com2sons.put(father,new LinkedHashSet<Node>());
             com2sons.get(father).add(n);
         }
-        /////////end of com2sons calculations
-        for(Edge e:lgraph.getEdges()){
-            LCommunity com1,com2;
-            com1 = lnk.get(c.get(e.getNode()));
-            com2 = lnk.get(c.get(e.getNeighbor(e.getNode())));
+        //End of com2sons calculations
+
+        for(Edge e:g.getEdges()){
+            CNode cn1,cn2;
+            //We get the Communtiy node that corresponds to each of the nodes
+            cn1 = lnk.get(state.getCommunity(e.getNeighbor(e.getNode())));
+            cn2 = lnk.get(state.getCommunity(e.getNode()));
+
             Double pes = e.getWeight();
-            if(!nou.hasEdge(com1,com2)){
-                nou.addEdge(new TEdge(com1,com2,pes));//TODO: change TEDGE for smthn else
+            if(!nou.hasEdge(cn1, cn2)){
+                nou.addEdge(new LEdge(cn1, cn2, pes));
             }else{
-                Edge ee = nou.getEdge(com1,com2);
-                ee.setWeight(ee.getWeight()+e.getWeight());
+                Edge ee = nou.getEdge(cn1,cn2);
+                ee.setWeight(ee.getWeight() + e.getWeight());
+            }
+        }
+        return nou;
+    }
+
+    private class Estat
+    {
+        //Creates the status and initializes it with the data of the graph g
+        //And the partition where each node is its own communtiy
+        Map<Node,Integer> partition;
+        Graph g;
+        Map<Integer,Double> inc;//Sum of the weights of the edges inside a community
+        Map<Integer,Double> dec;//Sum of the degrees of the nodes inside a community
+        Map<Node,Double> ndegree;//Maps each node to its degree (loop increase the degree by 2 times their value)
+        Double m;//Graph total weight
+
+
+
+        public Estat(Graph ag)
+        {
+            g = ag;
+            m = 0.;
+            partition = new LinkedHashMap<>();
+            dec = new LinkedHashMap<>();
+            inc = new LinkedHashMap<>();
+            ndegree = new LinkedHashMap<>();
+
+            //Initialize degrees and weight
+            for(Edge e:g.getEdges()){
+                m+=e.getWeight();
+                Node n1,n2;
+                n2 = e.getNode();
+                n1 = e.getNeighbor(e.getNode());
+
+                if(!ndegree.containsKey(n1)) ndegree.put(n1,0.);
+                if(!ndegree.containsKey(n2)) ndegree.put(n2,0.);
+
+                ndegree.put(n1,ndegree.get(n1)+e.getWeight());
+                ndegree.put(n2,ndegree.get(n2)+e.getWeight());
+            }
+            int npart = 0;
+            //Initialize Node degrees
+            for(Node n:g.getNodes()){
+                partition.put(n,npart);//Create partitions
+                dec.put(npart,ndegree.get(n));//Initialize partitions
+                //If the node has a loop
+                if(g.hasEdge(n,n)){
+                    inc.put(npart,g.getEdge(n,n).getWeight());
+                }else{
+                    inc.put(npart,0.);
+                }
+                npart++;
             }
 
         }
 
-        nou.recalculate();
-        return nou;
+        public Set<Integer> getCommunities()
+        {
+            Set<Integer> s = new LinkedHashSet<>();
+            s.addAll(partition.values());
+            return s;
+        }
 
+        public String toString()
+        {
+            return "m:"+m
+            +"\nPartition:"+partition
+            +"\nNDegree:"+ndegree
+            +"\nInc:"+inc
+            +"\nDec:"+dec
+            +"\nModularity:" +this.modularity();
+        }
+
+        public Integer getCommunity(Node n)
+        {
+            return partition.get(n);
+        }
+
+        public void changeCommunity(Node n,Integer newcom)
+        {//n can not be inside i communtiy
+            Integer com = partition.get(n);
+            for(Edge e:g.getAdjacencyList(n)){//For all the edges of n
+                Node m = e.getNeighbor(n);
+                Integer neighbcom = partition.get(m);
+                //Removal operations
+                if(com.equals(neighbcom)){
+                    inc.put(com, inc.get(com) - e.getWeight());
+                }
+                //End of removal operations
+                //Addition operations
+                if(newcom.equals(neighbcom) || n.equals(m)){
+                    inc.put(newcom,inc.get(newcom)+e.getWeight());
+                }
+            }
+            //degree removal
+            dec.put(com, dec.get(com) - ndegree.get(n));
+            //degree addition
+            dec.put(newcom,dec.get(newcom)+ndegree.get(n));
+            //Change communtiy
+            partition.put(n,newcom);
+        }
+
+        public Set<Node> getNeighborsDiffCommuntity(Node n)
+        {
+            Set<Node> ret = new LinkedHashSet<>();
+            for(Edge e:g.getAdjacencyList(n)){
+                Node m = e.getNeighbor(n);
+                if(!partition.get(n).equals(partition.get(m))) ret.add(m);
+            }
+            return ret;
+        }
+
+        public Double modularity()
+        {
+            double mod = 0.;
+            LinkedHashSet<Integer> s = new LinkedHashSet<>();
+            s.addAll(partition.values());
+            for(Integer i:s){
+                mod+= (inc.get(i)/m)-(java.lang.Math.pow(dec.get(i)/(2*m),2));
+            }
+            return mod;
+        }
     }
-
-
 }
