@@ -96,19 +96,19 @@ public class MP extends Node {
 	// TODO
 	@Override
 	public int hashCode() {
-		int hash = this.id == null ? 0 : this.id.hashCode();
+        int hash = district+state.hashCode();
 		return hash;
 	}
 
 	@Override
     public String toString()
     {
-	    String r = "id: "+this.id+"\nFullname: "+this.fullname+"\nState: "+this.state+"\nDistrict: "+this.district;
+	    String r = "\nFullname: "+this.fullname+"\nState: "+this.state+"\nDistrict: "+this.district;
 	    r += "\nattributes: [ ";
 	    for (Attribute attr : attributes.values()) {
 		    r += attr + ", ";
 	    }
-	    r += "]";
+	    r += "]\n";
         return r;
     }
 
