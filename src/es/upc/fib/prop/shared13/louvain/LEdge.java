@@ -1,4 +1,4 @@
-package es.upc.fib.prop.shared13.noulouvain;
+package es.upc.fib.prop.shared13.louvain;
 
 import es.upc.fib.prop.shared13.Edge;
 import es.upc.fib.prop.shared13.Node;
