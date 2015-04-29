@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class AttributeDriver {
 
-	private static List<MP> mps = new ArrayList<>();;
+	private static List<MP> mps = new ArrayList<>();
 	private static List<AttrDefinition> definitions = new ArrayList<>();
 	private static Long attrId = (long) 10;
 	private static Long defId = (long) 10;
@@ -29,12 +29,12 @@ public class AttributeDriver {
 		boolean active = true;
 		while(active) {
 			System.out.println("=====================================");
-			System.out.println("1 - show list of MPs");
-			System.out.println("2 - show list of attributes definitions");
-			System.out.println("3 - add attribute definition");
-			System.out.println("4 - remove attribute definition");
-			System.out.println("5 - add attribute to MP");
-			System.out.println("6 - remove attribute from MP");
+			System.out.println("1 - add attribute definition");
+			System.out.println("2 - add attribute to MP");
+			System.out.println("3 - remove attribute definition");
+			System.out.println("4 - remove attribute from MP");
+			System.out.println("5 - show list of MPs");
+			System.out.println("6 - show list of attributes definitions");
 			System.out.println("0 - exit");
 			try {
 				input = reader.nextInt();
@@ -45,22 +45,22 @@ public class AttributeDriver {
 			}
 			switch (input) {
 				case 1:
-					showMPs();
-					break;
-				case 2:
-					showDefinitions();
-					break;
-				case 3:
 					addDefinition(reader);
 					break;
-				case 4:
-					removeDefinition(reader);
-					break;
-				case 5:
+				case 2:
 					addAttribute(reader);
 					break;
-				case 6:
+				case 3:
+					removeDefinition(reader);
+					break;
+				case 4:
 					removeAttribute(reader);
+					break;
+				case 5:
+					showDefinitions();
+					break;
+				case 6:
+					showMPs();
 					break;
 				case 0:
 					System.out.println("Bye Bye");
@@ -101,9 +101,9 @@ public class AttributeDriver {
 
 		System.out.println("=====================================");
 		System.out.println(mp);
-		for (AttrDefinition def : mp.getAttributes().keySet()) {
+		for (Attribute attr : mp.getAttributes()) {
 			System.out.println("-------------------------------------");
-			System.out.println(def);
+			System.out.println(attr.getDefinition());
 		}
 
 		System.out.println("=====================================");
@@ -121,9 +121,9 @@ public class AttributeDriver {
 		}
 
 		AttrDefinition def = null;
-		for (AttrDefinition d : mp.getAttributes().keySet()) {
-			if (d.getId() == defId) {
-				def = d;
+		for (Attribute attr : mp.getAttributes()) {
+			if (attr.getDefinition().getId() == defId) {
+				def = attr.getDefinition();
 			}
 		}
 		if (def == null) {
