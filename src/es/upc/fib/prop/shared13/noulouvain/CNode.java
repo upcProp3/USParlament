@@ -1,4 +1,4 @@
-package es.upc.fib.prop.shared13.louvain;
+package es.upc.fib.prop.shared13.noulouvain;
 
 import es.upc.fib.prop.shared13.Node;
 
@@ -7,8 +7,8 @@ import java.util.Set;
 /**
  * Created by miquel on 25/04/15.
  */
-public class LCommunity extends Node
-{
+public class CNode extends Node
+{//Nodes with unique identifier
     static private Integer nextID = 0;
     private Integer id;
     private Set<Node> sons;
@@ -18,16 +18,16 @@ public class LCommunity extends Node
         return id;
     }
 
-    public LCommunity()
+    public CNode()
     {
-        id = LCommunity.nextID++;
+        id = CNode.nextID++;
     }
 
     @Override
     public boolean equals(Object o)
     {
         if(! o.getClass().equals(this.getClass())) return false;
-        return ((LCommunity)o).id == this.id;
+        return ((CNode)o).id.equals(this.id);
     }
 
     @Override
@@ -45,6 +45,6 @@ public class LCommunity extends Node
     @Override
     public int compareTo(Node n)
     {
-        return ((LCommunity)n).getId()-this.id;
+        return ((CNode)n).getId()-this.id;
     }
 }
