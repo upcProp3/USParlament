@@ -4,6 +4,7 @@ import es.upc.fib.prop.shared13.Node;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by miquel on 7/04/15.
@@ -13,7 +14,7 @@ public class MP extends Node {
     private String fullname;
     private int district;
     private State state;
-	// TODO redundant information. AttrDefinition is also in Attribute.
+	//TODO redundant information. AttrDefinition is also in Attribute.
 	private Map<AttrDefinition, Attribute> attributes;
 
     public MP(String fullname,State state,int district)
@@ -65,8 +66,8 @@ public class MP extends Node {
         this.state = state;
     }
 
-	public Map<AttrDefinition, Attribute> getAttributes() {
-		return attributes;
+	public Set<Attribute> getAttributes() {
+		return (Set<Attribute>) attributes.values();
 	}
 
 	public void addAttribute(Attribute attr) {
