@@ -35,7 +35,7 @@ public class GraphDriver {
                     edge_management(); //operations related with edges
                     break;
                 case 3:
-                    g.toString(); //TODO: it's ignored
+                    System.out.println(g); //TODO: it's ignored
                     System.out.println('\n');
                     break;
                 case 4:
@@ -74,20 +74,20 @@ public class GraphDriver {
                     break;
                 case 7://all edges
                     s = g.getEdges();
-                    for (Edge e : s) System.out.println(e.toString());
+                    for (Edge e : s) System.out.println(e);
                     System.out.println();
                     break;
                 case 8://valid edges
                     s = g.getValidEdges();
-                    for (Edge e : s) System.out.println(e.toString());
+                    for (Edge e : s) System.out.println(e);
                     System.out.println();
                     break;
                 case 1://add edge
-                    System.out.println("create the edges, enter id's of the nodes adjacent (they have to be in the graph), and the weight of the edges"+'\n'+"when you're done, hit enter");
+                    System.out.println("create the edges, enter id's of the nodes adjacent (they have to be in the graph), and the weight of the edges"+'\n'+"when you're done, hit 0");
                     boolean addEdges = true;
                     while(addEdges) {
                         id1 = read.nextInt();
-                        if (id1 == -1) addEdges = false;
+                        if (id1 == 0) addEdges = false;
                         else {
                             id2 = read.nextInt();
                             w = read.nextInt();
@@ -107,9 +107,9 @@ public class GraphDriver {
                     n1 = new TNode(id1);
                     n2 = new TNode(id2);
                     if (g.hasEdge(n1, n2)) {
-                        System.out.println(g.getEdge(n1, n2).toString());
+                        System.out.println(g.getEdge(n1, n2));
                     } else
-                        System.out.println("There is no edge between nodes " + n1.toString() + " and " + n2.toString());
+                        System.out.println("There is no edge between nodes " + n1 + " and " + n2);
                     System.out.println();
                     break;
                 case 9://tells if there's an edge between two nodes
@@ -158,7 +158,7 @@ public class GraphDriver {
                     if (g.hasNode(n1)) {
                         s = g.getAdjacencyList(n1);
                         System.out.println("The edges adjacent to the node " + id1 + " are:");
-                        for (Edge a : s) System.out.println(a.toString());
+                        for (Edge a : s) System.out.println(a);
                     } else System.out.println("The node is not in the graph");
                     System.out.println();
                     break;
@@ -169,7 +169,7 @@ public class GraphDriver {
                     if (g.hasNode(n1)) {
                         s = g.getValidAdjacencyList(n1);
                         System.out.println("The valid edges adjacent to the node " + id1 + " are:");
-                        for (Edge a : s) System.out.println(a.toString());
+                        for (Edge a : s) System.out.println(a);
                     } else System.out.println("The node is not in the graph");
                     System.out.println();
                     break;
@@ -217,11 +217,11 @@ public class GraphDriver {
                     System.out.println('\n');
                     break;
                 case 1: //Add a node to the graph
-                    System.out.println("enter the id of the nodes you want to add, it is assumed they're not currently part of the graph"+'\n'+"when you're done, enter -1 and hit enter");
+                    System.out.println("enter the id of the nodes you want to add, it is assumed they're not currently part of the graph"+'\n'+"when you're done, enter 0 and hit enter");
                     boolean addNodes = true;
                     while (addNodes) {
                         id = read.nextInt();
-                        if (id == -1) addNodes = false;
+                        if (id == 0) addNodes = false;
                         else {
                             n = new TNode(id);
                             g.addNode(n);
@@ -234,7 +234,7 @@ public class GraphDriver {
                     System.out.println("enter id of the node you want to verify if it is in the graph");
                     id = read.nextInt();
                     n = new TNode(id);
-                    System.out.print("The node with id " + n.toString());
+                    System.out.print("The node with id " + n);
                     if (g.hasNode(n)) System.out.println(" is in the graph" + '\n');
                     else System.out.println(" is not in the graph" + '\n');
                     break;
@@ -250,7 +250,7 @@ public class GraphDriver {
                 case 7:
                     System.out.println("These are the id's of all nodes of the graph");
                     Collection<Node> s = g.getNodes();
-                    for (Node n1 : s) System.out.println(n1.toString());
+                    for (Node n1 : s) System.out.println(n1);
                     System.out.println();
                     break;
                 default:
