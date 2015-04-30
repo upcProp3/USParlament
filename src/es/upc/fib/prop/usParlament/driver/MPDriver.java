@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  */
 public class MPDriver {
-/*
+
     public static void main(String[] args) {
 
         System.out.println("Options:");
@@ -134,5 +134,5 @@ public class MPDriver {
         }
         System.out.println("Successful exit");
     }
-    */
+
 }

@@ -32,8 +32,8 @@ public class LouvainAlgorithmDriver {
 			System.out.println("3 - remove node");
 			System.out.println("4 - remove edge");
 			System.out.println("5 - show graph");
+			System.out.println("6 - calculate modularity");
 			System.out.println("7 - calculate best partition");
-			//TODO: System.out.println("6 - calculate modularity");
 			System.out.println("0 - exit");
 
 			try {
@@ -59,6 +59,9 @@ public class LouvainAlgorithmDriver {
 				case 5:
 					showGraph();
 					break;
+				case 6:
+					calculateModularity(reader);
+					break;
 				case 7:
 					calculateBestPartitions();
 					break;
@@ -71,6 +74,29 @@ public class LouvainAlgorithmDriver {
 			}
 
 		}
+
+	}
+
+	private static void calculateModularity(Scanner reader) {
+		Map<Node,Integer> part = new HashMap<>();
+		System.out.println("Set partition for each node (as a integer).");
+		for (Node n : g.getNodes()) {
+			System.out.println("Node: " + n);
+			int num;
+			while(true) {
+				try {
+					num = reader.nextInt();
+					break;
+				} catch (InputMismatchException e) {
+					reader.nextLine();
+					System.out.println("Partition has to be integer. Try it again.");
+					continue;
+				}
+			}
+			part.put(n, num);
+		}
+		Double mod = LouvainAlgorithm.calculateModularity(g, part);
+		System.out.println("Modularity: " + mod);
 
 	}
 
