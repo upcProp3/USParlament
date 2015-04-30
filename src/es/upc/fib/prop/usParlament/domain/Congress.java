@@ -5,6 +5,7 @@ import es.upc.fib.prop.shared13.Node;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by ondrej on 15.4.15.
