@@ -46,21 +46,17 @@ public class AttrDefinition {
 		if (!(o instanceof AttrDefinition)) return false;
 
 		AttrDefinition that = (AttrDefinition) o;
-
-		if (id != null ? !id.equals(that.id) : that.id != null) return false;
-
-		return true;
+        return (that.getName() == this.getName());
 	}
 
 	@Override
 	public int hashCode() {
-		return id != null ? id.hashCode() : 0;
+        return name.hashCode();
 	}
 
 	@Override
 	public String toString() {
-		return "id: " + id +
-				"\nname: " + name +
+		return "\nname: " + name +
 				"\nimportance: " + importance;
 	}
 }
