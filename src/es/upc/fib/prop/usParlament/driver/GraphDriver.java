@@ -35,7 +35,7 @@ public class GraphDriver {
                     edge_management(); //operations related with edges
                     break;
                 case 3:
-                    g.toString(); //TODO: it's ignored
+                    System.out.println(g); //TODO: it's ignored
                     System.out.println('\n');
                     break;
                 case 4:
