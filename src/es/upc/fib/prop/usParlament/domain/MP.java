@@ -90,7 +90,7 @@ public class MP extends Node {
 			return true;
 		}
 		MP mp = (MP) o;
-		return (mp.id == this.id);
+		return (mp.getState() == this.state)&&(mp.getDistrict() == this.district);
 	}
 
 	// TODO
