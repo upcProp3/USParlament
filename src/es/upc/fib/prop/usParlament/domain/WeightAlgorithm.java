@@ -59,7 +59,7 @@ public class WeightAlgorithm {
      * The weights of all the graph are computed, and the edges added
      */
     public void computeAllWeights() {
-        Set<MP> mps = c.getNodes();
+        Set<MP> mps = (Set<MP>) c.getMPs();
         for (MP m1 : mps) {
             for (MP m2 : mps) {
                 if (m1 != m2 && !c.hasEdge(m1, m2)) {

@@ -101,7 +101,7 @@ public class AttributeDriver {
 
 		System.out.println("=====================================");
 		System.out.println(mp);
-		for (AttrDefinition def : mp.getAttributes().keySet()) {
+		for (AttrDefinition def : mp.getAttrDefs()) {
 			System.out.println("-------------------------------------");
 			System.out.println(def);
 		}
@@ -121,7 +121,7 @@ public class AttributeDriver {
 		}
 
 		AttrDefinition def = null;
-		for (AttrDefinition d : mp.getAttributes().keySet()) {
+		for (AttrDefinition d : mp.getAttrDefs()) {
 			if (d.getId() == defId) {
 				def = d;
 			}
