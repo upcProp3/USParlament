@@ -18,4 +18,11 @@ public class Congress extends Graph {
 		}
 		return mps;
 	}
+
+    public String toString()
+    {
+       return "US Congressman list:\n"
+               + this.getNodes();
+    }
+
 }
