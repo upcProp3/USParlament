@@ -22,4 +22,13 @@ public class AttrSet {
 
     public void removeAttributeDef(AttrDefinition name) { attributes.remove(name); }
 
+    public String toString()
+    {
+        String ret = "Attribute definiton list\n";
+        for (AttrDefinition ad : attributes.values()) {
+            ret += ad.toString();
+        }
+        return ret;
+    }
+
 }

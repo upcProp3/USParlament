@@ -14,6 +14,10 @@ public class MPDriver {
 
     public static void main(String[] args) {
 
+        System.out.println("=====================");
+        System.out.println("MP & ATTRIBUTE DRIVER");
+        System.out.println("=====================");
+
         System.out.println("Options:");
         System.out.println("USA districts:" +
                 "\tAL, AK, AZ, AR, CA, CO, CT, DE, FL, GA,\n" +
@@ -29,82 +33,140 @@ public class MPDriver {
         System.out.println("6: Delete attribute value of an MP");
         System.out.println("7: Print MP information");
         System.out.println("8: Print attribute information");
-        System.out.println("9: Modify attribute's importance");
+        System.out.println("9: Print the congress");
+        System.out.println("10: Print the attribute definition list");
+        System.out.println("11: Modify attribute importance");
         System.out.println("99: Show options menu");
         System.out.println("0: Exit");
 
+        //INITIALIZATION START
+
         Congress c = new Congress();
         AttrSet as = new AttrSet();
-
         Scanner reader = new Scanner(System.in);
         int opcode;
         String name;
         MP m;
         State s;
         int distr;
+        int imp;
+        AttrDefinition ad;
         opcode = reader.nextInt();
+        Object value;
+
+        //INITIALIZATION END
+
         while(opcode != 0) {
             reader.nextLine();
             switch (opcode) {
                 case 1: //Add MP
-                    System.out.println("Adding MP:");
+                    System.out.println("Adding MP");
                     System.out.println("Enter the name:");
                     name = reader.nextLine();
-                    System.out.println("Enter the state");
+                    System.out.println("Enter the state:");
                     s = State.valueOf(reader.nextLine().toUpperCase());
-                    System.out.println("Enter the district number");
+                    System.out.println("Enter the district number:");
                     distr = Integer.parseInt(reader.nextLine());
                     c.addNode(new MP(name, s, distr));
                     break;
                 case 2: //Add attribute definition
-                    System.out.println("Adding AttrDefinition:");
-                    AttrDefinition ad = new AttrDefinition(reader.nextLine(), reader.nextInt());
+                    System.out.println("Adding AttrDefinition");
+                    System.out.println("Enter the name:");
+                    name = reader.nextLine();
+                    System.out.println("Enter the importance (integer between 0 and 3):");
+                    imp = Integer.parseInt(reader.nextLine());
+                    while (imp < 0 || imp > 3) {
+                        System.out.print("The importance must be an integer between 0 and 3\n"
+                                         + "Enter the importance again:");
+                        imp = Integer.parseInt(reader.nextLine());
+                    }
+                    ad = new AttrDefinition(name, imp);
                     as.addAttributeDef(ad);
                     break;
                 case 3: //Add attribute value to an MP
-                    System.out.println("You must specify the attribute's name and value, and the MP's state and district");
-                    AttrDefinition ad3 = as.getAttributeDef(reader.nextLine());
-                    Attribute a = new Attribute(ad3, reader.nextLine());
-                    m = c.getMP(State.valueOf(reader.nextLine().toUpperCase()), reader.nextInt());
+                    System.out.println("Adding attribute value to an MP");
+                    System.out.println("Enter attribute name:");
+                    name = reader.nextLine();
+                    System.out.println("Enter attribute value:");
+                    value = reader.nextLine();
+                    System.out.println("Enter MP state:");
+                    s = State.valueOf(reader.nextLine().toUpperCase());
+                    System.out.println("Enter MP district number:");
+                    distr = Integer.parseInt(reader.nextLine());
+                    ad = as.getAttributeDef(name);
+                    Attribute a = new Attribute(ad, value);
+                    m = c.getMP(s, distr);
                     m.addAttribute(a);
                     break;
                 case 4: //Delete MP
-                    System.out.println("You must specify the MP's state and district");
-                    m = c.getMP(State.valueOf(reader.nextLine().toUpperCase()), reader.nextInt());
-                    //c.deleteMP(m);
+                    System.out.println("Deleting MP");
+                    System.out.println("Enter MP state:");
+                    s = State.valueOf(reader.nextLine().toUpperCase());
+                    System.out.println("Enter MP district number:");
+                    distr = Integer.parseInt(reader.nextLine());
+                    m = c.getMP(s, distr);
                     c.removeNode(m);
                     break;
                 case 5: //Delete attribute definition
-                    System.out.println("You must specify the attribute's name");
+                    System.out.println("Deleting attribute definition");
+                    System.out.println("Enter attribute name:");
                     name = reader.nextLine();
-                    AttrDefinition ad5 = as.getAttributeDef(name);
+                    ad = as.getAttributeDef(name);
                     for (MP m1 : c.getMPs()) {
-                        //if (m1.hasAttribute(ad5)) m.removeAttribute(ad5);
+                        if (m1.hasAttribute(ad)) m1.removeAttribute(ad);
                     }
-                    as.removeAttributeDef(ad5);
+                    as.removeAttributeDef(ad);
                     break;
-                case 6: //Delete attribute vale of an MP
-                    System.out.println("You must specify the attribute's name, and the MP's state and district");
+                case 6: //Delete attribute value of an MP
+                    System.out.println("Deleting attribute value of an MP");
+                    System.out.println("Enter attribute name");
                     name = reader.nextLine();
-                    m = c.getMP(State.valueOf(reader.nextLine().toUpperCase()), reader.nextInt());
-                    AttrDefinition ad6 = as.getAttributeDef(name);
-                    /*if (m.hasAttribute(ad6)) m.removeAttribute(ad6);
-                    else System.out.println("This MP had no assigned value for that attribute\n");*/
+                    System.out.println("Enter MP state:");
+                    s = State.valueOf(reader.nextLine().toUpperCase());
+                    System.out.println("Enter MP district number:");
+                    distr = Integer.parseInt(reader.nextLine());
+                    ad = as.getAttributeDef(name);
+                    m = c.getMP(s, distr);
+                    if (m.hasAttribute(ad)) m.removeAttribute(ad);
+                    else System.out.println("This MP had no assigned value for that attribute\n");
                     break;
                 case 7: //Print MP information
-                    System.out.println("You must specify the MP's state and district");
-                    m = c.getMP(State.valueOf(reader.nextLine().toUpperCase()), reader.nextInt());
+                    System.out.println("Printing an MP");
+                    System.out.println("Enter MP state:");
+                    s = State.valueOf(reader.nextLine().toUpperCase());
+                    System.out.println("Enter MP district number:");
+                    distr = Integer.parseInt(reader.nextLine());
+                    m = c.getMP(s, distr);
                     System.out.println(m);
                     break;
                 case 8: //Print attribute information
-                    System.out.println("You must specify the attribute's name");
-                    AttrDefinition ad8 = as.getAttributeDef(reader.nextLine());
-                    System.out.println(ad8);
+                    System.out.println("Printing attribute information");
+                    System.out.println("Enter attribute name");
+                    name = reader.nextLine();
+                    ad = as.getAttributeDef(name);
+                    System.out.println(ad);
                     break;
-                case 9: //Modify attribute importance
-                    System.out.println("You must specify the attribute's name and the new importance value (0-3)");
-                    AttrDefinition ad9 = as.getAttributeDef(reader.nextLine());
-                    ad9.setImportance(reader.nextInt());
+                case 9: //Print the congress
+                    System.out.println("Printing the congress");
+                    System.out.println(c);
+                    break;
+                case 10: //Print attribute definition list
+                    System.out.println("Printing attribute definition list");
+                    System.out.println(as);
+                    break;
+                case 11: //Modify attribute importance
+                    System.out.println("Modifying attribute importance");
+                    System.out.println("Enter attribute name");
+                    name = reader.nextLine();
+                    System.out.println("Enter the new importance (integer between 0 and 3):");
+                    imp = Integer.parseInt(reader.nextLine());
+                    while (imp < 0 || imp > 3) {
+                        System.out.print("The importance must be an integer between 0 and 3\n"
+                                + "Enter the importance again:");
+                        imp = Integer.parseInt(reader.nextLine());
+                    }
+                    ad = as.getAttributeDef(name);
+                    ad.setImportance(imp);
                     break;
                 case 99: //Options menu
                     System.out.println("Options:");
@@ -122,7 +184,9 @@ public class MPDriver {
                     System.out.println("6: Delete attribute value of an MP");
                     System.out.println("7: Print MP information");
                     System.out.println("8: Print attribute information");
-                    System.out.println("9: Modify attribute's importance");
+                    System.out.println("9: Print the congress");
+                    System.out.println("10: Print the attribute definition list");
+                    System.out.println("11: Modify attribute importance");
                     System.out.println("99: Show options menu");
                     System.out.println("0: Exit");
                     break;
@@ -134,5 +198,4 @@ public class MPDriver {
         }
         System.out.println("Successful exit");
     }
-
 }
