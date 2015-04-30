@@ -1,5 +1,6 @@
 package es.upc.fib.prop.usParlament.domain;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -59,7 +60,7 @@ public class WeightAlgorithm {
      * The weights of all the graph are computed, and the edges added
      */
     public void computeAllWeights() {
-        Set<MP> mps = (Set<MP>) c.getMPs();
+        Collection<MP> mps = c.getMPs();
         for (MP m1 : mps) {
             for (MP m2 : mps) {
                 if (m1 != m2 && !c.hasEdge(m1, m2)) {

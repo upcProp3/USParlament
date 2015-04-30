@@ -1,4 +1,6 @@
-package es.upc.fib.prop.usParlament.domain;
+package es.upc.fib.prop.usParlament.driver;
+
+import es.upc.fib.prop.usParlament.domain.AttrDefinition;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -19,6 +21,5 @@ public class AttrSet {
     public AttrDefinition getAttributeDef(String name) { return attributes.get(name); }
 
     public void removeAttributeDef(AttrDefinition name) { attributes.remove(name); }
-
 
 }
