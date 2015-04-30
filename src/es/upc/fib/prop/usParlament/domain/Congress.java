@@ -25,4 +25,15 @@ public class Congress extends Graph {
                + this.getNodes();
     }
 
+    public MP getMP(State s,int d)
+    {
+        MP m = new MP("INVALID",s,d);
+        for(MP mp:this.getMPs()){
+            if(mp.equals(m)){
+                return mp;
+            }
+        }
+        return null;
+    }
+
 }
