@@ -15,7 +15,7 @@ public class MPDriver {
     public static void main(String[] args) {
 
         System.out.println("MP & ATTRIBUTES DRIVER\n");
-        System.out.println("----------------------\n");
+        System.out.println("--------------------\n");
         System.out.println();
         System.out.println("Options:\n");
         System.out.println("USA districts: \n" +
