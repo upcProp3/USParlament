@@ -10,7 +10,6 @@ import java.util.HashSet;
  * Created by ondrej on 15.4.15.
  */
 public class Congress extends Graph {
-
 	public Collection<MP> getMPs() {
 		Collection<MP> mps = new HashSet<>();
 		for (Node n : getNodes()) {
@@ -35,5 +34,4 @@ public class Congress extends Graph {
         }
         return null;
     }
-
 }

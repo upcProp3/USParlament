@@ -73,7 +73,10 @@ public class MP extends Node {
 	public void addAttribute(Attribute attr) {
 		attributes.put(attr.getDefinition(), attr);
 	}
-
+    public boolean hasAttribute(AttrDefinition attr)
+    {
+        return attributes.containsKey(attr);
+    }
 	public void removeAttribute(AttrDefinition def) {
 		attributes.remove(def);
 	}
