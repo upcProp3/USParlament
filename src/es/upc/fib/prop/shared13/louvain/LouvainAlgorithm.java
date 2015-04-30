@@ -152,10 +152,11 @@ public class LouvainAlgorithm
                 current = calculateNewGraph(current,currentState);
             //}
         }
+        bestPartition = new ArrayList<>();
         for(Node n:current.getNodes()){
-            System.out.println(getComNodes(n));
+            bestPartition.add(getComNodes(n));
         }
-        return null;
+        return bestPartition;
     }
 
     private Set<Node> getComNodes(Node n)
