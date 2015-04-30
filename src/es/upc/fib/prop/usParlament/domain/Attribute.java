@@ -1,7 +1,8 @@
 package es.upc.fib.prop.usParlament.domain;
 
 /**
- * Created by alexmiro9 on 8/4/15.
+ * Created by alex on 8/4/15.
+ * contributions of ondrej
  */
 
 public class Attribute  {

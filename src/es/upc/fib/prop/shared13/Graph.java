@@ -1,7 +1,7 @@
 package es.upc.fib.prop.shared13;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.*;
+import com.google.common.collect.Collections2;
 
 import java.util.*;
 
