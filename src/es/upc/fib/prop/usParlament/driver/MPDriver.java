@@ -100,7 +100,8 @@ public class MPDriver {
                 ad.setImportance(reader.nextInt());
             } else if (opcode == 99) { //Options menu
                 System.out.println("Options:\n");
-                System.out.println("USA districts: AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA,\n" +
+                System.out.println("USA districts:" +
+                        "\tAL, AK, AZ, AR, CA, CO, CT, DE, FL, GA,\n" +
                         "\tHI, ID, IL, IN, IA, KS, KY, LA, ME, MD,\n" +
                         "\tMA, MI, MN, MS, MO, MT, NE, NV, NH, NJ,\n" +
                         "\tNM, NY, NC, ND, OH, OK, OR, PA, RI, SC,\n" +
@@ -112,10 +113,9 @@ public class MPDriver {
                 System.out.println("4: Delete MP\n");
                 System.out.println("5: Delete attribute definiton\n");
                 System.out.println("6: Delete attribute value of an MP\n");
-                System.out.println("7: Print MP simple information\n");
-                System.out.println("8: Print MP extended information\n");
-                System.out.println("9: Print attribute information\n");
-                System.out.println("10: Modify attribute's importance(name, newImportance)\n");
+                System.out.println("7: Print MP information\n");
+                System.out.println("8: Print attribute information\n");
+                System.out.println("9: Modify attribute's importance\n");
                 System.out.println("99: Show options menu\n");
             }
             System.out.println();

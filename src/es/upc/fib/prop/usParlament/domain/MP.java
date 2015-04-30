@@ -86,6 +86,7 @@ public class MP extends Node {
 	}
 
 	@Override
+	//TODO needs revision
 	public boolean equals(Object o) {
 		if (!(o instanceof MP)) {
 			return false;
