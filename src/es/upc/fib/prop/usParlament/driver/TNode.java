@@ -7,7 +7,7 @@ import es.upc.fib.prop.shared13.Node;
  * Created by albert on 16/04/15.
  */
 public class TNode extends Node {
-    private final int key;
+    private final Integer key;
 
     public TNode(int key) {
         this.key = key;
@@ -24,8 +24,7 @@ public class TNode extends Node {
 
     @Override
     public int hashCode() {
-        //return Integer.hashCode(key);
-        return 3;
+        return key.hashCode();
     }
 
     @Override
