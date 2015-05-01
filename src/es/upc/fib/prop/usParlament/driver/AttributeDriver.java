@@ -103,6 +103,7 @@ public class AttributeDriver {
 		System.out.println(mp);
 		for (Attribute attr : mp.getAttributes()) {
 			System.out.println("-------------------------------------");
+			System.out.print("ID: " + attr.getDefinition().getId());
 			System.out.println(attr.getDefinition());
 		}
 
