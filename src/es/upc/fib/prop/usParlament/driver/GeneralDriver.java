@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * Created by aleixsacrest on 30/04/2015.
  */
-public class WeightAlgDriver {
+public class GeneralDriver {
     static Congress c = new Congress();
     //static Set<AttrDefinition> s = new HashSet<>();
     static WeightAlgorithm wa = new WeightAlgorithm(c);
@@ -21,7 +21,7 @@ public class WeightAlgDriver {
         while(seguir) {
             System.out.println("What do you want to do? Enter the key and press Enter\n");
             System.out.println("1-MP management\n2-Attribute Definitions management\n3-Compute Weights");
-            System.out.println("4-Show all MP's and its Attributes\n5-Show congress\nany other key-EXIT");
+            System.out.println("4-Show all MP's and its Attributes\n5-Show congress\n6-Apply Louvain\nany other key-EXIT");
             Integer num = read.nextInt();
             read.nextLine();
             switch (num) {
@@ -45,6 +45,9 @@ public class WeightAlgDriver {
                 case 5:
                     System.out.println("The US Congress");
                     System.out.println(c);
+                    break;
+                case 6:
+                    apply_Louvain(); //TODO:
                     break;
                 default:
                     seguir = false;
@@ -298,4 +301,5 @@ public class WeightAlgDriver {
             }
         }
     }
+    public static void apply_Louvain() {}
 }
