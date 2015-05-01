@@ -11,6 +11,30 @@ import java.util.Set;
  * Created by ondrej on 15.4.15.
  */
 public class Congress extends Graph {
+    private static Set<AttrDefinition> s = new HashSet<>();
+
+    public void addAttrDef(AttrDefinition def) {this.s.add(def);}
+
+    public AttrDefinition getAttrDef(String name) {
+        for (AttrDefinition def : s) if (def.getName().equals(name)) return def;
+        return null;
+    }
+
+    public Boolean hasAttrDef(AttrDefinition def) {
+        for (AttrDefinition d : s) if (d.equals(def)) return true;
+        return false;
+    }
+
+    public void removeAttrDef(AttrDefinition def) {s.remove(def);}
+
+    public String printAttrDefList() {
+        String ret = "Attribute definiton list\n";
+        for (AttrDefinition def : s) {
+            ret += def.toString();
+        }
+        return ret;
+    }
+
 	public Collection<MP> getMPs() {
 		Collection<MP> mps = new HashSet<>();
 		for (Node n : getNodes()) {

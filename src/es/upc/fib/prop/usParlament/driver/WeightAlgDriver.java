@@ -21,7 +21,7 @@ public class WeightAlgDriver {
         while(seguir) {
             System.out.println("What do you want to do? Enter the key and press Enter\n");
             System.out.println("1-MP management\n2-Attribute Definitions management\n3-Compute Weights");
-            System.out.println("4-Show all MP's and its Attributes\nany  other key-EXIT");
+            System.out.println("4-Show all MP's and its Attributes\nany other key-EXIT");
             Integer num = read.nextInt();
             switch (num) {
                 case 1:
