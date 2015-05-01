@@ -74,7 +74,7 @@ public class MPDriver {
                     System.out.println("Enter the district number:");
                     distr = Integer.parseInt(reader.nextLine());
                     m = new MP(name, s, distr);
-                    if (c.getMP(s, distr) != null) c.addNode(m);
+                    if (c.getMP(s, distr) == null) c.addNode(m);
                     else System.out.println("There's an MP already assigned to this state and district");
                     break;
                 case 2: //Add attribute definition
