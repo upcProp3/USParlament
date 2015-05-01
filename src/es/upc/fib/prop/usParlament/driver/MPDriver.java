@@ -7,7 +7,14 @@ import java.util.Scanner;
 /**
  * Created by miquel on 7/04/15.
  * Contributions of alex.
- * Drivers order: adding, removing, printing, other
+ *
+ * This driver allows you to, basically, play with MPs, attributes definitions
+ * and the relationship between MPs and attributes (values).
+ * One can:
+ *  ADD MPs, attributes definitions and values
+ *  DELETE MPs, attributes definitions and values
+ *  PRINT MPs, attributes information and the hole congress of MPs
+ *  MODIFY attributes definitions
  *
  */
 public class MPDriver {
