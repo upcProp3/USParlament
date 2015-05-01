@@ -248,6 +248,7 @@ public class LouvainAlgorithmDriver {
 		LouvainAlgorithm l = new LouvainAlgorithm(g);
 		List<Set<Node>> communitySet = l.calculate();
 		System.out.println(communitySet);
+		System.out.println("Modularity: " + l.resultModularity());
 	}
 
 	private static void prepareData() {
