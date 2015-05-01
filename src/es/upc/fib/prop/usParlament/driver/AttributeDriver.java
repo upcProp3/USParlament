@@ -19,8 +19,8 @@ public class AttributeDriver {
 
 	public static void main(String[] args)
 	{
-		System.out.println("=====================================");
-		System.out.println("   A T T R I B U T E   D R I V E R ");
+		System.err.println("=====================================");
+		System.err.println("   A T T R I B U T E   D R I V E R ");
 
 		Scanner reader = new Scanner(System.in);
 		prepareData(reader);
@@ -28,19 +28,19 @@ public class AttributeDriver {
 		int input;
 		boolean active = true;
 		while(active) {
-			System.out.println("=====================================");
-			System.out.println("1 - add attribute definition");
-			System.out.println("2 - add attribute to MP");
-			System.out.println("3 - remove attribute definition");
-			System.out.println("4 - remove attribute from MP");
-			System.out.println("5 - show list of attributes definitions");
-			System.out.println("6 - show list of MPs");
-			System.out.println("0 - exit");
+			System.err.println("=====================================");
+			System.err.println("1 - add attribute definition");
+			System.err.println("2 - add attribute to MP");
+			System.err.println("3 - remove attribute definition");
+			System.err.println("4 - remove attribute from MP");
+			System.err.println("5 - show list of attributes definitions");
+			System.err.println("6 - show list of MPs");
+			System.err.println("0 - exit");
 			try {
 				input = reader.nextInt();
 			} catch (InputMismatchException e) {
 				reader.nextLine();
-				System.out.println("Wrong input. Try it again.");
+				System.err.println("Wrong input. Try it again.");
 				continue;
 			}
 			switch (input) {
@@ -63,7 +63,7 @@ public class AttributeDriver {
 					showMPs();
 					break;
 				case 0:
-					System.out.println("Bye Bye");
+					System.err.println("Bye Bye");
 					active = false;
 					break;
 				default:
@@ -75,7 +75,7 @@ public class AttributeDriver {
 	}
 
 	private static void removeAttribute(Scanner reader) {
-		System.out.println("Put MP id: ");
+		System.err.println("Put MP id: ");
 		int mpId;
 		while(true) {
 			try {
@@ -83,7 +83,7 @@ public class AttributeDriver {
 				break;
 			} catch (InputMismatchException e) {
 				reader.nextLine();
-				System.out.println("Id has to be integer. Try it again.");
+				System.err.println("Id has to be integer. Try it again.");
 				continue;
 			}
 		}
@@ -95,19 +95,19 @@ public class AttributeDriver {
 			}
 		}
 		if (mp == null) {
-			System.out.println("MP with id " + mpId + " does not exist.");
+			System.err.println("MP with id " + mpId + " does not exist.");
 			return;
 		}
 
-		System.out.println("=====================================");
-		System.out.println(mp);
+		System.err.println("=====================================");
+		System.err.println(mp);
 		for (Attribute attr : mp.getAttributes()) {
-			System.out.println("-------------------------------------");
-			System.out.println(attr.getDefinition());
+			System.err.println("-------------------------------------");
+			System.err.println(attr.getDefinition());
 		}
 
-		System.out.println("=====================================");
-		System.out.println("Put attribute definition id: ");
+		System.err.println("=====================================");
+		System.err.println("Put attribute definition id: ");
 		int defId;
 		while(true) {
 			try {
@@ -115,7 +115,7 @@ public class AttributeDriver {
 				break;
 			} catch (InputMismatchException e) {
 				reader.nextLine();
-				System.out.println("Id has to be integer. Try it again.");
+				System.err.println("Id has to be integer. Try it again.");
 				continue;
 			}
 		}
@@ -127,17 +127,17 @@ public class AttributeDriver {
 			}
 		}
 		if (def == null) {
-			System.out.println("MP " +mp.getFullname()+ " does not contains Attribute definition with id " + defId);
+			System.err.println("MP " +mp.getFullname()+ " does not contains Attribute definition with id " + defId);
 			return;
 		}
 
 		mp.removeAttribute(def);
-		System.out.println("Removed successfully");
+		System.err.println("Removed successfully");
 	}
 
 
 	private static void addAttribute(Scanner reader) {
-		System.out.println("Put MP id: ");
+		System.err.println("Put MP id: ");
 		int mpId;
 		while(true) {
 			try {
@@ -145,7 +145,7 @@ public class AttributeDriver {
 				break;
 			} catch (InputMismatchException e) {
 				reader.nextLine();
-				System.out.println("Id has to be integer. Try it again.");
+				System.err.println("Id has to be integer. Try it again.");
 				continue;
 			}
 		}
@@ -157,16 +157,16 @@ public class AttributeDriver {
 			}
 		}
 		if (mp == null) {
-			System.out.println("MP with id " + mpId + " does not exist.");
+			System.err.println("MP with id " + mpId + " does not exist.");
 			return;
 		}
 
-		System.out.println("=====================================");
-		System.out.println(mp);
+		System.err.println("=====================================");
+		System.err.println(mp);
 		showDefinitions();
 
-		System.out.println("=====================================");
-		System.out.println("Put attribute definition id: ");
+		System.err.println("=====================================");
+		System.err.println("Put attribute definition id: ");
 		int defId;
 		while(true) {
 			try {
@@ -174,7 +174,7 @@ public class AttributeDriver {
 				break;
 			} catch (InputMismatchException e) {
 				reader.nextLine();
-				System.out.println("Id has to be integer. Try it again.");
+				System.err.println("Id has to be integer. Try it again.");
 				continue;
 			}
 		}
@@ -186,17 +186,17 @@ public class AttributeDriver {
 			}
 		}
 		if (def == null) {
-			System.out.println("Attribute definition with id " + defId + " does not exist.");
+			System.err.println("Attribute definition with id " + defId + " does not exist.");
 			return;
 		}
 
-		System.out.println("Set attribute value: ");
+		System.err.println("Set attribute value: ");
 		String value = reader.next();
 		mp.addAttribute(new Attribute(def, value));
 	}
 
 	private static void removeDefinition(Scanner reader) {
-		System.out.println("Put attribute definition id: ");
+		System.err.println("Put attribute definition id: ");
 		int id;
 		while(true) {
 			try {
@@ -204,7 +204,7 @@ public class AttributeDriver {
 				break;
 			} catch (InputMismatchException e) {
 				reader.nextLine();
-				System.out.println("Id has to be integer. Try it again.");
+				System.err.println("Id has to be integer. Try it again.");
 				continue;
 			}
 		}
@@ -217,9 +217,9 @@ public class AttributeDriver {
 	}
 
 	private static void addDefinition(Scanner reader) {
-		System.out.println("Set name: ");
+		System.err.println("Set name: ");
 		String name = reader.next();
-		System.out.println("Set importance: ");
+		System.err.println("Set importance: ");
 		int importance;
 		while(true) {
 			try {
@@ -227,7 +227,7 @@ public class AttributeDriver {
 				break;
 			} catch (InputMismatchException e) {
 				reader.nextLine();
-				System.out.println("Importance has to be integer. Try it again.");
+				System.err.println("Importance has to be integer. Try it again.");
 				continue;
 			}
 		}
@@ -267,8 +267,8 @@ public class AttributeDriver {
 		mps.add(mp3);
 		mps.add(mp4);
 
-		System.out.println("=====================================");
-		System.out.println("Do you want to prepare some attribute data? (y/n)");
+		System.err.println("=====================================");
+		System.err.println("Do you want to prepare some attribute data? (y/n)");
 
 		while(true) {
 			String input = reader.next();
@@ -278,7 +278,7 @@ public class AttributeDriver {
 			} else if (input.equals("N")) {
 				return;
 			} else {
-				System.out.println("Please type only 'y' as yes or 'n' as no");
+				System.err.println("Please type only 'y' as yes or 'n' as no");
 			}
 		}
 

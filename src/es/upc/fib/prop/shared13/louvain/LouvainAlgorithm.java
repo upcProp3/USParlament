@@ -13,6 +13,7 @@ public class LouvainAlgorithm
     Graph original;
     Map<Node,Set<Node>> com2sons;
     ArrayList<Set<Node>> bestPartition;
+    Estat bestEstat;
 
 
     public LouvainAlgorithm(Graph g)
@@ -67,6 +68,13 @@ public class LouvainAlgorithm
     }
 
     //Calculates the modularity of a partition of the graph g
+    //TODO: exception if the partition does not map all nodes
+    /**
+     * Calculates the modularity of a graph's partition
+     * @param g The graph whose modularity you want to calculate
+     * @param part A partition of graph g, it maps each node to an Integer which identifies its communtiy
+     * @return The modulartiy of the partition part of the graph g
+     */
     static public Double calculateModularity(Graph g,Map<Node,Integer> part)
     {
         Map<Node,Double> ndegree = new LinkedHashMap<>();
@@ -116,11 +124,15 @@ public class LouvainAlgorithm
         return mod;
     }
 
+    /**
+     * Calculates the optimal partition of the graph given in the constructor using Louvain's modularity optimization algorithm
+     * @return An arrayList containing a set of nodes for each community, each set contains the nodes that conform the community
+     */
     public ArrayList<Set<Node>> calculate()
     {
         if(bestPartition != null) return bestPartition;
         Graph current = original;
-        Estat currentState;
+        Estat currentState = null;
         boolean gain = true;
         while(gain) {//While there is gain
             gain = false;
@@ -153,6 +165,7 @@ public class LouvainAlgorithm
             //}
         }
         bestPartition = new ArrayList<>();
+        bestEstat = currentState;
         for(Node n:current.getNodes()){
             bestPartition.add(getComNodes(n));
         }
@@ -170,6 +183,17 @@ public class LouvainAlgorithm
             }
         }
         return retorn;
+    }
+
+    /**
+     * Calculates the modularity of the best partition and resturns itCalculates the modularity of the best partition and resturns it
+     * @return The modularity of the best partition of the graph
+     */
+    public Double resultModularity()
+    {
+        if(bestPartition == null) this.calculate();//If the best partition is not calculated calculate it
+        return this.bestEstat.modularity();
+
     }
 
     private Graph calculateNewGraph(Graph g,Estat state)
@@ -210,6 +234,11 @@ public class LouvainAlgorithm
         return nou;
     }
 
+    /**
+     * Used to keep track of the data of each communtiy (the sum of the weights of edges inside and
+     * the sum of the degrees of the nodes inside), some data of the graph (the degree of each node and the total
+     * weight) to be able to calculate modularities in an efficient way;
+     */
     private class Estat
     {
         //Creates the status and initializes it with the data of the graph g
