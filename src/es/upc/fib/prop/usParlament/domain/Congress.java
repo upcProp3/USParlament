@@ -28,7 +28,7 @@ public class Congress extends Graph {
     public void removeAttrDef(AttrDefinition def) {def.setImportance(0);}
 
     public String printAttrDefList() {
-        String ret = "Attribute definiton list\n";
+        String ret = "Attribute definition list\n";
         for (AttrDefinition def : s) {
             ret += def.toString();
         }
