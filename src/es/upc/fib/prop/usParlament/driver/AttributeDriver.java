@@ -22,9 +22,9 @@ public class AttributeDriver {
 		System.out.println("=====================================");
 		System.out.println("   A T T R I B U T E   D R I V E R ");
 
-		prepareData();
-
 		Scanner reader = new Scanner(System.in);
+		prepareData(reader);
+
 		int input;
 		boolean active = true;
 		while(active) {
@@ -33,8 +33,8 @@ public class AttributeDriver {
 			System.out.println("2 - add attribute to MP");
 			System.out.println("3 - remove attribute definition");
 			System.out.println("4 - remove attribute from MP");
-			System.out.println("5 - show list of MPs");
-			System.out.println("6 - show list of attributes definitions");
+			System.out.println("5 - show list of attributes definitions");
+			System.out.println("6 - show list of MPs");
 			System.out.println("0 - exit");
 			try {
 				input = reader.nextInt();
@@ -239,19 +239,35 @@ public class AttributeDriver {
 
 	private static void showMPs() {
 		for (MP mp : mps) {
-			System.out.println("-------------------------------------");
+			System.out.print("-------------------------------------");
 			System.out.println(mp);
 		}
 	}
 
 	private static void showDefinitions() {
 		for (AttrDefinition def : definitions) {
-			System.out.println("-------------------------------------");
+			System.out.print("-------------------------------------");
 			System.out.println(def);
 		}
 	}
 
-	private static void prepareData() {
+	private static void prepareData(Scanner reader) {
+
+		System.out.println("=====================================");
+		System.out.println("Do you want to prepare some data? (y/n)");
+
+		while(true) {
+			String input = reader.next();
+			input = input.toUpperCase().trim();
+			if (input.equals("Y")) {
+				break;
+			} else if (input.equals("N")) {
+				return;
+			} else {
+				System.out.println("Please type only 'y' as yes or 'n' as no");
+			}
+		}
+
 		MP mp1 = new MP("Ondrej Velisek", State.FL, 1);
 		mp1.setId(1);
 		MP mp2 = new MP("Alex Miro", State.NY, 1);
