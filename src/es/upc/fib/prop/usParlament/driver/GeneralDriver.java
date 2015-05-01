@@ -13,7 +13,6 @@ import java.util.*;
  */
 public class GeneralDriver {
     static Congress c = new Congress();
-    //static Set<AttrDefinition> s = new HashSet<>();
     static WeightAlgorithm wa = new WeightAlgorithm(c);
     static Scanner read = new Scanner(System.in);
     public static void main(String[] args) {
@@ -26,13 +25,13 @@ public class GeneralDriver {
             read.nextLine();
             switch (num) {
                 case 1:
-                    MP_management();
+                    mpManagement();
                     break;
                 case 2:
-                    Attribute_management();
+                    attributeManagement();
                     break;
                 case 3:
-                    Compute_Weights();
+                    computeWeights();
                     break;
                 case 4:
                     for (MP p : c.getMPs()) {
@@ -47,7 +46,7 @@ public class GeneralDriver {
                     System.out.println(c);
                     break;
                 case 6:
-                    apply_Louvain(); //TODO:
+                    applyLouvain(); //TODO:
                     break;
                 default:
                     seguir = false;
@@ -55,7 +54,7 @@ public class GeneralDriver {
             }
         }
     }
-    public static void MP_management() {
+    public static void mpManagement() {
         Boolean seguir = true;
         while(seguir) {
             System.out.println("Node Management:");
@@ -146,7 +145,7 @@ public class GeneralDriver {
             }
         }
     }
-    public static void Attribute_management() {
+    public static void attributeManagement() {
         Boolean seguir = true;
         while(seguir) {
             System.out.println("Attribute Management");
@@ -282,7 +281,7 @@ public class GeneralDriver {
             }
         }
     }
-    public static void Compute_Weights() {
+    public static void computeWeights() {
         Boolean seguir = true;
         while(seguir) {
             System.out.println("Computing weights:\n");
@@ -301,5 +300,5 @@ public class GeneralDriver {
             }
         }
     }
-    public static void apply_Louvain() {}
+    public static void applyLouvain() {}
 }
