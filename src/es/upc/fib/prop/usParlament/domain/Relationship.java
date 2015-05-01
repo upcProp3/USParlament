@@ -21,8 +21,6 @@ public class Relationship extends Edge {
 	 * @param m1
 	 * @param m2
 	 * @param w
-	 * @pre True
-	 * @post An Edge between the nodes n1 and n2 with weight w is created
 	 */
 
 

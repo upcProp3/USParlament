@@ -45,13 +45,10 @@ public class WeightAlgorithm {
      */
     public void computeWeight(MP m1, MP m2, Set<Attribute> CA) {
         int w = 0; //0 = no relationship
-        Relationship r = (Relationship) c.getEdge(m1, m2);
-        if (r.isValid()) {
-            for (Attribute a : CA) {
-                w += a.getDefinition().getImportance();
-            }
+        for (Attribute a : CA) {
+            w += a.getDefinition().getImportance();
         }
-        r.setWeight(w);
+        if(w>0) c.addEdge(new Relationship(m1,m2,2));
     }
 
     /**
@@ -66,7 +63,6 @@ public class WeightAlgorithm {
                 if (m1 != m2 && !c.hasEdge(m1, m2)) {
                     Set<Attribute> ca = getCommonAttributes(m1, m2);
                     if (!ca.isEmpty()) {
-                        Relationship r = new Relationship(m1, m2, 0);
                         computeWeight(m1, m2, ca);
                     }
                 }
