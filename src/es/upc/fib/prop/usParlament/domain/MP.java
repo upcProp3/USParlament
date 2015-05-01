@@ -5,10 +5,10 @@ import es.upc.fib.prop.shared13.Node;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by miquel on 7/04/15.
+ * contributions of alex, ondrej.
  */
 public class MP extends Node {
 	private Long id;
