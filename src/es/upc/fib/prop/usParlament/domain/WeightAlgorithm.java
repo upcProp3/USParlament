@@ -48,7 +48,7 @@ public class WeightAlgorithm {
         for (Attribute a : CA) {
             w += a.getDefinition().getImportance();
         }
-        if(w>0) c.addEdge(new Relationship(m1,m2,2));
+        if(w>0) c.addEdge(new Relationship(m1,m2,w));
     }
 
     /**

@@ -25,7 +25,7 @@ public class Congress extends Graph {
         return false;
     }
 
-    public void removeAttrDef(AttrDefinition def) {s.remove(def);}
+    public void removeAttrDef(AttrDefinition def) {def.setImportance(0);}
 
     public String printAttrDefList() {
         String ret = "Attribute definiton list\n";
@@ -46,7 +46,9 @@ public class Congress extends Graph {
     public String toString()
     {
        return "US Congressman list:\n"
-               + this.getNodes();
+               + this.getNodes()+
+               "Relationship strenght\n"
+               +this.getEdges();
     }
 
     public MP getMP(State s,int d)

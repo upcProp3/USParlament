@@ -15,14 +15,15 @@ public class WeightAlgDriver {
     static Congress c = new Congress();
     //static Set<AttrDefinition> s = new HashSet<>();
     static WeightAlgorithm wa = new WeightAlgorithm(c);
+    static Scanner read = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner read = new Scanner(System.in);
         Boolean seguir = true;
         while(seguir) {
             System.out.println("What do you want to do? Enter the key and press Enter\n");
             System.out.println("1-MP management\n2-Attribute Definitions management\n3-Compute Weights");
-            System.out.println("4-Show all MP's and its Attributes\nany other key-EXIT");
+            System.out.println("4-Show all MP's and its Attributes\n5-Show congress\nany other key-EXIT");
             Integer num = read.nextInt();
+            read.nextLine();
             switch (num) {
                 case 1:
                     MP_management();
@@ -31,7 +32,7 @@ public class WeightAlgDriver {
                     Attribute_management();
                     break;
                 case 3:
-                    //ComputeWeights();
+                    Compute_Weights();
                     break;
                 case 4:
                     for (MP p : c.getMPs()) {
@@ -41,6 +42,10 @@ public class WeightAlgDriver {
                             }
                     }
                     break;
+                case 5:
+                    System.out.println("The US Congress");
+                    System.out.println(c);
+                    break;
                 default:
                     seguir = false;
                     break;
@@ -49,11 +54,11 @@ public class WeightAlgDriver {
     }
     public static void MP_management() {
         Boolean seguir = true;
-        Scanner read = new Scanner(System.in);
         while(seguir) {
             System.out.println("Node Management:");
             System.out.println("1-Enter MP's\n2-Erase MP\n3-Get an MP with its attributes\n4-Get all MP's\n5-Get Common Attributes\nany other key-EXIT");
             Integer num = read.nextInt();
+            read.nextLine();
             String fullname;
             String st;
             State estat;
@@ -64,7 +69,6 @@ public class WeightAlgDriver {
                     System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\nwhen you're done instead of the name");
                     while(true) {
                         System.out.print("fullname: ");
-                        read.nextLine();
                         fullname = read.nextLine();
                         if (fullname.equals("0")) {System.out.println('\n'); break;}
                         System.out.print("state: ");
@@ -72,13 +76,21 @@ public class WeightAlgDriver {
                         estat = State.valueOf(st);
                         System.out.print("district :");
                         dist = read.nextInt();
+                        read.nextLine();
                         MP p = new MP(fullname, estat, dist);
                         c.addNode(p);
                         System.out.println("MP added successfully");
                     }
                     break;
                 case 2:
-                    //TODO
+                    System.out.println("Enter the MP state and district whose info you want to show:");
+                    System.out.print("state: ");
+                    st = read.next();
+                    estat = State.valueOf(st);
+                    System.out.print("district: ");
+                    dist = read.nextInt();
+                    read.nextLine();
+                    c.removeNode(c.getMP(estat, dist));
                     break;
                 case 3:
                     System.out.println("Enter the MP state and district whose info you want to show:");
@@ -133,7 +145,6 @@ public class WeightAlgDriver {
     }
     public static void Attribute_management() {
         Boolean seguir = true;
-        Scanner read = new Scanner(System.in);
         while(seguir) {
             System.out.println("Attribute Management");
             System.out.println("1-Add Attributes\n2-Add new type of attribute\n3-Delete Attribute\n4-Change the value of an attribute\n" +
@@ -148,7 +159,7 @@ public class WeightAlgDriver {
             AttrDefinition def;
             switch(num) {
                 case 1:
-                    System.out.println("Enter the MP's to whom you want to add attributes:");
+                    System.out.println("Enter the MP to whom you want to add attributes:");
                     System.out.print("state: ");
                     st = read.next();
                     estat = State.valueOf(st);
@@ -164,12 +175,12 @@ public class WeightAlgDriver {
                     System.out.println("Enter the info of the attributes you want to add to " + p1.getFullname() + " (type & value");
                     System.out.println("when you're done enter 0 insted of the type");
                     while (true) {
-                        System.out.print("type of attribute: ");
+                        System.out.println("type of attribute: ");
                         //read.nextLine();
                         String d = read.nextLine();
                         def = c.getAttrDef(d);
                         if (d.equals("0")) break;
-                        System.out.print("value : ");
+                        System.out.println("value : ");
                         //read.nextLine();
                         String val = read.nextLine();
                         Attribute a = new Attribute(def, val);
@@ -179,10 +190,10 @@ public class WeightAlgDriver {
                     break;
                 case 2:
                     System.out.println("Enter the type info");
-                    System.out.print("name: ");
+                    System.out.println("name: ");
                     //read.nextLine();
                     String name = read.nextLine();
-                    System.out.print("importance: ");
+                    System.out.println("importance: ");
                     Integer importance = read.nextInt();
                     read.nextLine();
                     def = new AttrDefinition(name, importance);
@@ -246,7 +257,7 @@ public class WeightAlgDriver {
                     //read.nextLine();
                     def = c.getAttrDef(read.nextLine());
                     System.out.println();
-                    if(c.hasAttrDef(def)) System.out.println(def);
+                    if(!def.equals(null)) System.out.println(def);
                     else System.out.println("There's no type of attributes defined");
                     System.out.println();
                     break;
@@ -255,7 +266,7 @@ public class WeightAlgDriver {
                     //read.nextLine();
                     def = c.getAttrDef(read.nextLine());
                     System.out.println("actual importance is "+def.getImportance());
-                    if(c.hasAttrDef(def)) {
+                    if(!def.equals(null)) {
                         System.out.print("new importance: ");
                         def.setImportance(read.nextInt());
                         System.out.println("importance changed\n");
@@ -270,12 +281,21 @@ public class WeightAlgDriver {
     }
     public static void Compute_Weights() {
         Boolean seguir = true;
-        Scanner read = new Scanner(System.in);
         while(seguir) {
             System.out.println("Computing weights:\n");
-            System.out.println();
+            System.out.println("1-Compute the weights of the relationships of the whole congress\nany other key-EXIT");
             Integer num = read.nextInt();
             read.nextLine();
+            switch(num) {
+                case 1:
+                    wa.computeAllWeights();
+                    System.out.println("How the congress remains");
+                    System.out.println(c);
+                    break;
+                default:
+                    seguir = false;
+                    break;
+            }
         }
     }
 }
