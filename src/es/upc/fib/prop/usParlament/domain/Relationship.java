@@ -14,7 +14,7 @@ public class Relationship extends Edge {
         MP m1,m2;
         m1 = (MP)super.getNode();
         m2 = (MP)super.getNeighbor(getNode());
-        return "("+m1.getState()+" "+m1.getDistrict()+","+m2.getState()+" "+m2.getDistrict()+")";
+        return "("+m1.getState()+" "+m1.getDistrict()+","+m2.getState()+" "+m2.getDistrict()+"):"+super.getWeight();
     }
 
     /**
