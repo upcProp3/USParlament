@@ -118,39 +118,49 @@ public class MPDriver {
                     }
                     System.out.println("Enter attribute value:");
                     value = reader.nextLine();
-                    System.out.println("Enter MP state:");
-                    s = State.valueOf(reader.nextLine().toUpperCase());
-                    System.out.println("Enter MP district number:");
-                    distr = Integer.parseInt(reader.nextLine());
-                    m = c.getMP(s, distr);
-                    while (m==null) {
-                        System.out.println("This MP doesn't exist, please enter valid values:");
+                    try {
                         System.out.println("Enter MP state:");
                         s = State.valueOf(reader.nextLine().toUpperCase());
                         System.out.println("Enter MP district number:");
                         distr = Integer.parseInt(reader.nextLine());
                         m = c.getMP(s, distr);
+                        while (m == null) {
+                            System.out.println("This MP doesn't exist, please enter valid values:");
+                            System.out.println("Enter MP state:");
+                            s = State.valueOf(reader.nextLine().toUpperCase());
+                            System.out.println("Enter MP district number:");
+                            distr = Integer.parseInt(reader.nextLine());
+                            m = c.getMP(s, distr);
+                        }
+                        Attribute a = new Attribute(ad, value);
+                        m.addAttribute(a);
+                        break;
+                    } catch(IllegalArgumentException e) {
+                        System.out.println("ERROR: Enter a valid state and district please. The MP hasn't been processed, try it again.");
+                        break;
                     }
-                    Attribute a = new Attribute(ad, value);
-                    m.addAttribute(a);
-                    break;
                 case 4: //Delete MP
                     System.out.println("Deleting MP");
-                    System.out.println("Enter MP state:");
-                    s = State.valueOf(reader.nextLine().toUpperCase());
-                    System.out.println("Enter MP district number:");
-                    distr = Integer.parseInt(reader.nextLine());
-                    m = c.getMP(s, distr);
-                    while (m==null) {
-                        System.out.println("This MP doesn't exist, please enter valid values:");
+                    try {
                         System.out.println("Enter MP state:");
                         s = State.valueOf(reader.nextLine().toUpperCase());
                         System.out.println("Enter MP district number:");
                         distr = Integer.parseInt(reader.nextLine());
                         m = c.getMP(s, distr);
+                        while (m == null) {
+                            System.out.println("This MP doesn't exist, please enter valid values:");
+                            System.out.println("Enter MP state:");
+                            s = State.valueOf(reader.nextLine().toUpperCase());
+                            System.out.println("Enter MP district number:");
+                            distr = Integer.parseInt(reader.nextLine());
+                            m = c.getMP(s, distr);
+                        }
+                        c.removeNode(m);
+                        break;
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("ERROR: Enter a valid state and district please. The MP hasn't been processed, try it again.");
+                        break;
                     }
-                    c.removeNode(m);
-                    break;
                 case 5: //Delete attribute definition
                     System.out.println("Deleting attribute definition");
                     System.out.println("Enter attribute name:");
@@ -176,39 +186,49 @@ public class MPDriver {
                         name = reader.nextLine();
                         ad = c.getAttrDef(name);
                     }
-                    System.out.println("Enter MP state:");
-                    s = State.valueOf(reader.nextLine().toUpperCase());
-                    System.out.println("Enter MP district number:");
-                    distr = Integer.parseInt(reader.nextLine());
-                    m = c.getMP(s, distr);
-                    while (m==null) {
-                        System.out.println("This MP doesn't exist, please enter valid values:");
+                    try {
                         System.out.println("Enter MP state:");
                         s = State.valueOf(reader.nextLine().toUpperCase());
                         System.out.println("Enter MP district number:");
                         distr = Integer.parseInt(reader.nextLine());
                         m = c.getMP(s, distr);
+                        while (m == null) {
+                            System.out.println("This MP doesn't exist, please enter valid values:");
+                            System.out.println("Enter MP state:");
+                            s = State.valueOf(reader.nextLine().toUpperCase());
+                            System.out.println("Enter MP district number:");
+                            distr = Integer.parseInt(reader.nextLine());
+                            m = c.getMP(s, distr);
+                        }
+                        if (m.hasAttribute(ad)) m.removeAttribute(ad);
+                        else System.out.println("This MP had no assigned value for that attribute\n");
+                        break;
+                    }catch(IllegalArgumentException e) {
+                        System.out.println("ERROR: Enter a valid state and district please. The MP hasn't been processed, try it again.");
+                        break;
                     }
-                    if (m.hasAttribute(ad)) m.removeAttribute(ad);
-                    else System.out.println("This MP had no assigned value for that attribute\n");
-                    break;
                 case 7: //Print MP information
                     System.out.println("Printing an MP");
-                    System.out.println("Enter MP state:");
-                    s = State.valueOf(reader.nextLine().toUpperCase());
-                    System.out.println("Enter MP district number:");
-                    distr = Integer.parseInt(reader.nextLine());
-                    m = c.getMP(s, distr);
-                    while (m==null) {
-                        System.out.println("This MP doesn't exist, please enter valid values:");
+                    try {
                         System.out.println("Enter MP state:");
                         s = State.valueOf(reader.nextLine().toUpperCase());
                         System.out.println("Enter MP district number:");
                         distr = Integer.parseInt(reader.nextLine());
                         m = c.getMP(s, distr);
+                        while (m == null) {
+                            System.out.println("This MP doesn't exist, please enter valid values:");
+                            System.out.println("Enter MP state:");
+                            s = State.valueOf(reader.nextLine().toUpperCase());
+                            System.out.println("Enter MP district number:");
+                            distr = Integer.parseInt(reader.nextLine());
+                            m = c.getMP(s, distr);
+                        }
+                        System.out.println(m);
+                        break;
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("ERROR: Enter a valid state and district please. The MP hasn't been processed, try it again.");
+                        break;
                     }
-                    System.out.println(m);
-                    break;
                 case 8: //Print attribute information
                     System.out.println("Printing attribute information");
                     System.out.println("Enter attribute name");
