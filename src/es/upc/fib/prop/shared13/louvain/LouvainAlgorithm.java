@@ -23,49 +23,6 @@ public class LouvainAlgorithm
         bestPartition = null;
     }
 
-    public static void main(String[] args)
-    {
-        Graph L = new LGraph();
-        Node[] nodes = new Node[6];
-        for (int i = 0; i < 6; i++) {
-            nodes[i] = new TNode(i + 1);
-            L.addNode(nodes[i]);
-        }
-
-        L.addEdge(new TEdge(nodes[0], nodes[1], 20));
-        L.addEdge(new TEdge(nodes[1], nodes[1], 10));
-        L.addEdge(new TEdge(nodes[0], nodes[2], 13));
-        L.addEdge(new TEdge(nodes[1], nodes[2], 12));
-
-        L.addEdge(new TEdge(nodes[2], nodes[2], 4));
-
-        L.addEdge(new TEdge(nodes[2], nodes[3], 10));//Era 10
-        L.addEdge(new TEdge(nodes[3], nodes[4], 16));
-        L.addEdge(new TEdge(nodes[3], nodes[5], 15));
-        L.addEdge(new TEdge(nodes[4], nodes[5], 18));
-        L.addEdge(new TEdge(nodes[5], nodes[5], 8));
-
-
-        Map<Node,Integer> particio = new LinkedHashMap<>();
-
-        particio.put(nodes[0],0);
-        particio.put(nodes[1],0);
-        particio.put(nodes[2],1);
-        particio.put(nodes[3],2);
-        particio.put(nodes[4],2);
-        particio.put(nodes[5],2);
-
-        Graph go = new LGraph();
-        go.addNode(nodes[0]);
-        go.addNode(nodes[1]);
-        go.addEdge(new LEdge(nodes[0],nodes[1],300));
-        go.addEdge(new LEdge(nodes[0],nodes[0],100));
-        go.addEdge(new LEdge(nodes[1],nodes[1],200));
-
-        System.out.println(go);
-        LouvainAlgorithm l = new LouvainAlgorithm(go);
-        l.calculate();
-    }
 
     //Calculates the modularity of a partition of the graph g
     //TODO: exception if the partition does not map all nodes
@@ -77,6 +34,8 @@ public class LouvainAlgorithm
      */
     static public Double calculateModularity(Graph g,Map<Node,Integer> part)
     {
+        if(g.getEdgeCount()==0) throw new IllegalArgumentException("Cannot calculate modularity of a graph with no edges");
+
         Map<Node,Double> ndegree = new LinkedHashMap<>();
         Map<Integer,Double> inc = new LinkedHashMap<>();
         Map<Integer,Double> dec = new LinkedHashMap<>();
