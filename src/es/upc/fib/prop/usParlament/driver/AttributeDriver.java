@@ -253,8 +253,22 @@ public class AttributeDriver {
 
 	private static void prepareData(Scanner reader) {
 
+		MP mp1 = new MP("Ondrej Velisek", State.FL, 1);
+		mp1.setId(1);
+		MP mp2 = new MP("Alex Miro", State.NY, 1);
+		mp2.setId(2);
+		MP mp3 = new MP("Miquel Jubert", State.LA, 1);
+		mp3.setId(3);
+		MP mp4 = new MP("Alex Sacrest", State.NY, 2);
+		mp4.setId(4);
+
+		mps.add(mp1);
+		mps.add(mp2);
+		mps.add(mp3);
+		mps.add(mp4);
+
 		System.out.println("=====================================");
-		System.out.println("Do you want to prepare some data? (y/n)");
+		System.out.println("Do you want to prepare some attribute data? (y/n)");
 
 		while(true) {
 			String input = reader.next();
@@ -267,20 +281,6 @@ public class AttributeDriver {
 				System.out.println("Please type only 'y' as yes or 'n' as no");
 			}
 		}
-
-		MP mp1 = new MP("Ondrej Velisek", State.FL, 1);
-		mp1.setId(1);
-		MP mp2 = new MP("Alex Miro", State.NY, 1);
-		mp2.setId(2);
-		MP mp3 = new MP("Miquel Jubert", State.LA, 1);
-		mp3.setId(4);
-		MP mp4 = new MP("Alex Sacrest", State.NY, 2);
-		mp4.setId(8);
-
-		mps.add(mp1);
-		mps.add(mp2);
-		mps.add(mp3);
-		mps.add(mp4);
 
 
 		AttrDefinition sex = new AttrDefinition("sex", 1);
