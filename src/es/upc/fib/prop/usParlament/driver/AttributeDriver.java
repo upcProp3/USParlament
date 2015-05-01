@@ -75,7 +75,7 @@ public class AttributeDriver {
 	}
 
 	private static void removeAttribute(Scanner reader) {
-		System.out.println("Put MP id: ");
+		System.out.println("Put ID of MP: ");
 		int mpId;
 		while(true) {
 			try {
@@ -107,7 +107,7 @@ public class AttributeDriver {
 		}
 
 		System.out.println("=====================================");
-		System.out.println("Put attribute definition id: ");
+		System.out.println(mp.getFullname() + " selected. Put ID of attribute you want to remove: ");
 		int defId;
 		while(true) {
 			try {
@@ -127,7 +127,7 @@ public class AttributeDriver {
 			}
 		}
 		if (def == null) {
-			System.out.println("MP " +mp.getFullname()+ " does not contains Attribute definition with id " + defId);
+			System.out.println("MP " +mp.getFullname()+ " does not contains attribute with id " + defId);
 			return;
 		}
 
@@ -137,7 +137,7 @@ public class AttributeDriver {
 
 
 	private static void addAttribute(Scanner reader) {
-		System.out.println("Put MP id: ");
+		System.out.println("Put ID of MP: ");
 		int mpId;
 		while(true) {
 			try {
@@ -167,7 +167,7 @@ public class AttributeDriver {
 		showDefinitions();
 
 		System.out.println("=====================================");
-		System.out.println("Put attribute definition id: ");
+		System.out.println(mp.getFullname() + " selected. Put attribute definition id: ");
 		int defId;
 		while(true) {
 			try {
@@ -191,7 +191,7 @@ public class AttributeDriver {
 			return;
 		}
 
-		System.out.println("Set attribute value: ");
+		System.out.println(def.getName() + " selected. Set attribute value: ");
 		String value = reader.next();
 		mp.addAttribute(new Attribute(def, value));
 	}
@@ -215,12 +215,13 @@ public class AttributeDriver {
 				i.remove();
 			}
 		}
+		System.out.println("Removed successfully.");
 	}
 
 	private static void addDefinition(Scanner reader) {
-		System.out.println("Set name: ");
+		System.out.println("Set name of attribute: ");
 		String name = reader.next();
-		System.out.println("Set importance: ");
+		System.out.println("Set importance of attribute: ");
 		int importance;
 		while(true) {
 			try {
@@ -262,7 +263,7 @@ public class AttributeDriver {
 		mp2.setId(2);
 		MP mp3 = new MP("Miquel Jubert", State.LA, 1);
 		mp3.setId(3);
-		MP mp4 = new MP("Alex Sacrest", State.NY, 2);
+		MP mp4 = new MP("Aleix Sacrest", State.NY, 2);
 		mp4.setId(4);
 
 		mps.add(mp1);
