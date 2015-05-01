@@ -2,6 +2,7 @@ package es.upc.fib.prop.usParlament.driver;
 
 import es.upc.fib.prop.usParlament.domain.*;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -26,7 +27,7 @@ public class MPDriver {
         System.out.println("=====================");
 
         System.out.println("Options:");
-        System.out.println("USA districts:" +
+        System.out.println("USA districts:\n" +
                 "\tAL, AK, AZ, AR, CA, CO, CT, DE, FL, GA,\n" +
                 "\tHI, ID, IL, IN, IA, KS, KY, LA, ME, MD,\n" +
                 "\tMA, MI, MN, MS, MO, MT, NE, NV, NH, NJ,\n" +
@@ -57,8 +58,17 @@ public class MPDriver {
         int distr;
         int imp;
         AttrDefinition ad;
-        opcode = reader.nextInt();
         Object value;
+        while (true) {
+            try {
+                opcode = reader.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                reader.nextLine();
+                System.out.println("ERROR: Operation codes must be integers, enter 99 to see option list.");
+                continue;
+            }
+        }
 
         //INITIALIZATION END
 
@@ -70,13 +80,18 @@ public class MPDriver {
                     System.out.println("Enter the name:");
                     name = reader.nextLine();
                     System.out.println("Enter the state:");
-                    s = State.valueOf(reader.nextLine().toUpperCase());
-                    System.out.println("Enter the district number:");
-                    distr = Integer.parseInt(reader.nextLine());
-                    m = new MP(name, s, distr);
-                    if (c.getMP(s, distr) == null) c.addNode(m);
-                    else System.out.println("There's an MP already assigned to this state and district");
-                    break;
+                    try {
+                        s = State.valueOf(reader.nextLine().toUpperCase());
+                        System.out.println("Enter the district number:");
+                        distr = Integer.parseInt(reader.nextLine());
+                        m = new MP(name, s, distr);
+                        if (c.getMP(s, distr) == null) c.addNode(m);
+                        else System.out.println("There's an MP already assigned to this state and district");
+                        break;
+                    } catch (IllegalArgumentException i) {
+                        System.out.println("ERROR: Enter a valid state and district please. The MP hasn't been saved, try it again.");
+                        break;
+                    }
                 case 2: //Add attribute definition
                     System.out.println("Adding AttrDefinition");
                     System.out.println("Enter the name:");
@@ -95,15 +110,28 @@ public class MPDriver {
                     System.out.println("Adding attribute value to an MP");
                     System.out.println("Enter attribute name:");
                     name = reader.nextLine();
+                    ad = c.getAttrDef(name);
+                    while (ad==null) {
+                        System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
+                        name = reader.nextLine();
+                        ad = c.getAttrDef(name);
+                    }
                     System.out.println("Enter attribute value:");
                     value = reader.nextLine();
                     System.out.println("Enter MP state:");
                     s = State.valueOf(reader.nextLine().toUpperCase());
                     System.out.println("Enter MP district number:");
                     distr = Integer.parseInt(reader.nextLine());
-                    ad = c.getAttrDef(name);
-                    Attribute a = new Attribute(ad, value);
                     m = c.getMP(s, distr);
+                    while (m==null) {
+                        System.out.println("This MP doesn't exist, please enter valid values:");
+                        System.out.println("Enter MP state:");
+                        s = State.valueOf(reader.nextLine().toUpperCase());
+                        System.out.println("Enter MP district number:");
+                        distr = Integer.parseInt(reader.nextLine());
+                        m = c.getMP(s, distr);
+                    }
+                    Attribute a = new Attribute(ad, value);
                     m.addAttribute(a);
                     break;
                 case 4: //Delete MP
@@ -113,6 +141,14 @@ public class MPDriver {
                     System.out.println("Enter MP district number:");
                     distr = Integer.parseInt(reader.nextLine());
                     m = c.getMP(s, distr);
+                    while (m==null) {
+                        System.out.println("This MP doesn't exist, please enter valid values:");
+                        System.out.println("Enter MP state:");
+                        s = State.valueOf(reader.nextLine().toUpperCase());
+                        System.out.println("Enter MP district number:");
+                        distr = Integer.parseInt(reader.nextLine());
+                        m = c.getMP(s, distr);
+                    }
                     c.removeNode(m);
                     break;
                 case 5: //Delete attribute definition
@@ -120,6 +156,11 @@ public class MPDriver {
                     System.out.println("Enter attribute name:");
                     name = reader.nextLine();
                     ad = c.getAttrDef(name);
+                    while (ad==null) {
+                        System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
+                        name = reader.nextLine();
+                        ad = c.getAttrDef(name);
+                    }
                     for (MP m1 : c.getMPs()) {
                         if (m1.hasAttribute(ad)) m1.removeAttribute(ad);
                     }
@@ -129,12 +170,25 @@ public class MPDriver {
                     System.out.println("Deleting attribute value of an MP");
                     System.out.println("Enter attribute name");
                     name = reader.nextLine();
+                    ad = c.getAttrDef(name);
+                    while (ad==null) {
+                        System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
+                        name = reader.nextLine();
+                        ad = c.getAttrDef(name);
+                    }
                     System.out.println("Enter MP state:");
                     s = State.valueOf(reader.nextLine().toUpperCase());
                     System.out.println("Enter MP district number:");
                     distr = Integer.parseInt(reader.nextLine());
-                    ad = c.getAttrDef(name);
                     m = c.getMP(s, distr);
+                    while (m==null) {
+                        System.out.println("This MP doesn't exist, please enter valid values:");
+                        System.out.println("Enter MP state:");
+                        s = State.valueOf(reader.nextLine().toUpperCase());
+                        System.out.println("Enter MP district number:");
+                        distr = Integer.parseInt(reader.nextLine());
+                        m = c.getMP(s, distr);
+                    }
                     if (m.hasAttribute(ad)) m.removeAttribute(ad);
                     else System.out.println("This MP had no assigned value for that attribute\n");
                     break;
@@ -145,6 +199,14 @@ public class MPDriver {
                     System.out.println("Enter MP district number:");
                     distr = Integer.parseInt(reader.nextLine());
                     m = c.getMP(s, distr);
+                    while (m==null) {
+                        System.out.println("This MP doesn't exist, please enter valid values:");
+                        System.out.println("Enter MP state:");
+                        s = State.valueOf(reader.nextLine().toUpperCase());
+                        System.out.println("Enter MP district number:");
+                        distr = Integer.parseInt(reader.nextLine());
+                        m = c.getMP(s, distr);
+                    }
                     System.out.println(m);
                     break;
                 case 8: //Print attribute information
@@ -152,6 +214,11 @@ public class MPDriver {
                     System.out.println("Enter attribute name");
                     name = reader.nextLine();
                     ad = c.getAttrDef(name);
+                    while (ad==null) {
+                        System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
+                        name = reader.nextLine();
+                        ad = c.getAttrDef(name);
+                    }
                     System.out.println(ad);
                     break;
                 case 9: //Print the congress
@@ -167,6 +234,12 @@ public class MPDriver {
                     System.out.println("Modifying attribute importance");
                     System.out.println("Enter attribute name");
                     name = reader.nextLine();
+                    ad = c.getAttrDef(name);
+                    while (ad==null) {
+                        System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
+                        name = reader.nextLine();
+                        ad = c.getAttrDef(name);
+                    }
                     System.out.println("Enter the new importance (integer between 0 and 3):");
                     imp = Integer.parseInt(reader.nextLine());
                     while (imp < 0 || imp > 3) {
@@ -174,12 +247,11 @@ public class MPDriver {
                                 + "Enter the importance again:");
                         imp = Integer.parseInt(reader.nextLine());
                     }
-                    ad = c.getAttrDef(name);
                     ad.setImportance(imp);
                     break;
                 case 99: //Options menu
                     System.out.println("Options:");
-                    System.out.println("USA districts:" +
+                    System.out.println("USA districts:\n" +
                             "\tAL, AK, AZ, AR, CA, CO, CT, DE, FL, GA,\n" +
                             "\tHI, ID, IL, IN, IA, KS, KY, LA, ME, MD,\n" +
                             "\tMA, MI, MN, MS, MO, MT, NE, NV, NH, NJ,\n" +
@@ -203,7 +275,16 @@ public class MPDriver {
                     System.out.println("Invalid operation code");
             }
             System.out.println("Operation finished, enter 99 to see option list or enter next command");
-            opcode = reader.nextInt();
+            while (true) {
+                try {
+                    opcode = reader.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    reader.nextLine();
+                    System.out.println("ERROR: Operation codes must be integers, enter 99 to see option list.");
+                    continue;
+                }
+            }
         }
         System.out.println("Successful exit");
     }
