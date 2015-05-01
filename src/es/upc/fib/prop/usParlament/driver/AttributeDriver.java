@@ -216,6 +216,9 @@ public class AttributeDriver {
 			AttrDefinition def = i.next();
 			if (def.getId() == id) {
 				i.remove();
+				for (MP mp : mps) {
+					mp.removeAttribute(def);
+				}
 				System.out.println("Removed successfully.");
 			}
 		}
@@ -295,11 +298,11 @@ public class AttributeDriver {
 
 
 		AttrDefinition sex = new AttrDefinition("sex", 1);
-		sex.setId(3);
+		sex.setId(1);
 		AttrDefinition religion = new AttrDefinition("religion", 3);
-		religion.setId(6);
+		religion.setId(2);
 		AttrDefinition age = new AttrDefinition("age", 2);
-		age.setId(9);
+		age.setId(3);
 
 		definitions.add(sex);
 		definitions.add(religion);
