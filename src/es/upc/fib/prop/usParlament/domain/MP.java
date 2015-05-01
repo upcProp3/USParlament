@@ -2,6 +2,7 @@ package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.shared13.Node;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -66,8 +67,8 @@ public class MP extends Node {
         this.state = state;
     }
 
-	public Set<Attribute> getAttributes() {
-		return (Set<Attribute>) attributes.values();
+	public Collection<Attribute> getAttributes() {
+		return attributes.values();
 	}
 
 	public void addAttribute(Attribute attr) {

@@ -30,7 +30,7 @@ public class WeightAlgorithm {
      */
     public Set<Attribute> getCommonAttributes(MP m1, MP m2) {
         Set<Attribute> ret = new HashSet<>();
-        ret = m1.getAttributes();
+        ret.addAll(m1.getAttributes());
         ret.retainAll(m2.getAttributes());
         return ret;
     }
