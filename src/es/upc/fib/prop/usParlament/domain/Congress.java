@@ -9,6 +9,7 @@ import java.util.Set;
 
 /**
  * Created by ondrej on 15.4.15.
+ * contributions aleixsacrest, alex
  */
 public class Congress extends Graph {
     private static Set<AttrDefinition> s = new HashSet<>();

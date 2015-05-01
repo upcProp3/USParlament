@@ -6,7 +6,7 @@ import java.util.Set;
 
 /**
  * Created by alex on 14/4/15.
- * contributions of ondrej.
+ * contributions of ondrej, aleixsacrest.
  */
 
 public class WeightAlgorithm {
