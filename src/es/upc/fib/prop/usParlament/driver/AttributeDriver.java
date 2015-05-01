@@ -75,6 +75,7 @@ public class AttributeDriver {
 	}
 
 	private static void removeAttribute(Scanner reader) {
+		System.out.println("remove attribute definition - selected");
 		System.out.println("Put ID of MP: ");
 		int mpId;
 		while(true) {
@@ -108,7 +109,8 @@ public class AttributeDriver {
 		}
 
 		System.out.println("=====================================");
-		System.out.println(mp.getFullname() + " selected. Put ID of attribute you want to remove: ");
+		System.out.println(mp.getFullname() + " selected.");
+		System.out.println("Put ID of attribute you want to remove: ");
 		int defId;
 		while(true) {
 			try {
@@ -138,6 +140,7 @@ public class AttributeDriver {
 
 
 	private static void addAttribute(Scanner reader) {
+		System.out.println("Add attribute to MP - selected");
 		System.out.println("Put ID of MP: ");
 		int mpId;
 		while(true) {
@@ -163,8 +166,6 @@ public class AttributeDriver {
 		}
 
 		System.out.println("=====================================");
-		System.out.print("ID: " + mp.getId());
-		System.out.println(mp);
 		showDefinitions();
 
 		System.out.println("=====================================");
@@ -198,6 +199,7 @@ public class AttributeDriver {
 	}
 
 	private static void removeDefinition(Scanner reader) {
+		System.out.println("Remove attribute definition - selected");
 		System.out.println("Put attribute definition id: ");
 		int id;
 		while(true) {
@@ -214,12 +216,13 @@ public class AttributeDriver {
 			AttrDefinition def = i.next();
 			if (def.getId() == id) {
 				i.remove();
+				System.out.println("Removed successfully.");
 			}
 		}
-		System.out.println("Removed successfully.");
 	}
 
 	private static void addDefinition(Scanner reader) {
+		System.out.println("Add attribute definition - selected");
 		System.out.println("Set name of attribute: ");
 		String name = reader.next();
 		System.out.println("Set importance of attribute: ");
@@ -238,9 +241,11 @@ public class AttributeDriver {
 		def.setId(defId);
 		defId++;
 		definitions.add(def);
+		System.out.println("Added successfully");
 	}
 
 	private static void showMPs() {
+		System.out.println("Printing all MPs: ");
 		for (MP mp : mps) {
 			System.out.println("-------------------------------------");
 			System.out.print("ID: " + mp.getId());
@@ -249,6 +254,7 @@ public class AttributeDriver {
 	}
 
 	private static void showDefinitions() {
+		System.out.println("Printing all attribute definitions: ");
 		for (AttrDefinition def : definitions) {
 			System.out.println("-------------------------------------");
 			System.out.print("ID: " + def.getId());
@@ -298,7 +304,6 @@ public class AttributeDriver {
 		definitions.add(sex);
 		definitions.add(religion);
 		definitions.add(age);
-
 
 		mp1.addAttribute(new Attribute(sex, "male"));
 		mp1.addAttribute(new Attribute(religion, "atheist"));
