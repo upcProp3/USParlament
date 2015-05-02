@@ -33,7 +33,9 @@ public class GeneralDriver {
                     attributeManagement();
                     break;
                 case 3:
-                    computeWeights();
+                    wa.computeAllWeights();
+                    System.out.println("How the congress remains");
+                    System.out.println(c);
                     break;
                 case 4:
                     for (MP p : c.getMPs()) {
@@ -277,25 +279,6 @@ public class GeneralDriver {
                         System.out.println("importance changed\n");
                     }
                     else System.out.println("There's no type of attributes defined");
-                    break;
-                default:
-                    seguir = false;
-                    break;
-            }
-        }
-    }
-    public static void computeWeights() {
-        Boolean seguir = true;
-        while(seguir) {
-            System.out.println("Computing weights:\n");
-            System.out.println("1-Compute the weights of the relationships of the whole congress\nany other key-EXIT");
-            Integer num = read.nextInt();
-            read.nextLine();
-            switch(num) {
-                case 1:
-                    wa.computeAllWeights();
-                    System.out.println("How the congress remains");
-                    System.out.println(c);
                     break;
                 default:
                     seguir = false;
