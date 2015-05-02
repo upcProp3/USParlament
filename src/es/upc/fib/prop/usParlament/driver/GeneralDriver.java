@@ -1,5 +1,7 @@
 package es.upc.fib.prop.usParlament.driver;
 
+import es.upc.fib.prop.shared13.Node;
+import es.upc.fib.prop.shared13.louvain.LouvainAlgorithm;
 import org.w3c.dom.Attr;
 
 import es.upc.fib.prop.usParlament.domain.*;
@@ -68,8 +70,9 @@ public class GeneralDriver {
             MP p1;
             switch(num) {
                 case 1:
-                    System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\nwhen you're done instead of the name");
+                    System.out.println("Enter the full name, the state and the district of the MP's\n");
                     while(true) {
+                        System.out.println("Enter the MP DATA, if you want to stop inputting MPs enter 0 as fullname");
                         System.out.print("fullname: ");
                         fullname = read.nextLine();
                         if (fullname.equals("0")) {System.out.println('\n'); break;}
@@ -300,5 +303,45 @@ public class GeneralDriver {
             }
         }
     }
-    public static void applyLouvain() {}
+
+    public static void printCommunitiesShort(ArrayList<Set<Node>> p)
+    {
+        System.out.print("{");
+        for(Set<Node> smp:p){
+            System.out.print("(");
+            for(Node m:smp){
+                MP mp = (MP)m;
+                System.out.print(mp.getState()+" "+mp.getDistrict());
+                System.out.print(",");
+            }
+            System.out.print(")");
+        }
+        System.out.println("}");
+    }
+
+    public static void applyLouvain()
+    {
+        Boolean seguir = true;
+        LouvainAlgorithm l;
+        while(seguir) {
+            System.out.println("Calculation of communities using the louvain algorithm:");
+            System.out.println("1-Compute the best partition of the graph using Louvains algorithm\n" +
+                    "2-Calculate the best partition's modularity\n" +
+                    "any other key-EXIT");
+            Integer num = read.nextInt();
+            read.nextLine();
+            switch(num) {
+                case 1:
+                    l = new LouvainAlgorithm(c);
+                    printCommunitiesShort(l.calculate());
+                    break;
+                case 2:
+                    l = new LouvainAlgorithm(c);
+                    System.out.println("Modularity of the best partition:"+l.resultModularity());
+                default:
+                    seguir = false;
+                    break;
+            }
+        }
+    }
 }
