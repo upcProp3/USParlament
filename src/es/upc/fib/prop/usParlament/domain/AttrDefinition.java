@@ -46,7 +46,7 @@ public class AttrDefinition {
 		if (!(o instanceof AttrDefinition)) return false;
 
 		AttrDefinition that = (AttrDefinition) o;
-        return (that.getName() == this.getName());
+        return (that.getName().equals(this.getName()));
 	}
 
 	@Override
