@@ -1,12 +1,10 @@
 package es.upc.fib.prop.usParlament.driver;
 
-import org.w3c.dom.Attr;
-
 import es.upc.fib.prop.usParlament.domain.*;
-import es.upc.fib.prop.usParlament.driver.*;
 
-import java.awt.SystemTray;
-import java.util.*;
+import java.util.Collection;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  * Created by aleixsacrest on 30/04/2015.
@@ -20,9 +18,9 @@ public class GeneralDriver {
         while(seguir) {
             System.out.println("What do you want to do? Enter the key and press Enter\n");
             System.out.println("1-MP management\n2-Attribute Definitions management\n3-Compute Weights");
-            System.out.println("4-Show all MP's and its Attributes\n5-Show congress\n6-Apply Louvain\nany other key-EXIT");
-            Integer num = read.nextInt();
-            read.nextLine();
+            System.out.println("4-Show all MP's and its Attributes\n5-Show congress\n6-Apply Louvain\nany other number-EXIT");
+            Integer num = null;
+            readCommand(num);
             switch (num) {
                 case 1:
                     mpManagement();
@@ -58,50 +56,59 @@ public class GeneralDriver {
         Boolean seguir = true;
         while(seguir) {
             System.out.println("Node Management:");
-            System.out.println("1-Enter MP's\n2-Erase MP\n3-Get an MP with its attributes\n4-Get all MP's\n5-Get Common Attributes\nany other key-EXIT");
+            System.out.println("1-Enter MP's\n2-Erase MP\n3-Get an MP with its attributes\n4-Get all MP's\n5-Get Common Attributes\nany other number-EXIT");
             Integer num = read.nextInt();
-            read.nextLine();
+            readCommand(num);
             String fullname;
             String st;
             State estat;
             Integer dist;
+            Boolean readmp = true;
             MP p1;
             switch(num) {
                 case 1:
-                    System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\nwhen you're done instead of the name");
+                    System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\nwhen you're done instead of the name enter 0");
                     while(true) {
                         System.out.print("fullname: ");
                         fullname = read.nextLine();
                         if (fullname.equals("0")) {System.out.println('\n'); break;}
                         System.out.print("state: ");
-                        st = read.next();
-                        estat = State.valueOf(st);
-                        System.out.print("district :");
-                        dist = read.nextInt();
-                        read.nextLine();
-                        MP p = new MP(fullname, estat, dist);
-                        c.addNode(p);
-                        System.out.println("MP added successfully");
+                        try {
+                            st = read.nextLine();
+                            estat = State.valueOf(st);
+                            System.out.print("district :");
+                            dist = read.nextInt();
+                            MP p = new MP(fullname, estat, dist);
+                            if (c.getMP(estat, dist) == null) c.addNode(p);
+                            else System.out.println("There's an MP already assigned to this state and district");
+                            System.out.println("MP added successfully");
+                            break;
+                        } catch (IllegalArgumentException i) {
+                            System.out.println("ERROR: Enter a valid state and district please. The MP hasn't been saved, try it again.");
+                            break;
+                        }
                     }
                     break;
                 case 2:
                     System.out.println("Enter the MP state and district whose info you want to show:");
-                    System.out.print("state: ");
-                    st = read.next();
-                    estat = State.valueOf(st);
-                    System.out.print("district: ");
-                    dist = read.nextInt();
+                    st = null;
+                    estat = null;
+                    dist = 0;
+                    readmp = true;
+                    readMP(st, estat, dist, readmp);
                     read.nextLine();
+                    if (!readmp) break;
                     c.removeNode(c.getMP(estat, dist));
                     break;
                 case 3:
                     System.out.println("Enter the MP state and district whose info you want to show:");
-                    System.out.print("state: ");
-                    st = read.next();
-                    estat = State.valueOf(st);
-                    System.out.print("district: ");
-                    dist = read.nextInt();
+                    st = null;
+                    estat = null;
+                    dist = 0;
+                    readmp = true;
+                    readMP(st, estat, dist, readmp);
                     read.nextLine();
+                    if (!readmp) break;
                     p1 = null;
                     p1 = c.getMP(estat, dist);
                     if (p1.equals(null)) {
@@ -119,20 +126,26 @@ public class GeneralDriver {
                     break;
                 case 5:
                     System.out.println("Enter the MP's you want to compare:");
-                    System.out.print("state1: ");
-                    st = read.next();
-                    estat = State.valueOf(st);
-                    System.out.print("district1: ");
-                    dist = read.nextInt();
+                    System.out.println("MP#1");
+                    st = null;
+                    estat = null;
+                    dist = 0;
+                    readmp = true;
+                    readMP(st, estat, dist, readmp);
+                    read.nextLine();
+                    if (!readmp) break;
                     p1 = null;
                     p1 = c.getMP(estat, dist);
                     Boolean found = false;
                     if (p1.equals(null)) {System.out.println("there's not such MP in the congress"); break;}
-                    System.out.print("state2: ");
-                    st = read.next();
-                    estat = State.valueOf(st);
-                    System.out.print("district2: ");
-                    dist = read.nextInt();
+                    System.out.print("MP#2:");
+                    st = null;
+                    estat = null;
+                    dist = 0;
+                    readmp = true;
+                    readMP(st, estat, dist, readmp);
+                    read.nextLine();
+                    if (!readmp) break;
                     MP p2 = null;
                     p2 = c.getMP(estat, dist);
                     if (p2.equals(null)) {System.out.println("there's not such MP in the congress"); break;}
@@ -150,24 +163,27 @@ public class GeneralDriver {
         while(seguir) {
             System.out.println("Attribute Management");
             System.out.println("1-Add Attributes\n2-Add new type of attribute\n3-Delete Attribute\n4-Change the value of an attribute\n" +
-                    "5-Get the importance of a type of attributes\n6-Set importance to a type of attributes\nany other key-EXIT");
-            Integer num = read.nextInt();
+                    "5-Get the importance of a type of attributes\n6-Set importance to a type of attributes\nany other number-EXIT");
+            Integer num = null;
+            readCommand(num);
             read.nextLine();
             String fullname;
             String st;
             State estat;
             Integer dist;
+            Boolean readmp;
             MP p1;
             AttrDefinition def;
             switch(num) {
                 case 1:
                     System.out.println("Enter the MP to whom you want to add attributes:");
-                    System.out.print("state: ");
-                    st = read.next();
-                    estat = State.valueOf(st);
-                    System.out.print("district: ");
-                    dist = read.nextInt();
+                    st = null;
+                    estat = null;
+                    dist = 0;
+                    readmp = true;
+                    readMP(st, estat, dist, readmp);
                     read.nextLine();
+                    if (!readmp) break;
                     p1 = null;
                     p1 = c.getMP(estat, dist);
                     if (p1.equals(null)) {
@@ -182,6 +198,11 @@ public class GeneralDriver {
                         String d = read.nextLine();
                         def = c.getAttrDef(d);
                         if (d.equals("0")) break;
+                        while (def==null) {
+                            System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
+                            d = read.nextLine();
+                            def = c.getAttrDef(d);
+                        }
                         System.out.println("value : ");
                         //read.nextLine();
                         String val = read.nextLine();
@@ -198,18 +219,24 @@ public class GeneralDriver {
                     System.out.println("importance: ");
                     Integer importance = read.nextInt();
                     read.nextLine();
+                    while (importance < 0 || importance > 3) {
+                        System.out.print("The importance must be an integer between 0 and 3\n"
+                                + "Enter the importance again:");
+                        importance = read.nextInt();
+                    }
                     def = new AttrDefinition(name, importance);
                     c.addAttrDef(def);
                     System.out.println('\n');
                     break;
                 case 3:
-                    System.out.println("Enter the MP's to whom you want to delete an attribute:");
-                    System.out.print("state: ");
-                    st = read.next();
-                    estat = State.valueOf(st);
-                    System.out.print("district: ");
-                    dist = read.nextInt();
+                    System.out.println("Enter the MP to whom you want to delete an attribute:");
+                    st = null;
+                    estat = null;
+                    dist = 0;
+                    readmp = true;
+                    readMP(st, estat, dist, readmp);
                     read.nextLine();
+                    if (!readmp) break;
                     p1 = null;
                     p1 = c.getMP(estat, dist);
                     if (p1.equals(null)) {
@@ -220,29 +247,38 @@ public class GeneralDriver {
                     System.out.print("type of attribute: ");
                     //read.nextLine();
                     def = c.getAttrDef(read.nextLine());
+                    while (def==null) {
+                        System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
+                        def = c.getAttrDef(read.nextLine());
+                    }
                     p1.removeAttribute(def);
                     break;
                 case 4:
                     System.out.println("Enter the MP's to whom you want to change the value of an attribute:");
-                    System.out.print("state: ");
-                    st = read.next();
-                    estat = State.valueOf(st);
-                    System.out.print("district: ");
-                    dist = read.nextInt();
+                    st = null;
+                    estat = null;
+                    dist = 0;
+                    readmp = true;
+                    readMP(st, estat, dist, readmp);
                     read.nextLine();
+                    if (!readmp) break;
                     p1 = null;
                     p1 = c.getMP(estat, dist);
                     if (p1.equals(null)) {
                         System.out.println("there's not such MP in the congress");
                         break;
                     }
-                    System.out.println("Enter the info of the attribute you want to change of " + p1.getFullname() + " (type & value");
+                    System.out.println("Enter the info of the attribute you want to change of " + p1.getFullname() + " (type & value)");
                     System.out.print("type of attribute: ");
                     //read.nextLine();
                     def = c.getAttrDef(read.nextLine());
+                    while (def==null) {
+                        System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
+                        def = c.getAttrDef(read.nextLine());
+                    }
                     System.out.print("new value: ");
                     //read.nextLine();
-                    String o = read.nextLine();
+                    Object o = read.nextLine();
                     Boolean found = false;
                     for (Attribute a : p1.getAttributes()) {
                         if (a.getDefinition().equals(def)) {
@@ -259,21 +295,32 @@ public class GeneralDriver {
                     //read.nextLine();
                     def = c.getAttrDef(read.nextLine());
                     System.out.println();
-                    if(!def.equals(null)) System.out.println(def);
-                    else System.out.println("There's no type of attributes defined");
+                    while (def==null) {
+                        System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
+                        def = c.getAttrDef(read.nextLine());
+                    }
+                    System.out.println(def);
                     System.out.println();
                     break;
                 case 6:
                     System.out.println("Enter the type: ");
                     //read.nextLine();
                     def = c.getAttrDef(read.nextLine());
-                    System.out.println("actual importance is "+def.getImportance());
-                    if(!def.equals(null)) {
-                        System.out.print("new importance: ");
-                        def.setImportance(read.nextInt());
-                        System.out.println("importance changed\n");
+                    while (def==null) {
+                        System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
+                        def = c.getAttrDef(read.nextLine());
                     }
-                    else System.out.println("There's no type of attributes defined");
+                    System.out.println("actual importance is " + def.getImportance());
+                    System.out.print("new importance: ");
+                    Integer imp = read.nextInt();
+                    read.nextLine();
+                    while (imp < 0 || imp > 3) {
+                        System.out.print("The importance must be an integer between 0 and 3\n"
+                                + "Enter the importance again:");
+                        imp = read.nextInt();
+                    }
+                    def.setImportance(imp);
+                    System.out.println("importance changed\n");
                     break;
                 default:
                     seguir = false;
@@ -285,9 +332,9 @@ public class GeneralDriver {
         Boolean seguir = true;
         while(seguir) {
             System.out.println("Computing weights:\n");
-            System.out.println("1-Compute the weights of the relationships of the whole congress\nany other key-EXIT");
-            Integer num = read.nextInt();
-            read.nextLine();
+            System.out.println("1-Compute the weights of the relationships of the whole congress\nany other number-EXIT");
+            Integer num = null;
+            readCommand(num);
             switch(num) {
                 case 1:
                     wa.computeAllWeights();
@@ -300,5 +347,31 @@ public class GeneralDriver {
             }
         }
     }
+    public static void readCommand(Integer num) {
+        while (true) {
+            try {
+                num = read.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                read.nextLine();
+                System.out.println("ERROR: Operation codes must be integers.");
+                continue;
+            }
+        }
+    }
+    public static void readMP(String st, State estat, int d, Boolean readmp) {
+        System.out.print("state: ");
+        try {
+            st = read.nextLine();
+            estat = State.valueOf(st);
+            System.out.print("district :");
+            d = read.nextInt();
+            readmp = true;
+        } catch (IllegalArgumentException i) {
+            System.out.println("ERROR: Enter a valid state and district please. The MP hasn't been processed, try it again.");
+            readmp = false;
+        }
+    }
+
     public static void applyLouvain() {}
 }
