@@ -232,6 +232,9 @@ public class LouvainAlgorithm
                 ndegree.put(n1,ndegree.get(n1)+e.getWeight());
                 ndegree.put(n2,ndegree.get(n2)+e.getWeight());
             }
+            for(Node n:g.getNodes()){
+                if(!ndegree.containsKey(n)) ndegree.put(n,0.);
+            }
             int npart = 0;
             //Initialize Node degrees
             for(Node n:g.getNodes()){
