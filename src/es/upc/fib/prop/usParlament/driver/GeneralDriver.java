@@ -89,7 +89,8 @@ public class GeneralDriver {
             MP m;
             switch(num) {
                 case 1:
-                    System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\n");
+                    System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\nWhen you are done" +
+                            "enter 0 insted of the fullname:1");
                     while(true) {
                         System.out.print("fullname: ");
                         fullname = read.nextLine();
@@ -156,7 +157,8 @@ public class GeneralDriver {
         while(seguir) {
             System.out.println("Attribute Management");
             System.out.println("1-Add Attributes\n2-Add new type of attribute\n3-Delete Attribute\n4-Change the value of an attribute\n" +
-                    "5-Get the importance of a type of attributes\n6-Set importance to a type of attributes\nany other number-EXIT");
+                    "5-Get the importance of a type of attributes\n6-Set importance to a type of attributes\n" +
+                    "7-Print the list of attribute definitions\nany other number-EXIT");
             Integer num = readCommand();
             read.nextLine();
             String fullname;
@@ -287,7 +289,7 @@ public class GeneralDriver {
                     System.out.println("actual importance is " + def.getImportance());
                     System.out.print("new importance: ");
                     Integer imp = Integer.parseInt(read.nextLine());
-                    read.nextLine();
+                    //read.nextLine();
                     while (imp < 0 || imp > 3) {
                         System.out.print("The importance must be an integer between 0 and 3\n"
                                 + "Enter the importance again:");
@@ -296,6 +298,9 @@ public class GeneralDriver {
                     def.setImportance(imp);
                     System.out.println("importance changed\n");
                     break;
+                case 7:
+                    System.out.println("Attribute definitions:\n"+c.getAttrDef());
+                    break;
                 default:
                     seguir = false;
                     break;
@@ -303,6 +308,9 @@ public class GeneralDriver {
         }
     }
     public static void computeWeights() {
+        for(Node n:c.getNodes()){
+            c.removeAllNodeEdges(n);
+        }
         System.out.println("Computing weights:\n");
         wa.computeAllWeights();
         System.out.println("How the congress remains");

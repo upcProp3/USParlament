@@ -49,7 +49,7 @@ public class WeightAlgorithm {
             int imp = a.getDefinition().getImportance();
             if(imp == 1) w+=1;
             if(imp == 2) w+=4;
-            if(imp == 33) w+=16;
+            if(imp == 3) w+=16;
         }
         if(w>0) {
             if (!c.hasEdge(m1,m2)) c.addEdge(new Relationship(m1,m2,w));
@@ -68,6 +68,7 @@ public class WeightAlgorithm {
             for (MP m2 : mps) {
                 if (m1 != m2 && !c.hasEdge(m1, m2)) {
                     Set<Attribute> ca = getCommonAttributes(m1, m2);
+                    System.out.println("ca:"+ca);
                     if (!ca.isEmpty()) {
                         computeWeight(m1, m2, ca);
                     }
