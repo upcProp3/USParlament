@@ -347,10 +347,12 @@ public class GeneralDriver {
                 case 1:
                     l = new LouvainAlgorithm(c);
                     printCommunitiesShort(l.calculate());
+                    System.out.println('\n');
                     break;
                 case 2:
                     l = new LouvainAlgorithm(c);
                     System.out.println("Modularity of the best partition:"+l.resultModularity());
+                    System.out.println();
                 default:
                     seguir = false;
                     break;
