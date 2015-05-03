@@ -16,6 +16,8 @@ public class Congress extends Graph {
 
     public void addAttrDef(AttrDefinition def) {this.s.add(def);}
 
+    public Set<AttrDefinition> getAttrDef(){return this.s;}
+
     public AttrDefinition getAttrDef(String name) {
         for (AttrDefinition def : s) if (def.getName().equals(name)) return def;
         return null;

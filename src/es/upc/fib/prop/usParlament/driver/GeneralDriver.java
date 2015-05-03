@@ -19,7 +19,6 @@ public class GeneralDriver {
     static WeightAlgorithm wa = new WeightAlgorithm(c);
     static Scanner read = new Scanner(System.in);
     public static void main(String[] args) {
-
         System.out.println("==============");
         System.out.println("GENERAL DRIVER");
         System.out.println("==============");
@@ -30,25 +29,22 @@ public class GeneralDriver {
                 "\tNM, NY, NC, ND, OH, OK, OR, PA, RI, SC,\n" +
                 "\tSD, TN, TX, UT, VT, VA, WA, WV, WI, WY");
         Boolean seguir = true;
-
         while(seguir) {
-
             System.out.println("What do you want to do? Enter the key and press Enter\n");
             System.out.println("1-MP management\n2-Attribute Definitions management\n3-Compute Weights");
             System.out.println("4-Show all MP's and its Attributes\n5-Show congress\n6-Apply Louvain\n7-Show state's abbreviations\nany other number-EXIT");
-
             Integer num = readCommand();
             switch (num) {
-                case 1: //MP management
+                case 1:
                     mpManagement();
                     break;
-                case 2: //Attribute definitions management
+                case 2:
                     attributeManagement();
                     break;
-                case 3: //Compute weights
+                case 3:
                     computeWeights();
                     break;
-                case 4: //Show all MPs and its attributes
+                case 4:
                     for (MP p : c.getMPs()) {
                         System.out.println(p+":");
                         for (Attribute a: p.getAttributes()) {
@@ -56,14 +52,14 @@ public class GeneralDriver {
                         }
                     }
                     break;
-                case 5: //Show the congress
+                case 5:
                     System.out.println("The US Congress");
                     System.out.println(c);
                     break;
-                case 6: //Apply Louvain
+                case 6:
                     applyLouvain();
                     break;
-                case 7: //Show state's abbreviations
+                case 7:
                     System.out.println("USA districts:\n" +
                             "\tAL, AK, AZ, AR, CA, CO, CT, DE, FL, GA,\n" +
                             "\tHI, ID, IL, IN, IA, KS, KY, LA, ME, MD,\n" +
@@ -71,21 +67,17 @@ public class GeneralDriver {
                             "\tNM, NY, NC, ND, OH, OK, OR, PA, RI, SC,\n" +
                             "\tSD, TN, TX, UT, VT, VA, WA, WV, WI, WY");
                     break;
-                default: //Exit
+                default:
                     seguir = false;
                     break;
             }
         }
-
-        System.out.println("Exit successful");
     }
     public static void mpManagement() {
         Boolean seguir = true;
         while(seguir) {
-
             System.out.println("Node Management:");
             System.out.println("1-Enter MP's\n2-Erase MP\n3-Get an MP with its attributes\n4-Get all MP's\n5-Get Common Attributes\nany other number-EXIT");
-
             Integer num = readCommand();
             String fullname;
             String st;
@@ -95,10 +87,10 @@ public class GeneralDriver {
             MP p1;
             read.nextLine();
             MP m;
-
             switch(num) {
-                case 1: //Enter MPs
-                    System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\n");
+                case 1:
+                    System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\nWhen you are done" +
+                            "enter 0 insted of the fullname:1");
                     while(true) {
                         System.out.print("fullname: ");
                         fullname = read.nextLine();
@@ -120,13 +112,13 @@ public class GeneralDriver {
                         }
                     }
                     break;
-                case 2: //Erase an MP
+                case 2:
                     System.out.println("Enter the MP state and district whose info you want to erase:");
                     m = readMP();
                     if (m == null) {System.out.println("There's no such MP in the congress"); break;}
                     c.removeNode(m);
                     break;
-                case 3: //Get an MP with its attributes
+                case 3:
                     System.out.println("Enter the MP state and district whose info you want to show:");
                     p1 = readMP();
                     if (p1 == null) {
@@ -136,13 +128,13 @@ public class GeneralDriver {
                     System.out.println(p1);
                     System.out.println('\n');
                     break;
-                case 4: //Get all MPs
+                case 4:
                     System.out.println("These are all MP's in the congress:");
                     Collection<MP> mps = c.getMPs();
                     for (MP p : mps) System.out.println(p);
                     System.out.println();
                     break;
-                case 5: //Get common attributes
+                case 5:
                     System.out.println("Enter the MP's you want to compare:");
                     System.out.println("MP#1");
                     p1 = readMP();
@@ -154,7 +146,7 @@ public class GeneralDriver {
                     for (Attribute a : wa.getCommonAttributes(p1, p2)) System.out.println(a);
                     System.out.println();
                     break;
-                default: //Exit MP management
+                default:
                     seguir = false;
                     break;
             }
@@ -163,10 +155,10 @@ public class GeneralDriver {
     public static void attributeManagement() {
         Boolean seguir = true;
         while(seguir) {
-
             System.out.println("Attribute Management");
             System.out.println("1-Add Attributes\n2-Add new type of attribute\n3-Delete Attribute\n4-Change the value of an attribute\n" +
-                    "5-Get the importance of a type of attributes\n6-Set importance to a type of attributes\nany other number-EXIT");
+                    "5-Get the importance of a type of attributes\n6-Set importance to a type of attributes\n" +
+                    "7-Print the list of attribute definitions\nany other number-EXIT");
             Integer num = readCommand();
             read.nextLine();
             String fullname;
@@ -176,14 +168,13 @@ public class GeneralDriver {
             Boolean readmp;
             MP p1;
             AttrDefinition def;
-
             switch(num) {
-                case 1: //Add attributes
+                case 1:
                     System.out.println("Enter the MP to whom you want to add attributes:");
-                    /*st = new String();
+                    st = new String();
                     estat = State.NULL;
                     dist = 0;
-                    readmp = true;*/
+                    readmp = true;
                     p1=readMP();
                     //if (!readmp) break;
                     //p1 = c.getMP(estat, dist);
@@ -298,7 +289,7 @@ public class GeneralDriver {
                     System.out.println("actual importance is " + def.getImportance());
                     System.out.print("new importance: ");
                     Integer imp = Integer.parseInt(read.nextLine());
-                    read.nextLine();
+                    //read.nextLine();
                     while (imp < 0 || imp > 3) {
                         System.out.print("The importance must be an integer between 0 and 3\n"
                                 + "Enter the importance again:");
@@ -307,6 +298,9 @@ public class GeneralDriver {
                     def.setImportance(imp);
                     System.out.println("importance changed\n");
                     break;
+                case 7:
+                    System.out.println("Attribute definitions:\n"+c.getAttrDef());
+                    break;
                 default:
                     seguir = false;
                     break;
@@ -314,6 +308,9 @@ public class GeneralDriver {
         }
     }
     public static void computeWeights() {
+        for(Node n:c.getNodes()){
+            c.removeAllNodeEdges(n);
+        }
         System.out.println("Computing weights:\n");
         wa.computeAllWeights();
         System.out.println("How the congress remains");
