@@ -5,6 +5,13 @@
     can see that the result is the same as the book. This entry is very long(1600 lines) so it was generated with a python
     script that allows you to generate circles of n N-cliques. You can find it on the LouvainDriverCliqueCircleGenerator.py
     file.
+-GeneralDriverTest02: This test is a slight approximation to a big case (i.e. the hole congress). In order to achieve it
+    we have generated a congress with 50 MPs, one for each possible State, and we have added between 5 and 9 attributes to
+    each one, so, at least, each MP should have a defined gender, age, social status and ethnicity. Furthermore, if we look
+    at the attributes' importances we can easyly see that the ones for these 5 previous attributes are pretty high, and the
+    others, except for the religion, are between 1 and 2. Hence, this test classifies the congressmen and women depending on
+    the gender, the age, the social status and the ethnicity, and taking religion into consideration too; which may be quite
+    very good approximation of the general groups inside the Parliament.
 -GeneralDriverTest03: This test is used to try to find the groups with a tendency to vote the same in an Israel-Related vote.
     Both the Republican and Democratic parties decided not to set an official position.
     There are 15 MPs, with different attributes. The possible attributeDefinitions are Sex,Religion,Party,Gun Control Opinion,
