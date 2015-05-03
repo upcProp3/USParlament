@@ -272,108 +272,89 @@ What do you want to do? Enter the key and press Enter
 7-Show state's abbreviations
 any other number-EXIT
 
-Fullname: Alex Miro
-State: CA
-District: 2
-attributes: [ religion: catolic, university: UPC, sport: basket, gender: male, ]
-:
-religion: catolic
-university: UPC
-sport: basket
-gender: male
-
-Fullname: Jack Sparrow
-State: FL
-District: 1
-attributes: [ ]
-:
-
 Fullname: Aleix Sacrest
 State: NY
 District: 1
 attributes: [ religion: none, university: UPC, sport: hockey, gender: male, ]
-:
-religion: none
-university: UPC
-sport: hockey
-gender: male
 
-Fullname: Tyrion Lannister
-State: AZ
-District: 1
-attributes: [ ]
-:
-
-Fullname: Al Dente
-State: AL
-District: 1
-attributes: [ ]
-:
-
-Fullname: Heisenberg
-State: AR
-District: 1
-attributes: [ gender: male, ]
-:
-gender: male
-
-Fullname: Zdeno Chara
-State: HI
-District: 1
-attributes: [ sport: icehockey, gender: male, ]
-:
-sport: icehockey
-gender: male
-
-Fullname: Harry Potter
-State: DE
-District: 1
-attributes: [ ]
-:
-
-Fullname: Ondrej Velisek
-State: OK
-District: 4
-attributes: [ university: UPC, sport: sailing, gender: male, ]
-:
-university: UPC
-sport: sailing
-gender: male
-
-Fullname: The Joker
-State: CT
-District: 1
-attributes: [ religion: against, sport: hockey, gender: male, ]
-:
-religion: against
-sport: hockey
-gender: male
-
-Fullname: Peter Parker
-State: CO
-District: 1
-attributes: [ ]
-:
 
 Fullname: German Palomares
 State: GA
 District: 1
 attributes: [ ]
-:
+
 
 Fullname: Eduard Casellas
 State: WA
 District: 2
 attributes: [ ]
-:
+
+
+Fullname: Al Dente
+State: AL
+District: 1
+attributes: [ ]
+
+
+Fullname: Heisenberg
+State: AR
+District: 1
+attributes: [ gender: male, ]
+
+
+Fullname: Tyrion Lannister
+State: AZ
+District: 1
+attributes: [ ]
+
 
 Fullname: Miquel Jubert
 State: AK
 District: 3
 attributes: [ university: UPC, gender: male, ]
-:
-university: UPC
-gender: male
+
+
+Fullname: Peter Parker
+State: CO
+District: 1
+attributes: [ ]
+
+
+Fullname: Ondrej Velisek
+State: OK
+District: 4
+attributes: [ university: UPC, sport: sailing, gender: male, ]
+
+
+Fullname: Jack Sparrow
+State: FL
+District: 1
+attributes: [ ]
+
+
+Fullname: Harry Potter
+State: DE
+District: 1
+attributes: [ ]
+
+
+Fullname: The Joker
+State: CT
+District: 1
+attributes: [ religion: against, sport: hockey, gender: male, ]
+
+
+Fullname: Zdeno Chara
+State: HI
+District: 1
+attributes: [ sport: icehockey, gender: male, ]
+
+
+Fullname: Alex Miro
+State: CA
+District: 2
+attributes: [ religion: catolic, university: UPC, sport: basket, gender: male, ]
+
 What do you want to do? Enter the key and press Enter
 
 1-MP management
@@ -543,27 +524,27 @@ State: HI
 District: 1
 attributes: [ sport: icehockey, gender: male, ]
 ]Relationship strenght
-[(NY 1,CA 2):2.0
-, (CA 2,AR 1):1.0
-, (CA 2,HI 1):1.0
-, (CA 2,OK 4):2.0
-, (CA 2,CT 1):1.0
-, (CA 2,AK 3):2.0
-, (NY 1,AR 1):1.0
-, (NY 1,HI 1):1.0
+[(NY 1,AR 1):1.0
+, (NY 1,AK 3):2.0
 , (NY 1,OK 4):2.0
 , (NY 1,CT 1):5.0
-, (NY 1,AK 3):2.0
-, (AR 1,HI 1):1.0
+, (NY 1,HI 1):1.0
+, (NY 1,CA 2):2.0
+, (AR 1,AK 3):1.0
 , (AR 1,OK 4):1.0
 , (AR 1,CT 1):1.0
-, (AR 1,AK 3):1.0
-, (OK 4,HI 1):1.0
-, (CT 1,HI 1):1.0
-, (AK 3,HI 1):1.0
-, (OK 4,CT 1):1.0
+, (AR 1,HI 1):1.0
+, (CA 2,AR 1):1.0
 , (AK 3,OK 4):2.0
 , (AK 3,CT 1):1.0
+, (AK 3,HI 1):1.0
+, (CA 2,AK 3):2.0
+, (OK 4,CT 1):1.0
+, (OK 4,HI 1):1.0
+, (CA 2,OK 4):2.0
+, (CT 1,HI 1):1.0
+, (CA 2,CT 1):1.0
+, (CA 2,HI 1):1.0
 ]
 What do you want to do? Enter the key and press Enter
 
@@ -652,7 +633,7 @@ Attribute Management
 any other number-EXIT
 Enter the MP to whom you want to delete an attribute:
 state: ERROR: Enter a valid state and district please. The MP hasn't been processed, try it again.
-there's not such MP in the congress
+there's not such MP in the congress, please enter a valid one:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -680,7 +661,8 @@ Node Management:
 any other number-EXIT
 Enter the MP's you want to compare:
 MP#1
-state: district :MP#2:state: district :sport: icehockey
+state: district :MP#2:
+state: district :sport: icehockey
 gender: male
 
 Node Management:

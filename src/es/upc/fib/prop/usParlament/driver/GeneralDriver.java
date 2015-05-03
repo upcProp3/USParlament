@@ -80,7 +80,6 @@ public class GeneralDriver {
             String st;
             State estat;
             Integer dist;
-            Boolean readmp = true;
             MP p1;
             read.nextLine();
             MP m;
@@ -101,10 +100,8 @@ public class GeneralDriver {
                             if (c.getMP(estat, dist) == null) c.addNode(p);
                             else System.out.println("There's an MP already assigned to this state and district");
                             System.out.println("MP added successfully");
-                            //break;
                         } catch (IllegalArgumentException i) {
                             System.out.println("ERROR: Enter a valid state and district please. The MP hasn't been saved, try it again.");
-                            //break;
                         }
                     }
                     break;
@@ -134,9 +131,8 @@ public class GeneralDriver {
                     System.out.println("Enter the MP's you want to compare:");
                     System.out.println("MP#1");
                     p1 = readMP();
-                    Boolean found = false;
                     if (p1==null) {System.out.println("there's not such MP in the congress"); break;}
-                    System.out.print("MP#2:");
+                    System.out.println("MP#2:");
                     MP p2 = readMP();
                     if (p2==null) {System.out.println("there's not such MP in the congress"); break;}
                     for (Attribute a : wa.getCommonAttributes(p1, p2)) System.out.println(a);
@@ -156,23 +152,12 @@ public class GeneralDriver {
                     "5-Get the importance of a type of attributes\n6-Set importance to a type of attributes\nany other number-EXIT");
             Integer num = readCommand();
             read.nextLine();
-            String fullname;
-            String st;
-            State estat;
-            Integer dist;
-            Boolean readmp;
             MP p1;
             AttrDefinition def;
             switch(num) {
                 case 1:
                     System.out.println("Enter the MP to whom you want to add attributes:");
-                    st = new String();
-                    estat = State.NULL;
-                    dist = 0;
-                    readmp = true;
                     p1=readMP();
-                    //if (!readmp) break;
-                    //p1 = c.getMP(estat, dist);
                     if (p1==null) {
                         System.out.println("there's not such MP in the congress");
                         break;
@@ -181,31 +166,26 @@ public class GeneralDriver {
                     System.out.println("when you're done enter 0 insted of the type");
                     while (true) {
                         System.out.println("type of attribute: ");
-                        //read.nextLine();
                         String d = read.nextLine();
                         def = c.getAttrDef(d);
                         if (d.equals("0")) break;
-                        while (def==null) {
+                        if (def==null)
                             System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
-                            d = read.nextLine();
-                            def = c.getAttrDef(d);
+                        else {
+                            System.out.println("value : ");
+                            String val = read.nextLine();
+                            Attribute a = new Attribute(def, val);
+                            p1.addAttribute(a);
+                            System.out.println("attribute added");
                         }
-                        System.out.println("value : ");
-                        //read.nextLine();
-                        String val = read.nextLine();
-                        Attribute a = new Attribute(def, val);
-                        p1.addAttribute(a);
-                        System.out.println("attribute added");
                     }
                     break;
                 case 2:
                     System.out.println("Enter the type info");
                     System.out.println("name: ");
-                    //read.nextLine();
                     String name = read.nextLine();
                     System.out.println("importance: ");
                     Integer importance = Integer.parseInt(read.nextLine());
-                    //read.nextLine();
                     while (importance < 0 || importance > 3) {
                         System.out.print("The importance must be an integer between 0 and 3\n"
                                 + "Enter the importance again:");
@@ -219,36 +199,33 @@ public class GeneralDriver {
                     System.out.println("Enter the MP to whom you want to delete an attribute:");
                     p1 = readMP();
                     if (p1==null) {
-                        System.out.println("there's not such MP in the congress");
+                        System.out.println("there's not such MP in the congress, please enter a valid one:");
                         break;
                     }
-                    System.out.println("Enter the info of the attribute you want to delete of " + p1.getFullname() + " (type & value");
-                    System.out.print("type of attribute: ");
-                    //read.nextLine();
-                    def = c.getAttrDef(read.nextLine());
-                    while (def==null) {
-                        System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
+                        System.out.println("Enter the info of the attribute you want to delete of " + p1.getFullname() + " (type & value");
+                        System.out.print("type of attribute: ");
                         def = c.getAttrDef(read.nextLine());
-                    }
-                    p1.removeAttribute(def);
+                        while (def == null) {
+                            System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
+                            def = c.getAttrDef(read.nextLine());
+                        }
+                        p1.removeAttribute(def);
                     break;
                 case 4:
                     System.out.println("Enter the MP's to whom you want to change the value of an attribute:");
                     p1 = readMP();
                     if (p1==null) {
-                        System.out.println("there's not such MP in the congress");
+                        System.out.println("there's not such MP in the congress, please enter a valid one:");
                         break;
                     }
                     System.out.println("Enter the info of the attribute you want to change of " + p1.getFullname() + " (type & value)");
                     System.out.print("type of attribute: ");
-                    //read.nextLine();
                     def = c.getAttrDef(read.nextLine());
                     while (def==null) {
                         System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
                         def = c.getAttrDef(read.nextLine());
                     }
                     System.out.print("new value: ");
-                    //read.nextLine();
                     Object o = read.nextLine();
                     Boolean found = false;
                     for (Attribute a : p1.getAttributes()) {
@@ -263,23 +240,21 @@ public class GeneralDriver {
                     break;
                 case 5:
                     System.out.println("Enter the type: ");
-                    //read.nextLine();
                     def = c.getAttrDef(read.nextLine());
                     System.out.println();
-                    while (def==null) {
+                    if (def==null) {
                         System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
-                        def = c.getAttrDef(read.nextLine());
+                        break;
                     }
                     System.out.println(def);
                     System.out.println();
                     break;
                 case 6:
                     System.out.println("Enter the type: ");
-                    //read.nextLine();
                     def = c.getAttrDef(read.nextLine());
-                    while (def==null) {
+                    if (def==null) {
                         System.out.println("This attribute doesn't exist, please enter a valid attribute name:");
-                        def = c.getAttrDef(read.nextLine());
+                        break;
                     }
                     System.out.println("actual importance is " + def.getImportance());
                     System.out.print("new importance: ");
