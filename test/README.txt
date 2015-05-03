@@ -1,3 +1,5 @@
+                                                PROPOSED TESTS ANALYSIS
+                                              ---------------------------
 
 
 -LouvainAlgorithmTest01: This test applies the louvain algorithm to the example graph from the article "Fast unfolding of
@@ -10,7 +12,7 @@
     communities on large networks" page 3. Graph contains 16 nodes with some edges between all with weight 1. The result is the same
     as the document - two communities with nodes 0-7 and 8-15.
 
--GeneralDriverTest02: This test is a slight approximation to a big case (i.e. the hole congress). In order to achieve it
+-GeneralDriverTest02: This test is a slight approximation to a big case (i.e. the hole real congress). In order to achieve it
     we have generated a congress with 50 MPs, one for each possible State, and we have added between 5 and 9 attributes to
     each one, so, at least, each MP should have a defined gender, age, social status and ethnicity. Furthermore, if we look
     at the attributes' importances we can easyly see that the ones for these 5 previous attributes are pretty high, and the
@@ -42,6 +44,18 @@
     the third (from NM) agrees with the proposition. Even though he agrees it seems that he will tend to vote together with
     the other latinos.
 
+-GeneralDriverTest05: This test generates a congress of 20 MPs with just 4 basic attributes (Gender, Age, Ethnicity and
+    Party). What we want to check here is the capacity of Louvain's algorithm to change the communities depending on which
+    attributes are defined and which are their importances. So, first, we will obtain that the communities are separated by
+    the Gender and the Party, except for the women community that, as it is not too big, joins republican and democratic women
+    MPs in one hole community. Secondly, we will reduce the power of Gender in that decision and add some new powerful
+    attributes, like FavouriteBook or FavouriteMusic, but then, we will get two communities (the republican and the democratic),
+    because of their importance and because of the fact that ALL MPs have a defined value for them. Hence, at that point
+    we conclude that the attributes that play the strongest paper on Louvain's community detection are the ones that have
+    a high importance and that are present in all the members of the parliament. Finally, we will invalidate (importance=0)
+    all the attributes, except for the Gender, the Age and the Ethnicity, which will lead us to obtein a two-sided division,
+    men vs women, as values for Age and Ethnicity are more variable.
+
 -GeneralDriverTest06: This test should guess result of votes for internet regulation law and try to guess how much parties
     affect MPs opinions. We used attributes with importances: public regulation opinion 3 (obviously high importance but quite
     lot of MPs doesn't have it), social network activity 2 (suppose internet active people will be against regulation),
@@ -57,3 +71,9 @@
     list of attribute definitions and MPs with their attributes. Than the test removes attribute sex from MP with ID 1
     and party from MP with ID 3 After that it shows list of MPs and their attributes for check. Than it removes attribute
     definition sex and again shows lists of attribute definitions and MPs with their attributes.
+
+-MPDriverTest01: Very similar to attribute driver.
+    The aim of that test is checking that everything works fine, and also the error control and exceptions handling. After
+    creating a congress of 17 MPs, it defines 10 basic attributes (Gender, Age, Religion, Favourite color, Social status,
+    Ethnicity, University, Graduated in, Favourite sport and Party), which allows you to play a little bit with their
+    importances and values.
