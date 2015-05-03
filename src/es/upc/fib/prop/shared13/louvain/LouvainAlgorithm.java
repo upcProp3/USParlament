@@ -111,7 +111,6 @@ public class LouvainAlgorithm
                             gain = true;
                             bMod = mod;
                             com = currentState.getCommunity(neigh);
-
                         } else {
                             currentState.changeCommunity(n, com);
                         }

@@ -9,11 +9,14 @@ import java.util.Set;
 
 /**
  * Created by ondrej on 15.4.15.
+ * contributions aleixsacrest, alex
  */
 public class Congress extends Graph {
     private static Set<AttrDefinition> s = new HashSet<>();
 
     public void addAttrDef(AttrDefinition def) {this.s.add(def);}
+
+    public Set<AttrDefinition> getAttrDef(){return this.s;}
 
     public AttrDefinition getAttrDef(String name) {
         for (AttrDefinition def : s) if (def.getName().equals(name)) return def;

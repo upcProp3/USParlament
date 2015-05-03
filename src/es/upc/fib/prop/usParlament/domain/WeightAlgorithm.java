@@ -6,7 +6,7 @@ import java.util.Set;
 
 /**
  * Created by alex on 14/4/15.
- * contributions of ondrej.
+ * contributions of ondrej, aleixsacrest.
  */
 
 public class WeightAlgorithm {
@@ -46,9 +46,15 @@ public class WeightAlgorithm {
     public void computeWeight(MP m1, MP m2, Set<Attribute> CA) {
         int w = 0; //0 = no relationship
         for (Attribute a : CA) {
-            w += a.getDefinition().getImportance();
+            int imp = a.getDefinition().getImportance();
+            if(imp == 1) w+=1;
+            if(imp == 2) w+=4;
+            if(imp == 3) w+=16;
         }
-        if(w>0) c.addEdge(new Relationship(m1,m2,w));
+        if(w>0) {
+            if (!c.hasEdge(m1,m2)) c.addEdge(new Relationship(m1,m2,w));
+            else c.getEdge(m1,m2).setWeight(c.getEdge(m1,m2).getWeight()+w);
+        }
     }
 
     /**
@@ -62,6 +68,7 @@ public class WeightAlgorithm {
             for (MP m2 : mps) {
                 if (m1 != m2 && !c.hasEdge(m1, m2)) {
                     Set<Attribute> ca = getCommonAttributes(m1, m2);
+                    System.out.println("ca:"+ca);
                     if (!ca.isEmpty()) {
                         computeWeight(m1, m2, ca);
                     }

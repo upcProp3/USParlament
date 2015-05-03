@@ -1,0 +1,1161 @@
+=====================
+MP & ATTRIBUTE DRIVER
+=====================
+Options:
+USA districts:
+	AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA,
+	HI, ID, IL, IN, IA, KS, KY, LA, ME, MD,
+	MA, MI, MN, MS, MO, MT, NE, NV, NH, NJ,
+	NM, NY, NC, ND, OH, OK, OR, PA, RI, SC,
+	SD, TN, TX, UT, VT, VA, WA, WV, WI, WY
+1: Add MP
+2: Add attribute definition
+3: Add attribute value to an MP
+4: Delete MP
+5: Delete attribute definiton
+6: Delete attribute value of an MP
+7: Print MP information
+8: Print attribute information
+9: Print the congress
+10: Print the attribute definition list
+11: Modify attribute importance
+99: Show options menu
+0: ExitAdding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+There's an MP already assigned to this state and district
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+ERROR: Enter a valid state and district please. The MP hasn't been saved, try it again.
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding MP
+Enter the name:
+Enter the state:
+Enter the district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding AttrDefinition
+Enter the name:
+Enter the importance (integer between 0 and 3):
+Operation finished, enter 99 to see option list or enter next command
+Adding AttrDefinition
+Enter the name:
+Enter the importance (integer between 0 and 3):
+Operation finished, enter 99 to see option list or enter next command
+Adding AttrDefinition
+Enter the name:
+Enter the importance (integer between 0 and 3):
+Operation finished, enter 99 to see option list or enter next command
+Adding AttrDefinition
+Enter the name:
+Enter the importance (integer between 0 and 3):
+Operation finished, enter 99 to see option list or enter next command
+Adding AttrDefinition
+Enter the name:
+Enter the importance (integer between 0 and 3):
+Operation finished, enter 99 to see option list or enter next command
+Adding AttrDefinition
+Enter the name:
+Enter the importance (integer between 0 and 3):
+Operation finished, enter 99 to see option list or enter next command
+Adding AttrDefinition
+Enter the name:
+Enter the importance (integer between 0 and 3):
+Operation finished, enter 99 to see option list or enter next command
+Adding AttrDefinition
+Enter the name:
+Enter the importance (integer between 0 and 3):
+Operation finished, enter 99 to see option list or enter next command
+Adding AttrDefinition
+Enter the name:
+Enter the importance (integer between 0 and 3):
+Operation finished, enter 99 to see option list or enter next command
+Adding AttrDefinition
+Enter the name:
+Enter the importance (integer between 0 and 3):
+Operation finished, enter 99 to see option list or enter next command
+Printing the congress
+US Congressman list:
+[
+Fullname: Kate Morgan
+State: AL
+District: 1
+attributes: [ ]
+,
+Fullname: John King
+State: AL
+District: 2
+attributes: [ ]
+,
+Fullname: Homer Simpson
+State: AK
+District: 3
+attributes: [ ]
+,
+Fullname: Ada Colau
+State: NY
+District: 5
+attributes: [ ]
+,
+Fullname: Julia Roberts
+State: UT
+District: 1
+attributes: [ ]
+,
+Fullname: Martha Smith
+State: WA
+District: 8
+attributes: [ ]
+,
+Fullname: Mike Junior
+State: WA
+District: 2
+attributes: [ ]
+,
+Fullname: Pepe Rubianes
+State: TN
+District: 5
+attributes: [ ]
+,
+Fullname: Alan Turing
+State: MO
+District: 3
+attributes: [ ]
+,
+Fullname: Marie Curie
+State: GA
+District: 1
+attributes: [ ]
+,
+Fullname: Olof Palme
+State: WV
+District: 1
+attributes: [ ]
+,
+Fullname: Merce Rodoreda
+State: TX
+District: 9
+attributes: [ ]
+,
+Fullname: George Orwell
+State: IA
+District: 3
+attributes: [ ]
+,
+Fullname: Teresa Rampell
+State: LA
+District: 6
+attributes: [ ]
+,
+Fullname: Quentin Tarantino
+State: LA
+District: 7
+attributes: [ ]
+]Relationship strenght
+[]
+Operation finished, enter 99 to see option list or enter next command
+Printing attribute definition list
+Attribute definition list
+
+name: Social status
+importance: 2
+name: Ethnicity
+importance: 2
+name: Party
+importance: 3
+name: Favourite color
+importance: 1
+name: University
+importance: 1
+name: Religion
+importance: 3
+name: Gender
+importance: 2
+name: Favourite sport
+importance: 1
+name: Graduated in
+importance: 2
+name: Age
+importance: 2
+Operation finished, enter 99 to see option list or enter next command
+Modifying attribute importance
+Enter attribute name
+Enter the new importance (integer between 0 and 3):
+Operation finished, enter 99 to see option list or enter next command
+Printing attribute information
+Enter attribute name
+
+name: Gender
+importance: 1
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Adding attribute value to an MP
+Enter attribute name:
+Enter attribute value:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Printing the congress
+US Congressman list:
+[
+Fullname: Kate Morgan
+State: AL
+District: 1
+attributes: [ Social status: Married, Ethnicity: AfroAmerican, Party: Republican, University: MIT, Gender: Female, Favourite sport: Basketball, Graduated in: Computer science, Age: 29, ]
+,
+Fullname: John King
+State: AL
+District: 2
+attributes: [ Social status: Married, Ethnicity: American, Party: Republican, University: UPC, Gender: Male, Favourite sport: Basketball, Graduated in: Computer science, Age: 46, ]
+,
+Fullname: Homer Simpson
+State: AK
+District: 3
+attributes: [ Social status: Single, Ethnicity: American, Party: Republican, University: MIT, Gender: Male, Graduated in: Computer science, Age: 47, ]
+,
+Fullname: Ada Colau
+State: NY
+District: 5
+attributes: [ Social status: Single, Ethnicity: American, Party: Republican, Favourite color: Red, University: MIT, Religion: Islam, Gender: Female, Graduated in: Medicine, Age: 40, ]
+,
+Fullname: Julia Roberts
+State: UT
+District: 1
+attributes: [ Social status: Single, Ethnicity: AfroAmerican, Party: Democratic, University: MIT, Religion: Islam, Gender: Female, Age: 50, ]
+,
+Fullname: Martha Smith
+State: WA
+District: 8
+attributes: [ Social status: Divorced, Ethnicity: AfroAmerican, Party: Democratic, Religion: Catholic, Gender: Female, Age: 51, ]
+,
+Fullname: Mike Junior
+State: WA
+District: 2
+attributes: [ Social status: Widowed, Ethnicity: SouthAmerican, Party: Democratic, University: UCM, Gender: Male, Graduated in: Computer science, Age: 33, ]
+,
+Fullname: Pepe Rubianes
+State: TN
+District: 5
+attributes: [ Social status: Single, Ethnicity: SouthAmerican, Party: Democratic, University: UPF, Gender: Male, Graduated in: Economy, Age: 37, ]
+,
+Fullname: Alan Turing
+State: MO
+District: 3
+attributes: [ Social status: Single, Ethnicity: European, Party: Republican, Religion: Buddhism, Gender: Male, Favourite sport: Football, Age: 60, ]
+,
+Fullname: Marie Curie
+State: GA
+District: 1
+attributes: [ Social status: Widowed, Ethnicity: European, Party: Republican, University: UCM, Gender: Female, Favourite sport: Football, Graduated in: Chemistry, Age: 59, ]
+,
+Fullname: Olof Palme
+State: WV
+District: 1
+attributes: [ Social status: Married, Ethnicity: European, Party: Democratic, University: UB, Gender: Male, Favourite sport: Hockey, Graduated in: Journalism, Age: 35, ]
+,
+Fullname: Merce Rodoreda
+State: TX
+District: 9
+attributes: [ Social status: Married, Ethnicity: AfroAmerican, Party: Republican, University: UAB, Gender: Female, Graduated in: Journalism, Age: 34, ]
+,
+Fullname: George Orwell
+State: IA
+District: 3
+attributes: [ Social status: Widowed, Ethnicity: Asian, Party: Democratic, Favourite color: Green, University: UPC, Religion: Buddhism, Gender: Male, Graduated in: Computer science, Age: 29, ]
+,
+Fullname: Teresa Rampell
+State: LA
+District: 6
+attributes: [ Social status: Divorced, Ethnicity: American, Party: Democratic, Favourite color: Blue, Gender: Female, Age: 28, ]
+,
+Fullname: Quentin Tarantino
+State: LA
+District: 7
+attributes: [ Social status: Single, Ethnicity: American, Gender: Male, Favourite sport: PingPong, Age: 55, ]
+]Relationship strenght
+[]
+Operation finished, enter 99 to see option list or enter next command
+Deleting MP
+Enter MP state:
+Enter MP district number:
+This MP doesn't exist, please enter valid values:
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Deleting MP
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Deleting MP
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+7
+Printing an MP
+Enter MP state:
+Enter MP district number:
+This MP doesn't exist, please enter valid values:
+Enter MP state:
+Enter MP district number:
+
+Fullname: Pepe Rubianes
+State: TN
+District: 5
+attributes: [ Social status: Single, Ethnicity: SouthAmerican, Party: Democratic, University: UPF, Gender: Male, Graduated in: Economy, Age: 37, ]
+
+Operation finished, enter 99 to see option list or enter next command
+Deleting attribute definition
+Enter attribute name:
+Operation finished, enter 99 to see option list or enter next command
+Printing an MP
+Enter MP state:
+Enter MP district number:
+
+Fullname: Pepe Rubianes
+State: TN
+District: 5
+attributes: [ Social status: Single, Ethnicity: SouthAmerican, Party: Democratic, University: UPF, Gender: Male, Age: 37, ]
+
+Operation finished, enter 99 to see option list or enter next command
+
+Deleting attribute value of an MP
+Enter attribute name
+Enter MP state:
+Enter MP district number:
+Operation finished, enter 99 to see option list or enter next command
+Deleting attribute value of an MP
+Enter attribute name
+Enter MP state:
+Enter MP district number:
+This MP had no assigned value for that attribute
+
+Operation finished, enter 99 to see option list or enter next command
+Printing an MP
+Enter MP state:
+Enter MP district number:
+
+Fullname: Pepe Rubianes
+State: TN
+District: 5
+attributes: [ Social status: Single, Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 37, ]
+
+Operation finished, enter 99 to see option list or enter next command
+Printing attribute information
+Enter attribute name
+This attribute doesn't exist, please enter a valid attribute name:
+
+name: Favourite color
+importance: 1
+Operation finished, enter 99 to see option list or enter next command
+Printing the congress
+US Congressman list:
+[
+Fullname: Kate Morgan
+State: AL
+District: 1
+attributes: [ Social status: Married, Ethnicity: AfroAmerican, Party: Republican, University: MIT, Gender: Female, Favourite sport: Basketball, Age: 29, ]
+,
+Fullname: Homer Simpson
+State: AK
+District: 3
+attributes: [ Social status: Single, Ethnicity: American, Party: Republican, University: MIT, Gender: Male, Age: 47, ]
+,
+Fullname: Ada Colau
+State: NY
+District: 5
+attributes: [ Social status: Single, Ethnicity: American, Party: Republican, Favourite color: Red, University: MIT, Religion: Islam, Gender: Female, Age: 40, ]
+,
+Fullname: Julia Roberts
+State: UT
+District: 1
+attributes: [ Social status: Single, Ethnicity: AfroAmerican, Party: Democratic, University: MIT, Religion: Islam, Gender: Female, Age: 50, ]
+,
+Fullname: Pepe Rubianes
+State: TN
+District: 5
+attributes: [ Social status: Single, Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 37, ]
+,
+Fullname: Alan Turing
+State: MO
+District: 3
+attributes: [ Social status: Single, Ethnicity: European, Party: Republican, Religion: Buddhism, Gender: Male, Favourite sport: Football, Age: 60, ]
+,
+Fullname: Marie Curie
+State: GA
+District: 1
+attributes: [ Social status: Widowed, Ethnicity: European, Party: Republican, University: UCM, Gender: Female, Favourite sport: Football, Age: 59, ]
+,
+Fullname: Olof Palme
+State: WV
+District: 1
+attributes: [ Social status: Married, Ethnicity: European, Party: Democratic, University: UB, Gender: Male, Favourite sport: Hockey, Age: 35, ]
+,
+Fullname: Merce Rodoreda
+State: TX
+District: 9
+attributes: [ Social status: Married, Ethnicity: AfroAmerican, Party: Republican, University: UAB, Gender: Female, Age: 34, ]
+,
+Fullname: George Orwell
+State: IA
+District: 3
+attributes: [ Social status: Widowed, Ethnicity: Asian, Party: Democratic, Favourite color: Green, University: UPC, Religion: Buddhism, Gender: Male, Age: 29, ]
+,
+Fullname: Teresa Rampell
+State: LA
+District: 6
+attributes: [ Social status: Divorced, Ethnicity: American, Party: Democratic, Favourite color: Blue, Gender: Female, Age: 28, ]
+,
+Fullname: Quentin Tarantino
+State: LA
+District: 7
+attributes: [ Social status: Single, Ethnicity: American, Gender: Male, Favourite sport: PingPong, Age: 55, ]
+]Relationship strenght
+[]
+Operation finished, enter 99 to see option list or enter next command
+Printing attribute definition list
+Attribute definition list
+
+name: Social status
+importance: 2
+name: Ethnicity
+importance: 2
+name: Party
+importance: 3
+name: Favourite color
+importance: 1
+name: University
+importance: 1
+name: Religion
+importance: 3
+name: Gender
+importance: 1
+name: Favourite sport
+importance: 1
+name: Graduated in
+importance: 0
+name: Age
+importance: 2
+Operation finished, enter 99 to see option list or enter next command
+Invalid operation code
+Operation finished, enter 99 to see option list or enter next command
+ERROR: Operation codes must be integers, enter 99 to see option list.
+Successful exit
