@@ -46,10 +46,7 @@ public class GeneralDriver {
                     break;
                 case 4:
                     for (MP p : c.getMPs()) {
-                        System.out.println(p+":");
-                        for (Attribute a: p.getAttributes()) {
-                            System.out.println(a);
-                        }
+                        System.out.println(p);
                     }
                     break;
                 case 5:
