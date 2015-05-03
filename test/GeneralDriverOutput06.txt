@@ -1,0 +1,628 @@
+==============
+GENERAL DRIVER
+==============
+USA districts:
+	AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA,
+	HI, ID, IL, IN, IA, KS, KY, LA, ME, MD,
+	MA, MI, MN, MS, MO, MT, NE, NV, NH, NJ,
+	NM, NY, NC, ND, OH, OK, OR, PA, RI, SC,
+	SD, TN, TX, UT, VT, VA, WA, WV, WI, WY
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
+Enter the full name, the state and the district of the MP's
+after entering anything hit enter
+When you are doneenter 0 insted of the fullname:1
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: 
+
+Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Dominic Toretto (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Pep Garcia (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Notorious Big (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to King Leonidas (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Gerald Butler (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+
+Fullname: Pep Garcia
+State: WA
+District: 1
+attributes: [ religion: catolic, favourite colour: green, age: 21, gender: male, sport: gym, party: republican, type of music: rap, number of sons: 0, ]
+
+
+Fullname: Gerald Butler
+State: MO
+District: 1
+attributes: [ religion: family, favourite colour: orange, age: 35, gender: male, sport: driving, party: democrats, type of music: rap, number of sons: 0, ]
+
+
+Fullname: King Leonidas
+State: AZ
+District: 1
+attributes: [ religion: ancient greece, favourite colour: gold, age: 35, gender: male, sport: fighting, party: republican, type of music: classic, number of sons: 1, ]
+
+
+Fullname: Dominic Toretto
+State: CA
+District: 1
+attributes: [ religion: family, favourite colour: orange, age: 35, gender: male, sport: driving, party: democrats, type of music: rap, number of sons: 0, ]
+
+
+Fullname: Notorious Big
+State: CT
+District: 1
+attributes: [ religion: none, favourite colour: red, age: 33, gender: male, sport: sing, party: democrats, type of music: rap, number of sons: 1, ]
+
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+The US Congress
+US Congressman list:
+[
+Fullname: Dominic Toretto
+State: CA
+District: 1
+attributes: [ religion: family, favourite colour: orange, age: 35, gender: male, sport: driving, party: democrats, type of music: rap, number of sons: 0, ]
+, 
+Fullname: Pep Garcia
+State: WA
+District: 1
+attributes: [ religion: catolic, favourite colour: green, age: 21, gender: male, sport: gym, party: republican, type of music: rap, number of sons: 0, ]
+, 
+Fullname: Notorious Big
+State: CT
+District: 1
+attributes: [ religion: none, favourite colour: red, age: 33, gender: male, sport: sing, party: democrats, type of music: rap, number of sons: 1, ]
+, 
+Fullname: King Leonidas
+State: AZ
+District: 1
+attributes: [ religion: ancient greece, favourite colour: gold, age: 35, gender: male, sport: fighting, party: republican, type of music: classic, number of sons: 1, ]
+, 
+Fullname: Gerald Butler
+State: MO
+District: 1
+attributes: [ religion: family, favourite colour: orange, age: 35, gender: male, sport: driving, party: democrats, type of music: rap, number of sons: 0, ]
+]Relationship strenght
+[]
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Computing weights:
+
+How the congress remains
+US Congressman list:
+[
+Fullname: Dominic Toretto
+State: CA
+District: 1
+attributes: [ religion: family, favourite colour: orange, age: 35, gender: male, sport: driving, party: democrats, type of music: rap, number of sons: 0, ]
+, 
+Fullname: Pep Garcia
+State: WA
+District: 1
+attributes: [ religion: catolic, favourite colour: green, age: 21, gender: male, sport: gym, party: republican, type of music: rap, number of sons: 0, ]
+, 
+Fullname: Notorious Big
+State: CT
+District: 1
+attributes: [ religion: none, favourite colour: red, age: 33, gender: male, sport: sing, party: democrats, type of music: rap, number of sons: 1, ]
+, 
+Fullname: King Leonidas
+State: AZ
+District: 1
+attributes: [ religion: ancient greece, favourite colour: gold, age: 35, gender: male, sport: fighting, party: republican, type of music: classic, number of sons: 1, ]
+, 
+Fullname: Gerald Butler
+State: MO
+District: 1
+attributes: [ religion: family, favourite colour: orange, age: 35, gender: male, sport: driving, party: democrats, type of music: rap, number of sons: 0, ]
+]Relationship strenght
+[(MO 1,WA 1):9.0
+, (AZ 1,WA 1):17.0
+, (CA 1,WA 1):9.0
+, (CT 1,WA 1):5.0
+, (MO 1,AZ 1):5.0
+, (CA 1,MO 1):50.0
+, (MO 1,CT 1):21.0
+, (CA 1,AZ 1):5.0
+, (AZ 1,CT 1):5.0
+, (CA 1,CT 1):21.0
+]
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+{(CA 1,CT 1,MO 1,)(WA 1,AZ 1,)}
+
+
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+Modularity of the best partition:0.11134249618214644
+
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
+These are all MP's in the congress:
+
+Fullname: Pep Garcia
+State: WA
+District: 1
+attributes: [ religion: catolic, favourite colour: green, age: 21, gender: male, sport: gym, party: republican, type of music: rap, number of sons: 0, ]
+
+
+Fullname: Gerald Butler
+State: MO
+District: 1
+attributes: [ religion: family, favourite colour: orange, age: 35, gender: male, sport: driving, party: democrats, type of music: rap, number of sons: 0, ]
+
+
+Fullname: King Leonidas
+State: AZ
+District: 1
+attributes: [ religion: ancient greece, favourite colour: gold, age: 35, gender: male, sport: fighting, party: republican, type of music: classic, number of sons: 1, ]
+
+
+Fullname: Dominic Toretto
+State: CA
+District: 1
+attributes: [ religion: family, favourite colour: orange, age: 35, gender: male, sport: driving, party: democrats, type of music: rap, number of sons: 0, ]
+
+
+Fullname: Notorious Big
+State: CT
+District: 1
+attributes: [ religion: none, favourite colour: red, age: 33, gender: male, sport: sing, party: democrats, type of music: rap, number of sons: 1, ]
+
+
+Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
+Enter the MP's you want to compare:
+MP#1
+state: district :MP#2:
+state: district :gender: male
+type of music: rap
+
+Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
+Enter the MP's you want to compare:
+MP#1
+state: district :MP#2:
+state: district :gender: male
+type of music: rap
+number of sons: 0
+
+Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT

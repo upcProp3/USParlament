@@ -1,0 +1,168 @@
+2
+2
+sport
+2
+2
+religion
+3
+2
+gender
+1
+2
+favourite colour
+1
+2
+type of music
+2
+2
+party
+3
+2
+age
+2
+2
+number of sons
+2
+0
+1
+1
+Dominic Toretto
+CA
+1
+Pep Garcia
+WA
+1
+Notorious Big
+CT
+1
+King Leonidas
+AZ
+1
+Gerald Butler
+MO
+1
+0
+0
+2
+1
+CA
+1
+sport
+driving
+religion
+family
+gender
+male
+favourite colour
+orange
+type of music
+rap
+party
+democrats
+age
+35
+number of sons
+0
+0
+1
+WA
+1
+sport
+gym
+religion
+catolic
+gender
+male
+favourite colour
+green
+type of music
+rap
+party
+republican
+age
+21
+number of sons
+0
+0
+1
+CT
+1
+sport
+sing
+religion
+none
+gender
+male
+favourite colour
+red
+type of music
+rap
+party
+democrats
+age
+33
+number of sons
+1
+0
+1
+AZ
+1
+sport
+fighting
+religion
+ancient greece
+gender
+male
+favourite colour
+gold
+type of music
+classic
+party
+republican
+age
+35
+number of sons
+1
+0
+1
+MO
+1
+sport
+driving
+religion
+family
+gender
+male
+favourite colour
+orange
+type of music
+rap
+party
+democrats
+age
+35
+number of sons
+0
+0
+0
+4
+5
+3
+6
+1
+2
+0
+1
+4
+5
+CT
+1
+WA
+1
+5
+CA
+1
+WA
+1
+0
+0
