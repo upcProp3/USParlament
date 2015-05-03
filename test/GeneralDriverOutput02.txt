@@ -1,4 +1,3 @@
-/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/bin/java -Didea.launcher.port=7535 "-Didea.launcher.bin.path=/Applications/IntelliJ IDEA 14.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath "/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/lib/tools.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Users/alexmirocat/Desktop/Prop/USParlament/out/production/USParlament:/Users/alexmirocat/Desktop/Prop/USParlament/Lib/google-collections-0.9.jar:/Applications/IntelliJ IDEA 14.app/Contents/lib/idea_rt.jar" com.intellij.rt.execution.application.AppMain es.upc.fib.prop.usParlament.driver.GeneralDriverv2
 ==============
 GENERAL DRIVER
 ==============
@@ -19,12 +18,15 @@ What do you want to do? Enter the key and press Enter
 7-Show state's abbreviations
 any other number-EXIT
 Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 Enter the full name, the state and the district of the MP's
 after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-
+When you are doneenter 0 insted of the fullname:
 fullname: state: district :MP added successfully
 fullname: state: district :MP added successfully
 fullname: state: district :MP added successfully
@@ -74,12 +76,15 @@ fullname: state: district :MP added successfully
 fullname: state: district :MP added successfully
 fullname: state: district :MP added successfully
 fullname: state: district :MP added successfully
-fullname: 
+fullname:
 
 Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 What do you want to do? Enter the key and press Enter
 
 1-MP management
@@ -100,8 +105,8 @@ Attribute Management
 7-Print the list of attribute definitions
 any other number-EXIT
 Enter the type info
-name: 
-importance: 
+name:
+importance:
 
 
 Attribute Management
@@ -114,8 +119,8 @@ Attribute Management
 7-Print the list of attribute definitions
 any other number-EXIT
 Enter the type info
-name: 
-importance: 
+name:
+importance:
 
 
 Attribute Management
@@ -128,8 +133,8 @@ Attribute Management
 7-Print the list of attribute definitions
 any other number-EXIT
 Enter the type info
-name: 
-importance: 
+name:
+importance:
 
 
 Attribute Management
@@ -142,8 +147,8 @@ Attribute Management
 7-Print the list of attribute definitions
 any other number-EXIT
 Enter the type info
-name: 
-importance: 
+name:
+importance:
 
 
 Attribute Management
@@ -156,8 +161,8 @@ Attribute Management
 7-Print the list of attribute definitions
 any other number-EXIT
 Enter the type info
-name: 
-importance: 
+name:
+importance:
 
 
 Attribute Management
@@ -170,8 +175,8 @@ Attribute Management
 7-Print the list of attribute definitions
 any other number-EXIT
 Enter the type info
-name: 
-importance: 
+name:
+importance:
 
 
 Attribute Management
@@ -184,8 +189,8 @@ Attribute Management
 7-Print the list of attribute definitions
 any other number-EXIT
 Enter the type info
-name: 
-importance: 
+name:
+importance:
 
 
 Attribute Management
@@ -198,8 +203,8 @@ Attribute Management
 7-Print the list of attribute definitions
 any other number-EXIT
 Enter the type info
-name: 
-importance: 
+name:
+importance:
 
 
 Attribute Management
@@ -212,8 +217,8 @@ Attribute Management
 7-Print the list of attribute definitions
 any other number-EXIT
 Enter the type info
-name: 
-importance: 
+name:
+importance:
 
 
 Attribute Management
@@ -226,8 +231,8 @@ Attribute Management
 7-Print the list of attribute definitions
 any other number-EXIT
 Enter the type info
-name: 
-importance: 
+name:
+importance:
 
 
 Attribute Management
@@ -242,34 +247,34 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Kate Morgan (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -282,34 +287,34 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Johnny Cash (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -322,31 +327,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Homer Simpson (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -359,25 +364,25 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Ada Colau (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -390,31 +395,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Julia Roberts (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -427,28 +432,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Martha Smith (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -461,31 +466,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Mia Wallace (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -498,31 +503,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Pepe Rubianes (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -535,28 +540,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Alan Turing (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -569,31 +574,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Marie Curie (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -606,25 +611,25 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Olof Palme (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -637,25 +642,25 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Merce Rodoreda (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -668,34 +673,34 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to George Orwell (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -708,31 +713,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Teresa Rampell (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -745,31 +750,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Quentin Tarantino (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -782,31 +787,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Vincent Vega (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -819,31 +824,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Alex Miro (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -856,31 +861,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Aleix Sacrest (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -893,28 +898,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Ondrej Velisek (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -927,25 +932,25 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Miquel Jubert (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -958,22 +963,22 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Micheal Jackson (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -986,31 +991,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Micheal Corleone (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1023,28 +1028,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Peggy Sue (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1057,28 +1062,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Alfred Nobel (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1091,28 +1096,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Justin Doellman (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1125,28 +1130,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Emma Quiles (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1159,28 +1164,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Big Mike (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1193,25 +1198,25 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Manuel de Pedrolo (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1224,22 +1229,22 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Miquel Marti i Pol (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1252,28 +1257,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Care Santos (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1286,25 +1291,25 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Oriol Fontelles (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1317,28 +1322,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Elisenda Vilabru (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1351,28 +1356,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Justo Molinero (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1385,28 +1390,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Marge Simpson (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1419,25 +1424,25 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Marylin Monroe (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1450,22 +1455,22 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Arthur Guinness (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1478,25 +1483,25 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to James Bond (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1509,28 +1514,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Clara Jones (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1543,28 +1548,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Wiston Churchill (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1577,22 +1582,22 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to William Turner (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1605,31 +1610,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Tina Turner (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1642,25 +1647,25 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Joan Miro (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1673,25 +1678,25 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Pablo Picasso (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1704,28 +1709,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Paula Smith (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1738,25 +1743,25 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Samantha Morgan (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1769,31 +1774,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Laura Villalobos (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1806,28 +1811,28 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Quim Monzo (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1840,25 +1845,25 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Saul Jr (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1871,31 +1876,31 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to John Mill (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -1905,7 +1910,7 @@ Attribute Management
 6-Set importance to a type of attributes
 7-Print the list of attribute definitions
 any other number-EXIT
-Enter the type: 
+Enter the type:
 actual importance is 1
 new importance: importance changed
 
@@ -1918,7 +1923,7 @@ Attribute Management
 6-Set importance to a type of attributes
 7-Print the list of attribute definitions
 any other number-EXIT
-Enter the type: 
+Enter the type:
 actual importance is 1
 new importance: The importance must be an integer between 0 and 3
 Enter the importance again:importance changed
@@ -1932,7 +1937,7 @@ Attribute Management
 6-Set importance to a type of attributes
 7-Print the list of attribute definitions
 any other number-EXIT
-Enter the type: 
+Enter the type:
 
 
 name: FavouriteColor
@@ -1947,7 +1952,7 @@ Attribute Management
 6-Set importance to a type of attributes
 7-Print the list of attribute definitions
 any other number-EXIT
-Enter the type: 
+Enter the type:
 actual importance is 0
 new importance: importance changed
 
@@ -1960,7 +1965,7 @@ Attribute Management
 6-Set importance to a type of attributes
 7-Print the list of attribute definitions
 any other number-EXIT
-Enter the type: 
+Enter the type:
 
 
 name: FavouriteColor
@@ -3242,242 +3247,242 @@ Fullname: Kate Morgan
 State: AL
 District: 1
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, FavouriteSport: Tennis, Religion: Catholic, GraduatedIn: ComputerScience, Gender: Female, Age: 29, SocialStatus: Single, ]
-, 
+,
 Fullname: Johnny Cash
 State: AK
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UPC, FavouriteColor: Red, Religion: Catholic, GraduatedIn: Mathematics, Gender: Male, Age: 30, SocialStatus: Single, ]
-, 
+,
 Fullname: Homer Simpson
 State: AZ
 District: 3
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, Religion: Islam, GraduatedIn: Mathematics, Gender: Male, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Ada Colau
 State: AR
 District: 5
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, Gender: Female, Age: 32, SocialStatus: Single, ]
-, 
+,
 Fullname: Julia Roberts
 State: CA
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, FavouriteColor: Blue, Religion: Catholic, Gender: Female, Age: 33, SocialStatus: Single, ]
-, 
+,
 Fullname: Martha Smith
 State: CO
 District: 8
 attributes: [ Ethnicity: American, Party: Democratic, University: UCM, GraduatedIn: Journalism, Gender: Female, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Mia Wallace
 State: CT
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UPF, GraduatedIn: Journalism, Religion: Islam, Gender: Female, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Pepe Rubianes
 State: DE
 District: 5
 attributes: [ Ethnicity: American, Party: Democratic, University: UB, Religion: Catholic, GraduatedIn: Mathematics, Gender: Male, Age: 36, SocialStatus: Married, ]
-, 
+,
 Fullname: Alan Turing
 State: FL
 District: 3
 attributes: [ Ethnicity: American, Party: Democratic, University: UAB, GraduatedIn: Economy, Gender: Male, Age: 37, SocialStatus: Married, ]
-, 
+,
 Fullname: Marie Curie
 State: GA
 District: 1
 attributes: [ Ethnicity: American, Party: Republican, University: UB, GraduatedIn: Chemistry, Religion: Islam, Gender: Female, Age: 38, SocialStatus: Married, ]
-, 
+,
 Fullname: Olof Palme
 State: HI
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Religion: Buddhism, Gender: Male, Age: 44, SocialStatus: Married, ]
-, 
+,
 Fullname: Merce Rodoreda
 State: ID
 District: 9
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Religion: Islam, Gender: Female, Age: 40, SocialStatus: Single, ]
-, 
+,
 Fullname: George Orwell
 State: IL
 District: 3
 attributes: [ Ethnicity: American, Party: Republican, University: UPC, FavouriteSport: Basketball, Religion: Catholic, GraduatedIn: ComputerScience, Gender: Male, Age: 41, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Teresa Rampell
 State: IN
 District: 6
 attributes: [ Ethnicity: American, Party: Democratic, University: UCM, Religion: Islam, GraduatedIn: Journalism, Gender: Female, Age: 42, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Quentin Tarantino
 State: IA
 District: 7
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Single, ]
-, 
+,
 Fullname: Vincent Vega
 State: KS
 District: 8
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Alex Miro
 State: KY
 District: 9
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 45, SocialStatus: Married, ]
-, 
+,
 Fullname: Aleix Sacrest
 State: LA
 District: 10
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Hockey, GraduatedIn: ComputerScience, Gender: Male, Age: 46, SocialStatus: Single, ]
-, 
+,
 Fullname: Ondrej Velisek
 State: ME
 District: 11
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Hockey, Religion: Islam, Gender: Male, Age: 47, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Miquel Jubert
 State: MD
 District: 12
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Blue, Gender: Male, Age: 48, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Micheal Jackson
 State: MA
 District: 13
 attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 49, SocialStatus: Single, ]
-, 
+,
 Fullname: Micheal Corleone
 State: MI
 District: 14
 attributes: [ Ethnicity: American, Party: Republican, University: UB, Religion: Islam, GraduatedIn: Mathematics, Gender: Male, Age: 50, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Peggy Sue
 State: MN
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteSport: PingPong, FavouriteColor: Green, Gender: Female, Age: 51, SocialStatus: Single, ]
-, 
+,
 Fullname: Alfred Nobel
 State: MS
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UB, GraduatedIn: Economy, Gender: Male, Age: 58, SocialStatus: Married, ]
-, 
+,
 Fullname: Justin Doellman
 State: MO
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Red, Religion: Catholic, Gender: Male, Age: 53, SocialStatus: Married, ]
-, 
+,
 Fullname: Emma Quiles
 State: MT
 District: 10
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Basketball, Religion: Catholic, Gender: Female, Age: 54, SocialStatus: Married, ]
-, 
+,
 Fullname: Big Mike
 State: NE
 District: 6
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteSport: Football, Religion: Catholic, Gender: Male, Age: 58, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Manuel de Pedrolo
 State: NV
 District: 3
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Islam, Gender: Male, Age: 56, SocialStatus: Married, ]
-, 
+,
 Fullname: Miquel Marti i Pol
 State: NH
 District: 4
 attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 57, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Care Santos
 State: NJ
 District: 9
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, GraduatedIn: ComputerScience, Gender: Female, Age: 58, SocialStatus: Married, ]
-, 
+,
 Fullname: Oriol Fontelles
 State: NM
 District: 5
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Buddhism, Gender: Male, Age: 58, SocialStatus: Single, ]
-, 
+,
 Fullname: Elisenda Vilabru
 State: NY
 District: 8
 attributes: [ Ethnicity: European, Party: Republican, University: UPC, GraduatedIn: Mathematics, Gender: Female, Age: 60, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Justo Molinero
 State: NC
 District: 7
 attributes: [ Ethnicity: Asian, Party: Democratic, FavouriteColor: Green, Religion: Buddhism, Gender: Male, Age: 61, SocialStatus: Married, ]
-, 
+,
 Fullname: Marge Simpson
 State: OH
 District: 6
 attributes: [ Ethnicity: Asian, Party: Republican, University: MIT, GraduatedIn: ComputerScience, Gender: Female, Age: 62, SocialStatus: Married, ]
-, 
+,
 Fullname: Marylin Monroe
 State: OK
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Religion: Islam, Gender: Female, Age: 63, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Arthur Guinness
 State: OR
 District: 2
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Gender: Male, Age: 64, SocialStatus: Single, ]
-, 
+,
 Fullname: James Bond
 State: PA
 District: 3
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Religion: Islam, Gender: Male, Age: 42, SocialStatus: Married, ]
-, 
+,
 Fullname: Clara Jones
 State: RI
 District: 4
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, Religion: Islam, Gender: Female, Age: 43, SocialStatus: Married, ]
-, 
+,
 Fullname: Wiston Churchill
 State: SC
 District: 5
 attributes: [ Ethnicity: SouthAmerican, Party: Democratic, University: MIT, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Married, ]
-, 
+,
 Fullname: William Turner
 State: SD
 District: 6
 attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 45, SocialStatus: Married, ]
-, 
+,
 Fullname: Tina Turner
 State: TN
 District: 7
 attributes: [ Ethnicity: American, Party: Democratic, University: MIT, Religion: Islam, GraduatedIn: Physics, Gender: Female, Age: 46, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Joan Miro
 State: TX
 District: 8
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Red, Gender: Male, Age: 46, SocialStatus: Single, ]
-, 
+,
 Fullname: Pablo Picasso
 State: UT
 District: 9
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Catholic, Gender: Male, Age: 48, SocialStatus: Married, ]
-, 
+,
 Fullname: Paula Smith
 State: VT
 District: 10
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Football, Religion: Catholic, Gender: Female, Age: 48, SocialStatus: Married, ]
-, 
+,
 Fullname: Samantha Morgan
 State: VA
 District: 11
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Football, Gender: Female, Age: 40, SocialStatus: Married, ]
-, 
+,
 Fullname: Laura Villalobos
 State: WA
 District: 12
 attributes: [ Ethnicity: American, Party: Democratic, University: UAB, Religion: Islam, GraduatedIn: Journalism, Gender: Female, Age: 40, SocialStatus: Married, ]
-, 
+,
 Fullname: Quim Monzo
 State: WV
 District: 7
 attributes: [ Ethnicity: American, Party: Democratic, University: UPC, GraduatedIn: ComputerScience, Gender: Male, Age: 50, SocialStatus: Married, ]
-, 
+,
 Fullname: Saul Jr
 State: WI
 District: 12
 attributes: [ Ethnicity: American, Party: Republican, Religion: Islam, Gender: Male, Age: 50, SocialStatus: Married, ]
-, 
+,
 Fullname: John Mill
 State: WY
 District: 1
@@ -4603,295 +4608,638 @@ Fullname: Tina Turner
 State: TN
 District: 7
 attributes: [ Ethnicity: American, Party: Democratic, University: MIT, Religion: Islam, GraduatedIn: Physics, Gender: Female, Age: 46, SocialStatus: Widowed, ]
-
+:
+Ethnicity: American
+Party: Democratic
+University: MIT
+Religion: Islam
+GraduatedIn: Physics
+Gender: Female
+Age: 46
+SocialStatus: Widowed
 
 Fullname: Joan Miro
 State: TX
 District: 8
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Red, Gender: Male, Age: 46, SocialStatus: Single, ]
-
+:
+Ethnicity: American
+Party: Democratic
+FavouriteColor: Red
+Gender: Male
+Age: 46
+SocialStatus: Single
 
 Fullname: Aleix Sacrest
 State: LA
 District: 10
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Hockey, GraduatedIn: ComputerScience, Gender: Male, Age: 46, SocialStatus: Single, ]
-
+:
+Ethnicity: SouthAmerican
+Party: Republican
+University: UPC
+FavouriteSport: Hockey
+GraduatedIn: ComputerScience
+Gender: Male
+Age: 46
+SocialStatus: Single
 
 Fullname: Laura Villalobos
 State: WA
 District: 12
 attributes: [ Ethnicity: American, Party: Democratic, University: UAB, Religion: Islam, GraduatedIn: Journalism, Gender: Female, Age: 40, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Democratic
+University: UAB
+Religion: Islam
+GraduatedIn: Journalism
+Gender: Female
+Age: 40
+SocialStatus: Married
 
 Fullname: Miquel Marti i Pol
 State: NH
 District: 4
 attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 57, SocialStatus: Widowed, ]
-
+:
+Ethnicity: American
+Party: Democratic
+Gender: Male
+Age: 57
+SocialStatus: Widowed
 
 Fullname: Emma Quiles
 State: MT
 District: 10
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Basketball, Religion: Catholic, Gender: Female, Age: 54, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Republican
+FavouriteSport: Basketball
+Religion: Catholic
+Gender: Female
+Age: 54
+SocialStatus: Married
 
 Fullname: Martha Smith
 State: CO
 District: 8
 attributes: [ Ethnicity: American, Party: Democratic, University: UCM, GraduatedIn: Journalism, Gender: Female, Age: 39, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Democratic
+University: UCM
+GraduatedIn: Journalism
+Gender: Female
+Age: 39
+SocialStatus: Married
 
 Fullname: Merce Rodoreda
 State: ID
 District: 9
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Religion: Islam, Gender: Female, Age: 40, SocialStatus: Single, ]
-
+:
+Ethnicity: AfroAmerican
+Party: Democratic
+Religion: Islam
+Gender: Female
+Age: 40
+SocialStatus: Single
 
 Fullname: Micheal Jackson
 State: MA
 District: 13
 attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 49, SocialStatus: Single, ]
-
+:
+Ethnicity: American
+Party: Democratic
+Gender: Male
+Age: 49
+SocialStatus: Single
 
 Fullname: Wiston Churchill
 State: SC
 District: 5
 attributes: [ Ethnicity: SouthAmerican, Party: Democratic, University: MIT, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Married, ]
-
+:
+Ethnicity: SouthAmerican
+Party: Democratic
+University: MIT
+GraduatedIn: ComputerScience
+Gender: Male
+Age: 44
+SocialStatus: Married
 
 Fullname: William Turner
 State: SD
 District: 6
 attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 45, SocialStatus: Married, ]
-
+:
+Ethnicity: SouthAmerican
+Party: Democratic
+Gender: Male
+Age: 45
+SocialStatus: Married
 
 Fullname: Quim Monzo
 State: WV
 District: 7
 attributes: [ Ethnicity: American, Party: Democratic, University: UPC, GraduatedIn: ComputerScience, Gender: Male, Age: 50, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Democratic
+University: UPC
+GraduatedIn: ComputerScience
+Gender: Male
+Age: 50
+SocialStatus: Married
 
 Fullname: Elisenda Vilabru
 State: NY
 District: 8
 attributes: [ Ethnicity: European, Party: Republican, University: UPC, GraduatedIn: Mathematics, Gender: Female, Age: 60, SocialStatus: Divorced, ]
-
+:
+Ethnicity: European
+Party: Republican
+University: UPC
+GraduatedIn: Mathematics
+Gender: Female
+Age: 60
+SocialStatus: Divorced
 
 Fullname: Marylin Monroe
 State: OK
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Religion: Islam, Gender: Female, Age: 63, SocialStatus: Widowed, ]
-
+:
+Ethnicity: AfroAmerican
+Party: Democratic
+Religion: Islam
+Gender: Female
+Age: 63
+SocialStatus: Widowed
 
 Fullname: Quentin Tarantino
 State: IA
 District: 7
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Single, ]
-
+:
+Ethnicity: AfroAmerican
+Party: Republican
+University: UPC
+FavouriteSport: Basketball
+GraduatedIn: ComputerScience
+Gender: Male
+Age: 44
+SocialStatus: Single
 
 Fullname: Ada Colau
 State: AR
 District: 5
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, Gender: Female, Age: 32, SocialStatus: Single, ]
-
+:
+Ethnicity: AfroAmerican
+Party: Democratic
+FavouriteSport: Rugby
+Gender: Female
+Age: 32
+SocialStatus: Single
 
 Fullname: Saul Jr
 State: WI
 District: 12
 attributes: [ Ethnicity: American, Party: Republican, Religion: Islam, Gender: Male, Age: 50, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Republican
+Religion: Islam
+Gender: Male
+Age: 50
+SocialStatus: Married
 
 Fullname: Teresa Rampell
 State: IN
 District: 6
 attributes: [ Ethnicity: American, Party: Democratic, University: UCM, Religion: Islam, GraduatedIn: Journalism, Gender: Female, Age: 42, SocialStatus: Divorced, ]
-
+:
+Ethnicity: American
+Party: Democratic
+University: UCM
+Religion: Islam
+GraduatedIn: Journalism
+Gender: Female
+Age: 42
+SocialStatus: Divorced
 
 Fullname: Care Santos
 State: NJ
 District: 9
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, GraduatedIn: ComputerScience, Gender: Female, Age: 58, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Republican
+University: MIT
+GraduatedIn: ComputerScience
+Gender: Female
+Age: 58
+SocialStatus: Married
 
 Fullname: Marge Simpson
 State: OH
 District: 6
 attributes: [ Ethnicity: Asian, Party: Republican, University: MIT, GraduatedIn: ComputerScience, Gender: Female, Age: 62, SocialStatus: Married, ]
-
+:
+Ethnicity: Asian
+Party: Republican
+University: MIT
+GraduatedIn: ComputerScience
+Gender: Female
+Age: 62
+SocialStatus: Married
 
 Fullname: Ondrej Velisek
 State: ME
 District: 11
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Hockey, Religion: Islam, Gender: Male, Age: 47, SocialStatus: Divorced, ]
-
+:
+Ethnicity: American
+Party: Republican
+FavouriteSport: Hockey
+Religion: Islam
+Gender: Male
+Age: 47
+SocialStatus: Divorced
 
 Fullname: Clara Jones
 State: RI
 District: 4
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, Religion: Islam, Gender: Female, Age: 43, SocialStatus: Married, ]
-
+:
+Ethnicity: AfroAmerican
+Party: Democratic
+FavouriteSport: Rugby
+Religion: Islam
+Gender: Female
+Age: 43
+SocialStatus: Married
 
 Fullname: Pepe Rubianes
 State: DE
 District: 5
 attributes: [ Ethnicity: American, Party: Democratic, University: UB, Religion: Catholic, GraduatedIn: Mathematics, Gender: Male, Age: 36, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Democratic
+University: UB
+Religion: Catholic
+GraduatedIn: Mathematics
+Gender: Male
+Age: 36
+SocialStatus: Married
 
 Fullname: Alan Turing
 State: FL
 District: 3
 attributes: [ Ethnicity: American, Party: Democratic, University: UAB, GraduatedIn: Economy, Gender: Male, Age: 37, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Democratic
+University: UAB
+GraduatedIn: Economy
+Gender: Male
+Age: 37
+SocialStatus: Married
 
 Fullname: Alfred Nobel
 State: MS
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UB, GraduatedIn: Economy, Gender: Male, Age: 58, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Republican
+University: UB
+GraduatedIn: Economy
+Gender: Male
+Age: 58
+SocialStatus: Married
 
 Fullname: Big Mike
 State: NE
 District: 6
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteSport: Football, Religion: Catholic, Gender: Male, Age: 58, SocialStatus: Widowed, ]
-
+:
+Ethnicity: American
+Party: Democratic
+FavouriteSport: Football
+Religion: Catholic
+Gender: Male
+Age: 58
+SocialStatus: Widowed
 
 Fullname: Samantha Morgan
 State: VA
 District: 11
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Football, Gender: Female, Age: 40, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Republican
+FavouriteSport: Football
+Gender: Female
+Age: 40
+SocialStatus: Married
 
 Fullname: Vincent Vega
 State: KS
 District: 8
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Divorced, ]
-
+:
+Ethnicity: SouthAmerican
+Party: Republican
+University: UPC
+FavouriteSport: Basketball
+GraduatedIn: ComputerScience
+Gender: Male
+Age: 44
+SocialStatus: Divorced
 
 Fullname: James Bond
 State: PA
 District: 3
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Religion: Islam, Gender: Male, Age: 42, SocialStatus: Married, ]
-
+:
+Ethnicity: AfroAmerican
+Party: Republican
+Religion: Islam
+Gender: Male
+Age: 42
+SocialStatus: Married
 
 Fullname: Alex Miro
 State: KY
 District: 9
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 45, SocialStatus: Married, ]
-
+:
+Ethnicity: SouthAmerican
+Party: Republican
+University: UPC
+FavouriteSport: Basketball
+GraduatedIn: ComputerScience
+Gender: Male
+Age: 45
+SocialStatus: Married
 
 Fullname: George Orwell
 State: IL
 District: 3
 attributes: [ Ethnicity: American, Party: Republican, University: UPC, FavouriteSport: Basketball, Religion: Catholic, GraduatedIn: ComputerScience, Gender: Male, Age: 41, SocialStatus: Divorced, ]
-
+:
+Ethnicity: American
+Party: Republican
+University: UPC
+FavouriteSport: Basketball
+Religion: Catholic
+GraduatedIn: ComputerScience
+Gender: Male
+Age: 41
+SocialStatus: Divorced
 
 Fullname: Johnny Cash
 State: AK
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UPC, FavouriteColor: Red, Religion: Catholic, GraduatedIn: Mathematics, Gender: Male, Age: 30, SocialStatus: Single, ]
-
+:
+Ethnicity: American
+Party: Republican
+University: UPC
+FavouriteColor: Red
+Religion: Catholic
+GraduatedIn: Mathematics
+Gender: Male
+Age: 30
+SocialStatus: Single
 
 Fullname: Kate Morgan
 State: AL
 District: 1
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, FavouriteSport: Tennis, Religion: Catholic, GraduatedIn: ComputerScience, Gender: Female, Age: 29, SocialStatus: Single, ]
-
+:
+Ethnicity: American
+Party: Republican
+University: MIT
+FavouriteSport: Tennis
+Religion: Catholic
+GraduatedIn: ComputerScience
+Gender: Female
+Age: 29
+SocialStatus: Single
 
 Fullname: Arthur Guinness
 State: OR
 District: 2
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Gender: Male, Age: 64, SocialStatus: Single, ]
-
+:
+Ethnicity: AfroAmerican
+Party: Republican
+Gender: Male
+Age: 64
+SocialStatus: Single
 
 Fullname: Pablo Picasso
 State: UT
 District: 9
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Catholic, Gender: Male, Age: 48, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Democratic
+Religion: Catholic
+Gender: Male
+Age: 48
+SocialStatus: Married
 
 Fullname: Olof Palme
 State: HI
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Religion: Buddhism, Gender: Male, Age: 44, SocialStatus: Married, ]
-
+:
+Ethnicity: AfroAmerican
+Party: Republican
+Religion: Buddhism
+Gender: Male
+Age: 44
+SocialStatus: Married
 
 Fullname: Justin Doellman
 State: MO
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Red, Religion: Catholic, Gender: Male, Age: 53, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Democratic
+FavouriteColor: Red
+Religion: Catholic
+Gender: Male
+Age: 53
+SocialStatus: Married
 
 Fullname: Manuel de Pedrolo
 State: NV
 District: 3
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Islam, Gender: Male, Age: 56, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Democratic
+Religion: Islam
+Gender: Male
+Age: 56
+SocialStatus: Married
 
 Fullname: Oriol Fontelles
 State: NM
 District: 5
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Buddhism, Gender: Male, Age: 58, SocialStatus: Single, ]
-
+:
+Ethnicity: American
+Party: Democratic
+Religion: Buddhism
+Gender: Male
+Age: 58
+SocialStatus: Single
 
 Fullname: Justo Molinero
 State: NC
 District: 7
 attributes: [ Ethnicity: Asian, Party: Democratic, FavouriteColor: Green, Religion: Buddhism, Gender: Male, Age: 61, SocialStatus: Married, ]
-
+:
+Ethnicity: Asian
+Party: Democratic
+FavouriteColor: Green
+Religion: Buddhism
+Gender: Male
+Age: 61
+SocialStatus: Married
 
 Fullname: John Mill
 State: WY
 District: 1
 attributes: [ Ethnicity: European, Party: Democratic, FavouriteSport: Hockey, FavouriteColor: Green, Religion: Catholic, Gender: Male, Age: 60, SocialStatus: Married, ]
-
+:
+Ethnicity: European
+Party: Democratic
+FavouriteSport: Hockey
+FavouriteColor: Green
+Religion: Catholic
+Gender: Male
+Age: 60
+SocialStatus: Married
 
 Fullname: Marie Curie
 State: GA
 District: 1
 attributes: [ Ethnicity: American, Party: Republican, University: UB, GraduatedIn: Chemistry, Religion: Islam, Gender: Female, Age: 38, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Republican
+University: UB
+GraduatedIn: Chemistry
+Religion: Islam
+Gender: Female
+Age: 38
+SocialStatus: Married
 
 Fullname: Peggy Sue
 State: MN
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteSport: PingPong, FavouriteColor: Green, Gender: Female, Age: 51, SocialStatus: Single, ]
-
+:
+Ethnicity: American
+Party: Democratic
+FavouriteSport: PingPong
+FavouriteColor: Green
+Gender: Female
+Age: 51
+SocialStatus: Single
 
 Fullname: Paula Smith
 State: VT
 District: 10
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Football, Religion: Catholic, Gender: Female, Age: 48, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Republican
+FavouriteSport: Football
+Religion: Catholic
+Gender: Female
+Age: 48
+SocialStatus: Married
 
 Fullname: Micheal Corleone
 State: MI
 District: 14
 attributes: [ Ethnicity: American, Party: Republican, University: UB, Religion: Islam, GraduatedIn: Mathematics, Gender: Male, Age: 50, SocialStatus: Divorced, ]
-
+:
+Ethnicity: American
+Party: Republican
+University: UB
+Religion: Islam
+GraduatedIn: Mathematics
+Gender: Male
+Age: 50
+SocialStatus: Divorced
 
 Fullname: Homer Simpson
 State: AZ
 District: 3
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, Religion: Islam, GraduatedIn: Mathematics, Gender: Male, Age: 39, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Republican
+University: MIT
+Religion: Islam
+GraduatedIn: Mathematics
+Gender: Male
+Age: 39
+SocialStatus: Married
 
 Fullname: Miquel Jubert
 State: MD
 District: 12
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Blue, Gender: Male, Age: 48, SocialStatus: Widowed, ]
-
+:
+Ethnicity: American
+Party: Democratic
+FavouriteColor: Blue
+Gender: Male
+Age: 48
+SocialStatus: Widowed
 
 Fullname: Mia Wallace
 State: CT
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UPF, GraduatedIn: Journalism, Religion: Islam, Gender: Female, Age: 39, SocialStatus: Married, ]
-
+:
+Ethnicity: American
+Party: Republican
+University: UPF
+GraduatedIn: Journalism
+Religion: Islam
+Gender: Female
+Age: 39
+SocialStatus: Married
 
 Fullname: Julia Roberts
 State: CA
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, FavouriteColor: Blue, Religion: Catholic, Gender: Female, Age: 33, SocialStatus: Single, ]
-
+:
+Ethnicity: AfroAmerican
+Party: Democratic
+FavouriteSport: Rugby
+FavouriteColor: Blue
+Religion: Catholic
+Gender: Female
+Age: 33
+SocialStatus: Single
 What do you want to do? Enter the key and press Enter
 
 1-MP management
@@ -4909,242 +5257,242 @@ Fullname: Kate Morgan
 State: AL
 District: 1
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, FavouriteSport: Tennis, Religion: Catholic, GraduatedIn: ComputerScience, Gender: Female, Age: 29, SocialStatus: Single, ]
-, 
+,
 Fullname: Johnny Cash
 State: AK
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UPC, FavouriteColor: Red, Religion: Catholic, GraduatedIn: Mathematics, Gender: Male, Age: 30, SocialStatus: Single, ]
-, 
+,
 Fullname: Homer Simpson
 State: AZ
 District: 3
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, Religion: Islam, GraduatedIn: Mathematics, Gender: Male, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Ada Colau
 State: AR
 District: 5
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, Gender: Female, Age: 32, SocialStatus: Single, ]
-, 
+,
 Fullname: Julia Roberts
 State: CA
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, FavouriteColor: Blue, Religion: Catholic, Gender: Female, Age: 33, SocialStatus: Single, ]
-, 
+,
 Fullname: Martha Smith
 State: CO
 District: 8
 attributes: [ Ethnicity: American, Party: Democratic, University: UCM, GraduatedIn: Journalism, Gender: Female, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Mia Wallace
 State: CT
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UPF, GraduatedIn: Journalism, Religion: Islam, Gender: Female, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Pepe Rubianes
 State: DE
 District: 5
 attributes: [ Ethnicity: American, Party: Democratic, University: UB, Religion: Catholic, GraduatedIn: Mathematics, Gender: Male, Age: 36, SocialStatus: Married, ]
-, 
+,
 Fullname: Alan Turing
 State: FL
 District: 3
 attributes: [ Ethnicity: American, Party: Democratic, University: UAB, GraduatedIn: Economy, Gender: Male, Age: 37, SocialStatus: Married, ]
-, 
+,
 Fullname: Marie Curie
 State: GA
 District: 1
 attributes: [ Ethnicity: American, Party: Republican, University: UB, GraduatedIn: Chemistry, Religion: Islam, Gender: Female, Age: 38, SocialStatus: Married, ]
-, 
+,
 Fullname: Olof Palme
 State: HI
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Religion: Buddhism, Gender: Male, Age: 44, SocialStatus: Married, ]
-, 
+,
 Fullname: Merce Rodoreda
 State: ID
 District: 9
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Religion: Islam, Gender: Female, Age: 40, SocialStatus: Single, ]
-, 
+,
 Fullname: George Orwell
 State: IL
 District: 3
 attributes: [ Ethnicity: American, Party: Republican, University: UPC, FavouriteSport: Basketball, Religion: Catholic, GraduatedIn: ComputerScience, Gender: Male, Age: 41, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Teresa Rampell
 State: IN
 District: 6
 attributes: [ Ethnicity: American, Party: Democratic, University: UCM, Religion: Islam, GraduatedIn: Journalism, Gender: Female, Age: 42, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Quentin Tarantino
 State: IA
 District: 7
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Single, ]
-, 
+,
 Fullname: Vincent Vega
 State: KS
 District: 8
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Alex Miro
 State: KY
 District: 9
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 45, SocialStatus: Married, ]
-, 
+,
 Fullname: Aleix Sacrest
 State: LA
 District: 10
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Hockey, GraduatedIn: ComputerScience, Gender: Male, Age: 46, SocialStatus: Single, ]
-, 
+,
 Fullname: Ondrej Velisek
 State: ME
 District: 11
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Hockey, Religion: Islam, Gender: Male, Age: 47, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Miquel Jubert
 State: MD
 District: 12
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Blue, Gender: Male, Age: 48, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Micheal Jackson
 State: MA
 District: 13
 attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 49, SocialStatus: Single, ]
-, 
+,
 Fullname: Micheal Corleone
 State: MI
 District: 14
 attributes: [ Ethnicity: American, Party: Republican, University: UB, Religion: Islam, GraduatedIn: Mathematics, Gender: Male, Age: 50, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Peggy Sue
 State: MN
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteSport: PingPong, FavouriteColor: Green, Gender: Female, Age: 51, SocialStatus: Single, ]
-, 
+,
 Fullname: Alfred Nobel
 State: MS
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UB, GraduatedIn: Economy, Gender: Male, Age: 58, SocialStatus: Married, ]
-, 
+,
 Fullname: Justin Doellman
 State: MO
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Red, Religion: Catholic, Gender: Male, Age: 53, SocialStatus: Married, ]
-, 
+,
 Fullname: Emma Quiles
 State: MT
 District: 10
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Basketball, Religion: Catholic, Gender: Female, Age: 54, SocialStatus: Married, ]
-, 
+,
 Fullname: Big Mike
 State: NE
 District: 6
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteSport: Football, Religion: Catholic, Gender: Male, Age: 58, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Manuel de Pedrolo
 State: NV
 District: 3
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Islam, Gender: Male, Age: 56, SocialStatus: Married, ]
-, 
+,
 Fullname: Miquel Marti i Pol
 State: NH
 District: 4
 attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 57, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Care Santos
 State: NJ
 District: 9
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, GraduatedIn: ComputerScience, Gender: Female, Age: 58, SocialStatus: Married, ]
-, 
+,
 Fullname: Oriol Fontelles
 State: NM
 District: 5
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Buddhism, Gender: Male, Age: 58, SocialStatus: Single, ]
-, 
+,
 Fullname: Elisenda Vilabru
 State: NY
 District: 8
 attributes: [ Ethnicity: European, Party: Republican, University: UPC, GraduatedIn: Mathematics, Gender: Female, Age: 60, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Justo Molinero
 State: NC
 District: 7
 attributes: [ Ethnicity: Asian, Party: Democratic, FavouriteColor: Green, Religion: Buddhism, Gender: Male, Age: 61, SocialStatus: Married, ]
-, 
+,
 Fullname: Marge Simpson
 State: OH
 District: 6
 attributes: [ Ethnicity: Asian, Party: Republican, University: MIT, GraduatedIn: ComputerScience, Gender: Female, Age: 62, SocialStatus: Married, ]
-, 
+,
 Fullname: Marylin Monroe
 State: OK
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Religion: Islam, Gender: Female, Age: 63, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Arthur Guinness
 State: OR
 District: 2
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Gender: Male, Age: 64, SocialStatus: Single, ]
-, 
+,
 Fullname: James Bond
 State: PA
 District: 3
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Religion: Islam, Gender: Male, Age: 42, SocialStatus: Married, ]
-, 
+,
 Fullname: Clara Jones
 State: RI
 District: 4
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, Religion: Islam, Gender: Female, Age: 43, SocialStatus: Married, ]
-, 
+,
 Fullname: Wiston Churchill
 State: SC
 District: 5
 attributes: [ Ethnicity: SouthAmerican, Party: Democratic, University: MIT, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Married, ]
-, 
+,
 Fullname: William Turner
 State: SD
 District: 6
 attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 45, SocialStatus: Married, ]
-, 
+,
 Fullname: Tina Turner
 State: TN
 District: 7
 attributes: [ Ethnicity: American, Party: Democratic, University: MIT, Religion: Islam, GraduatedIn: Physics, Gender: Female, Age: 46, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Joan Miro
 State: TX
 District: 8
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Red, Gender: Male, Age: 46, SocialStatus: Single, ]
-, 
+,
 Fullname: Pablo Picasso
 State: UT
 District: 9
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Catholic, Gender: Male, Age: 48, SocialStatus: Married, ]
-, 
+,
 Fullname: Paula Smith
 State: VT
 District: 10
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Football, Religion: Catholic, Gender: Female, Age: 48, SocialStatus: Married, ]
-, 
+,
 Fullname: Samantha Morgan
 State: VA
 District: 11
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Football, Gender: Female, Age: 40, SocialStatus: Married, ]
-, 
+,
 Fullname: Laura Villalobos
 State: WA
 District: 12
 attributes: [ Ethnicity: American, Party: Democratic, University: UAB, Religion: Islam, GraduatedIn: Journalism, Gender: Female, Age: 40, SocialStatus: Married, ]
-, 
+,
 Fullname: Quim Monzo
 State: WV
 District: 7
 attributes: [ Ethnicity: American, Party: Democratic, University: UPC, GraduatedIn: ComputerScience, Gender: Male, Age: 50, SocialStatus: Married, ]
-, 
+,
 Fullname: Saul Jr
 State: WI
 District: 12
 attributes: [ Ethnicity: American, Party: Republican, Religion: Islam, Gender: Male, Age: 50, SocialStatus: Married, ]
-, 
+,
 Fullname: John Mill
 State: WY
 District: 1
@@ -7628,242 +7976,242 @@ Fullname: Kate Morgan
 State: AL
 District: 1
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, FavouriteSport: Tennis, Religion: Catholic, GraduatedIn: ComputerScience, Gender: Female, Age: 29, SocialStatus: Single, ]
-, 
+,
 Fullname: Johnny Cash
 State: AK
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UPC, FavouriteColor: Red, Religion: Catholic, GraduatedIn: Mathematics, Gender: Male, Age: 30, SocialStatus: Single, ]
-, 
+,
 Fullname: Homer Simpson
 State: AZ
 District: 3
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, Religion: Islam, GraduatedIn: Mathematics, Gender: Male, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Ada Colau
 State: AR
 District: 5
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, Gender: Female, Age: 32, SocialStatus: Single, ]
-, 
+,
 Fullname: Julia Roberts
 State: CA
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, FavouriteColor: Blue, Religion: Catholic, Gender: Female, Age: 33, SocialStatus: Single, ]
-, 
+,
 Fullname: Martha Smith
 State: CO
 District: 8
 attributes: [ Ethnicity: American, Party: Democratic, University: UCM, GraduatedIn: Journalism, Gender: Female, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Mia Wallace
 State: CT
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UPF, GraduatedIn: Journalism, Religion: Islam, Gender: Female, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Pepe Rubianes
 State: DE
 District: 5
 attributes: [ Ethnicity: American, Party: Democratic, University: UB, Religion: Catholic, GraduatedIn: Mathematics, Gender: Male, Age: 36, SocialStatus: Married, ]
-, 
+,
 Fullname: Alan Turing
 State: FL
 District: 3
 attributes: [ Ethnicity: American, Party: Democratic, University: UAB, GraduatedIn: Economy, Gender: Male, Age: 37, SocialStatus: Married, ]
-, 
+,
 Fullname: Marie Curie
 State: GA
 District: 1
 attributes: [ Ethnicity: American, Party: Republican, University: UB, GraduatedIn: Chemistry, Religion: Islam, Gender: Female, Age: 38, SocialStatus: Married, ]
-, 
+,
 Fullname: Olof Palme
 State: HI
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Religion: Buddhism, Gender: Male, Age: 44, SocialStatus: Married, ]
-, 
+,
 Fullname: Merce Rodoreda
 State: ID
 District: 9
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Religion: Islam, Gender: Female, Age: 40, SocialStatus: Single, ]
-, 
+,
 Fullname: George Orwell
 State: IL
 District: 3
 attributes: [ Ethnicity: American, Party: Republican, University: UPC, FavouriteSport: Basketball, Religion: Catholic, GraduatedIn: ComputerScience, Gender: Male, Age: 41, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Teresa Rampell
 State: IN
 District: 6
 attributes: [ Ethnicity: American, Party: Democratic, University: UCM, Religion: Islam, GraduatedIn: Journalism, Gender: Female, Age: 42, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Quentin Tarantino
 State: IA
 District: 7
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Single, ]
-, 
+,
 Fullname: Vincent Vega
 State: KS
 District: 8
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Alex Miro
 State: KY
 District: 9
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 45, SocialStatus: Married, ]
-, 
+,
 Fullname: Aleix Sacrest
 State: LA
 District: 10
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Hockey, GraduatedIn: ComputerScience, Gender: Male, Age: 46, SocialStatus: Single, ]
-, 
+,
 Fullname: Ondrej Velisek
 State: ME
 District: 11
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Hockey, Religion: Islam, Gender: Male, Age: 47, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Miquel Jubert
 State: MD
 District: 12
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Blue, Gender: Male, Age: 48, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Micheal Jackson
 State: MA
 District: 13
 attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 49, SocialStatus: Single, ]
-, 
+,
 Fullname: Micheal Corleone
 State: MI
 District: 14
 attributes: [ Ethnicity: American, Party: Republican, University: UB, Religion: Islam, GraduatedIn: Mathematics, Gender: Male, Age: 50, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Peggy Sue
 State: MN
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteSport: PingPong, FavouriteColor: Green, Gender: Female, Age: 51, SocialStatus: Single, ]
-, 
+,
 Fullname: Alfred Nobel
 State: MS
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UB, GraduatedIn: Economy, Gender: Male, Age: 58, SocialStatus: Married, ]
-, 
+,
 Fullname: Justin Doellman
 State: MO
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Red, Religion: Catholic, Gender: Male, Age: 53, SocialStatus: Married, ]
-, 
+,
 Fullname: Emma Quiles
 State: MT
 District: 10
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Basketball, Religion: Catholic, Gender: Female, Age: 54, SocialStatus: Married, ]
-, 
+,
 Fullname: Big Mike
 State: NE
 District: 6
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteSport: Football, Religion: Catholic, Gender: Male, Age: 58, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Manuel de Pedrolo
 State: NV
 District: 3
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Islam, Gender: Male, Age: 56, SocialStatus: Married, ]
-, 
+,
 Fullname: Miquel Marti i Pol
 State: NH
 District: 4
 attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 57, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Care Santos
 State: NJ
 District: 9
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, GraduatedIn: ComputerScience, Gender: Female, Age: 58, SocialStatus: Married, ]
-, 
+,
 Fullname: Oriol Fontelles
 State: NM
 District: 5
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Buddhism, Gender: Male, Age: 58, SocialStatus: Single, ]
-, 
+,
 Fullname: Elisenda Vilabru
 State: NY
 District: 8
 attributes: [ Ethnicity: European, Party: Republican, University: UPC, GraduatedIn: Mathematics, Gender: Female, Age: 60, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Justo Molinero
 State: NC
 District: 7
 attributes: [ Ethnicity: Asian, Party: Democratic, FavouriteColor: Green, Religion: Buddhism, Gender: Male, Age: 61, SocialStatus: Married, ]
-, 
+,
 Fullname: Marge Simpson
 State: OH
 District: 6
 attributes: [ Ethnicity: Asian, Party: Republican, University: MIT, GraduatedIn: ComputerScience, Gender: Female, Age: 62, SocialStatus: Married, ]
-, 
+,
 Fullname: Marylin Monroe
 State: OK
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Religion: Islam, Age: 63, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Arthur Guinness
 State: OR
 District: 2
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Gender: Male, Age: 64, SocialStatus: Single, ]
-, 
+,
 Fullname: James Bond
 State: PA
 District: 3
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Religion: Islam, Gender: Male, Age: 42, SocialStatus: Married, ]
-, 
+,
 Fullname: Clara Jones
 State: RI
 District: 4
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, Gender: Female, Age: 43, SocialStatus: Married, ]
-, 
+,
 Fullname: Wiston Churchill
 State: SC
 District: 5
 attributes: [ Ethnicity: SouthAmerican, Party: Democratic, University: MIT, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Married, ]
-, 
+,
 Fullname: William Turner
 State: SD
 District: 6
 attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 45, SocialStatus: Married, ]
-, 
+,
 Fullname: Tina Turner
 State: TN
 District: 7
 attributes: [ Ethnicity: American, Party: Democratic, University: MIT, Religion: Islam, GraduatedIn: Physics, Gender: Female, Age: 46, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Joan Miro
 State: TX
 District: 8
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Red, Gender: Male, Age: 46, SocialStatus: Single, ]
-, 
+,
 Fullname: Pablo Picasso
 State: UT
 District: 9
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Catholic, Gender: Male, Age: 48, SocialStatus: Married, ]
-, 
+,
 Fullname: Paula Smith
 State: VT
 District: 10
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Football, Religion: Catholic, Gender: Female, Age: 48, SocialStatus: Married, ]
-, 
+,
 Fullname: Samantha Morgan
 State: VA
 District: 11
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Football, Gender: Female, Age: 40, SocialStatus: Married, ]
-, 
+,
 Fullname: Laura Villalobos
 State: WA
 District: 12
 attributes: [ Ethnicity: American, Party: Democratic, University: UAB, Religion: Islam, GraduatedIn: Journalism, Gender: Female, Age: 40, SocialStatus: Married, ]
-, 
+,
 Fullname: Quim Monzo
 State: WV
 District: 7
 attributes: [ Ethnicity: American, Party: Democratic, University: UPC, GraduatedIn: ComputerScience, Gender: Male, Age: 50, SocialStatus: Married, ]
-, 
+,
 Fullname: Saul Jr
 State: WI
 District: 12
 attributes: [ Ethnicity: American, Party: Republican, Religion: Islam, Gender: Male, Age: 50, SocialStatus: Married, ]
-, 
+,
 Fullname: John Mill
 State: WY
 District: 1
@@ -8968,242 +9316,242 @@ Fullname: Kate Morgan
 State: AL
 District: 1
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, FavouriteSport: Tennis, Religion: Catholic, GraduatedIn: ComputerScience, Gender: Female, Age: 29, SocialStatus: Single, ]
-, 
+,
 Fullname: Johnny Cash
 State: AK
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UPC, FavouriteColor: Red, Religion: Catholic, GraduatedIn: Mathematics, Gender: Male, Age: 30, SocialStatus: Single, ]
-, 
+,
 Fullname: Homer Simpson
 State: AZ
 District: 3
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, Religion: Islam, GraduatedIn: Mathematics, Gender: Male, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Ada Colau
 State: AR
 District: 5
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, Gender: Female, Age: 32, SocialStatus: Single, ]
-, 
+,
 Fullname: Julia Roberts
 State: CA
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, FavouriteColor: Blue, Religion: Catholic, Gender: Female, Age: 33, SocialStatus: Single, ]
-, 
+,
 Fullname: Martha Smith
 State: CO
 District: 8
 attributes: [ Ethnicity: American, Party: Democratic, University: UCM, GraduatedIn: Journalism, Gender: Female, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Mia Wallace
 State: CT
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UPF, GraduatedIn: Journalism, Religion: Islam, Gender: Female, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Pepe Rubianes
 State: DE
 District: 5
 attributes: [ Ethnicity: American, Party: Democratic, University: UB, Religion: Catholic, GraduatedIn: Mathematics, Gender: Male, Age: 36, SocialStatus: Married, ]
-, 
+,
 Fullname: Alan Turing
 State: FL
 District: 3
 attributes: [ Ethnicity: American, Party: Democratic, University: UAB, GraduatedIn: Economy, Gender: Male, Age: 37, SocialStatus: Married, ]
-, 
+,
 Fullname: Marie Curie
 State: GA
 District: 1
 attributes: [ Ethnicity: American, Party: Republican, University: UB, GraduatedIn: Chemistry, Religion: Islam, Gender: Female, Age: 38, SocialStatus: Married, ]
-, 
+,
 Fullname: Olof Palme
 State: HI
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Religion: Buddhism, Gender: Male, Age: 44, SocialStatus: Married, ]
-, 
+,
 Fullname: Merce Rodoreda
 State: ID
 District: 9
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Religion: Islam, Gender: Female, Age: 40, SocialStatus: Single, ]
-, 
+,
 Fullname: George Orwell
 State: IL
 District: 3
 attributes: [ Ethnicity: American, Party: Republican, University: UPC, FavouriteSport: Basketball, Religion: Catholic, GraduatedIn: ComputerScience, Gender: Male, Age: 41, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Teresa Rampell
 State: IN
 District: 6
 attributes: [ Ethnicity: American, Party: Democratic, University: UCM, Religion: Islam, GraduatedIn: Journalism, Gender: Female, Age: 42, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Quentin Tarantino
 State: IA
 District: 7
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Single, ]
-, 
+,
 Fullname: Vincent Vega
 State: KS
 District: 8
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Alex Miro
 State: KY
 District: 9
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 45, SocialStatus: Married, ]
-, 
+,
 Fullname: Aleix Sacrest
 State: LA
 District: 10
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Hockey, GraduatedIn: ComputerScience, Gender: Male, Age: 46, SocialStatus: Single, ]
-, 
+,
 Fullname: Ondrej Velisek
 State: ME
 District: 11
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Hockey, Religion: Islam, Gender: Male, Age: 47, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Miquel Jubert
 State: MD
 District: 12
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Blue, Gender: Male, Age: 48, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Micheal Jackson
 State: MA
 District: 13
 attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 49, SocialStatus: Single, ]
-, 
+,
 Fullname: Micheal Corleone
 State: MI
 District: 14
 attributes: [ Ethnicity: American, Party: Republican, University: UB, Religion: Islam, GraduatedIn: Mathematics, Gender: Male, Age: 50, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Peggy Sue
 State: MN
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteSport: PingPong, FavouriteColor: Green, Gender: Female, Age: 51, SocialStatus: Single, ]
-, 
+,
 Fullname: Alfred Nobel
 State: MS
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UB, GraduatedIn: Economy, Gender: Male, Age: 58, SocialStatus: Married, ]
-, 
+,
 Fullname: Justin Doellman
 State: MO
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Red, Religion: Catholic, Gender: Male, Age: 53, SocialStatus: Married, ]
-, 
+,
 Fullname: Emma Quiles
 State: MT
 District: 10
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Basketball, Religion: Catholic, Gender: Female, Age: 54, SocialStatus: Married, ]
-, 
+,
 Fullname: Big Mike
 State: NE
 District: 6
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteSport: Football, Religion: Catholic, Gender: Male, Age: 58, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Manuel de Pedrolo
 State: NV
 District: 3
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Islam, Gender: Male, Age: 56, SocialStatus: Married, ]
-, 
+,
 Fullname: Miquel Marti i Pol
 State: NH
 District: 4
 attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 57, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Care Santos
 State: NJ
 District: 9
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, GraduatedIn: ComputerScience, Gender: Female, Age: 58, SocialStatus: Married, ]
-, 
+,
 Fullname: Oriol Fontelles
 State: NM
 District: 5
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Buddhism, Gender: Male, Age: 58, SocialStatus: Single, ]
-, 
+,
 Fullname: Elisenda Vilabru
 State: NY
 District: 8
 attributes: [ Ethnicity: European, Party: Republican, University: UPC, GraduatedIn: Mathematics, Gender: Female, Age: 60, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Justo Molinero
 State: NC
 District: 7
 attributes: [ Ethnicity: Asian, Party: Democratic, FavouriteColor: Green, Religion: Buddhism, Gender: Male, Age: 61, SocialStatus: Married, ]
-, 
+,
 Fullname: Marge Simpson
 State: OH
 District: 6
 attributes: [ Ethnicity: Asian, Party: Republican, University: MIT, GraduatedIn: ComputerScience, Gender: Female, Age: 62, SocialStatus: Married, ]
-, 
+,
 Fullname: Marylin Monroe
 State: OK
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Religion: Islam, Age: 63, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Arthur Guinness
 State: OR
 District: 2
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Gender: Male, Age: 64, SocialStatus: Single, ]
-, 
+,
 Fullname: James Bond
 State: PA
 District: 3
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Religion: Islam, Gender: Male, Age: 42, SocialStatus: Married, ]
-, 
+,
 Fullname: Clara Jones
 State: RI
 District: 4
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, Gender: Female, Age: 43, SocialStatus: Married, ]
-, 
+,
 Fullname: Wiston Churchill
 State: SC
 District: 5
 attributes: [ Ethnicity: SouthAmerican, Party: Democratic, University: MIT, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Married, ]
-, 
+,
 Fullname: William Turner
 State: SD
 District: 6
 attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 45, SocialStatus: Married, ]
-, 
+,
 Fullname: Tina Turner
 State: TN
 District: 7
 attributes: [ Ethnicity: American, Party: Democratic, University: MIT, Religion: Islam, GraduatedIn: Physics, Gender: Female, Age: 46, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Joan Miro
 State: TX
 District: 8
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Red, Gender: Male, Age: 46, SocialStatus: Single, ]
-, 
+,
 Fullname: Pablo Picasso
 State: UT
 District: 9
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Catholic, Gender: Male, Age: 48, SocialStatus: Married, ]
-, 
+,
 Fullname: Paula Smith
 State: VT
 District: 10
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Football, Religion: Catholic, Gender: Female, Age: 48, SocialStatus: Married, ]
-, 
+,
 Fullname: Samantha Morgan
 State: VA
 District: 11
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Football, Gender: Female, Age: 40, SocialStatus: Married, ]
-, 
+,
 Fullname: Laura Villalobos
 State: WA
 District: 12
 attributes: [ Ethnicity: American, Party: Democratic, University: UAB, Religion: Islam, GraduatedIn: Journalism, Gender: Female, Age: 40, SocialStatus: Married, ]
-, 
+,
 Fullname: Quim Monzo
 State: WV
 District: 7
 attributes: [ Ethnicity: American, Party: Democratic, University: UPC, GraduatedIn: ComputerScience, Gender: Male, Age: 50, SocialStatus: Married, ]
-, 
+,
 Fullname: Saul Jr
 State: WI
 District: 12
 attributes: [ Ethnicity: American, Party: Republican, Religion: Islam, Gender: Male, Age: 50, SocialStatus: Married, ]
-, 
+,
 Fullname: John Mill
 State: WY
 District: 1
@@ -10386,44 +10734,56 @@ What do you want to do? Enter the key and press Enter
 7-Show state's abbreviations
 any other number-EXIT
 Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 Enter the MP state and district whose info you want to erase:
 state: district :Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 Enter the MP's you want to compare:
 MP#1
-state: district :MP#2:
-state: district :Gender: Male
+state: district :MP#2:state: district :Gender: Male
 GraduatedIn: Mathematics
 Party: Republican
 Ethnicity: American
 
 Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 Enter the MP's you want to compare:
 MP#1
-state: district :MP#2:
-state: district :Gender: Male
+state: district :MP#2:state: district :Gender: Male
 Ethnicity: American
 
 Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 Enter the MP's you want to compare:
 MP#1
-state: district :MP#2:
-state: district :
+state: district :MP#2:state: district :
 Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 What do you want to do? Enter the key and press Enter
 
 1-MP management
@@ -10446,10 +10806,35 @@ any other number-EXIT
 Enter the MP to whom you want to add attributes:
 state: district :Enter the info of the attributes you want to add to Clara Jones (type & value
 when you're done enter 0 insted of the type
-type of attribute: 
-value : 
+type of attribute:
+value :
 attribute added
-type of attribute: 
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Clara Jones (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
 Attribute Management
 1-Add Attributes
 2-Add new type of attribute
@@ -10470,18 +10855,23 @@ What do you want to do? Enter the key and press Enter
 7-Show state's abbreviations
 any other number-EXIT
 Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 Enter the MP's you want to compare:
 MP#1
-state: district :MP#2:
-state: district :Religion: Islam
+state: district :MP#2:state: district :Religion: Islam
 
 Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 What do you want to do? Enter the key and press Enter
 
 1-MP management
@@ -11693,237 +12083,237 @@ Fullname: Kate Morgan
 State: AL
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, University: UPC, FavouriteSport: Tennis, Religion: Islam, GraduatedIn: ComputerScience, Gender: Male, Age: 29, SocialStatus: Married, ]
-, 
+,
 Fullname: Johnny Cash
 State: AK
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UPC, FavouriteColor: Red, Religion: Catholic, GraduatedIn: Mathematics, Gender: Male, Age: 30, SocialStatus: Single, ]
-, 
+,
 Fullname: Homer Simpson
 State: AZ
 District: 3
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, Religion: Islam, GraduatedIn: Mathematics, Gender: Male, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Ada Colau
 State: AR
 District: 5
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, Gender: Female, Age: 32, SocialStatus: Single, ]
-, 
+,
 Fullname: Julia Roberts
 State: CA
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, FavouriteColor: Blue, Religion: Catholic, Gender: Female, Age: 33, SocialStatus: Single, ]
-, 
+,
 Fullname: Martha Smith
 State: CO
 District: 8
 attributes: [ Ethnicity: American, Party: Democratic, University: UCM, GraduatedIn: Journalism, Gender: Female, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Mia Wallace
 State: CT
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UPF, GraduatedIn: Journalism, Religion: Islam, Gender: Female, Age: 39, SocialStatus: Married, ]
-, 
+,
 Fullname: Pepe Rubianes
 State: DE
 District: 5
 attributes: [ Ethnicity: American, Party: Democratic, University: UB, Religion: Catholic, GraduatedIn: Mathematics, Gender: Male, Age: 36, SocialStatus: Married, ]
-, 
+,
 Fullname: Alan Turing
 State: FL
 District: 3
 attributes: [ Ethnicity: American, Party: Democratic, University: UAB, GraduatedIn: Economy, Gender: Male, Age: 37, SocialStatus: Married, ]
-, 
+,
 Fullname: Marie Curie
 State: GA
 District: 1
 attributes: [ Ethnicity: American, Party: Republican, University: UB, GraduatedIn: Chemistry, Religion: Islam, Gender: Female, Age: 38, SocialStatus: Married, ]
-, 
+,
 Fullname: Olof Palme
 State: HI
 District: 1
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Religion: Buddhism, Gender: Male, Age: 44, SocialStatus: Married, ]
-, 
+,
 Fullname: Merce Rodoreda
 State: ID
 District: 9
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Religion: Islam, Gender: Female, Age: 40, SocialStatus: Single, ]
-, 
+,
 Fullname: George Orwell
 State: IL
 District: 3
 attributes: [ Ethnicity: American, Party: Republican, University: UPC, FavouriteSport: Basketball, Religion: Catholic, GraduatedIn: ComputerScience, Gender: Male, Age: 41, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Teresa Rampell
 State: IN
 District: 6
 attributes: [ Ethnicity: American, Party: Democratic, University: UCM, Religion: Islam, GraduatedIn: Journalism, Gender: Female, Age: 42, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Quentin Tarantino
 State: IA
 District: 7
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Single, ]
-, 
+,
 Fullname: Vincent Vega
 State: KS
 District: 8
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Alex Miro
 State: KY
 District: 9
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Basketball, GraduatedIn: ComputerScience, Gender: Male, Age: 45, SocialStatus: Married, ]
-, 
+,
 Fullname: Aleix Sacrest
 State: LA
 District: 10
 attributes: [ Ethnicity: SouthAmerican, Party: Republican, University: UPC, FavouriteSport: Hockey, GraduatedIn: ComputerScience, Gender: Male, Age: 46, SocialStatus: Single, ]
-, 
+,
 Fullname: Ondrej Velisek
 State: ME
 District: 11
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Hockey, Religion: Islam, Gender: Male, Age: 47, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Miquel Jubert
 State: MD
 District: 12
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Blue, Gender: Male, Age: 48, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Micheal Jackson
 State: MA
 District: 13
 attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 49, SocialStatus: Single, ]
-, 
+,
 Fullname: Micheal Corleone
 State: MI
 District: 14
 attributes: [ Ethnicity: American, Party: Republican, University: UB, Religion: Islam, GraduatedIn: Mathematics, Gender: Male, Age: 50, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Peggy Sue
 State: MN
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteSport: PingPong, FavouriteColor: Green, Gender: Female, Age: 51, SocialStatus: Single, ]
-, 
+,
 Fullname: Alfred Nobel
 State: MS
 District: 2
 attributes: [ Ethnicity: American, Party: Republican, University: UB, GraduatedIn: Economy, Gender: Male, Age: 58, SocialStatus: Married, ]
-, 
+,
 Fullname: Justin Doellman
 State: MO
 District: 1
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Red, Religion: Catholic, Gender: Male, Age: 53, SocialStatus: Married, ]
-, 
+,
 Fullname: Emma Quiles
 State: MT
 District: 10
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Basketball, Religion: Catholic, Gender: Female, Age: 54, SocialStatus: Married, ]
-, 
+,
 Fullname: Big Mike
 State: NE
 District: 6
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteSport: Football, Religion: Catholic, Gender: Male, Age: 58, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Manuel de Pedrolo
 State: NV
 District: 3
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Islam, Gender: Male, Age: 56, SocialStatus: Married, ]
-, 
+,
 Fullname: Miquel Marti i Pol
 State: NH
 District: 4
 attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 57, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Care Santos
 State: NJ
 District: 9
 attributes: [ Ethnicity: American, Party: Republican, University: MIT, GraduatedIn: ComputerScience, Gender: Female, Age: 58, SocialStatus: Married, ]
-, 
+,
 Fullname: Oriol Fontelles
 State: NM
 District: 5
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Buddhism, Gender: Male, Age: 58, SocialStatus: Single, ]
-, 
+,
 Fullname: Elisenda Vilabru
 State: NY
 District: 8
 attributes: [ Ethnicity: European, Party: Republican, University: UPC, GraduatedIn: Mathematics, Gender: Female, Age: 60, SocialStatus: Divorced, ]
-, 
+,
 Fullname: Justo Molinero
 State: NC
 District: 7
 attributes: [ Ethnicity: Asian, Party: Democratic, FavouriteColor: Green, Religion: Buddhism, Gender: Male, Age: 61, SocialStatus: Married, ]
-, 
+,
 Fullname: Marge Simpson
 State: OH
 District: 6
 attributes: [ Ethnicity: Asian, Party: Republican, University: MIT, GraduatedIn: ComputerScience, Gender: Female, Age: 62, SocialStatus: Married, ]
-, 
+,
 Fullname: Arthur Guinness
 State: OR
 District: 2
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Gender: Male, Age: 64, SocialStatus: Single, ]
-, 
+,
 Fullname: James Bond
 State: PA
 District: 3
 attributes: [ Ethnicity: AfroAmerican, Party: Republican, Religion: Islam, Gender: Male, Age: 42, SocialStatus: Married, ]
-, 
+,
 Fullname: Clara Jones
 State: RI
 District: 4
 attributes: [ Ethnicity: AfroAmerican, Party: Democratic, FavouriteSport: Rugby, Religion: Islam, Gender: Female, Age: 43, SocialStatus: Married, ]
-, 
+,
 Fullname: Wiston Churchill
 State: SC
 District: 5
 attributes: [ Ethnicity: SouthAmerican, Party: Democratic, University: MIT, GraduatedIn: ComputerScience, Gender: Male, Age: 44, SocialStatus: Married, ]
-, 
+,
 Fullname: William Turner
 State: SD
 District: 6
 attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 45, SocialStatus: Married, ]
-, 
+,
 Fullname: Tina Turner
 State: TN
 District: 7
 attributes: [ Ethnicity: American, Party: Democratic, University: MIT, Religion: Islam, GraduatedIn: Physics, Gender: Female, Age: 46, SocialStatus: Widowed, ]
-, 
+,
 Fullname: Joan Miro
 State: TX
 District: 8
 attributes: [ Ethnicity: American, Party: Democratic, FavouriteColor: Red, Gender: Male, Age: 46, SocialStatus: Single, ]
-, 
+,
 Fullname: Pablo Picasso
 State: UT
 District: 9
 attributes: [ Ethnicity: American, Party: Democratic, Religion: Catholic, Gender: Male, Age: 48, SocialStatus: Married, ]
-, 
+,
 Fullname: Paula Smith
 State: VT
 District: 10
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Football, Religion: Catholic, Gender: Female, Age: 48, SocialStatus: Married, ]
-, 
+,
 Fullname: Samantha Morgan
 State: VA
 District: 11
 attributes: [ Ethnicity: American, Party: Republican, FavouriteSport: Football, Gender: Female, Age: 40, SocialStatus: Married, ]
-, 
+,
 Fullname: Laura Villalobos
 State: WA
 District: 12
 attributes: [ Ethnicity: American, Party: Democratic, University: UAB, Religion: Islam, GraduatedIn: Journalism, Gender: Female, Age: 40, SocialStatus: Married, ]
-, 
+,
 Fullname: Quim Monzo
 State: WV
 District: 7
 attributes: [ Ethnicity: American, Party: Democratic, University: UPC, GraduatedIn: ComputerScience, Gender: Male, Age: 50, SocialStatus: Married, ]
-, 
+,
 Fullname: Saul Jr
 State: WI
 District: 12
 attributes: [ Ethnicity: American, Party: Republican, Religion: Islam, Gender: Male, Age: 50, SocialStatus: Married, ]
-, 
+,
 Fullname: John Mill
 State: WY
 District: 1
