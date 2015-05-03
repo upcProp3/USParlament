@@ -90,7 +90,7 @@ public class GeneralDriver {
             switch(num) {
                 case 1:
                     System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\nWhen you are done" +
-                            "enter 0 insted of the fullname:1");
+                            "enter 0 insted of the fullname:");
                     while(true) {
                         System.out.print("fullname: ");
                         fullname = read.nextLine();
@@ -172,7 +172,6 @@ public class GeneralDriver {
                 case 1:
                     System.out.println("Enter the MP to whom you want to add attributes:");
                     st = new String();
-                    estat = State.NULL;
                     dist = 0;
                     readmp = true;
                     p1=readMP();
