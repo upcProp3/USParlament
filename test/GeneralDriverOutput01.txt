@@ -18,12 +18,15 @@ What do you want to do? Enter the key and press Enter
 7-Show state's abbreviations
 any other number-EXIT
 Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 Enter the full name, the state and the district of the MP's
 after entering anything hit enter
 When you are doneenter 0 insted of the fullname:1
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-
 fullname: state: district :MP added successfully
 fullname: state: district :MP added successfully
 fullname: state: district :MP added successfully
@@ -41,9 +44,12 @@ fullname: state: district :MP added successfully
 fullname: 
 
 Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 What do you want to do? Enter the key and press Enter
 
 1-MP management
@@ -278,22 +284,16 @@ What do you want to do? Enter the key and press Enter
 7-Show state's abbreviations
 any other number-EXIT
 
-Fullname: Harry Potter
-State: DE
-District: 1
-attributes: [ ]
-
-
-Fullname: Miquel Jubert
-State: AK
-District: 3
-attributes: [ university: UPC, gender: male, ]
-
-
 Fullname: Alex Miro
 State: CA
 District: 2
 attributes: [ religion: catolic, university: UPC, sport: basket, gender: male, ]
+
+
+Fullname: Jack Sparrow
+State: FL
+District: 1
+attributes: [ ]
 
 
 Fullname: Aleix Sacrest
@@ -302,44 +302,14 @@ District: 1
 attributes: [ religion: none, university: UPC, sport: hockey, gender: male, ]
 
 
-Fullname: Al Dente
-State: AL
-District: 1
-attributes: [ ]
-
-
-Fullname: Zdeno Chara
-State: HI
-District: 1
-attributes: [ sport: icehockey, gender: male, ]
-
-
 Fullname: Tyrion Lannister
 State: AZ
 District: 1
 attributes: [ ]
 
 
-Fullname: German Palomares
-State: GA
-District: 1
-attributes: [ ]
-
-
-Fullname: The Joker
-State: CT
-District: 1
-attributes: [ religion: against, sport: hockey, gender: male, ]
-
-
-Fullname: Eduard Casellas
-State: WA
-District: 2
-attributes: [ ]
-
-
-Fullname: Peter Parker
-State: CO
+Fullname: Al Dente
+State: AL
 District: 1
 attributes: [ ]
 
@@ -350,8 +320,14 @@ District: 1
 attributes: [ gender: male, ]
 
 
-Fullname: Jack Sparrow
-State: FL
+Fullname: Zdeno Chara
+State: HI
+District: 1
+attributes: [ sport: icehockey, gender: male, ]
+
+
+Fullname: Harry Potter
+State: DE
 District: 1
 attributes: [ ]
 
@@ -360,6 +336,36 @@ Fullname: Ondrej Velisek
 State: OK
 District: 4
 attributes: [ university: UPC, sport: sailing, gender: male, ]
+
+
+Fullname: The Joker
+State: CT
+District: 1
+attributes: [ religion: against, sport: hockey, gender: male, ]
+
+
+Fullname: Peter Parker
+State: CO
+District: 1
+attributes: [ ]
+
+
+Fullname: German Palomares
+State: GA
+District: 1
+attributes: [ ]
+
+
+Fullname: Eduard Casellas
+State: WA
+District: 2
+attributes: [ ]
+
+
+Fullname: Miquel Jubert
+State: AK
+District: 3
+attributes: [ university: UPC, gender: male, ]
 
 What do you want to do? Enter the key and press Enter
 
@@ -530,27 +536,27 @@ State: HI
 District: 1
 attributes: [ sport: icehockey, gender: male, ]
 ]Relationship strenght
-[(CA 2,AK 3):2.0
-, (NY 1,AK 3):2.0
-, (AK 3,HI 1):1.0
-, (AK 3,CT 1):1.0
-, (AR 1,AK 3):1.0
-, (AK 3,OK 4):2.0
-, (NY 1,CA 2):2.0
-, (CA 2,HI 1):1.0
-, (CA 2,CT 1):1.0
+[(NY 1,CA 2):2.0
 , (CA 2,AR 1):1.0
+, (CA 2,HI 1):1.0
 , (CA 2,OK 4):2.0
-, (NY 1,HI 1):1.0
-, (NY 1,CT 1):5.0
+, (CA 2,CT 1):1.0
+, (CA 2,AK 3):2.0
 , (NY 1,AR 1):1.0
+, (NY 1,HI 1):1.0
 , (NY 1,OK 4):2.0
-, (CT 1,HI 1):1.0
+, (NY 1,CT 1):5.0
+, (NY 1,AK 3):2.0
 , (AR 1,HI 1):1.0
-, (OK 4,HI 1):1.0
-, (AR 1,CT 1):1.0
-, (OK 4,CT 1):1.0
 , (AR 1,OK 4):1.0
+, (AR 1,CT 1):1.0
+, (AR 1,AK 3):1.0
+, (OK 4,HI 1):1.0
+, (CT 1,HI 1):1.0
+, (AK 3,HI 1):1.0
+, (OK 4,CT 1):1.0
+, (AK 3,OK 4):2.0
+, (AK 3,CT 1):1.0
 ]
 What do you want to do? Enter the key and press Enter
 
@@ -563,9 +569,12 @@ What do you want to do? Enter the key and press Enter
 7-Show state's abbreviations
 any other number-EXIT
 Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 What do you want to do? Enter the key and press Enter
 
 1-MP management
@@ -724,27 +733,27 @@ State: HI
 District: 1
 attributes: [ sport: icehockey, gender: male, ]
 ]Relationship strenght
-[(CA 2,AK 3):2.0
-, (NY 1,AK 3):2.0
-, (AK 3,HI 1):1.0
-, (AK 3,CT 1):1.0
-, (AR 1,AK 3):1.0
-, (AK 3,OK 4):2.0
-, (NY 1,CA 2):2.0
-, (CA 2,HI 1):1.0
-, (CA 2,CT 1):1.0
+[(NY 1,CA 2):2.0
 , (CA 2,AR 1):1.0
+, (CA 2,HI 1):1.0
 , (CA 2,OK 4):2.0
-, (NY 1,HI 1):17.0
-, (NY 1,CT 1):17.0
+, (CA 2,CT 1):1.0
+, (CA 2,AK 3):2.0
 , (NY 1,AR 1):1.0
+, (NY 1,HI 1):17.0
 , (NY 1,OK 4):2.0
-, (CT 1,HI 1):17.0
+, (NY 1,CT 1):17.0
+, (NY 1,AK 3):2.0
 , (AR 1,HI 1):1.0
-, (OK 4,HI 1):1.0
-, (AR 1,CT 1):1.0
-, (OK 4,CT 1):1.0
 , (AR 1,OK 4):1.0
+, (AR 1,CT 1):1.0
+, (AR 1,AK 3):1.0
+, (OK 4,HI 1):1.0
+, (CT 1,HI 1):17.0
+, (AK 3,HI 1):1.0
+, (OK 4,CT 1):1.0
+, (AK 3,OK 4):2.0
+, (AK 3,CT 1):1.0
 ]
 What do you want to do? Enter the key and press Enter
 
@@ -757,9 +766,12 @@ What do you want to do? Enter the key and press Enter
 7-Show state's abbreviations
 any other number-EXIT
 Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 What do you want to do? Enter the key and press Enter
 
 1-MP management
@@ -771,9 +783,12 @@ What do you want to do? Enter the key and press Enter
 7-Show state's abbreviations
 any other number-EXIT
 Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 Enter the MP's you want to compare:
 MP#1
 state: district :MP#2:
@@ -781,9 +796,12 @@ state: district :sport: icehockey
 gender: male
 
 Node Management:
-Enter the full name, the state and the district of the MP's
-after entering anything hit enter
-When you are doneenter 0 insted of the fullname:1
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
 What do you want to do? Enter the key and press Enter
 
 1-MP management
@@ -869,27 +887,27 @@ State: HI
 District: 1
 attributes: [ sport: icehockey, gender: male, ]
 ]Relationship strenght
-[(CA 2,AK 3):2.0
-, (NY 1,AK 3):2.0
-, (AK 3,HI 1):1.0
-, (AK 3,CT 1):1.0
-, (AR 1,AK 3):1.0
-, (AK 3,OK 4):2.0
-, (NY 1,CA 2):2.0
-, (CA 2,HI 1):1.0
-, (CA 2,CT 1):1.0
+[(NY 1,CA 2):2.0
 , (CA 2,AR 1):1.0
+, (CA 2,HI 1):1.0
 , (CA 2,OK 4):2.0
-, (NY 1,HI 1):17.0
-, (NY 1,CT 1):17.0
+, (CA 2,CT 1):1.0
+, (CA 2,AK 3):2.0
 , (NY 1,AR 1):1.0
+, (NY 1,HI 1):17.0
 , (NY 1,OK 4):2.0
-, (CT 1,HI 1):17.0
+, (NY 1,CT 1):17.0
+, (NY 1,AK 3):2.0
 , (AR 1,HI 1):1.0
-, (OK 4,HI 1):1.0
-, (AR 1,CT 1):1.0
-, (OK 4,CT 1):1.0
 , (AR 1,OK 4):1.0
+, (AR 1,CT 1):1.0
+, (AR 1,AK 3):1.0
+, (OK 4,HI 1):1.0
+, (CT 1,HI 1):17.0
+, (AK 3,HI 1):1.0
+, (OK 4,CT 1):1.0
+, (AK 3,OK 4):2.0
+, (AK 3,CT 1):1.0
 ]
 What do you want to do? Enter the key and press Enter
 
@@ -914,6 +932,10 @@ Calculation of communities using the louvain algorithm:
 any other number-EXIT
 Modularity of the best partition:0.1432
 
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
 What do you want to do? Enter the key and press Enter
 
 1-MP management

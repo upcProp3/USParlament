@@ -70,8 +70,7 @@ public class GeneralDriver {
         Boolean seguir = true;
         while(seguir) {
             System.out.println("Node Management:");
-            System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\nWhen you are done" +
-                    "enter 0 insted of the fullname:1");
+            System.out.println("1-Enter MP's\n2-Erase MP\n3-Get an MP with its attributes\n4-Get all MP's\n5-Get Common Attributes\nany other number-EXIT");
             Integer num = readCommand();
             String fullname;
             String st;
@@ -82,7 +81,8 @@ public class GeneralDriver {
             MP m;
             switch(num) {
                 case 1:
-                    System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\n");
+                    System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\nWhen you are done" +
+                            "enter 0 insted of the fullname:1");
                     while(true) {
                         System.out.print("fullname: ");
                         fullname = read.nextLine();
@@ -353,6 +353,7 @@ public class GeneralDriver {
                     l = new LouvainAlgorithm(c);
                     System.out.println("Modularity of the best partition:"+l.resultModularity());
                     System.out.println();
+                    break;
                 default:
                     seguir = false;
                     break;
