@@ -86,6 +86,7 @@ public class GeneralDriver {
             Boolean readmp = true;
             MP p1;
             read.nextLine();
+            MP m;
             switch(num) {
                 case 1:
                     System.out.println("Enter the full name, the state and the district of the MP's\nafter entering anything hit enter\n");
@@ -103,33 +104,22 @@ public class GeneralDriver {
                             if (c.getMP(estat, dist) == null) c.addNode(p);
                             else System.out.println("There's an MP already assigned to this state and district");
                             System.out.println("MP added successfully");
-                            break;
+                            //break;
                         } catch (IllegalArgumentException i) {
                             System.out.println("ERROR: Enter a valid state and district please. The MP hasn't been saved, try it again.");
-                            break;
+                            //break;
                         }
                     }
                     break;
                 case 2:
-                    System.out.println("Enter the MP state and district whose info you want to show:");
-                    st = new String();
-                    estat = State.NULL;
-                    dist = 0;
-                    readmp = true;
-                    MP m = readMP(st, estat, dist, readmp);
-                    if (!readmp) break;
+                    System.out.println("Enter the MP state and district whose info you want to erase:");
+                    m = readMP();
+                    if (m == null) {System.out.println("There's no such MP in the congress"); break;}
                     c.removeNode(m);
                     break;
                 case 3:
                     System.out.println("Enter the MP state and district whose info you want to show:");
-                    st = new String();
-                    estat = State.NULL;
-                    dist = 0;
-                    readmp = true;
-                    MP m = readMP(st, estat, dist, readmp);
-                    readMP(st, estat, dist, readmp);
-                    if (!readmp) break;
-                    p1 = m;
+                    p1 = readMP();
                     if (p1 == null) {
                         System.out.println("there's not such MP in the congress");
                         break;
@@ -146,23 +136,11 @@ public class GeneralDriver {
                 case 5:
                     System.out.println("Enter the MP's you want to compare:");
                     System.out.println("MP#1");
-                    st = new String();
-                    estat = State.AL;
-                    dist = 1;
-                    readmp = true;
-                    readMP(st, estat, dist, readmp);
-                    if (!readmp) break;
-                    p1 = c.getMP(estat, dist);
+                    p1 = readMP();
                     Boolean found = false;
                     if (p1==null) {System.out.println("there's not such MP in the congress"); break;}
                     System.out.print("MP#2:");
-                    st = new String();
-                    estat = State.WA;
-                    dist = 2;
-                    readmp = true;
-                    readMP(st, estat, dist, readmp);
-                    if (!readmp) break;
-                    MP p2 = c.getMP(estat, dist);
+                    MP p2 = readMP();
                     if (p2==null) {System.out.println("there's not such MP in the congress"); break;}
                     for (Attribute a : wa.getCommonAttributes(p1, p2)) System.out.println(a);
                     System.out.println();
@@ -195,9 +173,9 @@ public class GeneralDriver {
                     estat = State.NULL;
                     dist = 0;
                     readmp = true;
-                    readMP(st, estat, dist, readmp);
-                    if (!readmp) break;
-                    p1 = c.getMP(estat, dist);
+                    p1=readMP();
+                    //if (!readmp) break;
+                    //p1 = c.getMP(estat, dist);
                     if (p1==null) {
                         System.out.println("there's not such MP in the congress");
                         break;
@@ -230,7 +208,7 @@ public class GeneralDriver {
                     String name = read.nextLine();
                     System.out.println("importance: ");
                     Integer importance = Integer.parseInt(read.nextLine());
-                    read.nextLine();
+                    //read.nextLine();
                     while (importance < 0 || importance > 3) {
                         System.out.print("The importance must be an integer between 0 and 3\n"
                                 + "Enter the importance again:");
@@ -242,13 +220,7 @@ public class GeneralDriver {
                     break;
                 case 3:
                     System.out.println("Enter the MP to whom you want to delete an attribute:");
-                    st = new String();
-                    estat = State.NULL;
-                    dist = 0;
-                    readmp = true;
-                    readMP(st, estat, dist, readmp);
-                    if (!readmp) break;
-                    p1 = c.getMP(estat, dist);
+                    p1 = readMP();
                     if (p1==null) {
                         System.out.println("there's not such MP in the congress");
                         break;
@@ -265,13 +237,7 @@ public class GeneralDriver {
                     break;
                 case 4:
                     System.out.println("Enter the MP's to whom you want to change the value of an attribute:");
-                    st = new String();
-                    estat = State.NULL;
-                    dist = 0;
-                    readmp = true;
-                    readMP(st, estat, dist, readmp);
-                    if (!readmp) break;
-                    p1 = c.getMP(estat, dist);
+                    p1 = readMP();
                     if (p1==null) {
                         System.out.println("there's not such MP in the congress");
                         break;
@@ -356,23 +322,25 @@ public class GeneralDriver {
         }
         return ret;
     }
-    public static MP readMP(String st, State estat, int dist, Boolean readmp) {
+    public static MP readMP() {
         MP ret;
+        String st;
+        State estat;
+        int dist;
         System.out.print("state: ");
         try {
             st = read.nextLine();
             estat = State.valueOf(st);
             System.out.print("district :");
             dist = Integer.parseInt(read.nextLine());
-            readmp = true;
             ret = c.getMP(estat,dist);
         } catch (IllegalArgumentException i) {
             System.out.println("ERROR: Enter a valid state and district please. The MP hasn't been processed, try it again.");
-            readmp = false;
             ret = null;
         }
         return ret;
     }
+
 
     public static void printCommunitiesShort(ArrayList<Set<Node>> p)
     {
