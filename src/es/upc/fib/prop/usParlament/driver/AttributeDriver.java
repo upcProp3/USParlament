@@ -75,7 +75,7 @@ public class AttributeDriver {
 	}
 
 	private static void removeAttribute(Scanner reader) {
-		System.out.println("remove attribute definition - selected");
+		System.out.println("remove attribute from MP - selected");
 		System.out.println("Put ID of MP: ");
 		int mpId;
 		while(true) {
