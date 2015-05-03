@@ -53,7 +53,7 @@ TX
 
 2
 Sex
-2
+0
 
 2
 Religion

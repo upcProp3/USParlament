@@ -118,7 +118,7 @@ Black
 Sex
 M
 Police Control
-Y
+N
 0
 
 1
@@ -189,6 +189,8 @@ NM
 Raca
 Latino
 Sex
+Police Control
+Y
 M
 0
 
