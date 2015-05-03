@@ -5,6 +5,9 @@
     can see that the result is the same as the book. This entry is very long(1600 lines) so it was generated with a python
     script that allows you to generate circles of n N-cliques. You can find it on the LouvainDriverCliqueCircleGenerator.py
     file.
+-LouvainAlgorithmTest02: This test applies the louvain algorithm to the example graph from the article "Fast unfolding of
+    communities on large networks" page 3. Graph contains 16 nodes with some edges between all with weight 1. The result is the same
+    as the document - two communities with nodes 0-7 and 8-15.
 -GeneralDriverTest02: This test is a slight approximation to a big case (i.e. the hole congress). In order to achieve it
     we have generated a congress with 50 MPs, one for each possible State, and we have added between 5 and 9 attributes to
     each one, so, at least, each MP should have a defined gender, age, social status and ethnicity. Furthermore, if we look
@@ -34,3 +37,8 @@
     The third community contains all the latino MPs, two of them don't have an opinion about the control over the police while
     the third (from NM) agrees with the proposition. Even though he agrees it seems that he will tend to vote together with
     the other latinos.
+-AttributeDriverTest01: It tests basic functionality of attributes and manipulating with them and MPs.
+    It creates three new attributes definitions (religion, sex and party) add some values to prearranged MPs and show
+    list of attribute definitions and MPs with their attributes. Than the test removes attribute sex from MP with ID 1
+    and party from MP with ID 3 After that it shows list of MPs and their attributes for check. Than it removes attribute
+    definition sex and again shows lists of attribute definitions and MPs with their attributes.
