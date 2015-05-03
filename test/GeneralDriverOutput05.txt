@@ -1,0 +1,3152 @@
+/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/bin/java -Didea.launcher.port=7536 "-Didea.launcher.bin.path=/Applications/IntelliJ IDEA 14.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath "/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/lib/tools.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Users/alexmirocat/Desktop/Prop/USParlament/out/production/USParlament:/Users/alexmirocat/Desktop/Prop/USParlament/Lib/google-collections-0.9.jar:/Applications/IntelliJ IDEA 14.app/Contents/lib/idea_rt.jar" com.intellij.rt.execution.application.AppMain es.upc.fib.prop.usParlament.driver.GeneralDriverv2
+==============
+GENERAL DRIVER
+==============
+USA districts:
+	AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA,
+	HI, ID, IL, IN, IA, KS, KY, LA, ME, MD,
+	MA, MI, MN, MS, MO, MT, NE, NV, NH, NJ,
+	NM, NY, NC, ND, OH, OK, OR, PA, RI, SC,
+	SD, TN, TX, UT, VT, VA, WA, WV, WI, WY
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
+Enter the full name, the state and the district of the MP's
+after entering anything hit enter
+When you are doneenter 0 insted of the fullname:1
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname:
+
+Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
+These are all MP's in the congress:
+
+Fullname: Nicholassa Murray
+State: MD
+District: 9
+attributes: [ ]
+
+
+Fullname: Aristide Brand
+State: KS
+District: 5
+attributes: [ ]
+
+
+Fullname: William Randal
+State: CA
+District: 5
+attributes: [ ]
+
+
+Fullname: Gustav Stresemann
+State: KY
+District: 6
+attributes: [ ]
+
+
+Fullname: Augustine Beernaert
+State: ID
+District: 2
+attributes: [ ]
+
+
+Fullname: Charles A Gobat
+State: AR
+District: 4
+attributes: [ ]
+
+
+Fullname: Elihu Root
+State: IL
+District: 3
+attributes: [ ]
+
+
+Fullname: Ludwig Quidde
+State: LA
+District: 7
+attributes: [ ]
+
+
+Fullname: Jane Addams
+State: ME
+District: 8
+attributes: [ ]
+
+
+Fullname: Klas Potus
+State: GA
+District: 10
+attributes: [ ]
+
+
+Fullname: Jean H Dunant
+State: AK
+District: 2
+attributes: [ ]
+
+
+Fullname: Frederic Passy
+State: AL
+District: 1
+attributes: [ ]
+
+
+Fullname: Elie Ducommun
+State: AZ
+District: 3
+attributes: [ ]
+
+
+Fullname: Bertha Von Suttner
+State: CO
+District: 6
+attributes: [ ]
+
+
+Fullname: Henri La Fontaine
+State: IA
+District: 4
+attributes: [ ]
+
+
+Fullname: Carlos Saavedra
+State: MA
+District: 10
+attributes: [ ]
+
+
+Fullname: Theodore Roosevelt
+State: CT
+District: 7
+attributes: [ ]
+
+
+Fullname: Louisa Renault
+State: FL
+District: 9
+attributes: [ ]
+
+
+Fullname: Frederik Bajer
+State: HI
+District: 1
+attributes: [ ]
+
+
+Fullname: Ernesto Teodoro
+State: DE
+District: 8
+attributes: [ ]
+
+
+Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name:
+importance:
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name:
+importance:
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name:
+importance:
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name:
+importance:
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Attribute definitions:
+[
+name: Ethnicity
+importance: 2,
+name: Party
+importance: 3,
+name: Gender
+importance: 3,
+name: Age
+importance: 2]
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Frederic Passy (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Jean H Dunant (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Elie Ducommun (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Charles A Gobat (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to William Randal (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Bertha Von Suttner (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Theodore Roosevelt (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Ernesto Teodoro (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Louisa Renault (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Klas Potus (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Frederik Bajer (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Augustine Beernaert (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Elihu Root (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Henri La Fontaine (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Aristide Brand (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Gustav Stresemann (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Ludwig Quidde (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Jane Addams (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Nicholassa Murray (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Carlos Saavedra (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Computing weights:
+
+ca:[Gender: Female]
+ca:[Ethnicity: American]
+ca:[Ethnicity: American]
+ca:[Party: Republican, Age: 50, Gender: Female]
+ca:[Ethnicity: American]
+ca:[Age: 50, Gender: Female]
+ca:[Ethnicity: American]
+ca:[Party: Republican, Gender: Female]
+ca:[Ethnicity: American]
+ca:[Party: Republican, Age: 50, Ethnicity: American]
+ca:[Party: Republican, Age: 50, Ethnicity: American]
+ca:[Party: Republican]
+ca:[Age: 50, Gender: Female]
+ca:[Party: Republican, Ethnicity: American]
+ca:[]
+ca:[Gender: Female]
+ca:[Ethnicity: American, Gender: Female]
+ca:[Party: Republican, Ethnicity: American]
+ca:[Party: Republican, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Party: Democratic]
+ca:[Ethnicity: AfroAmerican, Gender: Female]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: AfroAmerican, Gender: Female]
+ca:[Party: Democratic]
+ca:[Age: 40, Gender: Female]
+ca:[Party: Democratic]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Democratic, Gender: Female]
+ca:[Age: 40]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Gender: Female]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American, Age: 43]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[]
+ca:[Age: 50, Ethnicity: AfroAmerican, Gender: Female]
+ca:[]
+ca:[Party: Republican, Gender: Female]
+ca:[]
+ca:[Party: Republican, Age: 50]
+ca:[Party: Republican, Age: 50]
+ca:[Party: Republican]
+ca:[Age: 50, Gender: Female]
+ca:[Party: Republican]
+ca:[]
+ca:[Gender: Female]
+ca:[Gender: Female]
+ca:[Party: Republican]
+ca:[Party: Republican]
+ca:[]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Age: 42, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Age: 42, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Gender: Female]
+ca:[Party: Democratic]
+ca:[Age: 50]
+ca:[Age: 50]
+ca:[]
+ca:[Party: Democratic, Age: 50, Gender: Female]
+ca:[]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Gender: Female]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Age: 42, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Republican]
+ca:[Party: Republican]
+ca:[Ethnicity: SouthAmerican, Party: Republican]
+ca:[Ethnicity: SouthAmerican, Gender: Female]
+ca:[Party: Republican, Age: 40]
+ca:[Ethnicity: SouthAmerican]
+ca:[Ethnicity: SouthAmerican, Gender: Female]
+ca:[Gender: Female]
+ca:[Party: Republican]
+ca:[Party: Republican]
+ca:[]
+ca:[]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Republican, Age: 50, Ethnicity: American]
+ca:[Gender: Male, Party: Republican]
+ca:[Age: 50]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Republican]
+ca:[Age: 50]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[Ethnicity: SouthAmerican]
+ca:[Gender: Male, Party: Republican]
+ca:[Gender: Male, Ethnicity: SouthAmerican]
+ca:[Ethnicity: SouthAmerican, Age: 44]
+ca:[]
+ca:[Gender: Male, Party: Republican]
+ca:[Gender: Male, Party: Republican]
+ca:[]
+ca:[Ethnicity: SouthAmerican, Party: Democratic]
+ca:[Ethnicity: SouthAmerican, Party: Democratic, Gender: Female]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[Gender: Male]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[Ethnicity: SouthAmerican, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Gender: Male]
+ca:[Gender: Male]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Age: 47, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+How the congress remains
+US Congressman list:
+[
+Fullname: Frederic Passy
+State: AL
+District: 1
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 50, ]
+,
+Fullname: Jean H Dunant
+State: AK
+District: 2
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 50, ]
+,
+Fullname: Elie Ducommun
+State: AZ
+District: 3
+attributes: [ Ethnicity: SouthAmerican, Party: Republican, Gender: Male, Age: 44, ]
+,
+Fullname: Charles A Gobat
+State: AR
+District: 4
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 42, ]
+,
+Fullname: William Randal
+State: CA
+District: 5
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 43, ]
+,
+Fullname: Bertha Von Suttner
+State: CO
+District: 6
+attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Female, Age: 50, ]
+,
+Fullname: Theodore Roosevelt
+State: CT
+District: 7
+attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Female, Age: 44, ]
+,
+Fullname: Ernesto Teodoro
+State: DE
+District: 8
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 47, ]
+,
+Fullname: Louisa Renault
+State: FL
+District: 9
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Female, Age: 47, ]
+,
+Fullname: Klas Potus
+State: GA
+District: 10
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 42, ]
+,
+Fullname: Frederik Bajer
+State: HI
+District: 1
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 43, ]
+,
+Fullname: Augustine Beernaert
+State: ID
+District: 2
+attributes: [ Ethnicity: AfroAmerican, Party: Republican, Gender: Female, Age: 50, ]
+,
+Fullname: Elihu Root
+State: IL
+District: 3
+attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Gender: Female, Age: 50, ]
+,
+Fullname: Henri La Fontaine
+State: IA
+District: 4
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 40, ]
+,
+Fullname: Aristide Brand
+State: KS
+District: 5
+attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Gender: Female, Age: 40, ]
+,
+Fullname: Gustav Stresemann
+State: KY
+District: 6
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 41, ]
+,
+Fullname: Ludwig Quidde
+State: LA
+District: 7
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 42, ]
+,
+Fullname: Jane Addams
+State: ME
+District: 8
+attributes: [ Ethnicity: SouthAmerican, Party: Republican, Gender: Female, Age: 40, ]
+,
+Fullname: Nicholassa Murray
+State: MD
+District: 9
+attributes: [ Ethnicity: American, Party: Republican, Gender: Female, Age: 50, ]
+,
+Fullname: Carlos Saavedra
+State: MA
+District: 10
+attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 48, ]
+]Relationship strenght
+[(KS 5,MD 9):16.0
+, (MD 9,CA 5):4.0
+, (KY 6,MD 9):4.0
+, (ID 2,MD 9):36.0
+, (AR 4,MD 9):4.0
+, (IL 3,MD 9):20.0
+, (LA 7,MD 9):4.0
+, (ME 8,MD 9):32.0
+, (GA 10,MD 9):4.0
+, (AK 2,MD 9):24.0
+, (AL 1,MD 9):24.0
+, (AZ 3,MD 9):16.0
+, (CO 6,MD 9):20.0
+, (IA 4,MD 9):20.0
+, (MD 9,CT 7):16.0
+, (FL 9,MD 9):20.0
+, (HI 1,MD 9):20.0
+, (DE 8,MD 9):20.0
+, (KS 5,CA 5):16.0
+, (KS 5,KY 6):16.0
+, (KS 5,ID 2):20.0
+, (KS 5,AR 4):16.0
+, (KS 5,IL 3):36.0
+, (KS 5,LA 7):16.0
+, (KS 5,ME 8):20.0
+, (KS 5,GA 10):16.0
+, (KS 5,CO 6):32.0
+, (KS 5,IA 4):4.0
+, (KS 5,MA 10):16.0
+, (KS 5,CT 7):32.0
+, (KS 5,FL 9):32.0
+, (KY 6,CA 5):36.0
+, (AR 4,CA 5):36.0
+, (IL 3,CA 5):16.0
+, (LA 7,CA 5):36.0
+, (GA 10,CA 5):36.0
+, (AK 2,CA 5):20.0
+, (AL 1,CA 5):20.0
+, (AZ 3,CA 5):16.0
+, (CO 6,CA 5):16.0
+, (IA 4,CA 5):20.0
+, (MA 10,CA 5):32.0
+, (CT 7,CA 5):16.0
+, (FL 9,CA 5):20.0
+, (HI 1,CA 5):24.0
+, (DE 8,CA 5):20.0
+, (AR 4,KY 6):36.0
+, (IL 3,KY 6):16.0
+, (KY 6,LA 7):36.0
+, (KY 6,GA 10):36.0
+, (KY 6,AK 2):20.0
+, (AL 1,KY 6):20.0
+, (AZ 3,KY 6):16.0
+, (CO 6,KY 6):16.0
+, (KY 6,IA 4):20.0
+, (MA 10,KY 6):32.0
+, (KY 6,CT 7):16.0
+, (KY 6,FL 9):20.0
+, (HI 1,KY 6):20.0
+, (DE 8,KY 6):20.0
+, (ID 2,IL 3):24.0
+, (ID 2,ME 8):32.0
+, (ID 2,AK 2):20.0
+, (ID 2,AL 1):20.0
+, (ID 2,AZ 3):16.0
+, (ID 2,CO 6):20.0
+, (ID 2,IA 4):16.0
+, (ID 2,CT 7):16.0
+, (ID 2,FL 9):16.0
+, (ID 2,HI 1):16.0
+, (ID 2,DE 8):16.0
+, (AR 4,IL 3):16.0
+, (AR 4,LA 7):40.0
+, (AR 4,GA 10):40.0
+, (AR 4,AK 2):20.0
+, (AR 4,AL 1):20.0
+, (AR 4,AZ 3):16.0
+, (CO 6,AR 4):16.0
+, (AR 4,IA 4):20.0
+, (MA 10,AR 4):32.0
+, (AR 4,CT 7):16.0
+, (AR 4,FL 9):20.0
+, (AR 4,HI 1):20.0
+, (AR 4,DE 8):20.0
+, (IL 3,LA 7):16.0
+, (IL 3,ME 8):16.0
+, (IL 3,GA 10):16.0
+, (IL 3,AK 2):4.0
+, (IL 3,AL 1):4.0
+, (CO 6,IL 3):36.0
+, (MA 10,IL 3):16.0
+, (IL 3,CT 7):32.0
+, (IL 3,FL 9):32.0
+, (GA 10,LA 7):40.0
+, (AK 2,LA 7):20.0
+, (AL 1,LA 7):20.0
+, (AZ 3,LA 7):16.0
+, (CO 6,LA 7):16.0
+, (IA 4,LA 7):20.0
+, (MA 10,LA 7):32.0
+, (LA 7,CT 7):16.0
+, (FL 9,LA 7):20.0
+, (HI 1,LA 7):20.0
+, (DE 8,LA 7):20.0
+, (ME 8,AK 2):16.0
+, (AL 1,ME 8):16.0
+, (AZ 3,ME 8):20.0
+, (CO 6,ME 8):20.0
+, (IA 4,ME 8):20.0
+, (MA 10,ME 8):4.0
+, (ME 8,CT 7):20.0
+, (ME 8,FL 9):16.0
+, (HI 1,ME 8):16.0
+, (DE 8,ME 8):16.0
+, (AK 2,GA 10):20.0
+, (AL 1,GA 10):20.0
+, (AZ 3,GA 10):16.0
+, (CO 6,GA 10):16.0
+, (IA 4,GA 10):20.0
+, (MA 10,GA 10):32.0
+, (GA 10,CT 7):16.0
+, (GA 10,FL 9):20.0
+, (HI 1,GA 10):20.0
+, (DE 8,GA 10):20.0
+, (AL 1,AK 2):40.0
+, (AZ 3,AK 2):32.0
+, (CO 6,AK 2):4.0
+, (IA 4,AK 2):36.0
+, (MA 10,AK 2):16.0
+, (AK 2,FL 9):4.0
+, (HI 1,AK 2):36.0
+, (DE 8,AK 2):36.0
+, (AZ 3,AL 1):32.0
+, (CO 6,AL 1):4.0
+, (AL 1,IA 4):36.0
+, (MA 10,AL 1):16.0
+, (AL 1,FL 9):4.0
+, (AL 1,HI 1):36.0
+, (DE 8,AL 1):36.0
+, (CO 6,AZ 3):4.0
+, (AZ 3,IA 4):32.0
+, (MA 10,AZ 3):20.0
+, (AZ 3,CT 7):8.0
+, (AZ 3,HI 1):32.0
+, (AZ 3,DE 8):32.0
+, (CO 6,MA 10):20.0
+, (CO 6,CT 7):36.0
+, (CO 6,FL 9):32.0
+, (MA 10,IA 4):16.0
+, (IA 4,FL 9):4.0
+, (HI 1,IA 4):36.0
+, (DE 8,IA 4):36.0
+, (MA 10,CT 7):20.0
+, (MA 10,FL 9):16.0
+, (MA 10,HI 1):16.0
+, (MA 10,DE 8):16.0
+, (FL 9,CT 7):32.0
+, (HI 1,FL 9):4.0
+, (DE 8,FL 9):8.0
+, (DE 8,HI 1):36.0
+]
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+{(AL 1,AK 2,AZ 3,DE 8,HI 1,IA 4,)(AR 4,CA 5,GA 10,KY 6,LA 7,MA 10,)(CO 6,CT 7,FL 9,IL 3,KS 5,ID 2,ME 8,MD 9,)}
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+Modularity of the best partition:0.19039919847913667
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type:
+actual importance is 3
+new importance: importance changed
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Computing weights:
+
+ca:[Gender: Female]
+ca:[Ethnicity: American]
+ca:[Ethnicity: American]
+ca:[Party: Republican, Age: 50, Gender: Female]
+ca:[Ethnicity: American]
+ca:[Age: 50, Gender: Female]
+ca:[Ethnicity: American]
+ca:[Party: Republican, Gender: Female]
+ca:[Ethnicity: American]
+ca:[Party: Republican, Age: 50, Ethnicity: American]
+ca:[Party: Republican, Age: 50, Ethnicity: American]
+ca:[Party: Republican]
+ca:[Age: 50, Gender: Female]
+ca:[Party: Republican, Ethnicity: American]
+ca:[]
+ca:[Gender: Female]
+ca:[Ethnicity: American, Gender: Female]
+ca:[Party: Republican, Ethnicity: American]
+ca:[Party: Republican, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Party: Democratic]
+ca:[Ethnicity: AfroAmerican, Gender: Female]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: AfroAmerican, Gender: Female]
+ca:[Party: Democratic]
+ca:[Age: 40, Gender: Female]
+ca:[Party: Democratic]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Democratic, Gender: Female]
+ca:[Age: 40]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Gender: Female]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American, Age: 43]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[]
+ca:[Age: 50, Ethnicity: AfroAmerican, Gender: Female]
+ca:[]
+ca:[Party: Republican, Gender: Female]
+ca:[]
+ca:[Party: Republican, Age: 50]
+ca:[Party: Republican, Age: 50]
+ca:[Party: Republican]
+ca:[Age: 50, Gender: Female]
+ca:[Party: Republican]
+ca:[]
+ca:[Gender: Female]
+ca:[Gender: Female]
+ca:[Party: Republican]
+ca:[Party: Republican]
+ca:[]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Age: 42, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Age: 42, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Gender: Female]
+ca:[Party: Democratic]
+ca:[Age: 50]
+ca:[Age: 50]
+ca:[]
+ca:[Party: Democratic, Age: 50, Gender: Female]
+ca:[]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Gender: Female]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Age: 42, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Republican]
+ca:[Party: Republican]
+ca:[Ethnicity: SouthAmerican, Party: Republican]
+ca:[Ethnicity: SouthAmerican, Gender: Female]
+ca:[Party: Republican, Age: 40]
+ca:[Ethnicity: SouthAmerican]
+ca:[Ethnicity: SouthAmerican, Gender: Female]
+ca:[Gender: Female]
+ca:[Party: Republican]
+ca:[Party: Republican]
+ca:[]
+ca:[]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Republican, Age: 50, Ethnicity: American]
+ca:[Gender: Male, Party: Republican]
+ca:[Age: 50]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Republican]
+ca:[Age: 50]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[Ethnicity: SouthAmerican]
+ca:[Gender: Male, Party: Republican]
+ca:[Gender: Male, Ethnicity: SouthAmerican]
+ca:[Ethnicity: SouthAmerican, Age: 44]
+ca:[]
+ca:[Gender: Male, Party: Republican]
+ca:[Gender: Male, Party: Republican]
+ca:[]
+ca:[Ethnicity: SouthAmerican, Party: Democratic]
+ca:[Ethnicity: SouthAmerican, Party: Democratic, Gender: Female]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[Gender: Male]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[Ethnicity: SouthAmerican, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Gender: Male]
+ca:[Gender: Male]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Age: 47, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+How the congress remains
+US Congressman list:
+[
+Fullname: Frederic Passy
+State: AL
+District: 1
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 50, ]
+,
+Fullname: Jean H Dunant
+State: AK
+District: 2
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 50, ]
+,
+Fullname: Elie Ducommun
+State: AZ
+District: 3
+attributes: [ Ethnicity: SouthAmerican, Party: Republican, Gender: Male, Age: 44, ]
+,
+Fullname: Charles A Gobat
+State: AR
+District: 4
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 42, ]
+,
+Fullname: William Randal
+State: CA
+District: 5
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 43, ]
+,
+Fullname: Bertha Von Suttner
+State: CO
+District: 6
+attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Female, Age: 50, ]
+,
+Fullname: Theodore Roosevelt
+State: CT
+District: 7
+attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Female, Age: 44, ]
+,
+Fullname: Ernesto Teodoro
+State: DE
+District: 8
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 47, ]
+,
+Fullname: Louisa Renault
+State: FL
+District: 9
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Female, Age: 47, ]
+,
+Fullname: Klas Potus
+State: GA
+District: 10
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 42, ]
+,
+Fullname: Frederik Bajer
+State: HI
+District: 1
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 43, ]
+,
+Fullname: Augustine Beernaert
+State: ID
+District: 2
+attributes: [ Ethnicity: AfroAmerican, Party: Republican, Gender: Female, Age: 50, ]
+,
+Fullname: Elihu Root
+State: IL
+District: 3
+attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Gender: Female, Age: 50, ]
+,
+Fullname: Henri La Fontaine
+State: IA
+District: 4
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 40, ]
+,
+Fullname: Aristide Brand
+State: KS
+District: 5
+attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Gender: Female, Age: 40, ]
+,
+Fullname: Gustav Stresemann
+State: KY
+District: 6
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 41, ]
+,
+Fullname: Ludwig Quidde
+State: LA
+District: 7
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 42, ]
+,
+Fullname: Jane Addams
+State: ME
+District: 8
+attributes: [ Ethnicity: SouthAmerican, Party: Republican, Gender: Female, Age: 40, ]
+,
+Fullname: Nicholassa Murray
+State: MD
+District: 9
+attributes: [ Ethnicity: American, Party: Republican, Gender: Female, Age: 50, ]
+,
+Fullname: Carlos Saavedra
+State: MA
+District: 10
+attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 48, ]
+]Relationship strenght
+[(KS 5,MD 9):1.0
+, (MD 9,CA 5):4.0
+, (KY 6,MD 9):4.0
+, (ID 2,MD 9):21.0
+, (AR 4,MD 9):4.0
+, (IL 3,MD 9):5.0
+, (LA 7,MD 9):4.0
+, (ME 8,MD 9):17.0
+, (GA 10,MD 9):4.0
+, (AK 2,MD 9):24.0
+, (AL 1,MD 9):24.0
+, (AZ 3,MD 9):16.0
+, (CO 6,MD 9):5.0
+, (IA 4,MD 9):20.0
+, (MD 9,CT 7):1.0
+, (FL 9,MD 9):5.0
+, (HI 1,MD 9):20.0
+, (DE 8,MD 9):20.0
+, (KS 5,CA 5):16.0
+, (KS 5,KY 6):16.0
+, (KS 5,ID 2):5.0
+, (KS 5,AR 4):16.0
+, (KS 5,IL 3):21.0
+, (KS 5,LA 7):16.0
+, (KS 5,ME 8):5.0
+, (KS 5,GA 10):16.0
+, (KS 5,CO 6):17.0
+, (KS 5,IA 4):4.0
+, (KS 5,MA 10):16.0
+, (KS 5,CT 7):17.0
+, (KS 5,FL 9):17.0
+, (KY 6,CA 5):21.0
+, (AR 4,CA 5):21.0
+, (IL 3,CA 5):16.0
+, (LA 7,CA 5):21.0
+, (GA 10,CA 5):21.0
+, (AK 2,CA 5):5.0
+, (AL 1,CA 5):5.0
+, (AZ 3,CA 5):1.0
+, (CO 6,CA 5):16.0
+, (IA 4,CA 5):5.0
+, (MA 10,CA 5):17.0
+, (CT 7,CA 5):16.0
+, (FL 9,CA 5):20.0
+, (HI 1,CA 5):9.0
+, (DE 8,CA 5):5.0
+, (AR 4,KY 6):21.0
+, (IL 3,KY 6):16.0
+, (KY 6,LA 7):21.0
+, (KY 6,GA 10):21.0
+, (KY 6,AK 2):5.0
+, (AL 1,KY 6):5.0
+, (AZ 3,KY 6):1.0
+, (CO 6,KY 6):16.0
+, (KY 6,IA 4):5.0
+, (MA 10,KY 6):17.0
+, (KY 6,CT 7):16.0
+, (KY 6,FL 9):20.0
+, (HI 1,KY 6):5.0
+, (DE 8,KY 6):5.0
+, (ID 2,IL 3):9.0
+, (ID 2,ME 8):17.0
+, (ID 2,AK 2):20.0
+, (ID 2,AL 1):20.0
+, (ID 2,AZ 3):16.0
+, (ID 2,CO 6):5.0
+, (ID 2,IA 4):16.0
+, (ID 2,CT 7):1.0
+, (ID 2,FL 9):1.0
+, (ID 2,HI 1):16.0
+, (ID 2,DE 8):16.0
+, (AR 4,IL 3):16.0
+, (AR 4,LA 7):25.0
+, (AR 4,GA 10):25.0
+, (AR 4,AK 2):5.0
+, (AR 4,AL 1):5.0
+, (AR 4,AZ 3):1.0
+, (CO 6,AR 4):16.0
+, (AR 4,IA 4):5.0
+, (MA 10,AR 4):17.0
+, (AR 4,CT 7):16.0
+, (AR 4,FL 9):20.0
+, (AR 4,HI 1):5.0
+, (AR 4,DE 8):5.0
+, (IL 3,LA 7):16.0
+, (IL 3,ME 8):1.0
+, (IL 3,GA 10):16.0
+, (IL 3,AK 2):4.0
+, (IL 3,AL 1):4.0
+, (CO 6,IL 3):21.0
+, (MA 10,IL 3):16.0
+, (IL 3,CT 7):17.0
+, (IL 3,FL 9):17.0
+, (GA 10,LA 7):25.0
+, (AK 2,LA 7):5.0
+, (AL 1,LA 7):5.0
+, (AZ 3,LA 7):1.0
+, (CO 6,LA 7):16.0
+, (IA 4,LA 7):5.0
+, (MA 10,LA 7):17.0
+, (LA 7,CT 7):16.0
+, (FL 9,LA 7):20.0
+, (HI 1,LA 7):5.0
+, (DE 8,LA 7):5.0
+, (ME 8,AK 2):16.0
+, (AL 1,ME 8):16.0
+, (AZ 3,ME 8):20.0
+, (CO 6,ME 8):5.0
+, (IA 4,ME 8):20.0
+, (MA 10,ME 8):4.0
+, (ME 8,CT 7):5.0
+, (ME 8,FL 9):1.0
+, (HI 1,ME 8):16.0
+, (DE 8,ME 8):16.0
+, (AK 2,GA 10):5.0
+, (AL 1,GA 10):5.0
+, (AZ 3,GA 10):1.0
+, (CO 6,GA 10):16.0
+, (IA 4,GA 10):5.0
+, (MA 10,GA 10):17.0
+, (GA 10,CT 7):16.0
+, (GA 10,FL 9):20.0
+, (HI 1,GA 10):5.0
+, (DE 8,GA 10):5.0
+, (AL 1,AK 2):25.0
+, (AZ 3,AK 2):17.0
+, (CO 6,AK 2):4.0
+, (IA 4,AK 2):21.0
+, (MA 10,AK 2):1.0
+, (AK 2,FL 9):4.0
+, (HI 1,AK 2):21.0
+, (DE 8,AK 2):21.0
+, (AZ 3,AL 1):17.0
+, (CO 6,AL 1):4.0
+, (AL 1,IA 4):21.0
+, (MA 10,AL 1):1.0
+, (AL 1,FL 9):4.0
+, (AL 1,HI 1):21.0
+, (DE 8,AL 1):21.0
+, (CO 6,AZ 3):4.0
+, (AZ 3,IA 4):17.0
+, (MA 10,AZ 3):5.0
+, (AZ 3,CT 7):8.0
+, (AZ 3,HI 1):17.0
+, (AZ 3,DE 8):17.0
+, (CO 6,MA 10):20.0
+, (CO 6,CT 7):21.0
+, (CO 6,FL 9):17.0
+, (MA 10,IA 4):1.0
+, (IA 4,FL 9):4.0
+, (HI 1,IA 4):21.0
+, (DE 8,IA 4):21.0
+, (MA 10,CT 7):20.0
+, (MA 10,FL 9):16.0
+, (MA 10,HI 1):1.0
+, (MA 10,DE 8):1.0
+, (FL 9,CT 7):17.0
+, (HI 1,FL 9):4.0
+, (DE 8,FL 9):8.0
+, (DE 8,HI 1):21.0
+]
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+{(AL 1,AK 2,AZ 3,DE 8,HI 1,ID 2,IA 4,ME 8,MD 9,)(AR 4,CA 5,CO 6,CT 7,FL 9,GA 10,IL 3,KS 5,KY 6,LA 7,MA 10,)}
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+Modularity of the best partition:0.34523518201589637
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name:
+importance:
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name:
+importance:
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Frederic Passy (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Charles A Gobat (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Bertha Von Suttner (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Ernesto Teodoro (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Klas Potus (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Augustine Beernaert (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Henri La Fontaine (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Nicholassa Murray (type & value
+when you're done enter 0 insted of the type
+type of attribute:
+value :
+attribute added
+type of attribute:
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Computing weights:
+
+ca:[Gender: Female]
+ca:[Ethnicity: American]
+ca:[Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Party: Republican, Age: 50, Gender: Female]
+ca:[FavouriteBook: ShopiasWorld, Ethnicity: American]
+ca:[Age: 50, Gender: Female]
+ca:[Ethnicity: American]
+ca:[Party: Republican, Gender: Female]
+ca:[FavouriteBook: ShopiasWorld, Ethnicity: American]
+ca:[Party: Republican, Age: 50, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Party: Republican, Age: 50, Ethnicity: American]
+ca:[Party: Republican]
+ca:[FavouriteBook: ShopiasWorld, Age: 50, Gender: Female]
+ca:[FavouriteBook: ShopiasWorld, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[Gender: Female]
+ca:[Ethnicity: American, Gender: Female]
+ca:[Party: Republican, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Party: Republican, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Party: Democratic]
+ca:[Ethnicity: AfroAmerican, Gender: Female]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: AfroAmerican, Gender: Female]
+ca:[Party: Democratic]
+ca:[Age: 40, Gender: Female]
+ca:[Party: Democratic]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Democratic, Gender: Female]
+ca:[Age: 40]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Gender: Female]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American, Age: 43]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock]
+ca:[Age: 50, Ethnicity: AfroAmerican, Gender: Female]
+ca:[]
+ca:[Party: Republican, Gender: Female]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock]
+ca:[Party: Republican, Age: 50]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Party: Republican, Age: 50]
+ca:[Party: Republican]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Age: 50, Gender: Female]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Party: Republican]
+ca:[]
+ca:[Gender: Female]
+ca:[Gender: Female]
+ca:[Party: Republican]
+ca:[FavouriteBook: ShopiasWorld, Party: Republican]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Age: 42, Ethnicity: American]
+ca:[]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, FavouriteMusic: Rock, Party: Democratic, Age: 42, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, FavouriteMusic: Rock, Ethnicity: American]
+ca:[Gender: Male]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Party: Democratic]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, FavouriteMusic: Rock, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Gender: Female]
+ca:[Party: Democratic]
+ca:[Age: 50]
+ca:[Age: 50]
+ca:[]
+ca:[Party: Democratic, Age: 50, Gender: Female]
+ca:[]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Gender: Female]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Age: 42, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Republican]
+ca:[Party: Republican]
+ca:[Ethnicity: SouthAmerican, Party: Republican]
+ca:[Ethnicity: SouthAmerican, Gender: Female]
+ca:[Party: Republican, Age: 40]
+ca:[Ethnicity: SouthAmerican]
+ca:[Ethnicity: SouthAmerican, Gender: Female]
+ca:[Gender: Female]
+ca:[Party: Republican]
+ca:[Party: Republican]
+ca:[]
+ca:[Gender: Male, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, FavouriteMusic: Rock, Ethnicity: American]
+ca:[Gender: Male]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Party: Democratic]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, FavouriteMusic: Rock, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Republican, Age: 50, Ethnicity: American]
+ca:[Gender: Male, Party: Republican]
+ca:[Age: 50]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Republican]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Age: 50]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, FavouriteMusic: Rock, Party: Republican, Ethnicity: American]
+ca:[Gender: Male]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[Ethnicity: SouthAmerican]
+ca:[Gender: Male, Party: Republican]
+ca:[Gender: Male, Ethnicity: SouthAmerican]
+ca:[Ethnicity: SouthAmerican, Age: 44]
+ca:[]
+ca:[Gender: Male, Party: Republican]
+ca:[Gender: Male, Party: Republican]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock]
+ca:[Ethnicity: SouthAmerican, Party: Democratic]
+ca:[Ethnicity: SouthAmerican, Party: Democratic, Gender: Female]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[FavouriteBook: ShopiasWorld]
+ca:[]
+ca:[Gender: Male]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[Ethnicity: SouthAmerican, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Gender: Male]
+ca:[Gender: Male]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Age: 47, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[]
+How the congress remains
+US Congressman list:
+[
+Fullname: Frederic Passy
+State: AL
+District: 1
+attributes: [ FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Ethnicity: American, Party: Republican, Gender: Male, Age: 50, ]
+,
+Fullname: Jean H Dunant
+State: AK
+District: 2
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 50, ]
+,
+Fullname: Elie Ducommun
+State: AZ
+District: 3
+attributes: [ Ethnicity: SouthAmerican, Party: Republican, Gender: Male, Age: 44, ]
+,
+Fullname: Charles A Gobat
+State: AR
+District: 4
+attributes: [ FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Ethnicity: American, Party: Democratic, Gender: Male, Age: 42, ]
+,
+Fullname: William Randal
+State: CA
+District: 5
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 43, ]
+,
+Fullname: Bertha Von Suttner
+State: CO
+District: 6
+attributes: [ FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Ethnicity: SouthAmerican, Party: Democratic, Gender: Female, Age: 50, ]
+,
+Fullname: Theodore Roosevelt
+State: CT
+District: 7
+attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Female, Age: 44, ]
+,
+Fullname: Ernesto Teodoro
+State: DE
+District: 8
+attributes: [ FavouriteBook: ShopiasWorld, Ethnicity: American, Party: Republican, Gender: Male, Age: 47, ]
+,
+Fullname: Louisa Renault
+State: FL
+District: 9
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Female, Age: 47, ]
+,
+Fullname: Klas Potus
+State: GA
+District: 10
+attributes: [ FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Ethnicity: American, Party: Democratic, Gender: Male, Age: 42, ]
+,
+Fullname: Frederik Bajer
+State: HI
+District: 1
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 43, ]
+,
+Fullname: Augustine Beernaert
+State: ID
+District: 2
+attributes: [ FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Ethnicity: AfroAmerican, Party: Republican, Gender: Female, Age: 50, ]
+,
+Fullname: Elihu Root
+State: IL
+District: 3
+attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Gender: Female, Age: 50, ]
+,
+Fullname: Henri La Fontaine
+State: IA
+District: 4
+attributes: [ FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Ethnicity: American, Party: Republican, Gender: Male, Age: 40, ]
+,
+Fullname: Aristide Brand
+State: KS
+District: 5
+attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Gender: Female, Age: 40, ]
+,
+Fullname: Gustav Stresemann
+State: KY
+District: 6
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 41, ]
+,
+Fullname: Ludwig Quidde
+State: LA
+District: 7
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 42, ]
+,
+Fullname: Jane Addams
+State: ME
+District: 8
+attributes: [ Ethnicity: SouthAmerican, Party: Republican, Gender: Female, Age: 40, ]
+,
+Fullname: Nicholassa Murray
+State: MD
+District: 9
+attributes: [ FavouriteBook: ShopiasWorld, Ethnicity: American, Party: Republican, Gender: Female, Age: 50, ]
+,
+Fullname: Carlos Saavedra
+State: MA
+District: 10
+attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 48, ]
+]Relationship strenght
+[(KS 5,MD 9):1.0
+, (MD 9,CA 5):4.0
+, (KY 6,MD 9):4.0
+, (ID 2,MD 9):37.0
+, (AR 4,MD 9):20.0
+, (IL 3,MD 9):5.0
+, (LA 7,MD 9):4.0
+, (ME 8,MD 9):17.0
+, (GA 10,MD 9):20.0
+, (AK 2,MD 9):24.0
+, (AL 1,MD 9):40.0
+, (AZ 3,MD 9):16.0
+, (CO 6,MD 9):21.0
+, (IA 4,MD 9):36.0
+, (MD 9,CT 7):1.0
+, (FL 9,MD 9):5.0
+, (HI 1,MD 9):20.0
+, (DE 8,MD 9):36.0
+, (KS 5,CA 5):16.0
+, (KS 5,KY 6):16.0
+, (KS 5,ID 2):5.0
+, (KS 5,AR 4):16.0
+, (KS 5,IL 3):21.0
+, (KS 5,LA 7):16.0
+, (KS 5,ME 8):5.0
+, (KS 5,GA 10):16.0
+, (KS 5,CO 6):17.0
+, (KS 5,IA 4):4.0
+, (KS 5,MA 10):16.0
+, (KS 5,CT 7):17.0
+, (KS 5,FL 9):17.0
+, (KY 6,CA 5):21.0
+, (AR 4,CA 5):21.0
+, (IL 3,CA 5):16.0
+, (LA 7,CA 5):21.0
+, (GA 10,CA 5):21.0
+, (AK 2,CA 5):5.0
+, (AL 1,CA 5):5.0
+, (AZ 3,CA 5):1.0
+, (CO 6,CA 5):16.0
+, (IA 4,CA 5):5.0
+, (MA 10,CA 5):17.0
+, (CT 7,CA 5):16.0
+, (FL 9,CA 5):20.0
+, (HI 1,CA 5):9.0
+, (DE 8,CA 5):5.0
+, (AR 4,KY 6):21.0
+, (IL 3,KY 6):16.0
+, (KY 6,LA 7):21.0
+, (KY 6,GA 10):21.0
+, (KY 6,AK 2):5.0
+, (AL 1,KY 6):5.0
+, (AZ 3,KY 6):1.0
+, (CO 6,KY 6):16.0
+, (KY 6,IA 4):5.0
+, (MA 10,KY 6):17.0
+, (KY 6,CT 7):16.0
+, (KY 6,FL 9):20.0
+, (HI 1,KY 6):5.0
+, (DE 8,KY 6):5.0
+, (ID 2,AR 4):32.0
+, (ID 2,IL 3):9.0
+, (ID 2,ME 8):17.0
+, (ID 2,GA 10):32.0
+, (ID 2,AK 2):20.0
+, (ID 2,AL 1):52.0
+, (ID 2,AZ 3):16.0
+, (ID 2,CO 6):37.0
+, (ID 2,IA 4):48.0
+, (ID 2,CT 7):1.0
+, (ID 2,FL 9):1.0
+, (ID 2,HI 1):16.0
+, (ID 2,DE 8):32.0
+, (AR 4,IL 3):16.0
+, (AR 4,LA 7):25.0
+, (AR 4,GA 10):57.0
+, (AR 4,AK 2):5.0
+, (AR 4,AL 1):37.0
+, (AR 4,AZ 3):1.0
+, (CO 6,AR 4):48.0
+, (AR 4,IA 4):37.0
+, (MA 10,AR 4):17.0
+, (AR 4,CT 7):16.0
+, (AR 4,FL 9):20.0
+, (AR 4,HI 1):5.0
+, (AR 4,DE 8):21.0
+, (IL 3,LA 7):16.0
+, (IL 3,ME 8):1.0
+, (IL 3,GA 10):16.0
+, (IL 3,AK 2):4.0
+, (IL 3,AL 1):4.0
+, (CO 6,IL 3):21.0
+, (MA 10,IL 3):16.0
+, (IL 3,CT 7):17.0
+, (IL 3,FL 9):17.0
+, (GA 10,LA 7):25.0
+, (AK 2,LA 7):5.0
+, (AL 1,LA 7):5.0
+, (AZ 3,LA 7):1.0
+, (CO 6,LA 7):16.0
+, (IA 4,LA 7):5.0
+, (MA 10,LA 7):17.0
+, (LA 7,CT 7):16.0
+, (FL 9,LA 7):20.0
+, (HI 1,LA 7):5.0
+, (DE 8,LA 7):5.0
+, (ME 8,AK 2):16.0
+, (AL 1,ME 8):16.0
+, (AZ 3,ME 8):20.0
+, (CO 6,ME 8):5.0
+, (IA 4,ME 8):20.0
+, (MA 10,ME 8):4.0
+, (ME 8,CT 7):5.0
+, (ME 8,FL 9):1.0
+, (HI 1,ME 8):16.0
+, (DE 8,ME 8):16.0
+, (AK 2,GA 10):5.0
+, (AL 1,GA 10):37.0
+, (AZ 3,GA 10):1.0
+, (CO 6,GA 10):48.0
+, (IA 4,GA 10):37.0
+, (MA 10,GA 10):17.0
+, (GA 10,CT 7):16.0
+, (GA 10,FL 9):20.0
+, (HI 1,GA 10):5.0
+, (DE 8,GA 10):21.0
+, (AL 1,AK 2):25.0
+, (AZ 3,AK 2):17.0
+, (CO 6,AK 2):4.0
+, (IA 4,AK 2):21.0
+, (MA 10,AK 2):1.0
+, (AK 2,FL 9):4.0
+, (HI 1,AK 2):21.0
+, (DE 8,AK 2):21.0
+, (AZ 3,AL 1):17.0
+, (CO 6,AL 1):36.0
+, (AL 1,IA 4):53.0
+, (MA 10,AL 1):1.0
+, (AL 1,FL 9):4.0
+, (AL 1,HI 1):21.0
+, (DE 8,AL 1):37.0
+, (CO 6,AZ 3):4.0
+, (AZ 3,IA 4):17.0
+, (MA 10,AZ 3):5.0
+, (AZ 3,CT 7):8.0
+, (AZ 3,HI 1):17.0
+, (AZ 3,DE 8):17.0
+, (CO 6,IA 4):32.0
+, (CO 6,MA 10):20.0
+, (CO 6,CT 7):21.0
+, (CO 6,FL 9):17.0
+, (CO 6,DE 8):16.0
+, (MA 10,IA 4):1.0
+, (IA 4,FL 9):4.0
+, (HI 1,IA 4):21.0
+, (DE 8,IA 4):37.0
+, (MA 10,CT 7):20.0
+, (MA 10,FL 9):16.0
+, (MA 10,HI 1):1.0
+, (MA 10,DE 8):1.0
+, (FL 9,CT 7):17.0
+, (HI 1,FL 9):4.0
+, (DE 8,FL 9):8.0
+, (DE 8,HI 1):21.0
+]
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+{(AL 1,AK 2,AZ 3,DE 8,HI 1,ID 2,IA 4,ME 8,MD 9,)(AR 4,CO 6,GA 10,CA 5,CT 7,FL 9,IL 3,KS 5,KY 6,LA 7,MA 10,)}
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+Modularity of the best partition:0.24699174083303663
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type:
+actual importance is 1
+new importance: importance changed
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type:
+actual importance is 3
+new importance: importance changed
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type:
+actual importance is 3
+new importance: importance changed
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type:
+actual importance is 3
+new importance: importance changed
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Computing weights:
+
+ca:[Gender: Female]
+ca:[Ethnicity: American]
+ca:[Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Party: Republican, Age: 50, Gender: Female]
+ca:[FavouriteBook: ShopiasWorld, Ethnicity: American]
+ca:[Age: 50, Gender: Female]
+ca:[Ethnicity: American]
+ca:[Party: Republican, Gender: Female]
+ca:[FavouriteBook: ShopiasWorld, Ethnicity: American]
+ca:[Party: Republican, Age: 50, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Party: Republican, Age: 50, Ethnicity: American]
+ca:[Party: Republican]
+ca:[FavouriteBook: ShopiasWorld, Age: 50, Gender: Female]
+ca:[FavouriteBook: ShopiasWorld, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[Gender: Female]
+ca:[Ethnicity: American, Gender: Female]
+ca:[Party: Republican, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Party: Republican, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Party: Democratic]
+ca:[Ethnicity: AfroAmerican, Gender: Female]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: AfroAmerican, Gender: Female]
+ca:[Party: Democratic]
+ca:[Age: 40, Gender: Female]
+ca:[Party: Democratic]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Democratic, Gender: Female]
+ca:[Age: 40]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Gender: Female]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American, Age: 43]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock]
+ca:[Age: 50, Ethnicity: AfroAmerican, Gender: Female]
+ca:[]
+ca:[Party: Republican, Gender: Female]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock]
+ca:[Party: Republican, Age: 50]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Party: Republican, Age: 50]
+ca:[Party: Republican]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Age: 50, Gender: Female]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Party: Republican]
+ca:[]
+ca:[Gender: Female]
+ca:[Gender: Female]
+ca:[Party: Republican]
+ca:[FavouriteBook: ShopiasWorld, Party: Republican]
+ca:[Party: Democratic]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock]
+ca:[Party: Democratic]
+ca:[Gender: Male, Party: Democratic, Age: 42, Ethnicity: American]
+ca:[]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, FavouriteMusic: Rock, Party: Democratic, Age: 42, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, FavouriteMusic: Rock, Ethnicity: American]
+ca:[Gender: Male]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Party: Democratic]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, FavouriteMusic: Rock, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, Ethnicity: American]
+ca:[Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic]
+ca:[Gender: Female]
+ca:[Party: Democratic]
+ca:[Age: 50]
+ca:[Age: 50]
+ca:[]
+ca:[Party: Democratic, Age: 50, Gender: Female]
+ca:[]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Gender: Female]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[Party: Democratic]
+ca:[]
+ca:[Party: Democratic]
+ca:[]
+ca:[Gender: Male, Party: Democratic, Age: 42, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Republican]
+ca:[Party: Republican]
+ca:[Ethnicity: SouthAmerican, Party: Republican]
+ca:[Ethnicity: SouthAmerican, Gender: Female]
+ca:[Party: Republican, Age: 40]
+ca:[Ethnicity: SouthAmerican]
+ca:[Ethnicity: SouthAmerican, Gender: Female]
+ca:[Gender: Female]
+ca:[Party: Republican]
+ca:[Party: Republican]
+ca:[Party: Democratic]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock]
+ca:[Party: Democratic]
+ca:[]
+ca:[Gender: Male, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, FavouriteMusic: Rock, Ethnicity: American]
+ca:[Gender: Male]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Party: Democratic]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, FavouriteMusic: Rock, Ethnicity: American]
+ca:[Gender: Male, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic, Ethnicity: American]
+ca:[Gender: Male, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, Ethnicity: American]
+ca:[]
+ca:[Party: Republican]
+ca:[Gender: Male, Party: Republican, Age: 50, Ethnicity: American]
+ca:[Gender: Male, Party: Republican]
+ca:[Age: 50]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[Party: Republican]
+ca:[Gender: Male, Party: Republican]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Age: 50]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, FavouriteMusic: Rock, Party: Republican, Ethnicity: American]
+ca:[Gender: Male]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, Party: Republican, Ethnicity: American]
+ca:[Party: Republican]
+ca:[]
+ca:[Party: Republican]
+ca:[]
+ca:[Ethnicity: SouthAmerican]
+ca:[Gender: Male, Party: Republican]
+ca:[Gender: Male, Ethnicity: SouthAmerican]
+ca:[Ethnicity: SouthAmerican, Age: 44]
+ca:[]
+ca:[Gender: Male, Party: Republican]
+ca:[Gender: Male, Party: Republican]
+ca:[Party: Democratic]
+ca:[Party: Democratic]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Party: Democratic]
+ca:[Party: Democratic]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Party: Democratic]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock]
+ca:[Ethnicity: SouthAmerican, Party: Democratic]
+ca:[Ethnicity: SouthAmerican, Party: Democratic, Gender: Female]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[FavouriteBook: ShopiasWorld]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Party: Republican]
+ca:[]
+ca:[FavouriteBook: ShopiasWorld, FavouriteMusic: Rock]
+ca:[Gender: Male]
+ca:[]
+ca:[Ethnicity: American]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[FavouriteBook: ShopiasWorld, Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[Party: Democratic]
+ca:[]
+ca:[Party: Democratic]
+ca:[Ethnicity: SouthAmerican, Party: Democratic]
+ca:[Party: Democratic]
+ca:[Gender: Male]
+ca:[Gender: Male]
+ca:[Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic]
+ca:[Party: Democratic]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Democratic, Gender: Female]
+ca:[]
+ca:[]
+ca:[]
+ca:[Party: Democratic]
+ca:[Ethnicity: American]
+ca:[Age: 47, Ethnicity: American]
+ca:[]
+ca:[Party: Republican]
+ca:[]
+ca:[Party: Republican]
+ca:[]
+ca:[]
+ca:[Gender: Male, Party: Republican, Ethnicity: American]
+ca:[]
+ca:[FavouriteBook: ShopiasWorld, Party: Republican]
+ca:[]
+ca:[Party: Republican]
+ca:[FavouriteBook: ShopiasWorld]
+ca:[]
+How the congress remains
+US Congressman list:
+[
+Fullname: Frederic Passy
+State: AL
+District: 1
+attributes: [ FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Ethnicity: American, Party: Republican, Gender: Male, Age: 50, ]
+,
+Fullname: Jean H Dunant
+State: AK
+District: 2
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 50, ]
+,
+Fullname: Elie Ducommun
+State: AZ
+District: 3
+attributes: [ Ethnicity: SouthAmerican, Party: Republican, Gender: Male, Age: 44, ]
+,
+Fullname: Charles A Gobat
+State: AR
+District: 4
+attributes: [ FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Ethnicity: American, Party: Democratic, Gender: Male, Age: 42, ]
+,
+Fullname: William Randal
+State: CA
+District: 5
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 43, ]
+,
+Fullname: Bertha Von Suttner
+State: CO
+District: 6
+attributes: [ FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Ethnicity: SouthAmerican, Party: Democratic, Gender: Female, Age: 50, ]
+,
+Fullname: Theodore Roosevelt
+State: CT
+District: 7
+attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Female, Age: 44, ]
+,
+Fullname: Ernesto Teodoro
+State: DE
+District: 8
+attributes: [ FavouriteBook: ShopiasWorld, Ethnicity: American, Party: Republican, Gender: Male, Age: 47, ]
+,
+Fullname: Louisa Renault
+State: FL
+District: 9
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Female, Age: 47, ]
+,
+Fullname: Klas Potus
+State: GA
+District: 10
+attributes: [ FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Ethnicity: American, Party: Democratic, Gender: Male, Age: 42, ]
+,
+Fullname: Frederik Bajer
+State: HI
+District: 1
+attributes: [ Ethnicity: American, Party: Republican, Gender: Male, Age: 43, ]
+,
+Fullname: Augustine Beernaert
+State: ID
+District: 2
+attributes: [ FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Ethnicity: AfroAmerican, Party: Republican, Gender: Female, Age: 50, ]
+,
+Fullname: Elihu Root
+State: IL
+District: 3
+attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Gender: Female, Age: 50, ]
+,
+Fullname: Henri La Fontaine
+State: IA
+District: 4
+attributes: [ FavouriteBook: ShopiasWorld, FavouriteMusic: Rock, Ethnicity: American, Party: Republican, Gender: Male, Age: 40, ]
+,
+Fullname: Aristide Brand
+State: KS
+District: 5
+attributes: [ Ethnicity: AfroAmerican, Party: Democratic, Gender: Female, Age: 40, ]
+,
+Fullname: Gustav Stresemann
+State: KY
+District: 6
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 41, ]
+,
+Fullname: Ludwig Quidde
+State: LA
+District: 7
+attributes: [ Ethnicity: American, Party: Democratic, Gender: Male, Age: 42, ]
+,
+Fullname: Jane Addams
+State: ME
+District: 8
+attributes: [ Ethnicity: SouthAmerican, Party: Republican, Gender: Female, Age: 40, ]
+,
+Fullname: Nicholassa Murray
+State: MD
+District: 9
+attributes: [ FavouriteBook: ShopiasWorld, Ethnicity: American, Party: Republican, Gender: Female, Age: 50, ]
+,
+Fullname: Carlos Saavedra
+State: MA
+District: 10
+attributes: [ Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 48, ]
+]Relationship strenght
+[(KS 5,MD 9):4.0
+, (MD 9,CA 5):4.0
+, (KY 6,MD 9):4.0
+, (ID 2,MD 9):8.0
+, (AR 4,MD 9):4.0
+, (IL 3,MD 9):8.0
+, (LA 7,MD 9):4.0
+, (ME 8,MD 9):4.0
+, (GA 10,MD 9):4.0
+, (AK 2,MD 9):8.0
+, (AL 1,MD 9):8.0
+, (CO 6,MD 9):8.0
+, (IA 4,MD 9):4.0
+, (MD 9,CT 7):4.0
+, (FL 9,MD 9):8.0
+, (HI 1,MD 9):4.0
+, (DE 8,MD 9):4.0
+, (KS 5,ID 2):8.0
+, (KS 5,IL 3):8.0
+, (KS 5,ME 8):8.0
+, (KS 5,CO 6):4.0
+, (KS 5,IA 4):4.0
+, (KS 5,CT 7):4.0
+, (KS 5,FL 9):4.0
+, (KY 6,CA 5):8.0
+, (AR 4,CA 5):8.0
+, (LA 7,CA 5):8.0
+, (GA 10,CA 5):8.0
+, (AK 2,CA 5):8.0
+, (AL 1,CA 5):8.0
+, (AZ 3,CA 5):4.0
+, (IA 4,CA 5):8.0
+, (MA 10,CA 5):4.0
+, (FL 9,CA 5):4.0
+, (HI 1,CA 5):12.0
+, (DE 8,CA 5):8.0
+, (AR 4,KY 6):8.0
+, (KY 6,LA 7):8.0
+, (KY 6,GA 10):8.0
+, (KY 6,AK 2):8.0
+, (AL 1,KY 6):8.0
+, (AZ 3,KY 6):4.0
+, (KY 6,IA 4):8.0
+, (MA 10,KY 6):4.0
+, (KY 6,FL 9):4.0
+, (HI 1,KY 6):8.0
+, (DE 8,KY 6):8.0
+, (ID 2,IL 3):12.0
+, (ID 2,ME 8):4.0
+, (ID 2,AK 2):4.0
+, (ID 2,AL 1):4.0
+, (ID 2,CO 6):8.0
+, (ID 2,CT 7):4.0
+, (ID 2,FL 9):4.0
+, (AR 4,LA 7):12.0
+, (AR 4,GA 10):12.0
+, (AR 4,AK 2):8.0
+, (AR 4,AL 1):8.0
+, (AR 4,AZ 3):4.0
+, (AR 4,IA 4):8.0
+, (MA 10,AR 4):4.0
+, (AR 4,FL 9):4.0
+, (AR 4,HI 1):8.0
+, (AR 4,DE 8):8.0
+, (IL 3,ME 8):4.0
+, (IL 3,AK 2):4.0
+, (IL 3,AL 1):4.0
+, (CO 6,IL 3):8.0
+, (IL 3,CT 7):4.0
+, (IL 3,FL 9):4.0
+, (GA 10,LA 7):12.0
+, (AK 2,LA 7):8.0
+, (AL 1,LA 7):8.0
+, (AZ 3,LA 7):4.0
+, (IA 4,LA 7):8.0
+, (MA 10,LA 7):4.0
+, (FL 9,LA 7):4.0
+, (HI 1,LA 7):8.0
+, (DE 8,LA 7):8.0
+, (AZ 3,ME 8):4.0
+, (CO 6,ME 8):8.0
+, (IA 4,ME 8):4.0
+, (MA 10,ME 8):4.0
+, (ME 8,CT 7):8.0
+, (ME 8,FL 9):4.0
+, (AK 2,GA 10):8.0
+, (AL 1,GA 10):8.0
+, (AZ 3,GA 10):4.0
+, (IA 4,GA 10):8.0
+, (MA 10,GA 10):4.0
+, (GA 10,FL 9):4.0
+, (HI 1,GA 10):8.0
+, (DE 8,GA 10):8.0
+, (AL 1,AK 2):12.0
+, (AZ 3,AK 2):4.0
+, (CO 6,AK 2):4.0
+, (IA 4,AK 2):8.0
+, (MA 10,AK 2):4.0
+, (AK 2,FL 9):4.0
+, (HI 1,AK 2):8.0
+, (DE 8,AK 2):8.0
+, (AZ 3,AL 1):4.0
+, (CO 6,AL 1):4.0
+, (AL 1,IA 4):8.0
+, (MA 10,AL 1):4.0
+, (AL 1,FL 9):4.0
+, (AL 1,HI 1):8.0
+, (DE 8,AL 1):8.0
+, (CO 6,AZ 3):4.0
+, (AZ 3,IA 4):4.0
+, (MA 10,AZ 3):8.0
+, (AZ 3,CT 7):8.0
+, (AZ 3,HI 1):4.0
+, (AZ 3,DE 8):4.0
+, (CO 6,MA 10):4.0
+, (CO 6,CT 7):8.0
+, (CO 6,FL 9):4.0
+, (MA 10,IA 4):4.0
+, (IA 4,FL 9):4.0
+, (HI 1,IA 4):8.0
+, (DE 8,IA 4):8.0
+, (MA 10,CT 7):4.0
+, (MA 10,HI 1):4.0
+, (MA 10,DE 8):4.0
+, (FL 9,CT 7):4.0
+, (HI 1,FL 9):4.0
+, (DE 8,FL 9):8.0
+, (DE 8,HI 1):8.0
+]
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+{(AL 1,AK 2,AR 4,CA 5,DE 8,GA 10,HI 1,IA 4,KY 6,LA 7,AZ 3,MA 10,)(CO 6,CT 7,FL 9,ID 2,IL 3,KS 5,ME 8,MD 9,)}
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+Modularity of the best partition:0.2346362957046047
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
