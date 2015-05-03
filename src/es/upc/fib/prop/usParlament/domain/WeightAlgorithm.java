@@ -51,7 +51,10 @@ public class WeightAlgorithm {
             if(imp == 2) w+=4;
             if(imp == 33) w+=16;
         }
-        if(w>0) c.addEdge(new Relationship(m1,m2,w));
+        if(w>0) {
+            if (!c.hasEdge(m1,m2)) c.addEdge(new Relationship(m1,m2,w));
+            else c.getEdge(m1,m2).setWeight(c.getEdge(m1,m2).getWeight()+w);
+        }
     }
 
     /**

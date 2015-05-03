@@ -272,6 +272,22 @@ What do you want to do? Enter the key and press Enter
 7-Show state's abbreviations
 any other number-EXIT
 
+Fullname: Alex Miro
+State: CA
+District: 2
+attributes: [ religion: catolic, university: UPC, sport: basket, gender: male, ]
+:
+religion: catolic
+university: UPC
+sport: basket
+gender: male
+
+Fullname: Jack Sparrow
+State: FL
+District: 1
+attributes: [ ]
+:
+
 Fullname: Aleix Sacrest
 State: NY
 District: 1
@@ -281,20 +297,6 @@ religion: none
 university: UPC
 sport: hockey
 gender: male
-
-Fullname: Zdeno Chara
-State: HI
-District: 1
-attributes: [ sport: icehockey, gender: male, ]
-:
-sport: icehockey
-gender: male
-
-Fullname: Eduard Casellas
-State: WA
-District: 2
-attributes: [ ]
-:
 
 Fullname: Tyrion Lannister
 State: AZ
@@ -308,8 +310,23 @@ District: 1
 attributes: [ ]
 :
 
-Fullname: Peter Parker
-State: CO
+Fullname: Heisenberg
+State: AR
+District: 1
+attributes: [ gender: male, ]
+:
+gender: male
+
+Fullname: Zdeno Chara
+State: HI
+District: 1
+attributes: [ sport: icehockey, gender: male, ]
+:
+sport: icehockey
+gender: male
+
+Fullname: Harry Potter
+State: DE
 District: 1
 attributes: [ ]
 :
@@ -323,31 +340,6 @@ university: UPC
 sport: sailing
 gender: male
 
-Fullname: Miquel Jubert
-State: AK
-District: 3
-attributes: [ university: UPC, gender: male, ]
-:
-university: UPC
-gender: male
-
-Fullname: Alex Miro
-State: CA
-District: 2
-attributes: [ religion: catolic, university: UPC, sport: basket, gender: male, ]
-:
-religion: catolic
-university: UPC
-sport: basket
-gender: male
-
-Fullname: Heisenberg
-State: AR
-District: 1
-attributes: [ gender: male, ]
-:
-gender: male
-
 Fullname: The Joker
 State: CT
 District: 1
@@ -357,23 +349,31 @@ religion: against
 sport: hockey
 gender: male
 
+Fullname: Peter Parker
+State: CO
+District: 1
+attributes: [ ]
+:
+
 Fullname: German Palomares
 State: GA
 District: 1
 attributes: [ ]
 :
 
-Fullname: Jack Sparrow
-State: FL
-District: 1
+Fullname: Eduard Casellas
+State: WA
+District: 2
 attributes: [ ]
 :
 
-Fullname: Harry Potter
-State: DE
-District: 1
-attributes: [ ]
+Fullname: Miquel Jubert
+State: AK
+District: 3
+attributes: [ university: UPC, gender: male, ]
 :
+university: UPC
+gender: male
 What do you want to do? Enter the key and press Enter
 
 1-MP management
@@ -543,27 +543,27 @@ State: HI
 District: 1
 attributes: [ sport: icehockey, gender: male, ]
 ]Relationship strenght
-[(NY 1,HI 1):1.0
-, (NY 1,OK 4):2.0
-, (NY 1,AK 3):2.0
-, (NY 1,CA 2):2.0
-, (NY 1,AR 1):1.0
-, (NY 1,CT 1):5.0
-, (OK 4,HI 1):1.0
-, (AK 3,HI 1):1.0
-, (CA 2,HI 1):1.0
-, (AR 1,HI 1):1.0
-, (CT 1,HI 1):1.0
-, (AK 3,OK 4):2.0
-, (CA 2,OK 4):2.0
-, (AR 1,OK 4):1.0
-, (OK 4,CT 1):1.0
-, (CA 2,AK 3):2.0
-, (AR 1,AK 3):1.0
-, (AK 3,CT 1):1.0
+[(NY 1,CA 2):2.0
 , (CA 2,AR 1):1.0
+, (CA 2,HI 1):1.0
+, (CA 2,OK 4):2.0
 , (CA 2,CT 1):1.0
+, (CA 2,AK 3):2.0
+, (NY 1,AR 1):1.0
+, (NY 1,HI 1):1.0
+, (NY 1,OK 4):2.0
+, (NY 1,CT 1):5.0
+, (NY 1,AK 3):2.0
+, (AR 1,HI 1):1.0
+, (AR 1,OK 4):1.0
 , (AR 1,CT 1):1.0
+, (AR 1,AK 3):1.0
+, (OK 4,HI 1):1.0
+, (CT 1,HI 1):1.0
+, (AK 3,HI 1):1.0
+, (OK 4,CT 1):1.0
+, (AK 3,OK 4):2.0
+, (AK 3,CT 1):1.0
 ]
 What do you want to do? Enter the key and press Enter
 
