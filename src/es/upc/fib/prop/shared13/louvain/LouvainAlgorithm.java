@@ -25,9 +25,6 @@ public class LouvainAlgorithm
         bestPartition = null;
     }
 
-
-    //Calculates the modularity of a partition of the graph g
-    //TODO: exception if the partition does not map all nodes
     /**
      * Calculates the modularity of a graph's partition
      * @param g The graph whose modularity you want to calculate

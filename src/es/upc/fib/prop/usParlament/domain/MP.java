@@ -167,11 +167,7 @@ public class MP extends Node {
 		MP mp = (MP) o;
 		return (mp.getState() == this.state)&&(mp.getDistrict() == this.district);
 	}
-
-	/**
-	 * It returns the hash code of the implicit MP.
-	 * @return
-	 */
+	
 	@Override
 	public int hashCode() {
         int hash = district+state.hashCode();
