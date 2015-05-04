@@ -16,11 +16,11 @@ import java.util.*;
 public class GraphDriver {
 
     static TGraph g = new TGraph();
+    static Scanner read = new Scanner(System.in);
 
     public static void main(String[] args) {
 
         System.out.println("This is a Driver for the class Graph");
-        Scanner read = new Scanner(System.in);
         System.out.println("What do you want to do? Enter the key and press Enter");
         Boolean seguir = true;
         while(seguir) {
@@ -53,7 +53,6 @@ public class GraphDriver {
         boolean edgeManagement = true;
         while (edgeManagement) {
             int num;
-            Scanner read = new Scanner(System.in);
             System.out.println('\n' + "Edge operations:"+'\n'+"1-Add Edge"+'\n'+"2-Remove an edge between two nodes"+ '\n' + "3-Remove all edges from a node"+'\n'+
                     "4-invalidate all edges"+'\n'+"5-Get the total number of edges" + '\n' +
                     "6-Get the number of valid edges of the graph"+'\n'+"7-Show all edges" + '\n' + "8-Show all valid edges"
@@ -70,7 +69,7 @@ public class GraphDriver {
                     System.out.println("The total number of edges is " + g.getEdgeCount() + '\n');
                     break;
                 case 6://valid edge count
-                    System.out.println("The valid number of edges is " + g.getValidEdgeCount() + '\n'); //TODO: error
+                    System.out.println("The valid number of edges is " + g.getValidEdgeCount() + '\n');
                     break;
                 case 7://all edges
                     s = g.getEdges();
@@ -188,7 +187,6 @@ public class GraphDriver {
         boolean nodeManagement = true;
         while (nodeManagement) {
             int num;
-            Scanner read = new Scanner(System.in);
             System.out.println(
                     '\n' + "Node operations:" + '\n'+"1-Add a Node" + '\n' + "2-erase a node (it has to be in the graph previously)"+ '\n' + "3-Get the order of the graph (number of nodes)" +
                             '\n' + "4-Verify if a node is contained in the graph"+'\n' + "5-Get the degree of a node"
@@ -206,14 +204,14 @@ public class GraphDriver {
                     System.out.println("Enter the id of the node, whose degree you want to know");
                     id = read.nextInt();
                     n = new TNode(id);
-                    g.getNodeDegree(n);
+                    System.out.println(g.getNodeDegree(n));
                     System.out.println('\n');
                     break;
                 case 6:
                     System.out.println("Enter the id of the node, whose degree you want to know");
                     id = read.nextInt();
                     n = new TNode(id);
-                    g.getValidNodeDegree(n);
+                    System.out.println(g.getValidNodeDegree(n));
                     System.out.println('\n');
                     break;
                 case 1: //Add a node to the graph
