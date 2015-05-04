@@ -14,7 +14,7 @@ public class WeightAlgorithm {
     private Congress c;
 
     /**
-     * @param c
+     * @param c A congress where we want ot apply the algorithm
      * Default constructor
      */
     public WeightAlgorithm(Congress c) {
@@ -24,8 +24,8 @@ public class WeightAlgorithm {
     /**
      * @pre m1 and m2 are two MPs of the congress C
      * @post Returns the list of common attributes between m1 and m2
-     * @param m1
-     * @param m2
+     * @param m1 An MP of the congress
+     * @param m2 An MP of the congress
      * @return set of common attributes between m1 and m2
      */
     public Set<Attribute> getCommonAttributes(MP m1, MP m2) {
@@ -38,9 +38,9 @@ public class WeightAlgorithm {
     /**
      * @pre m1 and m2 are two MPs of the congress C, CA is the set of common attributes between them
      * @post The weight between m1 and m2 is added to C.
-     * @param m1
-     * @param m2
-     * @param CA
+     * @param m1 An MP of the congress
+     * @param m2 An MP of the congress
+     * @param CA The Set of attributes m1 and m2 have in common
      * The weight between m1 and m2 is added to C.
      */
     public void computeWeight(MP m1, MP m2, Set<Attribute> CA) {

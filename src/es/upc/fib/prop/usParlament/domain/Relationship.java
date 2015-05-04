@@ -18,9 +18,9 @@ public class Relationship extends Edge {
     }
 
     /**
-	 * @param m1
-	 * @param m2
-	 * @param w
+	 * @param m1 The first MP of the relation
+	 * @param m2 The second MP of the relation
+	 * @param w Weight of the relation between the MPs m1 and m2
 	 */
 
 
