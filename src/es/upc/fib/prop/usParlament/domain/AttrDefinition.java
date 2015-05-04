@@ -10,8 +10,8 @@ public class AttrDefinition {
 
 	/**
 	 * An AttrDefinition is created with name 'name' and importance 'importance'.
-	 * @param name
-	 * @param importance
+	 * @param name name of attribute definition. It should be unique.
+	 * @param importance positive number. Higher importance for computing relationship.
 	 */
 	public AttrDefinition(String name, int importance) {
 		this.name = name;
@@ -20,7 +20,7 @@ public class AttrDefinition {
 
 	/**
 	 * It returns the implicit AttrDefinition identification number.
-	 * @return
+	 * @return Unique ID
 	 */
 	public Long getId() {
 		return id;
@@ -28,7 +28,7 @@ public class AttrDefinition {
 
 	/**
 	 * The identification number of the implicit AttrDefinition is set to 'id'.
-	 * @param id
+	 * @param id Unique ID
 	 */
 	public void setId(Long id) {
 		this.id = id;
@@ -36,7 +36,7 @@ public class AttrDefinition {
 
 	/**
 	 * The identification number of the implicit AttrDefinition is set to 'id'.
-	 * @param id
+	 * @param id Unique ID
 	 */
 	public void setId(int id) {
 		setId((long) id);
@@ -44,7 +44,7 @@ public class AttrDefinition {
 
 	/**
 	 * It returns the implicit AttrDefinition name.
-	 * @return
+	 * @return name of attribute. Should be unique.
 	 */
 	public String getName() {
 		return name;
@@ -52,7 +52,7 @@ public class AttrDefinition {
 
 	/**
 	 * The name of the implicit AttrDefinition is set to 'name'.
-	 * @param name
+	 * @param name new name of attribute. Should be unique.
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -60,7 +60,7 @@ public class AttrDefinition {
 
 	/**
 	 * It returns the implicit AttrDefinition importance.
-	 * @return
+	 * @return positive integer. Higher means importance for compute weights.
 	 */
 	public int getImportance() {
 		return importance;
@@ -68,17 +68,12 @@ public class AttrDefinition {
 
 	/**
 	 * The importance of the implicit AttrDefinition is set to 'importance'.
-	 * @param importance
+	 * @param importance Positive integer. Higher means importance for compute weights.
 	 */
 	public void setImportance(int importance) {
 		this.importance = importance;
 	}
 
-	/**
-	 * It returns true iff 'o' is equal to the implicit AttrDefinition (same values for name).
-	 * @param o
-	 * @return
-	 */
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -88,19 +83,11 @@ public class AttrDefinition {
         return (that.getName().equals(this.getName()));
 	}
 
-	/**
-	 * It returns the hash code of the implicit AttrDefinition.
-	 * @return
-	 */
 	@Override
 	public int hashCode() {
         return name.hashCode();
 	}
 
-	/**
-	 * It returns the string form of an AttrDefinition: name and importance.
-	 * @return
-	 */
 	@Override
 	public String toString() {
 		return "\nname: " + name +

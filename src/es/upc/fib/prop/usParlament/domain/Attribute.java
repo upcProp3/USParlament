@@ -12,8 +12,8 @@ public class Attribute  {
 
 	/**
 	 * An Attribute is created with definition 'definition' and value 'value'.
-	 * @param definition
-	 * @param value
+	 * @param definition definition of attribute.
+	 * @param value value of attribute. Usually string.
 	 */
 	public Attribute(AttrDefinition definition, Object value) {
 		this.definition = definition;
@@ -22,7 +22,7 @@ public class Attribute  {
 
 	/**
 	 * It returns the implicit Attribute identification number.
-	 * @return
+	 * @return Unique positive ID.
 	 */
 	public Long getId() {
 		return id;
@@ -30,7 +30,7 @@ public class Attribute  {
 
 	/**
 	 * The identification number of the implicit Attribute is set to 'id'.
-	 * @param id
+	 * @param id Unique positive ID.
 	 */
 	public void setId(Long id) {
 		this.id = id;
@@ -38,7 +38,7 @@ public class Attribute  {
 
 	/**
 	 * It returns the implicit Attribute value.
-	 * @return
+	 * @return value of attribute
 	 */
 	public Object getValue() {
 		return value;
@@ -46,7 +46,7 @@ public class Attribute  {
 
 	/**
 	 * The value of the implicit Attribute is set to 'value'.
-	 * @param value
+	 * @param value value to set.
 	 */
 	public void setValue(Object value) {
 		this.value = value;
@@ -54,17 +54,12 @@ public class Attribute  {
 
 	/**
 	 * It returns the implicit Attribute definition.
-	 * @return
+	 * @return definition of attribute.
 	 */
 	public AttrDefinition getDefinition() {
 		return definition;
 	}
 
-	/**
-	 * It returns true iff 'o' is equal to the implicit Attribute (same values for definition and value).
-	 * @param o
-	 * @return
-	 */
 	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,19 +68,11 @@ public class Attribute  {
         return (attr.getDefinition().equals(this.definition) && attr.getValue().equals(this.value));
     }
 
-	/**
-	 * It returns the hash code of the implicit Attribute.
-	 * @return
-	 */
 	@Override
 	public int hashCode() {
 		return definition.hashCode()+value.hashCode();
 	}
 
-	/**
-	 * It returns the string form of an Attribute: name and value.
-	 * @return
-	 */
 	@Override
 	public String toString() {
 		return definition.getName() + ": " + value;
