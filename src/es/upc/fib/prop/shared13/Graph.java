@@ -38,8 +38,8 @@ public abstract class Graph {
      * Creates an empty Graph
      */
     public Graph() {
-        E = new LinkedHashSet<>(); // TODO: Choose your own Set implementation
-        G = new LinkedHashMap<>(); // TODO: Choose your own Map implementation
+        E = new LinkedHashSet<>();
+        G = new LinkedHashMap<>();
         V = G.keySet();
 
         validFilter = new Predicate<Edge>() {
