@@ -1,0 +1,541 @@
+=====================================
+   L O U V A I N   D R I V E R 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set ID: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+=====================================
+Order: 16
+Number of edges: 26
+
+Nodes:
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+Edges:
+    [{2, 0, 1.0}, {3, 0, 1.0}, {4, 0, 1.0}, {5, 0, 1.0}, {2, 1, 1.0}, {4, 1, 1.0}, {7, 1, 1.0}, {4, 2, 1.0}, {5, 2, 1.0}, {6, 2, 1.0}, {7, 3, 1.0}, {10, 4, 1.0}, {7, 5, 1.0}, {11, 5, 1.0}, {7, 6, 1.0}, {11, 6, 1.0}, {9, 8, 1.0}, {11, 8, 1.0}, {15, 8, 1.0}, {12, 9, 1.0}, {14, 9, 1.0}, {11, 10, 1.0}, {12, 10, 1.0}, {13, 10, 1.0}, {14, 10, 1.0}, {13, 11, 1.0}]
+
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Set partition for each node (as a integer).
+Node: 0
+Node: 1
+Node: 2
+Node: 3
+Node: 4
+Node: 5
+Node: 6
+Node: 7
+Node: 8
+Node: 9
+Node: 10
+Node: 11
+Node: 12
+Node: 13
+Node: 14
+Node: 15
+Modularity: 0.3779585798816568
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+[[0, 1, 2, 4, 5, 3, 6, 7], [8, 15, 9, 12, 14, 10, 11, 13]]
+Modularity: 0.3779585798816568
+=====================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - calculate modularity
+7 - calculate best partition
+0 - exit
+Bye Bye
