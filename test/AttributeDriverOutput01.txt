@@ -1,0 +1,541 @@
+=====================================
+   A T T R I B U T E   D R I V E R 
+=====================================
+Do you want to prepare some attribute data? (y/n)
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute definition - selected
+Set name of attribute: 
+Set importance of attribute: 
+Added successfully
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute definition - selected
+Set name of attribute: 
+Set importance of attribute: 
+Added successfully
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute definition - selected
+Set name of attribute: 
+Set importance of attribute: 
+Added successfully
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Printing all attribute definitions: 
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 11
+name: sex
+importance: 1
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute to MP - selected
+Put ID of MP: 
+=====================================
+Printing all attribute definitions: 
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 11
+name: sex
+importance: 1
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+Ondrej Velisek selected. Put attribute definition id: 
+religion selected. Set attribute value: 
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute to MP - selected
+Put ID of MP: 
+=====================================
+Printing all attribute definitions: 
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 11
+name: sex
+importance: 1
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+Ondrej Velisek selected. Put attribute definition id: 
+sex selected. Set attribute value: 
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute to MP - selected
+Put ID of MP: 
+=====================================
+Printing all attribute definitions: 
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 11
+name: sex
+importance: 1
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+Ondrej Velisek selected. Put attribute definition id: 
+party selected. Set attribute value: 
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute to MP - selected
+Put ID of MP: 
+=====================================
+Printing all attribute definitions: 
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 11
+name: sex
+importance: 1
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+Alex Miro selected. Put attribute definition id: 
+religion selected. Set attribute value: 
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute to MP - selected
+Put ID of MP: 
+=====================================
+Printing all attribute definitions: 
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 11
+name: sex
+importance: 1
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+Alex Miro selected. Put attribute definition id: 
+sex selected. Set attribute value: 
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute to MP - selected
+Put ID of MP: 
+=====================================
+Printing all attribute definitions: 
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 11
+name: sex
+importance: 1
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+Alex Miro selected. Put attribute definition id: 
+party selected. Set attribute value: 
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute to MP - selected
+Put ID of MP: 
+=====================================
+Printing all attribute definitions: 
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 11
+name: sex
+importance: 1
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+Miquel Jubert selected. Put attribute definition id: 
+religion selected. Set attribute value: 
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute to MP - selected
+Put ID of MP: 
+=====================================
+Printing all attribute definitions: 
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 11
+name: sex
+importance: 1
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+Miquel Jubert selected. Put attribute definition id: 
+party selected. Set attribute value: 
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute to MP - selected
+Put ID of MP: 
+=====================================
+Printing all attribute definitions: 
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 11
+name: sex
+importance: 1
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+Aleix Sacrest selected. Put attribute definition id: 
+sex selected. Set attribute value: 
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Add attribute to MP - selected
+Put ID of MP: 
+=====================================
+Printing all attribute definitions: 
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 11
+name: sex
+importance: 1
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+Aleix Sacrest selected. Put attribute definition id: 
+party selected. Set attribute value: 
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Printing all MPs: 
+-------------------------------------
+ID: 1
+Fullname: Ondrej Velisek
+State: FL
+District: 1
+attributes: [ religion: catholicism, sex: male, party: republican, ]
+
+-------------------------------------
+ID: 2
+Fullname: Alex Miro
+State: NY
+District: 1
+attributes: [ religion: orthodoxy, sex: male, party: republican, ]
+
+-------------------------------------
+ID: 3
+Fullname: Miquel Jubert
+State: LA
+District: 1
+attributes: [ religion: catholicism, party: democratic, ]
+
+-------------------------------------
+ID: 4
+Fullname: Aleix Sacrest
+State: NY
+District: 2
+attributes: [ sex: male, party: republican, ]
+
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+remove attribute from MP - selected
+Put ID of MP: 
+=====================================
+
+Fullname: Ondrej Velisek
+State: FL
+District: 1
+attributes: [ religion: catholicism, sex: male, party: republican, ]
+
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 11
+name: sex
+importance: 1
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+Ondrej Velisek selected.
+Put ID of attribute you want to remove: 
+Removed successfully
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+remove attribute from MP - selected
+Put ID of MP: 
+=====================================
+
+Fullname: Miquel Jubert
+State: LA
+District: 1
+attributes: [ religion: catholicism, party: democratic, ]
+
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+Miquel Jubert selected.
+Put ID of attribute you want to remove: 
+Removed successfully
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Printing all MPs: 
+-------------------------------------
+ID: 1
+Fullname: Ondrej Velisek
+State: FL
+District: 1
+attributes: [ sex: male, party: republican, ]
+
+-------------------------------------
+ID: 2
+Fullname: Alex Miro
+State: NY
+District: 1
+attributes: [ religion: orthodoxy, sex: male, party: republican, ]
+
+-------------------------------------
+ID: 3
+Fullname: Miquel Jubert
+State: LA
+District: 1
+attributes: [ religion: catholicism, ]
+
+-------------------------------------
+ID: 4
+Fullname: Aleix Sacrest
+State: NY
+District: 2
+attributes: [ sex: male, party: republican, ]
+
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Remove attribute definition - selected
+Put attribute definition id: 
+Removed successfully.
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Printing all attribute definitions: 
+-------------------------------------
+ID: 10
+name: religion
+importance: 2
+-------------------------------------
+ID: 12
+name: party
+importance: 3
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Printing all MPs: 
+-------------------------------------
+ID: 1
+Fullname: Ondrej Velisek
+State: FL
+District: 1
+attributes: [ party: republican, ]
+
+-------------------------------------
+ID: 2
+Fullname: Alex Miro
+State: NY
+District: 1
+attributes: [ religion: orthodoxy, party: republican, ]
+
+-------------------------------------
+ID: 3
+Fullname: Miquel Jubert
+State: LA
+District: 1
+attributes: [ religion: catholicism, ]
+
+-------------------------------------
+ID: 4
+Fullname: Aleix Sacrest
+State: NY
+District: 2
+attributes: [ party: republican, ]
+
+=====================================
+1 - add attribute definition
+2 - add attribute to MP
+3 - remove attribute definition
+4 - remove attribute from MP
+5 - show list of attributes definitions
+6 - show list of MPs
+0 - exit
+Bye Bye

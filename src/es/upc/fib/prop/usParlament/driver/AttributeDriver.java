@@ -8,7 +8,7 @@ import es.upc.fib.prop.usParlament.domain.State;
 import java.util.*;
 
 /**
- * Created by ondrej on 22.4.15.
+ * Created by Ondrej Velisek on 22.4.15.
  */
 public class AttributeDriver {
 

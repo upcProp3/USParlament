@@ -7,17 +7,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by miquel on 7/04/15.
- * contributions of alex, ondrej.
+ * Created by Miquel Jubert on 7/04/15.
+ * Contributions of Alex Miro and Ondrej Velisek.
  */
 public class MP extends Node {
 	private Long id;
     private String fullname;
     private int district;
     private State state;
-	//TODO redundant information. AttrDefinition is also in Attribute.
 	private Map<AttrDefinition, Attribute> attributes;
 
+	/**
+	 * An MP is created with name 'fullname', state 'state' and district 'district'.
+	 * @param fullname String representing the full name of the generated MP.
+	 * @param state State representing the state of the generated MP.
+	 * @param district Integer representing the district number of the generated MP.
+	 */
     public MP(String fullname,State state,int district)
     {
         this.fullname = fullname;
@@ -26,61 +31,116 @@ public class MP extends Node {
 	    this.attributes = new HashMap<>();
     }
 
+	/**
+	 * @return The implicit MP identification number.
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * The identification number of the implicit MP is set to 'id'.
+	 * @param id Long representing the identification number of the implicit MP to be set.
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	/**
+	 * @param id Integer representing the identification number of the implicit MP to be set.
+	 */
 	public void setId(Integer id) {
 		setId((long) id);
 	}
 
+	/**
+	 * @return The implicit MP full name.
+	 */
 	public String getFullname()
     {
         return fullname;
     }
 
+	/**
+	 * The full name of the implicit MP is set to 'fullname'.
+	 * @param fullname String representing the full name of the implicit MP to be set.
+	 */
     public void setFullname(String fullname)
     {
         this.fullname = fullname;
     }
 
+	/**
+	 * @return The implicit MP district number.
+	 */
     public int getDistrict()
     {
         return district;
     }
 
+	/**
+	 * The district number of the implicit MP is set to 'district'.
+	 * @param district Integer representing the district number of the implicit MP to be set.
+	 */
     public void setDistrict(int district)
     {
         this.district = district;
     }
 
+	/**
+	 * @return The implicit MP State.
+	 */
     public State getState()
     {
         return state;
     }
 
+	/**
+	 * The State of the implicit MP is set to 'state'.
+	 * @param state State representing the state of the implicit MP.
+	 */
     public void setState(State state)
     {
         this.state = state;
     }
 
+	/**
+	 * @return The implicit MP collection of attributes.
+
+	 */
 	public Collection<Attribute> getAttributes() {
 		return attributes.values();
 	}
 
+	/**
+	 * 'attr' is added to the implicit MP collection of attributes.
+	 * @param attr Attribute representing the Attribute of the implicit MP to be added.
+	 */
 	public void addAttribute(Attribute attr) {
 		attributes.put(attr.getDefinition(), attr);
 	}
+
+	/**
+	 * @param attr Attribute representing the Attribute of the implicit MP.
+	 * @return True iff the implicit MP has a defined value for the attribute 'attr'; false otherwise.
+	 */
     public boolean hasAttribute(AttrDefinition attr)
     {
         return attributes.containsKey(attr);
     }
+
+	/**
+	 * It removes the value of 'def' for the implicit MP.
+	 * @param def AttrDefinition representing the Attribute of the implicit MP to be removed.
+	 */
 	public void removeAttribute(AttrDefinition def) {
 		attributes.remove(def);
 	}
+
+	/**
+	 * It removes the value of 'attr' for the implicit MP.
+	 * @param attr Attribute representing the Attribute of the implicit MP to be removed.
+	 */
 	public void removeAttribute(Attribute attr) {
 		removeAttribute(attr.getDefinition());
 	}
@@ -96,13 +156,13 @@ public class MP extends Node {
 		MP mp = (MP) o;
 		return (mp.getState() == this.state)&&(mp.getDistrict() == this.district);
 	}
-
-	// TODO
+	
 	@Override
 	public int hashCode() {
         int hash = district+state.hashCode();
 		return hash;
 	}
+
 
 	@Override
     public String toString()

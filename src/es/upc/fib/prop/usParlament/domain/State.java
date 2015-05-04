@@ -1,7 +1,9 @@
 package es.upc.fib.prop.usParlament.domain;
 
 /**
- * Created by ondrej on 17.4.15.
+ * Created by Ondrej Velisek on 17.4.15.
+ *
+ * This are the possible values for the enumeration State, any other value at the input will generate an exception.
  */
 public enum State {
 	AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA,

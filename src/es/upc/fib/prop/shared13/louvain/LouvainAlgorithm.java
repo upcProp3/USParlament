@@ -3,10 +3,12 @@ package es.upc.fib.prop.shared13.louvain;
 import es.upc.fib.prop.shared13.Edge;
 import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.shared13.Node;
-import es.upc.fib.prop.usParlament.driver.TEdge;
-import es.upc.fib.prop.usParlament.driver.TNode;
 
 import java.util.*;
+
+/*
+Created by Miquel Jubert.
+ */
 
 public class LouvainAlgorithm
 {
@@ -23,9 +25,6 @@ public class LouvainAlgorithm
         bestPartition = null;
     }
 
-
-    //Calculates the modularity of a partition of the graph g
-    //TODO: exception if the partition does not map all nodes
     /**
      * Calculates the modularity of a graph's partition
      * @param g The graph whose modularity you want to calculate

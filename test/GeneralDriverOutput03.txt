@@ -1,0 +1,977 @@
+==============
+GENERAL DRIVER
+==============
+USA districts:
+	AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA,
+	HI, ID, IL, IN, IA, KS, KY, LA, ME, MD,
+	MA, MI, MN, MS, MO, MT, NE, NV, NH, NJ,
+	NM, NY, NC, ND, OH, OK, OR, PA, RI, SC,
+	SD, TN, TX, UT, VT, VA, WA, WV, WI, WY
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
+Enter the full name, the state and the district of the MP's
+after entering anything hit enter
+When you are doneenter 0 insted of the fullname:1
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: state: district :MP added successfully
+fullname: 
+
+Node Management:
+1-Enter MP's
+2-Erase MP
+3-Get an MP with its attributes
+4-Get all MP's
+5-Get Common Attributes
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the type info
+name: 
+importance: 
+
+
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to John (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Jay (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Maria (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Carl (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to James (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Patricia (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Jennifer (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Susan (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Barbara (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Christoper (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Daniel (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Margaret (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Mark (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to Donald (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+Enter the MP to whom you want to add attributes:
+state: district :Enter the info of the attributes you want to add to George (type & value
+when you're done enter 0 insted of the type
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+value : 
+attribute added
+type of attribute: 
+Attribute Management
+1-Add Attributes
+2-Add new type of attribute
+3-Delete Attribute
+4-Change the value of an attribute
+5-Get the importance of a type of attributes
+6-Set importance to a type of attributes
+7-Print the list of attribute definitions
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Computing weights:
+
+How the congress remains
+US Congressman list:
+[
+Fullname: John
+State: AL
+District: 1
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Christian, Upbringing: Rich, Race: White, Sex: M, ]
+, 
+Fullname: Jay
+State: AL
+District: 2
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Christian, Upbringing: Rich, Race: White, Sex: M, ]
+, 
+Fullname: Maria
+State: AL
+District: 3
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Christian, Upbringing: Poor, Race: White, Sex: F, ]
+, 
+Fullname: Carl
+State: NY
+District: 1
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Jewish, Upbringing: Rich, Race: White, Sex: M, ]
+, 
+Fullname: James
+State: NY
+District: 2
+attributes: [ Gun Control Opinion: con, Party: D, Religion: Jewish, Upbringing: Poor, Race: Black, Sex: M, ]
+, 
+Fullname: Patricia
+State: NY
+District: 3
+attributes: [ Gun Control Opinion: pro, Party: D, Religion: Jewish, Upbringing: Poor, Race: Latino, Sex: F, ]
+, 
+Fullname: Jennifer
+State: CA
+District: 1
+attributes: [ Gun Control Opinion: pro, Party: D, Upbringing: Poor, Race: White, Sex: F, ]
+, 
+Fullname: Susan
+State: CA
+District: 2
+attributes: [ Gun Control Opinion: pro, Party: D, Upbringing: Poor, Race: Latino, Sex: F, ]
+, 
+Fullname: Barbara
+State: CA
+District: 3
+attributes: [ Gun Control Opinion: Pro, Party: D, Upbringing: Poor, Race: Asian, Sex: F, ]
+, 
+Fullname: Christoper
+State: WA
+District: 1
+attributes: [ Gun Control Opinion: pro, Party: D, Religion: Jewish, Upbringing: Rich, Race: White, Sex: M, ]
+, 
+Fullname: Daniel
+State: WA
+District: 2
+attributes: [ Gun Control Opinion: pro, Party: D, Religion: Jewish, Upbringing: Rich, Race: Black, Sex: M, ]
+, 
+Fullname: Margaret
+State: WA
+District: 3
+attributes: [ Gun Control Opinion: con, Party: D, Religion: Jewish, Upbringing: Poor, Race: Black, Sex: F, ]
+, 
+Fullname: Mark
+State: TX
+District: 1
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Christian, Upbringing: Rich, Race: White, Sex: M, ]
+, 
+Fullname: Donald
+State: TX
+District: 2
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Christian, Upbringing: Rich, Race: White, Sex: M, ]
+, 
+Fullname: George
+State: TX
+District: 3
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Christian, Upbringing: Rich, Race: White, Sex: M, ]
+]Relationship strenght
+[(AL 1,TX 1):22.0
+, (AL 2,TX 1):22.0
+, (AL 3,TX 1):18.0
+, (TX 3,TX 1):22.0
+, (TX 2,TX 1):22.0
+, (CA 1,TX 1):1.0
+, (WA 1,TX 1):5.0
+, (WA 2,TX 1):4.0
+, (NY 1,TX 1):6.0
+, (AL 2,AL 1):22.0
+, (AL 1,AL 3):18.0
+, (TX 3,AL 1):22.0
+, (TX 2,AL 1):22.0
+, (CA 1,AL 1):1.0
+, (WA 1,AL 1):5.0
+, (WA 2,AL 1):4.0
+, (NY 1,AL 1):6.0
+, (AL 2,AL 3):18.0
+, (TX 3,AL 2):22.0
+, (TX 2,AL 2):22.0
+, (AL 2,CA 1):1.0
+, (WA 1,AL 2):5.0
+, (WA 2,AL 2):4.0
+, (NY 1,AL 2):6.0
+, (TX 3,AL 3):18.0
+, (TX 2,AL 3):18.0
+, (CA 3,AL 3):4.0
+, (AL 3,CA 2):4.0
+, (CA 1,AL 3):5.0
+, (WA 3,AL 3):4.0
+, (WA 1,AL 3):1.0
+, (NY 1,AL 3):2.0
+, (NY 2,AL 3):4.0
+, (AL 3,NY 3):4.0
+, (TX 2,TX 3):22.0
+, (TX 3,CA 1):1.0
+, (WA 1,TX 3):5.0
+, (WA 2,TX 3):4.0
+, (NY 1,TX 3):6.0
+, (TX 2,CA 1):1.0
+, (WA 1,TX 2):5.0
+, (WA 2,TX 2):4.0
+, (NY 1,TX 2):6.0
+, (CA 3,CA 2):5.0
+, (CA 3,CA 1):5.0
+, (CA 3,WA 3):5.0
+, (CA 3,WA 1):1.0
+, (CA 3,WA 2):1.0
+, (CA 3,NY 2):5.0
+, (CA 3,NY 3):5.0
+, (CA 1,CA 2):5.0
+, (WA 3,CA 2):5.0
+, (WA 1,CA 2):1.0
+, (WA 2,CA 2):1.0
+, (NY 2,CA 2):5.0
+, (NY 3,CA 2):6.0
+, (CA 1,WA 3):5.0
+, (WA 1,CA 1):2.0
+, (WA 2,CA 1):1.0
+, (NY 1,CA 1):1.0
+, (NY 2,CA 1):5.0
+, (CA 1,NY 3):5.0
+, (WA 1,WA 3):17.0
+, (WA 2,WA 3):18.0
+, (NY 1,WA 3):16.0
+, (NY 2,WA 3):22.0
+, (WA 3,NY 3):21.0
+, (WA 1,WA 2):21.0
+, (NY 1,WA 1):21.0
+, (WA 1,NY 2):17.0
+, (WA 1,NY 3):17.0
+, (NY 1,WA 2):20.0
+, (WA 2,NY 2):18.0
+, (WA 2,NY 3):17.0
+, (NY 1,NY 2):16.0
+, (NY 1,NY 3):16.0
+, (NY 2,NY 3):21.0
+]
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+The US Congress
+US Congressman list:
+[
+Fullname: John
+State: AL
+District: 1
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Christian, Upbringing: Rich, Race: White, Sex: M, ]
+, 
+Fullname: Jay
+State: AL
+District: 2
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Christian, Upbringing: Rich, Race: White, Sex: M, ]
+, 
+Fullname: Maria
+State: AL
+District: 3
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Christian, Upbringing: Poor, Race: White, Sex: F, ]
+, 
+Fullname: Carl
+State: NY
+District: 1
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Jewish, Upbringing: Rich, Race: White, Sex: M, ]
+, 
+Fullname: James
+State: NY
+District: 2
+attributes: [ Gun Control Opinion: con, Party: D, Religion: Jewish, Upbringing: Poor, Race: Black, Sex: M, ]
+, 
+Fullname: Patricia
+State: NY
+District: 3
+attributes: [ Gun Control Opinion: pro, Party: D, Religion: Jewish, Upbringing: Poor, Race: Latino, Sex: F, ]
+, 
+Fullname: Jennifer
+State: CA
+District: 1
+attributes: [ Gun Control Opinion: pro, Party: D, Upbringing: Poor, Race: White, Sex: F, ]
+, 
+Fullname: Susan
+State: CA
+District: 2
+attributes: [ Gun Control Opinion: pro, Party: D, Upbringing: Poor, Race: Latino, Sex: F, ]
+, 
+Fullname: Barbara
+State: CA
+District: 3
+attributes: [ Gun Control Opinion: Pro, Party: D, Upbringing: Poor, Race: Asian, Sex: F, ]
+, 
+Fullname: Christoper
+State: WA
+District: 1
+attributes: [ Gun Control Opinion: pro, Party: D, Religion: Jewish, Upbringing: Rich, Race: White, Sex: M, ]
+, 
+Fullname: Daniel
+State: WA
+District: 2
+attributes: [ Gun Control Opinion: pro, Party: D, Religion: Jewish, Upbringing: Rich, Race: Black, Sex: M, ]
+, 
+Fullname: Margaret
+State: WA
+District: 3
+attributes: [ Gun Control Opinion: con, Party: D, Religion: Jewish, Upbringing: Poor, Race: Black, Sex: F, ]
+, 
+Fullname: Mark
+State: TX
+District: 1
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Christian, Upbringing: Rich, Race: White, Sex: M, ]
+, 
+Fullname: Donald
+State: TX
+District: 2
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Christian, Upbringing: Rich, Race: White, Sex: M, ]
+, 
+Fullname: George
+State: TX
+District: 3
+attributes: [ Gun Control Opinion: con, Party: R, Religion: Christian, Upbringing: Rich, Race: White, Sex: M, ]
+]Relationship strenght
+[(AL 1,TX 1):22.0
+, (AL 2,TX 1):22.0
+, (AL 3,TX 1):18.0
+, (TX 3,TX 1):22.0
+, (TX 2,TX 1):22.0
+, (CA 1,TX 1):1.0
+, (WA 1,TX 1):5.0
+, (WA 2,TX 1):4.0
+, (NY 1,TX 1):6.0
+, (AL 2,AL 1):22.0
+, (AL 1,AL 3):18.0
+, (TX 3,AL 1):22.0
+, (TX 2,AL 1):22.0
+, (CA 1,AL 1):1.0
+, (WA 1,AL 1):5.0
+, (WA 2,AL 1):4.0
+, (NY 1,AL 1):6.0
+, (AL 2,AL 3):18.0
+, (TX 3,AL 2):22.0
+, (TX 2,AL 2):22.0
+, (AL 2,CA 1):1.0
+, (WA 1,AL 2):5.0
+, (WA 2,AL 2):4.0
+, (NY 1,AL 2):6.0
+, (TX 3,AL 3):18.0
+, (TX 2,AL 3):18.0
+, (CA 3,AL 3):4.0
+, (AL 3,CA 2):4.0
+, (CA 1,AL 3):5.0
+, (WA 3,AL 3):4.0
+, (WA 1,AL 3):1.0
+, (NY 1,AL 3):2.0
+, (NY 2,AL 3):4.0
+, (AL 3,NY 3):4.0
+, (TX 2,TX 3):22.0
+, (TX 3,CA 1):1.0
+, (WA 1,TX 3):5.0
+, (WA 2,TX 3):4.0
+, (NY 1,TX 3):6.0
+, (TX 2,CA 1):1.0
+, (WA 1,TX 2):5.0
+, (WA 2,TX 2):4.0
+, (NY 1,TX 2):6.0
+, (CA 3,CA 2):5.0
+, (CA 3,CA 1):5.0
+, (CA 3,WA 3):5.0
+, (CA 3,WA 1):1.0
+, (CA 3,WA 2):1.0
+, (CA 3,NY 2):5.0
+, (CA 3,NY 3):5.0
+, (CA 1,CA 2):5.0
+, (WA 3,CA 2):5.0
+, (WA 1,CA 2):1.0
+, (WA 2,CA 2):1.0
+, (NY 2,CA 2):5.0
+, (NY 3,CA 2):6.0
+, (CA 1,WA 3):5.0
+, (WA 1,CA 1):2.0
+, (WA 2,CA 1):1.0
+, (NY 1,CA 1):1.0
+, (NY 2,CA 1):5.0
+, (CA 1,NY 3):5.0
+, (WA 1,WA 3):17.0
+, (WA 2,WA 3):18.0
+, (NY 1,WA 3):16.0
+, (NY 2,WA 3):22.0
+, (WA 3,NY 3):21.0
+, (WA 1,WA 2):21.0
+, (NY 1,WA 1):21.0
+, (WA 1,NY 2):17.0
+, (WA 1,NY 3):17.0
+, (NY 1,WA 2):20.0
+, (WA 2,NY 2):18.0
+, (WA 2,NY 3):17.0
+, (NY 1,NY 2):16.0
+, (NY 1,NY 3):16.0
+, (NY 2,NY 3):21.0
+]
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+{(AL 1,AL 2,AL 3,TX 1,TX 2,TX 3,)(NY 1,NY 2,NY 3,WA 1,WA 2,WA 3,CA 1,CA 2,CA 3,)}
+
+
+Calculation of communities using the louvain algorithm:
+1-Compute the best partition of the graph using Louvains algorithm
+2-Calculate the best partition's modularity
+any other number-EXIT
+What do you want to do? Enter the key and press Enter
+
+1-MP management
+2-Attribute Definitions management
+3-Compute Weights
+4-Show all MP's and its Attributes
+5-Show congress
+6-Apply Louvain
+7-Show state's abbreviations
+any other number-EXIT

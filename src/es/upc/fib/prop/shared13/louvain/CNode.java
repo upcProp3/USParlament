@@ -5,7 +5,7 @@ import es.upc.fib.prop.shared13.Node;
 import java.util.Set;
 
 /**
- * Created by miquel on 25/04/15.
+ * Created by Miquel Jubert on 25/04/15.
  */
 public class CNode extends Node
 {//Nodes with unique identifier
