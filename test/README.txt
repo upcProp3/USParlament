@@ -5,8 +5,8 @@
 -LouvainAlgorithmTest01: This test applies the louvain algorithm to the example graph from the article "Fast unfolding of
     communities on large networks" which consists in a circle of 30 5-cliques joined together with a 1-weight edge. You
     can see that the result is the same as the book. This entry is very long(1600 lines) so it was generated with a python
-    script that allows you to generate circles of n N-cliques. You can find it on the LouvainDriverCliqueCircleGenerator.py
-    file.
+    script that allows you to generate circles of n N-cliques. You can find it on the script LDGraphGenerator.py. See the
+    end of the file or execute it with "h" as its first argument to see how it works.
 
 -LouvainAlgorithmTest02: This test applies the louvain algorithm to the example graph from the article "Fast unfolding of
     communities on large networks" page 3. Graph contains 16 nodes with some edges between all with weight 1. The result is the same
@@ -77,3 +77,5 @@
     creating a congress of 17 MPs, it defines 10 basic attributes (Gender, Age, Religion, Favourite color, Social status,
     Ethnicity, University, Graduated in, Favourite sport and Party), which allows you to play a little bit with their
     importances and values.
+-CompareDriverTest01:Just a simple text to show that it calculates the improvement percentage correctly. All of the other
+    functionalities are tested on the Louvain driver so not much complexity is needed
