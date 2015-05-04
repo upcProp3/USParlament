@@ -19,9 +19,9 @@ public class MP extends Node {
 
 	/**
 	 * An MP is created with name 'fullname', state 'state' and district 'district'.
-	 * @param fullname
-	 * @param state
-	 * @param district
+	 * @param fullname String representing the full name of the generated MP.
+	 * @param state State representing the state of the generated MP.
+	 * @param district Integer representing the district number of the generated MP.
 	 */
     public MP(String fullname,State state,int district)
     {
@@ -32,8 +32,7 @@ public class MP extends Node {
     }
 
 	/**
-	 * It returns the implicit MP identification number.
-	 * @return
+	 * @return The implicit MP identification number.
 	 */
 	public Long getId() {
 		return id;
@@ -41,23 +40,21 @@ public class MP extends Node {
 
 	/**
 	 * The identification number of the implicit MP is set to 'id'.
-	 * @param id
+	 * @param id Long representing the identification number of the implicit MP to be set.
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
 	/**
-	 * The identification number of the implicit MP is set to 'id'.
-	 * @param id
+	 * @param id Integer representing the identification number of the implicit MP to be set.
 	 */
 	public void setId(Integer id) {
 		setId((long) id);
 	}
 
 	/**
-	 * It returns the implicit MP full name.
-	 * @return
+	 * @return The implicit MP full name.
 	 */
 	public String getFullname()
     {
@@ -66,7 +63,7 @@ public class MP extends Node {
 
 	/**
 	 * The full name of the implicit MP is set to 'fullname'.
-	 * @param fullname
+	 * @param fullname String representing the full name of the implicit MP to be set.
 	 */
     public void setFullname(String fullname)
     {
@@ -74,8 +71,7 @@ public class MP extends Node {
     }
 
 	/**
-	 * It returns the implicit MP district number.
-	 * @return
+	 * @return The implicit MP district number.
 	 */
     public int getDistrict()
     {
@@ -84,7 +80,7 @@ public class MP extends Node {
 
 	/**
 	 * The district number of the implicit MP is set to 'district'.
-	 * @param district
+	 * @param district Integer representing the district number of the implicit MP to be set.
 	 */
     public void setDistrict(int district)
     {
@@ -92,8 +88,7 @@ public class MP extends Node {
     }
 
 	/**
-	 * It returns the implicit MP State.
-	 * @return
+	 * @return The implicit MP State.
 	 */
     public State getState()
     {
@@ -102,7 +97,7 @@ public class MP extends Node {
 
 	/**
 	 * The State of the implicit MP is set to 'state'.
-	 * @param state
+	 * @param state State representing the state of the implicit MP.
 	 */
     public void setState(State state)
     {
@@ -110,8 +105,8 @@ public class MP extends Node {
     }
 
 	/**
-	 * It returns the implicit MP collection of attributes.
-	 * @return
+	 * @return The implicit MP collection of attributes.
+
 	 */
 	public Collection<Attribute> getAttributes() {
 		return attributes.values();
@@ -119,16 +114,15 @@ public class MP extends Node {
 
 	/**
 	 * 'attr' is added to the implicit MP collection of attributes.
-	 * @param attr
+	 * @param attr Attribute representing the Attribute of the implicit MP to be added.
 	 */
 	public void addAttribute(Attribute attr) {
 		attributes.put(attr.getDefinition(), attr);
 	}
 
 	/**
-	 * It returns true iff the implicit MP has a defined value for the attribute 'attr'; false otherwise.
-	 * @param attr
-	 * @return
+	 * @param attr Attribute representing the Attribute of the implicit MP.
+	 * @return True iff the implicit MP has a defined value for the attribute 'attr'; false otherwise.
 	 */
     public boolean hasAttribute(AttrDefinition attr)
     {
@@ -137,7 +131,7 @@ public class MP extends Node {
 
 	/**
 	 * It removes the value of 'def' for the implicit MP.
-	 * @param def
+	 * @param def AttrDefinition representing the Attribute of the implicit MP to be removed.
 	 */
 	public void removeAttribute(AttrDefinition def) {
 		attributes.remove(def);
@@ -145,17 +139,12 @@ public class MP extends Node {
 
 	/**
 	 * It removes the value of 'attr' for the implicit MP.
-	 * @param attr
+	 * @param attr Attribute representing the Attribute of the implicit MP to be removed.
 	 */
 	public void removeAttribute(Attribute attr) {
 		removeAttribute(attr.getDefinition());
 	}
 
-	/**
-	 * It returns true iff 'o' is equal to the implicit MP (same values for State and District).
-	 * @param o object to compare with this.
-	 * @return
-	 */
 	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof MP)) {
@@ -174,10 +163,7 @@ public class MP extends Node {
 		return hash;
 	}
 
-	/**
-	 * It returns the string form of an MP: full name, State, district and list of attributes.
-	 * @return
-	 */
+
 	@Override
     public String toString()
     {
@@ -190,11 +176,6 @@ public class MP extends Node {
         return r;
     }
 
-	/**
-	 * Comparison between two MPs.
-	 * @param n the node to compare.
-	 * @return
-	 */
 	@Override
 	public int compareTo(Node n) {
 		if (this.equals(n)) {

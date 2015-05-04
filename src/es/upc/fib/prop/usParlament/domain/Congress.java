@@ -16,21 +16,19 @@ public class Congress extends Graph {
 
     /**
      * A new AttrDefinition is added to the Congress set of AttrDefinitions.
-     * @param def
+     * @param def AttrDefinition that will be added to the Congress set of AttrDefinitions.
      */
     public void addAttrDef(AttrDefinition def) {this.s.add(def);}
 
     /**
-     * It returns the implicit Congress set of AttrDefinitions.
-     * @return
+     * @return The implicit Congress set of AttrDefinitions.
      */
     public Set<AttrDefinition> getAttrDef(){return this.s;}
 
     /**
-     * It returns the AttrDefinition with name 'name', which should belong to the Congress set of AttrDefinitions.
-     * If the specified AttrDefinition doesn't belong to it, the returned AttrDefinition will be null.
-     * @param name
-     * @return
+     * @param name AttrDefinition's name that will be returned.
+     * @return AttrDefinition with name 'name', which should belong to the Congress set of AttrDefinitions.
+     * @return If the specified AttrDefinition doesn't belong to it, the returned AttrDefinition will be null.
      */
     public AttrDefinition getAttrDef(String name) {
         for (AttrDefinition def : s) if (def.getName().equals(name)) return def;
@@ -38,9 +36,8 @@ public class Congress extends Graph {
     }
 
     /**
-     * It returns true iff the implicit Congress set of AttrDefinitions contains 'def'; false otherwise.
-     * @param def
-     * @return
+     * @param def AttrDefinition that will be checked.
+     * @return True iff the implicit Congress set of AttrDefinitions contains 'def'; false otherwise.
      */
     public Boolean hasAttrDef(AttrDefinition def) {
         for (AttrDefinition d : s) if (d.equals(def)) return true;
@@ -49,13 +46,12 @@ public class Congress extends Graph {
 
     /**
      * The AttrDefinition 'def' is removed from the implicit Congress set of AttrDefinitions.
-     * @param def
+     * @param def AttrDefinition that will be removed.
      */
     public void removeAttrDef(AttrDefinition def) {def.setImportance(0);}
 
     /**
-     * It prints the implicit Congress set of AttrDefinitions.
-     * @return
+     * @return String form of the implicit Congress set of AttrDefinitions.
      */
     public String printAttrDefList() {
         String ret = "Attribute definition list\n";
@@ -66,8 +62,7 @@ public class Congress extends Graph {
     }
 
     /**
-     * It returns the implicit Congress collection of MPs.
-     * @return
+     * @return The implicit Congress collection of MPs.
      */
 	public Collection<MP> getMPs() {
 		Collection<MP> mps = new HashSet<>();
@@ -78,9 +73,8 @@ public class Congress extends Graph {
 	}
 
     /**
-     * It returns the string form of a Congress: the printing of each MP and the list of relationship strength between
-     * them.
-     * @return
+     *
+     * @return The string form of a Congress: the string of each MP and the list of relationship strength between them.
      */
     public String toString()
     {
@@ -91,11 +85,10 @@ public class Congress extends Graph {
     }
 
     /**
-     * It returns the MP with State 's' and district 'd', which should belong to the implicit Congress.
-     * If the specified MP doesn't belong to it, the returned MP will be null.
-     * @param s
-     * @param d
-     * @return
+     * @param s State of the MP that will be returned.
+     * @param d District number of the MP that will be returned.
+     * @return The MP with State 's' and district 'd', which should belong to the implicit Congress.
+     * @return If the specified MP doesn't belong to it, the returned MP will be null.
      */
     public MP getMP(State s,int d)
     {
