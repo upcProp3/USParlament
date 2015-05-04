@@ -325,6 +325,7 @@ Democratic
 6
 1
 2
+0
 
 2
 6
@@ -336,6 +337,7 @@ Gender
 6
 1
 2
+0
 
 2
 2
@@ -410,6 +412,7 @@ ShopiasWorld
 6
 1
 2
+0
 
 2
 6
@@ -430,4 +433,5 @@ FavouriteMusic
 6
 1
 2
+0
 0
