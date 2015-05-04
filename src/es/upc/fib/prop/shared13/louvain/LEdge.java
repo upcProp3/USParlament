@@ -4,7 +4,7 @@ import es.upc.fib.prop.shared13.Edge;
 import es.upc.fib.prop.shared13.Node;
 
 /**
- * Created by miquel on 29/04/15.
+ * Created by Miquel Jubert on 29/04/15.
  */
 public class LEdge extends Edge
 {

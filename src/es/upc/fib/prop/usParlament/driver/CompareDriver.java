@@ -1,15 +1,17 @@
 package es.upc.fib.prop.usParlament.driver;
 
         import es.upc.fib.prop.shared13.Edge;
-        import es.upc.fib.prop.shared13.Graph;
-        import es.upc.fib.prop.shared13.Node;
-        import es.upc.fib.prop.shared13.louvain.LouvainAlgorithm;
-        import es.upc.fib.prop.usParlament.domain.*;
+import es.upc.fib.prop.shared13.Graph;
+import es.upc.fib.prop.shared13.Node;
+import es.upc.fib.prop.usParlament.domain.ComparingAlgorithm;
 
-        import java.util.*;
+import java.util.HashMap;
+import java.util.InputMismatchException;
+import java.util.Map;
+import java.util.Scanner;
 
 /**
- * Created by ondrej on 29.4.15.
+ * Created by Ondrej Velisek on 29.4.15.
  */
 public class CompareDriver {
 

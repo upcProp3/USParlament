@@ -4,12 +4,11 @@ import es.upc.fib.prop.shared13.Edge;
 import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.shared13.Node;
 import es.upc.fib.prop.shared13.louvain.LouvainAlgorithm;
-import es.upc.fib.prop.usParlament.domain.*;
 
 import java.util.*;
 
 /**
- * Created by ondrej on 29.4.15.
+ * Created by Ondrej Velisek on 29.4.15.
  */
 public class LouvainAlgorithmDriver {
 
