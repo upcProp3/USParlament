@@ -8,10 +8,6 @@ import es.upc.fib.prop.shared13.Node;
  */
 public class Relationship extends Edge {
 
-    /**
-     * It returns the string form of a Relationship: State&District of the two MPs and the weight value between them.
-     * @return
-     */
     @Override
     public String toString()
     {
@@ -22,10 +18,9 @@ public class Relationship extends Edge {
     }
 
     /**
-     * A Relationship is created between the MPs 'm1' and 'm2', with the weight 'w'.
-	 * @param m1
-	 * @param m2
-	 * @param w
+	 * @param m1 The first MP of the relation
+	 * @param m2 The second MP of the relation
+	 * @param w Weight of the relation between the MPs m1 and m2
 	 */
 	public Relationship(Node m1, Node m2, int w) {
 		super(m1, m2, w);
