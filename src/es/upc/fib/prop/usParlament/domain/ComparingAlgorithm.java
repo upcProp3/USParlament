@@ -18,9 +18,9 @@ public class ComparingAlgorithm
     /**
      * A ComparingAlgorithm instance is created with graph 'g', p1 'part1', p2 'part2'.
      * Their modularities are also computed.
-     * @param g
-     * @param part1
-     * @param part2
+     * @param g The graph where you want to apply the algorithm
+     * @param part1 A partition of  graph g
+     * @param part2 A partition of a graph g
      */
     public ComparingAlgorithm(Graph g,Map<Node,Integer> part1,Map<Node,Integer> part2)
     {
@@ -46,9 +46,8 @@ public class ComparingAlgorithm
     }
 
     /**
-     * It returns the string form of a comparison. Possible outputs are: "Both partitions are equally good" or
+     * @return The string form of a comparison. Possible outputs are: "Both partitions are equally good" or
      * "The best partition is:" (with its values).
-     * @return
      */
     public String toString()
     {
@@ -61,8 +60,7 @@ public class ComparingAlgorithm
     }
 
     /**
-     * It returns the implicit ComparingAlgorithm best partition.
-     * @return
+     * @return The implicit ComparingAlgorithm best partition.
      */
     public Map<Node,Integer> bestPartition()
     {
@@ -70,8 +68,7 @@ public class ComparingAlgorithm
     }
 
     /**
-     * It returns the implicit ComparingAlgorithm best modularity value.
-     * @return
+     * @return The implicit ComparingAlgorithm best modularity value.
      */
     public Double bestModularity()
     {
@@ -81,8 +78,7 @@ public class ComparingAlgorithm
     }
 
     /**
-     * It returns the implicit ComparingAlgorithm other modularity value (the one which is not the best).
-     * @return
+     * @return The implicit ComparingAlgorithm other modularity value (the one which is not the best).
      */
     public Double otherModularity()
     {
@@ -92,8 +88,7 @@ public class ComparingAlgorithm
     }
 
     /**
-     * It returns the implicit ComparingAlgorithm best partition percentage of accuracy.
-     * @return
+     * @return The implicit ComparingAlgorithm best partition percentage of accuracy.
      */
     public Double percentBetter()
     {
