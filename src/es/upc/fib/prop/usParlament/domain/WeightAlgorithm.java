@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by alex on 14/4/15.
- * contributions of ondrej, aleixsacrest.
+ * Created by Alex Miro on 14/4/15.
+ * contributions of Ondrej Velisek and Aleix Sacrest.
  */
 
 public class WeightAlgorithm {
@@ -27,6 +27,7 @@ public class WeightAlgorithm {
      * @param m1
      * @param m2
      * @return set of common attributes between m1 and m2
+     * It returns the list of common attributes between 'm1' and 'm2'.
      */
     public Set<Attribute> getCommonAttributes(MP m1, MP m2) {
         Set<Attribute> ret = new HashSet<>();
@@ -41,7 +42,7 @@ public class WeightAlgorithm {
      * @param m1
      * @param m2
      * @param CA
-     * The weight between m1 and m2 is added to C.
+     * The weight between 'm1' and 'm2' is added to the congress C.
      */
     public void computeWeight(MP m1, MP m2, Set<Attribute> CA) {
         int w = 0; //0 = no relationship
@@ -60,7 +61,7 @@ public class WeightAlgorithm {
     /**
      * @pre True
      * @post The weights of all the graph are computed, and the edges added
-     * The weights of all the graph are computed, and the edges added
+     * The weights of all the graph are computed, and their edges added.
      */
     public void computeAllWeights() {
         Collection<MP> mps = c.getMPs();
@@ -75,6 +76,4 @@ public class WeightAlgorithm {
             }
         }
     }
-
-
 }
