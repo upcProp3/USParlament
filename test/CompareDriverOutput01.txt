@@ -1,0 +1,123 @@
+==================================
+   C O M P A R E   D R I V E R 
+==================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - compare two partitions
+0 - exit
+Set ID: 
+==================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - compare two partitions
+0 - exit
+Set ID: 
+==================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - compare two partitions
+0 - exit
+Set ID: 
+==================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - compare two partitions
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+==================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - compare two partitions
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+==================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - compare two partitions
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+==================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - compare two partitions
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+==================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - compare two partitions
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+==================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - compare two partitions
+0 - exit
+Select first node by id: 
+Select second node by id: 
+Set weight: 
+==================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - compare two partitions
+0 - exit
+Set partition for each node (as a integer).
+Node: 1
+Node: 2
+Node: 3
+Set partition for each node (as a integer).
+Node: 1
+Node: 2
+Node: 3
+0.07024793388429756 0.2520661157024794
+The best partition is:{1=0, 2=1, 3=1}
+It's modularity is:0.2520661157024794and it is 258.8235294117645% better than the other one which is 0.07024793388429756
+==================================
+1 - add node
+2 - add edge
+3 - remove node
+4 - remove edge
+5 - show graph
+6 - compare two partitions
+0 - exit
+Bye Bye

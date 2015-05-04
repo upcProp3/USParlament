@@ -20,7 +20,8 @@ USA districts:
 10: Print the attribute definition list
 11: Modify attribute importance
 99: Show options menu
-0: ExitAdding MP
+0: Exit
+Adding MP
 Enter the name:
 Enter the state:
 Enter the district number:
@@ -153,72 +154,72 @@ Fullname: Kate Morgan
 State: AL
 District: 1
 attributes: [ ]
-,
+, 
 Fullname: John King
 State: AL
 District: 2
 attributes: [ ]
-,
+, 
 Fullname: Homer Simpson
 State: AK
 District: 3
 attributes: [ ]
-,
+, 
 Fullname: Ada Colau
 State: NY
 District: 5
 attributes: [ ]
-,
+, 
 Fullname: Julia Roberts
 State: UT
 District: 1
 attributes: [ ]
-,
+, 
 Fullname: Martha Smith
 State: WA
 District: 8
 attributes: [ ]
-,
+, 
 Fullname: Mike Junior
 State: WA
 District: 2
 attributes: [ ]
-,
+, 
 Fullname: Pepe Rubianes
 State: TN
 District: 5
 attributes: [ ]
-,
+, 
 Fullname: Alan Turing
 State: MO
 District: 3
 attributes: [ ]
-,
+, 
 Fullname: Marie Curie
 State: GA
 District: 1
 attributes: [ ]
-,
+, 
 Fullname: Olof Palme
 State: WV
 District: 1
 attributes: [ ]
-,
+, 
 Fullname: Merce Rodoreda
 State: TX
 District: 9
 attributes: [ ]
-,
+, 
 Fullname: George Orwell
 State: IA
 District: 3
 attributes: [ ]
-,
+, 
 Fullname: Teresa Rampell
 State: LA
 District: 6
 attributes: [ ]
-,
+, 
 Fullname: Quentin Tarantino
 State: LA
 District: 7
@@ -229,26 +230,26 @@ Operation finished, enter 99 to see option list or enter next command
 Printing attribute definition list
 Attribute definition list
 
-name: Social status
-importance: 2
-name: Ethnicity
-importance: 2
-name: Party
-importance: 3
-name: Favourite color
-importance: 1
-name: University
-importance: 1
-name: Religion
-importance: 3
-name: Gender
-importance: 2
-name: Favourite sport
-importance: 1
 name: Graduated in
 importance: 2
 name: Age
 importance: 2
+name: Favourite color
+importance: 1
+name: Ethnicity
+importance: 2
+name: Religion
+importance: 3
+name: Gender
+importance: 2
+name: Party
+importance: 3
+name: Favourite sport
+importance: 1
+name: Social status
+importance: 2
+name: University
+importance: 1
 Operation finished, enter 99 to see option list or enter next command
 Modifying attribute importance
 Enter attribute name
@@ -920,77 +921,77 @@ US Congressman list:
 Fullname: Kate Morgan
 State: AL
 District: 1
-attributes: [ Social status: Married, Ethnicity: AfroAmerican, Party: Republican, University: MIT, Gender: Female, Favourite sport: Basketball, Graduated in: Computer science, Age: 29, ]
-,
+attributes: [ Graduated in: Computer science, Age: 29, Ethnicity: AfroAmerican, Party: Republican, Gender: Female, Favourite sport: Basketball, Social status: Married, University: MIT, ]
+, 
 Fullname: John King
 State: AL
 District: 2
-attributes: [ Social status: Married, Ethnicity: American, Party: Republican, University: UPC, Gender: Male, Favourite sport: Basketball, Graduated in: Computer science, Age: 46, ]
-,
+attributes: [ Graduated in: Computer science, Age: 46, Ethnicity: American, Party: Republican, Gender: Male, Favourite sport: Basketball, Social status: Married, University: UPC, ]
+, 
 Fullname: Homer Simpson
 State: AK
 District: 3
-attributes: [ Social status: Single, Ethnicity: American, Party: Republican, University: MIT, Gender: Male, Graduated in: Computer science, Age: 47, ]
-,
+attributes: [ Graduated in: Computer science, Age: 47, Ethnicity: American, Party: Republican, Gender: Male, Social status: Single, University: MIT, ]
+, 
 Fullname: Ada Colau
 State: NY
 District: 5
-attributes: [ Social status: Single, Ethnicity: American, Party: Republican, Favourite color: Red, University: MIT, Religion: Islam, Gender: Female, Graduated in: Medicine, Age: 40, ]
-,
+attributes: [ Graduated in: Medicine, Age: 40, Favourite color: Red, Ethnicity: American, Religion: Islam, Party: Republican, Gender: Female, Social status: Single, University: MIT, ]
+, 
 Fullname: Julia Roberts
 State: UT
 District: 1
-attributes: [ Social status: Single, Ethnicity: AfroAmerican, Party: Democratic, University: MIT, Religion: Islam, Gender: Female, Age: 50, ]
-,
+attributes: [ Age: 50, Ethnicity: AfroAmerican, Religion: Islam, Party: Democratic, Gender: Female, Social status: Single, University: MIT, ]
+, 
 Fullname: Martha Smith
 State: WA
 District: 8
-attributes: [ Social status: Divorced, Ethnicity: AfroAmerican, Party: Democratic, Religion: Catholic, Gender: Female, Age: 51, ]
-,
+attributes: [ Age: 51, Ethnicity: AfroAmerican, Religion: Catholic, Party: Democratic, Gender: Female, Social status: Divorced, ]
+, 
 Fullname: Mike Junior
 State: WA
 District: 2
-attributes: [ Social status: Widowed, Ethnicity: SouthAmerican, Party: Democratic, University: UCM, Gender: Male, Graduated in: Computer science, Age: 33, ]
-,
+attributes: [ Graduated in: Computer science, Age: 33, Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Social status: Widowed, University: UCM, ]
+, 
 Fullname: Pepe Rubianes
 State: TN
 District: 5
-attributes: [ Social status: Single, Ethnicity: SouthAmerican, Party: Democratic, University: UPF, Gender: Male, Graduated in: Economy, Age: 37, ]
-,
+attributes: [ Graduated in: Economy, Age: 37, Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Social status: Single, University: UPF, ]
+, 
 Fullname: Alan Turing
 State: MO
 District: 3
-attributes: [ Social status: Single, Ethnicity: European, Party: Republican, Religion: Buddhism, Gender: Male, Favourite sport: Football, Age: 60, ]
-,
+attributes: [ Age: 60, Ethnicity: European, Religion: Buddhism, Party: Republican, Gender: Male, Favourite sport: Football, Social status: Single, ]
+, 
 Fullname: Marie Curie
 State: GA
 District: 1
-attributes: [ Social status: Widowed, Ethnicity: European, Party: Republican, University: UCM, Gender: Female, Favourite sport: Football, Graduated in: Chemistry, Age: 59, ]
-,
+attributes: [ Graduated in: Chemistry, Age: 59, Ethnicity: European, Party: Republican, Gender: Female, Favourite sport: Football, Social status: Widowed, University: UCM, ]
+, 
 Fullname: Olof Palme
 State: WV
 District: 1
-attributes: [ Social status: Married, Ethnicity: European, Party: Democratic, University: UB, Gender: Male, Favourite sport: Hockey, Graduated in: Journalism, Age: 35, ]
-,
+attributes: [ Graduated in: Journalism, Age: 35, Ethnicity: European, Party: Democratic, Gender: Male, Favourite sport: Hockey, Social status: Married, University: UB, ]
+, 
 Fullname: Merce Rodoreda
 State: TX
 District: 9
-attributes: [ Social status: Married, Ethnicity: AfroAmerican, Party: Republican, University: UAB, Gender: Female, Graduated in: Journalism, Age: 34, ]
-,
+attributes: [ Graduated in: Journalism, Age: 34, Ethnicity: AfroAmerican, Party: Republican, Gender: Female, Social status: Married, University: UAB, ]
+, 
 Fullname: George Orwell
 State: IA
 District: 3
-attributes: [ Social status: Widowed, Ethnicity: Asian, Party: Democratic, Favourite color: Green, University: UPC, Religion: Buddhism, Gender: Male, Graduated in: Computer science, Age: 29, ]
-,
+attributes: [ Graduated in: Computer science, Age: 29, Favourite color: Green, Ethnicity: Asian, Religion: Buddhism, Party: Democratic, Gender: Male, Social status: Widowed, University: UPC, ]
+, 
 Fullname: Teresa Rampell
 State: LA
 District: 6
-attributes: [ Social status: Divorced, Ethnicity: American, Party: Democratic, Favourite color: Blue, Gender: Female, Age: 28, ]
-,
+attributes: [ Age: 28, Favourite color: Blue, Ethnicity: American, Party: Democratic, Gender: Female, Social status: Divorced, ]
+, 
 Fullname: Quentin Tarantino
 State: LA
 District: 7
-attributes: [ Social status: Single, Ethnicity: American, Gender: Male, Favourite sport: PingPong, Age: 55, ]
+attributes: [ Age: 55, Ethnicity: American, Gender: Male, Favourite sport: PingPong, Social status: Single, ]
 ]Relationship strenght
 []
 Operation finished, enter 99 to see option list or enter next command
@@ -1009,7 +1010,6 @@ Deleting MP
 Enter MP state:
 Enter MP district number:
 Operation finished, enter 99 to see option list or enter next command
-7
 Printing an MP
 Enter MP state:
 Enter MP district number:
@@ -1020,7 +1020,7 @@ Enter MP district number:
 Fullname: Pepe Rubianes
 State: TN
 District: 5
-attributes: [ Social status: Single, Ethnicity: SouthAmerican, Party: Democratic, University: UPF, Gender: Male, Graduated in: Economy, Age: 37, ]
+attributes: [ Graduated in: Economy, Age: 37, Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Social status: Single, University: UPF, ]
 
 Operation finished, enter 99 to see option list or enter next command
 Deleting attribute definition
@@ -1033,10 +1033,9 @@ Enter MP district number:
 Fullname: Pepe Rubianes
 State: TN
 District: 5
-attributes: [ Social status: Single, Ethnicity: SouthAmerican, Party: Democratic, University: UPF, Gender: Male, Age: 37, ]
+attributes: [ Age: 37, Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Social status: Single, University: UPF, ]
 
 Operation finished, enter 99 to see option list or enter next command
-
 Deleting attribute value of an MP
 Enter attribute name
 Enter MP state:
@@ -1047,16 +1046,6 @@ Enter attribute name
 Enter MP state:
 Enter MP district number:
 This MP had no assigned value for that attribute
-
-Operation finished, enter 99 to see option list or enter next command
-Printing an MP
-Enter MP state:
-Enter MP district number:
-
-Fullname: Pepe Rubianes
-State: TN
-District: 5
-attributes: [ Social status: Single, Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 37, ]
 
 Operation finished, enter 99 to see option list or enter next command
 Printing attribute information
@@ -1072,88 +1061,88 @@ US Congressman list:
 Fullname: Kate Morgan
 State: AL
 District: 1
-attributes: [ Social status: Married, Ethnicity: AfroAmerican, Party: Republican, University: MIT, Gender: Female, Favourite sport: Basketball, Age: 29, ]
-,
+attributes: [ Age: 29, Ethnicity: AfroAmerican, Party: Republican, Gender: Female, Favourite sport: Basketball, Social status: Married, University: MIT, ]
+, 
 Fullname: Homer Simpson
 State: AK
 District: 3
-attributes: [ Social status: Single, Ethnicity: American, Party: Republican, University: MIT, Gender: Male, Age: 47, ]
-,
+attributes: [ Age: 47, Ethnicity: American, Party: Republican, Gender: Male, Social status: Single, University: MIT, ]
+, 
 Fullname: Ada Colau
 State: NY
 District: 5
-attributes: [ Social status: Single, Ethnicity: American, Party: Republican, Favourite color: Red, University: MIT, Religion: Islam, Gender: Female, Age: 40, ]
-,
+attributes: [ Age: 40, Favourite color: Red, Ethnicity: American, Religion: Islam, Party: Republican, Gender: Female, Social status: Single, University: MIT, ]
+, 
 Fullname: Julia Roberts
 State: UT
 District: 1
-attributes: [ Social status: Single, Ethnicity: AfroAmerican, Party: Democratic, University: MIT, Religion: Islam, Gender: Female, Age: 50, ]
-,
+attributes: [ Age: 50, Ethnicity: AfroAmerican, Religion: Islam, Party: Democratic, Gender: Female, Social status: Single, University: MIT, ]
+, 
 Fullname: Pepe Rubianes
 State: TN
 District: 5
-attributes: [ Social status: Single, Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Age: 37, ]
-,
+attributes: [ Age: 37, Ethnicity: SouthAmerican, Party: Democratic, Gender: Male, Social status: Single, ]
+, 
 Fullname: Alan Turing
 State: MO
 District: 3
-attributes: [ Social status: Single, Ethnicity: European, Party: Republican, Religion: Buddhism, Gender: Male, Favourite sport: Football, Age: 60, ]
-,
+attributes: [ Age: 60, Ethnicity: European, Religion: Buddhism, Party: Republican, Gender: Male, Favourite sport: Football, Social status: Single, ]
+, 
 Fullname: Marie Curie
 State: GA
 District: 1
-attributes: [ Social status: Widowed, Ethnicity: European, Party: Republican, University: UCM, Gender: Female, Favourite sport: Football, Age: 59, ]
-,
+attributes: [ Age: 59, Ethnicity: European, Party: Republican, Gender: Female, Favourite sport: Football, Social status: Widowed, University: UCM, ]
+, 
 Fullname: Olof Palme
 State: WV
 District: 1
-attributes: [ Social status: Married, Ethnicity: European, Party: Democratic, University: UB, Gender: Male, Favourite sport: Hockey, Age: 35, ]
-,
+attributes: [ Age: 35, Ethnicity: European, Party: Democratic, Gender: Male, Favourite sport: Hockey, Social status: Married, University: UB, ]
+, 
 Fullname: Merce Rodoreda
 State: TX
 District: 9
-attributes: [ Social status: Married, Ethnicity: AfroAmerican, Party: Republican, University: UAB, Gender: Female, Age: 34, ]
-,
+attributes: [ Age: 34, Ethnicity: AfroAmerican, Party: Republican, Gender: Female, Social status: Married, University: UAB, ]
+, 
 Fullname: George Orwell
 State: IA
 District: 3
-attributes: [ Social status: Widowed, Ethnicity: Asian, Party: Democratic, Favourite color: Green, University: UPC, Religion: Buddhism, Gender: Male, Age: 29, ]
-,
+attributes: [ Age: 29, Favourite color: Green, Ethnicity: Asian, Religion: Buddhism, Party: Democratic, Gender: Male, Social status: Widowed, University: UPC, ]
+, 
 Fullname: Teresa Rampell
 State: LA
 District: 6
-attributes: [ Social status: Divorced, Ethnicity: American, Party: Democratic, Favourite color: Blue, Gender: Female, Age: 28, ]
-,
+attributes: [ Age: 28, Favourite color: Blue, Ethnicity: American, Party: Democratic, Gender: Female, Social status: Divorced, ]
+, 
 Fullname: Quentin Tarantino
 State: LA
 District: 7
-attributes: [ Social status: Single, Ethnicity: American, Gender: Male, Favourite sport: PingPong, Age: 55, ]
+attributes: [ Age: 55, Ethnicity: American, Gender: Male, Favourite sport: PingPong, Social status: Single, ]
 ]Relationship strenght
 []
 Operation finished, enter 99 to see option list or enter next command
 Printing attribute definition list
 Attribute definition list
 
-name: Social status
-importance: 2
-name: Ethnicity
-importance: 2
-name: Party
-importance: 3
-name: Favourite color
-importance: 1
-name: University
-importance: 1
-name: Religion
-importance: 3
-name: Gender
-importance: 1
-name: Favourite sport
-importance: 1
 name: Graduated in
 importance: 0
 name: Age
 importance: 2
+name: Favourite color
+importance: 1
+name: Ethnicity
+importance: 2
+name: Religion
+importance: 3
+name: Gender
+importance: 1
+name: Party
+importance: 3
+name: Favourite sport
+importance: 1
+name: Social status
+importance: 2
+name: University
+importance: 1
 Operation finished, enter 99 to see option list or enter next command
 Invalid operation code
 Operation finished, enter 99 to see option list or enter next command
