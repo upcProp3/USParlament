@@ -6,8 +6,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Created by miquel on 7/04/15.
- * Contributions of alex.
+ * Created by Miquel Jubert on 7/04/15.
+ * Contributions of Alex Miro.
  *
  * This driver allows you to, basically, play with MPs, attributes definitions
  * and the relationship between MPs and attributes (values).

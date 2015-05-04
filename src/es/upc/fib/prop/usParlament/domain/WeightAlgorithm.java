@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by alex on 14/4/15.
- * contributions of ondrej, aleixsacrest.
+ * Created by Alex Miro on 14/4/15.
+ * contributions of Ondrej Velisek and Aleix Sacrest.
  */
 
 public class WeightAlgorithm {
@@ -60,7 +60,7 @@ public class WeightAlgorithm {
     /**
      * @pre True
      * @post The weights of all the graph are computed, and the edges added
-     * The weights of all the graph are computed, and the edges added
+     * The weights of all the graph are computed, and their edges added.
      */
     public void computeAllWeights() {
         Collection<MP> mps = c.getMPs();
@@ -75,6 +75,4 @@ public class WeightAlgorithm {
             }
         }
     }
-
-
 }

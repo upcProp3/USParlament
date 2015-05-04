@@ -3,10 +3,12 @@ package es.upc.fib.prop.shared13.louvain;
 import es.upc.fib.prop.shared13.Edge;
 import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.shared13.Node;
-import es.upc.fib.prop.usParlament.driver.TEdge;
-import es.upc.fib.prop.usParlament.driver.TNode;
 
 import java.util.*;
+
+/*
+Created by Miquel Jubert.
+ */
 
 public class LouvainAlgorithm
 {
