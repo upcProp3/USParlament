@@ -15,7 +15,6 @@ public class MP extends Node {
     private String fullname;
     private int district;
     private State state;
-	//TODO redundant information. AttrDefinition is also in Attribute.
 	private Map<AttrDefinition, Attribute> attributes;
 
     public MP(String fullname,State state,int district)
@@ -97,7 +96,6 @@ public class MP extends Node {
 		return (mp.getState() == this.state)&&(mp.getDistrict() == this.district);
 	}
 
-	// TODO
 	@Override
 	public int hashCode() {
         int hash = district+state.hashCode();
