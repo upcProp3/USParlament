@@ -1,5 +1,6 @@
 package es.upc.fib.prop.shared13.louvain;
 
+import es.upc.fib.prop.shared13.Algorithm;
 import es.upc.fib.prop.shared13.Edge;
 import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.shared13.Node;
@@ -10,7 +11,7 @@ import java.util.*;
 Created by Miquel Jubert.
  */
 
-public class LouvainAlgorithm
+public class LouvainAlgorithm implements Algorithm
 {
     Graph original;
     Map<Node,Set<Node>> com2sons;

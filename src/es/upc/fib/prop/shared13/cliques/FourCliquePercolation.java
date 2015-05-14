@@ -14,7 +14,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 /**
  * This class represents a 4-Clique Percolation Method algorithm.
  */
-public class FourCPMAlgorithm
+public class FourCliquePercolation
 {
 
     private final double THRESHOLD;
@@ -103,7 +103,7 @@ public class FourCPMAlgorithm
      * @param graph The input graph of the algorithm
      * @throws NullPointerException if graph is null
      */
-    public FourCPMAlgorithm(Graph graph, double edgeWeightThreshold)
+    public FourCliquePercolation(Graph graph, double edgeWeightThreshold)
     {
         this.G = graph;
         cc = new ArrayList<Set<Node>>();
