@@ -1,5 +1,6 @@
 package es.upc.fib.prop.shared13.louvain;
 
+import es.upc.fib.prop.shared13.Algorithm;
 import es.upc.fib.prop.shared13.Edge;
 import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.shared13.Node;
@@ -10,7 +11,7 @@ import java.util.*;
 Created by Miquel Jubert.
  */
 
-public class LouvainAlgorithm
+public class LouvainAlgorithm implements Algorithm
 {
     Graph original;
     Map<Node,Set<Node>> com2sons;
@@ -80,7 +81,7 @@ public class LouvainAlgorithm
             mod+= (inc.get(i)/m)-(java.lang.Math.pow(dec.get(i)/(2*m),2));
         }
         return mod;
-    }
+    }//
 
     /**
      * Calculates the optimal partition of the graph given in the constructor using Louvain's modularity optimization algorithm
@@ -99,6 +100,24 @@ public class LouvainAlgorithm
             //Start of first phase, get best partition
             while(localgain) {//while there is local gain
                 localgain = false;
+                for(Node n:current.getNodes()){
+                    double bestInc = 0.;
+                    int bestCom = currentState.getCommunity(n);
+                    Set<Node> neigh_nodes = currentState.getNeighborsDiffCommuntity(n);
+                    currentState.removeFromCommunity(n);
+                    for (Node neigh : neigh_nodes) {
+                        Integer neightCom = currentState.getCommunity(neigh);
+                        double inc = currentState.getIncChange(n,neightCom);
+                        if(inc>bestInc){//New partition
+                            gain = true;
+                            bestCom = neightCom;
+                            bestInc = inc;
+                        }
+                    }
+                    currentState.changeCommunity(n,bestCom);
+                }
+
+                /*
                 double bMod = currentState.modularity();
                 for (Node n : current.getNodes()) {
                     Integer com = currentState.getCommunity(n);
@@ -115,6 +134,7 @@ public class LouvainAlgorithm
                         }
                     }
                 }
+                */
             }
             //Start of second phase, create new graph
             //if(gain){//If there was a gain
@@ -206,6 +226,7 @@ public class LouvainAlgorithm
         Map<Integer,Double> dec;//Sum of the degrees of the nodes inside a community
         Map<Node,Double> ndegree;//Maps each node to its degree (loop increase the degree by 2 times their value)
         Double m;//Graph total weight
+        int npart;
 
 
 
@@ -234,7 +255,7 @@ public class LouvainAlgorithm
             for(Node n:g.getNodes()){
                 if(!ndegree.containsKey(n)) ndegree.put(n,0.);
             }
-            int npart = 0;
+            npart = 0;
             //Initialize Node degrees
             for(Node n:g.getNodes()){
                 partition.put(n,npart);//Create partitions
@@ -304,6 +325,31 @@ public class LouvainAlgorithm
                 if(!partition.get(n).equals(partition.get(m))) ret.add(m);
             }
             return ret;
+        }
+
+        public void removeFromCommunity(Node n)
+        {
+            int com = npart++;//New community for the node
+            inc.put(com,0.);
+            dec.put(com,0.);
+            changeCommunity(n,com);
+        }
+
+        public Double getIncChange(Node n,Integer com)
+        {
+            double dnc = getWeightEdgesToCommunity(n,com);
+            return dnc - ndegree.get(n)*dec.get(com)/(2*m);
+        }
+
+        public Double getWeightEdgesToCommunity(Node n,Integer com)
+        {
+            Double retorn = 0.;
+            for(Edge e:g.getAdjacencyList(n)){
+                if(partition.get(e.getNeighbor(n))==com){
+                    retorn+=e.getWeight();
+                }
+            }
+            return retorn;
         }
 
         public Double modularity()

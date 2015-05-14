@@ -1,0 +1,32 @@
+package es.upc.fib.prop.shared13.cliques;
+
+import es.upc.fib.prop.shared13.Graph;
+import es.upc.fib.prop.shared13.Node;
+
+import java.util.ArrayList;
+import java.util.Set;
+
+/**
+ * Created by miquel on 14/05/15.
+ */
+public class FCQAlgorithm
+{
+    private double threshold;
+    private Graph g;
+    private ArrayList<Set<Node>> result;
+
+    public FCQAlgorithm(Graph gr,double th)
+    {
+        threshold = th;
+        g = gr;
+        result = null;
+    }
+
+    public ArrayList<Set<Node>> calculate()
+    {
+        if(result != null) return result;
+        FCQAlgorithm fcq = new FCQAlgorithm(g,threshold);
+        result = fcq.calculate();
+        return result;
+    }
+}

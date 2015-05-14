@@ -1,9 +1,11 @@
 package es.upc.fib.prop.shared13;
 
+import java.util.*;
+
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
-
-import java.util.*;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
  * Abstract graph class representing undirected weighted graphs.
@@ -33,18 +35,26 @@ public abstract class Graph {
     private final Set<Node> V;
     private final Map<Node, Map<Node, Edge>> G;
     private final Predicate<Edge> validFilter;
+    private final Predicate<Map.Entry<Node, Edge>> validMapFilter;
 
     /**
      * Creates an empty Graph
-     */
+	 */
     public Graph() {
-        E = new LinkedHashSet<>();
-        G = new LinkedHashMap<>();
+        E = new LinkedHashSet<>(); // TODO: Choose your own Set implementation
+        G = new LinkedHashMap<>(); // TODO: Choose your own Map implementation
         V = G.keySet();
 
         validFilter = new Predicate<Edge>() {
             public boolean apply(Edge e) {
                 return e.isValid();
+            }
+        };
+
+        validMapFilter = new Predicate<Map.Entry<Node, Edge>>() {
+            @Override
+            public boolean apply(Map.Entry<Node, Edge> nodeEdgeEntry) {
+                return nodeEdgeEntry.getValue().isValid();
             }
         };
     }
@@ -74,35 +84,35 @@ public abstract class Graph {
     }
 
     /**
-     * Returns a <strong>non-modifiable</strong> collection with the nodes
+     * Returns a <strong>non-modifiable</strong> set with the nodes
      * that belong to the graph.
      * @return a non-modifiable collection of the nodes in the graph.
      */
-    public Collection<Node> getNodes() {
-        return Collections.unmodifiableCollection(V);
+    public Set<Node> getNodes() {
+        return Collections.unmodifiableSet(V);
     }
 
     /**
-     * Returns a <strong>non-modifiable</strong> collection with the edges
+     * Returns a <strong>non-modifiable</strong> set with the edges
      * that belong to the graph.
      * @return a non-modifiable collection with the edges in the graph.
      */
-    public Collection<Edge> getEdges() {
-        return Collections.unmodifiableCollection(E);
+    public Set<Edge> getEdges() {
+        return Collections.unmodifiableSet(E);
     }
 
     /**
-     * Returns a <strong>non-modifiable</strong> collection with the valid
+     * Returns a <strong>non-modifiable</strong> set with the valid
      * edges that belong to the graph.
      * @return a non-modifiable collection with the valid edges in the graph.
      */
-    public Collection<Edge> getValidEdges() {
-        return Collections.unmodifiableCollection(
-                Collections2.filter(E, validFilter));
+    public Set<Edge> getValidEdges() {
+        return Collections.unmodifiableSet(
+                Sets.filter(E, validFilter));
     }
 
     /**
-     * Returns a <strong>non-modifiable</strong> collection with the graph
+     * Returns a <strong>non-modifiable</strong> set with the graph
      * edges having n as one of its nodes, i.e the adjacency list
      * of n.
      * @param n the node whose adjacency list is requested.
@@ -142,12 +152,30 @@ public abstract class Graph {
     }
 
     /**
+     * Returns an unmodifiable set containing the neighbours of the node n
+     * @param n the node whose neighbors are requested
+     * @return a set containing the neighbours of n
+     */
+    public Set<Node> getNeighbours(Node n){
+        return Collections.unmodifiableSet(getAdjacencyMap(n).keySet());
+    }
+
+    /**
+     * Returns an unmodifiable set containing the valid neighbours of the node n
+     * @param n the node whose valid neighbors are requested
+     * @return a set containing the valid neighbours of n
+     */
+    public Set<Node> getValidNeighbours(Node n){
+        return Maps.filterEntries(getAdjacencyMap(n), validMapFilter).keySet();
+    }
+
+	/**
      * Returns whether the node n belongs to the graph.
-     * @param n the node to test for belonging to the graph.
-     * @return true if there exists a node n' such that it belongs to the graph
+	 * @param n the node to test for belonging to the graph.
+	 * @return true if there exists a node n' such that it belongs to the graph
      * and n.equals(n').
      * @throws NullPointerException if n is null
-     */
+	 */
     public boolean hasNode(Node n) {
         if (n == null) throw new NullPointerException();
 
@@ -185,7 +213,8 @@ public abstract class Graph {
     /**
      * Returns whether the graph contains a given edge <strong>formed by two
      * nodes belonging to the graph</strong>.
-     * @param n1 The pair of nodes of the edge to test for belonging.
+     * @param n1 One of the nodes of the edge to test for belonging.
+     * @param n2 The other node of the edge to test for belonging.
      * @return true if there exists an edge e in the graph such that
      * it contains the two given nodes (no matter the order in which they're
      * given).
@@ -201,7 +230,8 @@ public abstract class Graph {
     /**
      * Returns whether the graph contains a given valid edge <strong>formed by
      * two nodes belonging to the graph</strong>.
-     * @param n1 The pair of nodes of the valid edge to test for belonging.
+     * @param n1 One of the nodes of the valid edge to test for belonging.
+     * @param n2 The other node of the valid edge to test for belonging.
      * @return true if there exists a valid edge e in the graph such that
      * it contains the two given nodes (no matter the order in which they're
      * given).
@@ -264,14 +294,9 @@ public abstract class Graph {
      * @throws NullPointerException if n is null.
      * @return true if the node n didn't already belong to the graph.
      */
-
-    /*
-    TODO: I've added <Node,Edge>, the compiler complained
-     */
     public boolean addNode(Node n) {
-        if (n == null) throw new NullPointerException();
-        final boolean existed = V.contains(n);
-        if (!existed) G.put(n, new LinkedHashMap<Node,Edge>());
+        final boolean existed = hasNode(n);
+        if (!existed) G.put(n, new LinkedHashMap<Node, Edge>());
         return !existed;
     }
 
@@ -305,7 +330,7 @@ public abstract class Graph {
                 G.get(pair.getKey()).remove(n);
                 E.remove(pair.getValue());
             }
-            V.remove(n);
+            G.remove(n);
         }
         return existed;
     }
@@ -368,5 +393,4 @@ public abstract class Graph {
     public void invalidateAllEdges() {
         for (Edge e : E) e.setValidity(false);
     }
-
 }
