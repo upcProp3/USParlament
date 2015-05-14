@@ -15,6 +15,7 @@ public abstract class Edge {
     private final Node n2;
     private double weight;
     private boolean valid; // For invalidating edges without deleting them
+    private final int hash; // Cached hash value
 
     /**
      * Creates a weighted edge between two nodes with weight w and validity v.
@@ -29,9 +30,7 @@ public abstract class Edge {
      * strictly positive number.
      */
     public Edge(Node m1, Node m2, double w, boolean valid) {
-        if (m1 == null || m2 == null) {
-	        throw new NullPointerException();
-        }
+        if (m1 == null || m2 == null) throw new NullPointerException();
 
         setWeight(w);
         setValidity(valid);
@@ -44,6 +43,15 @@ public abstract class Edge {
             n1 = m2;
             n2 = m1;
         }
+
+        hash = computeHash();
+    }
+
+    private int computeHash() {
+        int hashC = n1.hashCode();
+        hashC = 31*hashC + n2.hashCode();
+
+        return hashC;
     }
 
     /**
@@ -85,12 +93,9 @@ public abstract class Edge {
      * number.
      */
     public void setWeight(double w) {
-        if (Double.isNaN(w) || w <= 0) {
-	        throw new IllegalArgumentException(ERR_WEIGHT);
-        }
-        else {
-	        weight = w;
-        }
+        if (Double.isNaN(w) || w <= 0)
+            throw new IllegalArgumentException(ERR_WEIGHT);
+        else weight = w;
     }
 
     /**
@@ -101,7 +106,7 @@ public abstract class Edge {
         this.valid = valid;
     }
 
-    /**
+	/**
      * If n is a node that belongs to the edge (i.e the edge contains a node n'
      * such that n.equals(n')), this function returns its neighbor.
      * @param n the node whose neighbor is requested.
@@ -109,27 +114,19 @@ public abstract class Edge {
      * @throws NullPointerException if n is null.
      * @throws IllegalArgumentException if n is not one of the nodes of the
      * edge.
-     */
+	 */
     public Node getNeighbor(Node n) {
-        if (n == null) {
-	        throw new NullPointerException();
-        }
+        if (n == null) throw new NullPointerException();
 
-        if (n.equals(n1)) {
-	        return n2;
-        }
-        else if (n.equals(n2)) {
-	        return n1;
-        }
-        else {
-	        throw new IllegalArgumentException(ERR_NOT_PART_EDGE);
-        }
+        if (n.equals(n1)) return n2;
+        else if (n.equals(n2)) return n1;
+        else throw new IllegalArgumentException(ERR_NOT_PART_EDGE);
     }
 
-    /**
+	/**
      * Returns the smallest node of the edge.
-     * @return the smallest node of the edge.
-     */
+	 * @return the smallest node of the edge.
+	 */
     public Node getNode() {
         return n1;
     }
@@ -140,16 +137,11 @@ public abstract class Edge {
      * it is not null and it contains the same nodes as the edge o (no matter
      * the order).
      */
-    @Override
-    public boolean equals(Object o) {
+    @Override public boolean equals(Object o) {
         // We don't check the weight as we don't expect to have two edges
         // with different weights joining the same pair of nodes in the graph
-        if (this == o) {
-	        return true;
-        }
-        if (o == null || !(o instanceof Edge)) {
-	        return false;
-        }
+        if (this == o) return true;
+        if (o == null || !(o instanceof Edge)) return false;
 
         final Edge e = (Edge) o;
 
@@ -160,11 +152,7 @@ public abstract class Edge {
      * Returns a hash code value for this edge.
      * @return returns a hash code value for this edge.
      */
-    @Override
-    public int hashCode() {
-        int hash = n1.hashCode();
-        hash = 31*hash + n2.hashCode();
-
+    @Override public int hashCode() {
         return hash;
     }
 
@@ -174,8 +162,7 @@ public abstract class Edge {
      * integers both edge 3,2 and edge 2,3 would be printed as 2,3.
      * @return a String representation of the edge.
      */
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "{" + n1 + ", " + n2 + ", " + weight + "}";
     }
 
