@@ -1,5 +1,6 @@
 package es.upc.fib.prop.shared13.cliques;
 
+import es.upc.fib.prop.shared13.Algorithm;
 import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.shared13.Node;
 
@@ -9,7 +10,7 @@ import java.util.Set;
 /**
  * Created by miquel on 14/05/15.
  */
-public class FCQAlgorithm
+public class FCQAlgorithm implements Algorithm
 {
     private double threshold;
     private Graph g;
@@ -22,6 +23,7 @@ public class FCQAlgorithm
         result = null;
     }
 
+    @Override
     public ArrayList<Set<Node>> calculate()
     {
         if(result != null) return result;
