@@ -25,6 +25,7 @@ public class NGAlgorithm implements Algorithm
         result = null;
     }
 
+    @Override
     public ArrayList<Set<Node>> calculate()
     {
         result = ng.runAlgorithm(g,ncom);

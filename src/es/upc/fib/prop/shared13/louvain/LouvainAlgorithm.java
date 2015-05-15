@@ -87,6 +87,7 @@ public class LouvainAlgorithm implements Algorithm
      * Calculates the optimal partition of the graph given in the constructor using Louvain's modularity optimization algorithm
      * @return An arrayList containing a set of nodes for each community, each set contains the nodes that conform the community
      */
+    @Override
     public ArrayList<Set<Node>> calculate()
     {
         if(bestPartition != null) return bestPartition;
