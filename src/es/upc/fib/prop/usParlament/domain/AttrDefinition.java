@@ -1,5 +1,12 @@
 package es.upc.fib.prop.usParlament.domain;
 
+
+import java.util.Comparator;
+
+
+
+
+
 /**
  * Created by Ondrej Velisek on 22.4.15.
  */
@@ -93,4 +100,12 @@ public class AttrDefinition {
 		return "\nname: " + name +
 				"\nimportance: " + importance;
 	}
+
+
+    public int compare(AttrDefinition ad)
+    {
+        return this.name.compareTo(ad.getName());
+    }
+
+
 }
