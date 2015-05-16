@@ -17,6 +17,10 @@ public class MP extends Node {
     private State state;
 	private Map<AttrDefinition, Attribute> attributes;
 
+
+    public Attribute getAttribute(AttrDefinition ad) { return attributes.get(ad);}
+
+
 	/**
 	 * An MP is created with name 'fullname', state 'state' and district 'district'.
 	 * @param fullname String representing the full name of the generated MP.

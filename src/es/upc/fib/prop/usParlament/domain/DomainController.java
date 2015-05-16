@@ -25,11 +25,8 @@ public class DomainController
     private ArrayList<Set<Node>> secondaryPartition;
 
 
-
-
-
     //All the consulting functions go here
-
+    //TODO:TEST FUNC
     //Returns an ordered set of arraylists containing the needed info
     //The first position of the arraylist contains the state of the mp
     //The second position of the arraylist contains the district
@@ -42,14 +39,19 @@ public class DomainController
             al.add(mp.getState().toString());
             al.add(Integer.toString(mp.getDistrict()));
             al.add(mp.getFullname());
+
+            for(AttrDefinition ad:currentCongress.getAttrDef()){
+                Attribute at = mp.getAttribute(ad);
+                if(at != null) al.add(at.getValue().toString());
+                else al.add("NO_VALUE");
+            }
             retorn.add(al);
-
-
-
         }
         return retorn;
     }
 
+
+    //TODO:TEST FUNC
     //Returns an ordered set of arraylists containing the needed info
     //The first position of the arraylist contains the state of the mp
     //The second position of the arraylist contains the district
