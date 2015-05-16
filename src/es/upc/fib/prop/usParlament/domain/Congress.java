@@ -3,16 +3,25 @@ package es.upc.fib.prop.usParlament.domain;
 import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.shared13.Node;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 
 /**
  * Created by Ondrej Velisek on 15.4.15.
  * Contributions Aleix Sacrest and Alex Miro.
  */
 public class Congress extends Graph {
-    private static Set<AttrDefinition> s = new HashSet<>();
+
+
+    class AttrDefComparatorString implements Comparator<AttrDefinition>
+    {
+        public int compare(AttrDefinition a1,AttrDefinition a2)
+        {
+            return a1.getName().compareTo(a2.getName());
+        }
+    }
+
+    private Set<AttrDefinition> s = new TreeSet<>(new AttrDefComparatorString());
 
     /**
      * A new AttrDefinition is added to the Congress set of AttrDefinitions.
