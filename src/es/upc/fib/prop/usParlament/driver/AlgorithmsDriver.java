@@ -28,7 +28,7 @@ public class AlgorithmsDriver
 		int input;
 		boolean active = true;
 		while(active) {
-			System.out.println("=====================================");
+			/*System.out.println("=====================================");
 			System.out.println("1 - add node");
 			System.out.println("2 - add edge");
 			System.out.println("3 - remove node");
@@ -38,7 +38,7 @@ public class AlgorithmsDriver
 			System.out.println("7 - calculate best partition with louvain");
             System.out.println("8 - calculate best partition with cliques");
             System.out.println("9 - calculate best partition with newmann girvan");
-			System.out.println("0 - exit");
+			System.out.println("0 - exit");*/
 
 			try {
 				input = reader.nextInt();
