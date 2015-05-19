@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by ondrej on 19.5.15.
  */
-public interface AttributeManager {
+public interface AttributesManager {
 
 	/**
 	 * Creates {@link MP} in the DB
@@ -22,6 +22,12 @@ public interface AttributeManager {
 	 * @return AttrDefinition if one with this id exists, null otherwise
 	 */
 	public AttrDefinition findAttrDefinitionByID(Long id);
+	/**
+	 * Find {@link AttrDefinition} with given name
+	 * @param name name of the AttrDefinition to be found
+	 * @return AttrDefinition if one with this id exists, null otherwise
+	 */
+	public AttrDefinition findAttrDefinitionByName(String name);
 
 	/**
 	 * Find all saved {@link AttrDefinition}

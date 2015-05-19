@@ -1,8 +1,6 @@
 package es.upc.fib.prop.usParlament.data;
 
 import es.upc.fib.prop.usParlament.domain.AttrDefinition;
-import es.upc.fib.prop.usParlament.domain.MP;
-import es.upc.fib.prop.usParlament.domain.State;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.junit.After;
 import org.junit.Before;
@@ -20,10 +18,10 @@ import static org.junit.Assert.*;
 /**
  * Created by ondrej on 19.5.15.
  */
-public class AttributeManagerTest {
+public class AttributesManagerTest {
 
 
-	private AttributeManager manager;
+	private AttributesManager manager;
 	private DataSource ds;
 
 	private static DataSource prepareDataSource() throws SQLException
@@ -38,7 +36,7 @@ public class AttributeManagerTest {
 		//Class.forName("org.apache.derby.jdbc.ClientDriver");
 		ds = prepareDataSource();
 		DBUtils.executeSqlScript(ds, MPsManager.class.getResource("createTables.sql"));
-		manager = new AttributeManagerImpl(ds);
+		manager = new AttributesManagerImpl(ds);
 	}
 
 	@After

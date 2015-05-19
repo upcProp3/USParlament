@@ -10,7 +10,6 @@ CREATE TABLE attrDefinition (
   importance INT );
 
 CREATE TABLE attribute (
-  id BIGINT PRIMARY KEY generated always as identity,
   value VARCHAR(255),
   mp BIGINT,
   attrDefinition BIGINT,

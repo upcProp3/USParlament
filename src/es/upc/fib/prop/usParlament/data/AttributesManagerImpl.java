@@ -8,10 +8,10 @@ import java.util.List;
 /**
  * Created by ondrej on 19.5.15.
  */
-public class AttributeManagerImpl implements AttributeManager {
+public class AttributesManagerImpl implements AttributesManager {
 	private final DataSource ds;
 
-	public AttributeManagerImpl(DataSource ds) {
+	public AttributesManagerImpl(DataSource ds) {
 		this.ds = ds;
 	}
 
@@ -22,6 +22,11 @@ public class AttributeManagerImpl implements AttributeManager {
 
 	@Override
 	public AttrDefinition findAttrDefinitionByID(Long id) {
+		return null;
+	}
+
+	@Override
+	public AttrDefinition findAttrDefinitionByName(String name) {
 		return null;
 	}
 
