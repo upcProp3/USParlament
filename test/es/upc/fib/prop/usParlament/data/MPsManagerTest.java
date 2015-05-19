@@ -143,7 +143,7 @@ public class MPsManagerTest {
 	@Test
 	public void testUpdateMP() {
 		List<MP> mps = prepareMPs();
-		MP mp = mps.get(0);
+		MP mp = mps.get(1);
 
 		mp.setFullname("Darth Vader");
 		mp.setState(State.LA);
@@ -157,7 +157,30 @@ public class MPsManagerTest {
 		assertEquals("states are not equals.", mp.getState(), result.getState());
 		assertEquals("districts are not equals.", mp.getDistrict(), result.getDistrict());
 	}
+	@Test(expected=IllegalArgumentException.class)
+	public void testUpdateMPWithoutName() {
+		List<MP> mps = prepareMPs();
+		MP mp = mps.get(0);
 
+		mp.setFullname(null);
+		manager.updateMP(mp);
+	}
+	@Test(expected=IllegalArgumentException.class)
+	public void testUpdateMPWithoutState() {
+		List<MP> mps = prepareMPs();
+		MP mp = mps.get(0);
+
+		mp.setState(null);
+		manager.updateMP(mp);
+	}
+	@Test(expected=IllegalArgumentException.class)
+	public void testUpdateMPWithNegativeDistrict() {
+		List<MP> mps = prepareMPs();
+		MP mp = mps.get(0);
+
+		mp.setDistrict(-1);
+		manager.updateMP(mp);
+	}
 
 
 
