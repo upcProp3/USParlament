@@ -12,7 +12,8 @@ import java.util.*;
  * Newman-Girvan algorithm implementation
  * @author G13.2
  */
-public class NewmanGirvan {
+public class NewmannGirvan
+{
 
     /**
      * Put the nodes of connected component to community
