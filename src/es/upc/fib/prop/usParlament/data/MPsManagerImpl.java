@@ -35,4 +35,9 @@ public class MPsManagerImpl implements MPsManager {
 	public void deleteMP(MP mp) {
 
 	}
+
+	@Override
+	public void updateMP(MP mp) {
+
+	}
 }

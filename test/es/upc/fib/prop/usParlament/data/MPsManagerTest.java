@@ -129,8 +129,6 @@ public class MPsManagerTest {
 
 	@Test
 	public void testDeleteMP() {
-		System.out.println("deleteStudent");
-
 		List<MP> students = prepareMPs();
 
 		manager.deleteMP(students.get(1));
@@ -138,6 +136,26 @@ public class MPsManagerTest {
 		assertNotNull("first MP shouldn't be deleted", manager.findMPByID(students.get(0).getId()));
 		assertNull("second MP should be delted", manager.findMPByID(students.get(1).getId()));
 		assertNotNull("third MP souldn't be deleted", manager.findMPByID(students.get(2).getId()));
+	}
+
+
+
+	@Test
+	public void testUpdateMP() {
+		List<MP> mps = prepareMPs();
+		MP mp = mps.get(0);
+
+		mp.setFullname("Darth Vader");
+		mp.setState(State.LA);
+		mp.setDistrict(4);
+		manager.updateMP(mp);
+
+		MP result = manager.findMPByID(mp.getId());
+
+		assertEquals("mps are not equals.", mp, result);
+		assertEquals("fullnames are not equals.", mp.getFullname(), result.getFullname());
+		assertEquals("states are not equals.", mp.getState(), result.getState());
+		assertEquals("districts are not equals.", mp.getDistrict(), result.getDistrict());
 	}
 
 
