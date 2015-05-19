@@ -56,7 +56,7 @@ public class JSONizer
         return occ;
     }
 
-    public boolean correctClosures(String s)
+    private boolean correctClosures(String s)
     {
         Stack<Character> closure = new Stack<>();
         int nclaus = 0;
@@ -87,7 +87,7 @@ public class JSONizer
         return (nclaus==0) && (nquads==0);
     }
 
-    public int correspondingClosure(String s)
+    private int correspondingClosure(String s)
     {
         char el = s.charAt(0);
         char alt;
@@ -118,7 +118,7 @@ public class JSONizer
         return c == ' ' || c == '\n' || c == '\t';
     }
 
-    public JSONObject JSONObjectParser(String s)
+    private JSONObject JSONObjectParser(String s)
     {
         if(s.charAt(0)!='{' || s.charAt(s.length()-1) != '}') throw new IllegalArgumentException();
         JSONObject jo = new JSONObject();
@@ -163,13 +163,13 @@ public class JSONizer
      * @param s
      * @return
      */
-    public JSONString JSONStringParser(String s)
+    private JSONString JSONStringParser(String s)
     {
         if(s.charAt(0)!='"' || s.charAt(s.length()-1)!='"') throw new IllegalArgumentException(FORMAT_ERROR);
         return new JSONString(s.substring(1,s.length()-1));
     }
 
-    public JSON JSONValueParser(String s)
+    private JSON JSONValueParser(String s)
     {
         if(s.charAt(0) == '{'){
             return JSONObjectParser(s);
@@ -187,7 +187,7 @@ public class JSONizer
      * @param s
      * @return
      */
-    public JSONArray JSONArrayParser(String s)
+    private JSONArray JSONArrayParser(String s)
     {
         if(s.charAt(0) != '[' || s.charAt(s.length()-1) != ']') throw new IllegalArgumentException(CLOSURE_EX);
         if(!correctClosures(s)) throw new IllegalArgumentException(CLOSURE_EX);
