@@ -6,7 +6,6 @@ package es.upc.fib.prop.usParlament.domain;
  */
 
 public class Attribute  {
-	private Long id;
     private AttrDefinition definition;
     private Object value;
 
@@ -18,22 +17,6 @@ public class Attribute  {
 	public Attribute(AttrDefinition definition, Object value) {
 		this.definition = definition;
 		this.value = value;
-	}
-
-	/**
-	 * It returns the implicit Attribute identification number.
-	 * @return Unique positive ID.
-	 */
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * The identification number of the implicit Attribute is set to 'id'.
-	 * @param id Unique positive ID.
-	 */
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	/**

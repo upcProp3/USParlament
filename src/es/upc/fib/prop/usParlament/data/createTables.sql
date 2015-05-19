@@ -1,18 +1,17 @@
-CREATE TABLE lesson (
+CREATE TABLE mp (
     id BIGINT PRIMARY KEY generated always as identity, 
-    name VARCHAR(255), 
-    date DATE );
+    fullname VARCHAR(255),
+    state VARCHAR(2),
+    district INT );
 
-CREATE TABLE student (
-    id BIGINT PRIMARY KEY generated always as identity,
-    name VARCHAR(255),
-    surname VARCHAR(255),
-    birthdate DATE );
+CREATE TABLE attrDefinition (
+  id BIGINT PRIMARY KEY generated always as identity,
+  name VARCHAR(255),
+  importance INT );
 
-CREATE TABLE attendance (
-    id BIGINT PRIMARY KEY generated always as identity,
-    lesson BIGINT,
-    student BIGINT,
-    FOREIGN KEY (lesson) REFERENCES LESSON(id),
-    FOREIGN KEY (student) REFERENCES STUDENT(id) );
-
+CREATE TABLE attribute (
+  value VARCHAR(255),
+  mp BIGINT,
+  attrDefinition BIGINT,
+  FOREIGN KEY (mp) REFERENCES mp(id),
+  FOREIGN KEY (attrDefinition) REFERENCES attrDefinition(id) );

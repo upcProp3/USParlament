@@ -2,7 +2,7 @@ package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.shared13.Node;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -112,8 +112,8 @@ public class MP extends Node {
 	 * @return The implicit MP collection of attributes.
 
 	 */
-	public Collection<Attribute> getAttributes() {
-		return attributes.values();
+	public List<Attribute> getAttributes() {
+		return new ArrayList<Attribute>(attributes.values());
 	}
 
 	/**

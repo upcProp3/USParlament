@@ -1,3 +1,3 @@
-DROP TABLE attendance;
-DROP TABLE lesson;
-DROP TABLE student;
+DROP TABLE attribute;
+DROP TABLE attrDefinition;
+DROP TABLE mp;
