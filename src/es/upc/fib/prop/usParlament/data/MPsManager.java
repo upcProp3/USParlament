@@ -12,7 +12,7 @@ public interface MPsManager {
 
 	/**
 	 * Creates {@link MP} in the DB
-	 * @param mp MP to be deleted
+	 * @param mp MP to be created
 	 */
 	public void createMP(MP mp);
 

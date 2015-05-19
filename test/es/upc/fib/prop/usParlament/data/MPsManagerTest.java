@@ -33,7 +33,6 @@ public class MPsManagerTest {
 	private static DataSource prepareDataSource() throws SQLException
 	{
 		BasicDataSource ds = new BasicDataSource();
-		//we will use in memory database
 		ds.setUrl("jdbc:derby://localhost:1527/USParlament;create=true");
 		return ds;
 	}
@@ -181,6 +180,7 @@ public class MPsManagerTest {
 		mp.setDistrict(-1);
 		manager.updateMP(mp);
 	}
+
 
 
 
