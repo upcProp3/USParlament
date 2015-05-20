@@ -47,4 +47,10 @@ public class JSONString extends JSON
     {
         return "\""+value+"\"";
     }
+
+    @Override
+    public int compareTo(JSON json) {
+        JSONString jsonString = (JSONString) json;
+        return this.getValue().compareTo(jsonString.getValue());
+    }
 }

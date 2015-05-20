@@ -60,4 +60,13 @@ public class JSONObject extends JSON
         retorn += "\n}";
         return retorn;
     }
+
+    @Override
+    public int compareTo(JSON json) {
+        JSONObject jsonObject = (JSONObject) json;
+        if (this.equals(jsonObject)) {
+            return 0;
+        }
+        return this.stringify().compareTo(jsonObject.stringify());
+    }
 }

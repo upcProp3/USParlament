@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -75,7 +74,7 @@ public class CongressManagerTest {
 	@Test
 	public void testLoadCongress() throws Exception {
 		List<String> congresses = prepareCongresses();
-		//preparePartitions();
+		preparePartitions();
 
 		final int pos = 1;
 
@@ -102,23 +101,9 @@ public class CongressManagerTest {
 		}
 		expected += "]}";
 
-		assertEquals(sortJSONArray(expected), sortJSONArray(names));
+		assertEquals(sortJSONArray(expected, "congressesNames"), sortJSONArray(names, "congressesNames"));
 	}
 
-	private String sortJSONArray(String names) {
-		JSONizer jsonizer = new JSONizer();
-		JSONObject namesObj = jsonizer.StringToJSON(names);
-		JSONArray array = (JSONArray) namesObj.getJSONByKey(new JSONString("congressesNames"));
-		List<JSONString> stringList = (List<JSONString>)(List<?>) array.getArray();
-		Collections.sort(stringList, jsonStringComparator);
-		return jsonizer.JSONtoString(namesObj);
-	}
-	private Comparator<JSONString> jsonStringComparator = new Comparator<JSONString>() {
-		@Override
-		public int compare(JSONString jsonString, JSONString t1) {
-			return jsonString.getValue().compareTo(t1.getValue());
-		}
-	};
 
 	@Test
 	public void testSavePartition() throws Exception {
@@ -167,14 +152,23 @@ public class CongressManagerTest {
 			if (!first) {
 				expected += ",";
 			}
-			expected += "\"" +part+ "\"";
+			expected += part;
 			first = false;
 		}
 		expected += "]}";
 
-		assertEquals(expected, res);
+		assertEquals(sortJSONArray(expected, "partitions"), sortJSONArray(res, "partitions"));
 	}
 
+
+	private String sortJSONArray(String object, String nameOfArray) {
+		JSONizer jsonizer = new JSONizer();
+		JSONObject namesObj = jsonizer.StringToJSON(object);
+		JSONArray array = (JSONArray) namesObj.getJSONByKey(new JSONString(nameOfArray));
+		List<JSON> list = array.getArray();
+		Collections.sort(list);
+		return jsonizer.JSONtoString(namesObj);
+	}
 
 
 	private List<String> prepareCongresses() {
@@ -216,15 +210,15 @@ public class CongressManagerTest {
 
 		List<String> mps = getMPs();
 
-		String p00 = "{\"mps\":[\"" +mps.get(1)+ "\",\"" +mps.get(2)+ "\",\"" +mps.get(3)+ "\"]}";
-		String p01 = "{\"mps\":[\"" +mps.get(4)+ "\",\"" +mps.get(5)+ "\",\"" +mps.get(0)+ "\"]}";
+		String p00 = "{\"mps\":[" +mps.get(1)+ "," +mps.get(2)+ "," +mps.get(3)+ "]}";
+		String p01 = "{\"mps\":[" +mps.get(4)+ "," +mps.get(5)+ "," +mps.get(0)+ "]}";
 
-		String p10 = "{\"mps\":[\"" +mps.get(1)+ "\"]}";
-		String p11 = "{\"mps\":[\"" +mps.get(2)+ "\",\"" +mps.get(3)+ "\"]}";
-		String p12 = "{\"mps\":[\"" +mps.get(4)+ "\"]}";
+		String p10 = "{\"mps\":[" +mps.get(1)+ "]}";
+		String p11 = "{\"mps\":[" +mps.get(2)+ "," +mps.get(3)+ "]}";
+		String p12 = "{\"mps\":[" +mps.get(4)+ "]}";
 
-		String p20 = "{\"mps\":[\"" +mps.get(3)+ "\"]}";
-		String p21 = "{\"mps\":[\"" +mps.get(4)+ "\",\"" +mps.get(5)+ "\",\"" +mps.get(0)+ "\"]}";
+		String p20 = "{\"mps\":[" +mps.get(3)+ "]}";
+		String p21 = "{\"mps\":[" +mps.get(4)+ "," +mps.get(5)+ "," +mps.get(0)+ "]}";
 
 		manager.savePartition(CONGRESS_NAMES[0], PARTITIONS_NAMES[0][0], p00);
 		manager.savePartition(CONGRESS_NAMES[0], PARTITIONS_NAMES[0][1], p01);

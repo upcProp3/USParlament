@@ -52,4 +52,13 @@ public class JSONArray extends JSON
         retorn+="\n]";
         return retorn;
     }
+
+    @Override
+    public int compareTo(JSON json) {
+        JSONArray jsonArray = (JSONArray) json;
+        if (this.equals(jsonArray)) {
+            return 0;
+        }
+        return this.stringify().compareTo(jsonArray.stringify());
+    }
 }
