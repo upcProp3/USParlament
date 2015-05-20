@@ -5,6 +5,15 @@ All the text following //is for commenting and is to be ignored
 ... indicate that more data needs to go there
 
 
+Exception convention example:
+{
+	"Exception": {
+		"Name": "IllegalArguentException",
+		"Message": "Name of MP can not be null"
+	}
+}
+
+
 DomainController:
 ======================================
 GETTERS:

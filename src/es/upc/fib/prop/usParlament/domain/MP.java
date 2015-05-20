@@ -2,6 +2,7 @@ package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.shared13.Node;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,6 @@ import java.util.Map;
  * Contributions of Alex Miro and Ondrej Velisek.
  */
 public class MP extends Node {
-	private Long id;
     private String fullname;
     private int district;
     private State state;
@@ -34,28 +34,6 @@ public class MP extends Node {
         this.state = state;
 	    this.attributes = new HashMap<>();
     }
-
-	/**
-	 * @return The implicit MP identification number.
-	 */
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * The identification number of the implicit MP is set to 'id'.
-	 * @param id Long representing the identification number of the implicit MP to be set.
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	/**
-	 * @param id Integer representing the identification number of the implicit MP to be set.
-	 */
-	public void setId(Integer id) {
-		setId((long) id);
-	}
 
 	/**
 	 * @return The implicit MP full name.

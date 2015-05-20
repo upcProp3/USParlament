@@ -11,7 +11,6 @@ import java.util.Comparator;
  * Created by Ondrej Velisek on 22.4.15.
  */
 public class AttrDefinition {
-	private Long id;
 	private String name;
 	private int importance;
 
@@ -23,30 +22,6 @@ public class AttrDefinition {
 	public AttrDefinition(String name, int importance) {
 		this.name = name;
 		this.importance = importance;
-	}
-
-	/**
-	 * It returns the implicit AttrDefinition identification number.
-	 * @return Unique ID
-	 */
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * The identification number of the implicit AttrDefinition is set to 'id'.
-	 * @param id Unique ID
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	/**
-	 * The identification number of the implicit AttrDefinition is set to 'id'.
-	 * @param id Unique ID
-	 */
-	public void setId(int id) {
-		setId((long) id);
 	}
 
 	/**
