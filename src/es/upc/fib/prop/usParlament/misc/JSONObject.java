@@ -26,6 +26,14 @@ public class JSONObject extends JSON
         json.put(js,j);
     }
 
+    public JSON getJSONByKey(JSONString key) {
+        return json.get(key);
+    }
+
+    public Map<JSONString, JSON> getJson() {
+        return json;
+    }
+
     public String stringify()
     {
         String retorn = "{";

@@ -34,6 +34,10 @@ public class JSONArray extends JSON
         return retorn;
     }
 
+    public ArrayList<JSON> getArray() {
+        return array;
+    }
+
     public String toString()
     {
         String retorn = "[\n";

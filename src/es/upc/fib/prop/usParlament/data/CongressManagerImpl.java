@@ -3,7 +3,7 @@ package es.upc.fib.prop.usParlament.data;
 import java.io.*;
 
 /**
- * Class which using one file for each congress saving information about it. It is using JSON format.
+ * Class which using one file for each congress saving information about it.
  * {@code
  *  {
  *      "value":"<congressValue>",
@@ -29,43 +29,64 @@ public class CongressManagerImpl implements CongressManager {
 
 	@Override
 	public String saveCongress(String name, String congress) {
-		try {
-			return saveCongress(name, congress, getBufferedWriter(name));
+		try (BufferedWriter bw = getBufferedWriter(name)) {
+			return saveCongress(name, congress, bw);
 		} catch (IOException e) {
 			return exceptionMaker(e);
 		} catch (SecurityException e) {
 			return exceptionMaker(e);
 		}
 	}
-	private String saveCongress(String name, String congress, BufferedWriter bw) {
-		return null;
+	private String saveCongress(String name, String congress, BufferedWriter bw) throws IOException {
+		bw.write(congress);
+		bw.flush();
+		return "{}";
 	}
 
 
 	@Override
 	public String loadCongress(String name) {
-		try {
-			return loadCongress(name, getBufferedReader(name));
+		try (BufferedReader br = getBufferedReader(name)) {
+			return loadCongress(name, br);
 		} catch (IOException e) {
 			return exceptionMaker(e);
 		}
 	}
-	private String loadCongress(String name, BufferedReader br) {
-		return null;
+	private String loadCongress(String name, BufferedReader br) throws IOException {
+		return br.readLine();
 	}
 
 
 	@Override
 	public String loadAllCongressesNames() {
-
-		return null;
+		try {
+			File dir = new File(path);
+			if (!dir.exists()) {
+				throw new IOException("Folder with congresses doesn't exists");
+			}
+			boolean first = true;
+			String res = "{\"congressesNames\":[";
+			for (File f : dir.listFiles()) {
+				if (!first) {
+					res += ",";
+				}
+				res += "\"" +f.getName()+ "\"";
+				first = false;
+			}
+			res += "]}";
+			return res;
+		} catch (FileNotFoundException e) {
+			return exceptionMaker(e);
+		} catch (IOException e) {
+			return exceptionMaker(e);
+		}
 	}
 
 
 	@Override
 	public String savePartition(String congressName, String partitionName, String partition) {
-		try {
-			return savePartition(congressName, partitionName, partition, getBufferedWriter(congressName));
+		try (BufferedWriter bw = getBufferedWriter(congressName)) {
+			return savePartition(congressName, partitionName, partition, bw);
 		} catch (IOException e) {
 			return exceptionMaker(e);
 		} catch (SecurityException e) {
@@ -79,8 +100,8 @@ public class CongressManagerImpl implements CongressManager {
 
 	@Override
 	public String loadPartition(String congressName, String partitionName) {
-		try {
-			return loadPartition(congressName, partitionName, getBufferedReader(congressName));
+		try (BufferedReader br = getBufferedReader(congressName)) {
+			return loadPartition(congressName, partitionName, br);
 		} catch (IOException e) {
 			return exceptionMaker(e);
 		}
@@ -92,8 +113,8 @@ public class CongressManagerImpl implements CongressManager {
 
 	@Override
 	public String loadAllPartitionsOfCongress(String congressName) {
-		try {
-			return savePartition(congressName, getBufferedReader(congressName));
+		try (BufferedReader br = getBufferedReader(congressName)) {
+			return savePartition(congressName, br);
 		} catch (IOException e) {
 			return exceptionMaker(e);
 		}
@@ -111,9 +132,8 @@ public class CongressManagerImpl implements CongressManager {
 			throw new SecurityException("doesn't have enough privileges to create folder.", e);
 		}
 		File file = new File(dir, fileName);
-		try (FileWriter fw = new FileWriter(file)) {
-			return new BufferedWriter(fw);
-		}
+		FileWriter fw = new FileWriter(file);
+		return new BufferedWriter(fw);
 	}
 	private BufferedReader getBufferedReader(String fileName) throws IOException {
 		File dir = new File(path);
@@ -121,13 +141,12 @@ public class CongressManagerImpl implements CongressManager {
 			throw new IOException("Folder with congresses doesn't exists");
 		}
 		File file = new File(dir, fileName);
-		try (FileReader fr = new FileReader(file)) {
-			return new BufferedReader(fr);
-		}
+		FileReader fr = new FileReader(file);
+		return new BufferedReader(fr);
 	}
 
 
 	private String exceptionMaker(Exception e) {
-		return null;
+		return e.toString();
 	}
 }

@@ -1,5 +1,6 @@
 package es.upc.fib.prop.usParlament.data;
 
+import es.upc.fib.prop.usParlament.misc.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,8 +8,11 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * JUnit tests of CongressManager class.
@@ -71,7 +75,7 @@ public class CongressManagerTest {
 	@Test
 	public void testLoadCongress() throws Exception {
 		List<String> congresses = prepareCongresses();
-		preparePartitions();
+		//preparePartitions();
 
 		final int pos = 1;
 
@@ -98,8 +102,23 @@ public class CongressManagerTest {
 		}
 		expected += "]}";
 
-		assertEquals(expected, names);
+		assertEquals(sortJSONArray(expected), sortJSONArray(names));
 	}
+
+	private String sortJSONArray(String names) {
+		JSONizer jsonizer = new JSONizer();
+		JSONObject namesObj = jsonizer.StringToJSON(names);
+		JSONArray array = (JSONArray) namesObj.getJSONByKey(new JSONString("congressesNames"));
+		List<JSONString> stringList = (List<JSONString>)(List<?>) array.getArray();
+		Collections.sort(stringList, jsonStringComparator);
+		return jsonizer.JSONtoString(namesObj);
+	}
+	private Comparator<JSONString> jsonStringComparator = new Comparator<JSONString>() {
+		@Override
+		public int compare(JSONString jsonString, JSONString t1) {
+			return jsonString.getValue().compareTo(t1.getValue());
+		}
+	};
 
 	@Test
 	public void testSavePartition() throws Exception {
@@ -176,9 +195,14 @@ public class CongressManagerTest {
 				"\"edges\":[\"" +eds.get(5)+ "\",\"" +eds.get(6)+ "\",\"" +eds.get(9)+ "\",\"" +
 				eds.get(10)+ "\",\"" +eds.get(11)+ "\",\"" +eds.get(0)+ "\"]}";
 
-		manager.saveCongress(CONGRESS_NAMES[0], c1);
-		manager.saveCongress(CONGRESS_NAMES[1], c2);
-		manager.saveCongress(CONGRESS_NAMES[2], c3);
+		String er;
+		er = manager.saveCongress(CONGRESS_NAMES[0], c1);
+		assertEquals("{}", er);
+		er = manager.saveCongress(CONGRESS_NAMES[1], c2);
+		assertEquals("{}", er);
+		er = manager.saveCongress(CONGRESS_NAMES[2], c3);
+		assertEquals("{}", er);
+
 
 		List<String> congresses = new ArrayList<>();
 		congresses.add(c1);
