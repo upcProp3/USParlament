@@ -15,6 +15,7 @@ DONE: 20.05.15
 -getShortMPList()
 returns: a JSON string with the following format:
 	{
+		"MPList:"
 		{
 			"State":<statecode>
 			,"District":<districNum>
@@ -43,8 +44,8 @@ returns: a JSON string with the following format:
 
 
 ----------------------------------------
-ASSIGNED:
-DONE:
+ASSIGNED: Àlex Miró
+DONE: 20.05.15
 -getMPInfo(state,district)
 returns: a JSON string with the following format:
 	{
@@ -52,14 +53,14 @@ returns: a JSON string with the following format:
 			"State":<statecode>
 			,"District":<districNum>
 			,"Name":<name>
-			,<AttrDef1>:<Attr1Value>
+			,"Attributes":<AttrDef1>:<Attr1Value>
 			...	//for all the attributes that the mp has
 		}
 	}
 
 
 ----------------------------------------
-ASSIGNED:
+ASSIGNED: Àlex Miró
 DONE:
 -getMainCommunityNumber()
 returns: a number with the number of communities currently calculated

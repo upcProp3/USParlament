@@ -2,8 +2,9 @@ package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.shared13.Node;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
