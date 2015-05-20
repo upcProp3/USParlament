@@ -29,7 +29,7 @@ DONE:
 -getMPList()
 returns: a JSON string with the following format:
 	{
-		{//One of these for each MP
+		"MPList" : {//One of these for each MP
 			"State":<statecode>
 			,"District":<districNum>
 			,"Name":<name>

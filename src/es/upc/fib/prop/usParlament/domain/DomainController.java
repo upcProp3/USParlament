@@ -2,6 +2,8 @@ package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.shared13.Node;
 
+import es.upc.fib.prop.usParlament.misc.*;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Set;
@@ -93,9 +95,28 @@ public class DomainController
         JSONArray mps = new JSONArray();
         for (MP mp : currentCongress.getMPs()) {
             JSONObject dip = new JSONObject();
-
-
+            JSONString js = new JSONString("MP");
+            JSONObject camps = new JSONObject();
+            JSONArray ja = new JSONArray();
+            JSONString attrib = new JSONString(mp.getState().toString());
+            camps.addPair(new JSONString("State"), attrib);
+            ja.addElement(camps);
+            attrib = new JSONString(Integer.toString(mp.getDistrict()));
+            camps.addPair(new JSONString("District"), attrib);
+            ja.addElement(camps);
+            attrib = new JSONString(mp.getFullname());
+            camps.addPair(new JSONString("Name"), attrib);
+            ja.addElement(camps);
+            for (Attribute a : mp.getAttributes()) {
+                attrib = new JSONString(a.getValue().toString());
+                camps.addPair(new JSONString(a.getDefinition().getName()), attrib);
+                ja.addElement(camps);
+            }
+            dip.addPair(js, ja);
+            mps.addElement(dip);
         }
         ret.addPair(n, mps);
+
+        return ret.stringify();
     }
 }
