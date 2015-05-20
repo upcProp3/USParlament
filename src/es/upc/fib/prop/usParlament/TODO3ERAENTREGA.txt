@@ -112,17 +112,17 @@ compareCommunities()
 return:
 	the value of the comparison, may become more complex
 ----------------------------------------
-ASSIGNED:
+ASSIGNED: aleixsacrest
 DONE:
 getAttrDefs()
 return:
 	{
-		{
-			"AttrDefName":<AttrDefName>,
-			"AttrDefImportance":<AttrDefImportance>
-		}
-		,
-		...	//For all the attribute definitions
+		"Attribute Definitions" : [{
+			"attrdef" : [{"AttrDefName":<AttrDefName>,
+			"AttrDefImportance":<AttrDefImportance>}]
+		  ,
+          ...	//For all the attribute definitions
+		}]
 	}
 
 ----------------------------------------

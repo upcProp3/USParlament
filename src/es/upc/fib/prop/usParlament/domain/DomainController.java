@@ -26,9 +26,9 @@ public class DomainController
 
 
     /**
-     * @return It returns a JSONString with the State and District values for each MP at the current congress.
+     * @return It returns a JSON String with the State and District values for each MP at the current congress.
      */
-    public JSONString getShortMPList() {
+    public String getShortMPList() {
         JSONObject jList = new JSONObject();
         JSONArray a = new JSONArray();
         for (MP mp : currentCongress.getMPs()) {
@@ -44,8 +44,9 @@ public class DomainController
         JSONString key = new JSONString("MPList");
         JSONString value = new JSONString(a.toString());
         jList.addPair(key, value);
-        JSONString ret = new JSONString(jList.toString());
-        return ret;
+        //JSONString ret = new JSONString(jList.toString());
+        //return ret;
+        return jList.stringify();
     }
     
 
@@ -86,7 +87,7 @@ public class DomainController
      * @param district District of the MP
      * @return Returns all the saved information about the MP (state,district).
      */
-    public JSONString getMPInfo(State state, int district) {
+    public String getMPInfo(State state, int district) {
         JSONObject jInfo = new JSONObject();
         JSONString key = new JSONString("State");
         JSONString value = new JSONString(state.toString());
@@ -108,12 +109,32 @@ public class DomainController
         key.setValue("Attributes");
         value.setValue(atts.toString());
         jInfo.addPair(key, value);
-        JSONString ret = new JSONString(jInfo.toString());
-        return ret;
+        //JSONString ret = new JSONString(jInfo.toString());
+        //return ret;
+        return jInfo.stringify();
     }
 
     public JSONString getMainCommunityNumber() {
 
         return null;
+    }
+
+    public String getAttrDefs() {
+        JSONObject defs = new JSONObject();
+        JSONString js = new JSONString("Attribute Definitions");
+        JSONArray ja = new JSONArray();
+        for (AttrDefinition def : currentCongress.getAttrDef()) {
+            JSONObject jo = new JSONObject();
+            JSONString jsa = new JSONString("attrdef");
+            JSONArray jaa = new JSONArray();
+            jo.addPair(new JSONString("AttrDefName"), new JSONString(def.getName()));
+            jaa.addElement(jo);
+            jo.addPair(new JSONString("AttrDefImportance"), new JSONString(Integer.toString(def.getImportance())));
+            jaa.addElement(jo);
+            jo.addPair(jsa, jaa);
+            ja.addElement(jo);
+        }
+        defs.addPair(js, ja);
+        return defs.stringify();
     }
 }
