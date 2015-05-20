@@ -52,6 +52,9 @@ public class DomainController
     }
 
 
+    /**
+     * @return It returns an array with the State and District values for each MP at the current congress.
+     */
     public JSONArray getShortMPList() {
         JSONObject jList = new JSONObject();
         for (MP mp : currentCongress.getMPs()) {
@@ -70,24 +73,7 @@ public class DomainController
         ret.addElement(jList);
         return ret;
     }
-
-    //TODO:TEST FUNC
-    //Returns an ordered set of arraylists containing the needed info
-    //The first position of the arraylist contains the state of the mp
-    //The second position of the arraylist contains the district
-    //The third contains the name
-    public Set<ArrayList<String>> getCurrentMPsShort()
-    {
-        Set<ArrayList<String>> retorn = new TreeSet<>();
-        for(MP mp:currentCongress.getMPs()){
-            ArrayList<String> al = new ArrayList<>();
-            al.add(mp.getState().toString());
-            al.add(Integer.toString(mp.getDistrict()));
-            al.add(mp.getFullname());
-            retorn.add(al);
-        }
-        return retorn;
-    }
+    
 
     public String getMPList() {
         JSONObject ret = new JSONObject();
