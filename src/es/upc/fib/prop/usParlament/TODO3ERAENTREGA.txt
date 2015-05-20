@@ -15,12 +15,14 @@ DONE:
 -getShortMPList()
 returns: a JSON string with the following format:
 	{
-		{
+	    "Valors":[
+	    {
 			"State":<statecode>
 			,"District":<districNum>
 		}
 		,
 		...  //for all the MPs
+		]
 	}
 
 ----------------------------------------
