@@ -24,21 +24,23 @@ returns: a JSON string with the following format:
 	}
 
 ----------------------------------------
-ASSIGNED:
+ASSIGNED: aleixsacrest
 DONE:
 -getMPList()
 returns: a JSON string with the following format:
 	{
-		{//One of these for each MP
-			"State":<statecode>
-			,"District":<districNum>
-			,"Name":<name>
-			,<AttrDef1>:<Attr1Value>
+		"MPList" : [ {//One of these for each MP
+			"MP" : [ { {"State":<statecode>}
+			,{"District":<districNum>}
+			,{"Name":<name>}
+			,{<AttrDef1>:<Attr1Value>}
 			...	//for all the attributes that the mp has
-		}
-		,
-		...
+			} ]
+			,
+			...
+		} ]
 	}
+
 
 ----------------------------------------
 ASSIGNED:

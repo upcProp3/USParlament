@@ -28,7 +28,7 @@ public class JSONArray extends JSON
             retorn+=",";
             heIterat = true;
         }
-        if(heIterat) retorn = retorn.substring(0,retorn.length()-1);
+        if(heIterat) retorn = retorn.substring(0,retorn.length()-1); //TODO: revisar
 
         retorn+="]";
         return retorn;
