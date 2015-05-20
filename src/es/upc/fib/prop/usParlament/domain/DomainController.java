@@ -51,8 +51,8 @@ public class DomainController
     }
 
 
-    public JSONObject getShortMPList() {
-        JSONObject ret = new JSONObject();
+    public JSONArray getShortMPList() {
+        JSONObject jList = new JSONObject();
         for (MP mp : currentCongress.getMPs()) {
             JSONObject jMP = new JSONObject();
             JSONString key = new JSONString("State");
@@ -63,8 +63,10 @@ public class DomainController
             jMP.addPair(key, value);
             key.setValue("List");
             value.setValue(jMP.toString());
-            ret.addPair(key, value);
+            jList.addPair(key, value);
         }
+        JSONArray ret = new JSONArray();
+        ret.addElement(jList);
         return ret;
     }
 
