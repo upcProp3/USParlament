@@ -3,7 +3,7 @@ package es.upc.fib.prop.usParlament.misc;
 /**
  * Created by miquel on 16/05/15.
  */
-class JSONString extends JSON
+public class JSONString extends JSON
 {
     private String value;
 
