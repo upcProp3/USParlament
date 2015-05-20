@@ -8,8 +8,8 @@ All the text following //is for commenting and is to be ignored
 Exception convention example:
 {
 	"Exception": {
-		"Name": "IllegalArguentException",
-		"Message": "Name of MP can not be null"
+		"Name": "IOException",
+		"Message": "File not exists"
 	}
 }
 

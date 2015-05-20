@@ -9,7 +9,7 @@ public interface CongressManager {
 	 * save congress into persistent memory. If cogress with the same identificator already exists it will be rewritten.
 	 * @param name  unique identificator of congress
 	 * @param congress  JSON representation of congress object
-	 * @return  Exception string If there is exception empty string otherwise.
+	 * @return  Exception string If there is exception "{}" string otherwise.
 	 */
 	public String saveCongress(String name, String congress);
 
@@ -32,7 +32,7 @@ public interface CongressManager {
 	 * @param congressName  unique identificator of congress. It has to already exists in persistent memory.
 	 * @param partitionName  unique identificator in congressName scope.
 	 * @param partition  JSON representation of partition object
-	 * @return  Exception string If there is exception empty string otherwise.
+	 * @return  Exception string If there is exception "{}" string otherwise.
 	 */
 	public String savePartition(String congressName, String partitionName, String partition);
 
