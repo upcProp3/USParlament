@@ -27,8 +27,9 @@ public class FCQAlgorithm implements Algorithm
     public ArrayList<Set<Node>> calculate()
     {
         if(result != null) return result;
-        FCQAlgorithm fcq = new FCQAlgorithm(g,threshold);
-        result = fcq.calculate();
+        FourCliquePercolation fcq = new FourCliquePercolation(g,threshold);
+        fcq.execute();
+        result = fcq.getCc();
         return result;
     }
 }

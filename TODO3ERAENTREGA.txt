@@ -1,0 +1,222 @@
+List of all the stuff to do for the third delivery (by class):
+
+All the text written like <this> has to be replaced by the corresponding json string (string with " around it)
+All the text following //is for commenting and is to be ignored
+... indicate that more data needs to go there
+
+
+THE DOMAIN CONTROLLER HAS THE SAME FUNCTIONS BUT IT GETS/MODIFIES
+THE REAL DATA, THE PRESENTATION CONTROLLER ONLY MOVES DATA BETWEEN
+THE DOMAIN CONTROLLER AND THE GUI
+PresentationController:
+======================================
+GETTERS:
+=======================================
+----------------------------------------
+ASSIGNED:
+DONE:
+-getShortMPList()
+returns: a JSON string with the following format:
+	{
+		{
+			"State":<statecode>
+			,"District":<districNum>
+		}
+		,
+		...  //for all the MPs
+	}
+
+----------------------------------------
+ASSIGNED:
+DONE:
+-getMPList()
+returns: a JSON string with the following format:
+	{
+		{//One of these for each MP
+			"State":<statecode>
+			,"District":<districNum>
+			,"Name":<name>
+			,<AttrDef1>:<Attr1Value>
+			...	//for all the attributes that the mp has
+		}
+		,
+		...
+	}
+
+----------------------------------------
+ASSIGNED:
+DONE:
+-getMPInfo(state,district)
+returns: a JSON string with the following format:
+	{
+		{	//For the MP with State state and District district
+			"State":<statecode>
+			,"District":<districNum>
+			,"Name":<name>
+			,<AttrDef1>:<Attr1Value>
+			...	//for all the attributes that the mp has
+		}
+	}
+
+
+----------------------------------------
+ASSIGNED:
+DONE:
+-getMainCommunityNumber()
+returns: a number with the number of communities currently calculated
+----------------------------------------
+ASSIGNED:
+DONE:
+-getMPsMainCommunities(comnumber)
+returns:
+	{
+		{
+			"State":<statecode>
+			,"District":<districNum>
+		}
+		,
+		...  //for all the MPs in the community
+	}
+
+----------------------------------------
+ASSIGNED:
+DONE:
+-getSecCommunityNumber()
+returns: a number with the number of communities currently calculated
+----------------------------------------
+ASSIGNED:
+DONE:
+-getMPsSecCommunities(comnumber)
+returns:
+	{
+		{
+			"State":<statecode>
+			,"District":<districNum>
+		}
+		,
+		...  //for all the MPs in the community
+	}
+----------------------------------------
+ASSIGNED:
+DONE:
+compareCommunities()
+return:
+	the value of the comparison, may become more complex
+----------------------------------------
+ASSIGNED:
+DONE:
+getAttrDefs()
+return:
+	{
+		{
+			"AttrDefName":<AttrDefName>,
+			"AttrDefImportance":<AttrDefImportance>
+		}
+		,
+		...	//For all the attribute definitions
+	}
+
+======================================
+MODIFIERS:
+=======================================
+----------------------------------------
+ASSIGNED:
+DONE:
+
+addMP(JSON)
+arguments: JSON is a JSON string with the following structure
+The MP cannnot exist
+{
+	{
+		"State":<codiEstat>,
+		"District":<numerodistricte>,
+		"Name":<name>
+	}
+}
+----------------------------------------
+ASSIGNED:
+DONE:
+
+deleteMP(JSON)
+arguments: JSON is a JSON string with the following structure:
+The mp from the state and district is deleted
+{
+	"State":<statecode>
+	,"District":<districNum>
+}
+
+
+----------------------------------------
+ASSIGNED:
+DONE:
+
+addOrModifyAttribute(JSON):
+arguments: JSON is a JSON string the following structure:
+If the MP already has that attribute it is modified instead of added
+{
+	{//The MP we want to add the attrDef to
+		"State":<codiEstat>,
+		"District":<numerodistricte>,
+		"Name":<name>
+	}
+	,
+	{
+		"AttrDef":<AttrDefName>,
+		"AttrValue":<AttrValue>
+	}
+}
+
+----------------------------------------
+ASSIGNED:
+DONE:
+
+deleteAttribute(JSON):
+arguments: JSON is a JSON string the following structure:
+{
+	{//The MP we want to delete the attrDef to
+		"State":<codiEstat>,
+		"District":<numerodistricte>,
+		"Name":<name>
+	}
+	,
+	{
+		"AttrDef":<AttrDefName>,
+	}
+}
+-----------------------------------------
+ASSIGNED:
+DONE:
+addAttrDef(JSON)
+arguments: JSON is a JSON string with the following structure:
+{
+	"AttrDefName":<attrdef>,
+	"Importance":<importance>
+}
+
+---------------------------------------
+ASSIGNED:
+DONE:
+deleteAttrDef(JSON)
+arguments: JSON is a JSON string with the following structure:
+
+{
+	"AttrDefName":<attrdef>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

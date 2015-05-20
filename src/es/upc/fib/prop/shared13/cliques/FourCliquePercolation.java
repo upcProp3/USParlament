@@ -128,6 +128,11 @@ public class FourCliquePercolation
         THRESHOLD = edgeWeightThreshold;
     }
 
+    public ArrayList<Set<Node>> getCc()
+    {
+        return cc;
+    }
+
     /**
      * Applies the CPM community detection algorithm to the graph.
      */

@@ -12,7 +12,7 @@ import java.util.Set;
  */
 public class NGAlgorithm implements Algorithm
 {
-    private NewmanGirvan ng;
+    private NewmannGirvan ng;
     private ArrayList<Set<Node>> result;
     private Graph g;
     public int ncom;
@@ -21,7 +21,7 @@ public class NGAlgorithm implements Algorithm
     {
         g = gr;
         ncom = num;
-        ng = new NewmanGirvan();
+        ng = new NewmannGirvan();
         result = null;
     }
 
