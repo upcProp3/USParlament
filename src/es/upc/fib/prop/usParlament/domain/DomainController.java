@@ -2,6 +2,9 @@ package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.shared13.Node;
+import es.upc.fib.prop.usParlament.misc.JSONArray;
+import es.upc.fib.prop.usParlament.misc.JSONObject;
+import es.upc.fib.prop.usParlament.misc.JSONString;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -67,5 +70,17 @@ public class DomainController
             retorn.add(al);
         }
         return retorn;
+    }
+
+    public String getMPList() {
+        JSONObject ret = new JSONObject();
+        JSONString n = new JSONString("MPList");
+        JSONArray mps = new JSONArray();
+        for (MP mp : currentCongress.getMPs()) {
+            JSONObject dip = new JSONObject();
+
+
+        }
+        ret.addPair(n, mps);
     }
 }
