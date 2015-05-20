@@ -1,7 +1,8 @@
 package es.upc.fib.prop.usParlament.domain;
 
-import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.shared13.Node;
+
+import es.upc.fib.prop.usParlament.misc.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -51,6 +52,25 @@ public class DomainController
     }
 
 
+    public JSONArray getShortMPList() {
+        JSONObject jList = new JSONObject();
+        for (MP mp : currentCongress.getMPs()) {
+            JSONObject jMP = new JSONObject();
+            JSONString key = new JSONString("State");
+            JSONString value = new JSONString(mp.getState().toString());
+            jMP.addPair(key, value);
+            key.setValue("District");
+            value.setValue(String.valueOf(mp.getDistrict()));
+            jMP.addPair(key, value);
+            key.setValue("List");
+            value.setValue(jMP.toString());
+            jList.addPair(key, value);
+        }
+        JSONArray ret = new JSONArray();
+        ret.addElement(jList);
+        return ret;
+    }
+
     //TODO:TEST FUNC
     //Returns an ordered set of arraylists containing the needed info
     //The first position of the arraylist contains the state of the mp
@@ -67,5 +87,36 @@ public class DomainController
             retorn.add(al);
         }
         return retorn;
+    }
+
+    public String getMPList() {
+        JSONObject ret = new JSONObject();
+        JSONString n = new JSONString("MPList");
+        JSONArray mps = new JSONArray();
+        for (MP mp : currentCongress.getMPs()) {
+            JSONObject dip = new JSONObject();
+            JSONString js = new JSONString("MP");
+            JSONObject camps = new JSONObject();
+            JSONArray ja = new JSONArray();
+            JSONString attrib = new JSONString(mp.getState().toString());
+            camps.addPair(new JSONString("State"), attrib);
+            ja.addElement(camps);
+            attrib = new JSONString(Integer.toString(mp.getDistrict()));
+            camps.addPair(new JSONString("District"), attrib);
+            ja.addElement(camps);
+            attrib = new JSONString(mp.getFullname());
+            camps.addPair(new JSONString("Name"), attrib);
+            ja.addElement(camps);
+            for (Attribute a : mp.getAttributes()) {
+                attrib = new JSONString(a.getValue().toString());
+                camps.addPair(new JSONString(a.getDefinition().getName()), attrib);
+                ja.addElement(camps);
+            }
+            dip.addPair(js, ja);
+            mps.addElement(dip);
+        }
+        ret.addPair(n, mps);
+
+        return ret.stringify();
     }
 }
