@@ -10,8 +10,8 @@ DomainController:
 GETTERS:
 =======================================
 ----------------------------------------
-ASSIGNED:
-DONE:
+ASSIGNED: Àlex Miró
+DONE: 20.05.15
 -getShortMPList()
 returns: a JSON string with the following format:
 	{

@@ -1,12 +1,12 @@
 package es.upc.fib.prop.usParlament.domain;
 
-import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.shared13.Node;
+import es.upc.fib.prop.usParlament.misc.*;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
+
 
 /**
  * Created by miquel on 16/05/15.
@@ -50,6 +50,25 @@ public class DomainController
         return retorn;
     }
 
+
+    public JSONArray getShortMPList() {
+        JSONObject jList = new JSONObject();
+        for (MP mp : currentCongress.getMPs()) {
+            JSONObject jMP = new JSONObject();
+            JSONString key = new JSONString("State");
+            JSONString value = new JSONString(mp.getState().toString());
+            jMP.addPair(key, value);
+            key.setValue("District");
+            value.setValue(String.valueOf(mp.getDistrict()));
+            jMP.addPair(key, value);
+            key.setValue("List");
+            value.setValue(jMP.toString());
+            jList.addPair(key, value);
+        }
+        JSONArray ret = new JSONArray();
+        ret.addElement(jList);
+        return ret;
+    }
 
     //TODO:TEST FUNC
     //Returns an ordered set of arraylists containing the needed info

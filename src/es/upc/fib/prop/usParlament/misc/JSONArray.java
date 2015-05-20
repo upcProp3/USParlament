@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by miquel on 16/05/15.
  */
-class JSONArray extends JSON
+public class JSONArray extends JSON
 {
     private ArrayList<JSON> array;
 
