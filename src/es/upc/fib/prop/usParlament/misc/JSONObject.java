@@ -26,6 +26,14 @@ public class JSONObject extends JSON
         json.put(js,j);
     }
 
+    public JSON getJSONByKey(JSONString key) {
+        return json.get(key);
+    }
+
+    public Map<JSONString, JSON> getJson() {
+        return json;
+    }
+
     public String stringify()
     {
         String retorn = "{";
@@ -51,5 +59,14 @@ public class JSONObject extends JSON
         if(heIterat) retorn = retorn.substring(0,retorn.length()-2);//Remove the coma and the space
         retorn += "\n}";
         return retorn;
+    }
+
+    @Override
+    public int compareTo(JSON json) {
+        JSONObject jsonObject = (JSONObject) json;
+        if (this.equals(jsonObject)) {
+            return 0;
+        }
+        return this.stringify().compareTo(jsonObject.stringify());
     }
 }

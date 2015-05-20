@@ -114,5 +114,6 @@ public class DomainController
 
     public JSONString getMainCommunityNumber() {
 
+        return null;
     }
 }

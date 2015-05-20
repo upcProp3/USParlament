@@ -35,7 +35,7 @@ public class JSONString extends JSON
     public boolean equals(Object o)
     {
         if(this.getClass() != o.getClass()) return false;
-        return this.value == ((JSONString)o).getValue();
+        return this.value.equals(((JSONString)o).getValue());
     }
 
     public int hashCode()
@@ -46,5 +46,11 @@ public class JSONString extends JSON
     public String toString()
     {
         return "\""+value+"\"";
+    }
+
+    @Override
+    public int compareTo(JSON json) {
+        JSONString jsonString = (JSONString) json;
+        return this.getValue().compareTo(jsonString.getValue());
     }
 }
