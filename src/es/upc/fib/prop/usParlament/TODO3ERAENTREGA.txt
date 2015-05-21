@@ -67,7 +67,7 @@ returns: a JSON string with the following format:
 
 ----------------------------------------
 ASSIGNED: Àlex Miró
-DONE:
+DONE: 21.05.14
 -getMainCommunityNumber()
 returns: a number with the number of communities currently calculated
 ----------------------------------------
@@ -108,6 +108,7 @@ DONE:
 compareCommunities()
 return:
 	the value of the comparison, may become more complex
+	//we should discuss how the comparisons work before
 ----------------------------------------
 ASSIGNED: aleixsacrest
 DONE:
@@ -123,7 +124,7 @@ return:
 	}
 
 ----------------------------------------
-ASSIGNED:
+ASSIGNED: Ondrej V
 DONE:
 getSavedCongressNames()
 return:
@@ -135,7 +136,7 @@ return:
 		...//For all the saved graph's names
 	}
 ----------------------------------------
-ASSIGNED:
+ASSIGNED: Ondrej V
 DONE:
 getSavedCongressCommunitiesNames(congressName)
 return:
@@ -150,11 +151,11 @@ return:
 MODIFIERS:
 =======================================
 ----------------------------------------
-ASSIGNED:
-DONE:
+ASSIGNED: Àlex Miró
+DONE: 21.05.15
 
-addMP(JSON)
-arguments: JSON is a JSON string with the following structure
+addMP(jMP)
+arguments: jMP is a JSON object with the following structure
 The MP cannnot exist
 {
 	{
@@ -164,11 +165,11 @@ The MP cannnot exist
 	}
 }
 ----------------------------------------
-ASSIGNED:
-DONE:
+ASSIGNED: Àlex Miró
+DONE: 21.05.15
 
-deleteMP(JSON)
-arguments: JSON is a JSON string with the following structure:
+deleteMP(jMP)
+arguments: jMP is a JSON object with the following structure:
 The mp from the state and district is deleted
 {
 	"State":<statecode>
@@ -177,41 +178,35 @@ The mp from the state and district is deleted
 
 
 ----------------------------------------
-ASSIGNED:
-DONE:
+ASSIGNED: Àlex Miró
+DONE: 21.05.15
 
-addOrModifyAttribute(JSON):
-arguments: JSON is a JSON string the following structure:
+addOrModifyAttribute(jAttr):
+arguments: jAttr is a JSON object the following structure:
 If the MP already has that attribute it is modified instead of added
 {
-	{//The MP we want to add the attrDef to
-		"State":<codiEstat>,
-		"District":<numerodistricte>,
-		"Name":<name>
-	}
-	,
-	{
-		"AttrDef":<AttrDefName>,
-		"AttrValue":<AttrValue>
+	//The MP we want to add the attrDef to
+	"State":<codiEstat>,
+	"District":<numerodistricte>,
+	//The attrDef and value
+	"AttrDef":<AttrDefName>,
+	"AttrValue":<AttrValue>
 	}
 }
 
 ----------------------------------------
-ASSIGNED:
-DONE:
+ASSIGNED: Àlex Miró
+DONE: 21.05.15
 
-deleteAttribute(JSON):
-arguments: JSON is a JSON string the following structure:
+deleteAttribute(jAttr):
+arguments: jAttr is a JSON object the following structure:
 {
-	{//The MP we want to delete the attrDef to
-		"State":<codiEstat>,
-		"District":<numerodistricte>,
-		"Name":<name>
-	}
-	,
-	{
-		"AttrDef":<AttrDefName>,
-	}
+	//The MP we want to delete the attrDef to
+	"State":<codiEstat>,
+	"District":<numerodistricte>,
+	//The attrDef we want to delete
+	"AttrDef":<AttrDefName>,
+
 }
 -----------------------------------------
 ASSIGNED:
@@ -224,10 +219,10 @@ arguments: JSON is a JSON string with the following structure:
 }
 
 ---------------------------------------
-ASSIGNED:
-DONE:
-deleteAttrDef(JSON)
-arguments: JSON is a JSON string with the following structure:
+ASSIGNED: Àlex Miró
+DONE: 21.05.15
+deleteAttrDef(jAttrDef)
+arguments: jAttrDef is a JSON object with the following structure:
 
 {
 	"AttrDefName":<attrdef>
