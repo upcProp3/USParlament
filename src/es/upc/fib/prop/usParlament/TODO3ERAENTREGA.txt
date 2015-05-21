@@ -85,7 +85,7 @@ returns:
 	}
 
 ----------------------------------------
-ASSIGNED:
+ASSIGNED: aleixsacrest
 DONE:
 -getSecCommunityNumber()
 returns: a number with the number of communities currently calculated
