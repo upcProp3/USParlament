@@ -42,10 +42,6 @@ public class JSONizer
         return r;
     }
 
-    public JSONObject StringToJSON(String s)
-    {
-        return JSONObjectParser(sanitizeJSONString(s));
-    }
 
     private int countOccurences(String s, char c)
     {
@@ -215,11 +211,7 @@ public class JSONizer
         return ja;
     }
 
-
-
-
-
-    public JSONObject StringtoJSON(String s)
+    public JSONObject StringToJSON(String s)
     {
         if(!correctClosures(s)) throw new IllegalArgumentException(FORMAT_ERROR);
         return JSONObjectParser(sanitizeJSONString(s));

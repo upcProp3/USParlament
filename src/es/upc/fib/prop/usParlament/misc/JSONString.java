@@ -3,7 +3,7 @@ package es.upc.fib.prop.usParlament.misc;
 /**
  * Created by miquel on 16/05/15.
  */
-class JSONString extends JSON
+public class JSONString extends JSON
 {
     private String value;
 
@@ -35,7 +35,7 @@ class JSONString extends JSON
     public boolean equals(Object o)
     {
         if(this.getClass() != o.getClass()) return false;
-        return this.value == ((JSONString)o).getValue();
+        return this.value.equals(((JSONString)o).getValue());
     }
 
     public int hashCode()
@@ -46,5 +46,11 @@ class JSONString extends JSON
     public String toString()
     {
         return "\""+value+"\"";
+    }
+
+    @Override
+    public int compareTo(JSON json) {
+        JSONString jsonString = (JSONString) json;
+        return this.getValue().compareTo(jsonString.getValue());
     }
 }

@@ -5,46 +5,53 @@ All the text following //is for commenting and is to be ignored
 ... indicate that more data needs to go there
 
 
+Exception convention example:
+{
+	"Exception": {
+		"Name": "IOException",
+		"Message": "File not exists"
+	}
+}
+
+
 DomainController:
 ======================================
 GETTERS:
 =======================================
 ----------------------------------------
-ASSIGNED:
-DONE:
+ASSIGNED: Àlex Miró
+DONE: 20.05.15
 -getShortMPList()
 returns: a JSON string with the following format:
 	{
-	    "Valors":[
-	    {
+		"MPList:"
+		{
 			"State":<statecode>
 			,"District":<districNum>
 		}
 		,
 		...  //for all the MPs
-		]
 	}
 
 ----------------------------------------
-ASSIGNED:
+ASSIGNED: aleixsacrest
 DONE:
 -getMPList()
 returns: a JSON string with the following format:
 	{
-		{//One of these for each MP
-			"State":<statecode>
+		"MPList" : [ //One of these for each MP
+			  {"State":<statecode>
 			,"District":<districNum>
 			,"Name":<name>
 			,<AttrDef1>:<Attr1Value>
 			...	//for all the attributes that the mp has
-		}
-		,
-		...
+			}]
 	}
 
+
 ----------------------------------------
-ASSIGNED:
-DONE:
+ASSIGNED: Àlex Miró
+DONE: 20.05.15
 -getMPInfo(state,district)
 returns: a JSON string with the following format:
 	{
@@ -52,14 +59,14 @@ returns: a JSON string with the following format:
 			"State":<statecode>
 			,"District":<districNum>
 			,"Name":<name>
-			,<AttrDef1>:<Attr1Value>
+			,"Attributes":<AttrDef1>:<Attr1Value>
 			...	//for all the attributes that the mp has
 		}
 	}
 
 
 ----------------------------------------
-ASSIGNED:
+ASSIGNED: Àlex Miró
 DONE:
 -getMainCommunityNumber()
 returns: a number with the number of communities currently calculated
@@ -102,17 +109,17 @@ compareCommunities()
 return:
 	the value of the comparison, may become more complex
 ----------------------------------------
-ASSIGNED:
+ASSIGNED: aleixsacrest
 DONE:
 getAttrDefs()
 return:
 	{
-		{
-			"AttrDefName":<AttrDefName>,
+		"Attribute Definitions" : [
+			{"AttrDefName":<AttrDefName>,
 			"AttrDefImportance":<AttrDefImportance>
-		}
-		,
-		...	//For all the attribute definitions
+		  ,
+          ...	//For all the attribute definitions
+		}]
 	}
 
 ----------------------------------------

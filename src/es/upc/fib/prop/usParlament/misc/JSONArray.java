@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by miquel on 16/05/15.
  */
-class JSONArray extends JSON
+public class JSONArray extends JSON
 {
     private ArrayList<JSON> array;
 
@@ -28,10 +28,14 @@ class JSONArray extends JSON
             retorn+=",";
             heIterat = true;
         }
-        if(heIterat) retorn = retorn.substring(0,retorn.length()-1);
+        if(heIterat) retorn = retorn.substring(0,retorn.length()-1); //TODO: revisar
 
         retorn+="]";
         return retorn;
+    }
+
+    public ArrayList<JSON> getArray() {
+        return array;
     }
 
     public String toString()
@@ -47,5 +51,14 @@ class JSONArray extends JSON
 
         retorn+="\n]";
         return retorn;
+    }
+
+    @Override
+    public int compareTo(JSON json) {
+        JSONArray jsonArray = (JSONArray) json;
+        if (this.equals(jsonArray)) {
+            return 0;
+        }
+        return this.stringify().compareTo(jsonArray.stringify());
     }
 }
