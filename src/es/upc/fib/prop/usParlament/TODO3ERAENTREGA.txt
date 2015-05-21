@@ -39,16 +39,13 @@ DONE:
 -getMPList()
 returns: a JSON string with the following format:
 	{
-		"MPList" : [ {//One of these for each MP
-			"MP" : [ { {"State":<statecode>}
-			,{"District":<districNum>}
-			,{"Name":<name>}
-			,{<AttrDef1>:<Attr1Value>}
+		"MPList" : [ //One of these for each MP
+			  {"State":<statecode>
+			,"District":<districNum>
+			,"Name":<name>
+			,<AttrDef1>:<Attr1Value>
 			...	//for all the attributes that the mp has
-			} ]
-			,
-			...
-		} ]
+			}]
 	}
 
 
@@ -117,9 +114,9 @@ DONE:
 getAttrDefs()
 return:
 	{
-		"Attribute Definitions" : [{
-			"attrdef" : [{"AttrDefName":<AttrDefName>,
-			"AttrDefImportance":<AttrDefImportance>}]
+		"Attribute Definitions" : [
+			{"AttrDefName":<AttrDefName>,
+			"AttrDefImportance":<AttrDefImportance>
 		  ,
           ...	//For all the attribute definitions
 		}]

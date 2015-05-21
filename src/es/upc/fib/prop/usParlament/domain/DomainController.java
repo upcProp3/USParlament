@@ -56,24 +56,16 @@ public class DomainController
         JSONArray mps = new JSONArray();
         for (MP mp : currentCongress.getMPs()) {
             JSONObject dip = new JSONObject();
-            JSONString js = new JSONString("MP");
-            JSONObject camps = new JSONObject();
-            JSONArray ja = new JSONArray();
             JSONString attrib = new JSONString(mp.getState().toString());
-            camps.addPair(new JSONString("State"), attrib);
-            ja.addElement(camps);
+            dip.addPair(new JSONString("State"), attrib);
             attrib = new JSONString(Integer.toString(mp.getDistrict()));
-            camps.addPair(new JSONString("District"), attrib);
-            ja.addElement(camps);
+            dip.addPair(new JSONString("District"), attrib);
             attrib = new JSONString(mp.getFullname());
-            camps.addPair(new JSONString("Name"), attrib);
-            ja.addElement(camps);
+            dip.addPair(new JSONString("Name"), attrib);
             for (Attribute a : mp.getAttributes()) {
                 attrib = new JSONString(a.getValue().toString());
-                camps.addPair(new JSONString(a.getDefinition().getName()), attrib);
-                ja.addElement(camps);
+                dip.addPair(new JSONString(a.getDefinition().getName()), attrib);
             }
-            dip.addPair(js, ja);
             mps.addElement(dip);
         }
         ret.addPair(n, mps);
@@ -125,13 +117,8 @@ public class DomainController
         JSONArray ja = new JSONArray();
         for (AttrDefinition def : currentCongress.getAttrDef()) {
             JSONObject jo = new JSONObject();
-            JSONString jsa = new JSONString("attrdef");
-            JSONArray jaa = new JSONArray();
             jo.addPair(new JSONString("AttrDefName"), new JSONString(def.getName()));
-            jaa.addElement(jo);
             jo.addPair(new JSONString("AttrDefImportance"), new JSONString(Integer.toString(def.getImportance())));
-            jaa.addElement(jo);
-            jo.addPair(jsa, jaa);
             ja.addElement(jo);
         }
         defs.addPair(js, ja);
