@@ -90,7 +90,7 @@ DONE:
 -getSecCommunityNumber()
 returns: a number with the number of communities currently calculated
 ----------------------------------------
-ASSIGNED:
+ASSIGNED: aleixsacrest
 DONE:
 -getMPsSecCommunities(comnumber)
 returns:
