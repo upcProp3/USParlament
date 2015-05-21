@@ -22,8 +22,9 @@ public class DomainController
      */
     private Congress currentCongress;
     //private ArrayList<Set<Node>> mainPartition;  //TODO
+    //private ArrayList<Set<Node>> secondaryPartition;
     private ArrayList<Set<MP>> mainPartition;
-    private ArrayList<Set<Node>> secondaryPartition;
+    private ArrayList<Set<MP>> secondaryPartition;
 
 
     /**
@@ -131,6 +132,24 @@ public class DomainController
         JSONString js = new JSONString("Main Parition Community numer "+comnumber);
         JSONArray ja = new JSONArray();
         for (MP mp : mainPartition.get(Integer.parseInt(comnumber))) {
+            JSONObject jo = new JSONObject();
+            jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
+            jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
+            ja.addElement(jo);
+        }
+        mps.addPair(js, ja);
+        return mps.stringify();
+    }
+
+    public String getSecCommunityNumber() {
+        return Integer.toString(secondaryPartition.size());
+    }
+
+    public String getMPsSecCommunities(String comnumber) {
+        JSONObject mps = new JSONObject();
+        JSONString js = new JSONString("Main Parition Community numer "+comnumber);
+        JSONArray ja = new JSONArray();
+        for (MP mp : secondaryPartition.get(Integer.parseInt(comnumber))) {
             JSONObject jo = new JSONObject();
             jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
             jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
