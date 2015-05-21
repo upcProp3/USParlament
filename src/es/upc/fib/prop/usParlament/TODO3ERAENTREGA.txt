@@ -71,7 +71,7 @@ DONE:
 -getMainCommunityNumber()
 returns: a number with the number of communities currently calculated
 ----------------------------------------
-ASSIGNED:
+ASSIGNED: aleixsacrest
 DONE:
 -getMPsMainCommunities(comnumber)
 returns:
