@@ -1,4 +1,4 @@
-package es.upc.fib.prop.usParlament.domain;
+package es.upc.fib.prop.usParlament.misc;
 
 /**
  * Created by Ondrej Velisek on 17.4.15.
