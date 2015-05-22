@@ -1,6 +1,5 @@
 package es.upc.fib.prop.usParlament.domain;
 
-import es.upc.fib.prop.shared13.Node;
 import es.upc.fib.prop.usParlament.misc.JSONArray;
 import es.upc.fib.prop.usParlament.misc.JSONObject;
 import es.upc.fib.prop.usParlament.misc.JSONString;
@@ -21,8 +20,10 @@ public class DomainController
 
      */
     private Congress currentCongress;
-    private ArrayList<Set<Node>> mainPartition;
-    private ArrayList<Set<Node>> secondaryPartition;
+    //private ArrayList<Set<Node>> mainPartition;  //TODO
+    //private ArrayList<Set<Node>> secondaryPartition;
+    private ArrayList<Set<MP>> mainPartition;
+    private ArrayList<Set<MP>> secondaryPartition;
 
 
     /**
@@ -44,8 +45,6 @@ public class DomainController
         JSONString key = new JSONString("MPList");
         JSONString value = new JSONString(a.toString());
         jList.addPair(key, value);
-        //JSONString ret = new JSONString(jList.toString());
-        //return ret;
         return jList.stringify();
     }
     
@@ -101,15 +100,13 @@ public class DomainController
         key.setValue("Attributes");
         value.setValue(atts.toString());
         jInfo.addPair(key, value);
-        //JSONString ret = new JSONString(jInfo.toString());
-        //return ret;
         return jInfo.stringify();
     }
 
-    public JSONString getMainCommunityNumber() {
-
-        return null;
-    }
+    /**
+     * @return Returns the main number of communities.
+     */
+    public String getMainCommunityNumber() { return String.valueOf(mainPartition.size()); }
 
     public String getAttrDefs() {
         JSONObject defs = new JSONObject();
@@ -123,5 +120,112 @@ public class DomainController
         }
         defs.addPair(js, ja);
         return defs.stringify();
+    }
+
+    public String getMPsMainCommunities(String comnumber) {
+        JSONObject mps = new JSONObject();
+        JSONString js = new JSONString("Main Parition Community numer "+comnumber);
+        JSONArray ja = new JSONArray();
+        for (MP mp : mainPartition.get(Integer.parseInt(comnumber))) {
+            JSONObject jo = new JSONObject();
+            jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
+            jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
+            ja.addElement(jo);
+        }
+        mps.addPair(js, ja);
+        return mps.stringify();
+    }
+
+    public String getSecCommunityNumber() {
+        return Integer.toString(secondaryPartition.size());
+    }
+
+    public String getMPsSecCommunities(String comnumber) {
+        JSONObject mps = new JSONObject();
+        JSONString js = new JSONString("Main Parition Community numer "+comnumber);
+        JSONArray ja = new JSONArray();
+        for (MP mp : secondaryPartition.get(Integer.parseInt(comnumber))) {
+            JSONObject jo = new JSONObject();
+            jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
+            jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
+            ja.addElement(jo);
+        }
+        mps.addPair(js, ja);
+        return mps.stringify();
+    }
+
+    /**
+     * @pre jMP doesn't belong to the current congress.
+     * @post jMP belongs to the current congress.
+     * @param jMP JSON Object defining the new MP.
+     */
+    public void addMP(JSONObject jMP) {
+        JSONString key = new JSONString("State");
+        JSONString jState = new JSONString(jMP.getJSONByKey(key).stringify());
+        key.setValue("District");
+        JSONString jDistr = new JSONString(jMP.getJSONByKey(key).stringify());
+        key.setValue("Name");
+        JSONString jName = new JSONString(jMP.getJSONByKey(key).stringify());
+        MP m = new MP(jName.stringify(), State.valueOf(jState.stringify()), Integer.valueOf(jDistr.stringify()));
+        currentCongress.addNode(m);
+    }
+
+    /**
+     * @pre jMP belongs to the current congress.
+     * @post jMP doesn't belong to the current congress.
+     * @param jMP JSON Object defining the MP to delete.
+     */
+    public void deleteMP(JSONObject jMP) {
+        JSONString key = new JSONString("State");
+        JSONString jState = new JSONString(jMP.getJSONByKey(key).stringify());
+        key.setValue("District");
+        JSONString jDistr = new JSONString(jMP.getJSONByKey(key).stringify());
+        key.setValue("Name");
+        MP m = currentCongress.getMP(State.valueOf(jState.stringify()), Integer.valueOf(jDistr.stringify()));
+        currentCongress.removeNode(m);
+    }
+
+    /**
+     * Adds the attribute to the MP specified. If the MP already has that attribute it is modified instead of added.
+     * @param jAttr JSON Object defining the relatives MP and attribute.
+     */
+    public void addOrModifyAttribute(JSONObject jAttr) {
+        JSONString key = new JSONString("State");
+        JSONString jState = new JSONString(jAttr.getJSONByKey(key).stringify());
+        key.setValue("District");
+        JSONString jDistr = new JSONString(jAttr.getJSONByKey(key).stringify());
+        MP m = currentCongress.getMP(State.valueOf(jState.stringify()), Integer.valueOf(jDistr.stringify()));
+        key.setValue("AttrDef");
+        JSONString jAttrD = new JSONString(jAttr.getJSONByKey(key).stringify());
+        key.setValue("AttrValue");
+        JSONString jAttrV = new JSONString(jAttr.getJSONByKey(key).stringify());
+        Attribute a = new Attribute(currentCongress.getAttrDef(jAttrD.stringify()), jAttrV);
+        m.addAttribute(a);
+    }
+
+    /**
+     * @pre The specified MP has a value defined for the specified attribute.
+     * @post The specified MP has not any value defined for the (@pre) specified attribute.
+     * @param jAttr JSON Object defining the relatives MP and attribute.
+     */
+    public void deleteAttribute(JSONObject jAttr) {
+        JSONString key = new JSONString("State");
+        JSONString jState = new JSONString(jAttr.getJSONByKey(key).stringify());
+        key.setValue("District");
+        JSONString jDistr = new JSONString(jAttr.getJSONByKey(key).stringify());
+        MP m = currentCongress.getMP(State.valueOf(jState.stringify()), Integer.valueOf(jDistr.stringify()));
+        key.setValue("AttrDef");
+        JSONString jAttrD = new JSONString(jAttr.getJSONByKey(key).stringify());
+        m.removeAttribute(currentCongress.getAttrDef(jAttrD.stringify()));
+    }
+
+    /**
+     * Deletes the AttrDefinition jAttrDef from the current congress.
+     * @param jAttrDef JSON Object defining the jAttrDef we want to delete.
+     */
+    public void deleteAttrDef(JSONObject jAttrDef) {
+        JSONString key = new JSONString("AttrDefName");
+        JSONString jAttrD = new JSONString(jAttrDef.getJSONByKey(key).stringify());
+        currentCongress.removeAttrDef(currentCongress.getAttrDef(jAttrD.stringify()));
     }
 }
