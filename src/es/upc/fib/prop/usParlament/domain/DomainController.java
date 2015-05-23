@@ -20,14 +20,12 @@ public class DomainController
 
      */
     private Congress currentCongress;
-    //private ArrayList<Set<Node>> mainPartition;  //TODO
-    //private ArrayList<Set<Node>> secondaryPartition;
     private ArrayList<Set<MP>> mainPartition;
     private ArrayList<Set<MP>> secondaryPartition;
 
 
     /**
-     * @return It returns a JSON String with the State and District values for each MP at the current congress.
+     * @return It returns an String with the State and District values for each MP at the current congress.
      */
     public String getShortMPList() {
         JSONObject jList = new JSONObject();
@@ -47,8 +45,10 @@ public class DomainController
         jList.addPair(key, value);
         return jList.stringify();
     }
-    
 
+    /**
+     * @return It returns an String with the State, District and attributes values for each MP at the current congress.
+     */
     public String getMPList() {
         JSONObject ret = new JSONObject();
         JSONString n = new JSONString("MPList");
@@ -108,6 +108,9 @@ public class DomainController
      */
     public String getMainCommunityNumber() { return String.valueOf(mainPartition.size()); }
 
+    /**
+     * @return Returns an String with all the information about the AttrDefinitions defined in the current congress.
+     */
     public String getAttrDefs() {
         JSONObject defs = new JSONObject();
         JSONString js = new JSONString("Attribute Definitions");
@@ -124,7 +127,7 @@ public class DomainController
 
     public String getMPsMainCommunities(String comnumber) {
         JSONObject mps = new JSONObject();
-        JSONString js = new JSONString("Main Parition Community numer "+comnumber);
+        JSONString js = new JSONString("Main Parition Community numer " + comnumber);
         JSONArray ja = new JSONArray();
         for (MP mp : mainPartition.get(Integer.parseInt(comnumber))) {
             JSONObject jo = new JSONObject();
@@ -136,6 +139,9 @@ public class DomainController
         return mps.stringify();
     }
 
+    /**
+     * @return Returns the secondary number of communities.
+     */
     public String getSecCommunityNumber() {
         return Integer.toString(secondaryPartition.size());
     }
@@ -217,6 +223,22 @@ public class DomainController
         key.setValue("AttrDef");
         JSONString jAttrD = new JSONString(jAttr.getJSONByKey(key).stringify());
         m.removeAttribute(currentCongress.getAttrDef(jAttrD.stringify()));
+    }
+
+    /**
+     * @pre true.
+     * @post The AttrDefinition defined by jAttrDef is added/modified to/from the current congress.
+     * @param jAttrDef JSON Object defining the relative AttrDefinition.
+     */
+    public void addOrModifyAttrDef(JSONObject jAttrDef) {
+        JSONString key = new JSONString("AttrDefName");
+        JSONString jAttrD = new JSONString(jAttrDef.getJSONByKey(key).stringify());
+        key.setValue("Importance");
+        JSONString jImp = new JSONString(jAttrDef.getJSONByKey(key).stringify());
+        AttrDefinition ad = new AttrDefinition(jAttrD.stringify(), Integer.valueOf(jImp.stringify()));
+        if (currentCongress.hasAttrDef(ad)) {
+            currentCongress.getAttrDef(jAttrD.stringify()).setImportance(Integer.valueOf(jImp.stringify()));
+        }
     }
 
     /**
