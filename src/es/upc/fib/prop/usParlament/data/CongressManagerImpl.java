@@ -8,18 +8,7 @@ import java.util.Map;
 
 /**
  * Class which using one file for each congress saving information about it.
- * {@code
- *  {
- *      "value":"<congressValue>",
- *      "partitions":[
- *          {
- *              "name":"<nameOfPartition>",
- *              "value":"<partitionValue>"
- *          },
- *          ...
- *      ]
- *  }
- * }
+ * Where first line is congress and each other lines is partition where with name and save data.
  *
  * Created by ondrej on 20.5.15.
  */
@@ -211,7 +200,7 @@ public class CongressManagerImpl implements CongressManager {
 
 
 	private String exceptionMaker(Exception e) {
-		return e.toString();
+		return "{\"Exception\":{\"Name\":\"" +e.getClass().getSimpleName()+ "\",Message\":\"" +e.getMessage()+ "\"}}";
 	}
 
 	private class CongressString {
