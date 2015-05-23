@@ -1,6 +1,7 @@
 package es.upc.fib.prop.usParlament.misc;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -29,10 +30,28 @@ public class JSONObject extends JSON
     public JSON getJSONByKey(JSONString key) {
         return json.get(key);
     }
+    
+    public JSON getJSONByKey(String key) {
+        return json.get(new JSONString(key));
+    }
+
 
     public Map<JSONString, JSON> getJson() {
         return json;
     }
+
+    public Map<String,String> basicJSONObjectGetInfo()
+    {
+        for(JSON j:json.values())
+            if(j.getClass() != JSONString.class) throw new IllegalArgumentException("ALL THE VALUES NEED TO BE STRINGS");
+        Map<String,String> retorn = new LinkedHashMap<>();
+        for(JSONString js:json.keySet()){
+            retorn.put(js.getValue(),((JSONString)json.get(js)).getValue());
+        }
+        return retorn;
+    }
+
+
 
     public String stringify()
     {
