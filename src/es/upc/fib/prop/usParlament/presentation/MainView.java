@@ -4,14 +4,17 @@
  * and open the template in the editor.
  */
 package es.upc.fib.prop.usParlament.presentation;
+
 import es.upc.fib.prop.usParlament.misc.JSON;
 import es.upc.fib.prop.usParlament.misc.JSONArray;
 import es.upc.fib.prop.usParlament.misc.JSONObject;
-import es.upc.fib.prop.usParlament.misc.JSONString;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
+import java.util.concurrent.ExecutionException;
 
 /**
  *
@@ -845,7 +848,10 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addMPToCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPToCommunityButtonActionPerformed
-        // TODO communtiy management add mp to community button pressed
+        for (int i = 0; i < Integer.MAX_VALUE/1000; i++) {
+            System.out.println("HOLAAAAAAAAAA");
+        }
+
     }//GEN-LAST:event_addMPToCommunityButtonActionPerformed
 
     private void deleteMPfromCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPfromCommunityButtonActionPerformed
@@ -978,7 +984,48 @@ public class MainView extends javax.swing.JFrame {
 
     private void calculateCommunitiesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateCommunitiesButtonActionPerformed
         // TODO communtiy management calculate communities button pressed
+        calculateCommunitiesButton.setEnabled(false);
+        CalculateCommunitiesSwingWorker sw = new CalculateCommunitiesSwingWorker();
+        sw.execute();
     }//GEN-LAST:event_calculateCommunitiesButtonActionPerformed
+    private CalculateCommunitiesSwingWorker sumSwingWorker;
+    private class CalculateCommunitiesSwingWorker extends SwingWorker<String,Integer> {
+        // doInBackground method is executed in special thread. out of GUI thread.
+        // We must NOT manipulate with GUI components
+        @Override
+        protected String doInBackground() throws Exception {
+            int result = 0;
+            for(int i=0; i <= 100; i++) {
+                // simulate long time operation
+                Thread.sleep(20);
+                result += i;
+                // call process function
+                publish(i);
+            }
+            return "" + result;
+        }
+        // done method is executed in GUI thread.
+        // We can manipulate with GUI components
+        @Override
+        protected void done() {
+            calculateCommunitiesButton.setEnabled(true);
+            try {
+                // get method get us result from do in background
+                JOptionPane.showMessageDialog(null, "Result is " + get());
+            } catch (ExecutionException ex) {
+                JOptionPane.showMessageDialog(null,"Error");
+            } catch (InterruptedException ex) {
+                throw new RuntimeException("Operation interrupted (this should never happen)",ex);
+            }
+        }
+        // process method is executed in GUI thread.
+        // We can manipulate with GUI components
+        @Override
+        protected void process(List<Integer> chunks) {
+            algorithmProgressBar.setValue(chunks.get(chunks.size()-1));
+        }
+    }
+
 
     /**
      * @param args the command line arguments
