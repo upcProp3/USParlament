@@ -1,6 +1,7 @@
 package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.shared13.Node;
+import es.upc.fib.prop.usParlament.misc.State;
 
 import java.util.ArrayList;
 import java.util.List;

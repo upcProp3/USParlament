@@ -3,6 +3,7 @@ package es.upc.fib.prop.usParlament.domain;
 import es.upc.fib.prop.usParlament.misc.JSONArray;
 import es.upc.fib.prop.usParlament.misc.JSONObject;
 import es.upc.fib.prop.usParlament.misc.JSONString;
+import es.upc.fib.prop.usParlament.misc.State;
 
 import java.util.ArrayList;
 import java.util.Set;

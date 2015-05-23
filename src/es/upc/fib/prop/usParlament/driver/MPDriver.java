@@ -1,6 +1,7 @@
 package es.upc.fib.prop.usParlament.driver;
 
 import es.upc.fib.prop.usParlament.domain.*;
+import es.upc.fib.prop.usParlament.misc.State;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
