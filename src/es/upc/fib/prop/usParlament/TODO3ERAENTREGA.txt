@@ -209,10 +209,10 @@ arguments: jAttr is a JSON object the following structure:
 
 }
 -----------------------------------------
-ASSIGNED:
-DONE:
-addOrModifyAttrDef(JSON)
-arguments: JSON is a JSON string with the following structure:
+ASSIGNED: Àlex Miró
+DONE: 23.05.15
+addOrModifyAttrDef(jAttrDef)
+arguments: jAttrDef is a JSON object with the following structure:
 {
 	"AttrDefName":<attrdef>,
 	"Importance":<importance>
