@@ -8,6 +8,7 @@ package es.upc.fib.prop.usParlament.presentation;
 import es.upc.fib.prop.usParlament.misc.JSON;
 import es.upc.fib.prop.usParlament.misc.JSONArray;
 import es.upc.fib.prop.usParlament.misc.JSONObject;
+import es.upc.fib.prop.usParlament.misc.JSONString;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -867,23 +868,30 @@ public class MainView extends javax.swing.JFrame {
         
         
         if(mainWindow.getSelectedIndex()==1){//If we are on the MP management Window
+            //////INITIALIZING THE MP TABLE
             JSONObject j = PresentationController.getMPList();
             //MPsCurrentCongressTable
             DefaultTableModel model = (DefaultTableModel)currentMPsTable.getModel();
             DefaultTableModel dtm = new DefaultTableModel();
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
-            
-            boolean createdColumns = false;
+
+            //Create columns
+            JSONObject jattrd = PresentationController.getAttrDefs();
+            JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
+
+            dtm.addColumn("District");
+            dtm.addColumn("State");
+
+            for(JSON jo:a.getArray()){
+                dtm.addColumn(((JSONString)((JSONObject)jo).getJSONByKey("AttrDefName")).getValue());
+            }
+
+
             for(JSON jo:ja.getArray()){
                 
                 Map<String,String> ms = ((JSONObject)jo).basicJSONObjectGetInfo();
                 System.out.println(ms);
                 
-                if(!createdColumns){
-                    for(String col:ms.keySet())
-                        dtm.addColumn(col);
-                    createdColumns = true;
-                }
                 Vector<String> row = new Vector<String>();
                 for(int pos = 0;pos<ja.getArray().size();pos++){
                     String s = dtm.getColumnName(pos);
@@ -897,6 +905,36 @@ public class MainView extends javax.swing.JFrame {
             }
             
             currentMPsTable.setModel(dtm);
+
+
+            ////FINISHING ADDING THE MP TABLE
+            ///INITIALIZE ATTR DEFINITION TABLE
+            DefaultTableModel adtm = new DefaultTableModel();
+            adtm.addColumn("AttrDefName");
+            adtm.addColumn("AttrDefImportance");
+
+            JSONObject jotd = PresentationController.getAttrDefs();
+            JSONArray jatd = ((JSONArray)jotd.getJSONByKey("Attribute Definitions"));
+
+            for(JSON element:jatd.getArray()){
+
+                Map<String,String> ms = ((JSONObject)element).basicJSONObjectGetInfo();
+                System.out.println(ms);
+
+                Vector<String> row = new Vector<String>();
+                for(int pos = 0;pos<jatd.getArray().size();pos++){
+                    String s = adtm.getColumnName(pos);
+                    if(ms.containsKey(s)){
+                        row.add(ms.get(s));
+                    }
+                }
+
+                adtm.addRow(row);
+
+            }
+
+            attrDefinitionsTable.setModel(adtm);
+            ///FINISHING ATTR DEFINITION TABLE
         }
         
         
@@ -906,18 +944,27 @@ public class MainView extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel)MPsCurrentCongressTable.getModel();
             DefaultTableModel dtm = new DefaultTableModel();
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
-            
-            boolean createdColumns = false;
+
+
+            //Create columns
+            dtm.addColumn("District");
+            dtm.addColumn("State");
+
+            /*
+            JSONObject jattrd = PresentationController.getAttrDefs();
+            JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
+            for(JSON jo:a.getArray()){
+                dtm.addColumn(((JSONString)((JSONObject)jo).getJSONByKey("AttrDefName")).getValue());
+            }
+            */
+
+
+
             for(JSON jo:ja.getArray()){
                 
                 Map<String,String> ms = ((JSONObject)jo).basicJSONObjectGetInfo();
                 System.out.println(ms);
                 
-                if(!createdColumns){
-                    for(String col:ms.keySet())
-                        dtm.addColumn(col);
-                    createdColumns = true;
-                }
                 Vector<String> row = new Vector<String>();
                 for(int pos = 0;pos<ja.getArray().size();pos++){
                     String s = dtm.getColumnName(pos);
