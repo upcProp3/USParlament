@@ -859,17 +859,10 @@ public class MainView extends javax.swing.JFrame {
         // TODO community management delete mp from communtiy button pressed
     }//GEN-LAST:event_deleteMPfromCommunityButtonActionPerformed
 
-    private void mainWindowStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_mainWindowStateChanged
-        // TODO code for initializing when we change the window
-        // In this function goes the code that needs to be executed when we change the window
-        //the winows are numbered 0..n-1 in their order on the top
-        //There are implementations of an initialization on the code below
-        System.out.println("CANVI DE PESTANYA "+ mainWindow.getSelectedIndex());
-        
-        
-        if(mainWindow.getSelectedIndex()==1){//If we are on the MP management Window
-            //////INITIALIZING THE MP TABLE
-            JSONObject j = PresentationController.getMPList();
+    
+    private void updateMPManagementMPTable()
+    {
+        JSONObject j = PresentationController.getMPList();
             //MPsCurrentCongressTable
             DefaultTableModel model = (DefaultTableModel)currentMPsTable.getModel();
             DefaultTableModel dtm = new DefaultTableModel();
@@ -906,10 +899,11 @@ public class MainView extends javax.swing.JFrame {
             
             currentMPsTable.setModel(dtm);
 
-
-            ////FINISHING ADDING THE MP TABLE
-            ///INITIALIZE ATTR DEFINITION TABLE
-            DefaultTableModel adtm = new DefaultTableModel();
+    }
+    
+    private void updateMPManagementAttrDefinitionTable()
+    {
+         DefaultTableModel adtm = new DefaultTableModel();
             adtm.addColumn("AttrDefName");
             adtm.addColumn("AttrDefImportance");
 
@@ -934,23 +928,21 @@ public class MainView extends javax.swing.JFrame {
             }
 
             attrDefinitionsTable.setModel(adtm);
-            ///FINISHING ATTR DEFINITION TABLE
-        }
-        
-        
-        if(mainWindow.getSelectedIndex()==3){//If we are on the MP management Window
-            JSONObject j = PresentationController.getShortMPList();
+    }
+    
+    private void compareWindowMPShortTable()
+    {
+        JSONObject j = PresentationController.getShortMPList();
             //MPsCurrentCongressTable
             DefaultTableModel model = (DefaultTableModel)MPsCurrentCongressTable.getModel();
             DefaultTableModel dtm = new DefaultTableModel();
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
-
             //Create columns
             dtm.addColumn("District");
             dtm.addColumn("State");
 
-            /*
+            /* If we wanted the full table :O
             JSONObject jattrd = PresentationController.getAttrDefs();
             JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
             for(JSON jo:a.getArray()){
@@ -958,14 +950,12 @@ public class MainView extends javax.swing.JFrame {
             }
             */
 
-
-
             for(JSON jo:ja.getArray()){
                 
                 Map<String,String> ms = ((JSONObject)jo).basicJSONObjectGetInfo();
                 System.out.println(ms);
                 
-                Vector<String> row = new Vector<String>();
+                Vector<String> row = new Vector<>();
                 for(int pos = 0;pos<ja.getArray().size();pos++){
                     String s = dtm.getColumnName(pos);
                     if(ms.containsKey(s)){
@@ -978,11 +968,37 @@ public class MainView extends javax.swing.JFrame {
             }
             
             MPsCurrentCongressTable.setModel(dtm);
+    }
+    
+    private void mainWindowStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_mainWindowStateChanged
+        // TODO code for initializing when we change the window
+        // In this function goes the code that needs to be executed when we change the window
+        //the winows are numbered 0..n-1 in their order on the top
+        //There are implementations of an initialization on the code below
+        System.out.println("CANVI DE PESTANYA "+ mainWindow.getSelectedIndex());
+        
+        
+        if(mainWindow.getSelectedIndex()==1){//If we are on the MP management Window
+            //////INITIALIZING THE MP TABLE
+            updateMPManagementMPTable();
+            ///INITIALIZE ATTR DEFINITION TABLE
+             updateMPManagementAttrDefinitionTable();
+            ///FINISHING ATTR DEFINITION TABLE
+        }
+        
+        
+        
+        if(mainWindow.getSelectedIndex()==3){//If we are on the compare window
+            compareWindowMPShortTable();
         }
     }//GEN-LAST:event_mainWindowStateChanged
 
     private void addMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPButtonActionPerformed
         // TODO MP management addMP button pressed
+        JFrame jf = new AddMPWindow();
+        jf.setVisible(true);
+        System.out.println("TANCADA");
+        
     }//GEN-LAST:event_addMPButtonActionPerformed
 
     private void modifyMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyMPButtonActionPerformed
