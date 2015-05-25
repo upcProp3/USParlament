@@ -75,7 +75,35 @@ public class PresentationController {
     static public JSONObject getAttrDefs()
     {
         //return domainController.getAttrDefs();
-        return null;
+
+        JSONObject ret = new JSONObject();
+        JSONArray ja = new JSONArray();
+
+        for(int z = 0;z<5;z++){
+            JSONObject jo = new JSONObject();
+            jo.addPair(new JSONString("AttrDefName"),new JSONString("AttrDef"+z));
+            jo.addPair(new JSONString("AttrDefImportance"),new JSONString(Integer.toString(z%3)));
+            ja.addElement(jo);
+        }
+        ret.addPair(new JSONString("Attribute Definitions"),ja);
+
+        return ret;
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

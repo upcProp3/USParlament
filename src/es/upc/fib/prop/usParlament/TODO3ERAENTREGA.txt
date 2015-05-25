@@ -13,11 +13,36 @@ Exception convention example:
 	}
 }
 
+TODO: ALSO, A BIT OF THE DOMAIN CONTROLLER STRUCTURE NEED TO BE CHANGED, INSTEAD OF PRIMARY AND SECONDARY THERE
+TODO: WILL NOW BE A CURRENTPARTITION AND A PARTITION1 AND PARTITION2, WE NEED TO CHANGE THE NAMES AND ADD THE
+TODO: CORRESPONDING FUNCTIONS
+
 
 DomainController:
 ======================================
 GETTERS:
 =======================================
+
+----------------------------------------
+ASSIGNED:
+DONE:
+
+existsAttrDef(jAttr)
+arguments: jMP is a JSON object with the following structure, the function returns a bool
+{
+	"AttrDefName":<nomAttributeDefinition>
+}
+----------------------------------------
+ASSIGNED:
+DONE:
+
+existsMP(jMP)
+arguments: jMP is a JSON object with the following structure, the function returns a bool
+{
+	"State":<codiEstat>,
+	"District":<numerodistricte>,
+}
+
 ----------------------------------------
 ASSIGNED: Àlex Miró
 DONE: 20.05.15
