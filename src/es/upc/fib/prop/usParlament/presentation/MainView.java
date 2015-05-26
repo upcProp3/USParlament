@@ -5,6 +5,7 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
+import es.upc.fib.prop.usParlament.domain.DomainController;
 import es.upc.fib.prop.usParlament.misc.JSON;
 import es.upc.fib.prop.usParlament.misc.JSONArray;
 import es.upc.fib.prop.usParlament.misc.JSONObject;
@@ -26,8 +27,9 @@ public class MainView extends javax.swing.JFrame {
     /**
      * Creates new form MainView
      */
-    public MainView() {
+    public MainView(PresentationController precon) {
         initComponents();
+        pc = precon;
     }
 
     /**
@@ -44,7 +46,6 @@ public class MainView extends javax.swing.JFrame {
         congressManagementView = new javax.swing.JPanel();
         MPTablePanel = new javax.swing.JScrollPane();
         currentMPsTable = new javax.swing.JTable();
-        filterPanel = new javax.swing.JPanel();
         buttonsPanel = new javax.swing.JPanel();
         addMPButton = new javax.swing.JButton();
         modifyMPButton = new javax.swing.JButton();
@@ -147,19 +148,6 @@ public class MainView extends javax.swing.JFrame {
         currentMPsTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         currentMPsTable.setName("currentMPsTable"); // NOI18N
         MPTablePanel.setViewportView(currentMPsTable);
-
-        filterPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout filterPanelLayout = new javax.swing.GroupLayout(filterPanel);
-        filterPanel.setLayout(filterPanelLayout);
-        filterPanelLayout.setHorizontalGroup(
-            filterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 156, Short.MAX_VALUE)
-        );
-        filterPanelLayout.setVerticalGroup(
-            filterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 396, Short.MAX_VALUE)
-        );
 
         buttonsPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -338,17 +326,17 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(congressManagementViewLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(attrDefPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
-                    .addComponent(MPTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(congressManagementViewLayout.createSequentialGroup()
                         .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(attrDefinitionsLabel)
-                            .addComponent(currentCongressLabel))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(filterPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(attrDefinitionsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(attrDefPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                            .addGroup(congressManagementViewLayout.createSequentialGroup()
+                                .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(attrDefinitionsLabel)
+                                    .addComponent(currentCongressLabel))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(attrDefinitionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(MPTablePanel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -357,12 +345,9 @@ public class MainView extends javax.swing.JFrame {
             congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(congressManagementViewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(filterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, congressManagementViewLayout.createSequentialGroup()
-                        .addComponent(currentCongressLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(MPTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addComponent(currentCongressLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(MPTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(attrDefinitionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -862,14 +847,14 @@ public class MainView extends javax.swing.JFrame {
     
     private void updateMPManagementMPTable()
     {
-        JSONObject j = PresentationController.getMPList();
+        JSONObject j = pc.getMPList();
             //MPsCurrentCongressTable
             DefaultTableModel model = (DefaultTableModel)currentMPsTable.getModel();
             DefaultTableModel dtm = new DefaultTableModel();
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
             //Create columns
-            JSONObject jattrd = PresentationController.getAttrDefs();
+            JSONObject jattrd = pc.getAttrDefs();
             JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
 
             dtm.addColumn("District");
@@ -907,7 +892,7 @@ public class MainView extends javax.swing.JFrame {
             adtm.addColumn("AttrDefName");
             adtm.addColumn("AttrDefImportance");
 
-            JSONObject jotd = PresentationController.getAttrDefs();
+            JSONObject jotd = pc.getAttrDefs();
             JSONArray jatd = ((JSONArray)jotd.getJSONByKey("Attribute Definitions"));
 
             for(JSON element:jatd.getArray()){
@@ -932,7 +917,7 @@ public class MainView extends javax.swing.JFrame {
     
     private void compareWindowMPShortTable()
     {
-        JSONObject j = PresentationController.getShortMPList();
+        JSONObject j = pc.getShortMPList();
             //MPsCurrentCongressTable
             DefaultTableModel model = (DefaultTableModel)MPsCurrentCongressTable.getModel();
             DefaultTableModel dtm = new DefaultTableModel();
@@ -995,7 +980,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void addMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPButtonActionPerformed
         // TODO MP management addMP button pressed
-        JFrame jf = new AddMPWindow();
+        JFrame jf = new AddMPWindow(pc);
         jf.setVisible(true);
         System.out.println("TANCADA");
         
@@ -1117,14 +1102,18 @@ public class MainView extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainView().setVisible(true);
+                PresentationController prescon = new PresentationController();
+                new MainView(prescon).setVisible(true);
             }
         });
     }
 
+    private PresentationController pc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CommunityManagement;
     private javax.swing.JPanel CommunityPanel1;
@@ -1166,7 +1155,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton deleteAttrDefButton;
     private javax.swing.JButton deleteMPButton;
     private javax.swing.JButton deleteMPfromCommunityButton;
-    private javax.swing.JPanel filterPanel;
     private javax.swing.JLabel labelCommunities;
     private javax.swing.JLabel labelMPs;
     private javax.swing.JLabel list1Label1;

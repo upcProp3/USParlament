@@ -5,11 +5,8 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
-import es.upc.fib.prop.usParlament.misc.JSONArray;
-import es.upc.fib.prop.usParlament.misc.JSONObject;
-import es.upc.fib.prop.usParlament.misc.JSONString;
-import es.upc.fib.prop.usParlament.misc.State;
-
+import es.upc.fib.prop.usParlament.domain.DomainController;
+import es.upc.fib.prop.usParlament.misc.*;
 
 
 /**
@@ -19,11 +16,19 @@ import es.upc.fib.prop.usParlament.misc.State;
  * @author miquel
  */
 public class PresentationController {
-    static public JSONObject getShortMPList()
+
+    private DomainController dc;
+    private JSONizer j;
+    PresentationController()
     {
-        //return domainController.getShortMPList();
+        dc = new DomainController();
+        j = new JSONizer();
+    }
+
+    public JSONObject getShortMPList()
+    {
         //TEST
-        JSONObject j = new JSONObject();
+        /*JSONObject j = new JSONObject();
         JSONArray jay = new JSONArray();
         for(int i = 0;i<10;i++){
             JSONObject jmp = new JSONObject();
@@ -32,12 +37,22 @@ public class PresentationController {
             jay.addElement(jmp);
         }
         j.addPair(new JSONString("MPList"),jay);
-        return j;
+        return j;*/
+        ///END OF TEST
+        //GOOD CODE
+        return j.StringToJSON(dc.getShortMPList());
+        //END OF GOOD CODE
     }
     
-    static public JSONObject getMPList()
+    public void addMP(JSONObject mp,JSONArray attr)
     {
-        // return domainController.getMPList();
+        
+    }
+
+    public JSONObject getMPList()
+    {
+        //////TEST
+
         JSONObject j = new JSONObject();
         JSONArray jay = new JSONArray();
         for(int i = 0;i<10;i++){
@@ -52,9 +67,13 @@ public class PresentationController {
         }
         j.addPair(new JSONString("MPList"),jay);
         return j;
+
+        ///FI TEST
+
+        //return j.StringToJSON(dc.getMPList());
     }
     
-    static public JSONObject getMPInfo(State state, int district)
+    public JSONObject getMPInfo(State state, int district)
     {
         //return domainController.getMPInfo(state,district);
         return null;
@@ -66,13 +85,13 @@ public class PresentationController {
         return null;
     }
     
-    static public JSONObject getSecCommunityNumber()
+    public JSONObject getSecCommunityNumber()
     {
         //return domainController.getSecCommuntiyNumber();
         return null;
     }
     
-    static public JSONObject getAttrDefs()
+    public JSONObject getAttrDefs()
     {
         //return domainController.getAttrDefs();
 

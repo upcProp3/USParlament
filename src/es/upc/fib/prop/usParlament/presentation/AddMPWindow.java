@@ -8,12 +8,16 @@ package es.upc.fib.prop.usParlament.presentation;
 import es.upc.fib.prop.usParlament.misc.JSON;
 import es.upc.fib.prop.usParlament.misc.JSONArray;
 import es.upc.fib.prop.usParlament.misc.JSONObject;
+import es.upc.fib.prop.usParlament.misc.JSONString;
 import es.upc.fib.prop.usParlament.misc.State;
+import java.awt.event.WindowEvent;
 import java.util.Map;
 import java.util.Vector;
 //import javafx.scene.input.TouchPoint;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -24,8 +28,10 @@ public class AddMPWindow extends javax.swing.JFrame {
     /**
      * Creates new form AddMPWindow
      */
-    public AddMPWindow() {
+    public AddMPWindow(PresentationController pcon) {
         initComponents();
+        initElements();
+        pc = pcon;
     }
 
     /**
@@ -82,18 +88,10 @@ public class AddMPWindow extends javax.swing.JFrame {
 
         MPAttributesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Attr.Name", "Value"
             }
         ));
         scrollPane.setViewportView(MPAttributesTable);
@@ -208,14 +206,24 @@ public class AddMPWindow extends javax.swing.JFrame {
         String dist = districtTextField.getText();
         String state = (stateChooser.getSelectedItem().toString());
         String name = MPNameTextField.getText();
-        //HAVE TO CHECK IF ALREADY EXISTS
+        //HAVE TO CHECK IF ALREADY EXISTS THE DISTRICT:STATE PAIR IMPORTANT
         if(name.equals("") || dist.equals("")){
             JOptionPane.showMessageDialog(new JFrame(), "Please add a valid input to value");
+            return;
         }
+        mp = new JSONObject();
+        mp.addPair(new JSONString("Name"),new JSONString(name));
+        mp.addPair(new JSONString("District"), new JSONString(dist));
+        mp.addPair(new JSONString("State"),new JSONString(state));
+        
+        pc.addMP(mp,jattributes);
+        JOptionPane.showMessageDialog(new JFrame(), "MP Added");
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_addMPButtonActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO INICIALITZIACIO DELS ELEMENTS DE LA FINESTRA
+    private void initElements()
+    {
         mp = new JSONObject();
         jattributes = new JSONArray();
         
@@ -223,10 +231,13 @@ public class AddMPWindow extends javax.swing.JFrame {
             stateChooser.addItem(s);
         }
         
+        DefaultTableModel dtm = new DefaultTableModel();
+        dtm.addColumn("Attr.Name");
+        dtm.addColumn("Value");
+        MPAttributesTable.setModel(dtm);
         
         
-        
-        JSONObject jotd = PresentationController.getAttrDefs();
+        JSONObject jotd = pc.getAttrDefs();
         JSONArray jatd = ((JSONArray)jotd.getJSONByKey("Attribute Definitions"));
 
         for(JSON element:jatd.getArray()){
@@ -238,6 +249,10 @@ public class AddMPWindow extends javax.swing.JFrame {
             
 
         }
+    }
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO INICIALITZIACIO DELS ELEMENTS DE LA FINESTRA
+        
 
         
     }//GEN-LAST:event_formWindowOpened
@@ -246,21 +261,27 @@ public class AddMPWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_valueTextFieldActionPerformed
 
+    @SuppressWarnings("empty-statement")
     private void addAttributeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAttributeButtonActionPerformed
         // TODO add Attribute
         
         String value = valueTextField.getText();
-        String attr = ((String)attributeDefChooser.getSelectedItem());
-        
-        
+        Object oattr = attributeDefChooser.getSelectedItem();
+        String attr = ((String)oattr);
         
         if(value.equals("")){
             JOptionPane.showMessageDialog(new JFrame(), "Please add a valid input to value");
+            return;
         }
         
-        
-        
-        
+        JSONObject attro = new JSONObject();
+        attro.addPair(new JSONString(attr),new JSONString(value));
+        valueTextField.setText("");
+        attributeDefChooser.removeItem(oattr);
+        jattributes.addElement(attro);
+        DefaultTableModel dtm = (DefaultTableModel)MPAttributesTable.getModel();
+        String[] sa = {attr,value};
+        dtm.addRow(sa);
     }//GEN-LAST:event_addAttributeButtonActionPerformed
 
     /**
@@ -291,9 +312,10 @@ public class AddMPWindow extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        //ONLY WHEN TESTING THIS WINDOW
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddMPWindow().setVisible(true);
+                new AddMPWindow(new PresentationController()).setVisible(true);
             }
         });
     }
@@ -301,6 +323,7 @@ public class AddMPWindow extends javax.swing.JFrame {
     
     private JSONArray jattributes ;
     private JSONObject mp;
+    private PresentationController pc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DistrictLabel;
     private javax.swing.JTable MPAttributesTable;
