@@ -28,8 +28,9 @@ public class MainView extends javax.swing.JFrame {
      * Creates new form MainView
      */
     public MainView(PresentationController precon) {
-        initComponents();
         pc = precon;
+        initComponents();
+        
     }
 
     /**
@@ -842,10 +843,11 @@ public class MainView extends javax.swing.JFrame {
 
     private void deleteMPfromCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPfromCommunityButtonActionPerformed
         // TODO community management delete mp from communtiy button pressed
+
     }//GEN-LAST:event_deleteMPfromCommunityButtonActionPerformed
 
     
-    private void updateMPManagementMPTable()
+    public void updateMPManagementMPTable()
     {
         JSONObject j = pc.getMPList();
             //MPsCurrentCongressTable
@@ -980,7 +982,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void addMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPButtonActionPerformed
         // TODO MP management addMP button pressed
-        JFrame jf = new AddMPWindow(pc);
+        JFrame jf = new AddMPWindow(pc,this);
         jf.setVisible(true);
         System.out.println("TANCADA");
         
@@ -992,6 +994,8 @@ public class MainView extends javax.swing.JFrame {
 
     private void deleteMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPButtonActionPerformed
         // TODO MP management delete MP button pressed
+        this.updateMPManagementMPTable();
+        System.out.println("UPDATING");
     }//GEN-LAST:event_deleteMPButtonActionPerformed
 
     private void loadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCongressButtonActionPerformed
