@@ -46,13 +46,16 @@ public class PresentationController {
     
     public void addMP(JSONObject mp,JSONArray attr)
     {
+        dc.addMP(mp);
+        
+        
         
     }
 
     public JSONObject getMPList()
     {
         //////TEST
-
+/*
         JSONObject j = new JSONObject();
         JSONArray jay = new JSONArray();
         for(int i = 0;i<10;i++){
@@ -67,10 +70,10 @@ public class PresentationController {
         }
         j.addPair(new JSONString("MPList"),jay);
         return j;
-
+*/
         ///FI TEST
 
-        //return j.StringToJSON(dc.getMPList());
+        return j.StringToJSON(dc.getMPList());
     }
     
     public JSONObject getMPInfo(State state, int district)

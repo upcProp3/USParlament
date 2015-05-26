@@ -24,6 +24,13 @@ public class DomainController
     private ArrayList<Set<MP>> mainPartition;
     private ArrayList<Set<MP>> secondaryPartition;
 
+    
+    public DomainController()
+    {
+        currentCongress = new Congress();
+        mainPartition = new ArrayList<>();
+        secondaryPartition = new ArrayList<>();
+    }
 
     /**
      * @return It returns an String with the State and District values for each MP at the current congress.
@@ -168,13 +175,15 @@ public class DomainController
      */
     public void addMP(JSONObject jMP) {
         JSONString key = new JSONString("State");
-        JSONString jState = new JSONString(jMP.getJSONByKey(key).stringify());
+        JSONString jState = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
         key.setValue("District");
-        JSONString jDistr = new JSONString(jMP.getJSONByKey(key).stringify());
+        JSONString jDistr = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
         key.setValue("Name");
-        JSONString jName = new JSONString(jMP.getJSONByKey(key).stringify());
-        MP m = new MP(jName.stringify(), State.valueOf(jState.stringify()), Integer.valueOf(jDistr.stringify()));
+        JSONString jName = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
+        System.out.println(jState.getValue());
+        MP m = new MP(jName.getValue(), State.valueOf(jState.getValue()), Integer.valueOf(jDistr.getValue()));
         currentCongress.addNode(m);
+        System.out.println(currentCongress);
     }
 
     /**
