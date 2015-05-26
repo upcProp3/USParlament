@@ -28,9 +28,10 @@ public class AddMPWindow extends javax.swing.JFrame {
     /**
      * Creates new form AddMPWindow
      */
-    public AddMPWindow() {
+    public AddMPWindow(PresentationController pcon) {
         initComponents();
         initElements();
+        pc = pcon;
     }
 
     /**
@@ -215,7 +216,7 @@ public class AddMPWindow extends javax.swing.JFrame {
         mp.addPair(new JSONString("District"), new JSONString(dist));
         mp.addPair(new JSONString("State"),new JSONString(state));
         
-        PresentationController.addMP(mp,jattributes);
+        pc.addMP(mp,jattributes);
         JOptionPane.showMessageDialog(new JFrame(), "MP Added");
         setVisible(false);
         dispose();
@@ -236,7 +237,7 @@ public class AddMPWindow extends javax.swing.JFrame {
         MPAttributesTable.setModel(dtm);
         
         
-        JSONObject jotd = PresentationController.getAttrDefs();
+        JSONObject jotd = pc.getAttrDefs();
         JSONArray jatd = ((JSONArray)jotd.getJSONByKey("Attribute Definitions"));
 
         for(JSON element:jatd.getArray()){
@@ -311,9 +312,10 @@ public class AddMPWindow extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        //ONLY WHEN TESTING THIS WINDOW
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddMPWindow().setVisible(true);
+                new AddMPWindow(new PresentationController()).setVisible(true);
             }
         });
     }
@@ -321,6 +323,7 @@ public class AddMPWindow extends javax.swing.JFrame {
     
     private JSONArray jattributes ;
     private JSONObject mp;
+    private PresentationController pc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DistrictLabel;
     private javax.swing.JTable MPAttributesTable;

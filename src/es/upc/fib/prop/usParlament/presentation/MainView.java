@@ -5,6 +5,7 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
+import es.upc.fib.prop.usParlament.domain.DomainController;
 import es.upc.fib.prop.usParlament.misc.JSON;
 import es.upc.fib.prop.usParlament.misc.JSONArray;
 import es.upc.fib.prop.usParlament.misc.JSONObject;
@@ -26,8 +27,9 @@ public class MainView extends javax.swing.JFrame {
     /**
      * Creates new form MainView
      */
-    public MainView() {
+    public MainView(PresentationController precon) {
         initComponents();
+        pc = precon;
     }
 
     /**
@@ -845,14 +847,14 @@ public class MainView extends javax.swing.JFrame {
     
     private void updateMPManagementMPTable()
     {
-        JSONObject j = PresentationController.getMPList();
+        JSONObject j = pc.getMPList();
             //MPsCurrentCongressTable
             DefaultTableModel model = (DefaultTableModel)currentMPsTable.getModel();
             DefaultTableModel dtm = new DefaultTableModel();
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
             //Create columns
-            JSONObject jattrd = PresentationController.getAttrDefs();
+            JSONObject jattrd = pc.getAttrDefs();
             JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
 
             dtm.addColumn("District");
@@ -890,7 +892,7 @@ public class MainView extends javax.swing.JFrame {
             adtm.addColumn("AttrDefName");
             adtm.addColumn("AttrDefImportance");
 
-            JSONObject jotd = PresentationController.getAttrDefs();
+            JSONObject jotd = pc.getAttrDefs();
             JSONArray jatd = ((JSONArray)jotd.getJSONByKey("Attribute Definitions"));
 
             for(JSON element:jatd.getArray()){
@@ -915,7 +917,7 @@ public class MainView extends javax.swing.JFrame {
     
     private void compareWindowMPShortTable()
     {
-        JSONObject j = PresentationController.getShortMPList();
+        JSONObject j = pc.getShortMPList();
             //MPsCurrentCongressTable
             DefaultTableModel model = (DefaultTableModel)MPsCurrentCongressTable.getModel();
             DefaultTableModel dtm = new DefaultTableModel();
@@ -978,7 +980,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void addMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPButtonActionPerformed
         // TODO MP management addMP button pressed
-        JFrame jf = new AddMPWindow();
+        JFrame jf = new AddMPWindow(pc);
         jf.setVisible(true);
         System.out.println("TANCADA");
         
@@ -1100,14 +1102,18 @@ public class MainView extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainView().setVisible(true);
+                PresentationController prescon = new PresentationController();
+                new MainView(prescon).setVisible(true);
             }
         });
     }
 
+    private PresentationController pc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CommunityManagement;
     private javax.swing.JPanel CommunityPanel1;
