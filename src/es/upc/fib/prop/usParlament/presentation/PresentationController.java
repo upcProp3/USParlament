@@ -35,6 +35,11 @@ public class PresentationController {
         return j;
     }
     
+    static public void addMP(JSONObject mp,JSONArray attr)
+    {
+        
+    }
+    
     static public JSONObject getMPList()
     {
         // return domainController.getMPList();
