@@ -10,7 +10,11 @@ import java.util.Set;
 
 /**
  * Created by miquel on 16/05/15.
+ *
+ * All the TEST INSTRUCTIONS (i.e. printing staff) are commented by //.
  */
+
+//TODO: not finished
 public class DomainController
 {
     /*
@@ -21,15 +25,17 @@ public class DomainController
 
      */
     private Congress currentCongress;
-    private ArrayList<Set<MP>> mainPartition;
-    private ArrayList<Set<MP>> secondaryPartition;
+    private ArrayList<Set<MP>> currentPartition;
+    private ArrayList<Set<MP>> partition1;
+    private ArrayList<Set<MP>> partition2;
 
     
     public DomainController()
     {
         currentCongress = new Congress();
-        mainPartition = new ArrayList<>();
-        secondaryPartition = new ArrayList<>();
+        currentPartition = new ArrayList<>();
+        partition1 = new ArrayList<>();
+        partition2 = new ArrayList<>();
     }
 
     /**
@@ -112,11 +118,6 @@ public class DomainController
     }
 
     /**
-     * @return Returns the main number of communities.
-     */
-    public String getMainCommunityNumber() { return String.valueOf(mainPartition.size()); }
-
-    /**
      * @return Returns an String with all the information about the AttrDefinitions defined in the current congress.
      */
     public String getAttrDefs() {
@@ -133,11 +134,20 @@ public class DomainController
         return defs.stringify();
     }
 
-    public String getMPsMainCommunities(String comnumber) {
+    /**
+     * @return Returns the current partition number of communities.
+     */
+    public String getCurrentPartitionNumber() { return String.valueOf(currentPartition.size()); }
+
+    /**
+     * @param comnumber
+     * @return
+     */
+    public String getMPsCurrentPartition(String comnumber) {
         JSONObject mps = new JSONObject();
-        JSONString js = new JSONString("Main Parition Community numer " + comnumber);
+        JSONString js = new JSONString("Current partition Community numer " + comnumber);
         JSONArray ja = new JSONArray();
-        for (MP mp : mainPartition.get(Integer.parseInt(comnumber))) {
+        for (MP mp : currentPartition.get(Integer.parseInt(comnumber))) {
             JSONObject jo = new JSONObject();
             jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
             jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
@@ -148,17 +158,36 @@ public class DomainController
     }
 
     /**
-     * @return Returns the secondary number of communities.
+     * @return Returns the partition 1 number of communities.
      */
-    public String getSecCommunityNumber() {
-        return Integer.toString(secondaryPartition.size());
+    public String getP1CommunityNumber() { return String.valueOf(partition1.size()); }
+
+    public String getMPsPartition1 (String comnumber) {
+        JSONObject mps = new JSONObject();
+        JSONString js = new JSONString("Parition1 Community numer " + comnumber);
+        JSONArray ja = new JSONArray();
+        for (MP mp : partition1.get(Integer.parseInt(comnumber))) {
+            JSONObject jo = new JSONObject();
+            jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
+            jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
+            ja.addElement(jo);
+        }
+        mps.addPair(js, ja);
+        return mps.stringify();
     }
 
-    public String getMPsSecCommunities(String comnumber) {
+    /**
+     * @return Returns the partition 2 number of communities.
+     */
+    public String getP2CommunityNumber() {
+        return Integer.toString(partition2.size());
+    }
+
+    public String getMPsPartiton2(String comnumber) {
         JSONObject mps = new JSONObject();
-        JSONString js = new JSONString("Main Parition Community numer "+comnumber);
+        JSONString js = new JSONString("Parition 2 Community numer "+comnumber);
         JSONArray ja = new JSONArray();
-        for (MP mp : secondaryPartition.get(Integer.parseInt(comnumber))) {
+        for (MP mp : partition2.get(Integer.parseInt(comnumber))) {
             JSONObject jo = new JSONObject();
             jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
             jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
@@ -180,10 +209,10 @@ public class DomainController
         JSONString jDistr = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
         key.setValue("Name");
         JSONString jName = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
-        System.out.println(jState.getValue());
+        //System.out.println(jState.getValue());
         MP m = new MP(jName.getValue(), State.valueOf(jState.getValue()), Integer.valueOf(jDistr.getValue()));
         currentCongress.addNode(m);
-        System.out.println(currentCongress);
+        //System.out.println(currentCongress);
     }
 
     /**
@@ -193,11 +222,12 @@ public class DomainController
      */
     public void deleteMP(JSONObject jMP) {
         JSONString key = new JSONString("State");
-        JSONString jState = new JSONString(jMP.getJSONByKey(key).stringify());
+        JSONString jState = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
         key.setValue("District");
-        JSONString jDistr = new JSONString(jMP.getJSONByKey(key).stringify());
+        JSONString jDistr = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
         key.setValue("Name");
-        MP m = currentCongress.getMP(State.valueOf(jState.stringify()), Integer.valueOf(jDistr.stringify()));
+        JSONString jName = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
+        MP m = currentCongress.getMP(State.valueOf(jState.getValue()), Integer.valueOf(jDistr.getValue()));
         currentCongress.removeNode(m);
     }
 
@@ -207,15 +237,15 @@ public class DomainController
      */
     public void addOrModifyAttribute(JSONObject jAttr) {
         JSONString key = new JSONString("State");
-        JSONString jState = new JSONString(jAttr.getJSONByKey(key).stringify());
+        JSONString jState = new JSONString(((JSONString)jAttr.getJSONByKey(key)).getValue());
         key.setValue("District");
-        JSONString jDistr = new JSONString(jAttr.getJSONByKey(key).stringify());
-        MP m = currentCongress.getMP(State.valueOf(jState.stringify()), Integer.valueOf(jDistr.stringify()));
+        JSONString jDistr = new JSONString(((JSONString)jAttr.getJSONByKey(key)).getValue());
+        MP m = currentCongress.getMP(State.valueOf(jState.getValue()), Integer.valueOf(jDistr.getValue()));
         key.setValue("AttrDef");
-        JSONString jAttrD = new JSONString(jAttr.getJSONByKey(key).stringify());
+        JSONString jAttrD = new JSONString(((JSONString)jAttr.getJSONByKey(key)).getValue());
         key.setValue("AttrValue");
-        JSONString jAttrV = new JSONString(jAttr.getJSONByKey(key).stringify());
-        Attribute a = new Attribute(currentCongress.getAttrDef(jAttrD.stringify()), jAttrV);
+        JSONString jAttrV = new JSONString(((JSONString)jAttr.getJSONByKey(key)).getValue());
+        Attribute a = new Attribute(currentCongress.getAttrDef(jAttrD.getValue()), jAttrV.getValue());
         m.addAttribute(a);
     }
 
@@ -226,13 +256,13 @@ public class DomainController
      */
     public void deleteAttribute(JSONObject jAttr) {
         JSONString key = new JSONString("State");
-        JSONString jState = new JSONString(jAttr.getJSONByKey(key).stringify());
+        JSONString jState = new JSONString(((JSONString)jAttr.getJSONByKey(key)).getValue());
         key.setValue("District");
-        JSONString jDistr = new JSONString(jAttr.getJSONByKey(key).stringify());
-        MP m = currentCongress.getMP(State.valueOf(jState.stringify()), Integer.valueOf(jDistr.stringify()));
+        JSONString jDistr = new JSONString(((JSONString)jAttr.getJSONByKey(key)).getValue());
+        MP m = currentCongress.getMP(State.valueOf(jState.getValue()), Integer.valueOf(jDistr.getValue()));
         key.setValue("AttrDef");
-        JSONString jAttrD = new JSONString(jAttr.getJSONByKey(key).stringify());
-        m.removeAttribute(currentCongress.getAttrDef(jAttrD.stringify()));
+        JSONString jAttrD = new JSONString(((JSONString)jAttr.getJSONByKey(key)).getValue());
+        m.removeAttribute(currentCongress.getAttrDef(jAttrD.getValue()));
     }
 
     /**
@@ -242,12 +272,14 @@ public class DomainController
      */
     public void addOrModifyAttrDef(JSONObject jAttrDef) {
         JSONString key = new JSONString("AttrDefName");
-        JSONString jAttrD = new JSONString(jAttrDef.getJSONByKey(key).stringify());
+        JSONString jAttrD = new JSONString(((JSONString)jAttrDef.getJSONByKey(key)).getValue());
         key.setValue("Importance");
-        JSONString jImp = new JSONString(jAttrDef.getJSONByKey(key).stringify());
-        AttrDefinition ad = new AttrDefinition(jAttrD.stringify(), Integer.valueOf(jImp.stringify()));
+        JSONString jImp = new JSONString(((JSONString)jAttrDef.getJSONByKey(key)).getValue());
+        AttrDefinition ad = new AttrDefinition(jAttrD.getValue(), Integer.valueOf(jImp.getValue()));
         if (currentCongress.hasAttrDef(ad)) {
-            currentCongress.getAttrDef(jAttrD.stringify()).setImportance(Integer.valueOf(jImp.stringify()));
+            currentCongress.getAttrDef(jAttrD.getValue()).setImportance(Integer.valueOf(jImp.getValue()));
+        } else {
+            currentCongress.addAttrDef(ad);
         }
     }
 
@@ -257,7 +289,7 @@ public class DomainController
      */
     public void deleteAttrDef(JSONObject jAttrDef) {
         JSONString key = new JSONString("AttrDefName");
-        JSONString jAttrD = new JSONString(jAttrDef.getJSONByKey(key).stringify());
-        currentCongress.removeAttrDef(currentCongress.getAttrDef(jAttrD.stringify()));
+        JSONString jAttrD = new JSONString(((JSONString)jAttrDef.getJSONByKey(key)).getValue());
+        currentCongress.removeAttrDef(currentCongress.getAttrDef(jAttrD.getValue()));
     }
 }

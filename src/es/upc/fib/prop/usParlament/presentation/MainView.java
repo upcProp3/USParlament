@@ -5,7 +5,6 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
-import es.upc.fib.prop.usParlament.domain.DomainController;
 import es.upc.fib.prop.usParlament.misc.JSON;
 import es.upc.fib.prop.usParlament.misc.JSONArray;
 import es.upc.fib.prop.usParlament.misc.JSONObject;
@@ -851,7 +850,7 @@ public class MainView extends javax.swing.JFrame {
     {
         JSONObject j = pc.getMPList();
             //MPsCurrentCongressTable
-            DefaultTableModel model = (DefaultTableModel)currentMPsTable.getModel();
+            //DefaultTableModel model = (DefaultTableModel)currentMPsTable.getModel();
             DefaultTableModel dtm = new DefaultTableModel();
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 

@@ -28,7 +28,7 @@ public class PresentationController {
     public JSONObject getShortMPList()
     {
         //TEST
-        /*JSONObject j = new JSONObject();
+        JSONObject j = new JSONObject();
         JSONArray jay = new JSONArray();
         for(int i = 0;i<10;i++){
             JSONObject jmp = new JSONObject();
@@ -37,10 +37,10 @@ public class PresentationController {
             jay.addElement(jmp);
         }
         j.addPair(new JSONString("MPList"),jay);
-        return j;*/
+        return j;
         ///END OF TEST
         //GOOD CODE
-        return j.StringToJSON(dc.getShortMPList());
+        //return j.StringToJSON(dc.getShortMPList());
         //END OF GOOD CODE
     }
     
@@ -55,7 +55,7 @@ public class PresentationController {
     public JSONObject getMPList()
     {
         //////TEST
-/*
+
         JSONObject j = new JSONObject();
         JSONArray jay = new JSONArray();
         for(int i = 0;i<10;i++){
@@ -70,10 +70,10 @@ public class PresentationController {
         }
         j.addPair(new JSONString("MPList"),jay);
         return j;
-*/
+
         ///FI TEST
 
-        return j.StringToJSON(dc.getMPList());
+        //return j.StringToJSON(dc.getMPList());
     }
     
     public JSONObject getMPInfo(State state, int district)
