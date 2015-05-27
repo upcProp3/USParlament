@@ -1,5 +1,7 @@
 package es.upc.fib.prop.usParlament.domain;
 
+import es.upc.fib.prop.usParlament.data.DataController;
+import es.upc.fib.prop.usParlament.data.DataControllerImpl;
 import es.upc.fib.prop.usParlament.misc.JSONArray;
 import es.upc.fib.prop.usParlament.misc.JSONObject;
 import es.upc.fib.prop.usParlament.misc.JSONString;
@@ -28,6 +30,7 @@ public class DomainController
     private ArrayList<Set<MP>> currentPartition;
     private ArrayList<Set<MP>> partition1;
     private ArrayList<Set<MP>> partition2;
+    private DataController dataController;
 
     
     public DomainController()
@@ -36,6 +39,7 @@ public class DomainController
         currentPartition = new ArrayList<>();
         partition1 = new ArrayList<>();
         partition2 = new ArrayList<>();
+        dataController = new DataControllerImpl("congresses");
     }
 
     /**
