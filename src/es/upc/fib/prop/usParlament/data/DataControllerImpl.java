@@ -12,11 +12,11 @@ import java.util.Map;
  *
  * Created by ondrej on 20.5.15.
  */
-public class CongressManagerImpl implements CongressManager {
+public class DataControllerImpl implements DataController {
 
 	private String path;
 
-	public CongressManagerImpl(String path) {
+	public DataControllerImpl(String path) {
 		this.path = path;
 	}
 

@@ -3,7 +3,7 @@ package es.upc.fib.prop.usParlament.data;
 /**
  * Created by ondrej on 20.5.15.
  */
-public interface CongressManager {
+public interface DataController {
 
 	/**
 	 * save congress into persistent memory. If cogress with the same identificator already exists it will be rewritten.

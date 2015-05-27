@@ -17,16 +17,16 @@ import static org.junit.Assert.assertEquals;
  * JUnit tests of CongressManager class.
  * Created by ondrej on 20.5.15.
  */
-public class CongressManagerTest {
+public class DataControllerTest {
 
 	private final String PATH = "congressManagerTest";
 	private final String[] CONGRESS_NAMES = {"congress0", "congress1", "congress2"};
 	private final String[][] PARTITIONS_NAMES = {{"p00", "p01"}, {"p10", "p11", "p12"}, {"p20", "p21"}};
-	CongressManager manager;
+	DataController manager;
 
 	@Before
 	public void setUp() throws Exception {
-		manager = new CongressManagerImpl(PATH);
+		manager = new DataControllerImpl(PATH);
 	}
 
 	@After
