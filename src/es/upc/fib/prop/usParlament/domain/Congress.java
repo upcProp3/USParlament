@@ -1,5 +1,6 @@
 package es.upc.fib.prop.usParlament.domain;
 
+import es.upc.fib.prop.shared13.Edge;
 import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.shared13.Node;
 import es.upc.fib.prop.usParlament.misc.State;
@@ -13,6 +14,14 @@ import java.util.*;
  */
 public class Congress extends Graph {
 
+
+    public List<Relationship> getRelationships() {
+        List<Relationship> rels = new ArrayList<>();
+        for (Edge edge : getEdges()) {
+            rels.add((Relationship) edge);
+        }
+        return rels;
+    }
 
     class AttrDefComparatorString implements Comparator<AttrDefinition>
     {
