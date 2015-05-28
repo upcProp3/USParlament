@@ -1040,6 +1040,9 @@ public class MainView extends javax.swing.JFrame {
 
     private void newCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCongressButtonActionPerformed
         // TODO MP management new congress button pressed
+        pc.newCongress();
+        updateMPManagementAttrDefinitionTable();
+        updateMPManagementMPTable();
     }//GEN-LAST:event_newCongressButtonActionPerformed
 
     private void newAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAttrDefButtonActionPerformed

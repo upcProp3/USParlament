@@ -130,6 +130,14 @@ public class DomainController
         return defs.stringify();
     }
 
+    public void newCongress()
+    {
+        currentCongress = new Congress();
+        currentPartition = new ArrayList<>();
+        partition1 = new ArrayList<>();
+        partition2 = new ArrayList<>();
+    }
+
     public boolean existsAttrDef(String name)
     {
         return currentCongress.hasAttrDef(new AttrDefinition(name,1));

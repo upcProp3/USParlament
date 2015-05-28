@@ -71,6 +71,11 @@ public class PresentationController {
     {
          return j.StringToJSON(dc.getMPInfo(state,district));
     }
+
+    public void newCongress()
+    {
+        dc.newCongress();
+    }
     
     public JSONObject getMainCommunityNumber()
     {
