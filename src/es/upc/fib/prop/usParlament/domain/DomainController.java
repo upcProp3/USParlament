@@ -5,6 +5,7 @@ import es.upc.fib.prop.usParlament.data.DataControllerImpl;
 import es.upc.fib.prop.usParlament.misc.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -94,28 +95,22 @@ public class DomainController
      * @return Returns all the saved information about the MP (state,district).
      */
     public String getMPInfo(State state, int district) {
-        JSONObject jInfo = new JSONObject();
-        JSONString key = new JSONString("State");
-        JSONString value = new JSONString(state.toString());
-        jInfo.addPair(key, value);
-        key.setValue("District");
-        value.setValue(String.valueOf(district));
-        jInfo.addPair(key, value);
-        key.setValue("Name");
-        value.setValue(currentCongress.getMP(state, district).getFullname());
-        jInfo.addPair(key, value);
-        JSONArray atts = new JSONArray();
-        for (Attribute a : currentCongress.getMP(state, district).getAttributes()) {
-            JSONObject jAtt = new JSONObject();
-            key.setValue(a.getDefinition().getName());
-            value.setValue(a.getValue().toString());
-            jAtt.addPair(key, value);
-            atts.addElement(jAtt);
+        MP mp = currentCongress.getMP(state,district);
+        JSONObject mi = new JSONObject();
+        mi.addPair(new JSONString("State"),new JSONString(mp.getState().toString()));
+        mi.addPair(new JSONString("District"),new JSONString(Integer.toString(mp.getDistrict())));
+
+        JSONArray ja = new JSONArray();
+        for(Attribute a:mp.getAttributes()){
+            String attrname = a.getDefinition().getName();
+            String attrvalue = a.getValue().toString();
+            JSONObject el = new JSONObject();
+            el.addPair(new JSONString("AttrDefName"),new JSONString(attrname));
+            el.addPair(new JSONString("AttrValue"),new JSONString(attrvalue));
+            ja.addElement(el);
         }
-        key.setValue("Attributes");
-        value.setValue(atts.toString());
-        jInfo.addPair(key, value);
-        return jInfo.stringify();
+        mi.addPair(new JSONString("Attributes"),ja);
+        return mi.stringify();
     }
 
     /**
@@ -133,6 +128,19 @@ public class DomainController
         }
         defs.addPair(js, ja);
         return defs.stringify();
+    }
+
+    public void newCongress()
+    {
+        currentCongress = new Congress();
+        currentPartition = new ArrayList<>();
+        partition1 = new ArrayList<>();
+        partition2 = new ArrayList<>();
+    }
+
+    public boolean existsAttrDef(String name)
+    {
+        return currentCongress.hasAttrDef(new AttrDefinition(name,1));
     }
 
     /**
@@ -210,10 +218,13 @@ public class DomainController
         JSONString jDistr = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
         key.setValue("Name");
         JSONString jName = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
-        //System.out.println(jState.getValue());
         MP m = new MP(jName.getValue(), State.valueOf(jState.getValue()), Integer.valueOf(jDistr.getValue()));
         currentCongress.addNode(m);
-        //System.out.println(currentCongress);
+    }
+
+    public void deleteMP(State state, int district)
+    {
+        currentCongress.removeNode(new MP("INVALID_VALUE",state,district));
     }
 
     /**
@@ -250,6 +261,26 @@ public class DomainController
         m.addAttribute(a);
     }
 
+    public void addOrModifyAttribute(JSONObject jmp,JSONArray jattrs)
+    {
+        Map<String,String> mpmss = jmp.basicJSONObjectGetInfo();
+
+        MP mp = currentCongress.getMP(State.valueOf(mpmss.get("State")),Integer.parseInt(mpmss.get("District")));
+
+        for(JSON j:jattrs.getArray()){
+            Map<String,String> att = ((JSONObject)j).basicJSONObjectGetInfo();
+
+            AttrDefinition atd = currentCongress.getAttrDef(att.get("AttrDefName"));
+            if(atd == null) throw new IllegalStateException("NO EXISTEIX LATRIBUT");
+
+            String value = att.get("AttrValue");
+            mp.addAttribute(new Attribute(atd,value));
+        }
+
+
+    }
+
+
     /**
      * @pre The specified MP has a value defined for the specified attribute.
      * @post The specified MP has not any value defined for the (@pre) specified attribute.
@@ -276,7 +307,15 @@ public class DomainController
         JSONString jAttrD = new JSONString(((JSONString)jAttrDef.getJSONByKey(key)).getValue());
         key.setValue("Importance");
         JSONString jImp = new JSONString(((JSONString)jAttrDef.getJSONByKey(key)).getValue());
-        AttrDefinition ad = new AttrDefinition(jAttrD.getValue(), Integer.valueOf(jImp.getValue()));
+        String imp = jImp.getValue();
+        int importancia = 0;
+        if(imp == "Low") importancia = 1;
+        else if(imp == "Medium") importancia = 4;
+        else if(imp == "High") importancia = 16;
+
+        if(importancia == 0) throw new IllegalStateException("IMPORTANCIA NO RECONEGUDA");
+
+        AttrDefinition ad = new AttrDefinition(jAttrD.getValue(), importancia);
         if (currentCongress.hasAttrDef(ad)) {
             currentCongress.getAttrDef(jAttrD.getValue()).setImportance(Integer.valueOf(jImp.getValue()));
         } else {
