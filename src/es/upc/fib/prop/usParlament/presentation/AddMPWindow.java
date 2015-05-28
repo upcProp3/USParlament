@@ -213,11 +213,17 @@ public class AddMPWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "Please add a valid input to value");
             return;
         }
+        try {
+            Integer.parseInt(dist);
+        }catch(NumberFormatException exc){
+            JOptionPane.showMessageDialog(new JFrame(), "Unvalid district value");
+            return;
+        }
+
         mp = new JSONObject();
         mp.addPair(new JSONString("Name"),new JSONString(name));
         mp.addPair(new JSONString("District"), new JSONString(dist));
         mp.addPair(new JSONString("State"),new JSONString(state));
-        System.out.println("addinmps");
         pc.addMP(mp,jattributes);
         pops.updateMPManagementMPTable();
         JOptionPane.showMessageDialog(new JFrame(), "MP Added");
@@ -239,14 +245,12 @@ public class AddMPWindow extends javax.swing.JFrame {
         dtm.addColumn("Value");
         MPAttributesTable.setModel(dtm);
         
-        System.out.println(pc);
         JSONObject jotd = pc.getAttrDefs();
         JSONArray jatd = ((JSONArray)jotd.getJSONByKey("Attribute Definitions"));
 
         for(JSON element:jatd.getArray()){
 
             Map<String,String> ms = ((JSONObject)element).basicJSONObjectGetInfo();
-            System.out.println(ms);
 
             attributeDefChooser.addItem(ms.get("AttrDefName"));
             
@@ -271,14 +275,20 @@ public class AddMPWindow extends javax.swing.JFrame {
         String value = valueTextField.getText();
         Object oattr = attributeDefChooser.getSelectedItem();
         String attr = ((String)oattr);
-        
+
+        if(oattr == null){
+            JOptionPane.showMessageDialog(new JFrame(), "No attributes left to add");
+            return;
+        }
+
         if(value.equals("")){
             JOptionPane.showMessageDialog(new JFrame(), "Please add a valid input to value");
             return;
         }
         
         JSONObject attro = new JSONObject();
-        attro.addPair(new JSONString(attr),new JSONString(value));
+        attro.addPair(new JSONString("AttrDefName"),new JSONString(attr));
+        attro.addPair(new JSONString("AttrValue"),new JSONString(value));
         valueTextField.setText("");
         attributeDefChooser.removeItem(oattr);
         jattributes.addElement(attro);

@@ -44,6 +44,11 @@ public class LoadCongressWindow extends javax.swing.JFrame {
         jLabel1.setText("Load Congress");
 
         loadSelectedCongressButton.setText("Load");
+        loadSelectedCongressButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadSelectedCongressButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,6 +83,10 @@ public class LoadCongressWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loadSelectedCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadSelectedCongressButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loadSelectedCongressButtonActionPerformed
 
     /**
      * @param args the command line arguments
