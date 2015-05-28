@@ -5,10 +5,7 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
-import es.upc.fib.prop.usParlament.misc.JSON;
-import es.upc.fib.prop.usParlament.misc.JSONArray;
-import es.upc.fib.prop.usParlament.misc.JSONObject;
-import es.upc.fib.prop.usParlament.misc.JSONString;
+import es.upc.fib.prop.usParlament.misc.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -1010,7 +1007,7 @@ public class MainView extends javax.swing.JFrame {
         String state = (String)currentMPsTable.getValueAt(fila,0);
         String district = (String) currentMPsTable.getValueAt(fila, 1);
         //Obtenim els valors dels atributs
-        JFrame jf = new ModifyMPWindow(pc,this,State.valueOf(state),Integer.parseInt(district));
+        JFrame jf = new ModifyMPWindow(pc,this, State.valueOf(state),Integer.parseInt(district));
         jf.setVisible(true);
         this.updateMPManagementMPTable();
     }//GEN-LAST:event_modifyMPButtonActionPerformed
@@ -1027,7 +1024,7 @@ public class MainView extends javax.swing.JFrame {
         //columna 1 districte
         String state = (String)currentMPsTable.getValueAt(fila,0);
         String district = (String) currentMPsTable.getValueAt(fila, 1);
-        pc.deleteMP(State.valueOf(state),Integer.parseInt(district));
+        pc.deleteMP(State.valueOf(state), Integer.parseInt(district));
         this.updateMPManagementMPTable();
     }//GEN-LAST:event_deleteMPButtonActionPerformed
 
