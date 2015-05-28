@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class DataControllerTest {
 
-	private final String PATH = "congressManagerTest";
+	private final String PATH = "dataControllerTest";
 	private final String[] CONGRESS_NAMES = {"congress0", "congress1", "congress2"};
 	private final String[][] PARTITIONS_NAMES = {{"p00", "p01"}, {"p10", "p11", "p12"}, {"p20", "p21"}};
 	DataController manager;

@@ -1033,6 +1033,9 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_loadCongressButtonActionPerformed
 
     private void saveCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCongressButtonActionPerformed
+        JFrame jf = new SaveCongressWindow(pc);
+        jf.setVisible(true);
+        System.out.println("Sav congress Windows");
         // TODO MP management save congress button pressed
     }//GEN-LAST:event_saveCongressButtonActionPerformed
 

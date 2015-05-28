@@ -39,6 +39,13 @@ public class DomainController
         partition2 = new ArrayList<>();
         dataController = new DataControllerImpl("congresses");
     }
+    public void setDataController(DataController dataController) {
+        this.dataController = dataController;
+    }
+
+    public Congress getCurrentCongress() {
+        return currentCongress;
+    }
 
     /**
      * @return It returns an String with the State and District values for each MP at the current congress.
@@ -384,8 +391,8 @@ public class DomainController
         }
         for (AttrDefinition def : currentCongress.getAttrDef()) {
             JSONObject jo = new JSONObject();
-            jo.addPair(new JSONString("AttrDefName"), new JSONString(def.getName()));
-            jo.addPair(new JSONString("AttrDefImportance"), new JSONString(Integer.toString(def.getImportance())));
+            jo.addPair(new JSONString("name"), new JSONString(def.getName()));
+            jo.addPair(new JSONString("importance"), new JSONString(Integer.toString(def.getImportance())));
             definitions.addElement(jo);
         }
         return dataController.saveCongress(name, congress.stringify());
@@ -404,15 +411,15 @@ public class DomainController
 
         for (JSON jsonDef : ((JSONArray)jsonCongress.getJSONByKey("attributeDefinitions")).getArray()) {
             JSONObject jo = (JSONObject)jsonDef;
-            String defName = ((JSONString)jo.getJSONByKey("fullname")).getValue();
-            int importance = Integer.valueOf(((JSONString) jo.getJSONByKey("district")).getValue());
+            String defName = ((JSONString)jo.getJSONByKey("name")).getValue();
+            int importance = Integer.valueOf(((JSONString) jo.getJSONByKey("importance")).getValue());
             AttrDefinition attrDef = new AttrDefinition(defName, importance);
             newCongress.addAttrDef(attrDef);
         }
         for (JSON jsonMP : ((JSONArray)jsonCongress.getJSONByKey("mps")).getArray()) {
             JSONObject jo = (JSONObject)jsonMP;
             String fullname = ((JSONString)jo.getJSONByKey("fullname")).getValue();
-            State state = State.valueOf(((JSONString) jo.getJSONByKey("fullname")).getValue());
+            State state = State.valueOf(((JSONString) jo.getJSONByKey("state")).getValue());
             int district = Integer.valueOf(((JSONString) jo.getJSONByKey("district")).getValue());
             MP mp = new MP(fullname, state, district);
             JSONArray attributes = ((JSONArray) jo.getJSONByKey("attributes"));
@@ -434,7 +441,7 @@ public class DomainController
             int dist2 = Integer.valueOf(((JSONString)jsonMP2.getJSONByKey("district")).getValue());
             MP m1 = newCongress.getMP(state1, dist1);
             MP m2 = newCongress.getMP(state2, dist2);
-            int weight = Integer.valueOf(((JSONString) jo.getJSONByKey("weight")).getValue());
+            int weight = Double.valueOf(((JSONString) jo.getJSONByKey("weight")).getValue()).intValue();
             boolean valid = Boolean.valueOf(((JSONString) jo.getJSONByKey("valid")).getValue());
             Relationship rel = new Relationship(m1, m2, weight);
             rel.setValidity(valid);
