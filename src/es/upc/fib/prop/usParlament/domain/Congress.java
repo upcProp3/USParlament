@@ -83,8 +83,8 @@ public class Congress extends Graph {
     /**
      * @return The implicit Congress collection of MPs.
      */
-	public Collection<MP> getMPs() {
-		Collection<MP> mps = new HashSet<>();
+	public Set<MP> getMPs() {
+		Set<MP> mps = new HashSet<>();
 		for (Node n : getNodes()) {
 			mps.add((MP) n);
 		}
@@ -118,5 +118,23 @@ public class Congress extends Graph {
             }
         }
         return null;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Congress)) return false;
+
+        Congress congress = (Congress) o;
+
+
+        return s.equals(congress.s) && getMPs().equals(congress.getMPs()) && getRelationships().equals(congress.getRelationships());
+
+    }
+
+    @Override
+    public int hashCode() {
+        return s.hashCode() + getRelationships().hashCode() * getMPs().hashCode();
     }
 }

@@ -113,7 +113,11 @@ public class PresentationController {
     {
         return j.StringToJSON(dc.getAttrDefs());
     }
-    
+
+
+    public String saveCurrentCongress(String name) {
+        return dc.saveCurrentCongress(name);
+    }
 }
 
 

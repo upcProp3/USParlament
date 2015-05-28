@@ -5,17 +5,22 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
+import javax.swing.*;
+
 /**
  *
  * @author miquel
  */
 public class SaveCongressWindow extends javax.swing.JFrame {
 
+    private PresentationController pc;
     /**
      * Creates new form SaveMPWindow
      */
-    public SaveCongressWindow() {
+    public SaveCongressWindow(PresentationController pc) {
+        this.pc = pc;
         initComponents();
+        jTextField1.setText("");
     }
 
     /**
@@ -78,6 +83,13 @@ public class SaveCongressWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if (pc.saveCurrentCongress(jTextField1.getText()).equals("{}")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Congress saved");
+        } else {
+            JOptionPane.showMessageDialog(new JFrame(), "Error during saving congress.");
+        }
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -111,7 +123,7 @@ public class SaveCongressWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SaveCongressWindow().setVisible(true);
+                new SaveCongressWindow(new PresentationController()).setVisible(true);
             }
         });
     }
