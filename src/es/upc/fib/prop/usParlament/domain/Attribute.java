@@ -58,6 +58,6 @@ public class Attribute  {
 
 	@Override
 	public String toString() {
-		return definition.getName() + ": " + value;
+		return definition.getName() + ": " + value.toString();
 	}
 }

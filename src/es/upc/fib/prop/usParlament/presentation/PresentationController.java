@@ -8,6 +8,8 @@ package es.upc.fib.prop.usParlament.presentation;
 import es.upc.fib.prop.usParlament.domain.DomainController;
 import es.upc.fib.prop.usParlament.misc.*;
 
+import java.util.Map;
+
 
 /**
  * ///IMPORTANT
@@ -25,61 +27,67 @@ public class PresentationController {
         j = new JSONizer();
     }
 
+//    public void test (String s) { dc.loadCongress(s); }
+
+
     public JSONObject getShortMPList()
     {
         //TEST
-        /*JSONObject j = new JSONObject();
-        JSONArray jay = new JSONArray();
-        for(int i = 0;i<10;i++){
-            JSONObject jmp = new JSONObject();
-            jmp.addPair(new JSONString("State"),new JSONString("US"+i));
-            jmp.addPair(new JSONString("District"),new JSONString("SA"+i));
-            jay.addElement(jmp);
-        }
-        j.addPair(new JSONString("MPList"),jay);
-        return j;//*/
-        ///END OF TEST
-        //GOOD CODE
-        return j.StringToJSON(dc.getShortMPList());
-        //END OF GOOD CODE
-    }
-    
-    public void addMP(JSONObject mp,JSONArray attr)
-    {
-        dc.addMP(mp);
-        
-        
-        
-    }
-
-    public JSONObject getMPList()
-    {
-        //////TEST
-/*
         JSONObject j = new JSONObject();
         JSONArray jay = new JSONArray();
         for(int i = 0;i<10;i++){
             JSONObject jmp = new JSONObject();
             jmp.addPair(new JSONString("State"),new JSONString("US"+i));
             jmp.addPair(new JSONString("District"),new JSONString("SA"+i));
-            for(int z = 0;z<5;z++){
-                jmp.addPair(new JSONString("AttrDef"+z),new JSONString("Attr"+z));
-            }
-            
             jay.addElement(jmp);
         }
         j.addPair(new JSONString("MPList"),jay);
         return j;
-*/
-        ///FI TEST
+        ///END OF TEST
+        //GOOD CODE
+        //return j.StringToJSON(dc.getShortMPList());
+        //END OF GOOD CODE
+    }
+    
+    public void addMP(JSONObject mp,JSONArray attr)
+    {
+        dc.addMP(mp);
+        Map<String,String> dmp = mp.basicJSONObjectGetInfo();
+        String estat = dmp.get("State");
+        String distr = dmp.get("District");
+        //System.out.println(estat+distr);
+        dc.addOrModifyAttribute(mp,attr);
 
+    }
+
+    public void deleteAttribute(JSONObject jo,JSONObject ja)
+    {
+        dc.deleteAttribute(jo,ja);
+    }
+
+    public void addAttributes(JSONObject mp,JSONArray attr)
+    {
+        dc.addOrModifyAttribute(mp,attr);
+    }
+
+    public void deleteMP(State state,int district)
+    {
+        dc.deleteMP(state,district);
+    }
+
+    public JSONObject getMPList()
+    {
         return j.StringToJSON(dc.getMPList());
     }
     
     public JSONObject getMPInfo(State state, int district)
     {
-        //return domainController.getMPInfo(state,district);
-        return null;
+         return j.StringToJSON(dc.getMPInfo(state,district));
+    }
+
+    public void newCongress()
+    {
+        dc.newCongress();
     }
     
     public JSONObject getMainCommunityNumber()
@@ -93,25 +101,26 @@ public class PresentationController {
         //return domainController.getSecCommuntiyNumber();
         return null;
     }
-    
+
+    public boolean existsAttrDef(String name)
+    {
+        return dc.existsAttrDef(name);
+    }
+
+    public void addOrModifyAttrDef(JSONObject obj)
+    {
+        dc.addOrModifyAttrDef(obj);
+    }
+
     public JSONObject getAttrDefs()
     {
-        //return domainController.getAttrDefs();
-
-        JSONObject ret = new JSONObject();
-        JSONArray ja = new JSONArray();
-
-        for(int z = 0;z<5;z++){
-            JSONObject jo = new JSONObject();
-            jo.addPair(new JSONString("AttrDefName"),new JSONString("AttrDef"+z));
-            jo.addPair(new JSONString("AttrDefImportance"),new JSONString(Integer.toString(z%3)));
-            ja.addElement(jo);
-        }
-        ret.addPair(new JSONString("Attribute Definitions"),ja);
-
-        return ret;
+        return j.StringToJSON(dc.getAttrDefs());
     }
-    
+
+
+    public String saveCurrentCongress(String name) {
+        return dc.saveCurrentCongress(name);
+    }
 }
 
 
