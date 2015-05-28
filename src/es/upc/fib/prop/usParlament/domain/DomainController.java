@@ -332,4 +332,126 @@ public class DomainController
         JSONString jAttrD = new JSONString(((JSONString)jAttrDef.getJSONByKey(key)).getValue());
         currentCongress.removeAttrDef(currentCongress.getAttrDef(jAttrD.getValue()));
     }
+
+
+
+
+    /**
+     * save congress into persistent memory. If cogress with the same identificator already exists it will be rewritten.
+     * @param name  unique identificator of congress
+     * @return  Exception string If there is exception "{}" string otherwise.
+     */
+    public String saveCurrentCongress(String name) {
+        JSONObject congress = new JSONObject();
+        JSONArray mps = new JSONArray();
+        JSONArray relations = new JSONArray();
+        JSONArray definitions = new JSONArray();
+
+        congress.addPair(new JSONString("mps"), mps);
+        congress.addPair(new JSONString("relations"), relations);
+        congress.addPair(new JSONString("attributeDefinitions"), definitions);
+
+        for (MP mp : currentCongress.getMPs()) {
+            JSONObject jsonMP = new JSONObject();
+            jsonMP.addPair(new JSONString("fullname"), new JSONString(mp.getFullname()));
+            jsonMP.addPair(new JSONString("state"), new JSONString(mp.getState().toString()));
+            jsonMP.addPair(new JSONString("district"), new JSONString(""+mp.getDistrict()));
+            JSONArray attributes = new JSONArray();
+            for (Attribute attr : mp.getAttributes()) {
+                JSONObject jsonAttr = new JSONObject();
+                jsonAttr.addPair(new JSONString("value"), new JSONString(attr.getValue().toString()));
+                jsonAttr.addPair(new JSONString("definitionName"), new JSONString(attr.getDefinition().getName()));
+            }
+            jsonMP.addPair(new JSONString("attributes"), attributes);
+            mps.addElement(jsonMP);
+        }
+        for (Relationship rel : currentCongress.getRelationships()) {
+            JSONObject jsonRelation = new JSONObject();
+            MP m1 = (MP) rel.getNode();
+            MP m2 = (MP) rel.getNeighbor(m1);
+            JSONObject jsonMP1 = new JSONObject();
+            jsonMP1.addPair(new JSONString("state"), new JSONString(m1.getState().toString()));
+            jsonMP1.addPair(new JSONString("district"), new JSONString(""+m1.getDistrict()));
+            JSONObject jsonMP2 = new JSONObject();
+            jsonMP2.addPair(new JSONString("state"), new JSONString(m2.getState().toString()));
+            jsonMP2.addPair(new JSONString("district"), new JSONString(""+m2.getDistrict()));
+
+            jsonRelation.addPair(new JSONString("m1"), jsonMP1);
+            jsonRelation.addPair(new JSONString("m2"), jsonMP2);
+            jsonRelation.addPair(new JSONString("weight"), new JSONString(""+rel.getWeight()));
+            jsonRelation.addPair(new JSONString("valid"), new JSONString(""+rel.isValid()));
+            relations.addElement(jsonRelation);
+        }
+        for (AttrDefinition def : currentCongress.getAttrDef()) {
+            JSONObject jo = new JSONObject();
+            jo.addPair(new JSONString("AttrDefName"), new JSONString(def.getName()));
+            jo.addPair(new JSONString("AttrDefImportance"), new JSONString(Integer.toString(def.getImportance())));
+            definitions.addElement(jo);
+        }
+        return dataController.saveCongress(name, congress.stringify());
+    }
+
+    /**
+     * load congress from persistent memory
+     * @param name  identificator of congress
+     * @return  JSON representation of congress
+     */
+    public String loadCongress(String name) {
+        JSONizer json = new JSONizer();
+        String congress = dataController.loadCongress(name);
+        JSONObject jsonCongress = json.StringToJSON(congress);
+        Congress newCongress = new Congress();
+
+        for (JSON jsonDef : ((JSONArray)jsonCongress.getJSONByKey("attributeDefinitions")).getArray()) {
+            JSONObject jo = (JSONObject)jsonDef;
+            String defName = ((JSONString)jo.getJSONByKey("fullname")).getValue();
+            int importance = Integer.valueOf(((JSONString) jo.getJSONByKey("district")).getValue());
+            AttrDefinition attrDef = new AttrDefinition(defName, importance);
+            newCongress.addAttrDef(attrDef);
+        }
+        for (JSON jsonMP : ((JSONArray)jsonCongress.getJSONByKey("mps")).getArray()) {
+            JSONObject jo = (JSONObject)jsonMP;
+            String fullname = ((JSONString)jo.getJSONByKey("fullname")).getValue();
+            State state = State.valueOf(((JSONString) jo.getJSONByKey("fullname")).getValue());
+            int district = Integer.valueOf(((JSONString) jo.getJSONByKey("district")).getValue());
+            MP mp = new MP(fullname, state, district);
+            JSONArray attributes = ((JSONArray) jo.getJSONByKey("attributes"));
+            for (JSON attr : attributes.getArray()) {
+                JSONObject objAttr = (JSONObject) attr;
+                AttrDefinition def = newCongress.getAttrDef(((JSONString)objAttr.getJSONByKey("definitionName")).getValue());
+                Attribute mpAttr = new Attribute(def, ((JSONString)objAttr.getJSONByKey("value")).getValue());
+                mp.addAttribute(mpAttr);
+            }
+            newCongress.addNode(mp);
+        }
+        for (JSON jsonRel : ((JSONArray)jsonCongress.getJSONByKey("relations")).getArray()) {
+            JSONObject jo = (JSONObject)jsonRel;
+            JSONObject jsonMP1 = (JSONObject)jo.getJSONByKey("m1");
+            JSONObject jsonMP2 = (JSONObject)jo.getJSONByKey("m2");
+            State state1 = State.valueOf(((JSONString)jsonMP1.getJSONByKey("state")).getValue());
+            int dist1 = Integer.valueOf(((JSONString)jsonMP1.getJSONByKey("district")).getValue());
+            State state2 = State.valueOf(((JSONString)jsonMP2.getJSONByKey("state")).getValue());
+            int dist2 = Integer.valueOf(((JSONString)jsonMP2.getJSONByKey("district")).getValue());
+            MP m1 = newCongress.getMP(state1, dist1);
+            MP m2 = newCongress.getMP(state2, dist2);
+            int weight = Integer.valueOf(((JSONString) jo.getJSONByKey("weight")).getValue());
+            boolean valid = Boolean.valueOf(((JSONString) jo.getJSONByKey("valid")).getValue());
+            Relationship rel = new Relationship(m1, m2, weight);
+            rel.setValidity(valid);
+            newCongress.addEdge(rel);
+        }
+        currentCongress = newCongress;
+        return congress;
+    }
+
+    /**
+     * load names of all saved congresses
+     * @return JSON list of all congresses
+     */
+    public String loadAllCongressesNames() {
+        return dataController.loadAllCongressesNames();
+    }
+
+
+
 }
