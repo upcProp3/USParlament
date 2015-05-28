@@ -111,7 +111,11 @@ public class PresentationController {
 
         return ret;
     }
-    
+
+
+    public String saveCurrentCongress(String name) {
+        return dc.saveCurrentCongress(name);
+    }
 }
 
 
