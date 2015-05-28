@@ -837,7 +837,6 @@ public class MainView extends javax.swing.JFrame {
         for (int i = 0; i < Integer.MAX_VALUE/1000; i++) {
             System.out.println("HOLAAAAAAAAAA");
         }
-
     }//GEN-LAST:event_addMPToCommunityButtonActionPerformed
 
     private void deleteMPfromCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPfromCommunityButtonActionPerformed
