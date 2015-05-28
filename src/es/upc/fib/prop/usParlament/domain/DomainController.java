@@ -136,6 +136,11 @@ public class DomainController
         return defs.stringify();
     }
 
+    public boolean existsAttrDef(String name)
+    {
+        return currentCongress.hasAttrDef(new AttrDefinition(name,1));
+    }
+
     /**
      * @return Returns the current partition number of communities.
      */
@@ -211,10 +216,8 @@ public class DomainController
         JSONString jDistr = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
         key.setValue("Name");
         JSONString jName = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
-        //System.out.println(jState.getValue());
         MP m = new MP(jName.getValue(), State.valueOf(jState.getValue()), Integer.valueOf(jDistr.getValue()));
         currentCongress.addNode(m);
-        //System.out.println(currentCongress);
     }
 
     /**
@@ -262,12 +265,10 @@ public class DomainController
 
             AttrDefinition atd = currentCongress.getAttrDef(att.get("AttrDefName"));
             if(atd == null) throw new IllegalStateException("NO EXISTEIX LATRIBUT");
-            System.out.println("AttributeDefinition:"+atd);
 
             String value = att.get("AttrValue");
             mp.addAttribute(new Attribute(atd,value));
         }
-        System.out.println(currentCongress);
 
 
     }
@@ -299,7 +300,15 @@ public class DomainController
         JSONString jAttrD = new JSONString(((JSONString)jAttrDef.getJSONByKey(key)).getValue());
         key.setValue("Importance");
         JSONString jImp = new JSONString(((JSONString)jAttrDef.getJSONByKey(key)).getValue());
-        AttrDefinition ad = new AttrDefinition(jAttrD.getValue(), Integer.valueOf(jImp.getValue()));
+        String imp = jImp.getValue();
+        int importancia = 0;
+        if(imp == "Low") importancia = 1;
+        else if(imp == "Medium") importancia = 4;
+        else if(imp == "Hard") importancia = 16;
+
+        if(importancia == 0) throw new IllegalStateException("IMPORTANCIA NO RECONEGUDA");
+
+        AttrDefinition ad = new AttrDefinition(jAttrD.getValue(), importancia);
         if (currentCongress.hasAttrDef(ad)) {
             currentCongress.getAttrDef(jAttrD.getValue()).setImportance(Integer.valueOf(jImp.getValue()));
         } else {

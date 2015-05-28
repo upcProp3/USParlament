@@ -27,24 +27,17 @@ GETTERS:
 =======================================
 
 ----------------------------------------
-ASSIGNED:
+ASSIGNED:Miquel jubert
 DONE:
 
-existsAttrDef(jAttr)
-arguments: jMP is a JSON object with the following structure, the function returns a bool
-{
-	"AttrDefName":<nomAttributeDefinition>
-}
+existsAttrDef(name)
+arguments: name is a string with the name
 ----------------------------------------
 ASSIGNED:
 DONE:
 
-existsMP(jMP)
-arguments: jMP is a JSON object with the following structure, the function returns a bool
-{
-	"State":<codiEstat>,
-	"District":<numerodistricte>,
-}
+existsMP(state, districte)
+arguments: the state and district of the mp to check
 
 ----------------------------------------
 ASSIGNED: Àlex Miró

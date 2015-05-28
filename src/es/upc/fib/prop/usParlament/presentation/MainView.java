@@ -878,7 +878,6 @@ public class MainView extends javax.swing.JFrame {
                 Vector<String> row = new Vector<String>();
                 for(int cnum=0;cnum<dtm.getColumnCount();cnum++) {
                     String s = dtm.getColumnName(cnum);
-                //    System.out.println("::" + ja.getArray());
                     if (ms.containsKey(s)) {
                         row.add(ms.get(s));
                     }else{
@@ -894,7 +893,7 @@ public class MainView extends javax.swing.JFrame {
 
     }
     
-    private void updateMPManagementAttrDefinitionTable()
+    public void updateMPManagementAttrDefinitionTable()
     {
         DefaultTableModel adtm = new DefaultTableModel();
         adtm.addColumn("AttrDefName");
@@ -906,14 +905,15 @@ public class MainView extends javax.swing.JFrame {
         for(JSON element:jatd.getArray()){
 
             Map<String,String> ms = ((JSONObject)element).basicJSONObjectGetInfo();
-            System.out.println(ms);
-
             Vector<String> row = new Vector<String>();
             for(int pos = 0;pos<jatd.getArray().size();pos++){
-                String s = adtm.getColumnName(pos);
-                if(ms.containsKey(s)){
-                    row.add(ms.get(s));
-                }
+                row.add(ms.get("AttrDefName"));
+                String imp = ms.get("AttrDefImportance");
+                if(imp.equals("1")) imp = "Low";
+                else if(imp.equals("4")) imp = "Medium";
+                else if(imp.equals("16")) imp = "High";
+                else throw new IllegalStateException("UNKNOWN Attribute definition importance");
+                row.add(imp);
             }
 
             adtm.addRow(row);
@@ -946,8 +946,7 @@ public class MainView extends javax.swing.JFrame {
             for(JSON jo:ja.getArray()){
                 
                 Map<String,String> ms = ((JSONObject)jo).basicJSONObjectGetInfo();
-                System.out.println(ms);
-                
+
                 Vector<String> row = new Vector<>();
                 for(int pos = 0;pos<ja.getArray().size();pos++){
                     String s = dtm.getColumnName(pos);
@@ -990,8 +989,8 @@ public class MainView extends javax.swing.JFrame {
         // TODO MP management addMP button pressed
         JFrame jf = new AddMPWindow(pc,this);
         jf.setVisible(true);
-        System.out.println("TANCADA");
-        
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
     }//GEN-LAST:event_addMPButtonActionPerformed
 
     private void modifyMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyMPButtonActionPerformed
@@ -1001,7 +1000,6 @@ public class MainView extends javax.swing.JFrame {
     private void deleteMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPButtonActionPerformed
         // TODO MP management delete MP button pressed
         this.updateMPManagementMPTable();
-        System.out.println("UPDATING");
     }//GEN-LAST:event_deleteMPButtonActionPerformed
 
     private void loadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCongressButtonActionPerformed
@@ -1019,6 +1017,8 @@ public class MainView extends javax.swing.JFrame {
     private void newAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAttrDefButtonActionPerformed
         // TODO mp management screen new attr definition button pressed
         JFrame jf = new AddAttributeDefinition(pc,this);
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_newAttrDefButtonActionPerformed
 
     private void modifyAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAttrDefButtonActionPerformed

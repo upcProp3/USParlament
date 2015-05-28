@@ -53,7 +53,6 @@ public class PresentationController {
         String estat = dmp.get("State");
         String distr = dmp.get("District");
         //System.out.println(estat+distr);
-        System.out.println(attr);
         dc.addOrModifyAttribute(mp,attr);
 
     }
@@ -98,7 +97,17 @@ public class PresentationController {
         //return domainController.getSecCommuntiyNumber();
         return null;
     }
-    
+
+    public boolean existsAttrDef(String name)
+    {
+        return dc.existsAttrDef(name);
+    }
+
+    public void addOrModifyAttrDef(JSONObject obj)
+    {
+        dc.addOrModifyAttrDef(obj);
+    }
+
     public JSONObject getAttrDefs()
     {
         //return domainController.getAttrDefs();
