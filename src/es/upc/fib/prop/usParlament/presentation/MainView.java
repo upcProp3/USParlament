@@ -998,7 +998,20 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addMPButtonActionPerformed
 
     private void modifyMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyMPButtonActionPerformed
-        // TODO MP management modifyMP button pressed
+        //System.out.println(currentMPsTable.getSelectedRow());
+        int fila = currentMPsTable.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        //columna 0 estat
+        //columna 1 districte
+        String state = (String)currentMPsTable.getValueAt(fila,0);
+        String district = (String) currentMPsTable.getValueAt(fila, 1);
+        //Obtenim els valors dels atributs
+        JFrame jf = new ModifyMPWindow(pc,this,State.valueOf(state),Integer.parseInt(district));
+        jf.setVisible(true);
+        this.updateMPManagementMPTable();
     }//GEN-LAST:event_modifyMPButtonActionPerformed
 
     private void deleteMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPButtonActionPerformed

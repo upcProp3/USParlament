@@ -64,31 +64,12 @@ public class PresentationController {
 
     public JSONObject getMPList()
     {
-        //////TEST
-/*
-        JSONObject j = new JSONObject();
-        JSONArray jay = new JSONArray();
-        for(int i = 0;i<10;i++){
-            JSONObject jmp = new JSONObject();
-            jmp.addPair(new JSONString("State"),new JSONString("US"+i));
-            jmp.addPair(new JSONString("District"),new JSONString("SA"+i));
-            for(int z = 0;z<5;z++){
-                jmp.addPair(new JSONString("AttrDef"+z),new JSONString("Attr"+z));
-            }
-            
-            jay.addElement(jmp);
-        }
-        j.addPair(new JSONString("MPList"),jay);
-        return j;
-*/
-        ///FI T
         return j.StringToJSON(dc.getMPList());
     }
     
     public JSONObject getMPInfo(State state, int district)
     {
-        //return domainController.getMPInfo(state,district);
-        return null;
+         return j.StringToJSON(dc.getMPInfo(state,district));
     }
     
     public JSONObject getMainCommunityNumber()
@@ -115,20 +96,6 @@ public class PresentationController {
 
     public JSONObject getAttrDefs()
     {
-        //return domainController.getAttrDefs();
-        /*
-        JSONObject ret = new JSONObject();
-        JSONArray ja = new JSONArray();
-
-        for(int z = 0;z<5;z++){
-            JSONObject jo = new JSONObject();
-            jo.addPair(new JSONString("AttrDefName"),new JSONString("AttrDef"+z));
-            jo.addPair(new JSONString("AttrDefImportance"),new JSONString(Integer.toString(z%3)));
-            ja.addElement(jo);
-        }
-        ret.addPair(new JSONString("Attribute Definitions"),ja);
-
-        return ret;*/
         return j.StringToJSON(dc.getAttrDefs());
     }
     

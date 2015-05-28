@@ -95,28 +95,22 @@ public class DomainController
      * @return Returns all the saved information about the MP (state,district).
      */
     public String getMPInfo(State state, int district) {
-        JSONObject jInfo = new JSONObject();
-        JSONString key = new JSONString("State");
-        JSONString value = new JSONString(state.toString());
-        jInfo.addPair(key, value);
-        key.setValue("District");
-        value.setValue(String.valueOf(district));
-        jInfo.addPair(key, value);
-        key.setValue("Name");
-        value.setValue(currentCongress.getMP(state, district).getFullname());
-        jInfo.addPair(key, value);
-        JSONArray atts = new JSONArray();
-        for (Attribute a : currentCongress.getMP(state, district).getAttributes()) {
-            JSONObject jAtt = new JSONObject();
-            key.setValue(a.getDefinition().getName());
-            value.setValue(a.getValue().toString());
-            jAtt.addPair(key, value);
-            atts.addElement(jAtt);
+        MP mp = currentCongress.getMP(state,district);
+        JSONObject mi = new JSONObject();
+        mi.addPair(new JSONString("State"),new JSONString(mp.getState().toString()));
+        mi.addPair(new JSONString("District"),new JSONString(Integer.toString(mp.getDistrict())));
+
+        JSONArray ja = new JSONArray();
+        for(Attribute a:mp.getAttributes()){
+            String attrname = a.getDefinition().getName();
+            String attrvalue = a.getValue().toString();
+            JSONObject el = new JSONObject();
+            el.addPair(new JSONString("AttrDefName"),new JSONString(attrname));
+            el.addPair(new JSONString("AttrValue"),new JSONString(attrvalue));
+            ja.addElement(el);
         }
-        key.setValue("Attributes");
-        value.setValue(atts.toString());
-        jInfo.addPair(key, value);
-        return jInfo.stringify();
+        mi.addPair(new JSONString("Attributes"),ja);
+        return mi.stringify();
     }
 
     /**

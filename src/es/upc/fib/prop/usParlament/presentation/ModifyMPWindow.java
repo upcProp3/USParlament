@@ -5,9 +5,11 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
-import es.upc.fib.prop.usParlament.misc.JSONObject;
-import es.upc.fib.prop.usParlament.misc.JSONString;
-import es.upc.fib.prop.usParlament.misc.State;
+import es.upc.fib.prop.usParlament.misc.*;
+
+import javax.swing.table.DefaultTableModel;
+import java.util.Map;
+import java.util.Vector;
 
 /**
  *
@@ -18,12 +20,50 @@ public class ModifyMPWindow extends javax.swing.JFrame {
     /**
      * Creates new form ModifyMPWindow
      */
-    public ModifyMPWindow() {
+    private PresentationController pc;
+    private MainView pops;
+    private State state;
+    private int district;
+    public ModifyMPWindow(PresentationController pece,MainView father,State estat,int dist) {
+        pops = father;
+        pc = pece;
+        state = estat;
+        district = dist;
         initComponents();
-        /////TEST
-        //modifiedMP = mMP;//UNCOMMENT WHEN TESTING FOR REAL
-       
-        /////
+        updateTableAttributes();
+        titleLabel.setText("Modifying MP:"+estat.toString()+" "+Integer.toString(dist));
+    }
+
+    public void updateTableAttributes()
+    {
+        DefaultTableModel adtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+        };
+        adtm.addColumn("AttrDef");
+        adtm.addColumn("Value");
+        JSONObject jo = pc.getMPInfo(state,district);
+        System.out.println(jo);
+        JSONArray ja = (JSONArray)jo.getJSONByKey("Attributes");
+
+        for(JSON el:ja.getArray()){
+
+            Map<String,String> ms = ((JSONObject)el).basicJSONObjectGetInfo();
+            Vector<String> row = new Vector<String>();
+            for(int pos = 0;pos<ja.getArray().size();pos++){
+                row.add(ms.get("AttrDefName"));
+
+                row.add(ms.get("AttrValue"));
+            }
+
+            adtm.addRow(row);
+
+        }
+
+        attributesTable.setModel(adtm);
+        attributesTable.getTableHeader().setReorderingAllowed(false);
     }
 
     /**
@@ -49,7 +89,7 @@ public class ModifyMPWindow extends javax.swing.JFrame {
 
             },
             new String [] {
-                "AttrDef", "Name"
+                "AttrDef", "Value"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -168,12 +208,10 @@ public class ModifyMPWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModifyMPWindow().setVisible(true);
+                new ModifyMPWindow(null,null,null,0).setVisible(true);
             }
         });
     }
-    private State mpState;
-    private int mpDistrict;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addAttributeButton;
     private javax.swing.JScrollPane attTablePanel;
