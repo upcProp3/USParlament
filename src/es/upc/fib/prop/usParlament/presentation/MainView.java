@@ -1056,6 +1056,16 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteAttrDefButtonActionPerformed
 
     private void showMPDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMPDataButtonActionPerformed
+        int fila = MPsInCommunityTable.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        String st = (String) MPsInCommunityTable.getValueAt(fila, 0);
+        String dt = (String) MPsInCommunityTable.getValueAt(fila, 1);
+        JFrame jf = new ShowMPInfoWindow(pc);
+        jf.setVisible(true);
+        System.out.println("Show MP Info");
         // TODO community management show selected mp info button
     }//GEN-LAST:event_showMPDataButtonActionPerformed
 

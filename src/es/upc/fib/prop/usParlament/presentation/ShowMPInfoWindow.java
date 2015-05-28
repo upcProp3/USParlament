@@ -11,11 +11,14 @@ package es.upc.fib.prop.usParlament.presentation;
  */
 public class ShowMPInfoWindow extends javax.swing.JFrame {
 
+    private PresentationController pc;
     /**
      * Creates new form ShowMPInfoWindow
+     * @param pc
      */
-    public ShowMPInfoWindow() {
+    public ShowMPInfoWindow(PresentationController pc) {
         initComponents();
+        this.pc = pc;
     }
 
     /**
@@ -91,7 +94,8 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_doneButtonActionPerformed
 
     /**
@@ -124,7 +128,7 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ShowMPInfoWindow().setVisible(true);
+             //   new ShowMPInfoWindow(pc).setVisible(true);
             }
         });
     }
