@@ -27,6 +27,7 @@ public class AddAttributeDefinition extends javax.swing.JFrame {
     {
         nameTextField.setText("");
         importanceComboBox.removeAllItems();
+        importanceComboBox.addItem("None");
         importanceComboBox.addItem("Low");
         importanceComboBox.addItem("Medium");
         importanceComboBox.addItem("High");

@@ -862,7 +862,16 @@ public class MainView extends javax.swing.JFrame {
 
 
         for(JSON jo:a.getArray()){
-            dtm.addColumn(((JSONString)((JSONObject)jo).getJSONByKey("AttrDefName")).getValue());
+            String s =((JSONString)((JSONObject)jo).getJSONByKey("AttrDefName")).getValue();
+            String imp =((JSONString)((JSONObject)jo).getJSONByKey("AttrDefImportance")).getValue();
+
+            if(imp.equals("0")) imp = "(N)";
+            if(imp.equals("1")) imp = "(L)";
+            if(imp.equals("4")) imp = "(M)";
+            if(imp.equals("16")) imp = "(H)";
+            s = s+imp;
+            System.out.println(imp);
+            dtm.addColumn(s);
         }
 
 
@@ -910,7 +919,8 @@ public class MainView extends javax.swing.JFrame {
             for(int pos = 0;pos<jatd.getArray().size();pos++){
                 row.add(ms.get("AttrDefName"));
                 String imp = ms.get("AttrDefImportance");
-                if(imp.equals("1")) imp = "Low";
+                if(imp.equals("0")) imp = "None";
+                else if(imp.equals("1")) imp = "Low";
                 else if(imp.equals("4")) imp = "Medium";
                 else if(imp.equals("16")) imp = "High";
                 else throw new IllegalStateException("UNKNOWN Attribute definition importance");
