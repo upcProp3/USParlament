@@ -1000,7 +1000,7 @@ public class MainView extends javax.swing.JFrame {
         String state = (String)currentMPsTable.getValueAt(fila,0);
         String district = (String) currentMPsTable.getValueAt(fila, 1);
         //Obtenim els valors dels atributs
-        JFrame jf = new ModifyMPWindow(pc,this,State.valueOf(state),Integer.parseInt(district));
+        JFrame jf = new ModifyMPWindow(pc,this, State.valueOf(state),Integer.parseInt(district));
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.updateMPManagementMPTable();
