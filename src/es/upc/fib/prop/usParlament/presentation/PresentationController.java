@@ -8,6 +8,8 @@ package es.upc.fib.prop.usParlament.presentation;
 import es.upc.fib.prop.usParlament.domain.DomainController;
 import es.upc.fib.prop.usParlament.misc.*;
 
+import java.util.Map;
+
 
 /**
  * ///IMPORTANT
@@ -47,15 +49,19 @@ public class PresentationController {
     public void addMP(JSONObject mp,JSONArray attr)
     {
         dc.addMP(mp);
-        
-        
-        
+        Map<String,String> dmp = mp.basicJSONObjectGetInfo();
+        String estat = dmp.get("State");
+        String distr = dmp.get("District");
+        //System.out.println(estat+distr);
+        System.out.println(attr);
+        dc.addOrModifyAttribute(mp,attr);
+
     }
 
     public JSONObject getMPList()
     {
         //////TEST
-
+/*
         JSONObject j = new JSONObject();
         JSONArray jay = new JSONArray();
         for(int i = 0;i<10;i++){
@@ -70,10 +76,9 @@ public class PresentationController {
         }
         j.addPair(new JSONString("MPList"),jay);
         return j;
-
-        ///FI TEST
-
-        //return j.StringToJSON(dc.getMPList());
+*/
+        ///FI T
+        return j.StringToJSON(dc.getMPList());
     }
     
     public JSONObject getMPInfo(State state, int district)
@@ -97,7 +102,7 @@ public class PresentationController {
     public JSONObject getAttrDefs()
     {
         //return domainController.getAttrDefs();
-
+        /*
         JSONObject ret = new JSONObject();
         JSONArray ja = new JSONArray();
 
@@ -109,7 +114,8 @@ public class PresentationController {
         }
         ret.addPair(new JSONString("Attribute Definitions"),ja);
 
-        return ret;
+        return ret;*/
+        return j.StringToJSON(dc.getAttrDefs());
     }
     
 }

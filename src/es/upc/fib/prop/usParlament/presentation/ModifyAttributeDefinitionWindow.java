@@ -52,6 +52,11 @@ public class ModifyAttributeDefinitionWindow extends javax.swing.JFrame {
         modifyAttrDefinitionImportanceComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         modifyAttrDefinitionButton.setText("Modify");
+        modifyAttrDefinitionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyAttrDefinitionButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,6 +105,10 @@ public class ModifyAttributeDefinitionWindow extends javax.swing.JFrame {
     private void modifyAttrDefinitionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAttrDefinitionComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_modifyAttrDefinitionComboBoxActionPerformed
+
+    private void modifyAttrDefinitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAttrDefinitionButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modifyAttrDefinitionButtonActionPerformed
 
     /**
      * @param args the command line arguments

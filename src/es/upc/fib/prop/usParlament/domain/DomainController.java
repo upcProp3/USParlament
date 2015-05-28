@@ -2,12 +2,10 @@ package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.usParlament.data.DataController;
 import es.upc.fib.prop.usParlament.data.DataControllerImpl;
-import es.upc.fib.prop.usParlament.misc.JSONArray;
-import es.upc.fib.prop.usParlament.misc.JSONObject;
-import es.upc.fib.prop.usParlament.misc.JSONString;
-import es.upc.fib.prop.usParlament.misc.State;
+import es.upc.fib.prop.usParlament.misc.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -252,6 +250,28 @@ public class DomainController
         Attribute a = new Attribute(currentCongress.getAttrDef(jAttrD.getValue()), jAttrV.getValue());
         m.addAttribute(a);
     }
+
+    public void addOrModifyAttribute(JSONObject jmp,JSONArray jattrs)
+    {
+        Map<String,String> mpmss = jmp.basicJSONObjectGetInfo();
+
+        MP mp = currentCongress.getMP(State.valueOf(mpmss.get("State")),Integer.parseInt(mpmss.get("District")));
+
+        for(JSON j:jattrs.getArray()){
+            Map<String,String> att = ((JSONObject)j).basicJSONObjectGetInfo();
+
+            AttrDefinition atd = currentCongress.getAttrDef(att.get("AttrDefName"));
+            if(atd == null) throw new IllegalStateException("NO EXISTEIX LATRIBUT");
+            System.out.println("AttributeDefinition:"+atd);
+
+            String value = att.get("AttrValue");
+            mp.addAttribute(new Attribute(atd,value));
+        }
+        System.out.println(currentCongress);
+
+
+    }
+
 
     /**
      * @pre The specified MP has a value defined for the specified attribute.

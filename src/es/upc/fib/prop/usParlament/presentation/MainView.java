@@ -849,73 +849,80 @@ public class MainView extends javax.swing.JFrame {
     public void updateMPManagementMPTable()
     {
         JSONObject j = pc.getMPList();
-            //MPsCurrentCongressTable
-            //DefaultTableModel model = (DefaultTableModel)currentMPsTable.getModel();
-            DefaultTableModel dtm = new DefaultTableModel();
-            JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
+        //MPsCurrentCongressTable
+        //DefaultTableModel model = (DefaultTableModel)currentMPsTable.getModel();
+        DefaultTableModel dtm = new DefaultTableModel();
+        JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
+        //DELETE OLD DATA
 
-            //Create columns
-            JSONObject jattrd = pc.getAttrDefs();
-            JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
+//        currentMPsTable.removeRowSelectionInterval(0,currentMPsTable.getRowCount()-1);
+  //      currentMPsTable.removeColumnSelectionInterval(0,currentMPsTable.getColumnCount()-1);
+        //Create columns
+        JSONObject jattrd = pc.getAttrDefs();
+        JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
 
-            dtm.addColumn("District");
-            dtm.addColumn("State");
-
-            for(JSON jo:a.getArray()){
-                dtm.addColumn(((JSONString)((JSONObject)jo).getJSONByKey("AttrDefName")).getValue());
-            }
+        dtm.addColumn("District");
+        dtm.addColumn("State");
 
 
-            for(JSON jo:ja.getArray()){
+
+        for(JSON jo:a.getArray()){
+            dtm.addColumn(((JSONString)((JSONObject)jo).getJSONByKey("AttrDefName")).getValue());
+        }
+
+
+        for(JSON jo:ja.getArray()){
                 
-                Map<String,String> ms = ((JSONObject)jo).basicJSONObjectGetInfo();
-                System.out.println(ms);
-                
+            Map<String,String> ms = ((JSONObject)jo).basicJSONObjectGetInfo();
+
                 Vector<String> row = new Vector<String>();
-                for(int pos = 0;pos<ja.getArray().size();pos++){
-                    String s = dtm.getColumnName(pos);
-                    if(ms.containsKey(s)){
+                for(int cnum=0;cnum<dtm.getColumnCount();cnum++) {
+                    String s = dtm.getColumnName(cnum);
+                //    System.out.println("::" + ja.getArray());
+                    if (ms.containsKey(s)) {
                         row.add(ms.get(s));
+                    }else{
+                        row.add("-");
                     }
                 }
-                
                 dtm.addRow(row);
-                
+
+
             }
             
-            currentMPsTable.setModel(dtm);
+        currentMPsTable.setModel(dtm);
 
     }
     
     private void updateMPManagementAttrDefinitionTable()
     {
-         DefaultTableModel adtm = new DefaultTableModel();
-            adtm.addColumn("AttrDefName");
-            adtm.addColumn("AttrDefImportance");
+        DefaultTableModel adtm = new DefaultTableModel();
+        adtm.addColumn("AttrDefName");
+        adtm.addColumn("AttrDefImportance");
 
-            JSONObject jotd = pc.getAttrDefs();
-            JSONArray jatd = ((JSONArray)jotd.getJSONByKey("Attribute Definitions"));
+        JSONObject jotd = pc.getAttrDefs();
+        JSONArray jatd = ((JSONArray)jotd.getJSONByKey("Attribute Definitions"));
 
-            for(JSON element:jatd.getArray()){
+        for(JSON element:jatd.getArray()){
 
-                Map<String,String> ms = ((JSONObject)element).basicJSONObjectGetInfo();
-                System.out.println(ms);
+            Map<String,String> ms = ((JSONObject)element).basicJSONObjectGetInfo();
+            System.out.println(ms);
 
-                Vector<String> row = new Vector<String>();
-                for(int pos = 0;pos<jatd.getArray().size();pos++){
-                    String s = adtm.getColumnName(pos);
-                    if(ms.containsKey(s)){
-                        row.add(ms.get(s));
-                    }
+            Vector<String> row = new Vector<String>();
+            for(int pos = 0;pos<jatd.getArray().size();pos++){
+                String s = adtm.getColumnName(pos);
+                if(ms.containsKey(s)){
+                    row.add(ms.get(s));
                 }
-
-                adtm.addRow(row);
-
             }
+
+            adtm.addRow(row);
+
+        }
 
             attrDefinitionsTable.setModel(adtm);
     }
-    
+
     private void compareWindowMPShortTable()
     {
         JSONObject j = pc.getShortMPList();
@@ -1011,6 +1018,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void newAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAttrDefButtonActionPerformed
         // TODO mp management screen new attr definition button pressed
+        JFrame jf = new AddAttributeDefinition(pc,this);
     }//GEN-LAST:event_newAttrDefButtonActionPerformed
 
     private void modifyAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAttrDefButtonActionPerformed

@@ -146,9 +146,10 @@ return:
 		"Attribute Definitions" : [
 			{"AttrDefName":<AttrDefName>,
 			"AttrDefImportance":<AttrDefImportance>
+			}
 		  ,
           ...	//For all the attribute definitions
-		}]
+		]
 	}
 
 ----------------------------------------
@@ -219,6 +220,29 @@ If the MP already has that attribute it is modified instead of added
 	//The attrDef and value
 	"AttrDef":<AttrDefName>,
 	"AttrValue":<AttrValue>
+	}
+}
+----------------------------------------
+ASSIGNED:
+DONE:
+
+addOrModifyAttribute(jMP,jAttributes):
+arguments: jAttr is a JSON object the following structure:
+If the MP already has that attribute it is modified instead of added
+{
+	//The MP we want to add the attrDef to
+	{
+	    "State":<state>,
+	    "District":<district>
+	}
+	//The attrDef and value
+	"MPList":[
+	    {
+	        "AttrDefName":<AttrDefName>,
+	        "AttrValue":<AttrValue>
+	    },
+	    ...
+	]
 	}
 }
 

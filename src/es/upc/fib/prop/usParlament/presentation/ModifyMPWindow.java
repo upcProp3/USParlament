@@ -65,10 +65,25 @@ public class ModifyMPWindow extends javax.swing.JFrame {
         titleLabel.setText("Modifying MP:");
 
         addAttributeButton.setText("Add Attribute");
+        addAttributeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAttributeButtonActionPerformed(evt);
+            }
+        });
 
         deleteAttributeButton.setText("Delete Attribute");
+        deleteAttributeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteAttributeButtonActionPerformed(evt);
+            }
+        });
 
         modifyAttributeButton.setText("Modify Attribute");
+        modifyAttributeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyAttributeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +125,18 @@ public class ModifyMPWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addAttributeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAttributeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addAttributeButtonActionPerformed
+
+    private void modifyAttributeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAttributeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modifyAttributeButtonActionPerformed
+
+    private void deleteAttributeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAttributeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteAttributeButtonActionPerformed
 
     /**
      * @param args the command line arguments

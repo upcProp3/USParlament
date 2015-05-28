@@ -278,7 +278,8 @@ public class AddMPWindow extends javax.swing.JFrame {
         }
         
         JSONObject attro = new JSONObject();
-        attro.addPair(new JSONString(attr),new JSONString(value));
+        attro.addPair(new JSONString("AttrDefName"),new JSONString(attr));
+        attro.addPair(new JSONString("AttrValue"),new JSONString(value));
         valueTextField.setText("");
         attributeDefChooser.removeItem(oattr);
         jattributes.addElement(attro);
