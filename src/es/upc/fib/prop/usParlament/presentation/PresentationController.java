@@ -60,6 +60,16 @@ public class PresentationController {
 
     }
 
+    public void deleteAttribute(JSONObject jo,JSONObject ja)
+    {
+        dc.deleteAttribute(jo,ja);
+    }
+
+    public void addAttributes(JSONObject mp,JSONArray attr)
+    {
+        dc.addOrModifyAttribute(mp,attr);
+    }
+
     public void deleteMP(State state,int district)
     {
         dc.deleteMP(state,district);
