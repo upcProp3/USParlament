@@ -25,6 +25,9 @@ public class PresentationController {
         j = new JSONizer();
     }
 
+//    public void test (String s) { dc.loadCongress(s); }
+
+
     public JSONObject getShortMPList()
     {
         //TEST

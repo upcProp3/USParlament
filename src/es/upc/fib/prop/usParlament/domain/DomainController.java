@@ -2,10 +2,7 @@ package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.usParlament.data.DataController;
 import es.upc.fib.prop.usParlament.data.DataControllerImpl;
-import es.upc.fib.prop.usParlament.misc.JSONArray;
-import es.upc.fib.prop.usParlament.misc.JSONObject;
-import es.upc.fib.prop.usParlament.misc.JSONString;
-import es.upc.fib.prop.usParlament.misc.State;
+import es.upc.fib.prop.usParlament.misc.*;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -16,7 +13,6 @@ import java.util.Set;
  * All the TEST INSTRUCTIONS (i.e. printing staff) are commented by //.
  */
 
-//TODO: not finished
 public class DomainController
 {
     /*
@@ -295,5 +291,13 @@ public class DomainController
         JSONString key = new JSONString("AttrDefName");
         JSONString jAttrD = new JSONString(((JSONString)jAttrDef.getJSONByKey(key)).getValue());
         currentCongress.removeAttrDef(currentCongress.getAttrDef(jAttrD.getValue()));
+    }
+
+    //under developement
+    public void loadCongress(String congressName) {
+        JSONString jC = new JSONString(dataController.loadCongress(congressName));
+        JSONizer j = new JSONizer();
+        JSONObject jCongress = j.StringToJSON(jC.getValue());
+        System.out.println(jC.getValue());
     }
 }
