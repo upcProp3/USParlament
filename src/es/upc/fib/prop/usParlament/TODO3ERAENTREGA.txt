@@ -229,29 +229,43 @@ If the MP already has that attribute it is modified instead of added
 	}
 }
 ----------------------------------------
-ASSIGNED:
-DONE:
+ASSIGNED:miquel jubert
+DONE:ya
 
 addOrModifyAttribute(jMP,jAttributes):
 arguments: jAttr is a JSON object the following structure:
 If the MP already has that attribute it is modified instead of added
-{
+
 	//The MP we want to add the attrDef to
 	{
 	    "State":<state>,
 	    "District":<district>
 	}
 	//The attrDef and value
-	"MPList":[
+	[
 	    {
 	        "AttrDefName":<AttrDefName>,
 	        "AttrValue":<AttrValue>
 	    },
 	    ...
 	]
-	}
-}
 
+}
+----------------------------------------
+ASSIGNED: miquel jubert
+DONE:
+
+deleteAttribute(jmp,jattribute):
+arguments: jmp and jattribute are objects
+{
+	//The MP we want to delete the attrDef to
+	"State":<codiEstat>,
+	"District":<numerodistricte>,
+}
+{
+	//The attrDef we want to delete
+	"AttrDefName":<AttrDefName>,
+}
 ----------------------------------------
 ASSIGNED: Àlex Miró
 DONE: 21.05.15

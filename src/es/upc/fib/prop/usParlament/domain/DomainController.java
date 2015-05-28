@@ -261,10 +261,12 @@ public class DomainController
         m.addAttribute(a);
     }
 
+
+
+
     public void addOrModifyAttribute(JSONObject jmp,JSONArray jattrs)
     {
         Map<String,String> mpmss = jmp.basicJSONObjectGetInfo();
-
         MP mp = currentCongress.getMP(State.valueOf(mpmss.get("State")),Integer.parseInt(mpmss.get("District")));
 
         for(JSON j:jattrs.getArray()){
@@ -274,10 +276,27 @@ public class DomainController
             if(atd == null) throw new IllegalStateException("NO EXISTEIX LATRIBUT");
 
             String value = att.get("AttrValue");
+            Attribute a = new Attribute(atd,value);
+            if(mp.hasAttribute(atd)) mp.removeAttribute(atd);
             mp.addAttribute(new Attribute(atd,value));
+
         }
 
+    }
 
+    public void deleteAttribute(JSONObject jmp,JSONObject jattr)
+    {
+        Map<String,String> mpmss = jmp.basicJSONObjectGetInfo();
+        MP mp = currentCongress.getMP(State.valueOf(mpmss.get("State")),Integer.parseInt(mpmss.get("District")));
+
+        Map<String,String> att = jattr.basicJSONObjectGetInfo();
+
+        AttrDefinition atd = currentCongress.getAttrDef(att.get("AttrDefName"));
+
+        if(atd == null) throw new IllegalStateException("NO EXISTEIX LATRIBUT");
+        System.out.println(mp);
+        /*if(mp.hasAttribute(atd))*/ mp.removeAttribute(atd);
+        System.out.println(mp);
     }
 
 
