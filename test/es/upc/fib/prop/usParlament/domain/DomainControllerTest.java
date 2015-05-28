@@ -51,7 +51,7 @@ public class DomainControllerTest {
 	public void testSaveCurrentCongress() throws Exception {
 		Congress expected = prepareCurrentCongress();
 		manager.saveCurrentCongress(CONGRESS_NAMES[0]);
-		manager.loadCongress(CONGRESS_NAMES[0]);
+		manager.loadCongressAsCurrent(CONGRESS_NAMES[0]);
 		Congress current = manager.getCurrentCongress();
 		Collections.sort(current.getRelationships());
 		assertEquals(expected, current);
@@ -59,7 +59,12 @@ public class DomainControllerTest {
 
 	@Test
 	public void testLoadCongress() throws Exception {
-		throw new UnsupportedOperationException("Not implemented yet");
+		Congress expected = prepareCurrentCongress();
+		manager.saveCurrentCongress(CONGRESS_NAMES[1]);
+		manager.loadCongressAsCurrent(CONGRESS_NAMES[1]);
+		Congress current = manager.getCurrentCongress();
+		Collections.sort(current.getRelationships());
+		assertEquals(expected, current);
 	}
 
 	@Test
