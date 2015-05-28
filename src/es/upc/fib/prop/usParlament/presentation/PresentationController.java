@@ -27,6 +27,9 @@ public class PresentationController {
         j = new JSONizer();
     }
 
+//    public void test (String s) { dc.loadCongress(s); }
+
+
     public JSONObject getShortMPList()
     {
         //TEST
@@ -55,6 +58,16 @@ public class PresentationController {
         //System.out.println(estat+distr);
         dc.addOrModifyAttribute(mp,attr);
 
+    }
+
+    public void deleteAttribute(JSONObject jo,JSONObject ja)
+    {
+        dc.deleteAttribute(jo,ja);
+    }
+
+    public void addAttributes(JSONObject mp,JSONArray attr)
+    {
+        dc.addOrModifyAttribute(mp,attr);
     }
 
     public void deleteMP(State state,int district)

@@ -937,13 +937,6 @@ public class MainView extends javax.swing.JFrame {
             dtm.addColumn("District");
             dtm.addColumn("State");
 
-            /* If we wanted the full table :O
-            JSONObject jattrd = PresentationController.getAttrDefs();
-            JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
-            for(JSON jo:a.getArray()){
-                dtm.addColumn(((JSONString)((JSONObject)jo).getJSONByKey("AttrDefName")).getValue());
-            }
-            */
 
             for(JSON jo:ja.getArray()){
                 
@@ -1009,12 +1002,13 @@ public class MainView extends javax.swing.JFrame {
         //Obtenim els valors dels atributs
         JFrame jf = new ModifyMPWindow(pc,this, State.valueOf(state),Integer.parseInt(district));
         jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.updateMPManagementMPTable();
     }//GEN-LAST:event_modifyMPButtonActionPerformed
 
     private void deleteMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPButtonActionPerformed
         // TODO MP management delete MP button pressed
-        System.out.println(currentMPsTable.getSelectedRow());
+        //System.out.println(currentMPsTable.getSelectedRow());
         int fila = currentMPsTable.getSelectedRow();
         if(fila == -1){
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
@@ -1062,6 +1056,16 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteAttrDefButtonActionPerformed
 
     private void showMPDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMPDataButtonActionPerformed
+        int fila = MPsInCommunityTable.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        String st = (String) MPsInCommunityTable.getValueAt(fila, 0);
+        String dt = (String) MPsInCommunityTable.getValueAt(fila, 1);
+        JFrame jf = new ShowMPInfoWindow(pc);
+        jf.setVisible(true);
+        System.out.println("Show MP Info");
         // TODO community management show selected mp info button
     }//GEN-LAST:event_showMPDataButtonActionPerformed
 
