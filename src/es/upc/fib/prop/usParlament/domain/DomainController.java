@@ -368,6 +368,7 @@ public class DomainController
                 JSONObject jsonAttr = new JSONObject();
                 jsonAttr.addPair(new JSONString("value"), new JSONString(attr.getValue().toString()));
                 jsonAttr.addPair(new JSONString("definitionName"), new JSONString(attr.getDefinition().getName()));
+                attributes.addElement(jsonAttr);
             }
             jsonMP.addPair(new JSONString("attributes"), attributes);
             mps.addElement(jsonMP);

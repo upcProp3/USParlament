@@ -29,7 +29,7 @@ public class DomainControllerTest {
 
 	@After
 	public void tearDown() throws Exception {
-		delete(new File(PATH));
+		//delete(new File(PATH));
 	}
 	private void delete(File f) throws IOException {
 		if (!f.exists()) {
@@ -56,6 +56,17 @@ public class DomainControllerTest {
 		Collections.sort(current.getRelationships());
 		assertEquals(expected, current);
 	}
+
+	@Test
+	public void testLoadCongress() throws Exception {
+		throw new UnsupportedOperationException("Not implemented yet");
+	}
+
+	@Test
+	public void testLoadAllCongressesNames() throws Exception {
+		throw new UnsupportedOperationException("Not implemented yet");
+	}
+
 
 	private Congress prepareCurrentCongress() {
 		Congress congress = manager.getCurrentCongress();
@@ -92,16 +103,4 @@ public class DomainControllerTest {
 		(new WeightAlgorithm(congress)).computeAllWeights();
 		return congress;
 	}
-
-	@Test
-	public void testLoadCongress() throws Exception {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-	@Test
-	public void testLoadAllCongressesNames() throws Exception {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-
 }
