@@ -842,6 +842,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addMPToCommunityButtonActionPerformed
 
     private void deleteMPfromCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPfromCommunityButtonActionPerformed
+
         // TODO community management delete mp from communtiy button pressed
 
     }//GEN-LAST:event_deleteMPfromCommunityButtonActionPerformed

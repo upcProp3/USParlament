@@ -37,7 +37,7 @@ public class PresentationController {
             jay.addElement(jmp);
         }
         j.addPair(new JSONString("MPList"),jay);
-        return j;*/
+        return j;//*/
         ///END OF TEST
         //GOOD CODE
         return j.StringToJSON(dc.getShortMPList());
