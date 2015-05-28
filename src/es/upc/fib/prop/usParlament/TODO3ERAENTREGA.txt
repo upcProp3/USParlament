@@ -27,24 +27,17 @@ GETTERS:
 =======================================
 
 ----------------------------------------
-ASSIGNED:
+ASSIGNED:Miquel jubert
 DONE:
 
-existsAttrDef(jAttr)
-arguments: jMP is a JSON object with the following structure, the function returns a bool
-{
-	"AttrDefName":<nomAttributeDefinition>
-}
+existsAttrDef(name)
+arguments: name is a string with the name
 ----------------------------------------
 ASSIGNED:
 DONE:
 
-existsMP(jMP)
-arguments: jMP is a JSON object with the following structure, the function returns a bool
-{
-	"State":<codiEstat>,
-	"District":<numerodistricte>,
-}
+existsMP(state, districte)
+arguments: the state and district of the mp to check
 
 ----------------------------------------
 ASSIGNED: Àlex Miró
@@ -78,8 +71,8 @@ returns: a JSON string with the following format:
 
 
 ----------------------------------------
-ASSIGNED: Àlex Miró
-DONE: 20.05.15
+ASSIGNED: miquel jubert
+DONE:
 -getMPInfo(state,district)
 returns: a JSON string with the following format:
 	{
@@ -87,8 +80,13 @@ returns: a JSON string with the following format:
 			"State":<statecode>
 			,"District":<districNum>
 			,"Name":<name>
-			,"Attributes":<AttrDef1>:<Attr1Value>
-			...	//for all the attributes that the mp has
+			,"Attributes":[
+			    {
+			        "AttrDefName":<AttrDefName>,
+			        "AttrValue":<AttrValue>
+			    },
+			    ...	//for all the attributes that the mp has
+			]
 		}
 	}
 
@@ -146,9 +144,10 @@ return:
 		"Attribute Definitions" : [
 			{"AttrDefName":<AttrDefName>,
 			"AttrDefImportance":<AttrDefImportance>
+			}
 		  ,
           ...	//For all the attribute definitions
-		}]
+		]
 	}
 
 ----------------------------------------
@@ -192,7 +191,15 @@ The MP cannnot exist
 		"Name":<name>
 	}
 }
-----------------------------------------
+-----------------------------------------
+ASSIGNED: Miquel Jubert
+DONE:
+
+deleteMP(state, district)
+arguments: state contains the state of the mp, district his district
+The mp from the state and district is deleted
+
+---------------------------------------
 ASSIGNED: Àlex Miró
 DONE: 21.05.15
 
@@ -219,6 +226,29 @@ If the MP already has that attribute it is modified instead of added
 	//The attrDef and value
 	"AttrDef":<AttrDefName>,
 	"AttrValue":<AttrValue>
+	}
+}
+----------------------------------------
+ASSIGNED:
+DONE:
+
+addOrModifyAttribute(jMP,jAttributes):
+arguments: jAttr is a JSON object the following structure:
+If the MP already has that attribute it is modified instead of added
+{
+	//The MP we want to add the attrDef to
+	{
+	    "State":<state>,
+	    "District":<district>
+	}
+	//The attrDef and value
+	"MPList":[
+	    {
+	        "AttrDefName":<AttrDefName>,
+	        "AttrValue":<AttrValue>
+	    },
+	    ...
+	]
 	}
 }
 

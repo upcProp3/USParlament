@@ -846,73 +846,88 @@ public class MainView extends javax.swing.JFrame {
     public void updateMPManagementMPTable()
     {
         JSONObject j = pc.getMPList();
-            //MPsCurrentCongressTable
-            //DefaultTableModel model = (DefaultTableModel)currentMPsTable.getModel();
-            DefaultTableModel dtm = new DefaultTableModel();
-            JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
-
-            //Create columns
-            JSONObject jattrd = pc.getAttrDefs();
-            JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
-
-            dtm.addColumn("District");
-            dtm.addColumn("State");
-
-            for(JSON jo:a.getArray()){
-                dtm.addColumn(((JSONString)((JSONObject)jo).getJSONByKey("AttrDefName")).getValue());
+        DefaultTableModel dtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
             }
+        };
+        JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
 
-            for(JSON jo:ja.getArray()){
+        //Create columns
+        JSONObject jattrd = pc.getAttrDefs();
+        JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
+
+        dtm.addColumn("State");
+        dtm.addColumn("District");
+
+
+
+        for(JSON jo:a.getArray()){
+            dtm.addColumn(((JSONString)((JSONObject)jo).getJSONByKey("AttrDefName")).getValue());
+        }
+
+
+        for(JSON jo:ja.getArray()){
                 
-                Map<String,String> ms = ((JSONObject)jo).basicJSONObjectGetInfo();
-                System.out.println(ms);
-                
+            Map<String,String> ms = ((JSONObject)jo).basicJSONObjectGetInfo();
+
                 Vector<String> row = new Vector<String>();
-                for(int pos = 0;pos<ja.getArray().size();pos++){
-                    String s = dtm.getColumnName(pos);
-                    if(ms.containsKey(s)){
+                for(int cnum=0;cnum<dtm.getColumnCount();cnum++) {
+                    String s = dtm.getColumnName(cnum);
+                    if (ms.containsKey(s)) {
                         row.add(ms.get(s));
+                    }else{
+                        row.add("-");
                     }
                 }
-                
                 dtm.addRow(row);
-                
+
+
             }
             
-            currentMPsTable.setModel(dtm);
+        currentMPsTable.setModel(dtm);
+        currentMPsTable.getTableHeader().setReorderingAllowed(false);
 
     }
     
-    private void updateMPManagementAttrDefinitionTable()
+    public void updateMPManagementAttrDefinitionTable()
     {
-         DefaultTableModel adtm = new DefaultTableModel();
-            adtm.addColumn("AttrDefName");
-            adtm.addColumn("AttrDefImportance");
+        DefaultTableModel adtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+        };
+        adtm.addColumn("AttrDefName");
+        adtm.addColumn("AttrDefImportance");
 
-            JSONObject jotd = pc.getAttrDefs();
-            JSONArray jatd = ((JSONArray)jotd.getJSONByKey("Attribute Definitions"));
+        JSONObject jotd = pc.getAttrDefs();
+        JSONArray jatd = ((JSONArray)jotd.getJSONByKey("Attribute Definitions"));
 
-            for(JSON element:jatd.getArray()){
+        for(JSON element:jatd.getArray()){
 
-                Map<String,String> ms = ((JSONObject)element).basicJSONObjectGetInfo();
-                System.out.println(ms);
-
-                Vector<String> row = new Vector<String>();
-                for(int pos = 0;pos<jatd.getArray().size();pos++){
-                    String s = adtm.getColumnName(pos);
-                    if(ms.containsKey(s)){
-                        row.add(ms.get(s));
-                    }
-                }
-
-                adtm.addRow(row);
-
+            Map<String,String> ms = ((JSONObject)element).basicJSONObjectGetInfo();
+            Vector<String> row = new Vector<String>();
+            for(int pos = 0;pos<jatd.getArray().size();pos++){
+                row.add(ms.get("AttrDefName"));
+                String imp = ms.get("AttrDefImportance");
+                if(imp.equals("1")) imp = "Low";
+                else if(imp.equals("4")) imp = "Medium";
+                else if(imp.equals("16")) imp = "High";
+                else throw new IllegalStateException("UNKNOWN Attribute definition importance");
+                row.add(imp);
             }
 
+            adtm.addRow(row);
+
+        }
+
             attrDefinitionsTable.setModel(adtm);
+            attrDefinitionsTable.getTableHeader().setReorderingAllowed(false);
     }
-    
+
     private void compareWindowMPShortTable()
     {
         JSONObject j = pc.getShortMPList();
@@ -936,8 +951,7 @@ public class MainView extends javax.swing.JFrame {
             for(JSON jo:ja.getArray()){
                 
                 Map<String,String> ms = ((JSONObject)jo).basicJSONObjectGetInfo();
-                System.out.println(ms);
-                
+
                 Vector<String> row = new Vector<>();
                 for(int pos = 0;pos<ja.getArray().size();pos++){
                     String s = dtm.getColumnName(pos);
@@ -980,18 +994,41 @@ public class MainView extends javax.swing.JFrame {
         // TODO MP management addMP button pressed
         JFrame jf = new AddMPWindow(pc,this);
         jf.setVisible(true);
-        System.out.println("TANCADA");
-        
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
     }//GEN-LAST:event_addMPButtonActionPerformed
 
     private void modifyMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyMPButtonActionPerformed
-        // TODO MP management modifyMP button pressed
+        //System.out.println(currentMPsTable.getSelectedRow());
+        int fila = currentMPsTable.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        //columna 0 estat
+        //columna 1 districte
+        String state = (String)currentMPsTable.getValueAt(fila,0);
+        String district = (String) currentMPsTable.getValueAt(fila, 1);
+        //Obtenim els valors dels atributs
+        JFrame jf = new ModifyMPWindow(pc,this,State.valueOf(state),Integer.parseInt(district));
+        jf.setVisible(true);
+        this.updateMPManagementMPTable();
     }//GEN-LAST:event_modifyMPButtonActionPerformed
 
     private void deleteMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPButtonActionPerformed
         // TODO MP management delete MP button pressed
+        System.out.println(currentMPsTable.getSelectedRow());
+        int fila = currentMPsTable.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        //columna 0 estat
+        //columna 1 districte
+        String state = (String)currentMPsTable.getValueAt(fila,0);
+        String district = (String) currentMPsTable.getValueAt(fila, 1);
+        pc.deleteMP(State.valueOf(state),Integer.parseInt(district));
         this.updateMPManagementMPTable();
-        System.out.println("UPDATING");
     }//GEN-LAST:event_deleteMPButtonActionPerformed
 
     private void loadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCongressButtonActionPerformed
@@ -1007,10 +1044,16 @@ public class MainView extends javax.swing.JFrame {
 
     private void newCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCongressButtonActionPerformed
         // TODO MP management new congress button pressed
+        pc.newCongress();
+        updateMPManagementAttrDefinitionTable();
+        updateMPManagementMPTable();
     }//GEN-LAST:event_newCongressButtonActionPerformed
 
     private void newAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAttrDefButtonActionPerformed
         // TODO mp management screen new attr definition button pressed
+        JFrame jf = new AddAttributeDefinition(pc,this);
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_newAttrDefButtonActionPerformed
 
     private void modifyAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAttrDefButtonActionPerformed

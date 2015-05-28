@@ -5,6 +5,11 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
+import es.upc.fib.prop.usParlament.misc.JSONObject;
+import es.upc.fib.prop.usParlament.misc.JSONString;
+
+import javax.swing.*;
+
 /**
  *
  * @author miquel
@@ -14,8 +19,24 @@ public class AddAttributeDefinition extends javax.swing.JFrame {
     /**
      * Creates new form AddAttributeDefinition
      */
-    public AddAttributeDefinition() {
+    private PresentationController pc;
+    private MainView pops;
+
+
+    private void initialize()
+    {
+        nameTextField.setText("");
+        importanceComboBox.removeAllItems();
+        importanceComboBox.addItem("Low");
+        importanceComboBox.addItem("Medium");
+        importanceComboBox.addItem("High");
+    }
+
+    public AddAttributeDefinition(PresentationController pece,MainView father) {
+        pops = father;
+        pc = pece;
         initComponents();
+        initialize();
     }
 
     /**
@@ -32,7 +53,7 @@ public class AddAttributeDefinition extends javax.swing.JFrame {
         importanceLabel = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
         importanceComboBox = new javax.swing.JComboBox();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +68,11 @@ public class AddAttributeDefinition extends javax.swing.JFrame {
         importanceComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jToggleButton1.setText("Add Attribute Definition");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,6 +118,32 @@ public class AddAttributeDefinition extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        String name = nameTextField.getText();
+        String importance = (String)importanceComboBox.getSelectedItem();
+        if(name.equals("")){
+            JOptionPane.showMessageDialog(new JFrame(), "Please add a valid input to name");
+            return;
+        }
+        if(pc.existsAttrDef(name)){
+            JOptionPane.showMessageDialog(new JFrame(), "Name already in use");
+            return;
+        }
+
+        JSONObject jo = new JSONObject();
+
+        jo.addPair(new JSONString("AttrDefName"),new JSONString(name));
+        jo.addPair(new JSONString("Importance"),new JSONString(importance));
+
+        pc.addOrModifyAttrDef(jo);
+        pops.updateMPManagementMPTable();
+        pops.updateMPManagementAttrDefinitionTable();
+        JOptionPane.showMessageDialog(new JFrame(), "AttrDefinition Added");
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -122,7 +174,7 @@ public class AddAttributeDefinition extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddAttributeDefinition().setVisible(true);
+                new AddAttributeDefinition(null,null).setVisible(true);
             }
         });
     }
@@ -131,7 +183,7 @@ public class AddAttributeDefinition extends javax.swing.JFrame {
     private javax.swing.JLabel attrDefLabel;
     private javax.swing.JComboBox importanceComboBox;
     private javax.swing.JLabel importanceLabel;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JButton jToggleButton1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
     // End of variables declaration//GEN-END:variables
