@@ -57,6 +57,11 @@ public class PresentationController {
 
     }
 
+    public void deleteMP(State state,int district)
+    {
+        dc.deleteMP(state,district);
+    }
+
     public JSONObject getMPList()
     {
         //////TEST

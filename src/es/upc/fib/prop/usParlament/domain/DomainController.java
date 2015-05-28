@@ -220,6 +220,11 @@ public class DomainController
         currentCongress.addNode(m);
     }
 
+    public void deleteMP(State state, int district)
+    {
+        currentCongress.removeNode(new MP("INVALID_VALUE",state,district));
+    }
+
     /**
      * @pre jMP belongs to the current congress.
      * @post jMP doesn't belong to the current congress.
@@ -304,7 +309,7 @@ public class DomainController
         int importancia = 0;
         if(imp == "Low") importancia = 1;
         else if(imp == "Medium") importancia = 4;
-        else if(imp == "Hard") importancia = 16;
+        else if(imp == "High") importancia = 16;
 
         if(importancia == 0) throw new IllegalStateException("IMPORTANCIA NO RECONEGUDA");
 

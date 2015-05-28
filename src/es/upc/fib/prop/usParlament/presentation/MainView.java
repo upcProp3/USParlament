@@ -5,10 +5,7 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
-import es.upc.fib.prop.usParlament.misc.JSON;
-import es.upc.fib.prop.usParlament.misc.JSONArray;
-import es.upc.fib.prop.usParlament.misc.JSONObject;
-import es.upc.fib.prop.usParlament.misc.JSONString;
+import es.upc.fib.prop.usParlament.misc.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -848,20 +845,21 @@ public class MainView extends javax.swing.JFrame {
     public void updateMPManagementMPTable()
     {
         JSONObject j = pc.getMPList();
-        //MPsCurrentCongressTable
-        //DefaultTableModel model = (DefaultTableModel)currentMPsTable.getModel();
-        DefaultTableModel dtm = new DefaultTableModel();
+        DefaultTableModel dtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+        };
         JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
-        //DELETE OLD DATA
 
-//        currentMPsTable.removeRowSelectionInterval(0,currentMPsTable.getRowCount()-1);
-  //      currentMPsTable.removeColumnSelectionInterval(0,currentMPsTable.getColumnCount()-1);
+
         //Create columns
         JSONObject jattrd = pc.getAttrDefs();
         JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
 
-        dtm.addColumn("District");
         dtm.addColumn("State");
+        dtm.addColumn("District");
 
 
 
@@ -889,12 +887,18 @@ public class MainView extends javax.swing.JFrame {
             }
             
         currentMPsTable.setModel(dtm);
+        currentMPsTable.getTableHeader().setReorderingAllowed(false);
 
     }
     
     public void updateMPManagementAttrDefinitionTable()
     {
-        DefaultTableModel adtm = new DefaultTableModel();
+        DefaultTableModel adtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+        };
         adtm.addColumn("AttrDefName");
         adtm.addColumn("AttrDefImportance");
 
@@ -920,6 +924,7 @@ public class MainView extends javax.swing.JFrame {
         }
 
             attrDefinitionsTable.setModel(adtm);
+            attrDefinitionsTable.getTableHeader().setReorderingAllowed(false);
     }
 
     private void compareWindowMPShortTable()
@@ -998,6 +1003,17 @@ public class MainView extends javax.swing.JFrame {
 
     private void deleteMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPButtonActionPerformed
         // TODO MP management delete MP button pressed
+        System.out.println(currentMPsTable.getSelectedRow());
+        int fila = currentMPsTable.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        //columna 0 estat
+        //columna 1 districte
+        String state = (String)currentMPsTable.getValueAt(fila,0);
+        String district = (String) currentMPsTable.getValueAt(fila, 1);
+        pc.deleteMP(State.valueOf(state),Integer.parseInt(district));
         this.updateMPManagementMPTable();
     }//GEN-LAST:event_deleteMPButtonActionPerformed
 

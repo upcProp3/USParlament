@@ -186,7 +186,15 @@ The MP cannnot exist
 		"Name":<name>
 	}
 }
-----------------------------------------
+-----------------------------------------
+ASSIGNED: Miquel Jubert
+DONE:
+
+deleteMP(state, district)
+arguments: state contains the state of the mp, district his district
+The mp from the state and district is deleted
+
+---------------------------------------
 ASSIGNED: Àlex Miró
 DONE: 21.05.15
 
