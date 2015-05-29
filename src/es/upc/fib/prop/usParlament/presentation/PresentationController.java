@@ -6,9 +6,13 @@
 package es.upc.fib.prop.usParlament.presentation;
 
 import es.upc.fib.prop.usParlament.domain.DomainController;
+import es.upc.fib.prop.usParlament.domain.MP;
 import es.upc.fib.prop.usParlament.misc.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -62,17 +66,17 @@ public class PresentationController {
 
     public void deleteAttribute(JSONObject jo,JSONObject ja)
     {
-        dc.deleteAttribute(jo,ja);
+        dc.deleteAttribute(jo, ja);
     }
 
     public void addAttributes(JSONObject mp,JSONArray attr)
     {
-        dc.addOrModifyAttribute(mp,attr);
+        dc.addOrModifyAttribute(mp, attr);
     }
 
     public void deleteMP(State state,int district)
     {
-        dc.deleteMP(state,district);
+        dc.deleteMP(state, district);
     }
 
     public JSONObject getMPList()
@@ -82,7 +86,7 @@ public class PresentationController {
     
     public JSONObject getMPInfo(State state, int district)
     {
-         return j.StringToJSON(dc.getMPInfo(state,district));
+         return j.StringToJSON(dc.getMPInfo(state, district));
     }
 
     public void newCongress()
@@ -120,6 +124,25 @@ public class PresentationController {
 
     public String saveCurrentCongress(String name) {
         return dc.saveCurrentCongress(name);
+    }
+
+    public List<String> loadAllCongressNames() {
+        List<String> list = new ArrayList<>();
+        JSONizer json = new JSONizer();
+        JSONObject jo = json.StringToJSON(dc.loadAllCongressesNames());
+        for (JSON j : ((JSONArray)jo.getJSONByKey("congressesNames")).getArray()) {
+            list.add(((JSONString) j).getValue());
+        }
+        return list;
+    }
+
+    public String loadCongressAsCurrent(String name) {
+        return dc.loadCongressAsCurrent(name);
+    }
+
+    public void cleanPartitions() {
+        List<Set<MP>> currentPartition = dc.getCurrentPartition();
+        currentPartition = null;
     }
 }
 

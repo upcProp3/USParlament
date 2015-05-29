@@ -229,7 +229,7 @@ public class DomainController
 
     public void deleteMP(State state, int district)
     {
-        currentCongress.removeNode(new MP("INVALID_VALUE",state,district));
+        currentCongress.removeNode(new MP("INVALID_VALUE", state, district));
     }
 
     /**
@@ -539,4 +539,7 @@ public class DomainController
         return dataController.loadAllPartitionsOfCongress(congressName);
     }
 
+    public List<Set<MP>> getCurrentPartition() {
+        return currentPartition;
+    }
 }

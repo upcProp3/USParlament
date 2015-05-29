@@ -9,6 +9,8 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -76,8 +78,8 @@ public class DomainControllerTest {
 	private Congress prepareCurrentCongress() {
 		Congress congress = manager.getCurrentCongress();
 		AttrDefinition sex = new AttrDefinition("sex", 1);
-		AttrDefinition party = new AttrDefinition("party", 3);
-		AttrDefinition religion = new AttrDefinition("religion", 2);
+		AttrDefinition party = new AttrDefinition("party", 16);
+		AttrDefinition religion = new AttrDefinition("religion", 4);
 		congress.addAttrDef(sex);
 		congress.addAttrDef(party);
 		congress.addAttrDef(religion);
@@ -107,5 +109,9 @@ public class DomainControllerTest {
 		congress.addNode(mp4);
 		(new WeightAlgorithm(congress)).computeAllWeights();
 		return congress;
+	}
+
+	private List<Set<MP>> prepareCurrentPartition() {
+		return null;
 	}
 }

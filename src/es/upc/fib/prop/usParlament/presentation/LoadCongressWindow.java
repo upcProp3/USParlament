@@ -5,17 +5,28 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
+import java.util.Vector;
+
 /**
  *
  * @author miquel
  */
 public class LoadCongressWindow extends javax.swing.JFrame {
 
+    PresentationController pc;
+    MainView mainView;
     /**
      * Creates new form LoadGraphWindow
      */
     public LoadCongressWindow() {
         initComponents();
+    }
+
+    public LoadCongressWindow(PresentationController pc, MainView mainView) {
+        this();
+        this.pc = pc;
+        this.mainView = mainView;
+        loadCongressList.setListData(new Vector(pc.loadAllCongressNames()));
     }
 
     /**
@@ -85,7 +96,12 @@ public class LoadCongressWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loadSelectedCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadSelectedCongressButtonActionPerformed
-        // TODO add your handling code here:
+        pc.loadCongressAsCurrent((String)loadCongressList.getSelectedValue());
+        mainView.updateMPManagementMPTable();
+        mainView.updateMPManagementAttrDefinitionTable();
+        pc.cleanPartitions();
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_loadSelectedCongressButtonActionPerformed
 
     /**

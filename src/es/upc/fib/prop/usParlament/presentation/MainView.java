@@ -953,7 +953,7 @@ public class MainView extends javax.swing.JFrame {
                 else if(imp.equals("1")) imp = "Low";
                 else if(imp.equals("4")) imp = "Medium";
                 else if(imp.equals("16")) imp = "High";
-                else throw new IllegalStateException("UNKNOWN Attribute definition importance");
+                else throw new IllegalStateException("UNKNOWN Attribute definition importance "+imp);
                 row.add(imp);
             }
 
@@ -1002,7 +1002,7 @@ public class MainView extends javax.swing.JFrame {
         // In this function goes the code that needs to be executed when we change the window
         //the winows are numbered 0..n-1 in their order on the top
         //There are implementations of an initialization on the code below
-        System.out.println("CANVI DE PESTANYA "+ mainWindow.getSelectedIndex());
+        System.out.println("CANVI DE PESTANYA " + mainWindow.getSelectedIndex());
         
         
         if(mainWindow.getSelectedIndex()==1){//If we are on the MP management Window
@@ -1063,13 +1063,15 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteMPButtonActionPerformed
 
     private void loadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCongressButtonActionPerformed
-        // TODO MP management load congress button pressed
+        JFrame jf = new LoadCongressWindow(pc, this);
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_loadCongressButtonActionPerformed
 
     private void saveCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCongressButtonActionPerformed
         JFrame jf = new SaveCongressWindow(pc);
         jf.setVisible(true);
-        System.out.println("Sav congress Windows");
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // TODO MP management save congress button pressed
     }//GEN-LAST:event_saveCongressButtonActionPerformed
 
@@ -1155,12 +1157,10 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_list2LoadPartitionButtonActionPerformed
 
     private void LoadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadCongressButtonActionPerformed
-        // TODO add your handling code here:
+
+        System.out.println("Load congress");
     }//GEN-LAST:event_LoadCongressButtonActionPerformed
 
-    private void showSelectedMPInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSelectedMPInfoButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_showSelectedMPInfoButtonActionPerformed
     private CalculateCommunitiesSwingWorker sumSwingWorker;
     private class CalculateCommunitiesSwingWorker extends SwingWorker<String,Integer> {
         // doInBackground method is executed in special thread. out of GUI thread.
