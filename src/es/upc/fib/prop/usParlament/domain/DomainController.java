@@ -156,7 +156,7 @@ public class DomainController
     /**
      * @return Returns the current partition number of communities.
      */
-    public String getMainPartitionNumber() { return String.valueOf(mainPartition.size()); }
+    public String getMainPartitionSize() { return String.valueOf(mainPartition.size()); }
 
     public String getMainPartitionCommunities() {
         JSONObject jPart = new JSONObject();
