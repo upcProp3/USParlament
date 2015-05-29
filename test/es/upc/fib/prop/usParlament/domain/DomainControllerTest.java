@@ -9,6 +9,8 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -29,7 +31,7 @@ public class DomainControllerTest {
 
 	@After
 	public void tearDown() throws Exception {
-		delete(new File(PATH));
+		//delete(new File(PATH));
 	}
 	private void delete(File f) throws IOException {
 		if (!f.exists()) {
@@ -51,17 +53,33 @@ public class DomainControllerTest {
 	public void testSaveCurrentCongress() throws Exception {
 		Congress expected = prepareCurrentCongress();
 		manager.saveCurrentCongress(CONGRESS_NAMES[0]);
-		manager.loadCongress(CONGRESS_NAMES[0]);
+		manager.loadCongressAsCurrent(CONGRESS_NAMES[0]);
 		Congress current = manager.getCurrentCongress();
 		Collections.sort(current.getRelationships());
 		assertEquals(expected, current);
 	}
 
+	@Test
+	public void testLoadCongress() throws Exception {
+		Congress expected = prepareCurrentCongress();
+		manager.saveCurrentCongress(CONGRESS_NAMES[1]);
+		manager.loadCongressAsCurrent(CONGRESS_NAMES[1]);
+		Congress current = manager.getCurrentCongress();
+		Collections.sort(current.getRelationships());
+		assertEquals(expected, current);
+	}
+
+	@Test
+	public void testLoadAllCongressesNames() throws Exception {
+		throw new UnsupportedOperationException("Not implemented yet");
+	}
+
+
 	private Congress prepareCurrentCongress() {
 		Congress congress = manager.getCurrentCongress();
 		AttrDefinition sex = new AttrDefinition("sex", 1);
-		AttrDefinition party = new AttrDefinition("party", 3);
-		AttrDefinition religion = new AttrDefinition("religion", 2);
+		AttrDefinition party = new AttrDefinition("party", 16);
+		AttrDefinition religion = new AttrDefinition("religion", 4);
 		congress.addAttrDef(sex);
 		congress.addAttrDef(party);
 		congress.addAttrDef(religion);
@@ -93,15 +111,7 @@ public class DomainControllerTest {
 		return congress;
 	}
 
-	@Test
-	public void testLoadCongress() throws Exception {
-		throw new UnsupportedOperationException("Not implemented yet");
+	private List<Set<MP>> prepareCurrentPartition() {
+		return null;
 	}
-
-	@Test
-	public void testLoadAllCongressesNames() throws Exception {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-
 }
