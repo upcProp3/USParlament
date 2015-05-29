@@ -25,7 +25,7 @@ public class DomainController
 
      */
     private Congress currentCongress;
-    private ArrayList<Set<MP>> currentPartition;
+    private ArrayList<Set<MP>> mainPartition;
     private ArrayList<Set<MP>> partition1;
     private ArrayList<Set<MP>> partition2;
     private DataController dataController;
@@ -34,7 +34,7 @@ public class DomainController
     public DomainController()
     {
         currentCongress = new Congress();
-        currentPartition = new ArrayList<>();
+        mainPartition = new ArrayList<>();
         partition1 = new ArrayList<>();
         partition2 = new ArrayList<>();
         dataController = new DataControllerImpl("congresses");
@@ -140,7 +140,7 @@ public class DomainController
     public void newCongress()
     {
         currentCongress = new Congress();
-        currentPartition = new ArrayList<>();
+        mainPartition = new ArrayList<>();
         partition1 = new ArrayList<>();
         partition2 = new ArrayList<>();
     }
@@ -153,17 +153,24 @@ public class DomainController
     /**
      * @return Returns the current partition number of communities.
      */
-    public String getCurrentPartitionNumber() { return String.valueOf(currentPartition.size()); }
+    public String getMainPartitionNumber() { return String.valueOf(mainPartition.size()); }
+
+    public String getMainPartitionCommunities() {
+        JSONObject jPart = new JSONObject();
+        for (Set<MP> c : mainPartition) {
+
+        }
+    }
 
     /**
      * @param comnumber
      * @return
      */
-    public String getMPsCurrentPartition(String comnumber) {
+    public String getMPsMainPartition(String comnumber) {
         JSONObject mps = new JSONObject();
         JSONString js = new JSONString("Current partition Community numer " + comnumber);
         JSONArray ja = new JSONArray();
-        for (MP mp : currentPartition.get(Integer.parseInt(comnumber))) {
+        for (MP mp : mainPartition.get(Integer.parseInt(comnumber))) {
             JSONObject jo = new JSONObject();
             jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
             jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));

@@ -120,12 +120,12 @@ public class MainView extends javax.swing.JFrame {
         javax.swing.GroupLayout mainViewLayout = new javax.swing.GroupLayout(mainView);
         mainView.setLayout(mainViewLayout);
         mainViewLayout.setHorizontalGroup(
-            mainViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 792, Short.MAX_VALUE)
+                mainViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 792, Short.MAX_VALUE)
         );
         mainViewLayout.setVerticalGroup(
-            mainViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
+                mainViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 568, Short.MAX_VALUE)
         );
 
         mainWindow.addTab("Main Page", mainView);
@@ -135,12 +135,12 @@ public class MainView extends javax.swing.JFrame {
         MPTablePanel.setName(""); // NOI18N
 
         currentMPsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object[][]{
 
-            },
-            new String [] {
+                },
+                new String[]{
 
-            }
+                }
         ));
         currentMPsTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         currentMPsTable.setName("currentMPsTable"); // NOI18N
@@ -199,61 +199,61 @@ public class MainView extends javax.swing.JFrame {
         javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
         buttonsPanel.setLayout(buttonsPanelLayout);
         buttonsPanelLayout.setHorizontalGroup(
-            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buttonsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addMPButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(modifyMPButton, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                    .addComponent(deleteMPButton, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                    .addComponent(loadCongressButton, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                    .addComponent(saveCongressButton, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                    .addComponent(newCongressButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(buttonsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(addMPButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(modifyMPButton, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                        .addComponent(deleteMPButton, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                        .addComponent(loadCongressButton, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                        .addComponent(saveCongressButton, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                        .addComponent(newCongressButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
-            buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(buttonsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(addMPButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(modifyMPButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteMPButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(loadCongressButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(saveCongressButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newCongressButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(buttonsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(addMPButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(modifyMPButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(deleteMPButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addComponent(loadCongressButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(saveCongressButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(newCongressButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
         );
 
         attrDefinitionsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Name", "Importance"
-            }
+                new Object[][]{
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null}
+                },
+                new String[]{
+                        "Name", "Importance"
+                }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+            Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
         });
         attrDefinitionsTable.setColumnSelectionAllowed(true);
@@ -283,22 +283,22 @@ public class MainView extends javax.swing.JFrame {
         javax.swing.GroupLayout attrDefinitionsPanelLayout = new javax.swing.GroupLayout(attrDefinitionsPanel);
         attrDefinitionsPanel.setLayout(attrDefinitionsPanelLayout);
         attrDefinitionsPanelLayout.setHorizontalGroup(
-            attrDefinitionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(attrDefinitionsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(attrDefinitionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(modifyAttrDefButton, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                    .addComponent(newAttrDefButton, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
-                .addContainerGap())
+                attrDefinitionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(attrDefinitionsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(attrDefinitionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(modifyAttrDefButton, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                                        .addComponent(newAttrDefButton, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                                .addContainerGap())
         );
         attrDefinitionsPanelLayout.setVerticalGroup(
-            attrDefinitionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(attrDefinitionsPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(newAttrDefButton)
-                .addGap(18, 18, 18)
-                .addComponent(modifyAttrDefButton)
-                .addContainerGap())
+                attrDefinitionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(attrDefinitionsPanelLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(newAttrDefButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(modifyAttrDefButton)
+                                .addContainerGap())
         );
 
         attrDefinitionsLabel.setText("Attribute Definitions:");
@@ -310,46 +310,46 @@ public class MainView extends javax.swing.JFrame {
         javax.swing.GroupLayout congressManagementViewLayout = new javax.swing.GroupLayout(congressManagementView);
         congressManagementView.setLayout(congressManagementViewLayout);
         congressManagementViewLayout.setHorizontalGroup(
-            congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(congressManagementViewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(congressManagementViewLayout.createSequentialGroup()
-                        .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(attrDefPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
-                            .addGroup(congressManagementViewLayout.createSequentialGroup()
+                congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(congressManagementViewLayout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(attrDefinitionsLabel)
-                                    .addComponent(currentCongressLabel))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(attrDefinitionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(MPTablePanel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hideAttrsButton))
-                .addGap(24, 24, 24))
+                                        .addGroup(congressManagementViewLayout.createSequentialGroup()
+                                                .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(attrDefPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                                                        .addGroup(congressManagementViewLayout.createSequentialGroup()
+                                                                .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(attrDefinitionsLabel)
+                                                                        .addComponent(currentCongressLabel))
+                                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(attrDefinitionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(MPTablePanel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(hideAttrsButton))
+                                .addGap(24, 24, 24))
         );
         congressManagementViewLayout.setVerticalGroup(
-            congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(congressManagementViewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(currentCongressLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MPTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(attrDefinitionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(attrDefPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(attrDefinitionsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-            .addGroup(congressManagementViewLayout.createSequentialGroup()
-                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(hideAttrsButton)
-                .addGap(0, 0, Short.MAX_VALUE))
+                congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(congressManagementViewLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(currentCongressLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(MPTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(attrDefinitionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(attrDefPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(attrDefinitionsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())
+                        .addGroup(congressManagementViewLayout.createSequentialGroup()
+                                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(hideAttrsButton)
+                                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         mainWindow.addTab("Congress Management", congressManagementView);
@@ -386,18 +386,16 @@ public class MainView extends javax.swing.JFrame {
         });
 
         communitiesTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Title 1"
-            }
+                new Object[][]{
+                        {null},
+                        {null},
+                        {null},
+                        {null}
+                },
+                new String[]{
+                        "Community number"
+                }
         ));
-        communitiesTablePanel.setViewportView(communitiesTable);
-
         MPsInCommunityTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -860,6 +858,17 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addMPToCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPToCommunityButtonActionPerformed
+        int fila = communitiesTable.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        String cName = (String)communitiesTable.getValueAt(fila,0);
+        JFrame jf = new addMPToCommunityWindow(pc, cName);
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+
         // TODO add mp to communtiy button pressed
     }//GEN-LAST:event_addMPToCommunityButtonActionPerformed
 
@@ -965,6 +974,27 @@ public class MainView extends javax.swing.JFrame {
             attrDefinitionsTable.getTableHeader().setReorderingAllowed(false);
     }
 
+    public void updateCommunitiesTable()
+    {
+        JSONObject j = pc.getMainPartitionNumber();
+        DefaultTableModel dtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+        };
+        JSONString jNumb = (JSONString) j.getJSONByKey("Number");
+        dtm.addColumn("Community number");
+        for (int i = 1; i <= Integer.valueOf(jNumb.getValue()); ++i) {
+            JSONString ji = new JSONString(String.valueOf(i));
+            Vector<String> value = new Vector<String>();
+            value.add(ji.getValue());
+            dtm.addRow(value);
+        }
+        communitiesTable.setModel(dtm);
+        communitiesTable.getTableHeader().setReorderingAllowed(false);
+    }
+
     private void compareWindowMPShortTable()
     {
         JSONObject j = pc.getShortMPList();
@@ -975,7 +1005,7 @@ public class MainView extends javax.swing.JFrame {
 
             //Create columns
             dtm.addColumn("District");
-            dtm.addColumn("State");
+        dtm.addColumn("State");
 
 
             for(JSON jo:ja.getArray()){
@@ -1002,7 +1032,7 @@ public class MainView extends javax.swing.JFrame {
         // In this function goes the code that needs to be executed when we change the window
         //the winows are numbered 0..n-1 in their order on the top
         //There are implementations of an initialization on the code below
-        System.out.println("CANVI DE PESTANYA "+ mainWindow.getSelectedIndex());
+        System.out.println("CANVI DE PESTANYA " + mainWindow.getSelectedIndex());
         
         
         if(mainWindow.getSelectedIndex()==1){//If we are on the MP management Window
@@ -1158,9 +1188,6 @@ public class MainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_LoadCongressButtonActionPerformed
 
-    private void showSelectedMPInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSelectedMPInfoButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_showSelectedMPInfoButtonActionPerformed
     private CalculateCommunitiesSwingWorker sumSwingWorker;
     private class CalculateCommunitiesSwingWorker extends SwingWorker<String,Integer> {
         // doInBackground method is executed in special thread. out of GUI thread.
