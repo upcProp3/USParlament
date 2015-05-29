@@ -8,8 +8,9 @@ package es.upc.fib.prop.usParlament.presentation;
 import es.upc.fib.prop.usParlament.misc.*;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.ExecutionException;
@@ -26,7 +27,7 @@ public class MainView extends javax.swing.JFrame {
     public MainView(PresentationController precon) {
         pc = precon;
         initComponents();
-        
+        setAlgorithmNames();
     }
 
     /**
@@ -981,7 +982,15 @@ public class MainView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_deleteMPfromCommunityButtonActionPerformed
 
-    
+
+    public void setAlgorithmNames() {
+        chooseAlgorithmComboBox.removeAllItems();
+        // WHILE YOU CHANGE NAMES YOU HAVE TO CHANGE ALSO DomainController.calculateCommunities(algotithm)!!!
+        chooseAlgorithmComboBox.addItem("Four Clique Percolation");
+        chooseAlgorithmComboBox.addItem("Louvian");
+        chooseAlgorithmComboBox.addItem("Newmann Girvan");
+    }
+
     public void updateMPManagementMPTable()
     {
         JSONObject j = pc.getMPList();
@@ -1105,8 +1114,55 @@ public class MainView extends javax.swing.JFrame {
                 dtm.addRow(row);
                 
             }
-            
-            MPsCurrentCongressTable.setModel(dtm);
+    }
+
+    private void updateCommunitiesTable() {
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        model.addColumn("Communities");
+
+        for (Integer i : pc.getCommunityIDs()) {
+            Vector row = new Vector();
+            row.add(i);
+            model.addRow(row);
+        }
+
+        communitiesTable.setModel(model);
+
+        communitiesTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                updateMPsInCommunityTable(communitiesTable.getSelectedRow());
+            }
+        });
+
+    }
+    private void updateMPsInCommunityTable(int selectedRow) {
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        MPsInCommunityTable.setModel(model);
+        model.addColumn("State");
+        model.addColumn("District");
+
+        if (selectedRow < 0) {
+            return;
+        }
+
+        for (JSONObject mp : pc.getMPsCurrentPartition(selectedRow)) {
+            Vector row = new Vector();
+            row.add(((JSONString)mp.getJSONByKey("State")).getValue());
+            row.add(Integer.valueOf(((JSONString)mp.getJSONByKey("District")).getValue()));
+            model.addRow(row);
+        }
+
     }
     
     private void mainWindowStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_mainWindowStateChanged
@@ -1124,8 +1180,11 @@ public class MainView extends javax.swing.JFrame {
              updateMPManagementAttrDefinitionTable();
             ///FINISHING ATTR DEFINITION TABLE
         }
-        
-        
+
+        if(mainWindow.getSelectedIndex()==2){//If we are on the Community management Window
+            updateCommunitiesTable();
+            updateMPsInCommunityTable(communitiesTable.getSelectedRow());
+        }
         
         if(mainWindow.getSelectedIndex()==3){//If we are on the compare window
             compareWindowMPShortTable();
@@ -1244,7 +1303,10 @@ public class MainView extends javax.swing.JFrame {
     private void calculateCommunitiesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateCommunitiesButtonActionPerformed
         // TODO communtiy management calculate communities button pressed
         calculateCommunitiesButton.setEnabled(false);
-        CalculateCommunitiesSwingWorker sw = new CalculateCommunitiesSwingWorker();
+        algorithmProgressBar.setIndeterminate(true);
+        String algorithm = (String)chooseAlgorithmComboBox.getSelectedItem();
+        String argument = argumentTextField.getText();
+        CalculateCommunitiesSwingWorker sw = new CalculateCommunitiesSwingWorker(algorithm, argument);
         sw.execute();
     }//GEN-LAST:event_calculateCommunitiesButtonActionPerformed
 
@@ -1297,40 +1359,35 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_communitiesTableCaretPositionChanged
 
     private CalculateCommunitiesSwingWorker sumSwingWorker;
-    private class CalculateCommunitiesSwingWorker extends SwingWorker<String,Integer> {
+    private class CalculateCommunitiesSwingWorker extends SwingWorker<Void,Void> {
+        private String algorithm;
+        private String argument;
+        public CalculateCommunitiesSwingWorker(String algorithm, String argument) {
+            this.algorithm = algorithm;
+            this.argument = argument;
+        }
         // doInBackground method is executed in special thread. out of GUI thread.
         // We must NOT manipulate with GUI components
         @Override
-        protected String doInBackground() throws Exception {
-            int result = 0;
-            for(int i=0; i <= 100; i++) {
-                // simulate long time operation
-                Thread.sleep(20);
-                result += i;
-                // call process function
-                publish(i);
-            }
-            return "" + result;
+        protected Void doInBackground() throws Exception {
+            //System.out.print(algorithm);
+            pc.computeCommunities(algorithm, argument);
+            return null;
         }
         // done method is executed in GUI thread.
         // We can manipulate with GUI components
         @Override
         protected void done() {
-            calculateCommunitiesButton.setEnabled(true);
+            algorithmProgressBar.setIndeterminate(false);
             try {
-                // get method get us result from do in background
-                JOptionPane.showMessageDialog(null, "Result is " + get());
-            } catch (ExecutionException ex) {
-                JOptionPane.showMessageDialog(null,"Error");
-            } catch (InterruptedException ex) {
-                throw new RuntimeException("Operation interrupted (this should never happen)",ex);
+                get();
+                calculateCommunitiesButton.setEnabled(true);
+                MainView.this.updateCommunitiesTable();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
             }
-        }
-        // process method is executed in GUI thread.
-        // We can manipulate with GUI components
-        @Override
-        protected void process(List<Integer> chunks) {
-            algorithmProgressBar.setValue(chunks.get(chunks.size()-1));
         }
     }
 

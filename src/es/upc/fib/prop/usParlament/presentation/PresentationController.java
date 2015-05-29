@@ -6,13 +6,9 @@
 package es.upc.fib.prop.usParlament.presentation;
 
 import es.upc.fib.prop.usParlament.domain.DomainController;
-import es.upc.fib.prop.usParlament.domain.MP;
 import es.upc.fib.prop.usParlament.misc.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -140,9 +136,34 @@ public class PresentationController {
         return dc.loadCongressAsCurrent(name);
     }
 
-    public void cleanPartitions() {
-        List<Set<MP>> currentPartition = dc.getCurrentPartition();
-        currentPartition = null;
+    public void cleanCommunityManager() {
+        dc.cleanCommunityManager();
+    }
+
+    public void computeCommunities(String algorithm, String argument) {
+        dc.computeCommunities(algorithm, argument);
+    }
+
+    public List<Integer> getCommunityIDs() {
+        JSONizer json = new JSONizer();
+        JSONArray jsonIds = (JSONArray)json.StringToJSON(dc.getCommunityIDs()).getJSONByKey("ids");
+        List<Integer> ids = new ArrayList<>();
+        for (JSON jo : jsonIds.getArray()) {
+            ids.add(Integer.valueOf(((JSONString)jo).getValue()));
+        }
+        return ids;
+    }
+
+    public Set<JSONObject> getMPsCurrentPartition(int selectedCommunity) {
+        JSONizer json = new JSONizer();
+        JSONArray jsonMPs = (JSONArray)json.StringToJSON(
+                dc.getMPsCurrentPartition(String.valueOf(selectedCommunity)))
+                .getJSONByKey("Current partition Community numer " + selectedCommunity);
+        Set<JSONObject> mps = new HashSet<>();
+        for (JSON jo : jsonMPs.getArray()) {
+            mps.add((JSONObject)jo);
+        }
+        return mps;
     }
 }
 

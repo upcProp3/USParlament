@@ -1,5 +1,10 @@
 package es.upc.fib.prop.usParlament.domain;
 
+import es.upc.fib.prop.shared13.Algorithm;
+import es.upc.fib.prop.shared13.Node;
+import es.upc.fib.prop.shared13.cliques.FCQAlgorithm;
+import es.upc.fib.prop.shared13.louvain.LouvainAlgorithm;
+import es.upc.fib.prop.shared13.newmanngirvan.NGAlgorithm;
 import es.upc.fib.prop.usParlament.data.DataController;
 import es.upc.fib.prop.usParlament.data.DataControllerImpl;
 import es.upc.fib.prop.usParlament.misc.*;
@@ -41,7 +46,7 @@ public class DomainController
         this.dataController = dataController;
     }
 
-    public Congress getCurrentCongress() {
+    protected Congress getCurrentCongress() {
         return currentCongress;
     }
 
@@ -287,6 +292,10 @@ public class DomainController
 
         }
 
+    }
+
+    public void cleanCommunityManager() {
+        currentPartition = new ArrayList<>();
     }
 
     public void deleteAttribute(JSONObject jmp,JSONObject jattr)
@@ -539,7 +548,49 @@ public class DomainController
         return dataController.loadAllPartitionsOfCongress(congressName);
     }
 
-    public List<Set<MP>> getCurrentPartition() {
+    protected List<Set<MP>> getCurrentPartition() {
         return currentPartition;
+    }
+
+    /**
+     * Compute partitions with given algorithm name (clicques, louvian, newmanngirvan) and save it to the current partition
+     * @param algorithm  unique identificator of congress.
+     */
+    public void computeCommunities(String algorithm, String argument) {
+        (new WeightAlgorithm(currentCongress)).computeAllWeights();
+        Algorithm alg;
+        switch (algorithm) {
+            case "Four Clique Percolation":
+                alg = new FCQAlgorithm(currentCongress, Double.valueOf(argument));
+                break;
+            case "Louvian":
+                alg = new LouvainAlgorithm(currentCongress);
+                break;
+            case "Newmann Girvan":
+                alg = new NGAlgorithm(currentCongress, Integer.valueOf(argument));
+                break;
+            default:
+                throw new IllegalArgumentException("Incorrect name of algorithm");
+        }
+        List<Set<MP>> partition = new ArrayList<>();
+        for (Set<Node> set : alg.calculate()) {
+            Set<MP> mpSet = new HashSet<>();
+            for (Node n : set) {
+                mpSet.add((MP) n);
+            }
+            partition.add(mpSet);
+        }
+        currentPartition = partition;
+    }
+
+    public String getCommunityIDs() {
+        JSONArray ids = new JSONArray();
+        for (Set comm : currentPartition) {
+            int id = currentPartition.indexOf(comm);
+            ids.addElement(new JSONString("" + id));
+        }
+        JSONObject jo = new JSONObject();
+        jo.addPair("ids", ids);
+        return (new JSONizer()).JSONtoString(jo);
     }
 }
