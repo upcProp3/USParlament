@@ -90,7 +90,7 @@ public class SaveCongressWindow extends javax.swing.JFrame {
         }
         setVisible(false);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed.
 
     /**
      * @param args the command line arguments

@@ -864,6 +864,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addMPToCommunityButtonActionPerformed
 
     private void deleteMPfromCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPfromCommunityButtonActionPerformed
+
         // TODO community management delete mp from communtiy button pressed
 
     }//GEN-LAST:event_deleteMPfromCommunityButtonActionPerformed
@@ -1039,7 +1040,7 @@ public class MainView extends javax.swing.JFrame {
         String state = (String)currentMPsTable.getValueAt(fila,0);
         String district = (String) currentMPsTable.getValueAt(fila, 1);
         //Obtenim els valors dels atributs
-        JFrame jf = new ModifyMPWindow(pc,this,State.valueOf(state),Integer.parseInt(district));
+        JFrame jf = new ModifyMPWindow(pc,this, State.valueOf(state),Integer.parseInt(district));
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.updateMPManagementMPTable();
@@ -1091,8 +1092,32 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyAttrDefButtonActionPerformed
 
     private void showMPDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMPDataButtonActionPerformed
+        int fila = MPsInCommunityTable.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        String st = (String) MPsInCommunityTable.getValueAt(fila, 0);
+        String dt = (String) MPsInCommunityTable.getValueAt(fila, 1);
+        JFrame jf = new ShowMPInfoWindow(pc, st, dt);
+        jf.setVisible(true);
+        System.out.println("Show MP Info");
         // TODO community management show selected mp info button
     }//GEN-LAST:event_showMPDataButtonActionPerformed
+
+    private void showSelectedMPInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        System.out.println("helloWorld"); //TODO
+        int fila = MPsCurrentCongressTable.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        String st = (String) MPsCurrentCongressTable.getValueAt(fila, 0);
+        String dt = (String) MPsCurrentCongressTable.getValueAt(fila, 1);
+        JFrame jf = new ShowMPInfoWindow(pc, st, dt);
+        jf.setVisible(true);
+        System.out.println("Show MP Info");
+    }
 
     private void loadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadPartitionButtonActionPerformed
         // TODO community management load partition button pressed

@@ -5,17 +5,32 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
+import java.util.Map;
+
+import es.upc.fib.prop.usParlament.misc.JSONObject;
+import es.upc.fib.prop.usParlament.misc.State;
+
 /**
  *
  * @author miquel
  */
 public class ShowMPInfoWindow extends javax.swing.JFrame {
 
+    private PresentationController pc;
+    JSONObject mp;
+
     /**
      * Creates new form ShowMPInfoWindow
+     * @param pc
      */
-    public ShowMPInfoWindow() {
+    public ShowMPInfoWindow(PresentationController pc, String st, String dt) {
         initComponents();
+        this.pc = pc;
+        //State s = State.valueOf(st);
+        //int d = Integer.parseInt(dt);
+        State s = State.valueOf("NY");
+        int d = 15;
+        //mp = pc.getMPInfo(s, d);
     }
 
     /**
@@ -34,6 +49,10 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        //Map<String, String> m = mp.basicJSONObjectGetInfo();
+        String[] s = new String[] {"State", "District", "Name"};
+
+
         ShowMPInfoTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -41,9 +60,7 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+           s
         ));
         jScrollPane1.setViewportView(ShowMPInfoTable);
 
@@ -91,7 +108,8 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_doneButtonActionPerformed
 
     /**
@@ -124,7 +142,7 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ShowMPInfoWindow().setVisible(true);
+             //   new ShowMPInfoWindow(pc).setVisible(true);
             }
         });
     }
