@@ -238,7 +238,7 @@ public class DomainController
 
     public void deleteMP(State state, int district)
     {
-        currentCongress.removeNode(new MP("INVALID_VALUE",state,district));
+        currentCongress.removeNode(new MP("INVALID_VALUE", state, district));
     }
 
     /**
@@ -488,4 +488,66 @@ public class DomainController
 
 
 
+    /**
+     * save current partition into persistent memory. If partition with same identificators already exists it will be rewritten.
+     * @param congressName  unique identificator of congress. It has to already exists in persistent memory.
+     * @param partitionName  unique identificator in congressName scope.
+     * @return  Exception string If there is exception "{}" string otherwise.
+     */
+    public String saveCurrentPartition(String congressName, String partitionName) {
+        JSONObject jsonPartition = new JSONObject();
+        JSONArray communities = new JSONArray();
+        for (Set<MP> community : currentPartition) {
+            JSONArray jsonCommunity = new JSONArray();
+            for (MP mp : community) {
+                JSONObject jsonMP = new JSONObject();
+                jsonMP.addPair(new JSONString("state"), new JSONString(mp.getState().toString()));
+                jsonMP.addPair(new JSONString("district"), new JSONString(""+mp.getDistrict()));
+                jsonCommunity.addElement(jsonMP);
+            }
+            communities.addElement(jsonCommunity);
+        }
+        jsonPartition.addPair("communities", communities);
+        return dataController.savePartition(congressName, partitionName, jsonPartition.stringify());
+    }
+
+    /**
+     * load saved partition from persistent memory as current partition.
+     * @param congressName  unique identificator of congress.
+     * @param partitionName  unique identificator in congressName scope.
+     * @return JSON representation of partition.
+     */
+    public String loadPartitionAsCurrent(String congressName, String partitionName) {
+        JSONizer json = new JSONizer();
+        String respond = dataController.loadPartition(congressName, partitionName);
+        List<Set<MP>> newPartition = new ArrayList<>();
+        JSONObject jsonPartition = json.StringToJSON(respond);
+        for (JSON jsonCom : ((JSONArray)jsonPartition.getJSONByKey("communities")).getArray()) {
+            Set<MP> community = new HashSet<>();
+            for (JSON j : ((JSONArray)jsonCom).getArray()) {
+                JSONObject jsonMP = (JSONObject) j;
+                State state = State.valueOf(((JSONString)jsonMP.getJSONByKey("state")).getValue());
+                int dist = Integer.valueOf(((JSONString)jsonMP.getJSONByKey("district")).getValue());
+                MP mp = currentCongress.getMP(state, dist);
+                community.add(mp);
+            }
+            newPartition.add(community);
+        }
+
+        currentPartition = newPartition;
+        return respond;
+    }
+
+    /**
+     * load all saved partitions of congress.
+     * @param congressName  unique identificator of congress.
+     * @return  JSON representation of array of partitions.
+     */
+    public String loadAllPartitionsOfCongress(String congressName) {
+        return dataController.loadAllPartitionsOfCongress(congressName);
+    }
+
+    public List<Set<MP>> getCurrentPartition() {
+        return currentPartition;
+    }
 }

@@ -388,8 +388,9 @@
                               <Component id="communitiesPanel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="loadPartitionButton" max="32767" attributes="0"/>
+                                  <Component id="loadPartitionButton" pref="191" max="32767" attributes="0"/>
                                   <Component id="savePartitionButton" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="newPartitionButton" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -416,7 +417,9 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                              <Component id="newPartitionButton" min="-2" pref="50" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="loadPartitionButton" min="-2" pref="50" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="savePartitionButton" min="-2" pref="50" max="-2" attributes="0"/>
@@ -460,11 +463,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="labelCommunities" min="-2" max="-2" attributes="0"/>
-                              <Component id="communitiesTablePanel" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="communitiesTablePanel" alignment="0" pref="130" max="32767" attributes="0"/>
+                              <Component id="newCommButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="delCommButton" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="MPsInCommuntiyPanel" min="-2" pref="130" max="-2" attributes="0"/>
@@ -494,17 +499,27 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="MPsInCommuntiyPanel" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="MPsInCommuntiyPanel" pref="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                  <Component id="addMPToCommunityButton" min="-2" pref="50" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="deleteMPfromCommunityButton" min="-2" pref="50" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="showMPDataButton" min="-2" pref="50" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="109" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                          <Component id="addMPToCommunityButton" min="-2" pref="50" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="deleteMPfromCommunityButton" min="-2" pref="50" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="showMPDataButton" min="-2" pref="50" max="-2" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="communitiesTablePanel" pref="0" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="newCommButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="delCommButton" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="communitiesTablePanel" alignment="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -576,6 +591,9 @@
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="caretPositionChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="communitiesTableCaretPositionChanged"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -615,6 +633,22 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JButton" name="newCommButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="New Comm."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newCommButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="delCommButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Delete Comm."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delCommButtonActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="loadPartitionButton">
@@ -677,6 +711,15 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="algorithmProgressBar" noResource="true"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="newPartitionButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="New Partition"/>
+                <Property name="name" type="java.lang.String" value="loadPartitionButton" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newPartitionButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -841,6 +884,9 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="communtiyList1" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="communityList1CommunitiesListValueChanged"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -982,6 +1028,9 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="nameList2" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="communityList2CommunitiesListValueChanged"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

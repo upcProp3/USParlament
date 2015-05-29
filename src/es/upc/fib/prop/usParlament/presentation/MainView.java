@@ -69,6 +69,10 @@ public class MainView extends javax.swing.JFrame {
         communitiesTable = new javax.swing.JTable();
         MPsInCommuntiyPanel = new javax.swing.JScrollPane();
         MPsInCommunityTable = new javax.swing.JTable();
+        newCommButton = new javax.swing.JButton();
+        delCommButton = new javax.swing.JButton();
+        newCommButton = new javax.swing.JButton();
+        delCommButton = new javax.swing.JButton();
         loadPartitionButton = new javax.swing.JButton();
         savePartitionButton = new javax.swing.JButton();
         algorithmLabel = new javax.swing.JLabel();
@@ -77,6 +81,8 @@ public class MainView extends javax.swing.JFrame {
         argumentTextField = new javax.swing.JTextField();
         calculateCommunitiesButton = new javax.swing.JButton();
         algorithmProgressBar = new javax.swing.JProgressBar();
+        newPartitionButton = new javax.swing.JButton();
+        newPartitionButton = new javax.swing.JButton();
         CompareView = new javax.swing.JPanel();
         CommunityPanel1 = new javax.swing.JPanel();
         scrollPaneCommunityList1 = new javax.swing.JScrollPane();
@@ -386,73 +392,130 @@ public class MainView extends javax.swing.JFrame {
         });
 
         communitiesTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                        {null},
-                        {null},
-                        {null},
-                        {null}
-                },
-                new String[]{
-                        "Community number"
-                }
-        ));
-        MPsInCommunityTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Title 1"
             }
         ));
+        communitiesTable.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                communitiesTableCaretPositionChanged(evt);
+            }
+        });
+        communitiesTable.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                communitiesTableCaretPositionChanged(evt);
+            }
+        });
+        communitiesTablePanel.setViewportView(communitiesTable);
+
+        MPsInCommunityTable.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{
+                        {null, null},
+                        {null, null},
+                        {null, null},
+                        {null, null}
+                },
+                new String[]{
+                        "Title 1", "Title 2"
+                }
+        ));
         MPsInCommuntiyPanel.setViewportView(MPsInCommunityTable);
+
+        newCommButton.setText("New Comm.");
+        newCommButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newCommButtonActionPerformed(evt);
+            }
+        });
+
+        delCommButton.setText("Delete Comm.");
+        delCommButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delCommButtonActionPerformed(evt);
+            }
+        });
+
+        newCommButton.setText("New Comm.");
+        newCommButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newCommButtonActionPerformed(evt);
+            }
+        });
+
+        delCommButton.setText("Delete Comm.");
+        delCommButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delCommButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout communitiesPanelLayout = new javax.swing.GroupLayout(communitiesPanel);
         communitiesPanel.setLayout(communitiesPanelLayout);
         communitiesPanelLayout.setHorizontalGroup(
-            communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(communitiesPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelCommunities)
-                    .addComponent(communitiesTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(communitiesPanelLayout.createSequentialGroup()
-                        .addComponent(MPsInCommuntiyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addMPToCommunityButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(deleteMPfromCommunityButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(showMPDataButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(communitiesPanelLayout.createSequentialGroup()
-                        .addComponent(labelMPs)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(communitiesPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(labelCommunities)
+                                        .addComponent(communitiesTablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                        .addComponent(newCommButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(delCommButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(communitiesPanelLayout.createSequentialGroup()
+                                                .addComponent(MPsInCommuntiyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(addMPToCommunityButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(deleteMPfromCommunityButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                                                        .addComponent(showMPDataButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGroup(communitiesPanelLayout.createSequentialGroup()
+                                                .addComponent(labelMPs)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
         communitiesPanelLayout.setVerticalGroup(
-            communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(communitiesPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelCommunities)
-                    .addComponent(labelMPs))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(MPsInCommuntiyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(communitiesPanelLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(addMPToCommunityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(deleteMPfromCommunityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(showMPDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 109, Short.MAX_VALUE))
-                    .addComponent(communitiesTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+                communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(communitiesPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(labelCommunities)
+                                        .addComponent(labelMPs))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(MPsInCommuntiyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                                .addGroup(communitiesPanelLayout.createSequentialGroup()
+                                                        .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(communitiesPanelLayout.createSequentialGroup()
+                                                                        .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(communitiesPanelLayout.createSequentialGroup()
+                                                                                        .addGap(57, 57, 57)
+                                                                                        .addComponent(addMPToCommunityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                        .addGap(18, 18, 18)
+                                                                                        .addComponent(deleteMPfromCommunityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                        .addGap(18, 18, 18)
+                                                                                        .addComponent(showMPDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE))
+                                                                                .addGroup(communitiesPanelLayout.createSequentialGroup()
+                                                                                        .addComponent(communitiesTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                                                        .addComponent(newCommButton)
+                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                        .addComponent(delCommButton)))
+                                                        .addContainerGap())
+                                )));
 
         loadPartitionButton.setText("Load Partition");
         loadPartitionButton.setName("loadPartitionButton"); // NOI18N
@@ -472,7 +535,7 @@ public class MainView extends javax.swing.JFrame {
 
         algorithmLabel.setText("Algorithm:");
 
-        chooseAlgorithmComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        chooseAlgorithmComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Item 1", "Item 2", "Item 3", "Item 4"}));
         chooseAlgorithmComboBox.setName("algorithmChooser"); // NOI18N
 
         argumentLabel.setText("Argument:");
@@ -490,57 +553,76 @@ public class MainView extends javax.swing.JFrame {
 
         algorithmProgressBar.setName("algorithmProgressBar"); // NOI18N
 
+        newPartitionButton.setText("New Partition");
+        newPartitionButton.setName("loadPartitionButton"); // NOI18N
+        newPartitionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPartitionButtonActionPerformed(evt);
+            }
+        });
+
+        newPartitionButton.setText("New Partition");
+        newPartitionButton.setName("loadPartitionButton"); // NOI18N
+        newPartitionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPartitionButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout CommunityManagementLayout = new javax.swing.GroupLayout(CommunityManagement);
         CommunityManagement.setLayout(CommunityManagementLayout);
         CommunityManagementLayout.setHorizontalGroup(
-            CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CommunityManagementLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CommunityManagementLayout.createSequentialGroup()
-                        .addComponent(communitiesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loadPartitionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(savePartitionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(CommunityManagementLayout.createSequentialGroup()
-                        .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(algorithmLabel)
-                            .addComponent(argumentLabel))
-                        .addGap(2, 2, 2)
-                        .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(algorithmProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(calculateCommunitiesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(chooseAlgorithmComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(argumentTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(CommunityManagementLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(CommunityManagementLayout.createSequentialGroup()
+                                                .addComponent(communitiesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(loadPartitionButton, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                                                        .addComponent(savePartitionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(newPartitionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGroup(CommunityManagementLayout.createSequentialGroup()
+                                                .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(algorithmLabel)
+                                                        .addComponent(argumentLabel))
+                                                .addGap(2, 2, 2)
+                                                .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(algorithmProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                                        .addComponent(calculateCommunitiesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(chooseAlgorithmComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(argumentTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
         CommunityManagementLayout.setVerticalGroup(
-            CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CommunityManagementLayout.createSequentialGroup()
-                .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CommunityManagementLayout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(loadPartitionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(savePartitionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(CommunityManagementLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(communitiesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(algorithmLabel)
-                    .addComponent(chooseAlgorithmComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(argumentLabel)
-                    .addComponent(argumentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(calculateCommunitiesButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(algorithmProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(CommunityManagementLayout.createSequentialGroup()
+                                .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(CommunityManagementLayout.createSequentialGroup()
+                                                .addGap(104, 104, 104)
+                                                .addComponent(newPartitionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(loadPartitionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(savePartitionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(CommunityManagementLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(communitiesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(algorithmLabel)
+                                        .addComponent(chooseAlgorithmComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(argumentLabel)
+                                        .addComponent(argumentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(calculateCommunitiesButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(algorithmProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         mainWindow.addTab("Community Management", null, CommunityManagement, "");
@@ -548,11 +630,27 @@ public class MainView extends javax.swing.JFrame {
         CommunityPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         communityList1CommunitiesList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            String[] strings = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
+
+            public int getSize() {
+                return strings.length;
+            }
+
+            public Object getElementAt(int i) {
+                return strings[i];
+            }
         });
         communityList1CommunitiesList.setName("communtiyList1"); // NOI18N
+        communityList1CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                communityList1CommunitiesListValueChanged(evt);
+            }
+        });
+        communityList1CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                communityList1CommunitiesListValueChanged(evt);
+            }
+        });
         scrollPaneCommunityList1.setViewportView(communityList1CommunitiesList);
 
         list1Label1.setText("List of Communities 1:");
@@ -577,33 +675,33 @@ public class MainView extends javax.swing.JFrame {
         javax.swing.GroupLayout CommunityPanel1Layout = new javax.swing.GroupLayout(CommunityPanel1);
         CommunityPanel1.setLayout(CommunityPanel1Layout);
         CommunityPanel1Layout.setHorizontalGroup(
-            CommunityPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CommunityPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(CommunityPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CommunityPanel1Layout.createSequentialGroup()
-                        .addGroup(CommunityPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(list1Label1)
-                            .addComponent(list1Label2))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CommunityPanel1Layout.createSequentialGroup()
-                        .addGroup(CommunityPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(scrollPaneMPList1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(scrollPaneCommunityList1))
-                        .addContainerGap())))
+                CommunityPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(CommunityPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(CommunityPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(CommunityPanel1Layout.createSequentialGroup()
+                                                .addGroup(CommunityPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(list1Label1)
+                                                        .addComponent(list1Label2))
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CommunityPanel1Layout.createSequentialGroup()
+                                                .addGroup(CommunityPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(scrollPaneMPList1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                                        .addComponent(scrollPaneCommunityList1))
+                                                .addContainerGap())))
         );
         CommunityPanel1Layout.setVerticalGroup(
-            CommunityPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CommunityPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(list1Label1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneCommunityList1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(list1Label2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneMPList1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+                CommunityPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(CommunityPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(list1Label1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(scrollPaneCommunityList1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(list1Label2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(scrollPaneMPList1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addContainerGap())
         );
 
         currentLoadedCongressLabel.setText("Currently loaded congress:");
@@ -622,11 +720,27 @@ public class MainView extends javax.swing.JFrame {
         CommunityPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         communityList2CommunitiesList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            String[] strings = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
+
+            public int getSize() {
+                return strings.length;
+            }
+
+            public Object getElementAt(int i) {
+                return strings[i];
+            }
         });
         communityList2CommunitiesList.setName("nameList2"); // NOI18N
+        communityList2CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                communityList2CommunitiesListValueChanged(evt);
+            }
+        });
+        communityList2CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                communityList2CommunitiesListValueChanged(evt);
+            }
+        });
         scrollPaneCommuntiyList2.setViewportView(communityList2CommunitiesList);
 
         list2Label1.setText("List of Communities 2:");
@@ -1005,7 +1119,7 @@ public class MainView extends javax.swing.JFrame {
 
             //Create columns
             dtm.addColumn("District");
-        dtm.addColumn("State");
+            dtm.addColumn("State");
 
 
             for(JSON jo:ja.getArray()){
@@ -1093,13 +1207,15 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteMPButtonActionPerformed
 
     private void loadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCongressButtonActionPerformed
-        // TODO MP management load congress button pressed
+        JFrame jf = new LoadCongressWindow(pc, this);
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_loadCongressButtonActionPerformed
 
     private void saveCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCongressButtonActionPerformed
         JFrame jf = new SaveCongressWindow(pc);
         jf.setVisible(true);
-        System.out.println("Sav congress Windows");
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // TODO MP management save congress button pressed
     }//GEN-LAST:event_saveCongressButtonActionPerformed
 
@@ -1187,6 +1303,30 @@ public class MainView extends javax.swing.JFrame {
     private void LoadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadCongressButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_LoadCongressButtonActionPerformed
+
+    private void newPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPartitionButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newPartitionButtonActionPerformed
+
+    private void newCommButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCommButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newCommButtonActionPerformed
+
+    private void delCommButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delCommButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delCommButtonActionPerformed
+
+    private void communityList1CommunitiesListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_communityList1CommunitiesListValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_communityList1CommunitiesListValueChanged
+
+    private void communityList2CommunitiesListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_communityList2CommunitiesListValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_communityList2CommunitiesListValueChanged
+
+    private void communitiesTableCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_communitiesTableCaretPositionChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_communitiesTableCaretPositionChanged
 
     private CalculateCommunitiesSwingWorker sumSwingWorker;
     private class CalculateCommunitiesSwingWorker extends SwingWorker<String,Integer> {
@@ -1304,6 +1444,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel currentLoadedCongressLabel;
     private javax.swing.JPanel currentMPsPanel;
     private javax.swing.JTable currentMPsTable;
+    private javax.swing.JButton delCommButton;
     private javax.swing.JButton deleteMPButton;
     private javax.swing.JButton deleteMPfromCommunityButton;
     private javax.swing.JRadioButton hideAttrsButton;
@@ -1326,7 +1467,9 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton modifyAttrDefButton;
     private javax.swing.JButton modifyMPButton;
     private javax.swing.JButton newAttrDefButton;
+    private javax.swing.JButton newCommButton;
     private javax.swing.JButton newCongressButton;
+    private javax.swing.JButton newPartitionButton;
     private javax.swing.JButton saveCongressButton;
     private javax.swing.JButton savePartitionButton;
     private javax.swing.JScrollPane scrollPaneCommunityList1;
