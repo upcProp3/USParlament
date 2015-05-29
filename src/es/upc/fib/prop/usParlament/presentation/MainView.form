@@ -98,7 +98,10 @@
                           <Component id="MPTablePanel" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonsPanel" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="buttonsPanel" min="-2" max="-2" attributes="0"/>
+                          <Component id="hideAttrsButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -111,18 +114,18 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="MPTablePanel" min="-2" pref="377" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="attrDefinitionsLabel" min="-2" pref="17" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="attrDefinitionsPanel" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="attrDefinitionsLabel" min="-2" pref="17" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="attrDefPanel" min="-2" pref="115" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="attrDefPanel" alignment="1" min="-2" pref="115" max="-2" attributes="0"/>
+                          <Component id="attrDefinitionsPanel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="buttonsPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="hideAttrsButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -308,9 +311,8 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="newAttrDefButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="modifyAttrDefButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="deleteAttrDefButton" alignment="1" pref="132" max="32767" attributes="0"/>
+                              <Component id="modifyAttrDefButton" pref="132" max="32767" attributes="0"/>
+                              <Component id="newAttrDefButton" alignment="0" pref="132" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -319,13 +321,11 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="newAttrDefButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="modifyAttrDefButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="deleteAttrDefButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="newAttrDefButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="modifyAttrDefButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -349,15 +349,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modifyAttrDefButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="deleteAttrDefButton">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Delete Attr. Def."/>
-                    <Property name="name" type="java.lang.String" value="deleteAttrDefButton" noResource="true"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteAttrDefButtonActionPerformed"/>
-                  </Events>
-                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JLabel" name="attrDefinitionsLabel">
@@ -368,6 +359,11 @@
             <Component class="javax.swing.JLabel" name="currentCongressLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Current Congress&apos; MPs"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="hideAttrsButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hide irrelevant attrdefs"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -912,6 +908,9 @@
                 <Property name="text" type="java.lang.String" value="Load Congress"/>
                 <Property name="name" type="java.lang.String" value="loadCongressButton" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoadCongressButtonActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="CommunityPanel2">
               <Properties>
@@ -1039,6 +1038,9 @@
                 <Property name="text" type="java.lang.String" value="Compare"/>
                 <Property name="name" type="java.lang.String" value="compareButton" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="compareButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="list1OptionsLabel">
               <Properties>
@@ -1050,12 +1052,18 @@
                 <Property name="text" type="java.lang.String" value="Use current partition"/>
                 <Property name="name" type="java.lang.String" value="useCurrentPartitionList1Button" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="list1UseCurrentPartitionButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="list1LoadPartitionButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Load part. from memory"/>
                 <Property name="name" type="java.lang.String" value="loadPartitionList1Button" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="list1LoadPartitionButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="list2OptionsLabel">
               <Properties>
@@ -1067,12 +1075,18 @@
                 <Property name="text" type="java.lang.String" value="Use current partition"/>
                 <Property name="name" type="java.lang.String" value="useCurrentPartitionList2Button" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="list2UseCurrentPartitionButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="list2LoadPartitionButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Load part. from memory"/>
                 <Property name="name" type="java.lang.String" value="loadPartitionList2Button" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="list2LoadPartitionButtonActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="currentMPsPanel">
 
@@ -1140,6 +1154,9 @@
                     <Property name="text" type="java.lang.String" value="Show Selected MP info"/>
                     <Property name="name" type="java.lang.String" value="selectedMPInfoButton" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showSelectedMPInfoButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
