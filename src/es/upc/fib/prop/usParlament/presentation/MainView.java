@@ -1099,7 +1099,7 @@ public class MainView extends javax.swing.JFrame {
 
     public void updateCommunitiesTable()
     {
-        JSONObject j = pc.getMainPartitionNumber();
+        JSONObject j = pc.getMainPartitionSize();
         DefaultTableModel dtm = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row,int column){

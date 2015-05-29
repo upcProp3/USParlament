@@ -90,9 +90,9 @@ public class PresentationController {
         dc.newCongress();
     }
     
-    public JSONObject getMainPartitionNumber()
+    public JSONObject getMainPartitionSize()
     {
-        JSONString j = new JSONString(dc.getMainPartitionNumber());
+        JSONString j = new JSONString(dc.getMainPartitionSize());
         JSONString key = new JSONString("Number");
         JSONObject jRet = new JSONObject();
         jRet.addPair(key, j);
