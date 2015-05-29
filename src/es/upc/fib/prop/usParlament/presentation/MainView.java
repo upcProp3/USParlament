@@ -69,6 +69,8 @@ public class MainView extends javax.swing.JFrame {
         communitiesTable = new javax.swing.JTable();
         MPsInCommuntiyPanel = new javax.swing.JScrollPane();
         MPsInCommunityTable = new javax.swing.JTable();
+        newCommButton = new javax.swing.JButton();
+        delCommButton = new javax.swing.JButton();
         loadPartitionButton = new javax.swing.JButton();
         savePartitionButton = new javax.swing.JButton();
         algorithmLabel = new javax.swing.JLabel();
@@ -77,6 +79,7 @@ public class MainView extends javax.swing.JFrame {
         argumentTextField = new javax.swing.JTextField();
         calculateCommunitiesButton = new javax.swing.JButton();
         algorithmProgressBar = new javax.swing.JProgressBar();
+        newPartitionButton = new javax.swing.JButton();
         CompareView = new javax.swing.JPanel();
         CommunityPanel1 = new javax.swing.JPanel();
         scrollPaneCommunityList1 = new javax.swing.JScrollPane();
@@ -396,6 +399,13 @@ public class MainView extends javax.swing.JFrame {
                 "Title 1"
             }
         ));
+        communitiesTable.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                communitiesTableCaretPositionChanged(evt);
+            }
+        });
         communitiesTablePanel.setViewportView(communitiesTable);
 
         MPsInCommunityTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -411,15 +421,31 @@ public class MainView extends javax.swing.JFrame {
         ));
         MPsInCommuntiyPanel.setViewportView(MPsInCommunityTable);
 
+        newCommButton.setText("New Comm.");
+        newCommButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newCommButtonActionPerformed(evt);
+            }
+        });
+
+        delCommButton.setText("Delete Comm.");
+        delCommButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delCommButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout communitiesPanelLayout = new javax.swing.GroupLayout(communitiesPanel);
         communitiesPanel.setLayout(communitiesPanelLayout);
         communitiesPanelLayout.setHorizontalGroup(
             communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(communitiesPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelCommunities)
-                    .addComponent(communitiesTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(communitiesTablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(newCommButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(delCommButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(communitiesPanelLayout.createSequentialGroup()
@@ -445,14 +471,21 @@ public class MainView extends javax.swing.JFrame {
                 .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(MPsInCommuntiyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(communitiesPanelLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(addMPToCommunityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(deleteMPfromCommunityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(showMPDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 109, Short.MAX_VALUE))
-                    .addComponent(communitiesTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGroup(communitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(communitiesPanelLayout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(addMPToCommunityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(deleteMPfromCommunityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(showMPDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE))
+                            .addGroup(communitiesPanelLayout.createSequentialGroup()
+                                .addComponent(communitiesTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(newCommButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(delCommButton)))
                 .addContainerGap())
         );
 
@@ -492,6 +525,14 @@ public class MainView extends javax.swing.JFrame {
 
         algorithmProgressBar.setName("algorithmProgressBar"); // NOI18N
 
+        newPartitionButton.setText("New Partition");
+        newPartitionButton.setName("loadPartitionButton"); // NOI18N
+        newPartitionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPartitionButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout CommunityManagementLayout = new javax.swing.GroupLayout(CommunityManagement);
         CommunityManagement.setLayout(CommunityManagementLayout);
         CommunityManagementLayout.setHorizontalGroup(
@@ -503,8 +544,9 @@ public class MainView extends javax.swing.JFrame {
                         .addComponent(communitiesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loadPartitionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(savePartitionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(loadPartitionButton, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                            .addComponent(savePartitionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(newPartitionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(CommunityManagementLayout.createSequentialGroup()
                         .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(algorithmLabel)
@@ -523,7 +565,9 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(CommunityManagementLayout.createSequentialGroup()
                 .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CommunityManagementLayout.createSequentialGroup()
-                        .addGap(139, 139, 139)
+                        .addGap(104, 104, 104)
+                        .addComponent(newPartitionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(loadPartitionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(savePartitionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -555,6 +599,11 @@ public class MainView extends javax.swing.JFrame {
             public Object getElementAt(int i) { return strings[i]; }
         });
         communityList1CommunitiesList.setName("communtiyList1"); // NOI18N
+        communityList1CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                communityList1CommunitiesListValueChanged(evt);
+            }
+        });
         scrollPaneCommunityList1.setViewportView(communityList1CommunitiesList);
 
         list1Label1.setText("List of Communities 1:");
@@ -629,6 +678,11 @@ public class MainView extends javax.swing.JFrame {
             public Object getElementAt(int i) { return strings[i]; }
         });
         communityList2CommunitiesList.setName("nameList2"); // NOI18N
+        communityList2CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                communityList2CommunitiesListValueChanged(evt);
+            }
+        });
         scrollPaneCommuntiyList2.setViewportView(communityList2CommunitiesList);
 
         list2Label1.setText("List of Communities 2:");
@@ -974,8 +1028,8 @@ public class MainView extends javax.swing.JFrame {
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
             //Create columns
-            dtm.addColumn("District");
             dtm.addColumn("State");
+            dtm.addColumn("District");
 
 
             for(JSON jo:ja.getArray()){
@@ -1158,9 +1212,30 @@ public class MainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_LoadCongressButtonActionPerformed
 
-    private void showSelectedMPInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSelectedMPInfoButtonActionPerformed
+    private void newPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPartitionButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_showSelectedMPInfoButtonActionPerformed
+    }//GEN-LAST:event_newPartitionButtonActionPerformed
+
+    private void newCommButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCommButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newCommButtonActionPerformed
+
+    private void delCommButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delCommButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delCommButtonActionPerformed
+
+    private void communityList1CommunitiesListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_communityList1CommunitiesListValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_communityList1CommunitiesListValueChanged
+
+    private void communityList2CommunitiesListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_communityList2CommunitiesListValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_communityList2CommunitiesListValueChanged
+
+    private void communitiesTableCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_communitiesTableCaretPositionChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_communitiesTableCaretPositionChanged
+
     private CalculateCommunitiesSwingWorker sumSwingWorker;
     private class CalculateCommunitiesSwingWorker extends SwingWorker<String,Integer> {
         // doInBackground method is executed in special thread. out of GUI thread.
@@ -1277,6 +1352,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel currentLoadedCongressLabel;
     private javax.swing.JPanel currentMPsPanel;
     private javax.swing.JTable currentMPsTable;
+    private javax.swing.JButton delCommButton;
     private javax.swing.JButton deleteMPButton;
     private javax.swing.JButton deleteMPfromCommunityButton;
     private javax.swing.JRadioButton hideAttrsButton;
@@ -1299,7 +1375,9 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton modifyAttrDefButton;
     private javax.swing.JButton modifyMPButton;
     private javax.swing.JButton newAttrDefButton;
+    private javax.swing.JButton newCommButton;
     private javax.swing.JButton newCongressButton;
+    private javax.swing.JButton newPartitionButton;
     private javax.swing.JButton saveCongressButton;
     private javax.swing.JButton savePartitionButton;
     private javax.swing.JScrollPane scrollPaneCommunityList1;
