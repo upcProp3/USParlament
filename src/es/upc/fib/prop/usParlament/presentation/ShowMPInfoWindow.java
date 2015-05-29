@@ -17,7 +17,7 @@ import es.upc.fib.prop.usParlament.misc.State;
 public class ShowMPInfoWindow extends javax.swing.JFrame {
 
     private PresentationController pc;
-    JSONObject mp;
+    private JSONObject mp;
 
     /**
      * Creates new form ShowMPInfoWindow
@@ -26,10 +26,13 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
     public ShowMPInfoWindow(PresentationController pc, String st, String dt) {
         initComponents();
         this.pc = pc;
+        System.out.println("State:"+st);
+        System.out.println("District:"+dt);
+
         //State s = State.valueOf(st);
         //int d = Integer.parseInt(dt);
-        State s = State.valueOf("NY");
-        int d = 15;
+        //State s = State.valueOf("NY");
+        //int d = 15;
         //mp = pc.getMPInfo(s, d);
     }
 

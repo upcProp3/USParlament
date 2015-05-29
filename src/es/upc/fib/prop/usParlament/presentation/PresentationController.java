@@ -41,8 +41,8 @@ public class PresentationController {
         JSONArray jay = new JSONArray();
         for(int i = 0;i<10;i++){
             JSONObject jmp = new JSONObject();
-            jmp.addPair(new JSONString("State"),new JSONString("US"+i));
-            jmp.addPair(new JSONString("District"),new JSONString("SA"+i));
+            jmp.addPair(new JSONString("State"),new JSONString("AL"));
+            jmp.addPair(new JSONString("District"),new JSONString(Integer.toString(i)));
             jay.addElement(jmp);
         }
         j.addPair(new JSONString("MPList"),jay);
