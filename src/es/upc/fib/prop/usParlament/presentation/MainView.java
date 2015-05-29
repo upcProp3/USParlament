@@ -392,15 +392,15 @@ public class MainView extends javax.swing.JFrame {
         });
 
         communitiesTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                        {null},
-                        {null},
-                        {null},
-                        {null}
-                },
-                new String[]{
-                        "Title 1"
-                }
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Title 1"
+            }
         ));
         communitiesTable.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
@@ -972,6 +972,17 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addMPToCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPToCommunityButtonActionPerformed
+        int fila = communitiesTable.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        String cName = (String)communitiesTable.getValueAt(fila,0);
+        JFrame jf = new addMPToCommunityWindow(pc, cName);
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+
         // TODO add mp to communtiy button pressed
     }//GEN-LAST:event_addMPToCommunityButtonActionPerformed
 
@@ -1077,6 +1088,27 @@ public class MainView extends javax.swing.JFrame {
             attrDefinitionsTable.getTableHeader().setReorderingAllowed(false);
     }
 
+    public void updateCommunitiesTable()
+    {
+        JSONObject j = pc.getMainPartitionNumber();
+        DefaultTableModel dtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+        };
+        JSONString jNumb = (JSONString) j.getJSONByKey("Number");
+        dtm.addColumn("Community number");
+        for (int i = 1; i <= Integer.valueOf(jNumb.getValue()); ++i) {
+            JSONString ji = new JSONString(String.valueOf(i));
+            Vector<String> value = new Vector<String>();
+            value.add(ji.getValue());
+            dtm.addRow(value);
+        }
+        communitiesTable.setModel(dtm);
+        communitiesTable.getTableHeader().setReorderingAllowed(false);
+    }
+
     private void compareWindowMPShortTable()
     {
         JSONObject j = pc.getShortMPList();
@@ -1086,8 +1118,8 @@ public class MainView extends javax.swing.JFrame {
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
             //Create columns
-            dtm.addColumn("State");
             dtm.addColumn("District");
+            dtm.addColumn("State");
 
 
             for(JSON jo:ja.getArray()){
@@ -1114,7 +1146,7 @@ public class MainView extends javax.swing.JFrame {
         // In this function goes the code that needs to be executed when we change the window
         //the winows are numbered 0..n-1 in their order on the top
         //There are implementations of an initialization on the code below
-        System.out.println("CANVI DE PESTANYA "+ mainWindow.getSelectedIndex());
+        System.out.println("CANVI DE PESTANYA " + mainWindow.getSelectedIndex());
         
         
         if(mainWindow.getSelectedIndex()==1){//If we are on the MP management Window
