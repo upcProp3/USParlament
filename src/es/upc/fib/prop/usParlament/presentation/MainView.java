@@ -1116,6 +1116,12 @@ public class MainView extends javax.swing.JFrame {
         }
         communitiesTable.setModel(dtm);
         communitiesTable.getTableHeader().setReorderingAllowed(false);
+
+        communitiesTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                updateMPsInCommunityTable(communitiesTable.getSelectedRow());
+            }
+        });
     }
 
     private void compareWindowMPShortTable()
@@ -1148,31 +1154,6 @@ public class MainView extends javax.swing.JFrame {
             }
     }
 
-    private void updateCommunitiesTable() {
-        DefaultTableModel model = new DefaultTableModel() {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-
-        model.addColumn("Communities");
-
-        for (Integer i : pc.getCommunityIDs()) {
-            Vector row = new Vector();
-            row.add(i);
-            model.addRow(row);
-        }
-
-        communitiesTable.setModel(model);
-
-        communitiesTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent event) {
-                updateMPsInCommunityTable(communitiesTable.getSelectedRow());
-            }
-        });
-
-    }
     private void updateMPsInCommunityTable(int selectedRow) {
         DefaultTableModel model = new DefaultTableModel() {
             @Override
@@ -1303,7 +1284,7 @@ public class MainView extends javax.swing.JFrame {
             return;
         }
         String st = (String) MPsInCommunityTable.getValueAt(fila, 0);
-        String dt = (String) MPsInCommunityTable.getValueAt(fila, 1);
+        int dt = (Integer) MPsInCommunityTable.getValueAt(fila, 1);
         JFrame jf = new ShowMPInfoWindow(pc, st, dt);
         jf.setVisible(true);
         System.out.println("Show MP Info");
@@ -1318,7 +1299,7 @@ public class MainView extends javax.swing.JFrame {
             return;
         }
         String st = (String) MPsCurrentCongressTable.getValueAt(fila, 0);
-        String dt = (String) MPsCurrentCongressTable.getValueAt(fila, 1);
+        int dt = (Integer) MPsCurrentCongressTable.getValueAt(fila, 1);
         JFrame jf = new ShowMPInfoWindow(pc, st, dt);
         jf.setVisible(true);
         System.out.println("Show MP Info");
