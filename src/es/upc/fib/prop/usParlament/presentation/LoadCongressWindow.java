@@ -99,7 +99,7 @@ public class LoadCongressWindow extends javax.swing.JFrame {
         pc.loadCongressAsCurrent((String)loadCongressList.getSelectedValue());
         mainView.updateMPManagementMPTable();
         mainView.updateMPManagementAttrDefinitionTable();
-        pc.cleanPartitions();
+        pc.cleanCommunityManager();
         setVisible(false);
         dispose();
     }//GEN-LAST:event_loadSelectedCongressButtonActionPerformed
