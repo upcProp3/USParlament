@@ -271,7 +271,7 @@ public class ModifyMPWindow extends javax.swing.JFrame {
         ja.addElement(jo);
         pc.addAttributes(jmp, ja);
         updateTableAndCombo();
-
+        pops.updateMPManagementMPTable();
     }//GEN-LAST:event_modifyAttributeButtonActionPerformed
 
     private void deleteAttributeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAttributeButtonActionPerformed

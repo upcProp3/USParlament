@@ -334,12 +334,13 @@ public class DomainController
         key.setValue("Importance");
         JSONString jImp = new JSONString(((JSONString)jAttrDef.getJSONByKey(key)).getValue());
         String imp = jImp.getValue();
-        int importancia = 0;
+        int importancia = -1;
+        if(imp == "None") importancia = 0;
         if(imp == "Low") importancia = 1;
         else if(imp == "Medium") importancia = 4;
         else if(imp == "High") importancia = 16;
 
-        if(importancia == 0) throw new IllegalStateException("IMPORTANCIA NO RECONEGUDA");
+        if(importancia == -1) throw new IllegalStateException("IMPORTANCIA NO RECONEGUDA");
 
         AttrDefinition ad = new AttrDefinition(jAttrD.getValue(), importancia);
         if (currentCongress.hasAttrDef(ad)) {
