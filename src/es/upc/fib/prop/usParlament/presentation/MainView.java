@@ -721,6 +721,11 @@ public class MainView extends javax.swing.JFrame {
 
         showSelectedMPInfoButton.setText("Show Selected MP info");
         showSelectedMPInfoButton.setName("selectedMPInfoButton"); // NOI18N
+        showSelectedMPInfoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showSelectedMPInfoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout currentMPsPanelLayout = new javax.swing.GroupLayout(currentMPsPanel);
         currentMPsPanel.setLayout(currentMPsPanelLayout);
@@ -835,6 +840,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addMPToCommunityButtonActionPerformed
 
     private void deleteMPfromCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPfromCommunityButtonActionPerformed
+
         // TODO community management delete mp from communtiy button pressed
 
     }//GEN-LAST:event_deleteMPfromCommunityButtonActionPerformed
@@ -1068,6 +1074,20 @@ public class MainView extends javax.swing.JFrame {
         System.out.println("Show MP Info");
         // TODO community management show selected mp info button
     }//GEN-LAST:event_showMPDataButtonActionPerformed
+
+    private void showSelectedMPInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        System.out.println("helloWorld");
+        int fila = MPsCurrentCongressTable.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        String st = (String) MPsCurrentCongressTable.getValueAt(fila, 0);
+        String dt = (String) MPsCurrentCongressTable.getValueAt(fila, 1);
+        JFrame jf = new ShowMPInfoWindow(pc);
+        jf.setVisible(true);
+        System.out.println("Show MP Info");
+    }
 
     private void loadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadPartitionButtonActionPerformed
         // TODO community management load partition button pressed
