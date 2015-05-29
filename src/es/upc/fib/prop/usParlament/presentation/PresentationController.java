@@ -168,7 +168,7 @@ public class PresentationController {
     public Set<JSONObject> getMPsCurrentPartition(int selectedCommunity) {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
-                dc.getMPsCurrentPartition(String.valueOf(selectedCommunity)))
+                dc.getMPsMainPartition(String.valueOf(selectedCommunity)))
                 .getJSONByKey("Current partition Community numer " + selectedCommunity);
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {

@@ -9,9 +9,7 @@ import es.upc.fib.prop.usParlament.data.DataController;
 import es.upc.fib.prop.usParlament.data.DataControllerImpl;
 import es.upc.fib.prop.usParlament.misc.*;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by miquel on 16/05/15.
@@ -30,9 +28,9 @@ public class DomainController
 
      */
     private Congress currentCongress;
-    private ArrayList<Set<MP>> mainPartition;
-    private ArrayList<Set<MP>> partition1;
-    private ArrayList<Set<MP>> partition2;
+    private List<Set<MP>> mainPartition;
+    private List<Set<MP>> partition1;
+    private List<Set<MP>> partition2;
     private DataController dataController;
 
     
@@ -165,6 +163,7 @@ public class DomainController
         for (Set<MP> c : mainPartition) {
 
         }
+        return null;
     }
 
     /**
@@ -304,7 +303,7 @@ public class DomainController
     }
 
     public void cleanCommunityManager() {
-        currentPartition = new ArrayList<>();
+        mainPartition = new ArrayList<>();
     }
 
     public void deleteAttribute(JSONObject jmp,JSONObject jattr)
@@ -439,7 +438,7 @@ public class DomainController
      * @param name  identificator of congress
      * @return  JSON representation of congress
      */
-    public String loadCongress(String name) {
+    public String loadCongressAsCurrent(String name) {
         JSONizer json = new JSONizer();
         String congress = dataController.loadCongress(name);
         JSONObject jsonCongress = json.StringToJSON(congress);
@@ -506,7 +505,7 @@ public class DomainController
     public String saveCurrentPartition(String congressName, String partitionName) {
         JSONObject jsonPartition = new JSONObject();
         JSONArray communities = new JSONArray();
-        for (Set<MP> community : currentPartition) {
+        for (Set<MP> community : mainPartition) {
             JSONArray jsonCommunity = new JSONArray();
             for (MP mp : community) {
                 JSONObject jsonMP = new JSONObject();
@@ -543,7 +542,7 @@ public class DomainController
             newPartition.add(community);
         }
 
-        currentPartition = newPartition;
+        mainPartition = newPartition;
         return respond;
     }
 
@@ -557,7 +556,7 @@ public class DomainController
     }
 
     protected List<Set<MP>> getCurrentPartition() {
-        return currentPartition;
+        return mainPartition;
     }
 
     /**
@@ -588,13 +587,13 @@ public class DomainController
             }
             partition.add(mpSet);
         }
-        currentPartition = partition;
+        mainPartition = partition;
     }
 
     public String getCommunityIDs() {
         JSONArray ids = new JSONArray();
-        for (Set comm : currentPartition) {
-            int id = currentPartition.indexOf(comm);
+        for (Set comm : mainPartition) {
+            int id = mainPartition.indexOf(comm);
             ids.addElement(new JSONString("" + id));
         }
         JSONObject jo = new JSONObject();
