@@ -90,9 +90,16 @@ public class PresentationController {
         dc.newCongress();
     }
     
-    public JSONObject getMainCommunityNumber()
+    public JSONObject getMainPartitionNumber()
     {
-        //return domainController.getMainCommuntiyNumber();
+        JSONString j = new JSONString(dc.getMainPartitionNumber());
+        JSONString key = new JSONString("Number");
+        JSONObject jRet = new JSONObject();
+        jRet.addPair(key, j);
+        return jRet;
+    }
+
+    public JSONObject getMainPartitionCommunities() {
         return null;
     }
     
@@ -100,6 +107,10 @@ public class PresentationController {
     {
         //return domainController.getSecCommuntiyNumber();
         return null;
+    }
+
+    //TODO
+    public void addMPToCommunity(String cName, State st, Integer dt) {
     }
 
     public boolean existsAttrDef(String name)

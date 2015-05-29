@@ -9,7 +9,9 @@ import es.upc.fib.prop.usParlament.data.DataController;
 import es.upc.fib.prop.usParlament.data.DataControllerImpl;
 import es.upc.fib.prop.usParlament.misc.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by miquel on 16/05/15.
@@ -28,16 +30,16 @@ public class DomainController
 
      */
     private Congress currentCongress;
-    private List<Set<MP>> currentPartition;
-    private List<Set<MP>> partition1;
-    private List<Set<MP>> partition2;
+    private ArrayList<Set<MP>> mainPartition;
+    private ArrayList<Set<MP>> partition1;
+    private ArrayList<Set<MP>> partition2;
     private DataController dataController;
 
     
     public DomainController()
     {
         currentCongress = new Congress();
-        currentPartition = new ArrayList<>();
+        mainPartition = new ArrayList<>();
         partition1 = new ArrayList<>();
         partition2 = new ArrayList<>();
         dataController = new DataControllerImpl("congresses");
@@ -143,30 +145,37 @@ public class DomainController
     public void newCongress()
     {
         currentCongress = new Congress();
-        currentPartition = new ArrayList<>();
+        mainPartition = new ArrayList<>();
         partition1 = new ArrayList<>();
         partition2 = new ArrayList<>();
     }
 
     public boolean existsAttrDef(String name)
     {
-        return currentCongress.hasAttrDef(new AttrDefinition(name, 1));
+        return currentCongress.hasAttrDef(new AttrDefinition(name,1));
     }
 
     /**
      * @return Returns the current partition number of communities.
      */
-    public String getCurrentPartitionNumber() { return String.valueOf(currentPartition.size()); }
+    public String getMainPartitionNumber() { return String.valueOf(mainPartition.size()); }
+
+    public String getMainPartitionCommunities() {
+        JSONObject jPart = new JSONObject();
+        for (Set<MP> c : mainPartition) {
+
+        }
+    }
 
     /**
      * @param comnumber
      * @return
      */
-    public String getMPsCurrentPartition(String comnumber) {
+    public String getMPsMainPartition(String comnumber) {
         JSONObject mps = new JSONObject();
         JSONString js = new JSONString("Current partition Community numer " + comnumber);
         JSONArray ja = new JSONArray();
-        for (MP mp : currentPartition.get(Integer.parseInt(comnumber))) {
+        for (MP mp : mainPartition.get(Integer.parseInt(comnumber))) {
             JSONObject jo = new JSONObject();
             jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
             jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
@@ -395,7 +404,6 @@ public class DomainController
                 JSONObject jsonAttr = new JSONObject();
                 jsonAttr.addPair(new JSONString("value"), new JSONString(attr.getValue().toString()));
                 jsonAttr.addPair(new JSONString("definitionName"), new JSONString(attr.getDefinition().getName()));
-                attributes.addElement(jsonAttr);
             }
             jsonMP.addPair(new JSONString("attributes"), attributes);
             mps.addElement(jsonMP);
@@ -431,7 +439,7 @@ public class DomainController
      * @param name  identificator of congress
      * @return  JSON representation of congress
      */
-    public String loadCongressAsCurrent(String name) {
+    public String loadCongress(String name) {
         JSONizer json = new JSONizer();
         String congress = dataController.loadCongress(name);
         JSONObject jsonCongress = json.StringToJSON(congress);
