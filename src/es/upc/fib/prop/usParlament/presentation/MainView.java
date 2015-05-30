@@ -310,13 +310,6 @@ public class MainView extends javax.swing.JFrame {
         currentCongressLabel.setText("Current Congress' MPs");
 
         hideAttrsButton.setText("Hide irrelevant attrdefs");
-        hideAttrsButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                radiobuttonAttrDefButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout congressManagementViewLayout = new javax.swing.GroupLayout(congressManagementView);
         congressManagementView.setLayout(congressManagementViewLayout);
@@ -410,15 +403,6 @@ public class MainView extends javax.swing.JFrame {
         communitiesTable.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
-
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-                communitiesTableCaretPositionChanged(evt);
-            }
-        });
-        communitiesTable.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-            }
-
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 communitiesTableCaretPositionChanged(evt);
             }
@@ -451,20 +435,6 @@ public class MainView extends javax.swing.JFrame {
                 delCommButtonActionPerformed(evt);
             }
         });
-
-        /*newCommButton.setText("New Comm.");
-        newCommButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newCommButtonActionPerformed(evt);
-            }
-        });
-
-        delCommButton.setText("Delete Comm.");
-        delCommButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                delCommButtonActionPerformed(evt);
-            }
-        });*/
 
         javax.swing.GroupLayout communitiesPanelLayout = new javax.swing.GroupLayout(communitiesPanel);
         communitiesPanel.setLayout(communitiesPanelLayout);
@@ -540,6 +510,11 @@ public class MainView extends javax.swing.JFrame {
 
         chooseAlgorithmComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         chooseAlgorithmComboBox.setName("algorithmChooser"); // NOI18N
+        chooseAlgorithmComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseAlgorithmComboBoxActionPerformed(evt);
+            }
+        });
 
         argumentLabel.setText("Argument:");
 
@@ -555,14 +530,6 @@ public class MainView extends javax.swing.JFrame {
         });
 
         algorithmProgressBar.setName("algorithmProgressBar"); // NOI18N
-
-        newPartitionButton.setText("New Partition");
-        newPartitionButton.setName("loadPartitionButton"); // NOI18N
-        newPartitionButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newPartitionButtonActionPerformed(evt);
-            }
-        });
 
         newPartitionButton.setText("New Partition");
         newPartitionButton.setName("loadPartitionButton"); // NOI18N
@@ -643,11 +610,6 @@ public class MainView extends javax.swing.JFrame {
                 communityList1CommunitiesListValueChanged(evt);
             }
         });
-        communityList1CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                communityList1CommunitiesListValueChanged(evt);
-            }
-        });
         scrollPaneCommunityList1.setViewportView(communityList1CommunitiesList);
 
         list1Label1.setText("List of Communities 1:");
@@ -722,11 +684,6 @@ public class MainView extends javax.swing.JFrame {
             public Object getElementAt(int i) { return strings[i]; }
         });
         communityList2CommunitiesList.setName("nameList2"); // NOI18N
-        communityList2CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                communityList2CommunitiesListValueChanged(evt);
-            }
-        });
         communityList2CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 communityList2CommunitiesListValueChanged(evt);
@@ -1006,7 +963,8 @@ public class MainView extends javax.swing.JFrame {
     public void setAlgorithmNames() {
         chooseAlgorithmComboBox.removeAllItems();
         // WHILE YOU CHANGE NAMES YOU HAVE TO CHANGE ALSO DomainController.calculateCommunities(algotithm)!!!
-        chooseAlgorithmComboBox.addItem("Four Clique Percolation");
+        chooseAlgorithmComboBox.addItem("N Clique Percolation");
+        //chooseAlgorithmComboBox.addItem("Four Clique Percolation");
         chooseAlgorithmComboBox.addItem("Louvian");
         chooseAlgorithmComboBox.addItem("Newmann Girvan");
     }
@@ -1297,6 +1255,19 @@ public class MainView extends javax.swing.JFrame {
 
     private void modifyAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAttrDefButtonActionPerformed
         // TODO mp management modify attr def button action performed
+
+        //TODO: FES SERVIR AQUEST CODI EN LLOC DE CREAR UNA FINESTRA MODIFY ATTRIBUTE, PER LATTR SELECCTIONAT QUE TRII LA IMPORTANCIA
+        Object[] possibilities = {"op1", "op2", "op3"};
+        String s = (String)JOptionPane.showInputDialog(
+                this,"text1",
+
+                "text2",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                possibilities,
+                "op1");//Opcio inicial
+
+
         /*int fila = attrDefinitionsTable.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
@@ -1411,6 +1382,10 @@ public class MainView extends javax.swing.JFrame {
     private void communitiesTableCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_communitiesTableCaretPositionChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_communitiesTableCaretPositionChanged
+
+    private void chooseAlgorithmComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseAlgorithmComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chooseAlgorithmComboBoxActionPerformed
 
     private CalculateCommunitiesSwingWorker sumSwingWorker;
     private class CalculateCommunitiesSwingWorker extends SwingWorker<Void,Void> {

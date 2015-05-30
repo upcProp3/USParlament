@@ -4,6 +4,7 @@ import es.upc.fib.prop.shared13.Algorithm;
 import es.upc.fib.prop.shared13.Node;
 import es.upc.fib.prop.shared13.cliques.FCQAlgorithm;
 import es.upc.fib.prop.shared13.louvain.LouvainAlgorithm;
+import es.upc.fib.prop.shared13.ncliques.NCQAlgorithm;
 import es.upc.fib.prop.shared13.newmanngirvan.NGAlgorithm;
 import es.upc.fib.prop.usParlament.data.DataController;
 import es.upc.fib.prop.usParlament.data.DataControllerImpl;
@@ -567,6 +568,9 @@ public class DomainController
         (new WeightAlgorithm(currentCongress)).computeAllWeights();
         Algorithm alg;
         switch (algorithm) {
+            case "N Clique Percolation":
+                alg = new NCQAlgorithm(currentCongress);
+                break;
             case "Four Clique Percolation":
                 alg = new FCQAlgorithm(currentCongress, Double.valueOf(argument));
                 break;

@@ -686,6 +686,9 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="algorithmChooser" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chooseAlgorithmComboBoxActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="argumentLabel">
               <Properties>

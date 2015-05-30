@@ -5,6 +5,7 @@ import es.upc.fib.prop.shared13.Graph;
 import es.upc.fib.prop.shared13.Node;
 import es.upc.fib.prop.shared13.cliques.FCQAlgorithm;
 import es.upc.fib.prop.shared13.louvain.LouvainAlgorithm;
+import es.upc.fib.prop.shared13.ncliques.NCQAlgorithm;
 import es.upc.fib.prop.shared13.newmanngirvan.NGAlgorithm;
 
 import java.util.*;
@@ -88,7 +89,7 @@ public class AlgorithmsDriver
 	}
 
     private static void calculatePartitionsCliques(Scanner reader) {
-		System.out.println("Enter the threshold: ");
+		/*System.out.println("Enter the threshold: ");
 		double threshold;
 		while(true) {
 			try {
@@ -99,8 +100,8 @@ public class AlgorithmsDriver
 				System.out.println("Threshold has to be integer. Try it again.");
 				continue;
 			}
-		}
-        FCQAlgorithm a = new FCQAlgorithm(g,threshold);
+		}*/
+        NCQAlgorithm a = new NCQAlgorithm(g);
         System.out.println(a.calculate());
 	}
 

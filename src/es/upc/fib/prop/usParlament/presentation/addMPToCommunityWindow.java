@@ -7,7 +7,9 @@ package es.upc.fib.prop.usParlament.presentation;
 
 import es.upc.fib.prop.usParlament.misc.*;
 
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -31,6 +33,17 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
         this.cNumb = cNumb;
         pops = mv;
         this.fila = fila;
+        inicialitza();
+
+    }
+
+    public void inicialitza()
+    {
+        System.out.println("INICIALITZAT");
+
+        Set<State> estats = new LinkedHashSet<>();
+
+        for(State s:State.values()) stateComboBox.addItem(s);
     }
 
     /**
@@ -43,45 +56,41 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jComboBox2 = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox3 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-
-        for(State s:State.values()){
-            jComboBox1.addItem(s);
-        }
+        AddMPLabel = new javax.swing.JLabel();
+        stateComboBox = new javax.swing.JComboBox();
+        districtComboBox = new javax.swing.JComboBox();
+        addMPButton = new javax.swing.JButton();
+        StateLabel = new javax.swing.JLabel();
+        DistrictLabel = new javax.swing.JLabel();
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Add MP to selected Community");
+        AddMPLabel.setText("Add MP to selected Community");
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        stateComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                stateComboBoxActionPerformed(evt);
             }
         });
 
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        districtComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                districtComboBoxActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Add MP");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addMPButton.setText("Add MP");
+        addMPButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addMPButtonActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("State");
+        StateLabel.setText("State");
 
-        jLabel3.setText("District");
+        DistrictLabel.setText("District");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,56 +100,52 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addComponent(jButton1)
+                        .addComponent(addMPButton)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(StateLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(stateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(AddMPLabel)
                                 .addGap(0, 13, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(DistrictLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(districtComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(AddMPLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(stateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(StateLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(districtComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DistrictLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(addMPButton)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void stateComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        State st = (State) jComboBox1.getSelectedItem();
-
+        if(stateComboBox.getSelectedItem()== null){
+            System.out.println("NO STATE");
+            return;
+        }
+        State st = (State) stateComboBox.getSelectedItem();
         JSONObject jList = pc.getShortMPList();
         JSONArray ja = (JSONArray) jList.getJSONByKey("MPList");
         for (JSON jn : ja.getArray()) {
@@ -150,11 +155,21 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
                 jComboBox2.addItem(ms.get("District"));
             }
         }
+    }//GEN-LAST:event_stateComboBoxActionPerformed
+
+    private void districtComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_districtComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_districtComboBoxActionPerformed
+
+    private void addMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPButtonActionPerformed
+        State st = (State) stateComboBox.getSelectedItem();
+
+
 
         Integer dt = (Integer) jComboBox2.getSelectedItem();
         pc.addMPToCommunity(cNumb, st, dt);
         pops.updateMPsInCommunityTable(fila);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addMPButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,12 +208,12 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel AddMPLabel;
+    private javax.swing.JLabel DistrictLabel;
+    private javax.swing.JLabel StateLabel;
+    private javax.swing.JButton addMPButton;
+    private javax.swing.JComboBox districtComboBox;
     private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JComboBox stateComboBox;
     // End of variables declaration//GEN-END:variables
 }
