@@ -5,17 +5,27 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
+import es.upc.fib.prop.usParlament.misc.State;
+
 /**
  *
  * @author miquel
  */
+//TODO: Testing (not possible until the tables show the info).
+
 public class deleteMPFromCommunityWindow extends javax.swing.JFrame {
 
+    private PresentationController pc;
+    private Integer cNumb;
     /**
      * Creates new form addMPToCommunityWindow
+     * @param pc
+     * @param cNumb
      */
-    public deleteMPFromCommunityWindow() {
+    public deleteMPFromCommunityWindow(PresentationController pc, Integer cNumb) {
         initComponents();
+        this.pc = pc;
+        this.cNumb = cNumb;
     }
 
     /**
@@ -120,7 +130,9 @@ public class deleteMPFromCommunityWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_selectDistrictComboBoxActionPerformed
 
     private void deleteMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPButtonActionPerformed
-        // TODO add your handling code here:
+        State st = (State) selectStateComboBox.getSelectedItem();
+        Integer dt = (Integer) selectDistrictComboBox.getSelectedItem();
+        pc.deleteMPFromCommunity(cNumb, st, dt);
     }//GEN-LAST:event_deleteMPButtonActionPerformed
 
     /**
@@ -154,7 +166,7 @@ public class deleteMPFromCommunityWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new deleteMPFromCommunityWindow().setVisible(true);
+                //new deleteMPFromCommunityWindow(pc, Integer.valueOf(cNumb)).setVisible(true);
             }
         });
     }

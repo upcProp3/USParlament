@@ -8,8 +8,9 @@ package es.upc.fib.prop.usParlament.presentation;
 import es.upc.fib.prop.usParlament.misc.*;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.ExecutionException;
@@ -26,7 +27,7 @@ public class MainView extends javax.swing.JFrame {
     public MainView(PresentationController precon) {
         pc = precon;
         initComponents();
-        
+        setAlgorithmNames();
     }
 
     /**
@@ -409,6 +410,15 @@ public class MainView extends javax.swing.JFrame {
         communitiesTable.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
+
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                communitiesTableCaretPositionChanged(evt);
+            }
+        });
+        communitiesTable.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 communitiesTableCaretPositionChanged(evt);
             }
@@ -427,6 +437,20 @@ public class MainView extends javax.swing.JFrame {
             }
         ));
         MPsInCommuntiyPanel.setViewportView(MPsInCommunityTable);
+
+        newCommButton.setText("New Comm.");
+        newCommButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newCommButtonActionPerformed(evt);
+            }
+        });
+
+        delCommButton.setText("Delete Comm.");
+        delCommButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delCommButtonActionPerformed(evt);
+            }
+        });
 
         newCommButton.setText("New Comm.");
         newCommButton.addActionListener(new java.awt.event.ActionListener() {
@@ -540,6 +564,14 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
+        newPartitionButton.setText("New Partition");
+        newPartitionButton.setName("loadPartitionButton"); // NOI18N
+        newPartitionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPartitionButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout CommunityManagementLayout = new javax.swing.GroupLayout(CommunityManagement);
         CommunityManagement.setLayout(CommunityManagementLayout);
         CommunityManagementLayout.setHorizontalGroup(
@@ -606,6 +638,11 @@ public class MainView extends javax.swing.JFrame {
             public Object getElementAt(int i) { return strings[i]; }
         });
         communityList1CommunitiesList.setName("communtiyList1"); // NOI18N
+        communityList1CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                communityList1CommunitiesListValueChanged(evt);
+            }
+        });
         communityList1CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 communityList1CommunitiesListValueChanged(evt);
@@ -685,6 +722,11 @@ public class MainView extends javax.swing.JFrame {
             public Object getElementAt(int i) { return strings[i]; }
         });
         communityList2CommunitiesList.setName("nameList2"); // NOI18N
+        communityList2CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                communityList2CommunitiesListValueChanged(evt);
+            }
+        });
         communityList2CommunitiesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 communityList2CommunitiesListValueChanged(evt);
@@ -921,19 +963,46 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addMPToCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPToCommunityButtonActionPerformed
+        int fila = communitiesTable.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        String cNumb = (String)communitiesTable.getValueAt(fila,0);
+        JFrame jf = new addMPToCommunityWindow(pc, Integer.valueOf(cNumb));
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+
         // TODO add mp to communtiy button pressed
     }//GEN-LAST:event_addMPToCommunityButtonActionPerformed
 
     private void deleteMPfromCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPfromCommunityButtonActionPerformed
-
         // TODO community management delete mp from communtiy button pressed
-
+        int fila = communitiesTable.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        String cNumb = (String)communitiesTable.getValueAt(fila,0);
+        JFrame jf = new deleteMPFromCommunityWindow(pc, Integer.valueOf(cNumb));
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_deleteMPfromCommunityButtonActionPerformed
 
     public void radiobuttonAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
         updateMPManagementAttrDefinitionTable();;
         updateMPManagementMPTable();
+    }
+
+
+    public void setAlgorithmNames() {
+        chooseAlgorithmComboBox.removeAllItems();
+        // WHILE YOU CHANGE NAMES YOU HAVE TO CHANGE ALSO DomainController.calculateCommunities(algotithm)!!!
+        chooseAlgorithmComboBox.addItem("Four Clique Percolation");
+        chooseAlgorithmComboBox.addItem("Louvian");
+        chooseAlgorithmComboBox.addItem("Newmann Girvan");
     }
 
     public void updateMPManagementMPTable()
@@ -1038,6 +1107,33 @@ public class MainView extends javax.swing.JFrame {
             attrDefinitionsTable.getTableHeader().setReorderingAllowed(false);
     }
 
+    public void updateCommunitiesTable()
+    {
+        JSONObject j = pc.getMainPartitionSize();
+        DefaultTableModel dtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+        };
+        JSONString jNumb = (JSONString) j.getJSONByKey("Number");
+        dtm.addColumn("Community number");
+        for (int i = 1; i <= Integer.valueOf(jNumb.getValue()); ++i) {
+            JSONString ji = new JSONString(String.valueOf(i));
+            Vector<String> value = new Vector<String>();
+            value.add(ji.getValue());
+            dtm.addRow(value);
+        }
+        communitiesTable.setModel(dtm);
+        communitiesTable.getTableHeader().setReorderingAllowed(false);
+
+        communitiesTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                updateMPsInCommunityTable(communitiesTable.getSelectedRow());
+            }
+        });
+    }
+
     private void compareWindowMPShortTable()
     {
         JSONObject j = pc.getShortMPList();
@@ -1047,8 +1143,8 @@ public class MainView extends javax.swing.JFrame {
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
             //Create columns
-            dtm.addColumn("State");
             dtm.addColumn("District");
+            dtm.addColumn("State");
 
 
             for(JSON jo:ja.getArray()){
@@ -1069,13 +1165,37 @@ public class MainView extends javax.swing.JFrame {
             
             MPsCurrentCongressTable.setModel(dtm);
     }
+
+    private void updateMPsInCommunityTable(int selectedRow) {
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        MPsInCommunityTable.setModel(model);
+        model.addColumn("State");
+        model.addColumn("District");
+
+        if (selectedRow < 0) {
+            return;
+        }
+
+        for (JSONObject mp : pc.getMPsCurrentPartition(selectedRow)) {
+            Vector row = new Vector();
+            row.add(((JSONString)mp.getJSONByKey("State")).getValue());
+            row.add(Integer.valueOf(((JSONString)mp.getJSONByKey("District")).getValue()));
+            model.addRow(row);
+        }
+
+    }
     
     private void mainWindowStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_mainWindowStateChanged
         // TODO code for initializing when we change the window
         // In this function goes the code that needs to be executed when we change the window
         //the winows are numbered 0..n-1 in their order on the top
         //There are implementations of an initialization on the code below
-        System.out.println("CANVI DE PESTANYA "+ mainWindow.getSelectedIndex());
+        System.out.println("CANVI DE PESTANYA " + mainWindow.getSelectedIndex());
         
         
         if(mainWindow.getSelectedIndex()==1){//If we are on the MP management Window
@@ -1085,8 +1205,11 @@ public class MainView extends javax.swing.JFrame {
              updateMPManagementAttrDefinitionTable();
             ///FINISHING ATTR DEFINITION TABLE
         }
-        
-        
+
+        if(mainWindow.getSelectedIndex()==2){//If we are on the Community management Window
+            updateCommunitiesTable();
+            updateMPsInCommunityTable(communitiesTable.getSelectedRow());
+        }
         
         if(mainWindow.getSelectedIndex()==3){//If we are on the compare window
             compareWindowMPShortTable();
@@ -1136,13 +1259,15 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteMPButtonActionPerformed
 
     private void loadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCongressButtonActionPerformed
-        // TODO MP management load congress button pressed
+        JFrame jf = new LoadCongressWindow(pc, this);
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_loadCongressButtonActionPerformed
 
     private void saveCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCongressButtonActionPerformed
         JFrame jf = new SaveCongressWindow(pc);
         jf.setVisible(true);
-        System.out.println("Sav congress Windows");
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // TODO MP management save congress button pressed
     }//GEN-LAST:event_saveCongressButtonActionPerformed
 
@@ -1171,7 +1296,7 @@ public class MainView extends javax.swing.JFrame {
             return;
         }
         String st = (String) MPsInCommunityTable.getValueAt(fila, 0);
-        String dt = (String) MPsInCommunityTable.getValueAt(fila, 1);
+        int dt = (Integer) MPsInCommunityTable.getValueAt(fila, 1);
         JFrame jf = new ShowMPInfoWindow(pc, st, dt);
         jf.setVisible(true);
         System.out.println("Show MP Info");
@@ -1186,7 +1311,7 @@ public class MainView extends javax.swing.JFrame {
             return;
         }
         String st = (String) MPsCurrentCongressTable.getValueAt(fila, 0);
-        String dt = (String) MPsCurrentCongressTable.getValueAt(fila, 1);
+        int dt = (Integer) MPsCurrentCongressTable.getValueAt(fila, 1);
         JFrame jf = new ShowMPInfoWindow(pc, st, dt);
         jf.setVisible(true);
         System.out.println("Show MP Info");
@@ -1203,7 +1328,10 @@ public class MainView extends javax.swing.JFrame {
     private void calculateCommunitiesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateCommunitiesButtonActionPerformed
         // TODO communtiy management calculate communities button pressed
         calculateCommunitiesButton.setEnabled(false);
-        CalculateCommunitiesSwingWorker sw = new CalculateCommunitiesSwingWorker();
+        algorithmProgressBar.setIndeterminate(true);
+        String algorithm = (String)chooseAlgorithmComboBox.getSelectedItem();
+        String argument = argumentTextField.getText();
+        CalculateCommunitiesSwingWorker sw = new CalculateCommunitiesSwingWorker(algorithm, argument);
         sw.execute();
     }//GEN-LAST:event_calculateCommunitiesButtonActionPerformed
 
@@ -1256,40 +1384,35 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_communitiesTableCaretPositionChanged
 
     private CalculateCommunitiesSwingWorker sumSwingWorker;
-    private class CalculateCommunitiesSwingWorker extends SwingWorker<String,Integer> {
+    private class CalculateCommunitiesSwingWorker extends SwingWorker<Void,Void> {
+        private String algorithm;
+        private String argument;
+        public CalculateCommunitiesSwingWorker(String algorithm, String argument) {
+            this.algorithm = algorithm;
+            this.argument = argument;
+        }
         // doInBackground method is executed in special thread. out of GUI thread.
         // We must NOT manipulate with GUI components
         @Override
-        protected String doInBackground() throws Exception {
-            int result = 0;
-            for(int i=0; i <= 100; i++) {
-                // simulate long time operation
-                Thread.sleep(20);
-                result += i;
-                // call process function
-                publish(i);
-            }
-            return "" + result;
+        protected Void doInBackground() throws Exception {
+            //System.out.print(algorithm);
+            pc.computeCommunities(algorithm, argument);
+            return null;
         }
         // done method is executed in GUI thread.
         // We can manipulate with GUI components
         @Override
         protected void done() {
-            calculateCommunitiesButton.setEnabled(true);
+            algorithmProgressBar.setIndeterminate(false);
             try {
-                // get method get us result from do in background
-                JOptionPane.showMessageDialog(null, "Result is " + get());
-            } catch (ExecutionException ex) {
-                JOptionPane.showMessageDialog(null,"Error");
-            } catch (InterruptedException ex) {
-                throw new RuntimeException("Operation interrupted (this should never happen)",ex);
+                get();
+                calculateCommunitiesButton.setEnabled(true);
+                MainView.this.updateCommunitiesTable();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
             }
-        }
-        // process method is executed in GUI thread.
-        // We can manipulate with GUI components
-        @Override
-        protected void process(List<Integer> chunks) {
-            algorithmProgressBar.setValue(chunks.get(chunks.size()-1));
         }
     }
 

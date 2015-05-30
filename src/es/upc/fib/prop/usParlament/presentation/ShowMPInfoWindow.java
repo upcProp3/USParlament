@@ -5,10 +5,7 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
-import java.util.Map;
-
 import es.upc.fib.prop.usParlament.misc.JSONObject;
-import es.upc.fib.prop.usParlament.misc.State;
 
 /**
  *
@@ -23,7 +20,7 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
      * Creates new form ShowMPInfoWindow
      * @param pc
      */
-    public ShowMPInfoWindow(PresentationController pc, String st, String dt) {
+    public ShowMPInfoWindow(PresentationController pc, String st, int dt) {
         initComponents();
         this.pc = pc;
         System.out.println("State:"+st);
