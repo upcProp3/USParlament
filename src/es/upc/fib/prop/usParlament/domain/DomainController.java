@@ -59,17 +59,17 @@ public class DomainController
         JSONArray a = new JSONArray();
         for (MP mp : currentCongress.getMPs()) {
             JSONObject jMP = new JSONObject();
-            JSONString key = new JSONString("State");
-            JSONString value = new JSONString(mp.getState().toString());
-            jMP.addPair(key, value);
-            key.setValue("District");
-            value.setValue(String.valueOf(mp.getDistrict()));
-            jMP.addPair(key, value);
+
+            jMP.addPair(new JSONString("State"),new JSONString(mp.getState().toString()));
+            jMP.addPair(new JSONString("District"),new JSONString(Integer.toString(mp.getDistrict())));
+
+
             a.addElement(jMP);
         }
         JSONString key = new JSONString("MPList");
-        JSONString value = new JSONString(a.toString());
-        jList.addPair(key, value);
+
+
+        jList.addPair(key, a);
         return jList.stringify();
     }
 
@@ -620,7 +620,7 @@ public class DomainController
                 if (comm.contains(m)) return;
                 comm.add(m);
             }
-            else if (comm.contains(m)) comm.remove(m);
+            //else if (comm.contains(m)) comm.remove(m);
         }
     }
 

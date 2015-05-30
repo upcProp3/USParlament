@@ -946,11 +946,11 @@ public class MainView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
             return;
         }
-        Integer cNumb = (Integer)communitiesTable.getValueAt(fila1,0);
-        State st = (State)MPsInCommunityTable.getValueAt(fila2,0);
+        Integer cNumb = Integer.parseInt((String)communitiesTable.getValueAt(fila1,0));
+        State st = State.valueOf((String)MPsInCommunityTable.getValueAt(fila2,0));
         Integer distr = (Integer)MPsInCommunityTable.getValueAt(fila2,1);
         pc.deleteMPFromCommunity(cNumb, st, distr);
-        updateMPsInCommunityTable(fila2);
+        updateMPsInCommunityTable();
     }//GEN-LAST:event_deleteMPfromCommunityButtonActionPerformed
 
     public void radiobuttonAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt)
@@ -1097,7 +1097,7 @@ public class MainView extends javax.swing.JFrame {
 
         communitiesTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent event) {
-                updateMPsInCommunityTable(communitiesTable.getSelectedRow());
+                updateMPsInCommunityTable();
             }
         });
     }
@@ -1108,6 +1108,9 @@ public class MainView extends javax.swing.JFrame {
             //MPsCurrentCongressTable
             DefaultTableModel model = (DefaultTableModel)MPsCurrentCongressTable.getModel();
             DefaultTableModel dtm = new DefaultTableModel();
+
+            System.out.println(j);
+
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
             //Create columns
@@ -1121,10 +1124,13 @@ public class MainView extends javax.swing.JFrame {
 
                 Vector<String> row = new Vector<>();
                 for(int pos = 0;pos<ja.getArray().size();pos++){
-                    String s = dtm.getColumnName(pos);
+                    /*String s = dtm.getColumnName(pos);
                     if(ms.containsKey(s)){
                         row.add(ms.get(s));
-                    }
+                    }*/
+                    row.add(ms.get("State"));
+                    row.add(ms.get("District"));
+
                 }
                 
                 dtm.addRow(row);
@@ -1134,28 +1140,34 @@ public class MainView extends javax.swing.JFrame {
             MPsCurrentCongressTable.setModel(dtm);
     }
 
-    public void updateMPsInCommunityTable(int selectedRow) {
+    public void updateMPsInCommunityTable() {
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
-        MPsInCommunityTable.setModel(model);
         model.addColumn("State");
         model.addColumn("District");
 
-        if (selectedRow < 0) {
+        int comrow=communitiesTable.getSelectedRow();
+
+        if(comrow == -1){
+            MPsInCommunityTable.setModel(model);
             return;
         }
 
-        for (JSONObject mp : pc.getMPsCurrentPartition(selectedRow)) {
+        int community = Integer.parseInt((String)communitiesTable.getValueAt(comrow,0));
+
+
+
+        for (JSONObject mp : pc.getMPsCurrentPartition(community)) {
             Vector row = new Vector();
             row.add(((JSONString)mp.getJSONByKey("State")).getValue());
             row.add(Integer.valueOf(((JSONString)mp.getJSONByKey("District")).getValue()));
             model.addRow(row);
         }
-
+        MPsInCommunityTable.setModel(model);
     }
     
     private void mainWindowStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_mainWindowStateChanged
@@ -1176,7 +1188,7 @@ public class MainView extends javax.swing.JFrame {
 
         if(mainWindow.getSelectedIndex()==2){//If we are on the Community management Window
             updateCommunitiesTable();
-            updateMPsInCommunityTable(communitiesTable.getSelectedRow());
+            updateMPsInCommunityTable();
         }
         
         if(mainWindow.getSelectedIndex()==3){//If we are on the compare window

@@ -41,9 +41,20 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
     {
         System.out.println("INICIALITZAT");
 
-        Set<State> estats = new LinkedHashSet<>();
+        JSONObject j = pc.getShortMPList();
+        JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
-        for(State s:State.values()) stateComboBox.addItem(s);
+        Set<State> estats = new LinkedHashSet<>();
+        for(JSON json:ja.getArray()){
+            Map<String,String> mss = ((JSONObject)json).basicJSONObjectGetInfo();
+            estats.add(State.valueOf(mss.get("State")));
+        }
+
+
+
+
+
+        for(State s:estats) stateComboBox.addItem(s);
     }
 
     /**
@@ -141,34 +152,54 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
 
     private void stateComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateComboBoxActionPerformed
         // TODO add your handling code here:
+        updateBoxes();
+    }//GEN-LAST:event_stateComboBoxActionPerformed
+
+
+    private void updateBoxes()
+    {
+        districtComboBox.removeAllItems();
+
         if(stateComboBox.getSelectedItem()== null){
             System.out.println("NO STATE");
             return;
         }
         State st = (State) stateComboBox.getSelectedItem();
+        Set<String> districts = new LinkedHashSet();
+        System.out.println("Districts:"+districts);
+        Set<JSONObject> cpmp = pc.getMPsCurrentPartition(cNumb);
+        System.out.println("cpmp:"+cpmp);
+        for(JSONObject mpc:cpmp){
+
+            if(st.equals(State.valueOf(mpc.basicJSONObjectGetInfo().get("State")))){
+                districts.add(mpc.basicJSONObjectGetInfo().get("District"));
+            }
+        }
+
+
         JSONObject jList = pc.getShortMPList();
         JSONArray ja = (JSONArray) jList.getJSONByKey("MPList");
         for (JSON jn : ja.getArray()) {
             JSONObject jo = (JSONObject) jn;
             Map<String,String> ms = jo.basicJSONObjectGetInfo();
             if (State.valueOf(ms.get("State")).equals(st)) {
-                jComboBox2.addItem(ms.get("District"));
+                if(!districts.contains(ms.get("District"))) districtComboBox.addItem(ms.get("District"));
             }
         }
-    }//GEN-LAST:event_stateComboBoxActionPerformed
+    }
+
+
 
     private void districtComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_districtComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_districtComboBoxActionPerformed
 
     private void addMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPButtonActionPerformed
-        State st = (State) stateComboBox.getSelectedItem();
-
-
-
-        Integer dt = (Integer) jComboBox2.getSelectedItem();
+        State st = (State)stateComboBox.getSelectedItem();
+        Integer dt = Integer.parseInt((String)districtComboBox.getSelectedItem());
         pc.addMPToCommunity(cNumb, st, dt);
-        pops.updateMPsInCommunityTable(fila);
+        pops.updateMPsInCommunityTable();
+        updateBoxes();
     }//GEN-LAST:event_addMPButtonActionPerformed
 
     /**
