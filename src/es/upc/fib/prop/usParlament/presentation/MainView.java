@@ -1017,6 +1017,8 @@ public class MainView extends javax.swing.JFrame {
         JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
         boolean hide = hideAttrsButton.isSelected();
 
+        //System.out.println(j);
+
         //Create columns
         JSONObject jattrd = pc.getAttrDefs();
         JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
@@ -1038,7 +1040,7 @@ public class MainView extends javax.swing.JFrame {
             //System.out.println(imp);
             if(!(hide && imp.equals("(N)"))){
                 dtm.addColumn(s);
-                System.out.println(hide);System.out.println(imp.equals("(N)"));
+                //System.out.println(hide);System.out.println(imp.equals("(N)"));
             }
         }
 
@@ -1050,6 +1052,7 @@ public class MainView extends javax.swing.JFrame {
                 Vector<String> row = new Vector<String>();
                 for(int cnum=0;cnum<dtm.getColumnCount();cnum++) {
                     String s = dtm.getColumnName(cnum);
+                    if(s!="State" && s!= "District") s = s.substring(0,s.length()-3);
                     if (ms.containsKey(s)) {
                         row.add(ms.get(s));
                     }else{
@@ -1143,8 +1146,8 @@ public class MainView extends javax.swing.JFrame {
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
             //Create columns
-            dtm.addColumn("District");
             dtm.addColumn("State");
+            dtm.addColumn("District");
 
 
             for(JSON jo:ja.getArray()){
