@@ -1000,7 +1000,8 @@ public class MainView extends javax.swing.JFrame {
     public void setAlgorithmNames() {
         chooseAlgorithmComboBox.removeAllItems();
         // WHILE YOU CHANGE NAMES YOU HAVE TO CHANGE ALSO DomainController.calculateCommunities(algotithm)!!!
-        chooseAlgorithmComboBox.addItem("Four Clique Percolation");
+        chooseAlgorithmComboBox.addItem("N Clique Percolation");
+        //chooseAlgorithmComboBox.addItem("Four Clique Percolation");
         chooseAlgorithmComboBox.addItem("Louvian");
         chooseAlgorithmComboBox.addItem("Newmann Girvan");
     }
