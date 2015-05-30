@@ -1155,12 +1155,12 @@ public class MainView extends javax.swing.JFrame {
         String dt = (String) MPsInCommunityTable.getValueAt(fila, 1);
         JFrame jf = new ShowMPInfoWindow(pc, st, dt);
         jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         System.out.println("Show MP Info");
         // TODO community management show selected mp info button
     }//GEN-LAST:event_showMPDataButtonActionPerformed
 
     private void showSelectedMPInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        System.out.println("helloWorld"); //TODO
         int fila = MPsCurrentCongressTable.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
@@ -1170,6 +1170,7 @@ public class MainView extends javax.swing.JFrame {
         String dt = (String) MPsCurrentCongressTable.getValueAt(fila, 1);
         JFrame jf = new ShowMPInfoWindow(pc, st, dt);
         jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         System.out.println("Show MP Info");
     }
 
