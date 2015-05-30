@@ -1,12 +1,16 @@
 package es.upc.fib.prop.usParlament.domain;
 
+import es.upc.fib.prop.shared13.Algorithm;
+import es.upc.fib.prop.shared13.Node;
+import es.upc.fib.prop.shared13.cliques.FCQAlgorithm;
+import es.upc.fib.prop.shared13.louvain.LouvainAlgorithm;
+import es.upc.fib.prop.shared13.ncliques.NCQAlgorithm;
+import es.upc.fib.prop.shared13.newmanngirvan.NGAlgorithm;
 import es.upc.fib.prop.usParlament.data.DataController;
 import es.upc.fib.prop.usParlament.data.DataControllerImpl;
 import es.upc.fib.prop.usParlament.misc.*;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by miquel on 16/05/15.
@@ -25,16 +29,16 @@ public class DomainController
 
      */
     private Congress currentCongress;
-    private ArrayList<Set<MP>> currentPartition;
-    private ArrayList<Set<MP>> partition1;
-    private ArrayList<Set<MP>> partition2;
+    private List<Set<MP>> mainPartition;
+    private List<Set<MP>> partition1;
+    private List<Set<MP>> partition2;
     private DataController dataController;
 
     
     public DomainController()
     {
         currentCongress = new Congress();
-        currentPartition = new ArrayList<>();
+        mainPartition = new ArrayList<>();
         partition1 = new ArrayList<>();
         partition2 = new ArrayList<>();
         dataController = new DataControllerImpl("congresses");
@@ -43,7 +47,7 @@ public class DomainController
         this.dataController = dataController;
     }
 
-    public Congress getCurrentCongress() {
+    protected Congress getCurrentCongress() {
         return currentCongress;
     }
 
@@ -55,17 +59,17 @@ public class DomainController
         JSONArray a = new JSONArray();
         for (MP mp : currentCongress.getMPs()) {
             JSONObject jMP = new JSONObject();
-            JSONString key = new JSONString("State");
-            JSONString value = new JSONString(mp.getState().toString());
-            jMP.addPair(key, value);
-            key.setValue("District");
-            value.setValue(String.valueOf(mp.getDistrict()));
-            jMP.addPair(key, value);
+
+            jMP.addPair(new JSONString("State"),new JSONString(mp.getState().toString()));
+            jMP.addPair(new JSONString("District"),new JSONString(Integer.toString(mp.getDistrict())));
+
+
             a.addElement(jMP);
         }
         JSONString key = new JSONString("MPList");
-        JSONString value = new JSONString(a.toString());
-        jList.addPair(key, value);
+
+
+        jList.addPair(key, a);
         return jList.stringify();
     }
 
@@ -140,7 +144,7 @@ public class DomainController
     public void newCongress()
     {
         currentCongress = new Congress();
-        currentPartition = new ArrayList<>();
+        mainPartition = new ArrayList<>();
         partition1 = new ArrayList<>();
         partition2 = new ArrayList<>();
     }
@@ -153,17 +157,25 @@ public class DomainController
     /**
      * @return Returns the current partition number of communities.
      */
-    public String getCurrentPartitionNumber() { return String.valueOf(currentPartition.size()); }
+    public String getMainPartitionSize() { return String.valueOf(mainPartition.size()); }
+
+    public String getMainPartitionCommunities() {
+        JSONObject jPart = new JSONObject();
+        for (Set<MP> c : mainPartition) {
+
+        }
+        return null;
+    }
 
     /**
      * @param comnumber
      * @return
      */
-    public String getMPsCurrentPartition(String comnumber) {
+    public String getMPsMainPartition(String comnumber) {
         JSONObject mps = new JSONObject();
         JSONString js = new JSONString("Current partition Community numer " + comnumber);
         JSONArray ja = new JSONArray();
-        for (MP mp : currentPartition.get(Integer.parseInt(comnumber))) {
+        for (MP mp : mainPartition.get(Integer.parseInt(comnumber))) {
             JSONObject jo = new JSONObject();
             jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
             jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
@@ -231,7 +243,7 @@ public class DomainController
 
     public void deleteMP(State state, int district)
     {
-        currentCongress.removeNode(new MP("INVALID_VALUE",state,district));
+        currentCongress.removeNode(new MP("INVALID_VALUE", state, district));
     }
 
     /**
@@ -289,6 +301,10 @@ public class DomainController
 
         }
 
+    }
+
+    public void cleanCommunityManager() {
+        mainPartition = new ArrayList<>();
     }
 
     public void deleteAttribute(JSONObject jmp,JSONObject jattr)
@@ -423,7 +439,7 @@ public class DomainController
      * @param name  identificator of congress
      * @return  JSON representation of congress
      */
-    public String loadCongress(String name) {
+    public String loadCongressAsCurrent(String name) {
         JSONizer json = new JSONizer();
         String congress = dataController.loadCongress(name);
         JSONObject jsonCongress = json.StringToJSON(congress);
@@ -481,4 +497,154 @@ public class DomainController
 
 
 
+    /**
+     * save current partition into persistent memory. If partition with same identificators already exists it will be rewritten.
+     * @param congressName  unique identificator of congress. It has to already exists in persistent memory.
+     * @param partitionName  unique identificator in congressName scope.
+     * @return  Exception string If there is exception "{}" string otherwise.
+     */
+    public String saveCurrentPartition(String congressName, String partitionName) {
+        JSONObject jsonPartition = new JSONObject();
+        JSONArray communities = new JSONArray();
+        for (Set<MP> community : mainPartition) {
+            JSONArray jsonCommunity = new JSONArray();
+            for (MP mp : community) {
+                JSONObject jsonMP = new JSONObject();
+                jsonMP.addPair(new JSONString("state"), new JSONString(mp.getState().toString()));
+                jsonMP.addPair(new JSONString("district"), new JSONString(""+mp.getDistrict()));
+                jsonCommunity.addElement(jsonMP);
+            }
+            communities.addElement(jsonCommunity);
+        }
+        jsonPartition.addPair("communities", communities);
+        return dataController.savePartition(congressName, partitionName, jsonPartition.stringify());
+    }
+
+    /**
+     * load saved partition from persistent memory as current partition.
+     * @param congressName  unique identificator of congress.
+     * @param partitionName  unique identificator in congressName scope.
+     * @return JSON representation of partition.
+     */
+    public String loadPartitionAsCurrent(String congressName, String partitionName) {
+        JSONizer json = new JSONizer();
+        String respond = dataController.loadPartition(congressName, partitionName);
+        List<Set<MP>> newPartition = new ArrayList<>();
+        JSONObject jsonPartition = json.StringToJSON(respond);
+        for (JSON jsonCom : ((JSONArray)jsonPartition.getJSONByKey("communities")).getArray()) {
+            Set<MP> community = new HashSet<>();
+            for (JSON j : ((JSONArray)jsonCom).getArray()) {
+                JSONObject jsonMP = (JSONObject) j;
+                State state = State.valueOf(((JSONString)jsonMP.getJSONByKey("state")).getValue());
+                int dist = Integer.valueOf(((JSONString)jsonMP.getJSONByKey("district")).getValue());
+                MP mp = currentCongress.getMP(state, dist);
+                community.add(mp);
+            }
+            newPartition.add(community);
+        }
+
+        mainPartition = newPartition;
+        return respond;
+    }
+
+    /**
+     * load all saved partitions of congress.
+     * @param congressName  unique identificator of congress.
+     * @return  JSON representation of array of partitions.
+     */
+    public String loadAllPartitionsOfCongress(String congressName) {
+        return dataController.loadAllPartitionsOfCongress(congressName);
+    }
+
+    protected List<Set<MP>> getCurrentPartition() {
+        return mainPartition;
+    }
+
+    /**
+     * Compute partitions with given algorithm name (clicques, louvian, newmanngirvan) and save it to the current partition
+     * @param algorithm  unique identificator of congress.
+     */
+    public void computeCommunities(String algorithm, String argument) {
+        (new WeightAlgorithm(currentCongress)).computeAllWeights();
+        Algorithm alg;
+        switch (algorithm) {
+            case "N Clique Percolation":
+                alg = new NCQAlgorithm(currentCongress);
+                break;
+            case "Four Clique Percolation":
+                alg = new FCQAlgorithm(currentCongress, Double.valueOf(argument));
+                break;
+            case "Louvian":
+                alg = new LouvainAlgorithm(currentCongress);
+                break;
+            case "Newmann Girvan":
+                alg = new NGAlgorithm(currentCongress, Integer.valueOf(argument));
+                break;
+            default:
+                throw new IllegalArgumentException("Incorrect name of algorithm");
+        }
+        List<Set<MP>> partition = new ArrayList<>();
+        for (Set<Node> set : alg.calculate()) {
+            Set<MP> mpSet = new HashSet<>();
+            for (Node n : set) {
+                mpSet.add((MP) n);
+            }
+            partition.add(mpSet);
+        }
+        mainPartition = partition;
+    }
+
+    public String getCommunityIDs() {
+        JSONArray ids = new JSONArray();
+        for (Set comm : mainPartition) {
+            int id = mainPartition.indexOf(comm);
+            ids.addElement(new JSONString("" + id));
+        }
+        JSONObject jo = new JSONObject();
+        jo.addPair("ids", ids);
+        return (new JSONizer()).JSONtoString(jo);
+    }
+
+    /**
+     * Adds the MP (st, distr) to the community (cNumb) of main partition.
+     * If the MP(st, distr) is in another community different from (cNumb), the MP is moved.
+     * @param cNumb Community identifier number.
+     * @param st State of the MP we want to add.
+     * @param distr District of the MP we want to add.
+     */
+    public void addMPToCommunity(Integer cNumb, State st, Integer distr) {
+        MP m = currentCongress.getMP(st, distr);
+        for (int i = 0; i < mainPartition.size(); i++) {
+            Set<MP> comm = mainPartition.get(i);
+            if (i == cNumb) {
+                if (comm.contains(m)) return;
+                comm.add(m);
+            }
+            //else if (comm.contains(m)) comm.remove(m);
+        }
+    }
+
+    public void deleteMPFromCommunity (Integer cNumb, State st, Integer distr) {
+        MP m = currentCongress.getMP(st, distr);
+        for (int i = 0; i < mainPartition.size(); i++) {
+            if (i == cNumb) {
+                mainPartition.get(i).remove(m);
+                return;
+            }
+        }
+    }
+
+    public void addNewCommunity () {
+        Set<MP> newComm = new HashSet<>();
+        mainPartition.add(mainPartition.size(), newComm);
+    }
+
+    public void deleteSelectedCommunity (Integer cNumb) {
+        for (int i = 0; i < mainPartition.size(); i++) {
+            if (i == cNumb) {
+                mainPartition.remove(mainPartition.get(i));
+                return;
+            }
+        }
+    }
 }

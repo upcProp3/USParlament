@@ -8,7 +8,7 @@ package es.upc.fib.prop.usParlament.presentation;
 import es.upc.fib.prop.usParlament.domain.DomainController;
 import es.upc.fib.prop.usParlament.misc.*;
 
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -27,12 +27,12 @@ public class PresentationController {
         j = new JSONizer();
     }
 
-//    public void test (String s) { dc.loadCongress(s); }
-
 
     public JSONObject getShortMPList()
     {
+        /*
         //TEST
+
         JSONObject j = new JSONObject();
         JSONArray jay = new JSONArray();
         for(int i = 0;i<10;i++){
@@ -43,9 +43,10 @@ public class PresentationController {
         }
         j.addPair(new JSONString("MPList"),jay);
         return j;
+        */
         ///END OF TEST
         //GOOD CODE
-        //return j.StringToJSON(dc.getShortMPList());
+        return j.StringToJSON(dc.getShortMPList());
         //END OF GOOD CODE
     }
     
@@ -62,17 +63,17 @@ public class PresentationController {
 
     public void deleteAttribute(JSONObject jo,JSONObject ja)
     {
-        dc.deleteAttribute(jo,ja);
+        dc.deleteAttribute(jo, ja);
     }
 
     public void addAttributes(JSONObject mp,JSONArray attr)
     {
-        dc.addOrModifyAttribute(mp,attr);
+        dc.addOrModifyAttribute(mp, attr);
     }
 
     public void deleteMP(State state,int district)
     {
-        dc.deleteMP(state,district);
+        dc.deleteMP(state, district);
     }
 
     public JSONObject getMPList()
@@ -82,7 +83,7 @@ public class PresentationController {
     
     public JSONObject getMPInfo(State state, int district)
     {
-         return j.StringToJSON(dc.getMPInfo(state,district));
+         return j.StringToJSON(dc.getMPInfo(state, district));
     }
 
     public void newCongress()
@@ -90,9 +91,16 @@ public class PresentationController {
         dc.newCongress();
     }
     
-    public JSONObject getMainCommunityNumber()
+    public JSONObject getMainPartitionSize()
     {
-        //return domainController.getMainCommuntiyNumber();
+        JSONString j = new JSONString(dc.getMainPartitionSize());
+        JSONString key = new JSONString("Number");
+        JSONObject jRet = new JSONObject();
+        jRet.addPair(key, j);
+        return jRet;
+    }
+
+    public JSONObject getMainPartitionCommunities() {
         return null;
     }
     
@@ -100,6 +108,14 @@ public class PresentationController {
     {
         //return domainController.getSecCommuntiyNumber();
         return null;
+    }
+
+    public void addMPToCommunity(Integer cNumb, State st, Integer dt) {
+        dc.addMPToCommunity(cNumb, st, dt);
+    }
+
+    public void deleteMPFromCommunity (Integer cNumb, State st, Integer dt) {
+        dc.deleteMPFromCommunity(cNumb, st, dt);
     }
 
     public boolean existsAttrDef(String name)
@@ -121,6 +137,54 @@ public class PresentationController {
     public String saveCurrentCongress(String name) {
         return dc.saveCurrentCongress(name);
     }
+
+    public List<String> loadAllCongressNames() {
+        List<String> list = new ArrayList<>();
+        JSONizer json = new JSONizer();
+        JSONObject jo = json.StringToJSON(dc.loadAllCongressesNames());
+        for (JSON j : ((JSONArray)jo.getJSONByKey("congressesNames")).getArray()) {
+            list.add(((JSONString) j).getValue());
+        }
+        return list;
+    }
+
+    public String loadCongressAsCurrent(String name) {
+        return dc.loadCongressAsCurrent(name);
+    }
+
+    public void cleanCommunityManager() {
+        dc.cleanCommunityManager();
+    }
+
+    public void computeCommunities(String algorithm, String argument) {
+        dc.computeCommunities(algorithm, argument);
+    }
+
+    public List<Integer> getCommunityIDs() {
+        JSONizer json = new JSONizer();
+        JSONArray jsonIds = (JSONArray)json.StringToJSON(dc.getCommunityIDs()).getJSONByKey("ids");
+        List<Integer> ids = new ArrayList<>();
+        for (JSON jo : jsonIds.getArray()) {
+            ids.add(Integer.valueOf(((JSONString)jo).getValue()));
+        }
+        return ids;
+    }
+
+    public Set<JSONObject> getMPsCurrentPartition(int selectedCommunity) {
+        JSONizer json = new JSONizer();
+        JSONArray jsonMPs = (JSONArray)json.StringToJSON(
+                dc.getMPsMainPartition(String.valueOf(selectedCommunity)))
+                .getJSONByKey("Current partition Community numer " + selectedCommunity);
+        Set<JSONObject> mps = new HashSet<>();
+        for (JSON jo : jsonMPs.getArray()) {
+            mps.add((JSONObject)jo);
+        }
+        return mps;
+    }
+
+    public void addNewCommunity() { dc.addNewCommunity(); }
+
+    public void deleteSelectedCommunity(Integer cNumb) { dc.deleteSelectedCommunity(cNumb); }
 }
 
 

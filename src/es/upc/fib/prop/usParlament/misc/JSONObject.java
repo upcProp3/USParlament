@@ -26,7 +26,12 @@ public class JSONObject extends JSON
         if(json.containsKey(js)) throw new IllegalArgumentException("REPEATED NAME");
         json.put(js,j);
     }
-
+    public void addPair(String s,JSON j)
+    {
+        JSONString js = new JSONString(s);
+        if(json.containsKey(js)) throw new IllegalArgumentException("REPEATED NAME");
+        json.put(js,j);
+    }
     public JSON getJSONByKey(JSONString key) {
         return json.get(key);
     }

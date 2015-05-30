@@ -5,28 +5,17 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
-import java.util.Vector;
-
 /**
  *
  * @author miquel
  */
-public class LoadCongressWindow extends javax.swing.JFrame {
+public class LoadPartitionWindow extends javax.swing.JFrame {
 
-    PresentationController pc;
-    MainView mainView;
     /**
-     * Creates new form LoadGraphWindow
+     * Creates new form LoadPartitionWindow
      */
-    public LoadCongressWindow() {
+    public LoadPartitionWindow() {
         initComponents();
-    }
-
-    public LoadCongressWindow(PresentationController pc, MainView mainView) {
-        this();
-        this.pc = pc;
-        this.mainView = mainView;
-        loadCongressList.setListData(new Vector(pc.loadAllCongressNames()));
     }
 
     /**
@@ -38,71 +27,60 @@ public class LoadCongressWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        loadCongressList = new javax.swing.JList();
-        jLabel1 = new javax.swing.JLabel();
-        loadSelectedCongressButton = new javax.swing.JButton();
+        savedPartitionsLabel = new javax.swing.JList();
+        loadPartitionLabel = new javax.swing.JLabel();
+        loadPartitionButton = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        loadCongressList.setModel(new javax.swing.AbstractListModel() {
+        savedPartitionsLabel.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(loadCongressList);
+        jScrollPane1.setViewportView(savedPartitionsLabel);
 
-        jLabel1.setText("Load Congress");
+        loadPartitionLabel.setText("Loading Partition:");
 
-        loadSelectedCongressButton.setText("Load");
-        loadSelectedCongressButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loadSelectedCongressButtonActionPerformed(evt);
-            }
-        });
+        loadPartitionButton.setText("Load");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(loadSelectedCongressButton, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(loadPartitionButton, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(jLabel1)
+                        .addComponent(loadPartitionLabel)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(loadPartitionLabel)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(loadSelectedCongressButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(93, 93, 93)
+                        .addComponent(loadPartitionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void loadSelectedCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadSelectedCongressButtonActionPerformed
-        pc.loadCongressAsCurrent((String)loadCongressList.getSelectedValue());
-        mainView.updateMPManagementMPTable();
-        mainView.updateMPManagementAttrDefinitionTable();
-        pc.cleanCommunityManager();
-        setVisible(false);
-        dispose();
-    }//GEN-LAST:event_loadSelectedCongressButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,29 +99,29 @@ public class LoadCongressWindow extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoadCongressWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadPartitionWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoadCongressWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadPartitionWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoadCongressWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadPartitionWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoadCongressWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadPartitionWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoadCongressWindow().setVisible(true);
+                new LoadPartitionWindow().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList loadCongressList;
-    private javax.swing.JButton loadSelectedCongressButton;
+    private javax.swing.JButton loadPartitionButton;
+    private javax.swing.JLabel loadPartitionLabel;
+    private javax.swing.JList savedPartitionsLabel;
     // End of variables declaration//GEN-END:variables
 }
