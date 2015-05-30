@@ -56,6 +56,11 @@ public class JSONObject extends JSON
         return retorn;
     }
 
+    public boolean hasKey(String s) {
+        JSONString str = new JSONString(s);
+        return json.containsKey(str);
+    }
+
 
 
     public String stringify()

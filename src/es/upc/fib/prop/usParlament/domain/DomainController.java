@@ -111,6 +111,8 @@ public class DomainController
         mi.addPair(new JSONString("State"),new JSONString(mp.getState().toString()));
         mi.addPair(new JSONString("District"),new JSONString(Integer.toString(mp.getDistrict())));
 
+        mi.addPair(new JSONString("Name"), new JSONString(mp.getFullname()));
+
         JSONArray ja = new JSONArray();
         for(Attribute a:mp.getAttributes()){
             String attrname = a.getDefinition().getName();

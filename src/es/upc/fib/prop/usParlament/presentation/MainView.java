@@ -1297,8 +1297,9 @@ public class MainView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
             return;
         }
-        String st = (String) MPsInCommunityTable.getValueAt(fila, 0);
-        int dt = (Integer) MPsInCommunityTable.getValueAt(fila, 1);
+        String st = MPsInCommunityTable.getValueAt(fila, 0).toString();
+        String d =  MPsInCommunityTable.getValueAt(fila, 1).toString();
+        int dt = Integer.parseInt(d);
         JFrame jf = new ShowMPInfoWindow(pc, st, dt);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -1312,8 +1313,9 @@ public class MainView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
             return;
         }
-        String st = (String) MPsCurrentCongressTable.getValueAt(fila, 0);
-        int dt = (Integer) MPsCurrentCongressTable.getValueAt(fila, 1);
+        String st =  MPsCurrentCongressTable.getValueAt(fila, 0).toString();
+        String d = MPsCurrentCongressTable.getValueAt(fila, 1).toString();
+        int dt = Integer.parseInt(d);
         JFrame jf = new ShowMPInfoWindow(pc, st, dt);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

@@ -5,7 +5,16 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
+import java.util.Map;
+import java.util.Vector;
+
+import javax.swing.table.DefaultTableModel;
+
+import es.upc.fib.prop.usParlament.misc.JSON;
+import es.upc.fib.prop.usParlament.misc.JSONArray;
 import es.upc.fib.prop.usParlament.misc.JSONObject;
+import es.upc.fib.prop.usParlament.misc.JSONString;
+import es.upc.fib.prop.usParlament.misc.State;
 
 /**
  *
@@ -31,6 +40,8 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
         //State s = State.valueOf("NY");
         //int d = 15;
         //mp = pc.getMPInfo(s, d);
+
+        actu(st, dt);
     }
 
     /**
@@ -107,6 +118,58 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void actu(String st, int dt) {
+        State estat = State.valueOf(st);
+        DefaultTableModel dtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+        };
+        JSONObject mp = pc.getMPInfo(estat, dt);
+        JSONObject jattrd = pc.getAttrDefs();
+        JSONArray a = ((JSONArray)jattrd.getJSONByKey("Attribute Definitions"));
+
+        dtm.addColumn("State");
+        dtm.addColumn("District");
+        dtm.addColumn("Name");
+
+        for(JSON jo:a.getArray()){
+            String s =((JSONString)((JSONObject)jo).getJSONByKey("AttrDefName")).getValue();
+            String imp =((JSONString)((JSONObject)jo).getJSONByKey("AttrDefImportance")).getValue();
+
+            if(imp.equals("0")) imp = "(N)";
+            if(imp.equals("1")) imp = "(L)";
+            if(imp.equals("4")) imp = "(M)";
+            if(imp.equals("16")) imp = "(H)";
+            s = s+imp;
+            dtm.addColumn(s);
+            //System.out.println(imp);
+        }
+
+        Vector<String> row = new Vector<String>();
+        row.add(((JSONString)mp.getJSONByKey("State")).getValue());
+        row.add(((JSONString)mp.getJSONByKey("District")).getValue());
+        row.add(((JSONString)mp.getJSONByKey("Name")).getValue());
+
+        int cnum = 3;
+
+        JSONArray ja = (JSONArray)mp.getJSONByKey("Attributes");
+        for (JSON j : ja.getArray()) {
+            JSONObject jo = (JSONObject)j;
+            if (jo.hasKey(dtm.getColumnName(cnum))) {
+                row.add(((JSONString)mp.getJSONByKey(dtm.getColumnName(cnum))).getValue());
+            }
+            else row.add("-");
+            ++cnum;
+        }
+
+        dtm.addRow(row);//*/
+        ShowMPInfoTable.setModel(dtm);
+
+    }
+
+
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
         setVisible(false);
         dispose();
@@ -121,6 +184,7 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
