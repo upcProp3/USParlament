@@ -600,4 +600,34 @@ public class DomainController
         jo.addPair("ids", ids);
         return (new JSONizer()).JSONtoString(jo);
     }
+
+    /**
+     * Adds the MP (st, distr) to the community (cNumb) of main partition.
+     * If the MP(st, distr) is in another community different from (cNumb), the MP is moved.
+     * @param cNumb Community identifier number.
+     * @param st State of the MP we want to add.
+     * @param distr District of the MP we want to add.
+     */
+    public void addMPToCommunity(Integer cNumb, State st, Integer distr) {
+        MP m = currentCongress.getMP(st, distr);
+        for (Set comm : mainPartition) {
+            int id = mainPartition.indexOf(comm);
+            if (id == cNumb) {
+                if (comm.contains(m)) break;
+                comm.add(m);
+            }
+            else if (comm.contains(m)) comm.remove(m);
+        }
+    }
+
+    public void deleteMPFromCommunity (Integer cNumb, State st, Integer distr) {
+        MP m = currentCongress.getMP(st, distr);
+        for (Set comm : mainPartition) {
+            int id = mainPartition.indexOf(comm);
+            if (id == cNumb) {
+                comm.remove(m);
+                break;
+            }
+        }
+    }
 }

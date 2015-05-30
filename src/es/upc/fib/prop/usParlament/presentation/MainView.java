@@ -978,8 +978,8 @@ public class MainView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
             return;
         }
-        String cName = (String)communitiesTable.getValueAt(fila,0);
-        JFrame jf = new addMPToCommunityWindow(pc, cName);
+        String cNumb = (String)communitiesTable.getValueAt(fila,0);
+        JFrame jf = new addMPToCommunityWindow(pc, Integer.valueOf(cNumb));
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -988,9 +988,16 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addMPToCommunityButtonActionPerformed
 
     private void deleteMPfromCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPfromCommunityButtonActionPerformed
-
         // TODO community management delete mp from communtiy button pressed
-
+        int fila = communitiesTable.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        String cNumb = (String)communitiesTable.getValueAt(fila,0);
+        JFrame jf = new deleteMPFromCommunityWindow(pc, Integer.valueOf(cNumb));
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_deleteMPfromCommunityButtonActionPerformed
 
 
