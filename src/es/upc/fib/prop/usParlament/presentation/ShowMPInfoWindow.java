@@ -162,6 +162,7 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
             }
             else row.add("-");
             ++cnum;
+
         }
 
         dtm.addRow(row);//*/
