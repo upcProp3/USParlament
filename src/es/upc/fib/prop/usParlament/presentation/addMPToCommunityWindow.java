@@ -11,18 +11,20 @@ import es.upc.fib.prop.usParlament.misc.State;
  *
  * @author miquel
  */
+
+//TODO: Testing (not possible until the tables show the info).
 public class addMPToCommunityWindow extends javax.swing.JFrame {
 
     private PresentationController pc;
-    private String cName;
+    private Integer cNumb;
     /**
      * Creates new form addMPToCommunityWindow
      * @param pc
      */
-    public addMPToCommunityWindow(PresentationController pc, String cName) {
+    public addMPToCommunityWindow(PresentationController pc, Integer cNumb) {
         initComponents();
         this.pc = pc;
-        this.cName = cName;
+        this.cNumb = cNumb;
     }
 
     /**
@@ -127,11 +129,9 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         State st = (State) jComboBox1.getSelectedItem();
         Integer dt = (Integer) jComboBox2.getSelectedItem();
-       //Not finished!
-
+        pc.addMPToCommunity(cNumb, st, dt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -161,10 +161,11 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new addMPToCommunityWindow(pc).setVisible(true);
+               //new addMPToCommunityWindow(pc).setVisible(true);
             }
         });
     }

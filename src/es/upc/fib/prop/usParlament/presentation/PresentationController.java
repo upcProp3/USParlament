@@ -109,8 +109,12 @@ public class PresentationController {
         return null;
     }
 
-    //TODO
-    public void addMPToCommunity(String cName, State st, Integer dt) {
+    public void addMPToCommunity(Integer cNumb, State st, Integer dt) {
+        dc.addMPToCommunity(cNumb, st, dt);
+    }
+
+    public void deleteMPFromCommunity (Integer cNumb, State st, Integer dt) {
+        dc.deleteMPFromCommunity(cNumb, st, dt);
     }
 
     public boolean existsAttrDef(String name)
