@@ -309,6 +309,13 @@ public class MainView extends javax.swing.JFrame {
         currentCongressLabel.setText("Current Congress' MPs");
 
         hideAttrsButton.setText("Hide irrelevant attrdefs");
+        hideAttrsButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                radiobuttonAttrDefButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout congressManagementViewLayout = new javax.swing.GroupLayout(congressManagementView);
         congressManagementView.setLayout(congressManagementViewLayout);
@@ -923,7 +930,12 @@ public class MainView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_deleteMPfromCommunityButtonActionPerformed
 
-    
+    public void radiobuttonAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        updateMPManagementAttrDefinitionTable();;
+        updateMPManagementMPTable();
+    }
+
     public void updateMPManagementMPTable()
     {
         JSONObject j = pc.getMPList();
@@ -934,7 +946,7 @@ public class MainView extends javax.swing.JFrame {
             }
         };
         JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
-
+        boolean hide = hideAttrsButton.isSelected();
 
         //Create columns
         JSONObject jattrd = pc.getAttrDefs();
@@ -954,8 +966,11 @@ public class MainView extends javax.swing.JFrame {
             if(imp.equals("4")) imp = "(M)";
             if(imp.equals("16")) imp = "(H)";
             s = s+imp;
-            System.out.println(imp);
-            dtm.addColumn(s);
+            //System.out.println(imp);
+            if(!(hide && imp.equals("(N)"))){
+                dtm.addColumn(s);
+                System.out.println(hide);System.out.println(imp.equals("(N)"));
+            }
         }
 
 
@@ -993,6 +1008,8 @@ public class MainView extends javax.swing.JFrame {
         adtm.addColumn("AttrDefName");
         adtm.addColumn("AttrDefImportance");
 
+        boolean hide = hideAttrsButton.isSelected();
+
         JSONObject jotd = pc.getAttrDefs();
         JSONArray jatd = ((JSONArray)jotd.getJSONByKey("Attribute Definitions"));
 
@@ -1000,6 +1017,7 @@ public class MainView extends javax.swing.JFrame {
 
             Map<String,String> ms = ((JSONObject)element).basicJSONObjectGetInfo();
             Vector<String> row = new Vector<String>();
+            boolean noval = false;
             for(int pos = 0;pos<jatd.getArray().size();pos++){
                 row.add(ms.get("AttrDefName"));
                 String imp = ms.get("AttrDefImportance");
@@ -1009,9 +1027,10 @@ public class MainView extends javax.swing.JFrame {
                 else if(imp.equals("16")) imp = "High";
                 else throw new IllegalStateException("UNKNOWN Attribute definition importance");
                 row.add(imp);
+                if(imp.equals("None")) noval = true;
             }
 
-            adtm.addRow(row);
+            if(!(hide && noval)) adtm.addRow(row);
 
         }
 
