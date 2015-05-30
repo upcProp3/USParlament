@@ -27,12 +27,12 @@ public class PresentationController {
         j = new JSONizer();
     }
 
-//    public void test (String s) { dc.loadCongress(s); }
-
 
     public JSONObject getShortMPList()
     {
+        /*
         //TEST
+
         JSONObject j = new JSONObject();
         JSONArray jay = new JSONArray();
         for(int i = 0;i<10;i++){
@@ -43,9 +43,10 @@ public class PresentationController {
         }
         j.addPair(new JSONString("MPList"),jay);
         return j;
+        */
         ///END OF TEST
         //GOOD CODE
-        //return j.StringToJSON(dc.getShortMPList());
+        return j.StringToJSON(dc.getShortMPList());
         //END OF GOOD CODE
     }
     
@@ -180,6 +181,10 @@ public class PresentationController {
         }
         return mps;
     }
+
+    public void addNewCommunity() { dc.addNewCommunity(); }
+
+    public void deleteSelectedCommunity(Integer cNumb) { dc.deleteSelectedCommunity(cNumb); }
 }
 
 

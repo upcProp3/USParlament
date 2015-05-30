@@ -5,7 +5,9 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
-import es.upc.fib.prop.usParlament.misc.State;
+import es.upc.fib.prop.usParlament.misc.*;
+
+import java.util.Map;
 
 /**
  *
@@ -17,14 +19,18 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
 
     private PresentationController pc;
     private Integer cNumb;
+    private MainView pops;
+    private int fila;
     /**
      * Creates new form addMPToCommunityWindow
      * @param pc
      */
-    public addMPToCommunityWindow(PresentationController pc, Integer cNumb) {
+    public addMPToCommunityWindow(PresentationController pc, Integer cNumb, MainView mv, int fila) {
         initComponents();
         this.pc = pc;
         this.cNumb = cNumb;
+        pops = mv;
+        this.fila = fila;
     }
 
     /**
@@ -43,6 +49,10 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+
+        for(State s:State.values()){
+            jComboBox1.addItem(s);
+        }
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -130,8 +140,20 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         State st = (State) jComboBox1.getSelectedItem();
+
+        JSONObject jList = pc.getShortMPList();
+        JSONArray ja = (JSONArray) jList.getJSONByKey("MPList");
+        for (JSON jn : ja.getArray()) {
+            JSONObject jo = (JSONObject) jn;
+            Map<String,String> ms = jo.basicJSONObjectGetInfo();
+            if (State.valueOf(ms.get("State")).equals(st)) {
+                jComboBox2.addItem(ms.get("District"));
+            }
+        }
+
         Integer dt = (Integer) jComboBox2.getSelectedItem();
         pc.addMPToCommunity(cNumb, st, dt);
+        pops.updateMPsInCommunityTable(fila);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

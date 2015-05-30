@@ -610,10 +610,10 @@ public class DomainController
      */
     public void addMPToCommunity(Integer cNumb, State st, Integer distr) {
         MP m = currentCongress.getMP(st, distr);
-        for (Set comm : mainPartition) {
-            int id = mainPartition.indexOf(comm);
-            if (id == cNumb) {
-                if (comm.contains(m)) break;
+        for (int i = 0; i < mainPartition.size(); i++) {
+            Set<MP> comm = mainPartition.get(i);
+            if (i == cNumb) {
+                if (comm.contains(m)) return;
                 comm.add(m);
             }
             else if (comm.contains(m)) comm.remove(m);
@@ -622,11 +622,24 @@ public class DomainController
 
     public void deleteMPFromCommunity (Integer cNumb, State st, Integer distr) {
         MP m = currentCongress.getMP(st, distr);
-        for (Set comm : mainPartition) {
-            int id = mainPartition.indexOf(comm);
-            if (id == cNumb) {
-                comm.remove(m);
-                break;
+        for (int i = 0; i < mainPartition.size(); i++) {
+            if (i == cNumb) {
+                mainPartition.get(i).remove(m);
+                return;
+            }
+        }
+    }
+
+    public void addNewCommunity () {
+        Set<MP> newComm = new HashSet<>();
+        mainPartition.add(mainPartition.size(), newComm);
+    }
+
+    public void deleteSelectedCommunity (Integer cNumb) {
+        for (int i = 0; i < mainPartition.size(); i++) {
+            if (i == cNumb) {
+                mainPartition.remove(mainPartition.get(i));
+                return;
             }
         }
     }

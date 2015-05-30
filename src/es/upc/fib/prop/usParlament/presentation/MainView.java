@@ -452,7 +452,7 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
-        newCommButton.setText("New Comm.");
+        /*newCommButton.setText("New Comm.");
         newCommButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newCommButtonActionPerformed(evt);
@@ -464,7 +464,7 @@ public class MainView extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delCommButtonActionPerformed(evt);
             }
-        });
+        });*/
 
         javax.swing.GroupLayout communitiesPanelLayout = new javax.swing.GroupLayout(communitiesPanel);
         communitiesPanel.setLayout(communitiesPanelLayout);
@@ -969,7 +969,7 @@ public class MainView extends javax.swing.JFrame {
             return;
         }
         String cNumb = (String)communitiesTable.getValueAt(fila,0);
-        JFrame jf = new addMPToCommunityWindow(pc, Integer.valueOf(cNumb));
+        JFrame jf = new addMPToCommunityWindow(pc, Integer.valueOf(cNumb), this, fila);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -979,15 +979,21 @@ public class MainView extends javax.swing.JFrame {
 
     private void deleteMPfromCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPfromCommunityButtonActionPerformed
         // TODO community management delete mp from communtiy button pressed
-        int fila = communitiesTable.getSelectedRow();
-        if(fila == -1){
+        int fila1 = communitiesTable.getSelectedRow();
+        if(fila1 == -1){
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
             return;
         }
-        String cNumb = (String)communitiesTable.getValueAt(fila,0);
-        JFrame jf = new deleteMPFromCommunityWindow(pc, Integer.valueOf(cNumb));
-        jf.setVisible(true);
-        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        int fila2 = MPsInCommunityTable.getSelectedRow();
+        if(fila2 == -1){
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        Integer cNumb = (Integer)communitiesTable.getValueAt(fila1,0);
+        State st = (State)MPsInCommunityTable.getValueAt(fila2,0);
+        Integer distr = (Integer)MPsInCommunityTable.getValueAt(fila2,1);
+        pc.deleteMPFromCommunity(cNumb, st, distr);
+        updateMPsInCommunityTable(fila2);
     }//GEN-LAST:event_deleteMPfromCommunityButtonActionPerformed
 
     public void radiobuttonAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt)
@@ -1121,7 +1127,8 @@ public class MainView extends javax.swing.JFrame {
         };
         JSONString jNumb = (JSONString) j.getJSONByKey("Number");
         dtm.addColumn("Community number");
-        for (int i = 1; i <= Integer.valueOf(jNumb.getValue()); ++i) {
+        System.out.println(jNumb.getValue());
+        for (int i = 0; i < Integer.valueOf(jNumb.getValue()); i++) {
             JSONString ji = new JSONString(String.valueOf(i));
             Vector<String> value = new Vector<String>();
             value.add(ji.getValue());
@@ -1169,7 +1176,7 @@ public class MainView extends javax.swing.JFrame {
             MPsCurrentCongressTable.setModel(dtm);
     }
 
-    private void updateMPsInCommunityTable(int selectedRow) {
+    public void updateMPsInCommunityTable(int selectedRow) {
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1290,6 +1297,15 @@ public class MainView extends javax.swing.JFrame {
 
     private void modifyAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAttrDefButtonActionPerformed
         // TODO mp management modify attr def button action performed
+        /*int fila = attrDefinitionsTable.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        String attrName = (String) attrDefinitionsTable.getValueAt(fila,0);
+        JFrame jf = new ModifyAttributeDefinitionWindow(pc, attrName);
+        jf.setVisible(true);
+        System.out.println("Modify attrDef");*/
     }//GEN-LAST:event_modifyAttrDefButtonActionPerformed
 
     private void showMPDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMPDataButtonActionPerformed
@@ -1368,10 +1384,20 @@ public class MainView extends javax.swing.JFrame {
 
     private void newCommButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCommButtonActionPerformed
         // TODO add your handling code here:
+        pc.addNewCommunity();
+        updateCommunitiesTable();
     }//GEN-LAST:event_newCommButtonActionPerformed
 
     private void delCommButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delCommButtonActionPerformed
         // TODO add your handling code here:
+        int fila = communitiesTable.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(new JFrame(), "No row selected");
+            return;
+        }
+        Integer cNumb = Integer.valueOf((String) communitiesTable.getValueAt(fila, 0));
+        pc.deleteSelectedCommunity(cNumb);
+        updateCommunitiesTable();
     }//GEN-LAST:event_delCommButtonActionPerformed
 
     private void communityList1CommunitiesListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_communityList1CommunitiesListValueChanged
