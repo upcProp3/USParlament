@@ -1175,7 +1175,6 @@ public class MainView extends javax.swing.JFrame {
     }
     
     private void mainWindowStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_mainWindowStateChanged
-        // TODO code for initializing when we change the window
         // In this function goes the code that needs to be executed when we change the window
         //the winows are numbered 0..n-1 in their order on the top
         //There are implementations of an initialization on the code below
@@ -1201,7 +1200,6 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_mainWindowStateChanged
 
     private void addMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPButtonActionPerformed
-        // TODO MP management addMP button pressed
         JFrame jf = new AddMPWindow(pc,this);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -1227,7 +1225,6 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyMPButtonActionPerformed
 
     private void deleteMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPButtonActionPerformed
-        // TODO MP management delete MP button pressed
         //System.out.println(currentMPsTable.getSelectedRow());
         int fila = currentMPsTable.getSelectedRow();
         if(fila == -1){
@@ -1252,11 +1249,9 @@ public class MainView extends javax.swing.JFrame {
         JFrame jf = new SaveCongressWindow(pc, this);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        // TODO MP management save congress button pressed
     }//GEN-LAST:event_saveCongressButtonActionPerformed
 
     private void newCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCongressButtonActionPerformed
-        // TODO MP management new congress button pressed
         pc.newCongress();
         updateMPManagementAttrDefinitionTable();
         updateMPManagementMPTable();
@@ -1264,14 +1259,12 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_newCongressButtonActionPerformed
 
     private void newAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAttrDefButtonActionPerformed
-        // TODO mp management screen new attr definition button pressed
         JFrame jf = new AddAttributeDefinition(pc,this);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_newAttrDefButtonActionPerformed
 
     private void modifyAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAttrDefButtonActionPerformed
-        // TODO mp management modify attr def button action performed
         int fila = attrDefinitionsTable.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
@@ -1279,8 +1272,6 @@ public class MainView extends javax.swing.JFrame {
         }
         String attrName = (String) attrDefinitionsTable.getValueAt(fila,0);
         String initialImp = (String) attrDefinitionsTable.getValueAt(fila,1);
-
-        //TODO: FES SERVIR AQUEST CODI EN LLOC DE CREAR UNA FINESTRA MODIFY ATTRIBUTE, PER LATTR SELECCTIONAT QUE TRII LA IMPORTANCIA
         Object[] possibilities = {"None", "Low", "Medium", "High"};
         String s = (String)JOptionPane.showInputDialog(
                 this, "Choose the new importance value",
@@ -1313,7 +1304,6 @@ public class MainView extends javax.swing.JFrame {
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         System.out.println("Show MP Info");
-        // TODO community management show selected mp info button
     }//GEN-LAST:event_showMPDataButtonActionPerformed
 
     private void showSelectedMPInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1336,14 +1326,13 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_loadPartitionButtonActionPerformed
 
     private void savePartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savePartitionButtonActionPerformed
-        // TODO communtiy management save partition button pressed
+        //TODO
         JFrame jf = new savePartitionWindow(pc);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_savePartitionButtonActionPerformed
 
     private void calculateCommunitiesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateCommunitiesButtonActionPerformed
-        // TODO communtiy management calculate communities button pressed
         calculateCommunitiesButton.setEnabled(false);
         algorithmProgressBar.setIndeterminate(true);
         String algorithm = (String)chooseAlgorithmComboBox.getSelectedItem();
@@ -1353,11 +1342,18 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_calculateCommunitiesButtonActionPerformed
 
     private void compareButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compareButtonActionPerformed
-        // TODO add your handling code here:
+        JSONObject jInfo = pc.compareFunction();
+        String msg = new String();
+        msg = "Best partition: " + jInfo.getJSONByKey("Best partition") + "\n";
+        msg += "Best modularity: " + jInfo.getJSONByKey("Best modularity") + "\n";
+        msg += "Other modularity: " + jInfo.getJSONByKey("Other modularity") + "\n";
+        msg += "Percentage of accuracy: " + jInfo.getJSONByKey("Percentage of accuracy");
+        JOptionPane.showMessageDialog(new JFrame(), msg);
     }//GEN-LAST:event_compareButtonActionPerformed
 
     private void list1UseCurrentPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1UseCurrentPartitionButtonActionPerformed
-        // TODO add your handling code here:
+        pc.setCurrentToPartition1();
+        //TODO: update list1
     }//GEN-LAST:event_list1UseCurrentPartitionButtonActionPerformed
 
     private void list1LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1LoadPartitionButtonActionPerformed
@@ -1365,7 +1361,8 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_list1LoadPartitionButtonActionPerformed
 
     private void list2UseCurrentPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2UseCurrentPartitionButtonActionPerformed
-        // TODO add your handling code here:
+        pc.setCurrentToPartition2();
+        //TODO: update list2
     }//GEN-LAST:event_list2UseCurrentPartitionButtonActionPerformed
 
     private void list2LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2LoadPartitionButtonActionPerformed
@@ -1373,7 +1370,6 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_list2LoadPartitionButtonActionPerformed
 
     private void LoadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadCongressButtonActionPerformed
-        // TODO add your handling code here:
         JFrame jf = new LoadCongressWindow(pc, this);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -1384,13 +1380,11 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_newPartitionButtonActionPerformed
 
     private void newCommButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCommButtonActionPerformed
-        // TODO add your handling code here:
         pc.addNewCommunity();
         updateCommunitiesTable();
     }//GEN-LAST:event_newCommButtonActionPerformed
 
     private void delCommButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delCommButtonActionPerformed
-        // TODO add your handling code here:
         int fila = communitiesTable.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");

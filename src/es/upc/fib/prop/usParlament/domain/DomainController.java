@@ -51,6 +51,10 @@ public class DomainController
         return currentCongress;
     }
 
+    public void setCurrentToPartition1 () { partition1 = mainPartition; }
+    public void setCurrentToPartition2 () { partition2 = mainPartition; }
+
+
     /**
      * @return It returns an String with the State and District values for each MP at the current congress.
      */
@@ -651,6 +655,34 @@ public class DomainController
     }
 
     public String compare2partitions() {
-        ComparingAlgorithm ca = new ComparingAlgorithm(currentCongress, partition1, partition2);
+        Map<Node, Integer> part1 = new HashMap<>();
+        int comm = 0;
+        for (Set<MP> c : partition1) {
+            for (MP m : c) {
+                part1.put(m, comm);
+            }
+            ++comm;
+        }
+        Map<Node, Integer> part2 = new HashMap<>();
+        comm = 0;
+        for (Set<MP> c : partition2) {
+            for (MP m : c) {
+                part2.put(m, comm);
+            }
+            ++comm;
+        }
+        ComparingAlgorithm ca = new ComparingAlgorithm(currentCongress, part1, part2);
+        JSONObject jInfo = new JSONObject();
+        JSONString jBest = new JSONString();
+        if (ca.best == part1) jBest.setValue("Partition1");
+        else jBest.setValue("Partition2");
+        jInfo.addPair("Best partition", jBest);
+        JSONString jModB = new JSONString(String.valueOf(ca.bestModularity()));
+        JSONString jModO = new JSONString(String.valueOf(ca.otherModularity()));
+        jInfo.addPair("Best modularity", jModB);
+        jInfo.addPair("Other modularity", jModO);
+        JSONString jPA = new JSONString(String.valueOf(ca.percentBetter()));
+        jInfo.addPair("Percentage of accuracy", jPA);
+        return jInfo.stringify();
     }
 }
