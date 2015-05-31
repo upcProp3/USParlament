@@ -152,6 +152,8 @@ public class PresentationController {
         return dc.loadCongressAsCurrent(name);
     }
 
+    //public String saveCurrentPartition(String cName, String pName) { return dc.saveCurrentPartition(); }
+
     public void cleanCommunityManager() {
         dc.cleanCommunityManager();
     }

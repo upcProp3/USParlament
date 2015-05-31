@@ -1169,6 +1169,10 @@ public class MainView extends javax.swing.JFrame {
         }
         MPsInCommunityTable.setModel(model);
     }
+
+    public void updateCurrentLoadedCongressLabel(String name) {
+        currentCongressNameTextField.setText(name);
+    }
     
     private void mainWindowStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_mainWindowStateChanged
         // TODO code for initializing when we change the window
@@ -1245,7 +1249,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_loadCongressButtonActionPerformed
 
     private void saveCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCongressButtonActionPerformed
-        JFrame jf = new SaveCongressWindow(pc);
+        JFrame jf = new SaveCongressWindow(pc, this);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         // TODO MP management save congress button pressed
@@ -1256,6 +1260,7 @@ public class MainView extends javax.swing.JFrame {
         pc.newCongress();
         updateMPManagementAttrDefinitionTable();
         updateMPManagementMPTable();
+        updateCurrentLoadedCongressLabel("CongressWithoutName");
     }//GEN-LAST:event_newCongressButtonActionPerformed
 
     private void newAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newAttrDefButtonActionPerformed
@@ -1332,6 +1337,9 @@ public class MainView extends javax.swing.JFrame {
 
     private void savePartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savePartitionButtonActionPerformed
         // TODO communtiy management save partition button pressed
+        JFrame jf = new savePartitionWindow(pc);
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_savePartitionButtonActionPerformed
 
     private void calculateCommunitiesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateCommunitiesButtonActionPerformed
@@ -1366,6 +1374,9 @@ public class MainView extends javax.swing.JFrame {
 
     private void LoadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadCongressButtonActionPerformed
         // TODO add your handling code here:
+        JFrame jf = new LoadCongressWindow(pc, this);
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_LoadCongressButtonActionPerformed
 
     private void newPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPartitionButtonActionPerformed

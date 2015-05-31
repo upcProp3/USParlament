@@ -14,11 +14,13 @@ import javax.swing.*;
 public class SaveCongressWindow extends javax.swing.JFrame {
 
     private PresentationController pc;
+    private MainView mv;
     /**
      * Creates new form SaveMPWindow
      */
-    public SaveCongressWindow(PresentationController pc) {
+    public SaveCongressWindow(PresentationController pc, MainView mv) {
         this.pc = pc;
+        this.mv = mv;
         initComponents();
         jTextField1.setText("");
     }
@@ -83,11 +85,13 @@ public class SaveCongressWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (pc.saveCurrentCongress(jTextField1.getText()).equals("{}")) {
+        String name = jTextField1.getText();
+        if (pc.saveCurrentCongress(name).equals("{}")) {
             JOptionPane.showMessageDialog(new JFrame(), "Congress saved");
         } else {
             JOptionPane.showMessageDialog(new JFrame(), "Error during saving congress.");
         }
+        mv.updateCurrentLoadedCongressLabel(name);
         setVisible(false);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed.
@@ -123,7 +127,7 @@ public class SaveCongressWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SaveCongressWindow(new PresentationController()).setVisible(true);
+               // new SaveCongressWindow(new PresentationController()).setVisible(true);
             }
         });
     }

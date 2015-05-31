@@ -96,9 +96,11 @@ public class LoadCongressWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loadSelectedCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadSelectedCongressButtonActionPerformed
-        pc.loadCongressAsCurrent((String)loadCongressList.getSelectedValue());
+        String name = (String)loadCongressList.getSelectedValue();
+        pc.loadCongressAsCurrent(name);
         mainView.updateMPManagementMPTable();
         mainView.updateMPManagementAttrDefinitionTable();
+        mainView.updateCurrentLoadedCongressLabel(name);
         pc.cleanCommunityManager();
         setVisible(false);
         dispose();

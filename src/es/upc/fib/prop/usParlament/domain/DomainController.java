@@ -649,4 +649,8 @@ public class DomainController
             }
         }
     }
+
+    public String compare2partitions() {
+        ComparingAlgorithm ca = new ComparingAlgorithm(currentCongress, partition1, partition2);
+    }
 }
