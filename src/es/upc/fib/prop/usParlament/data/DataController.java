@@ -52,6 +52,13 @@ public interface DataController {
 	public String loadAllPartitionsOfCongress(String congressName);
 
 
+	/**
+	 * load all saved partition names of congress.
+	 * @param congressName  unique identificator of congress.
+	 * @return  JSON representation of array of names.
+	 */
+	public String loadAllPartitionNamesOfCongress(String congressName);
+
 
 
 

@@ -126,6 +126,16 @@ public class DataControllerImpl implements DataController {
 		}
 	}
 
+	@Override
+	public String loadAllPartitionNamesOfCongress(String congressName) {
+		try {
+			CongressString congrString = loadCongressFromFile(congressName);
+			return stringListToJson(new ArrayList<String>(congrString.partitions.keySet()), "partitionNames");
+		} catch (IOException e) {
+			return exceptionMaker(e);
+		}
+	}
+
 
 	private String listToJson(List<String> list, String name)  {
 		boolean first = true;
@@ -140,7 +150,19 @@ public class DataControllerImpl implements DataController {
 		res += "]}";
 		return res;
 	}
-
+	private String stringListToJson(List<String> list, String name)  {
+		boolean first = true;
+		String res = "{\"" +name+ "\":[";
+		for (String item : list) {
+			if (!first) {
+				res += ",";
+			}
+			res += "\""+item+"\"";
+			first = false;
+		}
+		res += "]}";
+		return res;
+	}
 
 
 	private File createFileIfNotExists(String name) throws IOException {
@@ -180,7 +202,7 @@ public class DataControllerImpl implements DataController {
 				if (line.trim().equals("")) {
 					continue;
 				}
-				String[] ls = line.split(" ", 2);
+				String[] ls = line.split(" : ", 2);
 				congress.partitions.put(ls[0], ls[1]);
 			}
 		}
@@ -192,7 +214,7 @@ public class DataControllerImpl implements DataController {
 		try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)))) {
 			pw.println(congress.congress);
 			for (Map.Entry part : congress.partitions.entrySet()) {
-				pw.println(part.getKey() + " " + part.getValue());
+				pw.println(part.getKey() + " : " + part.getValue());
 			}
 			pw.flush();
 		}

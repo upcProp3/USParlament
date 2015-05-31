@@ -29,6 +29,7 @@ public class DomainController
 
      */
     private Congress currentCongress;
+    private String currentCongressName;
     private List<Set<MP>> mainPartition;
     private List<Set<MP>> partition1;
     private List<Set<MP>> partition2;
@@ -150,6 +151,7 @@ public class DomainController
     public void newCongress()
     {
         currentCongress = new Congress();
+        currentCongressName = null;
         mainPartition = new ArrayList<>();
         partition1 = new ArrayList<>();
         partition2 = new ArrayList<>();
@@ -163,7 +165,8 @@ public class DomainController
     /**
      * @return Returns the current partition number of communities.
      */
-    public String getMainPartitionSize() { return String.valueOf(mainPartition.size()); }
+    public String getMainPartitionSize() {
+        return String.valueOf(mainPartition.size()); }
 
     public String getMainPartitionCommunities() {
         JSONObject jPart = new JSONObject();
@@ -194,7 +197,8 @@ public class DomainController
     /**
      * @return Returns the partition 1 number of communities.
      */
-    public String getP1CommunityNumber() { return String.valueOf(partition1.size()); }
+    public String getP1CommunityNumber() {
+        return String.valueOf(partition1.size()); }
 
     public String getMPsPartition1 (String comnumber) {
         JSONObject mps = new JSONObject();
@@ -247,8 +251,7 @@ public class DomainController
         currentCongress.addNode(m);
     }
 
-    public void deleteMP(State state, int district)
-    {
+    public void deleteMP(State state, int district) {
         currentCongress.removeNode(new MP("INVALID_VALUE", state, district));
     }
 
@@ -395,6 +398,7 @@ public class DomainController
         JSONArray mps = new JSONArray();
         JSONArray relations = new JSONArray();
         JSONArray definitions = new JSONArray();
+        currentCongressName = name;
 
         congress.addPair(new JSONString("mps"), mps);
         congress.addPair(new JSONString("relations"), relations);
@@ -410,6 +414,7 @@ public class DomainController
                 JSONObject jsonAttr = new JSONObject();
                 jsonAttr.addPair(new JSONString("value"), new JSONString(attr.getValue().toString()));
                 jsonAttr.addPair(new JSONString("definitionName"), new JSONString(attr.getDefinition().getName()));
+                attributes.addElement(jsonAttr);
             }
             jsonMP.addPair(new JSONString("attributes"), attributes);
             mps.addElement(jsonMP);
@@ -448,6 +453,7 @@ public class DomainController
     public String loadCongressAsCurrent(String name) {
         JSONizer json = new JSONizer();
         String congress = dataController.loadCongress(name);
+        currentCongressName = name;
         JSONObject jsonCongress = json.StringToJSON(congress);
         Congress newCongress = new Congress();
 
@@ -505,11 +511,13 @@ public class DomainController
 
     /**
      * save current partition into persistent memory. If partition with same identificators already exists it will be rewritten.
-     * @param congressName  unique identificator of congress. It has to already exists in persistent memory.
      * @param partitionName  unique identificator in congressName scope.
      * @return  Exception string If there is exception "{}" string otherwise.
      */
-    public String saveCurrentPartition(String congressName, String partitionName) {
+    public String saveCurrentPartition(String partitionName) {
+        if (currentCongressName == null) {
+            return "{\"Exception\":{\"Name\":\"IllegalArgumentException\",\"Message\":\"Current congress is not loaded\"}}";
+        }
         JSONObject jsonPartition = new JSONObject();
         JSONArray communities = new JSONArray();
         for (Set<MP> community : mainPartition) {
@@ -523,18 +531,20 @@ public class DomainController
             communities.addElement(jsonCommunity);
         }
         jsonPartition.addPair("communities", communities);
-        return dataController.savePartition(congressName, partitionName, jsonPartition.stringify());
+        return dataController.savePartition(currentCongressName, partitionName, jsonPartition.stringify());
     }
 
     /**
      * load saved partition from persistent memory as current partition.
-     * @param congressName  unique identificator of congress.
      * @param partitionName  unique identificator in congressName scope.
-     * @return JSON representation of partition.
+     * @return JSON representation of partition or exception.
      */
-    public String loadPartitionAsCurrent(String congressName, String partitionName) {
+    public String loadPartitionAsCurrent(String partitionName) {
+        if (currentCongressName == null) {
+            return "{\"Exception\":{\"Name\":\"IllegalArgumentException\",\"Message\":\"Current congress is not saved\"}}";
+        }
         JSONizer json = new JSONizer();
-        String respond = dataController.loadPartition(congressName, partitionName);
+        String respond = dataController.loadPartition(currentCongressName, partitionName);
         List<Set<MP>> newPartition = new ArrayList<>();
         JSONObject jsonPartition = json.StringToJSON(respond);
         for (JSON jsonCom : ((JSONArray)jsonPartition.getJSONByKey("communities")).getArray()) {
@@ -554,12 +564,25 @@ public class DomainController
     }
 
     /**
-     * load all saved partitions of congress.
-     * @param congressName  unique identificator of congress.
+     * load all saved partitions of current congress.
      * @return  JSON representation of array of partitions.
      */
-    public String loadAllPartitionsOfCongress(String congressName) {
-        return dataController.loadAllPartitionsOfCongress(congressName);
+    public String loadAllPartitionsInCurrentCongress() {
+        if (currentCongressName == null) {
+            return "{\"Exception\":{\"Name\":\"IllegalArgumentException\",\"Message\":\"Current congress is not saved\"}}";
+        }
+        return dataController.loadAllPartitionsOfCongress(currentCongressName);
+    }
+
+    /**
+     * load all saved partition names of current congress.
+     * @return  JSON representation of array of names.
+     */
+    public String loadAllPartitionNamesInCurrentCongress() {
+        if (currentCongressName == null) {
+            return "{\"Exception\":{\"Name\":\"IllegalArgumentException\",\"Message\":\"Current congress is not saved\"}}";
+        }
+        return dataController.loadAllPartitionNamesOfCongress(currentCongressName);
     }
 
     protected List<Set<MP>> getCurrentPartition() {
@@ -684,5 +707,9 @@ public class DomainController
         JSONString jPA = new JSONString(String.valueOf(ca.percentBetter()));
         jInfo.addPair("Percentage of accuracy", jPA);
         return jInfo.stringify();
+    }
+
+    public String getCurrentCongressName() {
+        return currentCongressName;
     }
 }

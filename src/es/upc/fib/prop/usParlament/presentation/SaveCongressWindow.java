@@ -22,7 +22,8 @@ public class SaveCongressWindow extends javax.swing.JFrame {
         this.pc = pc;
         this.mv = mv;
         initComponents();
-        jTextField1.setText("");
+        System.out.print(pc.getCurrentCongressName());
+        jTextField1.setText(pc.getCurrentCongressName());
     }
 
     /**
