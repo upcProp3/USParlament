@@ -5,17 +5,30 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
+import javax.swing.*;
+import java.util.Vector;
+
 /**
  *
  * @author miquel
  */
 public class LoadPartitionWindow extends javax.swing.JFrame {
 
+    private PresentationController pc;
+    private MainView mainView;
     /**
      * Creates new form LoadPartitionWindow
      */
-    public LoadPartitionWindow() {
+    public LoadPartitionWindow(PresentationController pc, MainView mainView) {
         initComponents();
+        this.pc = pc;
+        this.mainView = mainView;
+        try {
+            savedPartitionsLabel.setListData(new Vector(pc.loadAllPartitionNamesInCurrentCongress()));
+        } catch (PresentationController.InternalException e) {
+            JOptionPane.showMessageDialog(new JFrame(), e.getMessage());
+            savedPartitionsLabel.setListData(new Vector());
+        }
     }
 
     /**
@@ -38,15 +51,26 @@ public class LoadPartitionWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         savedPartitionsLabel.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            String[] strings = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
+
+            public int getSize() {
+                return strings.length;
+            }
+
+            public Object getElementAt(int i) {
+                return strings[i];
+            }
         });
         jScrollPane1.setViewportView(savedPartitionsLabel);
 
         loadPartitionLabel.setText("Loading Partition:");
 
         loadPartitionButton.setText("Load");
+        loadPartitionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadSelectedPartitionButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,6 +106,14 @@ public class LoadPartitionWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loadSelectedPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadSelectedCongressButtonActionPerformed
+        String name = (String)savedPartitionsLabel.getSelectedValue();
+        pc.loadPartitionAsCurrent(name);
+        mainView.updateCommunitiesTable();
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_loadSelectedCongressButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -112,7 +144,7 @@ public class LoadPartitionWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoadPartitionWindow().setVisible(true);
+                new LoadPartitionWindow(null, null).setVisible(true);
             }
         });
     }

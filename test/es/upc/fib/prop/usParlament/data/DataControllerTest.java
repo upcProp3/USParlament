@@ -160,6 +160,29 @@ public class DataControllerTest {
 		assertEquals(sortJSONArray(expected, "partitions"), sortJSONArray(res, "partitions"));
 	}
 
+	@Test
+	public void testLoadAllPartitionNamesOfCongress() throws Exception {
+		prepareCongresses();
+		List<List<String>> partitions = preparePartitions();
+
+		final int pos = 1;
+
+		String res = manager.loadAllPartitionNamesOfCongress(CONGRESS_NAMES[pos]);
+
+		boolean first = true;
+		String expected = "{\"partitionNames\":[";
+		for (String part : PARTITIONS_NAMES[pos]) {
+			if (!first) {
+				expected += ",";
+			}
+			expected += "\"" +part+ "\"";
+			first = false;
+		}
+		expected += "]}";
+		System.out.println(res);
+		assertEquals(sortJSONArray(expected, "partitionNames"), sortJSONArray(res, "partitionNames"));
+	}
+
 
 	private String sortJSONArray(String object, String nameOfArray) {
 		JSONizer jsonizer = new JSONizer();

@@ -1114,7 +1114,13 @@ public class MainView extends javax.swing.JFrame {
         JSONObject j = pc.getShortMPList();
             //MPsCurrentCongressTable
             DefaultTableModel model = (DefaultTableModel)MPsCurrentCongressTable.getModel();
-            DefaultTableModel dtm = new DefaultTableModel();
+            //DefaultTableModel dtm = new DefaultTableModel();
+            DefaultTableModel dtm = new DefaultTableModel(){
+                @Override
+                public boolean isCellEditable(int row,int column){
+                    return false;
+                }
+            };
 
             System.out.println(j);
 
@@ -1145,6 +1151,7 @@ public class MainView extends javax.swing.JFrame {
             }
             
             MPsCurrentCongressTable.setModel(dtm);
+            MPsCurrentCongressTable.getTableHeader().setReorderingAllowed(false);
     }
 
     public void updateMPsInCommunityTable() {
@@ -1175,6 +1182,7 @@ public class MainView extends javax.swing.JFrame {
             model.addRow(row);
         }
         MPsInCommunityTable.setModel(model);
+        MPsInCommunityTable.getTableHeader().setReorderingAllowed(false); //TODO
     }
 
     public void updateCurrentLoadedCongressLabel(String name) {
@@ -1329,7 +1337,9 @@ public class MainView extends javax.swing.JFrame {
     }
 
     private void loadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadPartitionButtonActionPerformed
-        // TODO community management load partition button pressed
+        JFrame jf = new LoadPartitionWindow(pc, this);
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_loadPartitionButtonActionPerformed
 
     private void savePartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savePartitionButtonActionPerformed
@@ -1383,7 +1393,8 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_LoadCongressButtonActionPerformed
 
     private void newPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPartitionButtonActionPerformed
-        // TODO add your handling code here:
+        pc.cleanCommunityManager();
+        updateCommunitiesTable();
     }//GEN-LAST:event_newPartitionButtonActionPerformed
 
     private void newCommButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCommButtonActionPerformed

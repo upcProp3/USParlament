@@ -146,8 +146,22 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
         row.add(((JSONString)mp.getJSONByKey("District")).getValue());
         row.add(((JSONString)mp.getJSONByKey("Name")).getValue());
 
-        int cnum = 3;
+        //int cnum = 3;
+        JSONArray ja = (JSONArray)mp.getJSONByKey("Attributes");
+        for (int cnum = 3; cnum < dtm.getColumnCount(); ++cnum) {
+            boolean found = false;
+            for (JSON j: ja.getArray()) {
+                JSONObject jo = (JSONObject) j;
+                if (((JSONString)jo.getJSONByKey("AttrDefName")).getValue().equals(dtm.getColumnName(cnum))) {
+                    found = true;
+                    row.add(((JSONString)jo.getJSONByKey("AttrValue")).getValue());
+                    break;
+                }
+            }
+            if (!found) row.add("-");
+        }
 
+        /*
         JSONArray ja = (JSONArray)mp.getJSONByKey("Attributes");
         for (JSON j : ja.getArray()) {
             JSONObject jo = (JSONObject)j;
@@ -157,10 +171,11 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
             else row.add("-");
             ++cnum;
 
-        }
+        }//*/
 
         dtm.addRow(row);//*/
         ShowMPInfoTable.setModel(dtm);
+        ShowMPInfoTable.getTableHeader().setReorderingAllowed(false);
 
     }
 
