@@ -156,9 +156,13 @@ public class PresentationController {
         return dc.loadCongressAsCurrent(name);
     }
 
-    public String saveCurrentPartition(String pName) {
-        return dc.saveCurrentPartition(pName);
+    public String saveCurrentPartition(String pName) throws InternalException {
+        if (pName.trim().length() < 3) {
+            throw new InternalException("Partition name has to have at least 2 characters.");
+        }
+        return dc.saveCurrentPartition(pName.trim());
     }
+    
     public void loadPartitionAsCurrent(String pName) {
         dc.loadPartitionAsCurrent(pName);
     }

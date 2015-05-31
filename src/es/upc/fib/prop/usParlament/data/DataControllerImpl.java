@@ -202,7 +202,7 @@ public class DataControllerImpl implements DataController {
 				if (line.trim().equals("")) {
 					continue;
 				}
-				String[] ls = line.split(" ", 2);
+				String[] ls = line.split(" : ", 2);
 				congress.partitions.put(ls[0], ls[1]);
 			}
 		}
@@ -214,7 +214,7 @@ public class DataControllerImpl implements DataController {
 		try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)))) {
 			pw.println(congress.congress);
 			for (Map.Entry part : congress.partitions.entrySet()) {
-				pw.println(part.getKey() + " " + part.getValue());
+				pw.println(part.getKey() + " : " + part.getValue());
 			}
 			pw.flush();
 		}

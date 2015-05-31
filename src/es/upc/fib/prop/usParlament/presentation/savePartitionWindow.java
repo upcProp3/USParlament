@@ -71,14 +71,14 @@ public class savePartitionWindow extends javax.swing.JFrame {
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -86,13 +86,18 @@ public class savePartitionWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String name = jTextField1.getText();
-        if (pc.saveCurrentPartition(name).equals("{}")) {
-            JOptionPane.showMessageDialog(new JFrame(), "Partition saved");
-        } else {
-            JOptionPane.showMessageDialog(new JFrame(), "Error during saving partition.");
+        try {
+            if (pc.saveCurrentPartition(name).equals("{}")) {
+                JOptionPane.showMessageDialog(new JFrame(), "Partition saved");
+            } else {
+                JOptionPane.showMessageDialog(new JFrame(), "Error during saving partition.");
+            }
+            setVisible(false);
+            dispose();
+        } catch (PresentationController.InternalException e) {
+            JOptionPane.showMessageDialog(new JFrame(), e.getMessage());
         }
-        setVisible(false);
-        dispose();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
