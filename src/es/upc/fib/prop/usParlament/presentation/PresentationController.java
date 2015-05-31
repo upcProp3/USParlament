@@ -21,6 +21,7 @@ public class PresentationController {
 
     private DomainController dc;
     private JSONizer j;
+
     PresentationController()
     {
         dc = new DomainController();
@@ -155,7 +156,12 @@ public class PresentationController {
         return dc.loadCongressAsCurrent(name);
     }
 
-    //public String saveCurrentPartition(String cName, String pName) { return dc.saveCurrentPartition(); }
+    public String saveCurrentPartition(String pName) {
+        return dc.saveCurrentPartition(pName);
+    }
+    public void loadPartitionAsCurrent(String pName) {
+        dc.loadPartitionAsCurrent(pName);
+    }
 
     public void cleanCommunityManager() {
         dc.cleanCommunityManager();
@@ -196,6 +202,30 @@ public class PresentationController {
         JSONObject jInfo = (JSONObject)json.StringToJSON(dc.compare2partitions());
         return jInfo;
     }
+
+    public List<String> loadAllPartitionNamesInCurrentCongress() throws InternalException {
+        JSONObject allNames = (new JSONizer()).StringToJSON(dc.loadAllPartitionNamesInCurrentCongress());
+        if (allNames.getJSONByKey("Exception") != null) {
+            throw new InternalException(((JSONString)((JSONObject)allNames.getJSONByKey("Exception"))
+                    .getJSONByKey("Message")).getValue());
+        }
+        List<String> names = new ArrayList<>();
+        for (JSON jo : ((JSONArray)allNames.getJSONByKey("partitionNames")).getArray()) {
+            names.add(((JSONString)jo).getValue());
+        }
+        return names;
+    }
+
+    public String getCurrentCongressName() {
+        return dc.getCurrentCongressName();
+    }
+
+    class InternalException extends Exception {
+        public InternalException(String message) {
+            super(message);
+        }
+    }
+
 }
 
 

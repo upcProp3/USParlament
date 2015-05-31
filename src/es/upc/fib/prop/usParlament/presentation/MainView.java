@@ -1322,7 +1322,9 @@ public class MainView extends javax.swing.JFrame {
     }
 
     private void loadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadPartitionButtonActionPerformed
-        // TODO community management load partition button pressed
+        JFrame jf = new LoadPartitionWindow(pc, this);
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_loadPartitionButtonActionPerformed
 
     private void savePartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savePartitionButtonActionPerformed
@@ -1376,7 +1378,8 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_LoadCongressButtonActionPerformed
 
     private void newPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPartitionButtonActionPerformed
-        // TODO add your handling code here:
+        pc.cleanCommunityManager();
+        updateCommunitiesTable();
     }//GEN-LAST:event_newPartitionButtonActionPerformed
 
     private void newCommButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCommButtonActionPerformed

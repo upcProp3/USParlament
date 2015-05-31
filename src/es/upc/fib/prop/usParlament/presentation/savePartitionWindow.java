@@ -5,6 +5,8 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
+import javax.swing.*;
+
 /**
  *
  * @author miquel
@@ -83,7 +85,14 @@ public class savePartitionWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String name = jTextField1.getText();
+        if (pc.saveCurrentPartition(name).equals("{}")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Partition saved");
+        } else {
+            JOptionPane.showMessageDialog(new JFrame(), "Error during saving partition.");
+        }
+        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
