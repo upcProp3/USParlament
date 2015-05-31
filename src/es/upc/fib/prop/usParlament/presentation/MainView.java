@@ -1107,7 +1107,13 @@ public class MainView extends javax.swing.JFrame {
         JSONObject j = pc.getShortMPList();
             //MPsCurrentCongressTable
             DefaultTableModel model = (DefaultTableModel)MPsCurrentCongressTable.getModel();
-            DefaultTableModel dtm = new DefaultTableModel();
+            //DefaultTableModel dtm = new DefaultTableModel();
+            DefaultTableModel dtm = new DefaultTableModel(){
+                @Override
+                public boolean isCellEditable(int row,int column){
+                    return false;
+                }
+            };
 
             System.out.println(j);
 
@@ -1138,6 +1144,7 @@ public class MainView extends javax.swing.JFrame {
             }
             
             MPsCurrentCongressTable.setModel(dtm);
+            MPsCurrentCongressTable.getTableHeader().setReorderingAllowed(false);
     }
 
     public void updateMPsInCommunityTable() {
@@ -1168,6 +1175,7 @@ public class MainView extends javax.swing.JFrame {
             model.addRow(row);
         }
         MPsInCommunityTable.setModel(model);
+        MPsInCommunityTable.getTableHeader().setReorderingAllowed(false); //TODO
     }
 
     public void updateCurrentLoadedCongressLabel(String name) {
