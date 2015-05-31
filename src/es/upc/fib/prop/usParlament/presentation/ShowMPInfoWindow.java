@@ -175,6 +175,7 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
 
         dtm.addRow(row);//*/
         ShowMPInfoTable.setModel(dtm);
+        ShowMPInfoTable.getTableHeader().setReorderingAllowed(false);
 
     }
 
