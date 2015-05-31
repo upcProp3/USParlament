@@ -1007,8 +1007,8 @@ public class MainView extends javax.swing.JFrame {
             if(imp.equals("16")) imp = "(H)";
             s = s+imp;
             //System.out.println(imp);
-            System.out.print("hide:"+hide);
-            System.out.println(" imp:"+imp.equals("(N)"));
+            //System.out.print("hide:"+hide);
+            //System.out.println(" imp:"+imp.equals("(N)"));
             if(!(hide && imp.equals("(N)"))){
                 dtm.addColumn(s);
                 //System.out.println(hide);System.out.println(imp.equals("(N)"));
