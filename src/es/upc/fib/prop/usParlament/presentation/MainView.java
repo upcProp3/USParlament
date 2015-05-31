@@ -1267,28 +1267,32 @@ public class MainView extends javax.swing.JFrame {
 
     private void modifyAttrDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAttrDefButtonActionPerformed
         // TODO mp management modify attr def button action performed
-
-        //TODO: FES SERVIR AQUEST CODI EN LLOC DE CREAR UNA FINESTRA MODIFY ATTRIBUTE, PER LATTR SELECCTIONAT QUE TRII LA IMPORTANCIA
-        Object[] possibilities = {"op1", "op2", "op3"};
-        String s = (String)JOptionPane.showInputDialog(
-                this,"text1",
-
-                "text2",
-                JOptionPane.PLAIN_MESSAGE,
-                null,
-                possibilities,
-                "op1");//Opcio inicial
-
-
-        /*int fila = attrDefinitionsTable.getSelectedRow();
+        int fila = attrDefinitionsTable.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
             return;
         }
         String attrName = (String) attrDefinitionsTable.getValueAt(fila,0);
-        JFrame jf = new ModifyAttributeDefinitionWindow(pc, attrName);
-        jf.setVisible(true);
-        System.out.println("Modify attrDef");*/
+        String initialImp = (String) attrDefinitionsTable.getValueAt(fila,1);
+
+        //TODO: FES SERVIR AQUEST CODI EN LLOC DE CREAR UNA FINESTRA MODIFY ATTRIBUTE, PER LATTR SELECCTIONAT QUE TRII LA IMPORTANCIA
+        Object[] possibilities = {"None", "Low", "Medium", "High"};
+        String s = (String)JOptionPane.showInputDialog(
+                this, "Choose the new importance value",
+
+                "Modifying "+attrName+" definition",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                possibilities,
+                initialImp);
+        JSONObject jAttrD = new JSONObject();
+        JSONString value = new JSONString(attrName);
+        jAttrD.addPair("AttrDefName", value);
+        JSONString value2 = new JSONString(s);
+        jAttrD.addPair("Importance", value2);
+        pc.addOrModifyAttrDef(jAttrD);
+        updateMPManagementAttrDefinitionTable();
+        updateMPManagementMPTable();
     }//GEN-LAST:event_modifyAttrDefButtonActionPerformed
 
     private void showMPDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMPDataButtonActionPerformed
