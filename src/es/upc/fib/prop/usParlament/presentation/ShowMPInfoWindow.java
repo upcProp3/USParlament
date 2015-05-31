@@ -5,16 +5,10 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
-import java.util.Map;
-import java.util.Vector;
+import es.upc.fib.prop.usParlament.misc.*;
 
 import javax.swing.table.DefaultTableModel;
-
-import es.upc.fib.prop.usParlament.misc.JSON;
-import es.upc.fib.prop.usParlament.misc.JSONArray;
-import es.upc.fib.prop.usParlament.misc.JSONObject;
-import es.upc.fib.prop.usParlament.misc.JSONString;
-import es.upc.fib.prop.usParlament.misc.State;
+import java.util.Vector;
 
 /**
  *
@@ -136,13 +130,13 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
 
         for(JSON jo:a.getArray()){
             String s =((JSONString)((JSONObject)jo).getJSONByKey("AttrDefName")).getValue();
-            String imp =((JSONString)((JSONObject)jo).getJSONByKey("AttrDefImportance")).getValue();
+            /*String imp =((JSONString)((JSONObject)jo).getJSONByKey("AttrDefImportance")).getValue();
 
             if(imp.equals("0")) imp = "(N)";
             if(imp.equals("1")) imp = "(L)";
             if(imp.equals("4")) imp = "(M)";
             if(imp.equals("16")) imp = "(H)";
-            s = s+imp;
+            s = s+imp;*/
             dtm.addColumn(s);
             //System.out.println(imp);
         }

@@ -362,7 +362,7 @@ public class DomainController
 
         AttrDefinition ad = new AttrDefinition(jAttrD.getValue(), importancia);
         if (currentCongress.hasAttrDef(ad)) {
-            currentCongress.getAttrDef(jAttrD.getValue()).setImportance(Integer.valueOf(jImp.getValue()));
+            currentCongress.getAttrDef(jAttrD.getValue()).setImportance(importancia);
         } else {
             currentCongress.addAttrDef(ad);
         }
