@@ -27,6 +27,9 @@ public class PresentationController {
         j = new JSONizer();
     }
 
+    public void setCurrentToPartition1() { dc.setCurrentToPartition1(); }
+    public void setCurrentToPartition2() { dc.setCurrentToPartition2(); }
+
 
     public JSONObject getShortMPList()
     {
@@ -57,7 +60,7 @@ public class PresentationController {
         String estat = dmp.get("State");
         String distr = dmp.get("District");
         //System.out.println(estat+distr);
-        dc.addOrModifyAttribute(mp,attr);
+        dc.addOrModifyAttribute(mp, attr);
 
     }
 
@@ -152,6 +155,8 @@ public class PresentationController {
         return dc.loadCongressAsCurrent(name);
     }
 
+    //public String saveCurrentPartition(String cName, String pName) { return dc.saveCurrentPartition(); }
+
     public void cleanCommunityManager() {
         dc.cleanCommunityManager();
     }
@@ -185,6 +190,12 @@ public class PresentationController {
     public void addNewCommunity() { dc.addNewCommunity(); }
 
     public void deleteSelectedCommunity(Integer cNumb) { dc.deleteSelectedCommunity(cNumb); }
+
+    public JSONObject compareFunction() {
+        JSONizer json = new JSONizer();
+        JSONObject jInfo = (JSONObject)json.StringToJSON(dc.compare2partitions());
+        return jInfo;
+    }
 }
 
 

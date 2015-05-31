@@ -11,11 +11,16 @@ package es.upc.fib.prop.usParlament.presentation;
  */
 public class savePartitionWindow extends javax.swing.JFrame {
 
+    PresentationController pc;
+
     /**
      * Creates new form savePartitionWindow
+     * @param pc
      */
-    public savePartitionWindow() {
+    public savePartitionWindow(PresentationController pc) {
         initComponents();
+        this.pc = pc;
+        jTextField1.setText("");
     }
 
     /**
@@ -111,7 +116,7 @@ public class savePartitionWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new savePartitionWindow().setVisible(true);
+                //new savePartitionWindow(pc).setVisible(true);
             }
         });
     }
