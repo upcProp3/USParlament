@@ -202,7 +202,7 @@ public class DomainController
 
     public String getMPsPartition1 (String comnumber) {
         JSONObject mps = new JSONObject();
-        JSONString js = new JSONString("Parition1 Community numer " + comnumber);
+        JSONString js = new JSONString("Partition1 Community number " + comnumber);
         JSONArray ja = new JSONArray();
         for (MP mp : partition1.get(Integer.parseInt(comnumber))) {
             JSONObject jo = new JSONObject();
@@ -221,9 +221,9 @@ public class DomainController
         return Integer.toString(partition2.size());
     }
 
-    public String getMPsPartiton2(String comnumber) {
+    public String getMPsPartition2(String comnumber) {
         JSONObject mps = new JSONObject();
-        JSONString js = new JSONString("Parition 2 Community numer "+comnumber);
+        JSONString js = new JSONString("Partition2 Community number "+comnumber);
         JSONArray ja = new JSONArray();
         for (MP mp : partition2.get(Integer.parseInt(comnumber))) {
             JSONObject jo = new JSONObject();

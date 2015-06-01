@@ -197,6 +197,32 @@ public class PresentationController {
         return mps;
     }
 
+    public Set<JSONObject> getMPsPartition1(int selectedCommunity) {
+        JSONizer json = new JSONizer();
+        JSONArray jsonMPs = (JSONArray)json.StringToJSON(
+                dc.getMPsPartition1(String.valueOf(selectedCommunity)))
+                .getJSONByKey("Partition1 Community number " + selectedCommunity);
+        Set<JSONObject> mps = new HashSet<>();
+        for (JSON jo : jsonMPs.getArray()) {
+            mps.add((JSONObject)jo);
+        }
+        return mps;
+    }
+
+    public Set<JSONObject> getMPsPartition2(int selectedCommunity) {
+        JSONizer json = new JSONizer();
+        JSONArray jsonMPs = (JSONArray)json.StringToJSON(
+                dc.getMPsPartition2(String.valueOf(selectedCommunity)))
+                .getJSONByKey("Partition2 Community number " + selectedCommunity);
+        Set<JSONObject> mps = new HashSet<>();
+        for (JSON jo : jsonMPs.getArray()) {
+            mps.add((JSONObject)jo);
+        }
+        return mps;
+    }
+
+
+
     public void addNewCommunity() { dc.addNewCommunity(); }
 
     public void deleteSelectedCommunity(Integer cNumb) { dc.deleteSelectedCommunity(cNumb); }
@@ -231,6 +257,7 @@ public class PresentationController {
             super(message);
         }
     }
+
 
 }
 
