@@ -1,5 +1,7 @@
 package es.upc.fib.prop.usParlament.domain;
 
+import es.upc.fib.prop.shared13.Node;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -47,6 +49,7 @@ public class WeightAlgorithm {
         int w = 0; //0 = no relationship
         for (Attribute a : CA) {
             int imp = a.getDefinition().getImportance();
+            System.out.println("importancia:"+imp);
             if(imp == 1) w+=1;
             if(imp == 4) w+=4;
             if(imp == 16) w+=16;
@@ -63,11 +66,13 @@ public class WeightAlgorithm {
      * The weights of all the graph are computed, and their edges added.
      */
     public void computeAllWeights() {
+        for(Node n:c.getNodes()) c.removeAllNodeEdges(n);
         Collection<MP> mps = c.getMPs();
         for (MP m1 : mps) {
             for (MP m2 : mps) {
                 if (m1 != m2 && !c.hasEdge(m1, m2)) {
                     Set<Attribute> ca = getCommonAttributes(m1, m2);
+                    //System.out.println("ca:"+ca);
                     if (!ca.isEmpty()) {
                         computeWeight(m1, m2, ca);
                     }
