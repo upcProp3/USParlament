@@ -1,6 +1,9 @@
 package es.upc.fib.prop.usParlament.domain;
 
 import es.upc.fib.prop.usParlament.data.DataControllerImpl;
+import es.upc.fib.prop.usParlament.misc.JSONArray;
+import es.upc.fib.prop.usParlament.misc.JSONObject;
+import es.upc.fib.prop.usParlament.misc.JSONString;
 import es.upc.fib.prop.usParlament.misc.State;
 import org.junit.After;
 import org.junit.Before;
@@ -47,7 +50,40 @@ public class DomainControllerTest {
 
 	}
 
+    @Test
+    public void testGetMPInfo() throws Exception {
+        Congress expected = prepareCurrentCongress();
+        manager.saveCurrentCongress(CONGRESS_NAMES[0]);
+        manager.loadCongressAsCurrent(CONGRESS_NAMES[0]);
+        JSONObject jo = new JSONObject();
+        jo.addPair(new JSONString("State"),new JSONString("CA"));
+        jo.addPair(new JSONString("District"),new JSONString("2"));
+        jo.addPair(new JSONString("Name"),new JSONString("Alex"));
+        JSONArray ja = new JSONArray();
+        JSONObject j = new JSONObject();
+        j.addPair(new JSONString("AttrDefName"), new JSONString("religion"));
+        j.addPair(new JSONString("AttrValue"),new JSONString("catholicism"));
 
+        ja.addElement(j);
+        j = new JSONObject();
+        j.addPair(new JSONString("AttrDefName"), new JSONString("sex"));
+        j.addPair(new JSONString("AttrValue"),new JSONString("male"));
+
+        ja.addElement(j);
+        j = new JSONObject();
+        j.addPair(new JSONString("AttrDefName"), new JSONString("party"));
+        j.addPair(new JSONString("AttrValue"),new JSONString("democrat"));
+        ja.addElement(j);
+        jo.addPair(new JSONString("Attributes"),ja);
+        String alex = jo.stringify();
+        /*String alex = new String("{\"State\":\"CA\",\"District\":\"2\",\"Name\":\"Alex\",\"Attributes\":[" +
+                "{\"AttrDefName\":\"sex\",\"AttrValue\":\"male\"},{\"AttrDefName\":\"party\",\"AttrValue\":\"democrat\"}," +
+                "{\"AttrDefName\":\"religion\",\"AttrValue\":\"catholicism\"}]}");//*/
+        String current = new String(manager.getMPInfo(State.CA, 2));
+        System.out.println(current);
+        assertEquals(alex, current);
+    }
+//*/
 
 	@Test
 	public void testSaveCurrentCongress() throws Exception {
@@ -71,7 +107,7 @@ public class DomainControllerTest {
 
 	@Test
 	public void testLoadAllCongressesNames() throws Exception {
-		throw new UnsupportedOperationException("Not implemented yet");
+		//throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 
