@@ -159,7 +159,7 @@ public class DomainController
 
     public boolean existsAttrDef(String name)
     {
-        return currentCongress.hasAttrDef(new AttrDefinition(name,1));
+        return currentCongress.hasAttrDef(new AttrDefinition(name, 1));
     }
 
     /**
@@ -202,7 +202,7 @@ public class DomainController
 
     public String getMPsPartition1 (String comnumber) {
         JSONObject mps = new JSONObject();
-        JSONString js = new JSONString("Parition1 Community numer " + comnumber);
+        JSONString js = new JSONString("Partition1 Community number " + comnumber);
         JSONArray ja = new JSONArray();
         for (MP mp : partition1.get(Integer.parseInt(comnumber))) {
             JSONObject jo = new JSONObject();
@@ -221,9 +221,9 @@ public class DomainController
         return Integer.toString(partition2.size());
     }
 
-    public String getMPsPartiton2(String comnumber) {
+    public String getMPsPartition2(String comnumber) {
         JSONObject mps = new JSONObject();
-        JSONString js = new JSONString("Parition 2 Community numer "+comnumber);
+        JSONString js = new JSONString("Partition2 Community number "+comnumber);
         JSONArray ja = new JSONArray();
         for (MP mp : partition2.get(Integer.parseInt(comnumber))) {
             JSONObject jo = new JSONObject();
@@ -314,6 +314,10 @@ public class DomainController
 
     public void cleanCommunityManager() {
         mainPartition = new ArrayList<>();
+    }
+    public void cleanCompareManager() {
+        partition1 = new ArrayList<>();
+        partition2 = new ArrayList<>();
     }
 
     public void deleteAttribute(JSONObject jmp,JSONObject jattr)
@@ -537,9 +541,10 @@ public class DomainController
     /**
      * load saved partition from persistent memory as current partition.
      * @param partitionName  unique identificator in congressName scope.
+     * @param as  name of field where to save loaded partition (mainPartion, partition1, partition2)
      * @return JSON representation of partition or exception.
      */
-    public String loadPartitionAsCurrent(String partitionName) {
+    public String loadPartitionAs(String partitionName, String as) {
         if (currentCongressName == null) {
             return "{\"Exception\":{\"Name\":\"IllegalArgumentException\",\"Message\":\"Current congress is not saved\"}}";
         }
@@ -559,7 +564,19 @@ public class DomainController
             newPartition.add(community);
         }
 
-        mainPartition = newPartition;
+        switch (as) {
+            case "mainPartition" :
+                mainPartition = newPartition;
+                break;
+            case "partition1" :
+                partition1 = newPartition;
+                break;
+            case "partition2" :
+                partition2 = newPartition;
+                break;
+            default:
+                throw new IllegalArgumentException("unknown partition");
+        }
         return respond;
     }
 
@@ -594,7 +611,7 @@ public class DomainController
      * @param algorithm  unique identificator of congress.
      */
     public void computeCommunities(String algorithm, String argument) {
-        (new WeightAlgorithm(currentCongress)).computeAllWeights();
+        computeRelationships();
         Algorithm alg;
         switch (algorithm) {
             case "N Clique Percolation":
@@ -623,10 +640,24 @@ public class DomainController
         mainPartition = partition;
     }
 
-    public String getCommunityIDs() {
+    public String getCommunityIDs(String partition) {
+        List<Set<MP>> part;
+        switch (partition) {
+            case "mainPartition" :
+                part = mainPartition;
+                break;
+            case "partition1" :
+                part = partition1;
+                break;
+            case "partition2" :
+                part = partition2;
+                break;
+            default:
+                throw new IllegalArgumentException("unknown partition");
+        }
         JSONArray ids = new JSONArray();
-        for (Set comm : mainPartition) {
-            int id = mainPartition.indexOf(comm);
+        for (Set comm : part) {
+            int id = part.indexOf(comm);
             ids.addElement(new JSONString("" + id));
         }
         JSONObject jo = new JSONObject();

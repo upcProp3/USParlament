@@ -163,21 +163,23 @@ public class PresentationController {
         return dc.saveCurrentPartition(pName.trim());
     }
     
-    public void loadPartitionAsCurrent(String pName) {
-        dc.loadPartitionAsCurrent(pName);
+    public void loadPartitionAs(String pName, String as) {
+        dc.loadPartitionAs(pName, as);
     }
 
     public void cleanCommunityManager() {
         dc.cleanCommunityManager();
     }
-
+    public void cleanCompareManager() {
+        dc.cleanCompareManager();
+    }
     public void computeCommunities(String algorithm, String argument) {
         dc.computeCommunities(algorithm, argument);
     }
 
-    public List<Integer> getCommunityIDs() {
+    public List<Integer> getCommunityIDs(String partition) {
         JSONizer json = new JSONizer();
-        JSONArray jsonIds = (JSONArray)json.StringToJSON(dc.getCommunityIDs()).getJSONByKey("ids");
+        JSONArray jsonIds = (JSONArray)json.StringToJSON(dc.getCommunityIDs(partition)).getJSONByKey("ids");
         List<Integer> ids = new ArrayList<>();
         for (JSON jo : jsonIds.getArray()) {
             ids.add(Integer.valueOf(((JSONString)jo).getValue()));
@@ -196,6 +198,32 @@ public class PresentationController {
         }
         return mps;
     }
+
+    public Set<JSONObject> getMPsPartition1(int selectedCommunity) {
+        JSONizer json = new JSONizer();
+        JSONArray jsonMPs = (JSONArray)json.StringToJSON(
+                dc.getMPsPartition1(String.valueOf(selectedCommunity)))
+                .getJSONByKey("Partition1 Community number " + selectedCommunity);
+        Set<JSONObject> mps = new HashSet<>();
+        for (JSON jo : jsonMPs.getArray()) {
+            mps.add((JSONObject)jo);
+        }
+        return mps;
+    }
+
+    public Set<JSONObject> getMPsPartition2(int selectedCommunity) {
+        JSONizer json = new JSONizer();
+        JSONArray jsonMPs = (JSONArray)json.StringToJSON(
+                dc.getMPsPartition2(String.valueOf(selectedCommunity)))
+                .getJSONByKey("Partition2 Community number " + selectedCommunity);
+        Set<JSONObject> mps = new HashSet<>();
+        for (JSON jo : jsonMPs.getArray()) {
+            mps.add((JSONObject)jo);
+        }
+        return mps;
+    }
+
+
 
     public void addNewCommunity() { dc.addNewCommunity(); }
 
@@ -231,6 +259,7 @@ public class PresentationController {
             super(message);
         }
     }
+
 
 }
 
