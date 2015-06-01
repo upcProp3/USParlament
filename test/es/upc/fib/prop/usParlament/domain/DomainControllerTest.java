@@ -194,7 +194,7 @@ public class DomainControllerTest {
 
 		Congress expected = prepareCongressWithWeights();
 
-		assertEquals(expected, congress);
+		assertEquals(expected, controller.getCurrentCongress());
 	}
 
 	@Test

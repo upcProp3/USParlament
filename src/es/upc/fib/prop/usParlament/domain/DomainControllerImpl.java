@@ -705,12 +705,6 @@ public class DomainControllerImpl implements DomainController
 
 
     public void computeRelationships() {
-        currentCongress.removeAllRelationships();
-        WeightAlgorithm wa = new WeightAlgorithm(currentCongress);
-        wa.computeAllWeights();
-    }
-    /*
-    public void computeRelationships() {
         Congress newCongress = new Congress();
         for (MP m : currentCongress.getMPs()) {
             newCongress.addNode(m);
@@ -721,7 +715,7 @@ public class DomainControllerImpl implements DomainController
         WeightAlgorithm wa = new WeightAlgorithm(newCongress);
         wa.computeAllWeights();
         currentCongress = newCongress;
-    }*/
+    }
 
 
 }

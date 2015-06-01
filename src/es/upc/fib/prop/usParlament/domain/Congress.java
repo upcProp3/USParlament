@@ -23,12 +23,6 @@ public class Congress extends Graph {
         return rels;
     }
 
-    public void removeAllRelationships() {
-        for (Edge edge : getEdges()) {
-            removeEdge(edge.getNode(), edge.getNeighbor(edge.getNode()));
-        }
-    }
-
     class AttrDefComparatorString implements Comparator<AttrDefinition>
     {
         public int compare(AttrDefinition a1,AttrDefinition a2)
