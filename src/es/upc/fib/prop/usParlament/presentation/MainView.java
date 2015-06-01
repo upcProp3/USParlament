@@ -28,6 +28,8 @@ public class MainView extends javax.swing.JFrame {
         pc = precon;
         initComponents();
         setAlgorithmNames();
+        currentCongressNameTextField.setText("");
+        currentCongressNameTextField.setEnabled(false);
     }
 
     /**
@@ -1081,6 +1083,11 @@ public class MainView extends javax.swing.JFrame {
             attrDefinitionsTable.getTableHeader().setReorderingAllowed(false);
     }
 
+    public void updateCommunitiesLists() {
+        communityList2CommunitiesList.setListData(new Vector(pc.getCommunityIDs("partition2")));
+        communityList1CommunitiesList.setListData(new Vector(pc.getCommunityIDs("partition1")));
+    }
+
     public void updateCommunitiesTable()
     {
         JSONObject j = pc.getMainPartitionSize();
@@ -1437,7 +1444,7 @@ public class MainView extends javax.swing.JFrame {
     }
 
     private void loadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadPartitionButtonActionPerformed
-        JFrame jf = new LoadPartitionWindow(pc, this);
+        JFrame jf = new LoadPartitionWindow(pc, this, "mainPartition");
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_loadPartitionButtonActionPerformed
@@ -1470,20 +1477,24 @@ public class MainView extends javax.swing.JFrame {
 
     private void list1UseCurrentPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1UseCurrentPartitionButtonActionPerformed
         pc.setCurrentToPartition1();
-        communityList1CommunitiesList.setListData(new Vector(pc.getCommunityIDs()));
+        updateCommunitiesLists();
     }//GEN-LAST:event_list1UseCurrentPartitionButtonActionPerformed
 
     private void list1LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1LoadPartitionButtonActionPerformed
-        // TODO add your handling code here:
+        JFrame jf = new LoadPartitionWindow(pc, this, "partition1");
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_list1LoadPartitionButtonActionPerformed
 
     private void list2UseCurrentPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2UseCurrentPartitionButtonActionPerformed
         pc.setCurrentToPartition2();
-        communityList2CommunitiesList.setListData(new Vector(pc.getCommunityIDs()));
+        updateCommunitiesLists();
     }//GEN-LAST:event_list2UseCurrentPartitionButtonActionPerformed
 
     private void list2LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2LoadPartitionButtonActionPerformed
-        // TODO add your handling code here:
+        JFrame jf = new LoadPartitionWindow(pc, this, "partition2");
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_list2LoadPartitionButtonActionPerformed
 
     private void LoadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadCongressButtonActionPerformed
@@ -1537,6 +1548,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_hideAttrsButtonActionPerformed
 
     private CalculateCommunitiesSwingWorker sumSwingWorker;
+
     private class CalculateCommunitiesSwingWorker extends SwingWorker<Void,Void> {
         private String algorithm;
         private String argument;

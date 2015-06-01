@@ -163,8 +163,8 @@ public class PresentationController {
         return dc.saveCurrentPartition(pName.trim());
     }
     
-    public void loadPartitionAsCurrent(String pName) {
-        dc.loadPartitionAsCurrent(pName);
+    public void loadPartitionAs(String pName, String as) {
+        dc.loadPartitionAs(pName, as);
     }
 
     public void cleanCommunityManager() {
@@ -175,9 +175,9 @@ public class PresentationController {
         dc.computeCommunities(algorithm, argument);
     }
 
-    public List<Integer> getCommunityIDs() {
+    public List<Integer> getCommunityIDs(String partition) {
         JSONizer json = new JSONizer();
-        JSONArray jsonIds = (JSONArray)json.StringToJSON(dc.getCommunityIDs()).getJSONByKey("ids");
+        JSONArray jsonIds = (JSONArray)json.StringToJSON(dc.getCommunityIDs(partition)).getJSONByKey("ids");
         List<Integer> ids = new ArrayList<>();
         for (JSON jo : jsonIds.getArray()) {
             ids.add(Integer.valueOf(((JSONString)jo).getValue()));
