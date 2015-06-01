@@ -30,6 +30,9 @@ public class MainView extends javax.swing.JFrame {
         setAlgorithmNames();
         currentCongressNameTextField.setText("");
         currentCongressNameTextField.setEnabled(false);
+        argumentTextField.setText("");
+        argumentLabel.setText("Nº of comms.:");
+        argumentTextField.setEnabled(false);
     }
 
     /**
@@ -605,6 +608,7 @@ public class MainView extends javax.swing.JFrame {
         mainWindow.addTab("Community Management", null, CommunityManagement, "");
 
         CommunityPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        CommunityPanel1.setMaximumSize(new java.awt.Dimension(167, 275));
 
         communityList1CommunitiesList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -652,8 +656,8 @@ public class MainView extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CommunityPanel1Layout.createSequentialGroup()
                         .addGroup(CommunityPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(scrollPaneMPList1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(scrollPaneCommunityList1))
+                            .addComponent(scrollPaneMPList1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scrollPaneCommunityList1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
         CommunityPanel1Layout.setVerticalGroup(
@@ -731,8 +735,8 @@ public class MainView extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CommunityPanel2Layout.createSequentialGroup()
                         .addGroup(CommunityPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(scrollPaneMPList2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(scrollPaneCommuntiyList2))
+                            .addComponent(scrollPaneMPList2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scrollPaneCommuntiyList2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
         CommunityPanel2Layout.setVerticalGroup(
@@ -1113,7 +1117,7 @@ public class MainView extends javax.swing.JFrame {
         };
         JSONString jNumb = (JSONString) j.getJSONByKey("Number");
         dtm.addColumn("Community number");
-        System.out.println(jNumb.getValue());
+        //System.out.println(jNumb.getValue());
         for (int i = 0; i < Integer.valueOf(jNumb.getValue()); i++) {
             JSONString ji = new JSONString(String.valueOf(i));
             Vector<String> value = new Vector<String>();
@@ -1143,7 +1147,7 @@ public class MainView extends javax.swing.JFrame {
                 }
             };
 
-            System.out.println(j);
+            //System.out.println(j);
 
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
@@ -1185,7 +1189,7 @@ public class MainView extends javax.swing.JFrame {
             }
         };
 
-        System.out.println(j);
+        //System.out.println(j);
 
         JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
@@ -1310,7 +1314,7 @@ public class MainView extends javax.swing.JFrame {
         // In this function goes the code that needs to be executed when we change the window
         //the winows are numbered 0..n-1 in their order on the top
         //There are implementations of an initialization on the code below
-        System.out.println("CANVI DE PESTANYA " + mainWindow.getSelectedIndex());
+        //System.out.println("CANVI DE PESTANYA " + mainWindow.getSelectedIndex());
         
         
         if(mainWindow.getSelectedIndex()==1){//If we are on the MP management Window
@@ -1414,6 +1418,7 @@ public class MainView extends javax.swing.JFrame {
                 null,
                 possibilities,
                 initialImp);
+        if(s==null) return;
         JSONObject jAttrD = new JSONObject();
         JSONString value = new JSONString(attrName);
         jAttrD.addPair("AttrDefName", value);
@@ -1436,7 +1441,7 @@ public class MainView extends javax.swing.JFrame {
         JFrame jf = new ShowMPInfoWindow(pc, st, dt);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        System.out.println("Show MP Info");
+        //System.out.println("Show MP Info");
     }//GEN-LAST:event_showMPDataButtonActionPerformed
 
     private void showSelectedMPInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1451,7 +1456,7 @@ public class MainView extends javax.swing.JFrame {
         JFrame jf = new ShowMPInfoWindow(pc, st, dt);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        System.out.println("Show MP Info");
+        //System.out.println("Show MP Info");
     }
 
     private void loadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadPartitionButtonActionPerformed
@@ -1470,6 +1475,15 @@ public class MainView extends javax.swing.JFrame {
     CalculateCommunitiesSwingWorker sw;
     private boolean calculating = false;
     private void calculateCommunitiesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateCommunitiesButtonActionPerformed
+
+        String argument = argumentTextField.getText();
+        String algorithm = (String)chooseAlgorithmComboBox.getSelectedItem();
+        try{
+            if(algorithm.equals("Newmann Girvan"))Integer.parseInt(argument);
+        }catch(IllegalArgumentException il) {
+            JOptionPane.showMessageDialog(new JFrame(), "Unvalid value for the nº of communities");
+            return;
+        }
         if (calculating) {
             calculateCommunitiesButton.setText("Calculate");
             algorithmProgressBar.setIndeterminate(false);
@@ -1478,8 +1492,6 @@ public class MainView extends javax.swing.JFrame {
         } else {
             calculateCommunitiesButton.setText("Cancel");
             algorithmProgressBar.setIndeterminate(true);
-            String algorithm = (String)chooseAlgorithmComboBox.getSelectedItem();
-            String argument = argumentTextField.getText();
             sw = new CalculateCommunitiesSwingWorker(algorithm, argument);
             sw.execute();
             calculating = true;
@@ -1560,6 +1572,12 @@ public class MainView extends javax.swing.JFrame {
 
     private void chooseAlgorithmComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseAlgorithmComboBoxActionPerformed
         // TODO add your handling code here:
+        if(chooseAlgorithmComboBox.getSelectedItem() != null && ((String)chooseAlgorithmComboBox.getSelectedItem()).equals("Newmann Girvan")) {
+            argumentTextField.setEnabled(true);
+        }else{
+            argumentTextField.setEnabled(false);
+            argumentTextField.setText("");
+        }
     }//GEN-LAST:event_chooseAlgorithmComboBoxActionPerformed
 
     private void hideAttrsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hideAttrsButtonActionPerformed
