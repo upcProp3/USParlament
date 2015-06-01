@@ -47,7 +47,7 @@ public class DomainControllerImpl implements DomainController
     protected Congress getCurrentCongress() {
         return currentCongress;
     }
-    protected List<Set<MP>> getCurrentPartition() {
+    protected List<Set<MP>> getMainPartition() {
         return mainPartition;
     }
 
