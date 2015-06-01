@@ -1086,6 +1086,20 @@ public class MainView extends javax.swing.JFrame {
     public void updateCommunitiesLists() {
         communityList2CommunitiesList.setListData(new Vector(pc.getCommunityIDs("partition2")));
         communityList1CommunitiesList.setListData(new Vector(pc.getCommunityIDs("partition1")));
+        communityList1CommunitiesList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent listSelectionEvent) {
+                updateMPList1Table();
+            }
+        });
+        communityList2CommunitiesList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent listSelectionEvent) {
+                updateMPList2Table();
+            }
+        });
+        updateMPList1Table();
+        updateMPList2Table();
     }
 
     public void updateCommunitiesTable()
@@ -1250,7 +1264,7 @@ public class MainView extends javax.swing.JFrame {
 
         Integer selectedRow = (Integer) communityList1CommunitiesList.getSelectedValue();
 
-        if(selectedRow == -1){
+        if(selectedRow == null){
             MPList1Table.setModel(model);
             return;
         }
@@ -1277,7 +1291,7 @@ public class MainView extends javax.swing.JFrame {
 
         Integer selectedRow = (Integer) communityList2CommunitiesList.getSelectedValue();
 
-        if(selectedRow == -1){
+        if(selectedRow == null){
             MPList2Table.setModel(model);
             return;
         }
@@ -1314,6 +1328,7 @@ public class MainView extends javax.swing.JFrame {
         
         if(mainWindow.getSelectedIndex()==3){//If we are on the compare window
             compareWindowMPShortTable();
+            updateCommunitiesLists();
         }
     }//GEN-LAST:event_mainWindowStateChanged
 
@@ -1452,13 +1467,24 @@ public class MainView extends javax.swing.JFrame {
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_savePartitionButtonActionPerformed
 
+    CalculateCommunitiesSwingWorker sw;
+    private boolean calculating = false;
     private void calculateCommunitiesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateCommunitiesButtonActionPerformed
-        calculateCommunitiesButton.setEnabled(false);
-        algorithmProgressBar.setIndeterminate(true);
-        String algorithm = (String)chooseAlgorithmComboBox.getSelectedItem();
-        String argument = argumentTextField.getText();
-        CalculateCommunitiesSwingWorker sw = new CalculateCommunitiesSwingWorker(algorithm, argument);
-        sw.execute();
+        if (calculating) {
+            calculateCommunitiesButton.setText("Calculate");
+            algorithmProgressBar.setIndeterminate(false);
+            sw.cancel(false);
+            calculating = false;
+        } else {
+            calculateCommunitiesButton.setText("Cancel");
+            algorithmProgressBar.setIndeterminate(true);
+            String algorithm = (String)chooseAlgorithmComboBox.getSelectedItem();
+            String argument = argumentTextField.getText();
+            sw = new CalculateCommunitiesSwingWorker(algorithm, argument);
+            sw.execute();
+            calculating = true;
+        }
+
     }//GEN-LAST:event_calculateCommunitiesButtonActionPerformed
 
     private void compareButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compareButtonActionPerformed
@@ -1542,8 +1568,6 @@ public class MainView extends javax.swing.JFrame {
         this.updateMPManagementMPTable();
     }//GEN-LAST:event_hideAttrsButtonActionPerformed
 
-    private CalculateCommunitiesSwingWorker sumSwingWorker;
-
     private class CalculateCommunitiesSwingWorker extends SwingWorker<Void,Void> {
         private String algorithm;
         private String argument;
@@ -1563,7 +1587,11 @@ public class MainView extends javax.swing.JFrame {
         // We can manipulate with GUI components
         @Override
         protected void done() {
-            algorithmProgressBar.setIndeterminate(false);
+            if (isCancelled()) {
+                return;
+            } else {
+                algorithmProgressBar.setIndeterminate(false);
+            }
             try {
                 get();
                 calculateCommunitiesButton.setEnabled(true);

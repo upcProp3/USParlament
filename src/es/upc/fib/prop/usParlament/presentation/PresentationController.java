@@ -170,7 +170,9 @@ public class PresentationController {
     public void cleanCommunityManager() {
         dc.cleanCommunityManager();
     }
-
+    public void cleanCompareManager() {
+        dc.cleanCompareManager();
+    }
     public void computeCommunities(String algorithm, String argument) {
         dc.computeCommunities(algorithm, argument);
     }

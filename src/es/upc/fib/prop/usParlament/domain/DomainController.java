@@ -315,6 +315,10 @@ public class DomainController
     public void cleanCommunityManager() {
         mainPartition = new ArrayList<>();
     }
+    public void cleanCompareManager() {
+        partition1 = new ArrayList<>();
+        partition2 = new ArrayList<>();
+    }
 
     public void deleteAttribute(JSONObject jmp,JSONObject jattr)
     {
