@@ -21,11 +21,11 @@ public class DomainControllerTest {
 
 	private final String PATH = "domainControllerTest";
 	private final String[] CONGRESS_NAMES = {"congress0", "congress1", "congress2"};
-	DomainController manager;
+	DomainControllerImpl manager;
 
 	@Before
 	public void setUp() throws Exception {
-		manager = new DomainController();
+		manager = new DomainControllerImpl();
 		manager.setDataController(new DataControllerImpl(PATH));
 	}
 

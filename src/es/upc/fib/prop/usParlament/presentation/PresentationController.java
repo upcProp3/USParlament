@@ -6,6 +6,7 @@
 package es.upc.fib.prop.usParlament.presentation;
 
 import es.upc.fib.prop.usParlament.domain.DomainController;
+import es.upc.fib.prop.usParlament.domain.DomainControllerImpl;
 import es.upc.fib.prop.usParlament.misc.*;
 
 import java.util.*;
@@ -24,7 +25,7 @@ public class PresentationController {
 
     PresentationController()
     {
-        dc = new DomainController();
+        dc = new DomainControllerImpl();
         j = new JSONizer();
     }
 
