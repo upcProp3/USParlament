@@ -1415,6 +1415,7 @@ public class MainView extends javax.swing.JFrame {
                 null,
                 possibilities,
                 initialImp);
+        if(s==null) return;
         JSONObject jAttrD = new JSONObject();
         JSONString value = new JSONString(attrName);
         jAttrD.addPair("AttrDefName", value);
