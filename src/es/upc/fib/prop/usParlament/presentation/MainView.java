@@ -1589,12 +1589,13 @@ public class MainView extends javax.swing.JFrame {
         protected void done() {
             if (isCancelled()) {
                 return;
-            } else {
-                algorithmProgressBar.setIndeterminate(false);
             }
             try {
                 get();
-                calculateCommunitiesButton.setEnabled(true);
+                calculateCommunitiesButton.setText("Calculate");
+                algorithmProgressBar.setIndeterminate(false);
+                sw.cancel(false);
+                calculating = false;
                 MainView.this.updateCommunitiesTable();
             } catch (InterruptedException e) {
                 e.printStackTrace();
