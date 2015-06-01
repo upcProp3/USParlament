@@ -15,8 +15,8 @@ import java.util.*;
 public class Congress extends Graph {
 
 
-    public List<Relationship> getRelationships() {
-        List<Relationship> rels = new ArrayList<>();
+    public Set<Relationship> getRelationships() {
+        Set<Relationship> rels = new HashSet<>();
         for (Edge edge : getEdges()) {
             rels.add((Relationship) edge);
         }

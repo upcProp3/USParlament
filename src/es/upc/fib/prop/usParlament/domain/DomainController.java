@@ -1,18 +1,11 @@
 package es.upc.fib.prop.usParlament.domain;
 
-import es.upc.fib.prop.usParlament.data.DataController;
 import es.upc.fib.prop.usParlament.misc.State;
 
 /**
  * Created by ondrej on 1.6.15.
  */
 public interface DomainController {
-
-	/**
-	 * set dataController to DomainController
-	 * @param dataController Data controller to be saved
-	 */
-	void setDataController(DataController dataController);
 
 	/**
 	 * remove all data related to Community manager tab
@@ -90,7 +83,7 @@ public interface DomainController {
 	 * @post jMP belongs to the current congress.
 	 * @param mp JSON Object defining the new MP.
 	 */
-	void addMP(String mp);
+	String addMP(String mp);
 
 	/**
 	 * remove MP from current congress
