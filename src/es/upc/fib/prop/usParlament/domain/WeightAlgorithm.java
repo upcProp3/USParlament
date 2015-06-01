@@ -48,8 +48,8 @@ public class WeightAlgorithm {
         for (Attribute a : CA) {
             int imp = a.getDefinition().getImportance();
             if(imp == 1) w+=1;
-            if(imp == 2) w+=4;
-            if(imp == 3) w+=16;
+            if(imp == 4) w+=4;
+            if(imp == 16) w+=16;
         }
         if(w>0) {
             if (!c.hasEdge(m1,m2)) c.addEdge(new Relationship(m1,m2,w));
