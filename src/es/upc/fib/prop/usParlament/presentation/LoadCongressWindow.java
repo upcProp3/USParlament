@@ -98,11 +98,14 @@ public class LoadCongressWindow extends javax.swing.JFrame {
     private void loadSelectedCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadSelectedCongressButtonActionPerformed
         String name = (String)loadCongressList.getSelectedValue();
         pc.loadCongressAsCurrent(name);
+        pc.cleanCommunityManager();
+        pc.cleanCompareManager();
         mainView.updateMPManagementMPTable();
         mainView.updateMPManagementAttrDefinitionTable();
         mainView.updateCurrentLoadedCongressLabel(name);
         mainView.updateMPsCurrentTable();
-        pc.cleanCommunityManager();
+        mainView.updateCommunitiesTable();
+        mainView.updateCommunitiesLists();
         setVisible(false);
         dispose();
     }//GEN-LAST:event_loadSelectedCongressButtonActionPerformed
