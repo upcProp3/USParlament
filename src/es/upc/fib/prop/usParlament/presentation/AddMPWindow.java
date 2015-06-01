@@ -5,19 +5,13 @@
  */
 package es.upc.fib.prop.usParlament.presentation;
 
-import es.upc.fib.prop.usParlament.misc.JSON;
-import es.upc.fib.prop.usParlament.misc.JSONArray;
-import es.upc.fib.prop.usParlament.misc.JSONObject;
-import es.upc.fib.prop.usParlament.misc.JSONString;
-import es.upc.fib.prop.usParlament.misc.State;
-import java.awt.event.WindowEvent;
-import java.util.Map;
-import java.util.Vector;
-//import javafx.scene.input.TouchPoint;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import es.upc.fib.prop.usParlament.misc.*;
+
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+import java.util.Map;
+
+//import javafx.scene.input.TouchPoint;
 
 /**
  *
@@ -225,6 +219,7 @@ public class AddMPWindow extends javax.swing.JFrame {
         mp.addPair(new JSONString("District"), new JSONString(dist));
         mp.addPair(new JSONString("State"),new JSONString(state));
         pc.addMP(mp,jattributes);
+        pc.computeRelationships();
         pops.updateMPManagementMPTable();
         JOptionPane.showMessageDialog(new JFrame(), "MP Added");
         setVisible(false);

@@ -1182,11 +1182,42 @@ public class MainView extends javax.swing.JFrame {
             model.addRow(row);
         }
         MPsInCommunityTable.setModel(model);
-        MPsInCommunityTable.getTableHeader().setReorderingAllowed(false); //TODO
+        MPsInCommunityTable.getTableHeader().setReorderingAllowed(false);
     }
 
     public void updateCurrentLoadedCongressLabel(String name) {
         currentCongressNameTextField.setText(name);
+    }
+
+    public void updateMPList1Table() { //TODO: under development
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        model.addColumn("State");
+        model.addColumn("District");
+
+        int comrow=communitiesTable.getSelectedRow();
+
+        if(comrow == -1){
+            MPsInCommunityTable.setModel(model);
+            return;
+        }
+
+        int community = Integer.parseInt((String)communitiesTable.getValueAt(comrow,0));
+
+
+
+        for (JSONObject mp : pc.getMPsCurrentPartition(community)) {
+            Vector row = new Vector();
+            row.add(((JSONString)mp.getJSONByKey("State")).getValue());
+            row.add(Integer.valueOf(((JSONString)mp.getJSONByKey("District")).getValue()));
+            model.addRow(row);
+        }
+        MPsInCommunityTable.setModel(model);
+        MPsInCommunityTable.getTableHeader().setReorderingAllowed(false);
     }
     
     private void mainWindowStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_mainWindowStateChanged
@@ -1237,6 +1268,7 @@ public class MainView extends javax.swing.JFrame {
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.updateMPManagementMPTable();
+        pc.computeRelationships();
     }//GEN-LAST:event_modifyMPButtonActionPerformed
 
     private void deleteMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPButtonActionPerformed
@@ -1252,10 +1284,12 @@ public class MainView extends javax.swing.JFrame {
         String district = (String) currentMPsTable.getValueAt(fila, 1);
         pc.deleteMP(State.valueOf(state), Integer.parseInt(district));
         this.updateMPManagementMPTable();
+        pc.computeRelationships();
     }//GEN-LAST:event_deleteMPButtonActionPerformed
 
     private void loadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCongressButtonActionPerformed
         JFrame jf = new LoadCongressWindow(pc, this);
+        pc.computeRelationships();
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_loadCongressButtonActionPerformed
@@ -1304,6 +1338,7 @@ public class MainView extends javax.swing.JFrame {
         pc.addOrModifyAttrDef(jAttrD);
         updateMPManagementAttrDefinitionTable();
         updateMPManagementMPTable();
+        pc.computeRelationships();
     }//GEN-LAST:event_modifyAttrDefButtonActionPerformed
 
     private void showMPDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMPDataButtonActionPerformed
@@ -1370,7 +1405,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void list1UseCurrentPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1UseCurrentPartitionButtonActionPerformed
         pc.setCurrentToPartition1();
-        //TODO: update list1
+        communityList1CommunitiesList.setListData(new Vector(pc.getCommunityIDs()));
     }//GEN-LAST:event_list1UseCurrentPartitionButtonActionPerformed
 
     private void list1LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1LoadPartitionButtonActionPerformed
@@ -1379,7 +1414,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void list2UseCurrentPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2UseCurrentPartitionButtonActionPerformed
         pc.setCurrentToPartition2();
-        //TODO: update list2
+        communityList2CommunitiesList.setListData(new Vector(pc.getCommunityIDs()));
     }//GEN-LAST:event_list2UseCurrentPartitionButtonActionPerformed
 
     private void list2LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2LoadPartitionButtonActionPerformed
@@ -1388,6 +1423,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void LoadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadCongressButtonActionPerformed
         JFrame jf = new LoadCongressWindow(pc, this);
+        pc.computeRelationships();
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_LoadCongressButtonActionPerformed
