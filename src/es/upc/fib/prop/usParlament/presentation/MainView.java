@@ -310,6 +310,11 @@ public class MainView extends javax.swing.JFrame {
         currentCongressLabel.setText("Current Congress' MPs");
 
         hideAttrsButton.setText("Hide irrelevant attrdefs");
+        hideAttrsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hideAttrsButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout congressManagementViewLayout = new javax.swing.GroupLayout(congressManagementView);
         congressManagementView.setLayout(congressManagementViewLayout);
@@ -1002,6 +1007,8 @@ public class MainView extends javax.swing.JFrame {
             if(imp.equals("16")) imp = "(H)";
             s = s+imp;
             //System.out.println(imp);
+            //System.out.print("hide:"+hide);
+            //System.out.println(" imp:"+imp.equals("(N)"));
             if(!(hide && imp.equals("(N)"))){
                 dtm.addColumn(s);
                 //System.out.println(hide);System.out.println(imp.equals("(N)"));
@@ -1499,6 +1506,12 @@ public class MainView extends javax.swing.JFrame {
     private void chooseAlgorithmComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseAlgorithmComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chooseAlgorithmComboBoxActionPerformed
+
+    private void hideAttrsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hideAttrsButtonActionPerformed
+        // TODO add your handling code here:
+        this.updateMPManagementAttrDefinitionTable();
+        this.updateMPManagementMPTable();
+    }//GEN-LAST:event_hideAttrsButtonActionPerformed
 
     private CalculateCommunitiesSwingWorker sumSwingWorker;
     private class CalculateCommunitiesSwingWorker extends SwingWorker<Void,Void> {
