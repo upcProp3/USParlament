@@ -1336,7 +1336,7 @@ public class MainView extends javax.swing.JFrame {
     }
 
     private void loadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadPartitionButtonActionPerformed
-        JFrame jf = new LoadPartitionWindow(pc, this);
+        JFrame jf = new LoadPartitionWindow(pc, this, "mainPartition");
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_loadPartitionButtonActionPerformed
@@ -1373,7 +1373,9 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_list1UseCurrentPartitionButtonActionPerformed
 
     private void list1LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1LoadPartitionButtonActionPerformed
-        // TODO add your handling code here:
+        JFrame jf = new LoadPartitionWindow(pc, this, "partition1");
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_list1LoadPartitionButtonActionPerformed
 
     private void list2UseCurrentPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2UseCurrentPartitionButtonActionPerformed
@@ -1382,7 +1384,9 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_list2UseCurrentPartitionButtonActionPerformed
 
     private void list2LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2LoadPartitionButtonActionPerformed
-        // TODO add your handling code here:
+        JFrame jf = new LoadPartitionWindow(pc, this, "partition2");
+        jf.setVisible(true);
+        jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_list2LoadPartitionButtonActionPerformed
 
     private void LoadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadCongressButtonActionPerformed

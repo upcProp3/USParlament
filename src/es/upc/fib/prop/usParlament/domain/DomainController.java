@@ -159,7 +159,7 @@ public class DomainController
 
     public boolean existsAttrDef(String name)
     {
-        return currentCongress.hasAttrDef(new AttrDefinition(name,1));
+        return currentCongress.hasAttrDef(new AttrDefinition(name, 1));
     }
 
     /**
@@ -537,9 +537,10 @@ public class DomainController
     /**
      * load saved partition from persistent memory as current partition.
      * @param partitionName  unique identificator in congressName scope.
+     * @param as  name of field where to save loaded partition (mainPartion, partition1, partition2)
      * @return JSON representation of partition or exception.
      */
-    public String loadPartitionAsCurrent(String partitionName) {
+    public String loadPartitionAs(String partitionName, String as) {
         if (currentCongressName == null) {
             return "{\"Exception\":{\"Name\":\"IllegalArgumentException\",\"Message\":\"Current congress is not saved\"}}";
         }
@@ -559,7 +560,17 @@ public class DomainController
             newPartition.add(community);
         }
 
-        mainPartition = newPartition;
+        switch (as) {
+            case "mainPartition" :
+                mainPartition = newPartition;
+                break;
+            case "partition1" :
+                partition1 = newPartition;
+                break;
+            case "partition2" :
+                partition2 = newPartition;
+                break;
+        }
         return respond;
     }
 

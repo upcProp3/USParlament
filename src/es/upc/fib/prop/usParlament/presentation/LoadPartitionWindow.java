@@ -16,13 +16,16 @@ public class LoadPartitionWindow extends javax.swing.JFrame {
 
     private PresentationController pc;
     private MainView mainView;
+    private String output;
+
     /**
      * Creates new form LoadPartitionWindow
      */
-    public LoadPartitionWindow(PresentationController pc, MainView mainView) {
+    public LoadPartitionWindow(PresentationController pc, MainView mainView, String output) {
         initComponents();
         this.pc = pc;
         this.mainView = mainView;
+        this.output = output;
         try {
             savedPartitionsLabel.setListData(new Vector(pc.loadAllPartitionNamesInCurrentCongress()));
         } catch (PresentationController.InternalException e) {
@@ -108,7 +111,7 @@ public class LoadPartitionWindow extends javax.swing.JFrame {
 
     private void loadSelectedPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadSelectedCongressButtonActionPerformed
         String name = (String)savedPartitionsLabel.getSelectedValue();
-        pc.loadPartitionAsCurrent(name);
+        pc.loadPartitionAs(name, output);
         mainView.updateCommunitiesTable();
         setVisible(false);
         dispose();
@@ -144,7 +147,7 @@ public class LoadPartitionWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoadPartitionWindow(null, null).setVisible(true);
+                new LoadPartitionWindow(null, null, null).setVisible(true);
             }
         });
     }

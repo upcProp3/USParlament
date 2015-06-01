@@ -163,8 +163,8 @@ public class PresentationController {
         return dc.saveCurrentPartition(pName.trim());
     }
     
-    public void loadPartitionAsCurrent(String pName) {
-        dc.loadPartitionAsCurrent(pName);
+    public void loadPartitionAs(String pName, String as) {
+        dc.loadPartitionAs(pName, as);
     }
 
     public void cleanCommunityManager() {
