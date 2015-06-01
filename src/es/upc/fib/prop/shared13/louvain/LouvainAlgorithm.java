@@ -70,7 +70,11 @@ public class LouvainAlgorithm implements Algorithm
         }
 
         for(Node n:g.getNodes()){
+            if(!ndegree.containsKey(n)) ndegree.put(n,0.);
+
             Integer com = part.get(n);
+            //System.out.println("ND:"+ndegree.get(n));
+            //System.out.println("NDEC:"+dec.get(com));
             dec.put(com,dec.get(com)+ndegree.get(n));
         }
 
@@ -108,7 +112,7 @@ public class LouvainAlgorithm implements Algorithm
                     currentState.removeFromCommunity(n);
                     for (Node neigh : neigh_nodes) {
                         Integer neightCom = currentState.getCommunity(neigh);
-                        double inc = currentState.getIncChange(n,neightCom);
+                        double inc = currentState.getIncChange(n,neightCom);//This value is representative of the increase and cheaper to calculate
                         if(inc>bestInc){//New partition
                             gain = true;
                             bestCom = neightCom;
@@ -118,13 +122,13 @@ public class LouvainAlgorithm implements Algorithm
                     currentState.changeCommunity(n,bestCom);
                 }
 
-                /*
+                /* old implementation
                 double bMod = currentState.modularity();
                 for (Node n : current.getNodes()) {
                     Integer com = currentState.getCommunity(n);
                     for (Node neigh : currentState.getNeighborsDiffCommuntity(n)) {
                         currentState.changeCommunity(n, currentState.getCommunity(neigh));
-                        double mod = currentState.modularity();
+                        double mod = currentState.modularity();   //calculating the modularity each time is not efficient
                         if (mod > bMod) {//New best partition
                             localgain = true;
                             gain = true;
@@ -353,7 +357,7 @@ public class LouvainAlgorithm implements Algorithm
             return retorn;
         }
 
-        public Double modularity()
+        public Double modularity()//Optimized using the data kept in the Estat instance
         {
             double mod = 0.;
             LinkedHashSet<Integer> s = new LinkedHashSet<>();
