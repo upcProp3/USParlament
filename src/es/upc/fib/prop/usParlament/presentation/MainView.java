@@ -1258,7 +1258,7 @@ public class MainView extends javax.swing.JFrame {
         MPList1Table.getTableHeader().setReorderingAllowed(false);
     }
 
-    public void updateMPList2Table(int part) {
+    public void updateMPList2Table() {
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
