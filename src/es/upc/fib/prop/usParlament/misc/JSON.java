@@ -3,7 +3,7 @@ package es.upc.fib.prop.usParlament.misc;
 /**
  * Created by miquel on 16/05/15.
  */
-public abstract class JSON implements Comparable<JSON>
+public abstract class JSON
 {
     public abstract String stringify();
 }

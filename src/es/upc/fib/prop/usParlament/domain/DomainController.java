@@ -83,7 +83,7 @@ public interface DomainController {
 	 * @post jMP belongs to the current congress.
 	 * @param mp JSON Object defining the new MP.
 	 */
-	void addMP(String mp);
+	String addMP(String mp);
 
 	/**
 	 * remove MP from current congress

@@ -50,10 +50,31 @@ public class DomainControllerImpl implements DomainController
     protected List<Set<MP>> getMainPartition() {
         return mainPartition;
     }
+    protected List<Set<MP>> getPartition1() {
+        return partition1;
+    }
+    protected List<Set<MP>> getPartition2() {
+        return partition2;
+    }
     protected void setDataController(DataController dataController) {
         this.dataController = dataController;
     }
+    protected void setCurrentCongress(Congress congress) {
+        this.currentCongress = congress;
+    }
 
+    private String exceptionMaker(Exception e) {
+        String msg = e.getMessage();
+        return "{\"Exception\":{\"Name\":\"" +e.getClass().getSimpleName()+ "\",\"Message\":\"" +msg+ "\"}}";
+    }
+    private boolean isException(String exception) {
+        JSONizer json = new JSONizer();
+        try {
+            return (json.StringToJSON(exception).getJSONByKey("Exception") != null);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     public void setMainToPartition1 () { partition1 = mainPartition; }
 
@@ -205,9 +226,12 @@ public class DomainControllerImpl implements DomainController
     }
 
 
-    public void addMP(String mp) {
+    public String addMP(String mp) {
         JSONizer json = new JSONizer();
         JSONObject jMP = json.StringToJSON(mp);
+        if (!(jMP.hasKey("State") && jMP.hasKey("District") && jMP.hasKey("Name"))) {
+            return exceptionMaker(new IllegalArgumentException("mp has to contain State, District and Name"));
+        }
         JSONString key = new JSONString("State");
         JSONString jState = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
         key.setValue("District");
@@ -216,6 +240,7 @@ public class DomainControllerImpl implements DomainController
         JSONString jName = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
         MP m = new MP(jName.getValue(), State.valueOf(jState.getValue()), Integer.valueOf(jDistr.getValue()));
         currentCongress.addNode(m);
+        return "{}";
     }
 
 
@@ -348,6 +373,9 @@ public class DomainControllerImpl implements DomainController
 
 
     public String saveCurrentCongress(String name) {
+        if (name == null) {
+            return exceptionMaker(new IllegalArgumentException("name cannot be null"));
+        }
         JSONObject congress = new JSONObject();
         JSONArray mps = new JSONArray();
         JSONArray relations = new JSONArray();
@@ -401,8 +429,14 @@ public class DomainControllerImpl implements DomainController
 
 
     public String loadCongressAsCurrent(String name) {
-        JSONizer json = new JSONizer();
+        if (name == null) {
+            return exceptionMaker(new IllegalArgumentException("name of file cannto be null"));
+        }
         String congress = dataController.loadCongress(name);
+        if (isException(congress)) {
+            return congress;
+        }
+        JSONizer json = new JSONizer();
         currentCongressName = name;
         JSONObject jsonCongress = json.StringToJSON(congress);
         Congress newCongress = new Congress();
@@ -671,6 +705,12 @@ public class DomainControllerImpl implements DomainController
 
 
     public void computeRelationships() {
+        currentCongress.removeAllRelationships();
+        WeightAlgorithm wa = new WeightAlgorithm(currentCongress);
+        wa.computeAllWeights();
+    }
+    /*
+    public void computeRelationships() {
         Congress newCongress = new Congress();
         for (MP m : currentCongress.getMPs()) {
             newCongress.addNode(m);
@@ -681,5 +721,7 @@ public class DomainControllerImpl implements DomainController
         WeightAlgorithm wa = new WeightAlgorithm(newCongress);
         wa.computeAllWeights();
         currentCongress = newCongress;
-    }
+    }*/
+
+
 }

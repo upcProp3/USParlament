@@ -22,9 +22,15 @@ public class DataControllerImpl implements DataController {
 
 	@Override
 	public String saveCongress(String name, String congress) {
+		if (name == null) {
+			return exceptionMaker(new IllegalArgumentException("name cannot be null"));
+		}
+		if (name.length() < 1) {
+			return exceptionMaker(new IllegalArgumentException("name must be longer that 0 characters"));
+		}
 		CongressString congrString;
 		try {
-			congrString = loadCongressFromFile(name);
+			congrString = loadCongressFromFile(name, true);
 		} catch (IOException e) {
 			return exceptionMaker(e);
 		}
@@ -47,7 +53,7 @@ public class DataControllerImpl implements DataController {
 	@Override
 	public String loadCongress(String name) {
 		try {
-			CongressString congrString = loadCongressFromFile(name);
+			CongressString congrString = loadCongressFromFile(name, false);
 			return congrString.congress;
 		} catch (IOException e) {
 			return exceptionMaker(e);
@@ -85,7 +91,7 @@ public class DataControllerImpl implements DataController {
 	public String savePartition(String congressName, String partitionName, String partition) {
 		CongressString congrString;
 		try {
-			congrString = loadCongressFromFile(congressName);
+			congrString = loadCongressFromFile(congressName, false);
 		} catch (IOException e) {
 			return exceptionMaker(e);
 		}
@@ -108,7 +114,7 @@ public class DataControllerImpl implements DataController {
 	@Override
 	public String loadPartition(String congressName, String partitionName) {
 		try {
-			CongressString congrString = loadCongressFromFile(congressName);
+			CongressString congrString = loadCongressFromFile(congressName, false);
 			return congrString.partitions.get(partitionName);
 		} catch (IOException e) {
 			return exceptionMaker(e);
@@ -119,7 +125,7 @@ public class DataControllerImpl implements DataController {
 	@Override
 	public String loadAllPartitionsOfCongress(String congressName) {
 		try {
-			CongressString congrString = loadCongressFromFile(congressName);
+			CongressString congrString = loadCongressFromFile(congressName, false);
 			return listToJson(new ArrayList<String>(congrString.partitions.values()), "partitions");
 		} catch (IOException e) {
 			return exceptionMaker(e);
@@ -129,7 +135,7 @@ public class DataControllerImpl implements DataController {
 	@Override
 	public String loadAllPartitionNamesOfCongress(String congressName) {
 		try {
-			CongressString congrString = loadCongressFromFile(congressName);
+			CongressString congrString = loadCongressFromFile(congressName, false);
 			return stringListToJson(new ArrayList<String>(congrString.partitions.keySet()), "partitionNames");
 		} catch (IOException e) {
 			return exceptionMaker(e);
@@ -191,8 +197,13 @@ public class DataControllerImpl implements DataController {
 	}
 
 
-	private CongressString loadCongressFromFile(String fileName) throws IOException {
-		File file = createFileIfNotExists(fileName);
+	private CongressString loadCongressFromFile(String fileName, boolean forceCreate) throws IOException {
+		File file;
+		if (forceCreate) {
+			file = createFileIfNotExists(fileName);
+		} else {
+			file = new File(path, fileName);
+		}
 		CongressString congress = new CongressString();
 		congress.name = fileName;
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -222,7 +233,7 @@ public class DataControllerImpl implements DataController {
 
 
 	private String exceptionMaker(Exception e) {
-		return "{\"Exception\":{\"Name\":\"" +e.getClass().getSimpleName()+ "\",Message\":\"" +e.getMessage()+ "\"}}";
+		return "{\"Exception\":{\"Name\":\"" +e.getClass().getSimpleName()+ "\",\"Message\":\"" +e.getMessage()+ "\"}}";
 	}
 
 	private class CongressString {
