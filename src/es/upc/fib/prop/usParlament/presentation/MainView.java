@@ -312,6 +312,11 @@ public class MainView extends javax.swing.JFrame {
         currentCongressLabel.setText("Current Congress' MPs");
 
         hideAttrsButton.setText("Hide irrelevant attrdefs");
+        hideAttrsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hideAttrsButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout congressManagementViewLayout = new javax.swing.GroupLayout(congressManagementView);
         congressManagementView.setLayout(congressManagementViewLayout);
@@ -1004,6 +1009,8 @@ public class MainView extends javax.swing.JFrame {
             if(imp.equals("16")) imp = "(H)";
             s = s+imp;
             //System.out.println(imp);
+            //System.out.print("hide:"+hide);
+            //System.out.println(" imp:"+imp.equals("(N)"));
             if(!(hide && imp.equals("(N)"))){
                 dtm.addColumn(s);
                 //System.out.println(hide);System.out.println(imp.equals("(N)"));
@@ -1152,6 +1159,48 @@ public class MainView extends javax.swing.JFrame {
             
             MPsCurrentCongressTable.setModel(dtm);
             MPsCurrentCongressTable.getTableHeader().setReorderingAllowed(false);
+    }
+
+    public void updateMPsCurrentTable() {
+        JSONObject j = pc.getShortMPList();
+        DefaultTableModel model = (DefaultTableModel)MPsCurrentCongressTable.getModel();
+        DefaultTableModel dtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+        };
+
+        System.out.println(j);
+
+        JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
+
+        //Create columns
+        dtm.addColumn("State");
+        dtm.addColumn("District");
+
+
+        for(JSON jo:ja.getArray()){
+
+            Map<String,String> ms = ((JSONObject)jo).basicJSONObjectGetInfo();
+
+            Vector<String> row = new Vector<>();
+            for(int pos = 0;pos<ja.getArray().size();pos++){
+                    /*String s = dtm.getColumnName(pos);
+                    if(ms.containsKey(s)){
+                        row.add(ms.get(s));
+                    }*/
+                row.add(ms.get("State"));
+                row.add(ms.get("District"));
+
+            }
+
+            dtm.addRow(row);
+
+        }
+
+        MPsCurrentCongressTable.setModel(dtm);
+        MPsCurrentCongressTable.getTableHeader().setReorderingAllowed(false);
     }
 
     public void updateMPsInCommunityTable() {
@@ -1468,6 +1517,12 @@ public class MainView extends javax.swing.JFrame {
     private void chooseAlgorithmComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseAlgorithmComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chooseAlgorithmComboBoxActionPerformed
+
+    private void hideAttrsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hideAttrsButtonActionPerformed
+        // TODO add your handling code here:
+        this.updateMPManagementAttrDefinitionTable();
+        this.updateMPManagementMPTable();
+    }//GEN-LAST:event_hideAttrsButtonActionPerformed
 
     private CalculateCommunitiesSwingWorker sumSwingWorker;
 

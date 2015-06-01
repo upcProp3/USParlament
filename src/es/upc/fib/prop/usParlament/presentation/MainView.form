@@ -365,6 +365,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Hide irrelevant attrdefs"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hideAttrsButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

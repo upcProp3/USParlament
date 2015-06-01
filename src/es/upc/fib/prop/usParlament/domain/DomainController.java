@@ -705,6 +705,7 @@ public class DomainController
     }
 
     public String compare2partitions() {
+        (new WeightAlgorithm(currentCongress)).computeAllWeights();
         Map<Node, Integer> part1 = new HashMap<>();
         int comm = 0;
         for (Set<MP> c : partition1) {
@@ -721,6 +722,8 @@ public class DomainController
             }
             ++comm;
         }
+        //System.out.println("part1:"+part1);
+        //System.out.println("part2:"+part2);
         ComparingAlgorithm ca = new ComparingAlgorithm(currentCongress, part1, part2);
         JSONObject jInfo = new JSONObject();
         JSONString jBest = new JSONString();
