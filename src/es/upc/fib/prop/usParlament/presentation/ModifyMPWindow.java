@@ -285,9 +285,7 @@ public class ModifyMPWindow extends javax.swing.JFrame {
         //columna 0 estat
         //columna 1 districte
         String attrdef = (String)attributesTable.getValueAt(fila,0);
-        JSONObject jo = new JSONObject();
-        jo.addPair(new JSONString("AttrDefName"),new JSONString(attrdef));
-        pc.deleteAttribute(jmp, jo);
+        pc.removeAttribute(jmp, attrdef);
 
         updateTableAndCombo();
     }//GEN-LAST:event_deleteAttributeButtonActionPerformed

@@ -6,3 +6,4 @@ LAST THINGS TODO:
 - User's manual (O.V., A.S., A.M.)
 - Golden case
 - Algorithms working
+-
