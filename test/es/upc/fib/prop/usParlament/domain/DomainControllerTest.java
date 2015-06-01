@@ -51,11 +51,6 @@ public class DomainControllerTest {
 
 
 	@Test
-	public void testSetDataController() throws Exception {
-
-	}
-
-	@Test
 	public void testCleanCommunityManager() throws Exception {
 
 	}

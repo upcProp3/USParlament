@@ -50,14 +50,7 @@ public class DomainControllerImpl implements DomainController
     protected List<Set<MP>> getMainPartition() {
         return mainPartition;
     }
-
-
-
-
-
-
-
-    public void setDataController(DataController dataController) {
+    protected void setDataController(DataController dataController) {
         this.dataController = dataController;
     }
 
