@@ -605,6 +605,7 @@ public class MainView extends javax.swing.JFrame {
         mainWindow.addTab("Community Management", null, CommunityManagement, "");
 
         CommunityPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        CommunityPanel1.setMaximumSize(new java.awt.Dimension(167, 275));
 
         communityList1CommunitiesList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -652,8 +653,8 @@ public class MainView extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CommunityPanel1Layout.createSequentialGroup()
                         .addGroup(CommunityPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(scrollPaneMPList1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(scrollPaneCommunityList1))
+                            .addComponent(scrollPaneMPList1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scrollPaneCommunityList1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
         CommunityPanel1Layout.setVerticalGroup(
@@ -731,8 +732,8 @@ public class MainView extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CommunityPanel2Layout.createSequentialGroup()
                         .addGroup(CommunityPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(scrollPaneMPList2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(scrollPaneCommuntiyList2))
+                            .addComponent(scrollPaneMPList2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scrollPaneCommuntiyList2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
         CommunityPanel2Layout.setVerticalGroup(

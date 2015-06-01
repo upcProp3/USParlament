@@ -49,7 +49,6 @@ public class WeightAlgorithm {
         int w = 0; //0 = no relationship
         for (Attribute a : CA) {
             int imp = a.getDefinition().getImportance();
-            System.out.println("importancia:"+imp);
             if(imp == 1) w+=1;
             if(imp == 4) w+=4;
             if(imp == 16) w+=16;
