@@ -712,4 +712,17 @@ public class DomainController
     public String getCurrentCongressName() {
         return currentCongressName;
     }
+
+    public void computeRelationships() {
+        Congress newCongress = new Congress();
+        for (MP m : currentCongress.getMPs()) {
+            newCongress.addNode(m);
+        }
+        for (AttrDefinition ad : currentCongress.getAttrDef()) {
+            newCongress.addAttrDef(ad);
+        }
+        WeightAlgorithm wa = new WeightAlgorithm(newCongress);
+        wa.computeAllWeights();
+        currentCongress = newCongress;
+    }
 }

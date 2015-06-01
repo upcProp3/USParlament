@@ -224,6 +224,8 @@ public class PresentationController {
         return dc.getCurrentCongressName();
     }
 
+    public void computeRelationships() { dc.computeRelationships(); }
+
     class InternalException extends Exception {
         public InternalException(String message) {
             super(message);

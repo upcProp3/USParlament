@@ -1230,6 +1230,7 @@ public class MainView extends javax.swing.JFrame {
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.updateMPManagementMPTable();
+        pc.computeRelationships();
     }//GEN-LAST:event_modifyMPButtonActionPerformed
 
     private void deleteMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPButtonActionPerformed
@@ -1245,10 +1246,12 @@ public class MainView extends javax.swing.JFrame {
         String district = (String) currentMPsTable.getValueAt(fila, 1);
         pc.deleteMP(State.valueOf(state), Integer.parseInt(district));
         this.updateMPManagementMPTable();
+        pc.computeRelationships();
     }//GEN-LAST:event_deleteMPButtonActionPerformed
 
     private void loadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadCongressButtonActionPerformed
         JFrame jf = new LoadCongressWindow(pc, this);
+        pc.computeRelationships();
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_loadCongressButtonActionPerformed
@@ -1297,6 +1300,7 @@ public class MainView extends javax.swing.JFrame {
         pc.addOrModifyAttrDef(jAttrD);
         updateMPManagementAttrDefinitionTable();
         updateMPManagementMPTable();
+        pc.computeRelationships();
     }//GEN-LAST:event_modifyAttrDefButtonActionPerformed
 
     private void showMPDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMPDataButtonActionPerformed
@@ -1381,6 +1385,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void LoadCongressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadCongressButtonActionPerformed
         JFrame jf = new LoadCongressWindow(pc, this);
+        pc.computeRelationships();
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_LoadCongressButtonActionPerformed
