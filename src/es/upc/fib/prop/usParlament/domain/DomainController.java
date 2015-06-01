@@ -594,7 +594,7 @@ public class DomainController
      * @param algorithm  unique identificator of congress.
      */
     public void computeCommunities(String algorithm, String argument) {
-        (new WeightAlgorithm(currentCongress)).computeAllWeights();
+        computeRelationships();
         Algorithm alg;
         switch (algorithm) {
             case "N Clique Percolation":

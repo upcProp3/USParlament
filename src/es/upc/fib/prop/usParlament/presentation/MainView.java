@@ -28,6 +28,8 @@ public class MainView extends javax.swing.JFrame {
         pc = precon;
         initComponents();
         setAlgorithmNames();
+        currentCongressNameTextField.setText("");
+        currentCongressNameTextField.setEnabled(false);
     }
 
     /**
