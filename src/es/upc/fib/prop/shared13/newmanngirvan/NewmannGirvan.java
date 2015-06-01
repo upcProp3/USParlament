@@ -242,11 +242,13 @@ public class NewmannGirvan
 		}*/
 
         int max = 0;
+        while(!edges[max].isValid()) max++;//Afegit per M, nomes ens interessa una aresta valida
+
         for (int i = 1; i < arco.length; i++) {
+            if(!edges[i].isValid()) continue; //afegit per M: Si l'aresta no es valida no la considerem
             if (arco[max]/edges[max].getWeight()
                     < arco[i]/edges[i].getWeight()) max = i;
         }
-
         edges[max].setValidity(false);
     }
 
