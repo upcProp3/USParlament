@@ -1076,6 +1076,11 @@ public class MainView extends javax.swing.JFrame {
             attrDefinitionsTable.getTableHeader().setReorderingAllowed(false);
     }
 
+    public void updateCommunitiesLists() {
+        communityList2CommunitiesList.setListData(new Vector(pc.getCommunityIDs("partition2")));
+        communityList1CommunitiesList.setListData(new Vector(pc.getCommunityIDs("partition1")));
+    }
+
     public void updateCommunitiesTable()
     {
         JSONObject j = pc.getMainPartitionSize();
@@ -1400,7 +1405,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void list1UseCurrentPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1UseCurrentPartitionButtonActionPerformed
         pc.setCurrentToPartition1();
-        communityList1CommunitiesList.setListData(new Vector(pc.getCommunityIDs()));
+        updateCommunitiesLists();
     }//GEN-LAST:event_list1UseCurrentPartitionButtonActionPerformed
 
     private void list1LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1LoadPartitionButtonActionPerformed
@@ -1411,7 +1416,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void list2UseCurrentPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2UseCurrentPartitionButtonActionPerformed
         pc.setCurrentToPartition2();
-        communityList2CommunitiesList.setListData(new Vector(pc.getCommunityIDs()));
+        updateCommunitiesLists();
     }//GEN-LAST:event_list2UseCurrentPartitionButtonActionPerformed
 
     private void list2LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2LoadPartitionButtonActionPerformed
@@ -1465,6 +1470,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_chooseAlgorithmComboBoxActionPerformed
 
     private CalculateCommunitiesSwingWorker sumSwingWorker;
+
     private class CalculateCommunitiesSwingWorker extends SwingWorker<Void,Void> {
         private String algorithm;
         private String argument;

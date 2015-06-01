@@ -570,6 +570,8 @@ public class DomainController
             case "partition2" :
                 partition2 = newPartition;
                 break;
+            default:
+                throw new IllegalArgumentException("unknown partition");
         }
         return respond;
     }
@@ -634,10 +636,24 @@ public class DomainController
         mainPartition = partition;
     }
 
-    public String getCommunityIDs() {
+    public String getCommunityIDs(String partition) {
+        List<Set<MP>> part;
+        switch (partition) {
+            case "mainPartition" :
+                part = mainPartition;
+                break;
+            case "partition1" :
+                part = partition1;
+                break;
+            case "partition2" :
+                part = partition2;
+                break;
+            default:
+                throw new IllegalArgumentException("unknown partition");
+        }
         JSONArray ids = new JSONArray();
-        for (Set comm : mainPartition) {
-            int id = mainPartition.indexOf(comm);
+        for (Set comm : part) {
+            int id = part.indexOf(comm);
             ids.addElement(new JSONString("" + id));
         }
         JSONObject jo = new JSONObject();
