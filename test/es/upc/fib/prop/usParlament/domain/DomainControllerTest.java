@@ -51,7 +51,7 @@ public class DomainControllerTest {
 	}
 
     @Test
-    public void testGetMPInfo() throws Exception {
+    public void testGetMP() throws Exception {
         Congress expected = prepareCurrentCongress();
         manager.saveCurrentCongress(CONGRESS_NAMES[0]);
         manager.loadCongressAsCurrent(CONGRESS_NAMES[0]);
@@ -79,7 +79,7 @@ public class DomainControllerTest {
         /*String alex = new String("{\"State\":\"CA\",\"District\":\"2\",\"Name\":\"Alex\",\"Attributes\":[" +
                 "{\"AttrDefName\":\"sex\",\"AttrValue\":\"male\"},{\"AttrDefName\":\"party\",\"AttrValue\":\"democrat\"}," +
                 "{\"AttrDefName\":\"religion\",\"AttrValue\":\"catholicism\"}]}");//*/
-        String current = new String(manager.getMPInfo(State.CA, 2));
+        String current = new String(manager.getMP(State.CA, 2));
         System.out.println(current);
         assertEquals(alex, current);
     }

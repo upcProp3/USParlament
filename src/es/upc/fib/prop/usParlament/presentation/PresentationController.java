@@ -29,8 +29,8 @@ public class PresentationController {
         j = new JSONizer();
     }
 
-    public void setCurrentToPartition1() { dc.setCurrentToPartition1(); }
-    public void setCurrentToPartition2() { dc.setCurrentToPartition2(); }
+    public void setCurrentToPartition1() { dc.setMainToPartition1(); }
+    public void setCurrentToPartition2() { dc.setMainToPartition2(); }
 
 
     public JSONObject getShortMPList()
@@ -51,44 +51,51 @@ public class PresentationController {
         */
         ///END OF TEST
         //GOOD CODE
-        return j.StringToJSON(dc.getShortMPList());
+        return j.StringToJSON(dc.getMPsShort());
         //END OF GOOD CODE
     }
     
-    public void addMP(JSONObject mp,JSONArray attr)
+    public void addMP(JSONObject mp,JSONArray attrs)
     {
-        dc.addMP(mp);
+        JSONizer json = new JSONizer();
+        dc.addMP(json.JSONtoString(mp));
         Map<String,String> dmp = mp.basicJSONObjectGetInfo();
         String estat = dmp.get("State");
         String distr = dmp.get("District");
         //System.out.println(estat+distr);
-        dc.addOrModifyAttribute(mp, attr);
+        JSONObject jAttrs = new JSONObject();
+        jAttrs.addPair("attributes", attrs);
+        dc.addOrModifyAttributes(json.JSONtoString(mp), json.JSONtoString(jAttrs));
 
     }
 
-    public void deleteAttribute(JSONObject jo,JSONObject ja)
+    public void removeAttribute(JSONObject jo, String attrDefName)
     {
-        dc.deleteAttribute(jo, ja);
+        JSONizer json = new JSONizer();
+        dc.removeAttribute(json.JSONtoString(jo), attrDefName);
     }
 
-    public void addAttributes(JSONObject mp,JSONArray attr)
+    public void addAttributes(JSONObject mp,JSONArray attrs)
     {
-        dc.addOrModifyAttribute(mp, attr);
+        JSONizer json = new JSONizer();
+        JSONObject jAttrs = new JSONObject();
+        jAttrs.addPair("attributes", attrs);
+        dc.addOrModifyAttributes(json.JSONtoString(mp), json.JSONtoString(jAttrs));
     }
 
     public void deleteMP(State state,int district)
     {
-        dc.deleteMP(state, district);
+        dc.removeMP(state, district);
     }
 
     public JSONObject getMPList()
     {
-        return j.StringToJSON(dc.getMPList());
+        return j.StringToJSON(dc.getMPs());
     }
     
     public JSONObject getMPInfo(State state, int district)
     {
-         return j.StringToJSON(dc.getMPInfo(state, district));
+         return j.StringToJSON(dc.getMP(state, district));
     }
 
     public void newCongress()
@@ -116,11 +123,11 @@ public class PresentationController {
     }
 
     public void addMPToCommunity(Integer cNumb, State st, Integer dt) {
-        dc.addMPToCommunity(cNumb, st, dt);
+        dc.addMPToCommunity(String.valueOf(cNumb), st, dt);
     }
 
     public void deleteMPFromCommunity (Integer cNumb, State st, Integer dt) {
-        dc.deleteMPFromCommunity(cNumb, st, dt);
+        dc.removeMPFromCommunity(String.valueOf(cNumb), st, dt);
     }
 
     public boolean existsAttrDef(String name)
@@ -130,7 +137,8 @@ public class PresentationController {
 
     public void addOrModifyAttrDef(JSONObject obj)
     {
-        dc.addOrModifyAttrDef(obj);
+        JSONizer json = new JSONizer();
+        dc.addOrModifyAttrDef(json.JSONtoString(obj));
     }
 
     public JSONObject getAttrDefs()
@@ -161,11 +169,11 @@ public class PresentationController {
         if (pName.trim().length() < 3) {
             throw new InternalException("Partition name has to have at least 2 characters.");
         }
-        return dc.saveCurrentPartition(pName.trim());
+        return dc.saveMainPartition(pName.trim());
     }
     
     public void loadPartitionAs(String pName, String as) {
-        dc.loadPartitionAs(pName, as);
+        dc.loadPartitionInto(pName, as);
     }
 
     public void cleanCommunityManager() {
@@ -175,7 +183,7 @@ public class PresentationController {
         dc.cleanCompareManager();
     }
     public void computeCommunities(String algorithm, String argument) {
-        dc.computeCommunities(algorithm, argument);
+        dc.computePartition(algorithm, argument);
     }
 
     public List<Integer> getCommunityIDs(String partition) {
@@ -191,7 +199,7 @@ public class PresentationController {
     public Set<JSONObject> getMPsCurrentPartition(int selectedCommunity) {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
-                dc.getMPsMainPartition(String.valueOf(selectedCommunity)))
+                dc.getMPsInMainPartition(String.valueOf(selectedCommunity)))
                 .getJSONByKey("Current partition Community numer " + selectedCommunity);
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {
@@ -203,7 +211,7 @@ public class PresentationController {
     public Set<JSONObject> getMPsPartition1(int selectedCommunity) {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
-                dc.getMPsPartition1(String.valueOf(selectedCommunity)))
+                dc.getMPsInPartition1(String.valueOf(selectedCommunity)))
                 .getJSONByKey("Partition1 Community number " + selectedCommunity);
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {
@@ -215,7 +223,7 @@ public class PresentationController {
     public Set<JSONObject> getMPsPartition2(int selectedCommunity) {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
-                dc.getMPsPartition2(String.valueOf(selectedCommunity)))
+                dc.getMPsInPartition2(String.valueOf(selectedCommunity)))
                 .getJSONByKey("Partition2 Community number " + selectedCommunity);
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {
@@ -228,7 +236,9 @@ public class PresentationController {
 
     public void addNewCommunity() { dc.addNewCommunity(); }
 
-    public void deleteSelectedCommunity(Integer cNumb) { dc.deleteSelectedCommunity(cNumb); }
+    public void deleteSelectedCommunity(Integer cNumb) {
+        dc.removeCommunity(String.valueOf(cNumb));
+    }
 
     public JSONObject compareFunction() {
         JSONizer json = new JSONizer();
