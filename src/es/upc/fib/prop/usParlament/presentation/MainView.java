@@ -1147,6 +1147,48 @@ public class MainView extends javax.swing.JFrame {
             MPsCurrentCongressTable.getTableHeader().setReorderingAllowed(false);
     }
 
+    public void updateMPsCurrentTable() {
+        JSONObject j = pc.getShortMPList();
+        DefaultTableModel model = (DefaultTableModel)MPsCurrentCongressTable.getModel();
+        DefaultTableModel dtm = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row,int column){
+                return false;
+            }
+        };
+
+        System.out.println(j);
+
+        JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
+
+        //Create columns
+        dtm.addColumn("State");
+        dtm.addColumn("District");
+
+
+        for(JSON jo:ja.getArray()){
+
+            Map<String,String> ms = ((JSONObject)jo).basicJSONObjectGetInfo();
+
+            Vector<String> row = new Vector<>();
+            for(int pos = 0;pos<ja.getArray().size();pos++){
+                    /*String s = dtm.getColumnName(pos);
+                    if(ms.containsKey(s)){
+                        row.add(ms.get(s));
+                    }*/
+                row.add(ms.get("State"));
+                row.add(ms.get("District"));
+
+            }
+
+            dtm.addRow(row);
+
+        }
+
+        MPsCurrentCongressTable.setModel(dtm);
+        MPsCurrentCongressTable.getTableHeader().setReorderingAllowed(false);
+    }
+
     public void updateMPsInCommunityTable() {
         DefaultTableModel model = new DefaultTableModel() {
             @Override

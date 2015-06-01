@@ -101,6 +101,7 @@ public class LoadCongressWindow extends javax.swing.JFrame {
         mainView.updateMPManagementMPTable();
         mainView.updateMPManagementAttrDefinitionTable();
         mainView.updateCurrentLoadedCongressLabel(name);
+        mainView.updateMPsCurrentTable();
         pc.cleanCommunityManager();
         setVisible(false);
         dispose();
