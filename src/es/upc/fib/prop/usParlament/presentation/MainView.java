@@ -1238,7 +1238,7 @@ public class MainView extends javax.swing.JFrame {
         currentCongressNameTextField.setText(name);
     }
 
-    public void updateMPList1Table() { //TODO: under development
+    public void updateMPList1Table() {
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -1248,25 +1248,48 @@ public class MainView extends javax.swing.JFrame {
         model.addColumn("State");
         model.addColumn("District");
 
-        int comrow=communitiesTable.getSelectedRow();
+        Integer selectedRow = (Integer) communityList1CommunitiesList.getSelectedValue();
 
-        if(comrow == -1){
-            MPsInCommunityTable.setModel(model);
+        if(selectedRow == -1){
+            MPList1Table.setModel(model);
             return;
         }
 
-        int community = Integer.parseInt((String)communitiesTable.getValueAt(comrow,0));
-
-
-
-        for (JSONObject mp : pc.getMPsCurrentPartition(community)) {
+        for (JSONObject mp : pc.getMPsPartition1(selectedRow)) {
             Vector row = new Vector();
             row.add(((JSONString)mp.getJSONByKey("State")).getValue());
             row.add(Integer.valueOf(((JSONString)mp.getJSONByKey("District")).getValue()));
             model.addRow(row);
         }
-        MPsInCommunityTable.setModel(model);
-        MPsInCommunityTable.getTableHeader().setReorderingAllowed(false);
+        MPList1Table.setModel(model);
+        MPList1Table.getTableHeader().setReorderingAllowed(false);
+    }
+
+    public void updateMPList2Table(int part) {
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        model.addColumn("State");
+        model.addColumn("District");
+
+        Integer selectedRow = (Integer) communityList2CommunitiesList.getSelectedValue();
+
+        if(selectedRow == -1){
+            MPList2Table.setModel(model);
+            return;
+        }
+
+        for (JSONObject mp : pc.getMPsPartition2(selectedRow)) {
+            Vector row = new Vector();
+            row.add(((JSONString)mp.getJSONByKey("State")).getValue());
+            row.add(Integer.valueOf(((JSONString)mp.getJSONByKey("District")).getValue()));
+            model.addRow(row);
+        }
+        MPList2Table.setModel(model);
+        MPList2Table.getTableHeader().setReorderingAllowed(false);
     }
     
     private void mainWindowStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_mainWindowStateChanged
