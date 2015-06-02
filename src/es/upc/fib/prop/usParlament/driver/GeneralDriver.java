@@ -258,7 +258,6 @@ public class GeneralDriver {
                     System.out.println("actual importance is " + def.getImportance());
                     System.out.print("new importance: ");
                     Integer imp = Integer.parseInt(read.nextLine());
-                    //read.nextLine();
                     while (imp < 0 || imp > 3) {
                         System.out.print("The importance must be an integer between 0 and 3\n"
                                 + "Enter the importance again:");

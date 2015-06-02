@@ -18,7 +18,6 @@ import java.util.*;
  * All the TEST INSTRUCTIONS (i.e. printing staff) are commented by //.
  */
 
-//TODO: not finished
 public class DomainControllerImpl implements DomainController
 {
     /*
@@ -355,14 +354,11 @@ public class DomainControllerImpl implements DomainController
         AttrDefinition atd = currentCongress.getAttrDef(attrDefName);
 
         if(atd == null) throw new IllegalStateException("NO EXISTEIX LATRIBUT");
-        System.out.println(mp);
-        /*if(mp.hasAttribute(atd))*/ mpObj.removeAttribute(atd);
-        System.out.println(mp);
+        mpObj.removeAttribute(atd);
     }
 
 
     public void addOrModifyAttrDef(String attrDef) {
-        System.out.println(attrDef);
         JSONizer json = new JSONizer();
         JSONObject jAttrDef = json.StringToJSON(attrDef);
         JSONString key = new JSONString("AttrDefName");
@@ -671,7 +667,6 @@ public class DomainControllerImpl implements DomainController
                 if (comm.contains(m)) return;
                 comm.add(m);
             }
-            //else if (comm.contains(m)) comm.remove(m);
         }
     }
 
@@ -721,8 +716,6 @@ public class DomainControllerImpl implements DomainController
             }
             ++comm;
         }
-        //System.out.println("part1:"+part1);
-        //System.out.println("part2:"+part2);
         ComparingAlgorithm ca = new ComparingAlgorithm(currentCongress, part1, part2);
         JSONObject jInfo = new JSONObject();
         JSONString jBest = new JSONString();
@@ -733,8 +726,6 @@ public class DomainControllerImpl implements DomainController
         JSONString jModO = new JSONString(String.valueOf(ca.otherModularity()));
         jInfo.addPair("Best modularity", jModB);
         jInfo.addPair("Other modularity", jModO);
-        JSONString jPA = new JSONString(String.valueOf(ca.percentBetter()));
-        jInfo.addPair("Percentage of accuracy", jPA);
         return jInfo.stringify();
     }
 

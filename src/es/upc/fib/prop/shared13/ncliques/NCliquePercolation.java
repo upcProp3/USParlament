@@ -110,7 +110,6 @@ public class NCliquePercolation
      * @param graph The input graph of the algorithm
      */
     public NCliquePercolation(Graph graph) {
-        //super(graph);
         this.G=graph;
         cc = new ArrayList<Set<Node>>();
         Cliques = new ArrayList<HashSet<Node>>();
