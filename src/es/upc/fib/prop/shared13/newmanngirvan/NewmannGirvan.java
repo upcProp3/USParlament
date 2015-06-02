@@ -237,10 +237,6 @@ public class NewmannGirvan
 
         }
 
-		/*for (int i = 0; i < arco.length; i++) {
-			print(arco[i]);
-		}*/
-
         int max = 0;
         while(!edges[max].isValid()) max++;//Afegit per M, nomes ens interessa una aresta valida
 

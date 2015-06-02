@@ -29,17 +29,7 @@ public class AlgorithmsDriver
 		int input;
 		boolean active = true;
 		while(active) {
-			/*System.out.println("=====================================");
-			System.out.println("1 - add node");
-			System.out.println("2 - add edge");
-			System.out.println("3 - remove node");
-			System.out.println("4 - remove edge");
-			System.out.println("5 - show graph");
-			System.out.println("6 - calculate modularity with louvain");
-			System.out.println("7 - calculate best partition with louvain");
-            System.out.println("8 - calculate best partition with cliques");
-            System.out.println("9 - calculate best partition with newmann girvan");
-			System.out.println("0 - exit");*/
+
 
 			try {
 				input = reader.nextInt();
@@ -89,18 +79,7 @@ public class AlgorithmsDriver
 	}
 
     private static void calculatePartitionsCliques(Scanner reader) {
-		/*System.out.println("Enter the threshold: ");
-		double threshold;
-		while(true) {
-			try {
-				threshold = reader.nextDouble();
-				break;
-			} catch (InputMismatchException e) {
-				reader.nextLine();
-				System.out.println("Threshold has to be integer. Try it again.");
-				continue;
-			}
-		}*/
+
         NCQAlgorithm a = new NCQAlgorithm(g);
         System.out.println(a.calculate());
 	}
@@ -146,7 +125,6 @@ public class AlgorithmsDriver
 	}
 
 	private static void addNode(Scanner reader) {
-		//System.out.println("Set ID: ");
 		int id;
 		while(true) {
 			try {
@@ -165,7 +143,6 @@ public class AlgorithmsDriver
 	}
 
 	private static void addEdge(Scanner reader) {
-		//System.out.println("Select first node by id: ");
 		int id;
 		Node n1;
 		while(true) {
@@ -185,7 +162,6 @@ public class AlgorithmsDriver
 			}
 		}
 		Node n2;
-		//System.out.println("Select second node by id: ");
 		while(true) {
 			try {
 				id = reader.nextInt();
@@ -202,7 +178,6 @@ public class AlgorithmsDriver
 				continue;
 			}
 		}
-		//System.out.println("Set weight: ");
 		double weight;
 		while(true) {
 			try {

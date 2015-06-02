@@ -71,7 +71,6 @@ public class WeightAlgorithm {
             for (MP m2 : mps) {
                 if (m1 != m2 && !c.hasEdge(m1, m2)) {
                     Set<Attribute> ca = getCommonAttributes(m1, m2);
-                    //System.out.println("ca:"+ca);
                     if (!ca.isEmpty()) {
                         computeWeight(m1, m2, ca);
                     }

@@ -62,7 +62,6 @@ public class PresentationController {
         Map<String,String> dmp = mp.basicJSONObjectGetInfo();
         String estat = dmp.get("State");
         String distr = dmp.get("District");
-        //System.out.println(estat+distr);
         JSONObject jAttrs = new JSONObject();
         jAttrs.addPair("attributes", attrs);
         dc.addOrModifyAttributes(json.JSONtoString(mp), json.JSONtoString(jAttrs));

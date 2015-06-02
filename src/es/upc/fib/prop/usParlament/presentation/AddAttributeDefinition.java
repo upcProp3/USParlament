@@ -120,7 +120,6 @@ public class AddAttributeDefinition extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
         String name = nameTextField.getText();
         String importance = (String)importanceComboBox.getSelectedItem();
         if(name.equals("")){

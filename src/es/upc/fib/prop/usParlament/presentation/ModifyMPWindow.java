@@ -57,7 +57,6 @@ public class ModifyMPWindow extends javax.swing.JFrame {
         adtm.addColumn("AttrDef");
         adtm.addColumn("Value");
         JSONObject jo = pc.getMPInfo(state,district);
-        //System.out.println(jo);
         JSONArray ja = (JSONArray)jo.getJSONByKey("Attributes");
         Set<String> attrdefsin = new LinkedHashSet<>();
         Set<String> attrdefs = new LinkedHashSet<>();
@@ -224,7 +223,6 @@ public class ModifyMPWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addAttributeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAttributeButtonActionPerformed
-        // TODO add your handling code here:
         String value = ValueTextField.getText();
         String attrdef = (String)AttrDefComboBox.getSelectedItem();
 
@@ -245,7 +243,6 @@ public class ModifyMPWindow extends javax.swing.JFrame {
         jo.addPair(new JSONString("AttrValue"), new JSONString(value));
         ja.addElement(jo);
         pc.addAttributes(jmp, ja);
-        //System.out.println("ATTRS:"+ja);
         updateTableAndCombo();
 
 
@@ -253,7 +250,6 @@ public class ModifyMPWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_addAttributeButtonActionPerformed
 
     private void modifyAttributeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyAttributeButtonActionPerformed
-        // TODO add your handling code here:
         int fila = attributesTable.getSelectedRow();
         if(fila == -1){
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
@@ -275,7 +271,6 @@ public class ModifyMPWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyAttributeButtonActionPerformed
 
     private void deleteAttributeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAttributeButtonActionPerformed
-        // TODO add your handling code here:
 
         int fila = attributesTable.getSelectedRow();
         if(fila == -1){

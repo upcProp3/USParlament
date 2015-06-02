@@ -1023,11 +1023,9 @@ public class MainView extends javax.swing.JFrame {
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 
-        // TODO add mp to communtiy button pressed
     }//GEN-LAST:event_addMPToCommunityButtonActionPerformed
 
     private void deleteMPfromCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPfromCommunityButtonActionPerformed
-        // TODO community management delete mp from communtiy button pressed
         int fila1 = communitiesTable.getSelectedRow();
         if(fila1 == -1){
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
@@ -1056,7 +1054,6 @@ public class MainView extends javax.swing.JFrame {
         chooseAlgorithmComboBox.removeAllItems();
         // WHILE YOU CHANGE NAMES YOU HAVE TO CHANGE ALSO DomainController.calculateCommunities(algotithm)!!!
         chooseAlgorithmComboBox.addItem("N Clique Percolation");
-        //chooseAlgorithmComboBox.addItem("Four Clique Percolation");
         chooseAlgorithmComboBox.addItem("Louvian");
         chooseAlgorithmComboBox.addItem("Newmann Girvan");
     }
@@ -1072,8 +1069,6 @@ public class MainView extends javax.swing.JFrame {
         };
         JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
         boolean hide = hideAttrsButton.isSelected();
-
-        //System.out.println(j);
 
         //Create columns
         JSONObject jattrd = pc.getAttrDefs();
@@ -1093,12 +1088,8 @@ public class MainView extends javax.swing.JFrame {
             if(imp.equals("4")) imp = "(M)";
             if(imp.equals("16")) imp = "(H)";
             s = s+imp;
-            //System.out.println(imp);
-            //System.out.print("hide:"+hide);
-            //System.out.println(" imp:"+imp.equals("(N)"));
             if(!(hide && imp.equals("(N)"))){
                 dtm.addColumn(s);
-                //System.out.println(hide);System.out.println(imp.equals("(N)"));
             }
         }
 
@@ -1198,7 +1189,6 @@ public class MainView extends javax.swing.JFrame {
         };
         JSONString jNumb = (JSONString) j.getJSONByKey("Number");
         dtm.addColumn("Community number");
-        //System.out.println(jNumb.getValue());
         for (int i = 0; i < Integer.valueOf(jNumb.getValue()); i++) {
             JSONString ji = new JSONString(String.valueOf(i));
             Vector<String> value = new Vector<String>();
@@ -1228,7 +1218,6 @@ public class MainView extends javax.swing.JFrame {
                 }
             };
 
-            //System.out.println(j);
 
             JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
@@ -1243,10 +1232,6 @@ public class MainView extends javax.swing.JFrame {
 
                 Vector<String> row = new Vector<>();
                 for(int pos = 0;pos<ja.getArray().size();pos++){
-                    /*String s = dtm.getColumnName(pos);
-                    if(ms.containsKey(s)){
-                        row.add(ms.get(s));
-                    }*/
                     row.add(ms.get("State"));
                     row.add(ms.get("District"));
 
@@ -1270,7 +1255,6 @@ public class MainView extends javax.swing.JFrame {
             }
         };
 
-        //System.out.println(j);
 
         JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
 
@@ -1285,10 +1269,6 @@ public class MainView extends javax.swing.JFrame {
 
             Vector<String> row = new Vector<>();
             for(int pos = 0;pos<ja.getArray().size();pos++){
-                    /*String s = dtm.getColumnName(pos);
-                    if(ms.containsKey(s)){
-                        row.add(ms.get(s));
-                    }*/
                 row.add(ms.get("State"));
                 row.add(ms.get("District"));
 
@@ -1395,9 +1375,8 @@ public class MainView extends javax.swing.JFrame {
         // In this function goes the code that needs to be executed when we change the window
         //the winows are numbered 0..n-1 in their order on the top
         //There are implementations of an initialization on the code below
-        //System.out.println("CANVI DE PESTANYA " + mainWindow.getSelectedIndex());
-        
-        
+
+
         if(mainWindow.getSelectedIndex()==1){//If we are on the MP management Window
             //////INITIALIZING THE MP TABLE
             updateMPManagementMPTable();
@@ -1425,7 +1404,6 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_addMPButtonActionPerformed
 
     private void modifyMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyMPButtonActionPerformed
-        //System.out.println(currentMPsTable.getSelectedRow());
         int fila = currentMPsTable.getSelectedRow();
         if(fila == -1){
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
@@ -1443,7 +1421,6 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyMPButtonActionPerformed
 
     private void deleteMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPButtonActionPerformed
-        //System.out.println(currentMPsTable.getSelectedRow());
         int fila = currentMPsTable.getSelectedRow();
         if(fila == -1){
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
@@ -1522,7 +1499,6 @@ public class MainView extends javax.swing.JFrame {
         JFrame jf = new ShowMPInfoWindow(pc, st, dt);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        //System.out.println("Show MP Info");
     }//GEN-LAST:event_showMPDataButtonActionPerformed
 
     private void showSelectedMPInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -1537,7 +1513,6 @@ public class MainView extends javax.swing.JFrame {
         JFrame jf = new ShowMPInfoWindow(pc, st, dt);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        //System.out.println("Show MP Info");
     }
 
     private void loadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadPartitionButtonActionPerformed
@@ -1547,7 +1522,6 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_loadPartitionButtonActionPerformed
 
     private void savePartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savePartitionButtonActionPerformed
-        //TODO
         JFrame jf = new savePartitionWindow(pc);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -1586,7 +1560,6 @@ public class MainView extends javax.swing.JFrame {
         msg = "Best partition: " + jInfo.getJSONByKey("Best partition") + "\n";
         msg += "Best modularity: " + jInfo.getJSONByKey("Best modularity") + "\n";
         msg += "Other modularity: " + jInfo.getJSONByKey("Other modularity") + "\n";
-        //msg += "Percentage of accuracy: " + jInfo.getJSONByKey("Percentage of accuracy");
         JOptionPane.showMessageDialog(new JFrame(), msg);
     }//GEN-LAST:event_compareButtonActionPerformed
 
@@ -1640,19 +1613,15 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_delCommButtonActionPerformed
 
     private void communityList1CommunitiesListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_communityList1CommunitiesListValueChanged
-        // TODO add your handling code here:
     }//GEN-LAST:event_communityList1CommunitiesListValueChanged
 
     private void communityList2CommunitiesListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_communityList2CommunitiesListValueChanged
-        // TODO add your handling code here:
     }//GEN-LAST:event_communityList2CommunitiesListValueChanged
 
     private void communitiesTableCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_communitiesTableCaretPositionChanged
-        // TODO add your handling code here:
     }//GEN-LAST:event_communitiesTableCaretPositionChanged
 
     private void chooseAlgorithmComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseAlgorithmComboBoxActionPerformed
-        // TODO add your handling code here:
         if(chooseAlgorithmComboBox.getSelectedItem() != null && ((String)chooseAlgorithmComboBox.getSelectedItem()).equals("Newmann Girvan")) {
             argumentTextField.setEnabled(true);
         }else{
@@ -1662,7 +1631,6 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_chooseAlgorithmComboBoxActionPerformed
 
     private void hideAttrsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hideAttrsButtonActionPerformed
-        // TODO add your handling code here:
         this.updateMPManagementAttrDefinitionTable();
         this.updateMPManagementMPTable();
     }//GEN-LAST:event_hideAttrsButtonActionPerformed
@@ -1678,7 +1646,6 @@ public class MainView extends javax.swing.JFrame {
         // We must NOT manipulate with GUI components
         @Override
         protected Void doInBackground() throws Exception {
-            //System.out.print(algorithm);
             pc.computeCommunities(algorithm, argument);
             return null;
         }
@@ -1704,26 +1671,8 @@ public class MainView extends javax.swing.JFrame {
         }
     }
 
-    /*private void localeChange()
-    {
-        rb = ResourceBundle.getBundle("names_en");
-        mainWindow.setTitleAt(0,rb.getString("tab1"));
-        mainWindow.setTitleAt(1,rb.getString("tab2"));
-        mainWindow.setTitleAt(2,rb.getString("tab3"));
-        mainWindow.setTitleAt(3,rb.getString("tab4"));
-        addMPButton.setText(rb.getString("addbutton"));
-        modifyMPButton.setText(rb.getString("modbutton"));
-        deleteMPButton.setText(rb.getString("delbutton"));
-        loadCongressButton.setText(rb.getString("loadCgsButton"));
-        saveCongressButton.setText(rb.getString("saveCgsButton"));
-        newCongressButton.setText(rb.getString("nvCgsButton"));
-        hideAttrsButton.setText(rb.getString("hideBtn"));
-        newAttrDefButton.setText(rb.getString("newAttDef"));
-        modifyAttrDefButton.setText(rb.getString("modAttDef"));
-        attrDefinitionsLabel.setText(rb.getString("attdefLabel"));
-        MPsInCurrentCongressLabel.setText(rb.getString("mpmgmntLabel"));
 
-    }*/
+
 
 
     /**

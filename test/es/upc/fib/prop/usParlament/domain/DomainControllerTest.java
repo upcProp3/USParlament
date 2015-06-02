@@ -268,10 +268,6 @@ public class DomainControllerTest {
 
 		jo.addPair(new JSONString("Attributes"),ja);
 		String alex = jo.stringify();
-
-        /*String alex = new String("{\"State\":\"CA\",\"District\":\"2\",\"Name\":\"Alex\",\"Attributes\":[" +
-                "{\"AttrDefName\":\"sex\",\"AttrValue\":\"male\"},{\"AttrDefName\":\"party\",\"AttrValue\":\"democrat\"}," +
-                "{\"AttrDefName\":\"religion\",\"AttrValue\":\"catholicism\"}]}");//*/
 		String current = controller.getMP(State.NY, 1);
 		assertEquals(alex, current);
 	}
