@@ -206,14 +206,17 @@ public class DomainControllerImpl implements DomainController
     }
 
 
-    public String getMPsInPartition1 (String communityID) {
-        if (communityID == null) {
+    public String getMPsInPartition1 (String communityName) {
+        if (communityName == null) {
             return exceptionMaker(new IllegalArgumentException("ID can not be null"));
+        }
+        if (!partition1.containsKey(communityName)) {
+            return exceptionMaker(new IllegalArgumentException("partition doesn't contain the key"));
         }
         JSONObject mps = new JSONObject();
         JSONString js = new JSONString("mps");
         JSONArray ja = new JSONArray();
-        for (MP mp : partition1.get(communityID)) {
+        for (MP mp : partition1.get(communityName)) {
             JSONObject jo = new JSONObject();
             jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
             jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
@@ -227,6 +230,9 @@ public class DomainControllerImpl implements DomainController
     public String getMPsInPartition2(String communityName) {
         if (communityName == null) {
             return exceptionMaker(new IllegalArgumentException("ID can not be null"));
+        }
+        if (!partition2.containsKey(communityName)) {
+            return exceptionMaker(new IllegalArgumentException("partition doesn't contain the key"));
         }
         JSONObject mps = new JSONObject();
         JSONString js = new JSONString("mps");
@@ -398,7 +404,7 @@ public class DomainControllerImpl implements DomainController
     {
         Set<MP> v = mainPartition.get(oldName);
         mainPartition.remove(oldName);
-        mainPartition.put(newName,v);
+        mainPartition.put(newName, v);
     }
 
 

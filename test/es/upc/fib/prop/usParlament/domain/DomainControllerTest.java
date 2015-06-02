@@ -588,7 +588,7 @@ public class DomainControllerTest {
 	@Test
 	public void testGetMPsInMainPartition() throws Exception {
 		Congress congress = prepareCurrentCongress();
-		Map<String, Set<MP>>partition = prepareMainPartition();
+		Map<String, Set<MP>> partition = prepareMainPartition();
 		String mps = controller.getMPsInMainPartition("Community11");
 		JSONizer json = new JSONizer();
 		JSONObject current = json.StringToJSON(mps);
@@ -621,13 +621,13 @@ public class DomainControllerTest {
 	@Test
 	public void testGetMPsInPartition1() throws Exception {
 		Congress congress = prepareCurrentCongress();
-		Map<String, Set<MP>>partition = preparePartition1();
-		String mps = controller.getMPsInPartition1("1");
+		Map<String, Set<MP>> partition = preparePartition1();
+		String mps = controller.getMPsInPartition1("Community11");
 		JSONizer json = new JSONizer();
 		JSONObject current = json.StringToJSON(mps);
 		JSONObject expected = new JSONObject();
 		JSONArray expectedMPs = new JSONArray();
-		for (MP mp : partition.get(1)) {
+		for (MP mp : partition.get("Community11")) {
 			JSONObject jMP = new JSONObject();
 			jMP.addPair("State", new JSONString(mp.getState().toString()));
 			jMP.addPair("District", new JSONString(""+mp.getDistrict()));
@@ -655,12 +655,12 @@ public class DomainControllerTest {
 	public void testGetMPsInPartition2() throws Exception {
 		Congress congress = prepareCurrentCongress();
 		Map<String, Set<MP>>partition = preparePartition2();
-		String mps = controller.getMPsInPartition2("1");
+		String mps = controller.getMPsInPartition2("Community11");
 		JSONizer json = new JSONizer();
 		JSONObject current = json.StringToJSON(mps);
 		JSONObject expected = new JSONObject();
 		JSONArray expectedMPs = new JSONArray();
-		for (MP mp : partition.get(1)) {
+		for (MP mp : partition.get("Community11")) {
 			JSONObject jMP = new JSONObject();
 			jMP.addPair("State", new JSONString(mp.getState().toString()));
 			jMP.addPair("District", new JSONString(""+mp.getDistrict()));
@@ -706,7 +706,12 @@ public class DomainControllerTest {
 
 	@Test
 	public void testCompare2partitions() throws Exception {
-		throw new UnsupportedOperationException();
+		Congress congress = prepareCurrentCongress();
+		//Map<String, Set<MP>> part = prepareMainPartition();
+		Map<String, Set<MP>> part1 = preparePartition1();
+		Map<String, Set<MP>> part2 = preparePartition2();
+		String results = controller.compare2partitions();
+		System.out.println(results);
 	}
 
 	@Test
@@ -753,32 +758,32 @@ public class DomainControllerTest {
 		Congress congress = prepareCurrentCongress();
 		Map<String, Set<MP>>partition = prepareMainPartition();
 		int size = partition.size();
-		Set<MP> toRemove = partition.get(1);
-		controller.removeCommunity("1");
+		Set<MP> toRemove = partition.get("Community11");
+		controller.removeCommunity("Community11");
 		assertEquals(size - 1, controller.getMainPartition().size());
-		//assertFalse(controller.getMainPartition().contains(toRemove));
+		assertFalse(controller.getMainPartition().containsKey("Community11"));
 	}
 
 	@Test
 	public void testAddMPToCommunity() throws Exception {
 		Congress congress = prepareCurrentCongress();
-		Map<String, Set<MP>>partition = prepareMainPartition();
-		int size = partition.get(1).size();
-		assertFalse(controller.getMainPartition().get(1).contains(congress.getMP(State.WA, 1)));
-		controller.addMPToCommunity("1", State.WA, 1);
-		assertEquals(size + 1, controller.getMainPartition().get(1).size());
-		assertTrue(controller.getMainPartition().get(1).contains(congress.getMP(State.WA, 1)));
+		Map<String, Set<MP>> partition = prepareMainPartition();
+		int size = partition.get("Community11").size();
+		assertFalse(controller.getMainPartition().get("Community11").contains(congress.getMP(State.WA, 1)));
+		controller.addMPToCommunity("Community11", State.WA, 1);
+		assertEquals(size + 1, controller.getMainPartition().get("Community11").size());
+		assertTrue(controller.getMainPartition().get("Community11").contains(congress.getMP(State.WA, 1)));
 	}
 
 	@Test
 	public void testRemoveMPFromCommunity() throws Exception {
 		Congress congress = prepareCurrentCongress();
 		Map<String, Set<MP>> partition = prepareMainPartition();
-		int size = partition.get(1).size();
-		assertTrue(controller.getMainPartition().get(1).contains(congress.getMP(State.WA, 1)));
-		controller.removeMPFromCommunity("1", State.WA, 1);
-		assertEquals(size - 1, controller.getMainPartition().get(1).size());
-		assertFalse(controller.getMainPartition().get(1).contains(congress.getMP(State.WA, 1)));
+		int size = partition.get("Community11").size();
+		assertTrue(controller.getMainPartition().get("Community11").contains(congress.getMP(State.CO, 1)));
+		controller.removeMPFromCommunity("Community11", State.CO, 1);
+		assertEquals(size - 1, controller.getMainPartition().get("Community11").size());
+		assertFalse(controller.getMainPartition().get("Community11").contains(congress.getMP(State.CO, 1)));
 	}
 
 
@@ -865,14 +870,14 @@ public class DomainControllerTest {
 		Set<MP> comm2 = new HashSet<>();
 		Set<MP> comm3 = new HashSet<>();
 
-		List<MP> mps = new ArrayList<>(congress.getMPs());
-		comm1.add(mps.get(0));
-		comm1.add(mps.get(1));
-		comm1.add(mps.get(2));
-		comm2.add(mps.get(2));
-		comm2.add(mps.get(3));
-		comm3.add(mps.get(4));
-		comm3.add(mps.get(5));
+
+		comm3.add(congress.getMP(State.CA, 1));
+		comm3.add(congress.getMP(State.NY, 1));
+		comm3.add(congress.getMP(State.WA, 1));
+		comm2.add(congress.getMP(State.CO, 1));
+		comm2.add(congress.getMP(State.CO, 2));
+		comm1.add(congress.getMP(State.CO, 2));
+		comm1.add(congress.getMP(State.OH, 2));
 
 		partition.put("Community10", comm1);
 		partition.put("Community11", comm2);
@@ -888,14 +893,20 @@ public class DomainControllerTest {
 		Set<MP> comm2 = new HashSet<>();
 		Set<MP> comm3 = new HashSet<>();
 
-		List<MP> mps = new ArrayList<>(congress.getMPs());
-		comm1.add(mps.get(5));
-		comm1.add(mps.get(4));
-		comm1.add(mps.get(3));
-		comm2.add(mps.get(2));
-		comm2.add(mps.get(1));
-		comm3.add(mps.get(1));
-		comm3.add(mps.get(0));
+		MP ondrej = new MP("Ondrej", State.CA, 1);
+		MP alex = new MP("Alex", State.NY, 1);
+		MP aleix = new MP("Aleix", State.WA, 1);
+		MP miquel = new MP("Miquel", State.CO, 1);
+		MP homer = new MP("Homer", State.CO, 2);
+		MP kate = new MP("Kate", State.OH, 2);
+
+		comm1.add(congress.getMP(State.CA, 1));
+		comm1.add(congress.getMP(State.NY, 1));
+		comm1.add(congress.getMP(State.WA, 1));
+		comm2.add(congress.getMP(State.CO, 1));
+		comm2.add(congress.getMP(State.CO, 2));
+		comm3.add(congress.getMP(State.CO, 2));
+		comm3.add(congress.getMP(State.OH, 2));
 
 		partition.put("Community10", comm1);
 		partition.put("Community11", comm2);
@@ -910,13 +921,12 @@ public class DomainControllerTest {
 		Set<MP> comm1 = new HashSet<>();
 		Set<MP> comm2 = new HashSet<>();
 
-		List<MP> mps = new ArrayList<>(congress.getMPs());
-		comm1.add(mps.get(0));
-		comm1.add(mps.get(1));
-		comm1.add(mps.get(2));
-		comm1.add(mps.get(3));
-		comm2.add(mps.get(3));
-		comm2.add(mps.get(4));
+		comm1.add(congress.getMP(State.CA, 1));
+		comm1.add(congress.getMP(State.NY, 1));
+		comm1.add(congress.getMP(State.WA, 1));
+		comm1.add(congress.getMP(State.CO, 1));
+		comm2.add(congress.getMP(State.CO, 1));
+		comm2.add(congress.getMP(State.OH, 2));
 
 		partition.put("Community10", comm1);
 		partition.put("Community11", comm2);
