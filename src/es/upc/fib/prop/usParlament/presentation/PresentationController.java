@@ -122,12 +122,12 @@ public class PresentationController {
         return null;
     }
 
-    public void addMPToCommunity(Integer cNumb, State st, Integer dt) {
-        dc.addMPToCommunity(String.valueOf(cNumb), st, dt);
+    public void addMPToCommunity(String name, State st, Integer dt) {
+        dc.addMPToCommunity(name, st, dt);
     }
 
-    public void deleteMPFromCommunity (Integer cNumb, State st, Integer dt) {
-        dc.removeMPFromCommunity(String.valueOf(cNumb), st, dt);
+    public void deleteMPFromCommunity (String name, State st, Integer dt) {
+        dc.removeMPFromCommunity(name , st, dt);
     }
 
     public boolean existsAttrDef(String name)
@@ -196,10 +196,10 @@ public class PresentationController {
         return ids;
     }
 
-    public Set<JSONObject> getMPsCurrentPartition(int selectedCommunity) {
+    public Set<JSONObject> getMPsCurrentPartition(String community) {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
-                dc.getMPsInMainPartition(String.valueOf(selectedCommunity)))
+                dc.getMPsInMainPartition(community))
                 .getJSONByKey("mps");
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {
@@ -208,10 +208,10 @@ public class PresentationController {
         return mps;
     }
 
-    public Set<JSONObject> getMPsPartition1(int selectedCommunity) {
+    public Set<JSONObject> getMPsPartition1(String selectedCommunity) {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
-                dc.getMPsInPartition1(String.valueOf(selectedCommunity)))
+                dc.getMPsInPartition1(selectedCommunity))
                 .getJSONByKey("mps");
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {
