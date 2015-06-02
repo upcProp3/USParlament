@@ -190,15 +190,12 @@ public class AddMPWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void stateChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateChooserActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_stateChooserActionPerformed
 
     private void districtTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_districtTextFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_districtTextFieldActionPerformed
 
     private void addMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPButtonActionPerformed
-        // TODO add your handling code here:
         String dist = districtTextField.getText();
         String state = (stateChooser.getSelectedItem().toString());
         String name = MPNameTextField.getText();
@@ -253,20 +250,18 @@ public class AddMPWindow extends javax.swing.JFrame {
         }
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO INICIALITZIACIO DELS ELEMENTS DE LA FINESTRA
+        // INICIALITZIACIO DELS ELEMENTS DE LA FINESTRA
         
 
         
     }//GEN-LAST:event_formWindowOpened
 
     private void valueTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueTextFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_valueTextFieldActionPerformed
 
     @SuppressWarnings("empty-statement")
     private void addAttributeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAttributeButtonActionPerformed
-        // TODO add Attribute
-        
+
         String value = valueTextField.getText();
         Object oattr = attributeDefChooser.getSelectedItem();
         String attr = ((String)oattr);

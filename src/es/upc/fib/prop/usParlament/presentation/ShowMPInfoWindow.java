@@ -26,14 +26,6 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
     public ShowMPInfoWindow(PresentationController pc, String st, int dt) {
         initComponents();
         this.pc = pc;
-        System.out.println("State:"+st);
-        System.out.println("District:"+dt);
-
-        //State s = State.valueOf(st);
-        //int d = Integer.parseInt(dt);
-        //State s = State.valueOf("NY");
-        //int d = 15;
-        //mp = pc.getMPInfo(s, d);
 
         actu(st, dt);
     }
@@ -54,7 +46,6 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        //Map<String, String> m = mp.basicJSONObjectGetInfo();
         String[] s = new String[] {"State", "District", "Name"};
 
 
@@ -130,15 +121,7 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
 
         for(JSON jo:a.getArray()){
             String s =((JSONString)((JSONObject)jo).getJSONByKey("AttrDefName")).getValue();
-            /*String imp =((JSONString)((JSONObject)jo).getJSONByKey("AttrDefImportance")).getValue();
-
-            if(imp.equals("0")) imp = "(N)";
-            if(imp.equals("1")) imp = "(L)";
-            if(imp.equals("4")) imp = "(M)";
-            if(imp.equals("16")) imp = "(H)";
-            s = s+imp;*/
             dtm.addColumn(s);
-            //System.out.println(imp);
         }
 
         Vector<String> row = new Vector<String>();
@@ -146,7 +129,6 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
         row.add(((JSONString)mp.getJSONByKey("District")).getValue());
         row.add(((JSONString)mp.getJSONByKey("Name")).getValue());
 
-        //int cnum = 3;
         JSONArray ja = (JSONArray)mp.getJSONByKey("Attributes");
         for (int cnum = 3; cnum < dtm.getColumnCount(); ++cnum) {
             boolean found = false;
@@ -161,19 +143,7 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
             if (!found) row.add("-");
         }
 
-        /*
-        JSONArray ja = (JSONArray)mp.getJSONByKey("Attributes");
-        for (JSON j : ja.getArray()) {
-            JSONObject jo = (JSONObject)j;
-            if (jo.hasKey(dtm.getColumnName(cnum))) {
-                row.add(((JSONString)mp.getJSONByKey(dtm.getColumnName(cnum))).getValue());
-            }
-            else row.add("-");
-            ++cnum;
-
-        }//*/
-
-        dtm.addRow(row);//*/
+        dtm.addRow(row);
         ShowMPInfoTable.setModel(dtm);
         ShowMPInfoTable.getTableHeader().setReorderingAllowed(false);
 

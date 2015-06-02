@@ -22,7 +22,6 @@ public class SaveCongressWindow extends javax.swing.JFrame {
         this.pc = pc;
         this.mv = mv;
         initComponents();
-        System.out.print(pc.getCurrentCongressName());
         jTextField1.setText(pc.getCurrentCongressName());
     }
 
@@ -85,7 +84,6 @@ public class SaveCongressWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         String name = jTextField1.getText();
         if (pc.saveCurrentCongress(name).equals("{}")) {
             JOptionPane.showMessageDialog(new JFrame(), "Congress saved");

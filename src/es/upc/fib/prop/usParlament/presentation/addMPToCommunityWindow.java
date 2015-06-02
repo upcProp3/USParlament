@@ -16,7 +16,6 @@ import java.util.Set;
  * @author miquel
  */
 
-//TODO: Testing (not possible until the tables show the info).
 public class addMPToCommunityWindow extends javax.swing.JFrame {
 
     private PresentationController pc;
@@ -39,7 +38,6 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
 
     public void inicialitza()
     {
-        System.out.println("INICIALITZAT");
 
         JSONObject j = pc.getShortMPList();
         JSONArray ja = (JSONArray)j.getJSONByKey("MPList");
@@ -151,7 +149,6 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void stateComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateComboBoxActionPerformed
-        // TODO add your handling code here:
         updateBoxes();
     }//GEN-LAST:event_stateComboBoxActionPerformed
 
@@ -161,14 +158,11 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
         districtComboBox.removeAllItems();
 
         if(stateComboBox.getSelectedItem()== null){
-            System.out.println("NO STATE");
             return;
         }
         State st = (State) stateComboBox.getSelectedItem();
         Set<String> districts = new LinkedHashSet();
-        System.out.println("Districts:"+districts);
         Set<JSONObject> cpmp = pc.getMPsCurrentPartition(cNumb);
-        System.out.println("cpmp:"+cpmp);
         for(JSONObject mpc:cpmp){
 
             if(st.equals(State.valueOf(mpc.basicJSONObjectGetInfo().get("State")))){
@@ -191,7 +185,6 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
 
 
     private void districtComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_districtComboBoxActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_districtComboBoxActionPerformed
 
     private void addMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPButtonActionPerformed
