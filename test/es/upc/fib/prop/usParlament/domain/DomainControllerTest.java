@@ -13,6 +13,7 @@ import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * Created by ondrej on 1.6.15.
@@ -21,6 +22,7 @@ public class DomainControllerTest {
 
 	private final String PATH = "domainControllerTest";
 	private final String[] CONGRESS_NAMES = {"congress0", "congress1", "congress2"};
+	private final String[] PARTITION_NAMES = {"partition0", "partition1", "partition2"};
 	DomainControllerImpl controller;
 
 	@Before
@@ -106,7 +108,8 @@ public class DomainControllerTest {
 	@Test
 	public void testSaveCurrentCongress() throws Exception {
 		Congress congress = prepareCurrentCongress();
-		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		String exception = controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		assertEquals("{}", exception);
 		controller.loadCongressAsCurrent(CONGRESS_NAMES[0]);
 		Congress current = controller.getCurrentCongress();
 		assertEquals(congress, current);
@@ -278,7 +281,9 @@ public class DomainControllerTest {
 	@Test
 	public void testAddMP() throws Exception {
 		Congress congress = prepareCurrentCongress();
-		controller.addMP("{\"Name\":\"Aleix\",\"State\":\"WA\",\"District\":\"2\"}");
+		assertNull(congress.getMP(State.WA, 2));
+		String exception = controller.addMP("{\"Name\":\"Aleix\",\"State\":\"WA\",\"District\":\"2\"}");
+		assertEquals("{}", exception);
 		assertNotNull(congress.getMP(State.WA, 2));
 	}
 	@Test
@@ -302,14 +307,45 @@ public class DomainControllerTest {
 
 	@Test
 	public void testRemoveMP() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		assertNotNull(congress.getMP(State.WA, 1));
+		String exception = controller.removeMP("{\"State\":\"WA\",\"District\":\"1\"}");
+		assertEquals("{}", exception);
+		assertNull(congress.getMP(State.WA, 1));
 	}
-
+	@Test
+	public void testRemoveMPWithoutState() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		String exception = controller.removeMP("{\"District\":\"1\"}");
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testRemoveMPWithoutDistrict() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		String exception = controller.removeMP("{\"State\":\"WA\"}");
+		expectedException(IllegalArgumentException.class, exception);
+	}
 	@Test
 	public void testRemoveMP1() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		assertNotNull(congress.getMP(State.WA, 1));
+		String exception = controller.removeMP(State.WA, 1);
+		assertEquals("{}", exception);
+		assertNull(congress.getMP(State.WA, 1));
 	}
-
+	@Test
+	public void testRemoveMPWithNullState() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		String exception = controller.removeMP(null, 1);
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testRemoveMPWithZeroDistrict() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		String exception = controller.removeMP(State.WA, 0);
+		expectedException(IllegalArgumentException.class, exception);
+	}
+/*
 	@Test
 	public void testGetAttrDefs() throws Exception {
 
@@ -344,45 +380,305 @@ public class DomainControllerTest {
 	public void testExistsAttrDef() throws Exception {
 
 	}
-
+*/
 	@Test
 	public void testSaveMainPartition() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> expected = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		String exception = controller.saveMainPartition(PARTITION_NAMES[0]);
+		assertEquals("{}", exception);
+		controller.loadPartitionInto(PARTITION_NAMES[0], "mainPartition");
+		List<Set<MP>> current = controller.getMainPartition();
+		assertEquals(expected, current);
+	}
+	@Test
+	public void testSaveMainPartitionWithoutSavedCongress() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> expected = prepareMainPartition();
+		String exception = controller.saveMainPartition(PARTITION_NAMES[0]);
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testSaveMainPartitionWithNullName() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> expected = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		String exception = controller.saveMainPartition(null);
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testSaveMainPartitionWithoutName() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> expected = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		String exception = controller.saveMainPartition("");
+		expectedException(IllegalArgumentException.class, exception);
 	}
 
 	@Test
-	public void testLoadPartitionInto() throws Exception {
-
+	public void testLoadPartitionIntoMain() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> expected = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		controller.saveMainPartition(PARTITION_NAMES[0]);
+		String exception = controller.loadPartitionInto(PARTITION_NAMES[0], "mainPartition");
+		List<Set<MP>> current = controller.getMainPartition();
+		assertEquals(expected, current);
+	}
+	@Test
+	public void testLoadPartitionInto1() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> expected = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		controller.saveMainPartition(PARTITION_NAMES[0]);
+		String exception = controller.loadPartitionInto(PARTITION_NAMES[0], "partition1");
+		List<Set<MP>> current = controller.getPartition1();
+		assertEquals(expected, current);
+	}
+	@Test
+	public void testLoadPartitionInto2() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> expected = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		controller.saveMainPartition(PARTITION_NAMES[0]);
+		String exception = controller.loadPartitionInto(PARTITION_NAMES[0], "partition2");
+		List<Set<MP>> current = controller.getPartition2();
+		assertEquals(expected, current);
+	}
+	@Test
+	public void testLoadPartitionIntoUnsavedPartition() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> expected = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		String exception = controller.loadPartitionInto(PARTITION_NAMES[0], "mainPartition");
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testLoadPartitionIntoUnsavedCongress() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> expected = prepareMainPartition();
+		String exception = controller.loadPartitionInto(PARTITION_NAMES[0], "mainPartition");
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testLoadPartitionIntoWithNullName() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> expected = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		controller.saveMainPartition(PARTITION_NAMES[0]);
+		String exception = controller.loadPartitionInto(null, "mainPartition");
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testLoadPartitionIntoNullField() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> expected = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		controller.saveMainPartition(PARTITION_NAMES[0]);
+		String exception = controller.loadPartitionInto(PARTITION_NAMES[0], null);
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testLoadPartitionIntoUnknownField() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> expected = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		controller.saveMainPartition(PARTITION_NAMES[0]);
+		String exception = controller.loadPartitionInto(PARTITION_NAMES[0], "partition");
+		expectedException(IllegalArgumentException.class, exception);
 	}
 
 	@Test
 	public void testLoadAllPartitionsInCurrentCongress() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		controller.saveMainPartition(PARTITION_NAMES[0]);
+		controller.saveMainPartition(PARTITION_NAMES[1]);
+		controller.saveMainPartition(PARTITION_NAMES[2]);
+		String currentString = controller.loadAllPartitionsInCurrentCongress();
 
+		JSONizer json = new JSONizer();
+		JSONObject current = json.StringToJSON(currentString);
+
+		JSONObject expected = new JSONObject();
+		JSONArray partitions = new JSONArray();
+		for (int i = 0; i < 3; i++ ) {
+			JSONObject part = new JSONObject();
+			JSONArray communities = new JSONArray();
+			for (Set<MP> comm : partition) {
+				JSONArray community = new JSONArray();
+				for (MP mp : comm) {
+					JSONObject jMP = new JSONObject();
+					jMP.addPair("state", new JSONString(mp.getState().toString()));
+					jMP.addPair("district", new JSONString(""+mp.getDistrict()));
+					community.addElement(jMP);
+				}
+				communities.addElement(community);
+			}
+			part.addPair("communities", communities);
+			partitions.addElement(part);
+		}
+		expected.addPair("partitions", partitions);
+
+		assertEquals(expected, current);
+	}
+	@Test
+	public void testLoadAllPartitionsInCurrentCongressEmpty() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		String currentString = controller.loadAllPartitionsInCurrentCongress();
+
+		JSONizer json = new JSONizer();
+		JSONObject current = json.StringToJSON(currentString);
+
+		JSONObject expected = new JSONObject();
+		JSONArray partitions = new JSONArray();
+		expected.addPair("partitions", partitions);
+
+		assertEquals(expected, current);
+	}
+	@Test
+	public void testLoadAllPartitionsInCurrentCongressUnsavedCongress() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		String exception = controller.loadAllPartitionsInCurrentCongress();
+		expectedException(IllegalArgumentException.class, exception);
 	}
 
 	@Test
-	public void testGetCommunityIDs() throws Exception {
-
+	public void testGetCommunityIDsMain() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		String ids = controller.getCommunityIDs("mainPartition");
+		JSONizer json = new JSONizer();
+		JSONArray jIDs = (JSONArray)json.StringToJSON(ids).getJSONByKey("ids");
+		for (int i = 0; i < partition.size(); i++) {
+			assertEquals(""+i, ((JSONString)jIDs.getArray().get(i)).getValue());
+		}
+	}
+	@Test
+	public void testGetCommunityIDsUnknownField() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		String exception = controller.getCommunityIDs("part1");
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testGetCommunityIDsNullField() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		String exception = controller.getCommunityIDs(null);
+		expectedException(IllegalArgumentException.class, exception);
 	}
 
 	@Test
 	public void testGetMainPartitionSize() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		String size = controller.getMainPartitionSize();
+		assertEquals(String.valueOf(partition.size()), size);
 	}
 
 	@Test
 	public void testGetMPsInMainPartition() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		String mps = controller.getMPsInMainPartition("1");
+		JSONizer json = new JSONizer();
+		JSONObject current = json.StringToJSON(mps);
+		JSONObject expected = new JSONObject();
+		JSONArray expectedMPs = new JSONArray();
+		for (MP mp : partition.get(1)) {
+			JSONObject jMP = new JSONObject();
+			jMP.addPair("State", new JSONString(mp.getState().toString()));
+			jMP.addPair("District", new JSONString(""+mp.getDistrict()));
+			expectedMPs.addElement(jMP);
+		}
+		expected.addPair("mps", expectedMPs);
+		assertEquals(expected, current);
+	}
+	@Test
+	public void testGetMPsInMainPartitionWithUnknownID() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		String exception = controller.getMPsInMainPartition("A");
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testGetMPsInMainPartitionWithNullID() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		String exception = controller.getMPsInMainPartition(null);
+		expectedException(IllegalArgumentException.class, exception);
 	}
 
 	@Test
 	public void testGetMPsInPartition1() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = preparePartition1();
+		String mps = controller.getMPsInPartition1("1");
+		JSONizer json = new JSONizer();
+		JSONObject current = json.StringToJSON(mps);
+		JSONObject expected = new JSONObject();
+		JSONArray expectedMPs = new JSONArray();
+		for (MP mp : partition.get(1)) {
+			JSONObject jMP = new JSONObject();
+			jMP.addPair("State", new JSONString(mp.getState().toString()));
+			jMP.addPair("District", new JSONString(""+mp.getDistrict()));
+			expectedMPs.addElement(jMP);
+		}
+		expected.addPair("mps", expectedMPs);
+		assertEquals(expected, current);
+	}
+	@Test
+	public void testGetMPsInPartition1WithUnknownID() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = preparePartition1();
+		String exception = controller.getMPsInPartition1("A");
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testGetMPsInPartition1WithNullID() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = preparePartition1();
+		String exception = controller.getMPsInPartition1(null);
+		expectedException(IllegalArgumentException.class, exception);
 	}
 
 	@Test
 	public void testGetMPsInPartition2() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = preparePartition2();
+		String mps = controller.getMPsInPartition2("1");
+		JSONizer json = new JSONizer();
+		JSONObject current = json.StringToJSON(mps);
+		JSONObject expected = new JSONObject();
+		JSONArray expectedMPs = new JSONArray();
+		for (MP mp : partition.get(1)) {
+			JSONObject jMP = new JSONObject();
+			jMP.addPair("State", new JSONString(mp.getState().toString()));
+			jMP.addPair("District", new JSONString(""+mp.getDistrict()));
+			expectedMPs.addElement(jMP);
+		}
+		expected.addPair("mps", expectedMPs);
+		assertEquals(expected, current);
+	}
+	@Test
+	public void testGetMPsInPartition2WithUnknownID() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = preparePartition2();
+		String exception = controller.getMPsInPartition2("A");
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testGetMPsInPartition2WithNullID() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = preparePartition2();
+		String exception = controller.getMPsInPartition2(null);
+		expectedException(IllegalArgumentException.class, exception);
 	}
 
 	@Test
@@ -511,7 +807,7 @@ public class DomainControllerTest {
 		Set<MP> comm2 = new HashSet<>();
 		Set<MP> comm3 = new HashSet<>();
 
-		List<MP> mps = new ArrayList<MP>(congress.getMPs());
+		List<MP> mps = new ArrayList<>(congress.getMPs());
 		comm1.add(mps.get(0));
 		comm1.add(mps.get(1));
 		comm1.add(mps.get(2));
@@ -534,7 +830,7 @@ public class DomainControllerTest {
 		Set<MP> comm2 = new HashSet<>();
 		Set<MP> comm3 = new HashSet<>();
 
-		List<MP> mps = new ArrayList<MP>(congress.getMPs());
+		List<MP> mps = new ArrayList<>(congress.getMPs());
 		comm1.add(mps.get(5));
 		comm1.add(mps.get(4));
 		comm1.add(mps.get(3));
@@ -556,7 +852,7 @@ public class DomainControllerTest {
 		Set<MP> comm1 = new HashSet<>();
 		Set<MP> comm2 = new HashSet<>();
 
-		List<MP> mps = new ArrayList<MP>(congress.getMPs());
+		List<MP> mps = new ArrayList<>(congress.getMPs());
 		comm1.add(mps.get(0));
 		comm1.add(mps.get(1));
 		comm1.add(mps.get(2));
