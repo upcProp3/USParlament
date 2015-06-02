@@ -31,6 +31,7 @@ public class DomainControllerImpl implements DomainController
     private Congress currentCongress;
     private String currentCongressName;
     private Map<String,Set<MP>> mainPartition;
+    private int currentCommunityNumber;
     private Map<String,Set<MP>> partition1;
     private Map<String,Set<MP>> partition2;
     private DataController dataController;
@@ -39,6 +40,7 @@ public class DomainControllerImpl implements DomainController
     {
         currentCongress = new Congress();
         mainPartition = new TreeMap<>();
+        currentCommunityNumber = 0;
         partition1 = new TreeMap<>();
         partition2 = new TreeMap<>();
         dataController = new DataControllerImpl("congresses");
@@ -47,13 +49,13 @@ public class DomainControllerImpl implements DomainController
     protected Congress getCurrentCongress() {
         return currentCongress;
     }
-    protected Map<String,Set<MP>> getMainPartition() {
+    protected Map<String, Set<MP>> getMainPartition() {
         return mainPartition;
     }
-    protected Map<String,Set<MP>> getPartition1() {
+    protected Map<String, Set<MP>> getPartition1() {
         return partition1;
     }
-    protected Map<String,Set<MP>> getPartition2() {
+    protected Map<String, Set<MP>> getPartition2() {
         return partition2;
     }
     protected void setDataController(DataController dataController) {
@@ -166,6 +168,7 @@ public class DomainControllerImpl implements DomainController
     public void newCongress() {
         currentCongress = new Congress();
         currentCongressName = null;
+        currentCommunityNumber = 0;
         mainPartition = new TreeMap<>();
         partition1 = new TreeMap<>();
         partition2 = new TreeMap<>();
@@ -189,7 +192,7 @@ public class DomainControllerImpl implements DomainController
         JSONString js = new JSONString("mps");
         JSONArray ja = new JSONArray();
         try {
-            for (MP mp : mainPartition.get(Integer.parseInt(communityID))) {
+            for (MP mp : mainPartition.get(communityID)) {
                 JSONObject jo = new JSONObject();
                 jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
                 jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
@@ -211,7 +214,7 @@ public class DomainControllerImpl implements DomainController
         JSONString js = new JSONString("mps");
         JSONArray ja = new JSONArray();
         try {
-            for (MP mp : partition1.get(Integer.parseInt(communityID))) {
+            for (MP mp : partition1.get(communityID)) {
                 JSONObject jo = new JSONObject();
                 jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
                 jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
@@ -233,7 +236,7 @@ public class DomainControllerImpl implements DomainController
         JSONString js = new JSONString("mps");
         JSONArray ja = new JSONArray();
         try {
-            for (MP mp : partition2.get(Integer.parseInt(communityID))) {
+            for (MP mp : partition2.get(communityID)) {
                 JSONObject jo = new JSONObject();
                 jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
                 jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
@@ -529,14 +532,17 @@ public class DomainControllerImpl implements DomainController
         }
         JSONObject jsonPartition = new JSONObject();
         JSONArray communities = new JSONArray();
-        for (Set<MP> community : mainPartition) {
-            JSONArray jsonCommunity = new JSONArray();
-            for (MP mp : community) {
+        for (Map.Entry<String, Set<MP>> community : mainPartition.entrySet()) {
+            JSONObject jsonCommunity = new JSONObject();
+            JSONArray jsonMPs = new JSONArray();
+            for (MP mp : community.getValue()) {
                 JSONObject jsonMP = new JSONObject();
                 jsonMP.addPair(new JSONString("state"), new JSONString(mp.getState().toString()));
                 jsonMP.addPair(new JSONString("district"), new JSONString(""+mp.getDistrict()));
-                jsonCommunity.addElement(jsonMP);
+                jsonMPs.addElement(jsonMP);
             }
+            jsonCommunity.addPair("name", new JSONString(community.getKey()));
+            jsonCommunity.addPair("mps", jsonMPs);
             communities.addElement(jsonCommunity);
         }
         jsonPartition.addPair("communities", communities);
@@ -556,18 +562,19 @@ public class DomainControllerImpl implements DomainController
         if (isException(respond)) {
             return respond;
         }
-        List<Set<MP>> newPartition = new ArrayList<>();
+        Map<String, Set<MP>> newPartition = new TreeMap();
         JSONObject jsonPartition = json.StringToJSON(respond);
         for (JSON jsonCom : ((JSONArray)jsonPartition.getJSONByKey("communities")).getArray()) {
-            Set<MP> community = new HashSet<>();
-            for (JSON j : ((JSONArray)jsonCom).getArray()) {
+            JSONObject comObj = (JSONObject)jsonCom;
+            Set<MP> mps = new HashSet<>();
+            for (JSON j : ((JSONArray)comObj.getJSONByKey("mps")).getArray()) {
                 JSONObject jsonMP = (JSONObject) j;
                 State state = State.valueOf(((JSONString)jsonMP.getJSONByKey("state")).getValue());
                 int dist = Integer.valueOf(((JSONString)jsonMP.getJSONByKey("district")).getValue());
                 MP mp = currentCongress.getMP(state, dist);
-                community.add(mp);
+                mps.add(mp);
             }
-            newPartition.add(community);
+            newPartition.put(((JSONString)comObj.getJSONByKey("name")).getValue(), mps);
         }
 
         switch (into) {
@@ -622,13 +629,13 @@ public class DomainControllerImpl implements DomainController
             default:
                 throw new IllegalArgumentException("Incorrect name of algorithm");
         }
-        List<Set<MP>> partition = new ArrayList<>();
+        Map<String, Set<MP>> partition = new TreeMap();
         for (Set<Node> set : alg.calculate()) {
             Set<MP> mpSet = new HashSet<>();
             for (Node n : set) {
                 mpSet.add((MP) n);
             }
-            partition.add(mpSet);
+            partition.put("Community"+currentCommunityNumber++, mpSet);
         }
         mainPartition = partition;
     }
@@ -638,7 +645,7 @@ public class DomainControllerImpl implements DomainController
         if (partition == null) {
             return exceptionMaker(new IllegalArgumentException("unknown partition"));
         }
-        List<Set<MP>> part;
+        Map<String, Set<MP>> part;
         switch (partition) {
             case "mainPartition" :
                 part = mainPartition;
@@ -653,9 +660,9 @@ public class DomainControllerImpl implements DomainController
                 return exceptionMaker(new IllegalArgumentException("unknown partition"));
         }
         JSONArray ids = new JSONArray();
-        for (Set comm : part) {
-            int id = part.indexOf(comm);
-            ids.addElement(new JSONString("" + id));
+        for (Map.Entry<String, Set<MP>> comm : part.entrySet()) {
+            String id = comm.getKey();
+            ids.addElement(new JSONString(id));
         }
         JSONObject jo = new JSONObject();
         jo.addPair("ids", ids);
@@ -665,41 +672,24 @@ public class DomainControllerImpl implements DomainController
 
     public void addMPToCommunity(String communityID, State state, int district) {
         MP m = currentCongress.getMP(state, district);
-        for (int i = 0; i < mainPartition.size(); i++) {
-            Set<MP> comm = mainPartition.get(i);
-            if (i == Integer.valueOf(communityID)) {
-                if (comm.contains(m)) return;
-                comm.add(m);
-            }
-            //else if (comm.contains(m)) comm.remove(m);
-        }
+        mainPartition.get(communityID).add(m);
     }
 
 
     public void removeMPFromCommunity (String communityID, State state, int district) {
         MP m = currentCongress.getMP(state, district);
-        for (int i = 0; i < mainPartition.size(); i++) {
-            if (i == Integer.valueOf(communityID)) {
-                mainPartition.get(i).remove(m);
-                return;
-            }
-        }
+        mainPartition.get(communityID).remove(m);
     }
 
 
     public void addNewCommunity () {
         Set<MP> newComm = new HashSet<>();
-        mainPartition.add(newComm);
+        mainPartition.put("Community"+currentCommunityNumber++, newComm);
     }
 
 
     public void removeCommunity (String communityID) {
-        for (int i = 0; i < mainPartition.size(); i++) {
-            if (i == Integer.valueOf(communityID)) {
-                mainPartition.remove(mainPartition.get(i));
-                return;
-            }
-        }
+        mainPartition.remove(communityID);
     }
 
 
@@ -707,7 +697,7 @@ public class DomainControllerImpl implements DomainController
         (new WeightAlgorithm(currentCongress)).computeAllWeights();
         Map<Node, Integer> part1 = new HashMap<>();
         int comm = 0;
-        for (Set<MP> c : partition1) {
+        for (Set<MP> c : partition1.values()) {
             for (MP m : c) {
                 part1.put(m, comm);
             }
@@ -715,7 +705,7 @@ public class DomainControllerImpl implements DomainController
         }
         Map<Node, Integer> part2 = new HashMap<>();
         comm = 0;
-        for (Set<MP> c : partition2) {
+        for (Set<MP> c : partition2.values()) {
             for (MP m : c) {
                 part2.put(m, comm);
             }
