@@ -47,13 +47,13 @@ public class DomainControllerImpl implements DomainController
     protected Congress getCurrentCongress() {
         return currentCongress;
     }
-    protected List<Set<MP>> getMainPartition() {
+    protected Map<String,Set<MP>> getMainPartition() {
         return mainPartition;
     }
-    protected List<Set<MP>> getPartition1() {
+    protected Map<String,Set<MP>> getPartition1() {
         return partition1;
     }
-    protected List<Set<MP>> getPartition2() {
+    protected Map<String,Set<MP>> getPartition2() {
         return partition2;
     }
     protected void setDataController(DataController dataController) {
@@ -166,9 +166,9 @@ public class DomainControllerImpl implements DomainController
     public void newCongress() {
         currentCongress = new Congress();
         currentCongressName = null;
-        mainPartition = new ArrayList<>();
-        partition1 = new ArrayList<>();
-        partition2 = new ArrayList<>();
+        mainPartition = new TreeMap<>();
+        partition1 = new TreeMap<>();
+        partition2 = new TreeMap<>();
     }
 
 
@@ -335,13 +335,13 @@ public class DomainControllerImpl implements DomainController
 
 
     public void cleanCommunityManager() {
-        mainPartition = new ArrayList<>();
+        mainPartition = new TreeMap<>();
     }
 
 
     public void cleanCompareManager() {
-        partition1 = new ArrayList<>();
-        partition2 = new ArrayList<>();
+        partition1 = new TreeMap<>();
+        partition2 = new TreeMap<>();
     }
 
 
