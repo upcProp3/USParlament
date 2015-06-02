@@ -1404,23 +1404,34 @@ public class MainView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
             return;
         }
-        String attrName = (String) attrDefinitionsTable.getValueAt(fila,0);
-        String initialImp = (String) attrDefinitionsTable.getValueAt(fila,1);
-        Object[] possibilities = {"None", "Low", "Medium", "High"};
-        String s = (String)JOptionPane.showInputDialog(
-                this, "Choose the new importance value",
+        String attrName = (String) attrDefinitionsTable.getValueAt(fila, 0);
+        String initialImp = (String) attrDefinitionsTable.getValueAt(fila, 1);
+        try {
+            Object[] possibilities = {"None", "Low", "Medium", "High"};
+            String s = (String) JOptionPane.showInputDialog(
+                    this, "Choose the new importance value",
 
-                "Modifying "+attrName+" definition",
-                JOptionPane.PLAIN_MESSAGE,
-                null,
-                possibilities,
-                initialImp);
-        JSONObject jAttrD = new JSONObject();
-        JSONString value = new JSONString(attrName);
-        jAttrD.addPair("AttrDefName", value);
-        JSONString value2 = new JSONString(s);
-        jAttrD.addPair("Importance", value2);
-        pc.addOrModifyAttrDef(jAttrD);
+                    "Modifying " + attrName + " definition",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    possibilities,
+                    initialImp);
+            JSONObject jAttrD = new JSONObject();
+            JSONString value = new JSONString(attrName);
+            jAttrD.addPair("AttrDefName", value);
+            JSONString value2 = new JSONString(s);
+            jAttrD.addPair("Importance", value2);
+            pc.addOrModifyAttrDef(jAttrD);
+
+        } catch (IllegalStateException e) {
+            JSONObject jAttrD = new JSONObject();
+            JSONString value = new JSONString(attrName);
+            jAttrD.addPair("AttrDefName", value);
+            JSONString value2 = new JSONString(initialImp);
+            jAttrD.addPair("Importance", value2);
+            pc.addOrModifyAttrDef(jAttrD);
+            JOptionPane.showMessageDialog(new JFrame(), "Modifying attribute aborted");
+        }
         updateMPManagementAttrDefinitionTable();
         updateMPManagementMPTable();
     }//GEN-LAST:event_modifyAttrDefButtonActionPerformed
