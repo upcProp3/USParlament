@@ -585,13 +585,16 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="labelCommunities" min="-2" max="-2" attributes="0"/>
-                              <Component id="communitiesTablePanel" alignment="0" pref="130" max="32767" attributes="0"/>
-                              <Component id="newCommButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="delCommButton" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="labelCommunities" min="-2" max="-2" attributes="0"/>
+                                  <Component id="communitiesTablePanel" alignment="0" pref="130" max="32767" attributes="0"/>
+                                  <Component id="newCommButton" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="delCommButton" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="changeNameButton" alignment="0" pref="130" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="MPsInCommuntiyPanel" min="-2" pref="130" max="-2" attributes="0"/>
@@ -631,7 +634,7 @@
                                           <Component id="deleteMPfromCommunityButton" min="-2" pref="50" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="showMPDataButton" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <EmptySpace pref="49" max="32767" attributes="0"/>
+                                          <EmptySpace pref="16" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="communitiesTablePanel" pref="0" max="32767" attributes="0"/>
@@ -639,6 +642,8 @@
                                       </Group>
                                   </Group>
                                   <Component id="newCommButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="changeNameButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="delCommButton" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -769,6 +774,14 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delCommButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="changeNameButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Change Name"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeNameButtonActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

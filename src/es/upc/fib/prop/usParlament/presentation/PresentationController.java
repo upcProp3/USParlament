@@ -121,12 +121,12 @@ public class PresentationController {
         return null;
     }
 
-    public void addMPToCommunity(Integer cNumb, State st, Integer dt) {
-        dc.addMPToCommunity(String.valueOf(cNumb), st, dt);
+    public void addMPToCommunity(String name, State st, Integer dt) {
+        dc.addMPToCommunity(name, st, dt);
     }
 
-    public void deleteMPFromCommunity (Integer cNumb, State st, Integer dt) {
-        dc.removeMPFromCommunity(String.valueOf(cNumb), st, dt);
+    public void deleteMPFromCommunity (String name, State st, Integer dt) {
+        dc.removeMPFromCommunity(name , st, dt);
     }
 
     public boolean existsAttrDef(String name)
@@ -166,7 +166,7 @@ public class PresentationController {
 
     public String saveCurrentPartition(String pName) throws InternalException {
         if (pName.trim().length() < 3) {
-            throw new InternalException("Partition name has to have at least 2 characters.");
+            throw new InternalException("Partition name has to have at least 3 characters.");
         }
         return dc.saveMainPartition(pName.trim());
     }
@@ -185,20 +185,34 @@ public class PresentationController {
         dc.computePartition(algorithm, argument);
     }
 
-    public List<Integer> getCommunityIDs(String partition) {
+    public boolean hasMainPartitionCommunityName(String name)
+    {
+        return dc.hasMainPartitionCommunityName(name);
+    }
+
+    public List<String> getCommunityIDs(String partition) {
         JSONizer json = new JSONizer();
         JSONArray jsonIds = (JSONArray)json.StringToJSON(dc.getCommunityIDs(partition)).getJSONByKey("ids");
-        List<Integer> ids = new ArrayList<>();
+        List<String> ids = new ArrayList<>();
         for (JSON jo : jsonIds.getArray()) {
-            ids.add(Integer.valueOf(((JSONString)jo).getValue()));
+            ids.add(((JSONString)jo).getValue());
         }
         return ids;
     }
 
-    public Set<JSONObject> getMPsCurrentPartition(int selectedCommunity) {
+
+
+    public void changeMainPartitionCommunityName(String oldName,String newName)
+    {
+        dc.changeMainPartitionCommunityName(oldName,newName);
+    }
+
+
+
+    public Set<JSONObject> getMPsCurrentPartition(String community) {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
-                dc.getMPsInMainPartition(String.valueOf(selectedCommunity)))
+                dc.getMPsInMainPartition(community))
                 .getJSONByKey("mps");
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {
@@ -207,10 +221,10 @@ public class PresentationController {
         return mps;
     }
 
-    public Set<JSONObject> getMPsPartition1(int selectedCommunity) {
+    public Set<JSONObject> getMPsPartition1(String selectedCommunity) {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
-                dc.getMPsInPartition1(String.valueOf(selectedCommunity)))
+                dc.getMPsInPartition1(selectedCommunity))
                 .getJSONByKey("mps");
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {
@@ -219,10 +233,10 @@ public class PresentationController {
         return mps;
     }
 
-    public Set<JSONObject> getMPsPartition2(int selectedCommunity) {
+    public Set<JSONObject> getMPsPartition2(String selectedCommunity) {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
-                dc.getMPsInPartition2(String.valueOf(selectedCommunity)))
+                dc.getMPsInPartition2(selectedCommunity))
                 .getJSONByKey("mps");
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {
@@ -235,8 +249,8 @@ public class PresentationController {
 
     public void addNewCommunity() { dc.addNewCommunity(); }
 
-    public void deleteSelectedCommunity(Integer cNumb) {
-        dc.removeCommunity(String.valueOf(cNumb));
+    public void deleteSelectedCommunity(String name) {
+        dc.removeCommunity(String.valueOf(name));
     }
 
     public JSONObject compareFunction() {
