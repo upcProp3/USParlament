@@ -19,17 +19,17 @@ import java.util.Set;
 public class addMPToCommunityWindow extends javax.swing.JFrame {
 
     private PresentationController pc;
-    private Integer cNumb;
+    private String name;
     private MainView pops;
     private int fila;
     /**
      * Creates new form addMPToCommunityWindow
      * @param pc
      */
-    public addMPToCommunityWindow(PresentationController pc, Integer cNumb, MainView mv, int fila) {
+    public addMPToCommunityWindow(PresentationController pc, String name, MainView mv, int fila) {
         initComponents();
         this.pc = pc;
-        this.cNumb = cNumb;
+        this.name = name;
         pops = mv;
         this.fila = fila;
         inicialitza();
@@ -162,7 +162,7 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
         }
         State st = (State) stateComboBox.getSelectedItem();
         Set<String> districts = new LinkedHashSet();
-        Set<JSONObject> cpmp = pc.getMPsCurrentPartition(cNumb);
+        Set<JSONObject> cpmp = pc.getMPsCurrentPartition(name);
         for(JSONObject mpc:cpmp){
 
             if(st.equals(State.valueOf(mpc.basicJSONObjectGetInfo().get("State")))){
@@ -193,7 +193,7 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
         if((String)districtComboBox.getSelectedItem()==null) return;
 
         Integer dt = Integer.parseInt((String)districtComboBox.getSelectedItem());
-        pc.addMPToCommunity(cNumb, st, dt);
+        pc.addMPToCommunity(name, st, dt);
         pops.updateMPsInCommunityTable();
         updateBoxes();
     }//GEN-LAST:event_addMPButtonActionPerformed

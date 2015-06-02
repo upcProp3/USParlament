@@ -112,13 +112,13 @@ public interface DomainController {
 	 * @post The AttrDefinition defined by jAttrDef is added/modified to/from the current congress.
 	 * @param attrDef JSON representation of the relative AttrDefinition.
 	 */
-	void addOrModifyAttrDef(String attrDef);
+	String addOrModifyAttrDef(String attrDef);
 
 	/**
 	 * Deletes the AttrDefinition attrDefName from the current congress.
 	 * @param attrDefName name of attribute definition to be deleted
 	 */
-	public void deleteAttrDef(String attrDefName);
+	String deleteAttrDef(String attrDefName);
 
 	/**
 	 * Adds the attribute to the MP specified. If the MP already has that attribute it is modified instead of added.
@@ -132,7 +132,7 @@ public interface DomainController {
 	 * @param mp JSON representation of MP (contains state and district)
 	 * @param attrs JSON representation of attributes to add with all information.
 	 */
-	void addOrModifyAttributes(String mp, String attrs);
+	String addOrModifyAttributes(String mp, String attrs);
 
 	/**
 	 * @pre The specified MP has a value defined for the specified attribute.
@@ -181,6 +181,13 @@ public interface DomainController {
 	 * @return JSON representation of array of partition IDs or exception.
 	 */
 	String getCommunityIDs(String partition);
+
+
+    public boolean hasMainPartitionCommunityName(String name);
+
+
+    public void changeMainPartitionCommunityName(String oldName,String newName);
+
 
 	/**
 	 * @return size (number of communities) of main partition
@@ -231,7 +238,7 @@ public interface DomainController {
 	 * @param algorithm  identificator of algorithm (N Clique Percolation, Four Clique Percolation, Louvian, Newmann Girvan).
 	 * @param argument  argument for algorithm if it need any.
 	 */
-	void computePartition(String algorithm, String argument);
+	String computePartition(String algorithm, String argument);
 
 
 
