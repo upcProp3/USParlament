@@ -619,7 +619,7 @@ public class DomainControllerImpl implements DomainController
     }
 
 
-    public void computePartition(String algorithm, String argument) {
+    public String computePartition(String algorithm, String argument) {
         computeRelationships();
         Algorithm alg;
         switch (algorithm) {
@@ -627,16 +627,24 @@ public class DomainControllerImpl implements DomainController
                 alg = new NCQAlgorithm(currentCongress);
                 break;
             case "Four Clique Percolation":
-                alg = new FCQAlgorithm(currentCongress, Double.valueOf(argument));
+                try {
+                    alg = new FCQAlgorithm(currentCongress, Double.valueOf(argument));
+                } catch (NumberFormatException e) {
+                    return exceptionMaker(new IllegalArgumentException("Format of arguent is not correct"));
+                }
                 break;
             case "Louvian":
                 alg = new LouvainAlgorithm(currentCongress);
                 break;
             case "Newmann Girvan":
-                alg = new NGAlgorithm(currentCongress, Integer.valueOf(argument));
+                try {
+                    alg = new NGAlgorithm(currentCongress, Integer.valueOf(argument));
+                } catch (NumberFormatException e) {
+                    return exceptionMaker(new IllegalArgumentException("Format of arguent is not correct"));
+                }
                 break;
             default:
-                throw new IllegalArgumentException("Incorrect name of algorithm");
+                return exceptionMaker(new IllegalArgumentException("Incorrect name of algorithm"));
         }
         Map<String, Set<MP>> partition = new TreeMap();
         for (Set<Node> set : alg.calculate()) {
@@ -647,6 +655,7 @@ public class DomainControllerImpl implements DomainController
             partition.put("Community" + currentCommunityNumber++, mpSet);
         }
         mainPartition = partition;
+        return "{}";
     }
 
 

@@ -711,7 +711,7 @@ public class DomainControllerTest {
 		Map<String, Set<MP>> part1 = preparePartition1();
 		Map<String, Set<MP>> part2 = preparePartition2();
 		String results = controller.compare2partitions();
-		System.out.println(results);
+		assertTrue(false);
 	}
 
 	@Test
@@ -738,8 +738,54 @@ public class DomainControllerTest {
 	}
 
 	@Test
-	public void testComputePartition() throws Exception {
-		throw new UnsupportedOperationException();
+	public void testComputePartitionLouvian() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		controller.computePartition("Louvian", null);
+		Map<String, Set<MP>> expected = prepareLouvianPartition();
+		Map<String, Set<MP>> actual = controller.getMainPartition();
+		assertEquals(new HashSet<>(expected.values()), new HashSet<>(actual.values()));
+	}
+	@Test
+	public void testComputePartitionNewmann2() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		controller.computePartition("Newmann Girvan", "2");
+		Map<String, Set<MP>> expected = prepareNewmann2Partition();
+		Map<String, Set<MP>> actual = controller.getMainPartition();
+		assertEquals(new HashSet<>(expected.values()), new HashSet<>(actual.values()));
+	}
+	@Test
+	public void testComputePartitionNewmann3() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		controller.computePartition("Newmann Girvan", "3");
+		Map<String, Set<MP>> expected = prepareNewmann3Partition();
+		Map<String, Set<MP>> actual = controller.getMainPartition();
+		assertEquals(new HashSet<>(expected.values()), new HashSet<>(actual.values()));
+	}
+	@Test
+	public void testComputePartitionNewmannWithNullArgument() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		String exception = controller.computePartition("Newmann Girvan", null);
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testComputePartitionNewmannWithWrongArgument() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		String exception = controller.computePartition("Newmann Girvan", "");
+		expectedException(IllegalArgumentException.class, exception);
+	}
+	@Test
+	public void testComputePartitionNClicque() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		controller.computePartition("N Clique Percolation", null);
+		Map<String, Set<MP>> expected = prepareNCliquePartition();
+		Map<String, Set<MP>> actual = controller.getMainPartition();
+		assertEquals(new HashSet<>(expected.values()), new HashSet<>(actual.values()));
+	}
+	@Test
+	public void testComputePartitionNewmannWithUnknownAlgorithm() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		String exception = controller.computePartition("louvan", null);
+		expectedException(IllegalArgumentException.class, exception);
 	}
 
 	@Test
@@ -748,7 +794,6 @@ public class DomainControllerTest {
 		Map<String, Set<MP>> partition = prepareMainPartition();
 		int size = partition.size();
 		controller.addNewCommunity();
-		System.out.print(partition);
 		assertEquals(String.valueOf(size + 1), controller.getMainPartitionSize());
 		assertNotNull(controller.getMainPartition().get("Community0"));
 	}
@@ -882,6 +927,86 @@ public class DomainControllerTest {
 		partition.put("Community10", comm1);
 		partition.put("Community11", comm2);
 		partition.put("Community12", comm3);
+
+		return partition;
+	}
+
+	private Map<String, Set<MP>>  prepareLouvianPartition() {
+		Map<String, Set<MP>> partition = new TreeMap<>();
+		Congress congress = controller.getCurrentCongress();
+
+		Set<MP> comm1 = new HashSet<>();
+		Set<MP> comm2 = new HashSet<>();
+
+		comm1.add(congress.getMP(State.CO, 1));
+		comm1.add(congress.getMP(State.CO, 2));
+		comm1.add(congress.getMP(State.WA, 1));
+		comm2.add(congress.getMP(State.CA, 1));
+		comm2.add(congress.getMP(State.NY, 1));
+		comm2.add(congress.getMP(State.OH, 2));
+
+		partition.put("Community0", comm1);
+		partition.put("Community1", comm2);
+
+		return partition;
+	}
+	private Map<String, Set<MP>>  prepareNewmann2Partition() {
+		Map<String, Set<MP>> partition = new TreeMap<>();
+		Congress congress = controller.getCurrentCongress();
+
+		Set<MP> comm1 = new HashSet<>();
+		Set<MP> comm2 = new HashSet<>();
+
+		comm1.add(congress.getMP(State.CO, 1));
+		comm1.add(congress.getMP(State.WA, 1));
+		comm1.add(congress.getMP(State.CA, 1));
+		comm1.add(congress.getMP(State.NY, 1));
+		comm1.add(congress.getMP(State.OH, 2));
+
+		comm2.add(congress.getMP(State.CO, 2));
+
+		partition.put("Community0", comm1);
+		partition.put("Community1", comm2);
+
+		return partition;
+	}
+	private Map<String, Set<MP>>  prepareNewmann3Partition() {
+		Map<String, Set<MP>> partition = new TreeMap<>();
+		Congress congress = controller.getCurrentCongress();
+
+		Set<MP> comm1 = new HashSet<>();
+		Set<MP> comm2 = new HashSet<>();
+		Set<MP> comm3 = new HashSet<>();
+
+		comm1.add(congress.getMP(State.NY, 1));
+		comm1.add(congress.getMP(State.OH, 2));
+		comm1.add(congress.getMP(State.CA, 1));
+
+		comm2.add(congress.getMP(State.CO, 2));
+
+		comm3.add(congress.getMP(State.CO, 1));
+		comm3.add(congress.getMP(State.WA, 1));
+
+		partition.put("Community0", comm1);
+		partition.put("Community1", comm2);
+		partition.put("Community2", comm3);
+
+		return partition;
+	}
+
+	private Map<String, Set<MP>>  prepareNCliquePartition() {
+		Map<String, Set<MP>> partition = new TreeMap<>();
+		Congress congress = controller.getCurrentCongress();
+
+		Set<MP> comm1 = new HashSet<>();
+
+		comm1.add(congress.getMP(State.CO, 1));
+		comm1.add(congress.getMP(State.WA, 1));
+		comm1.add(congress.getMP(State.CA, 1));
+		comm1.add(congress.getMP(State.NY, 1));
+		comm1.add(congress.getMP(State.OH, 2));
+
+		partition.put("Community0", comm1);
 
 		return partition;
 	}
