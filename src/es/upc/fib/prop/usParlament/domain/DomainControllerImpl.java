@@ -184,25 +184,22 @@ public class DomainControllerImpl implements DomainController
         return String.valueOf(mainPartition.size()); }
 
 
-    public String getMPsInMainPartition(String communityID) {
-        if (communityID == null) {
+    public String getMPsInMainPartition(String communityName) {
+        if (communityName == null) {
             return exceptionMaker(new IllegalArgumentException("ID can not be null"));
         }
         JSONObject mps = new JSONObject();
         JSONString js = new JSONString("mps");
         JSONArray ja = new JSONArray();
-        try {
-            for (MP mp : mainPartition.get(communityID)) {
-                JSONObject jo = new JSONObject();
-                jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
-                jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
-                ja.addElement(jo);
-            }
-            mps.addPair(js, ja);
-            return mps.stringify();
-        } catch (NumberFormatException e) {
-            return exceptionMaker(new IllegalArgumentException("ID has to be number"));
+
+        for (MP mp : mainPartition.get(communityName)) {
+            JSONObject jo = new JSONObject();
+            jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
+            jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
+            ja.addElement(jo);
         }
+        mps.addPair(js, ja);
+        return mps.stringify();
     }
 
 
@@ -213,40 +210,32 @@ public class DomainControllerImpl implements DomainController
         JSONObject mps = new JSONObject();
         JSONString js = new JSONString("mps");
         JSONArray ja = new JSONArray();
-        try {
-            for (MP mp : partition1.get(communityID)) {
-                JSONObject jo = new JSONObject();
-                jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
-                jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
-                ja.addElement(jo);
-            }
-            mps.addPair(js, ja);
-            return mps.stringify();
-        } catch (NumberFormatException e) {
-            return exceptionMaker(new IllegalArgumentException("ID has to be number"));
+        for (MP mp : partition1.get(communityID)) {
+            JSONObject jo = new JSONObject();
+            jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
+            jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
+            ja.addElement(jo);
         }
+        mps.addPair(js, ja);
+        return mps.stringify();
     }
 
 
-    public String getMPsInPartition2(String communityID) {
-        if (communityID == null) {
+    public String getMPsInPartition2(String communityName) {
+        if (communityName == null) {
             return exceptionMaker(new IllegalArgumentException("ID can not be null"));
         }
         JSONObject mps = new JSONObject();
         JSONString js = new JSONString("mps");
         JSONArray ja = new JSONArray();
-        try {
-            for (MP mp : partition2.get(communityID)) {
-                JSONObject jo = new JSONObject();
-                jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
-                jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
-                ja.addElement(jo);
-            }
-            mps.addPair(js, ja);
-            return mps.stringify();
-        } catch (NumberFormatException e) {
-            return exceptionMaker(new IllegalArgumentException("ID has to be number"));
+        for (MP mp : partition2.get(communityName)) {
+            JSONObject jo = new JSONObject();
+            jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
+            jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
+            ja.addElement(jo);
         }
+        mps.addPair(js, ja);
+        return mps.stringify();
     }
 
 
