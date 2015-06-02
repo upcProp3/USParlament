@@ -188,6 +188,9 @@ public class DomainControllerImpl implements DomainController
         if (communityName == null) {
             return exceptionMaker(new IllegalArgumentException("ID can not be null"));
         }
+        if (!mainPartition.containsKey(communityName)) {
+            return exceptionMaker(new IllegalArgumentException("partition doesn't contain the key"));
+        }
         JSONObject mps = new JSONObject();
         JSONString js = new JSONString("mps");
         JSONArray ja = new JSONArray();
@@ -563,7 +566,7 @@ public class DomainControllerImpl implements DomainController
                 MP mp = currentCongress.getMP(state, dist);
                 mps.add(mp);
             }
-            newPartition.put(((JSONString)comObj.getJSONByKey("name")).getValue(), mps);
+            newPartition.put(((JSONString) comObj.getJSONByKey("name")).getValue(), mps);
         }
 
         switch (into) {
@@ -624,7 +627,7 @@ public class DomainControllerImpl implements DomainController
             for (Node n : set) {
                 mpSet.add((MP) n);
             }
-            partition.put("Community"+currentCommunityNumber++, mpSet);
+            partition.put("Community" + currentCommunityNumber++, mpSet);
         }
         mainPartition = partition;
     }
@@ -673,7 +676,7 @@ public class DomainControllerImpl implements DomainController
 
     public void addNewCommunity () {
         Set<MP> newComm = new HashSet<>();
-        mainPartition.put("Community"+currentCommunityNumber++, newComm);
+        mainPartition.put("Community" + currentCommunityNumber++, newComm);
     }
 
 
