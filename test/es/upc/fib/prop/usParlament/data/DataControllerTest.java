@@ -1,6 +1,6 @@
 package es.upc.fib.prop.usParlament.data;
 
-import es.upc.fib.prop.usParlament.misc.*;
+import es.upc.fib.prop.usParlament.misc.JSONizer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +8,6 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -101,19 +100,23 @@ public class DataControllerTest {
 		}
 		expected += "]}";
 
-		assertEquals(sortJSONArray(expected, "congressesNames"), sortJSONArray(names, "congressesNames"));
+		JSONizer json = new JSONizer();
+
+		assertEquals(json.StringToJSON(expected), json.StringToJSON(names));
 	}
 
 
 	@Test
 	public void testSavePartition() throws Exception {
-
+		String congress = prepareCongresses().get(1);
 		List<String> mps = getMPs();
 
 		String p01 = "{\"mps\":[\"" +mps.get(4)+ "\",\"" +mps.get(5)+ "\",\"" +mps.get(0)+ "\"]}";
 
 		final int congPos = 0;
 		final int partPos = 1;
+
+		manager.saveCongress(CONGRESS_NAMES[congPos], congress);
 
 		String error = manager.savePartition(CONGRESS_NAMES[congPos], PARTITIONS_NAMES[congPos][partPos], p01);
 
@@ -157,7 +160,9 @@ public class DataControllerTest {
 		}
 		expected += "]}";
 
-		assertEquals(sortJSONArray(expected, "partitions"), sortJSONArray(res, "partitions"));
+		JSONizer json = new JSONizer();
+
+		assertEquals(json.StringToJSON(expected), json.StringToJSON(res));
 	}
 
 	@Test
@@ -179,19 +184,12 @@ public class DataControllerTest {
 			first = false;
 		}
 		expected += "]}";
-		System.out.println(res);
-		assertEquals(sortJSONArray(expected, "partitionNames"), sortJSONArray(res, "partitionNames"));
+
+		JSONizer json = new JSONizer();
+
+		assertEquals(json.StringToJSON(expected), json.StringToJSON(res));
 	}
 
-
-	private String sortJSONArray(String object, String nameOfArray) {
-		JSONizer jsonizer = new JSONizer();
-		JSONObject namesObj = jsonizer.StringToJSON(object);
-		JSONArray array = (JSONArray) namesObj.getJSONByKey(new JSONString(nameOfArray));
-		List<JSON> list = array.getArray();
-		Collections.sort(list);
-		return jsonizer.JSONtoString(namesObj);
-	}
 
 
 	private List<String> prepareCongresses() {
