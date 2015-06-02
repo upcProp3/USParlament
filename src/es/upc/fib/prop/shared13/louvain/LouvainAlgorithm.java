@@ -73,8 +73,6 @@ public class LouvainAlgorithm implements Algorithm
             if(!ndegree.containsKey(n)) ndegree.put(n,0.);
 
             Integer com = part.get(n);
-            //System.out.println("ND:"+ndegree.get(n));
-            //System.out.println("NDEC:"+dec.get(com));
             dec.put(com,dec.get(com)+ndegree.get(n));
         }
 
@@ -85,7 +83,7 @@ public class LouvainAlgorithm implements Algorithm
             mod+= (inc.get(i)/m)-(java.lang.Math.pow(dec.get(i)/(2*m),2));
         }
         return mod;
-    }//
+    }
 
     /**
      * Calculates the optimal partition of the graph given in the constructor using Louvain's modularity optimization algorithm
@@ -122,29 +120,11 @@ public class LouvainAlgorithm implements Algorithm
                     currentState.changeCommunity(n,bestCom);
                 }
 
-                /* old implementation
-                double bMod = currentState.modularity();
-                for (Node n : current.getNodes()) {
-                    Integer com = currentState.getCommunity(n);
-                    for (Node neigh : currentState.getNeighborsDiffCommuntity(n)) {
-                        currentState.changeCommunity(n, currentState.getCommunity(neigh));
-                        double mod = currentState.modularity();   //calculating the modularity each time is not efficient
-                        if (mod > bMod) {//New best partition
-                            localgain = true;
-                            gain = true;
-                            bMod = mod;
-                            com = currentState.getCommunity(neigh);
-                        } else {
-                            currentState.changeCommunity(n, com);
-                        }
-                    }
-                }
-                */
+
             }
             //Start of second phase, create new graph
             //if(gain){//If there was a gain
                 current = calculateNewGraph(current,currentState);
-            //}
         }
         bestPartition = new ArrayList<>();
         bestEstat = currentState;

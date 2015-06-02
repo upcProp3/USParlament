@@ -8,14 +8,6 @@ import java.util.Stack;
 public class JSONizer
 {
 
-    public static void main(String[] args)
-    {
-        String s = "{\"gat\":   \"meow\",\"cosa\":{\"ca\":[[\"cosa\"],[{\"dede\":[\"ca\"]}],[]]}}";
-        JSONizer j = new JSONizer();
-        System.out.println(s);
-        JSONObject jo = j.StringToJSON(s);
-        System.out.println(j.JSONtoString(j.StringToJSON(j.JSONtoString(jo))));
-    }
 
 
     private final String FORMAT_ERROR = "JSON FORMATTING ERROR";
@@ -93,7 +85,6 @@ public class JSONizer
         else if(el == '"') return s.indexOf('"',1);
         else throw new IllegalArgumentException(CLOSURE_EX+"\nString:"+s+" "+"\nchar:"+s.charAt(0));
 
-        //if(s.charAt(0) != el || s.charAt(s.length()-1) != alt) throw new IllegalArgumentException(CLOSURE_EX);
 
         int nel = 1;
         int position = 1;
@@ -126,7 +117,6 @@ public class JSONizer
             String ns = s.substring(currentIndex);
             int fins = correspondingClosure(ns)+1;
             ns = ns.substring(0,fins);
-            //System.out.println("name:"+ns);
             name = JSONStringParser(ns);
             currentIndex+=fins;
             if(s.charAt(currentIndex)!=':') System.out.println(FORMAT_ERROR+" Expected :");
@@ -135,7 +125,6 @@ public class JSONizer
             String vs = s.substring(currentIndex);
             int fivs = correspondingClosure(vs)+1;
             vs = vs.substring(0,fivs);
-            //System.out.println("value:"+vs);
             value = JSONValueParser(vs);
             currentIndex+=fivs;
 
@@ -196,9 +185,7 @@ public class JSONizer
             JSON j;
             String el = s.substring(currentIndex);
             int fiElement = correspondingClosure(el)+1;
-            //System.out.println("Fielement:"+fiElement);
             el = el.substring(0,fiElement);
-            //System.out.println("ELEMENT:"+el);
             j = JSONValueParser(el);
             currentIndex += fiElement;
             if(s.charAt(currentIndex)==',') {currentIndex++;}
