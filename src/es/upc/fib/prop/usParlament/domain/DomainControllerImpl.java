@@ -76,6 +76,18 @@ public class DomainControllerImpl implements DomainController
             return false;
         }
     }
+    private void recomputeCurrentCommunityNumber() {
+        int i;
+        for (String name : mainPartition.keySet()) {
+            if (name.substring(0,9).equals("Community")) {
+                i = Integer.valueOf(name.substring(9));
+                if (i >= currentCommunityNumber) {
+                    currentCommunityNumber = i+1;
+                }
+            }
+        }
+    }
+
 
     public void setMainToPartition1 () { partition1 = mainPartition; }
 
@@ -605,6 +617,7 @@ public class DomainControllerImpl implements DomainController
         switch (into) {
             case "mainPartition" :
                 mainPartition = newPartition;
+                recomputeCurrentCommunityNumber();
                 break;
             case "partition1" :
                 partition1 = newPartition;
@@ -663,6 +676,7 @@ public class DomainControllerImpl implements DomainController
                 return exceptionMaker(new IllegalArgumentException("Incorrect name of algorithm"));
         }
         Map<String, Set<MP>> partition = new TreeMap();
+        currentCommunityNumber = 0;
         for (Set<Node> set : alg.calculate()) {
             Set<MP> mpSet = new HashSet<>();
             for (Node n : set) {
