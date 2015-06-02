@@ -30,17 +30,17 @@ public class DomainControllerImpl implements DomainController
      */
     private Congress currentCongress;
     private String currentCongressName;
-    private List<Set<MP>> mainPartition;
-    private List<Set<MP>> partition1;
-    private List<Set<MP>> partition2;
+    private Map<String,Set<MP>> mainPartition;
+    private Map<String,Set<MP>> partition1;
+    private Map<String,Set<MP>> partition2;
     private DataController dataController;
 
     public DomainControllerImpl()
     {
         currentCongress = new Congress();
-        mainPartition = new ArrayList<>();
-        partition1 = new ArrayList<>();
-        partition2 = new ArrayList<>();
+        mainPartition = new TreeMap<>();
+        partition1 = new TreeMap<>();
+        partition2 = new TreeMap<>();
         dataController = new DataControllerImpl("congresses");
     }
     // only for tests
