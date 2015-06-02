@@ -1374,7 +1374,7 @@ public class MainView extends javax.swing.JFrame {
         model.addColumn("State");
         model.addColumn("District");
 
-        Integer selectedRow = (Integer) communityList2CommunitiesList.getSelectedValue();
+        String selectedRow = (String) communityList2CommunitiesList.getSelectedValue();
 
         if(selectedRow == null){
             MPList2Table.setModel(model);
@@ -1634,8 +1634,8 @@ public class MainView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
             return;
         }
-        Integer cNumb = Integer.valueOf((String) communitiesTable.getValueAt(fila, 0));
-        pc.deleteSelectedCommunity(cNumb);
+        String cname = (String) communitiesTable.getValueAt(fila, 0);
+        pc.deleteSelectedCommunity(cname);
         updateCommunitiesTable();
     }//GEN-LAST:event_delCommButtonActionPerformed
 
