@@ -597,7 +597,7 @@ public class DomainControllerImpl implements DomainController
 
     public String loadAllPartitionNamesInCurrentCongress() {
         if (currentCongressName == null) {
-            return "{\"Exception\":{\"Name\":\"IllegalArgumentException\",\"Message\":\"Current congress is not saved\"}}";
+            return exceptionMaker(new IllegalArgumentException("Current congress is not saved"));
         }
         return dataController.loadAllPartitionNamesOfCongress(currentCongressName);
     }
@@ -689,7 +689,7 @@ public class DomainControllerImpl implements DomainController
 
     public void addNewCommunity () {
         Set<MP> newComm = new HashSet<>();
-        mainPartition.add(mainPartition.size(), newComm);
+        mainPartition.add(newComm);
     }
 
 

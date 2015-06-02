@@ -11,9 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 /**
  * Created by ondrej on 1.6.15.
@@ -345,42 +343,42 @@ public class DomainControllerTest {
 		String exception = controller.removeMP(State.WA, 0);
 		expectedException(IllegalArgumentException.class, exception);
 	}
-/*
+
 	@Test
 	public void testGetAttrDefs() throws Exception {
-
+		throw new UnsupportedOperationException();
 	}
 
 	@Test
 	public void testAddOrModifyAttrDef() throws Exception {
-
+		throw new UnsupportedOperationException();
 	}
 
 	@Test
 	public void testDeleteAttrDef() throws Exception {
-
+		throw new UnsupportedOperationException();
 	}
 
 	@Test
 	public void testAddOrModifyAttribute() throws Exception {
-
+		throw new UnsupportedOperationException();
 	}
 
 	@Test
 	public void testAddOrModifyAttributes() throws Exception {
-
+		throw new UnsupportedOperationException();
 	}
 
 	@Test
 	public void testRemoveAttribute() throws Exception {
-
+		throw new UnsupportedOperationException();
 	}
 
 	@Test
 	public void testExistsAttrDef() throws Exception {
-
+		throw new UnsupportedOperationException();
 	}
-*/
+
 	@Test
 	public void testSaveMainPartition() throws Exception {
 		Congress congress = prepareCurrentCongress();
@@ -683,48 +681,103 @@ public class DomainControllerTest {
 
 	@Test
 	public void testSetMainToPartition1() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> part1 = preparePartition1();
+		List<Set<MP>> main = prepareMainPartition();
+		controller.setMainToPartition1();
+		assertEquals(main, controller.getPartition1());
+		assertEquals(main, controller.getMainPartition());
 	}
 
 	@Test
 	public void testSetMainToPartition2() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> part2 = preparePartition2();
+		List<Set<MP>> main = prepareMainPartition();
+		controller.setMainToPartition2();
+		assertEquals(main, controller.getPartition2());
+		assertEquals(main, controller.getMainPartition());
 	}
 
 	@Test
 	public void testCompare2partitions() throws Exception {
-
+		throw new UnsupportedOperationException();
 	}
 
 	@Test
 	public void testLoadAllPartitionNamesInCurrentCongress() throws Exception {
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		controller.saveCurrentCongress(CONGRESS_NAMES[0]);
+		controller.saveMainPartition(PARTITION_NAMES[0]);
+		controller.saveMainPartition(PARTITION_NAMES[1]);
+		controller.saveMainPartition(PARTITION_NAMES[2]);
+		String currentString = controller.loadAllPartitionNamesInCurrentCongress();
 
+		JSONizer json = new JSONizer();
+		JSONObject current = json.StringToJSON(currentString);
+
+		JSONObject expected = new JSONObject();
+		JSONArray names = new JSONArray();
+		for (String name : PARTITION_NAMES) {
+			names.addElement(new JSONString(name));
+		}
+		expected.addPair("partitionNames", names);
+
+		assertEquals(expected, current);
 	}
 
 	@Test
 	public void testComputePartition() throws Exception {
-
+		throw new UnsupportedOperationException();
 	}
 
 	@Test
 	public void testAddNewCommunity() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		int size = partition.size();
+		controller.addNewCommunity();
+		assertEquals(size + 1, controller.getMainPartition().size());
+		assertTrue(controller.getMainPartition().contains(new HashSet<MP>()));
+		assertEquals(new HashSet<MP>(), controller.getMainPartition().get(size));
 	}
 
 	@Test
 	public void testRemoveCommunity() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		int size = partition.size();
+		Set<MP> toRemove = partition.get(1);
+		controller.removeCommunity("1");
+		assertEquals(size - 1, controller.getMainPartition().size());
+		assertFalse(controller.getMainPartition().contains(toRemove));
 	}
 
 	@Test
 	public void testAddMPToCommunity() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		int size = partition.get(1).size();
+		assertFalse(controller.getMainPartition().get(1).contains(congress.getMP(State.WA, 1)));
+		controller.addMPToCommunity("1", State.WA, 1);
+		assertEquals(size + 1, controller.getMainPartition().get(1).size());
+		assertTrue(controller.getMainPartition().get(1).contains(congress.getMP(State.WA, 1)));
 	}
 
 	@Test
 	public void testRemoveMPFromCommunity() throws Exception {
-
+		Congress congress = prepareCurrentCongress();
+		List<Set<MP>> partition = prepareMainPartition();
+		int size = partition.get(1).size();
+		assertTrue(controller.getMainPartition().get(1).contains(congress.getMP(State.WA, 1)));
+		controller.removeMPFromCommunity("1", State.WA, 1);
+		assertEquals(size - 1, controller.getMainPartition().get(1).size());
+		assertFalse(controller.getMainPartition().get(1).contains(congress.getMP(State.WA, 1)));
 	}
+
+
+
 
 	private Congress prepareCurrentCongress() {
 		Congress congress = prepareCongress();
