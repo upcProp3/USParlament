@@ -1586,7 +1586,7 @@ public class MainView extends javax.swing.JFrame {
         msg = "Best partition: " + jInfo.getJSONByKey("Best partition") + "\n";
         msg += "Best modularity: " + jInfo.getJSONByKey("Best modularity") + "\n";
         msg += "Other modularity: " + jInfo.getJSONByKey("Other modularity") + "\n";
-        msg += "Percentage of accuracy: " + jInfo.getJSONByKey("Percentage of accuracy");
+        //msg += "Percentage of accuracy: " + jInfo.getJSONByKey("Percentage of accuracy");
         JOptionPane.showMessageDialog(new JFrame(), msg);
     }//GEN-LAST:event_compareButtonActionPerformed
 
