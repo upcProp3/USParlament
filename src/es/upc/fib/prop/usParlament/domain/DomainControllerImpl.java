@@ -310,10 +310,16 @@ public class DomainControllerImpl implements DomainController
     }
 
 
-    public void addOrModifyAttributes(String mp, String attrs) {
+    public String addOrModifyAttributes(String mp, String attrs) {
+        if (mp == null || attrs == null) {
+            return exceptionMaker(new IllegalArgumentException("Params cannot be null"));
+        }
         JSONizer json = new JSONizer();
         JSONArray jAttrs = (JSONArray)json.StringToJSON(attrs).getJSONByKey("attributes");
         JSONObject jMP = json.StringToJSON(mp);
+        if (jAttrs == null || !jMP.hasKey("State") || !jMP.hasKey("District")) {
+            return exceptionMaker(new IllegalArgumentException("Incorrect json object params"));
+        }
 
         Map<String,String> mpmss = jMP.basicJSONObjectGetInfo();
         MP mpObj = currentCongress.getMP(State.valueOf(mpmss.get("State")),Integer.parseInt(mpmss.get("District")));
@@ -329,7 +335,7 @@ public class DomainControllerImpl implements DomainController
             mpObj.addAttribute(new Attribute(atd,value));
 
         }
-
+        return "{}";
     }
 
 
@@ -359,9 +365,18 @@ public class DomainControllerImpl implements DomainController
     }
 
 
-    public void addOrModifyAttrDef(String attrDef) {
+    public String addOrModifyAttrDef(String attrDef) {
+        if (attrDef == null) {
+            return exceptionMaker(new IllegalArgumentException("attribute dafinition cannot be null"));
+        }
         JSONizer json = new JSONizer();
         JSONObject jAttrDef = json.StringToJSON(attrDef);
+        if (!jAttrDef.hasKey("AttrDefName")) {
+            return exceptionMaker(new IllegalArgumentException("attribute dafinition has to contain AttrDefName"));
+        }
+        if (!jAttrDef.hasKey("Importance")) {
+            return exceptionMaker(new IllegalArgumentException("attribute dafinition has to contain Importance"));
+        }
         JSONString key = new JSONString("AttrDefName");
         JSONString jAttrD = new JSONString(((JSONString)jAttrDef.getJSONByKey(key)).getValue());
         key.setValue("Importance");
@@ -383,7 +398,7 @@ public class DomainControllerImpl implements DomainController
                 importancia = 16;
                 break;
             default:
-                throw new IllegalStateException("IMPORTANCIA NO RECONEGUDA");
+                return exceptionMaker(new IllegalArgumentException("IMPORTANCIA NO RECONEGUDA"));
         }
 
         AttrDefinition ad = new AttrDefinition(jAttrD.getValue(), importancia);
@@ -392,6 +407,7 @@ public class DomainControllerImpl implements DomainController
         } else {
             currentCongress.addAttrDef(ad);
         }
+        return "{}";
     }
 
 
@@ -406,8 +422,12 @@ public class DomainControllerImpl implements DomainController
 
 
 
-    public void deleteAttrDef(String attrDefName) {
+    public String deleteAttrDef(String attrDefName) {
+        if (attrDefName == null) {
+            return exceptionMaker(new IllegalArgumentException("attrDefName cannot be null"));
+        }
         currentCongress.removeAttrDef(currentCongress.getAttrDef(attrDefName));
+        return "{}";
     }
 
 
