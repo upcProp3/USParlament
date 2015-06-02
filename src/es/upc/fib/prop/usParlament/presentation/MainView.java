@@ -1586,7 +1586,7 @@ public class MainView extends javax.swing.JFrame {
         msg = "Best partition: " + jInfo.getJSONByKey("Best partition") + "\n";
         msg += "Best modularity: " + jInfo.getJSONByKey("Best modularity") + "\n";
         msg += "Other modularity: " + jInfo.getJSONByKey("Other modularity") + "\n";
-        msg += "Percentage of accuracy: " + jInfo.getJSONByKey("Percentage of accuracy");
+        //msg += "Percentage of accuracy: " + jInfo.getJSONByKey("Percentage of accuracy");
         JOptionPane.showMessageDialog(new JFrame(), msg);
     }//GEN-LAST:event_compareButtonActionPerformed
 
@@ -1764,7 +1764,6 @@ public class MainView extends javax.swing.JFrame {
         });
     }
 
-    private ResourceBundle rb = ResourceBundle.getBundle("names_en");
     private PresentationController pc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CommunityManagement;

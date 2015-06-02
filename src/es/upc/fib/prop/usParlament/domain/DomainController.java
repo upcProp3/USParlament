@@ -90,13 +90,13 @@ public interface DomainController {
 	 * @param state first identificaro of MP
 	 * @param district second identificator of MP
 	 */
-	void removeMP(State state, int district);
+	String removeMP(State state, int district);
 
 	/**
 	 * remove MP from current congress
 	 * @param mp MP to be removed (contains state and district)
 	 */
-	void removeMP(String mp);
+	String removeMP(String mp);
 
 
 
