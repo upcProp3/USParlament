@@ -162,9 +162,7 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
         }
         State st = (State) stateComboBox.getSelectedItem();
         Set<String> districts = new LinkedHashSet();
-        System.out.println("Districts:"+districts);
         Set<JSONObject> cpmp = pc.getMPsCurrentPartition(name);
-        System.out.println("cpmp:"+cpmp);
         for(JSONObject mpc:cpmp){
 
             if(st.equals(State.valueOf(mpc.basicJSONObjectGetInfo().get("State")))){
