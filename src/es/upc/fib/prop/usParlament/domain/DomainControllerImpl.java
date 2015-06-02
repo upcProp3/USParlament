@@ -188,6 +188,9 @@ public class DomainControllerImpl implements DomainController
         if (communityName == null) {
             return exceptionMaker(new IllegalArgumentException("ID can not be null"));
         }
+        if (!mainPartition.containsKey(communityName)) {
+            return exceptionMaker(new IllegalArgumentException("partition doesn't contain the key"));
+        }
         JSONObject mps = new JSONObject();
         JSONString js = new JSONString("mps");
         JSONArray ja = new JSONArray();
@@ -203,14 +206,17 @@ public class DomainControllerImpl implements DomainController
     }
 
 
-    public String getMPsInPartition1 (String communityID) {
-        if (communityID == null) {
+    public String getMPsInPartition1 (String communityName) {
+        if (communityName == null) {
             return exceptionMaker(new IllegalArgumentException("ID can not be null"));
+        }
+        if (!partition1.containsKey(communityName)) {
+            return exceptionMaker(new IllegalArgumentException("partition doesn't contain the key"));
         }
         JSONObject mps = new JSONObject();
         JSONString js = new JSONString("mps");
         JSONArray ja = new JSONArray();
-        for (MP mp : partition1.get(communityID)) {
+        for (MP mp : partition1.get(communityName)) {
             JSONObject jo = new JSONObject();
             jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
             jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
@@ -224,6 +230,9 @@ public class DomainControllerImpl implements DomainController
     public String getMPsInPartition2(String communityName) {
         if (communityName == null) {
             return exceptionMaker(new IllegalArgumentException("ID can not be null"));
+        }
+        if (!partition2.containsKey(communityName)) {
+            return exceptionMaker(new IllegalArgumentException("partition doesn't contain the key"));
         }
         JSONObject mps = new JSONObject();
         JSONString js = new JSONString("mps");
@@ -395,7 +404,7 @@ public class DomainControllerImpl implements DomainController
     {
         Set<MP> v = mainPartition.get(oldName);
         mainPartition.remove(oldName);
-        mainPartition.put(newName,v);
+        mainPartition.put(newName, v);
     }
 
 
@@ -574,7 +583,7 @@ public class DomainControllerImpl implements DomainController
                 MP mp = currentCongress.getMP(state, dist);
                 mps.add(mp);
             }
-            newPartition.put(((JSONString)comObj.getJSONByKey("name")).getValue(), mps);
+            newPartition.put(((JSONString) comObj.getJSONByKey("name")).getValue(), mps);
         }
 
         switch (into) {
@@ -610,7 +619,7 @@ public class DomainControllerImpl implements DomainController
     }
 
 
-    public void computePartition(String algorithm, String argument) {
+    public String computePartition(String algorithm, String argument) {
         computeRelationships();
         Algorithm alg;
         switch (algorithm) {
@@ -618,16 +627,24 @@ public class DomainControllerImpl implements DomainController
                 alg = new NCQAlgorithm(currentCongress);
                 break;
             case "Four Clique Percolation":
-                alg = new FCQAlgorithm(currentCongress, Double.valueOf(argument));
+                try {
+                    alg = new FCQAlgorithm(currentCongress, Double.valueOf(argument));
+                } catch (NumberFormatException e) {
+                    return exceptionMaker(new IllegalArgumentException("Format of arguent is not correct"));
+                }
                 break;
             case "Louvian":
                 alg = new LouvainAlgorithm(currentCongress);
                 break;
             case "Newmann Girvan":
-                alg = new NGAlgorithm(currentCongress, Integer.valueOf(argument));
+                try {
+                    alg = new NGAlgorithm(currentCongress, Integer.valueOf(argument));
+                } catch (NumberFormatException e) {
+                    return exceptionMaker(new IllegalArgumentException("Format of arguent is not correct"));
+                }
                 break;
             default:
-                throw new IllegalArgumentException("Incorrect name of algorithm");
+                return exceptionMaker(new IllegalArgumentException("Incorrect name of algorithm"));
         }
         Map<String, Set<MP>> partition = new TreeMap();
         for (Set<Node> set : alg.calculate()) {
@@ -635,9 +652,10 @@ public class DomainControllerImpl implements DomainController
             for (Node n : set) {
                 mpSet.add((MP) n);
             }
-            partition.put("Community"+currentCommunityNumber++, mpSet);
+            partition.put("Community" + currentCommunityNumber++, mpSet);
         }
         mainPartition = partition;
+        return "{}";
     }
 
 
@@ -690,7 +708,7 @@ public class DomainControllerImpl implements DomainController
 
     public void addNewCommunity () {
         Set<MP> newComm = new HashSet<>();
-        mainPartition.put("Community"+currentCommunityNumber++, newComm);
+        mainPartition.put("Community" + currentCommunityNumber++, newComm);
     }
 
 

@@ -238,7 +238,7 @@ public interface DomainController {
 	 * @param algorithm  identificator of algorithm (N Clique Percolation, Four Clique Percolation, Louvian, Newmann Girvan).
 	 * @param argument  argument for algorithm if it need any.
 	 */
-	void computePartition(String algorithm, String argument);
+	String computePartition(String algorithm, String argument);
 
 
 
