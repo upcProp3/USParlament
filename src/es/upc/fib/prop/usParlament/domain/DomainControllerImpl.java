@@ -169,9 +169,9 @@ public class DomainControllerImpl implements DomainController
         currentCongress = new Congress();
         currentCongressName = null;
         currentCommunityNumber = 0;
-        mainPartition = new ArrayList<>();
-        partition1 = new ArrayList<>();
-        partition2 = new ArrayList<>();
+        mainPartition = new TreeMap<>();
+        partition1 = new TreeMap<>();
+        partition2 = new TreeMap<>();
     }
 
 
@@ -338,13 +338,13 @@ public class DomainControllerImpl implements DomainController
 
 
     public void cleanCommunityManager() {
-        mainPartition = new ArrayList<>();
+        mainPartition = new TreeMap<>();
     }
 
 
     public void cleanCompareManager() {
-        partition1 = new ArrayList<>();
-        partition2 = new ArrayList<>();
+        partition1 = new TreeMap<>();
+        partition2 = new TreeMap<>();
     }
 
 
