@@ -167,7 +167,7 @@ public class PresentationController {
 
     public String saveCurrentPartition(String pName) throws InternalException {
         if (pName.trim().length() < 3) {
-            throw new InternalException("Partition name has to have at least 2 characters.");
+            throw new InternalException("Partition name has to have at least 3 characters.");
         }
         return dc.saveMainPartition(pName.trim());
     }
