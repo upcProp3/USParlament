@@ -11,9 +11,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import java.util.Locale;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.Vector;
 import java.util.concurrent.ExecutionException;
 
@@ -1541,6 +1539,10 @@ public class MainView extends javax.swing.JFrame {
     }
 
     private void loadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadPartitionButtonActionPerformed
+        if (pc.getCurrentCongressName().equals("")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Congress hs to be saved before");
+            return;
+        }
         JFrame jf = new LoadPartitionWindow(pc, this, "mainPartition");
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -1596,6 +1598,10 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_list1UseCurrentPartitionButtonActionPerformed
 
     private void list1LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1LoadPartitionButtonActionPerformed
+        if (pc.getCurrentCongressName().equals("")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Congress hs to be saved before");
+            return;
+        }
         JFrame jf = new LoadPartitionWindow(pc, this, "partition1");
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -1607,6 +1613,10 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_list2UseCurrentPartitionButtonActionPerformed
 
     private void list2LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2LoadPartitionButtonActionPerformed
+        if (pc.getCurrentCongressName().equals("")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Congress hs to be saved before");
+            return;
+        }
         JFrame jf = new LoadPartitionWindow(pc, this, "partition2");
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
