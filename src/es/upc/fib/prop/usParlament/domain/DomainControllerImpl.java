@@ -328,6 +328,7 @@ public class DomainControllerImpl implements DomainController
 
     public void cleanCommunityManager() {
         mainPartition = new TreeMap<>();
+        currentCommunityNumber = 0;
     }
 
 

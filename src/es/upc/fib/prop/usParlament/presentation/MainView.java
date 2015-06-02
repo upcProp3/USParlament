@@ -11,10 +11,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import java.util.Locale;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Vector;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -1189,20 +1186,20 @@ public class MainView extends javax.swing.JFrame {
 
     public void updateCommunitiesTable()
     {
-        JSONObject j = pc.getMainPartitionSize();
         DefaultTableModel dtm = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row,int column){
                 return false;
             }
         };
-        JSONString jNumb = (JSONString) j.getJSONByKey("Number");
-        dtm.addColumn("Community number");
+        dtm.addColumn("Community");
+
+        List<String> ls = pc.getCommunityIDs("mainPartition");
+
         //System.out.println(jNumb.getValue());
-        for (int i = 0; i < Integer.valueOf(jNumb.getValue()); i++) {
-            JSONString ji = new JSONString(String.valueOf(i));
+        for (String l:ls) {
             Vector<String> value = new Vector<String>();
-            value.add(ji.getValue());
+            value.add(l);
             dtm.addRow(value);
         }
         communitiesTable.setModel(dtm);
