@@ -11,7 +11,9 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import java.util.Locale;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.Vector;
 import java.util.concurrent.ExecutionException;
 
@@ -33,6 +35,7 @@ public class MainView extends javax.swing.JFrame {
         argumentTextField.setText("");
         argumentLabel.setText("Nº of comms.:");
         argumentTextField.setEnabled(false);
+        //localeChange();
     }
 
     /**
@@ -46,6 +49,14 @@ public class MainView extends javax.swing.JFrame {
 
         mainWindow = new javax.swing.JTabbedPane();
         mainView = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         congressManagementView = new javax.swing.JPanel();
         MPTablePanel = new javax.swing.JScrollPane();
         currentMPsTable = new javax.swing.JTable();
@@ -126,15 +137,85 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/congress.jpg"))); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel2.setText("US Congress Community Finder");
+
+        jLabel3.setText("Made By:");
+
+        jLabel4.setText("Aleix Sacrest");
+
+        jLabel5.setText("Alex Miró");
+
+        jLabel6.setText("Ondrej Velisek");
+
+        jLabel7.setText("Miquel Jubert");
+
         javax.swing.GroupLayout mainViewLayout = new javax.swing.GroupLayout(mainView);
         mainView.setLayout(mainViewLayout);
         mainViewLayout.setHorizontalGroup(
             mainViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 792, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainViewLayout.createSequentialGroup()
+                .addGroup(mainViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainViewLayout.createSequentialGroup()
+                        .addGroup(mainViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mainViewLayout.createSequentialGroup()
+                                .addContainerGap(27, Short.MAX_VALUE)
+                                .addComponent(jLabel2))
+                            .addGroup(mainViewLayout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addGroup(mainViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18))
+                    .addGroup(mainViewLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         mainViewLayout.setVerticalGroup(
             mainViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 568, Short.MAX_VALUE)
+            .addGroup(mainViewLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(mainViewLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addGap(24, 24, 24))
         );
 
         mainWindow.addTab("Main Page", mainView);
@@ -330,7 +411,7 @@ public class MainView extends javax.swing.JFrame {
                 .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(congressManagementViewLayout.createSequentialGroup()
                         .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(attrDefPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                            .addComponent(attrDefPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                             .addGroup(congressManagementViewLayout.createSequentialGroup()
                                 .addGroup(congressManagementViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(attrDefinitionsLabel)
@@ -560,7 +641,7 @@ public class MainView extends javax.swing.JFrame {
                         .addComponent(communitiesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(CommunityManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loadPartitionButton, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                            .addComponent(loadPartitionButton, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                             .addComponent(savePartitionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(newPartitionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(CommunityManagementLayout.createSequentialGroup()
@@ -602,7 +683,7 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(calculateCommunitiesButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(algorithmProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         mainWindow.addTab("Community Management", null, CommunityManagement, "");
@@ -749,7 +830,7 @@ public class MainView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(list2Label2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneMPList2, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                .addComponent(scrollPaneMPList2, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -833,7 +914,7 @@ public class MainView extends javax.swing.JFrame {
                     .addGroup(currentMPsPanelLayout.createSequentialGroup()
                         .addComponent(MPsInCurrentCongressLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(showSelectedMPInfoButton, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
+                    .addComponent(showSelectedMPInfoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         currentMPsPanelLayout.setVerticalGroup(
@@ -924,7 +1005,7 @@ public class MainView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainWindow, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(mainWindow, javax.swing.GroupLayout.PREFERRED_SIZE, 601, Short.MAX_VALUE)
         );
 
         pack();
@@ -1623,6 +1704,27 @@ public class MainView extends javax.swing.JFrame {
         }
     }
 
+    /*private void localeChange()
+    {
+        rb = ResourceBundle.getBundle("names_en");
+        mainWindow.setTitleAt(0,rb.getString("tab1"));
+        mainWindow.setTitleAt(1,rb.getString("tab2"));
+        mainWindow.setTitleAt(2,rb.getString("tab3"));
+        mainWindow.setTitleAt(3,rb.getString("tab4"));
+        addMPButton.setText(rb.getString("addbutton"));
+        modifyMPButton.setText(rb.getString("modbutton"));
+        deleteMPButton.setText(rb.getString("delbutton"));
+        loadCongressButton.setText(rb.getString("loadCgsButton"));
+        saveCongressButton.setText(rb.getString("saveCgsButton"));
+        newCongressButton.setText(rb.getString("nvCgsButton"));
+        hideAttrsButton.setText(rb.getString("hideBtn"));
+        newAttrDefButton.setText(rb.getString("newAttDef"));
+        modifyAttrDefButton.setText(rb.getString("modAttDef"));
+        attrDefinitionsLabel.setText(rb.getString("attdefLabel"));
+        MPsInCurrentCongressLabel.setText(rb.getString("mpmgmntLabel"));
+
+    }*/
+
 
     /**
      * @param args the command line arguments
@@ -1662,6 +1764,7 @@ public class MainView extends javax.swing.JFrame {
         });
     }
 
+    private ResourceBundle rb = ResourceBundle.getBundle("names_en");
     private PresentationController pc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CommunityManagement;
@@ -1705,6 +1808,14 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton deleteMPButton;
     private javax.swing.JButton deleteMPfromCommunityButton;
     private javax.swing.JRadioButton hideAttrsButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelCommunities;
     private javax.swing.JLabel labelMPs;
     private javax.swing.JLabel list1Label1;
