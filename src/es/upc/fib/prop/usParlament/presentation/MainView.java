@@ -11,7 +11,8 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import java.util.*;
+import java.util.Map;
+import java.util.Vector;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -1186,20 +1187,20 @@ public class MainView extends javax.swing.JFrame {
 
     public void updateCommunitiesTable()
     {
+        JSONObject j = pc.getMainPartitionSize();
         DefaultTableModel dtm = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row,int column){
                 return false;
             }
         };
-        dtm.addColumn("Community");
-
-        List<String> ls = pc.getCommunityIDs("mainPartition");
-
+        JSONString jNumb = (JSONString) j.getJSONByKey("Number");
+        dtm.addColumn("Community number");
         //System.out.println(jNumb.getValue());
-        for (String l:ls) {
+        for (int i = 0; i < Integer.valueOf(jNumb.getValue()); i++) {
+            JSONString ji = new JSONString(String.valueOf(i));
             Vector<String> value = new Vector<String>();
-            value.add(l);
+            value.add(ji.getValue());
             dtm.addRow(value);
         }
         communitiesTable.setModel(dtm);
@@ -1538,6 +1539,10 @@ public class MainView extends javax.swing.JFrame {
     }
 
     private void loadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadPartitionButtonActionPerformed
+        if (pc.getCurrentCongressName().equals("")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Congress hs to be saved before");
+            return;
+        }
         JFrame jf = new LoadPartitionWindow(pc, this, "mainPartition");
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -1593,6 +1598,10 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_list1UseCurrentPartitionButtonActionPerformed
 
     private void list1LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1LoadPartitionButtonActionPerformed
+        if (pc.getCurrentCongressName().equals("")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Congress hs to be saved before");
+            return;
+        }
         JFrame jf = new LoadPartitionWindow(pc, this, "partition1");
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -1604,6 +1613,10 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_list2UseCurrentPartitionButtonActionPerformed
 
     private void list2LoadPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list2LoadPartitionButtonActionPerformed
+        if (pc.getCurrentCongressName().equals("")) {
+            JOptionPane.showMessageDialog(new JFrame(), "Congress hs to be saved before");
+            return;
+        }
         JFrame jf = new LoadPartitionWindow(pc, this, "partition2");
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
