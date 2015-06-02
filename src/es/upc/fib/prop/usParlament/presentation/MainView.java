@@ -1555,12 +1555,22 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_calculateCommunitiesButtonActionPerformed
 
     private void compareButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compareButtonActionPerformed
-        JSONObject jInfo = pc.compareFunction();
-        String msg = new String();
-        msg = "Best partition: " + jInfo.getJSONByKey("Best partition") + "\n";
-        msg += "Best modularity: " + jInfo.getJSONByKey("Best modularity") + "\n";
-        msg += "Other modularity: " + jInfo.getJSONByKey("Other modularity") + "\n";
-        JOptionPane.showMessageDialog(new JFrame(), msg);
+        try {
+            JSONObject jInfo = pc.compareFunction();
+            String msg = new String();
+            if(!jInfo.getJSONByKey("Best modularity").equals(jInfo.getJSONByKey("Other modularity"))) {
+                msg = "Best partition: " + jInfo.getJSONByKey("Best partition") + "\n";
+
+            }else{
+                msg = "Both partitions are equally good\n";
+            }
+            msg += "Best modularity: " + jInfo.getJSONByKey("Best modularity") + "\n";
+            msg += "Other modularity: " + jInfo.getJSONByKey("Other modularity") + "\n";
+            JOptionPane.showMessageDialog(new JFrame(), msg);
+        }catch(IllegalArgumentException iae){
+
+            JOptionPane.showMessageDialog(new JFrame(), "Invalid Partitions, remember that each partition must map all nodes");
+        }
     }//GEN-LAST:event_compareButtonActionPerformed
 
     private void list1UseCurrentPartitionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list1UseCurrentPartitionButtonActionPerformed

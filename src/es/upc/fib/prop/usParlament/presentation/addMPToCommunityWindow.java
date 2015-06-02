@@ -189,6 +189,9 @@ public class addMPToCommunityWindow extends javax.swing.JFrame {
 
     private void addMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMPButtonActionPerformed
         State st = (State)stateComboBox.getSelectedItem();
+
+        if((String)districtComboBox.getSelectedItem()==null) return;
+
         Integer dt = Integer.parseInt((String)districtComboBox.getSelectedItem());
         pc.addMPToCommunity(cNumb, st, dt);
         pops.updateMPsInCommunityTable();
