@@ -1736,7 +1736,7 @@ public class MainView extends javax.swing.JFrame {
             return;
         }
         String temp = "Community";
-        if(newName.substring(0,temp.length()).equals(temp)){
+        if(newName.length()>=temp.length() && newName.substring(0,temp.length()).equals(temp)){
             JOptionPane.showMessageDialog(new JFrame(), "Invalid Name");
             return;
         }
