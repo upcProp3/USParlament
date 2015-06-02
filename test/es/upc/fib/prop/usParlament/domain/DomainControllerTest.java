@@ -343,7 +343,7 @@ public class DomainControllerTest {
 		String exception = controller.removeMP(State.WA, 0);
 		expectedException(IllegalArgumentException.class, exception);
 	}
-
+/*
 	@Test
 	public void testGetAttrDefs() throws Exception {
 		throw new UnsupportedOperationException();
@@ -378,7 +378,7 @@ public class DomainControllerTest {
 	public void testExistsAttrDef() throws Exception {
 		throw new UnsupportedOperationException();
 	}
-
+*/
 	@Test
 	public void testSaveMainPartition() throws Exception {
 		Congress congress = prepareCurrentCongress();
@@ -698,12 +698,12 @@ public class DomainControllerTest {
 		assertEquals(main, controller.getPartition2());
 		assertEquals(main, controller.getMainPartition());
 	}
-
+/*
 	@Test
 	public void testCompare2partitions() throws Exception {
 		throw new UnsupportedOperationException();
 	}
-
+*/
 	@Test
 	public void testLoadAllPartitionNamesInCurrentCongress() throws Exception {
 		Congress congress = prepareCurrentCongress();
@@ -729,7 +729,10 @@ public class DomainControllerTest {
 
 	@Test
 	public void testComputePartition() throws Exception {
-		throw new UnsupportedOperationException();
+		Congress congress = prepareCurrentCongress();
+		controller.computePartition("Louvian", null);
+		System.out.println(controller.getMainPartition());
+
 	}
 
 	@Test
@@ -759,10 +762,10 @@ public class DomainControllerTest {
 		Congress congress = prepareCurrentCongress();
 		List<Set<MP>> partition = prepareMainPartition();
 		int size = partition.get(1).size();
-		assertFalse(controller.getMainPartition().get(1).contains(congress.getMP(State.WA, 1)));
-		controller.addMPToCommunity("1", State.WA, 1);
+		assertFalse(controller.getMainPartition().get(1).contains(congress.getMP(State.CO, 1)));
+		controller.addMPToCommunity("1", State.CO, 1);
 		assertEquals(size + 1, controller.getMainPartition().get(1).size());
-		assertTrue(controller.getMainPartition().get(1).contains(congress.getMP(State.WA, 1)));
+		assertTrue(controller.getMainPartition().get(1).contains(congress.getMP(State.CO, 1)));
 	}
 
 	@Test
