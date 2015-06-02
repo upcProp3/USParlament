@@ -339,15 +339,28 @@ public class DomainControllerTest {
 		String exception = controller.removeMP(State.WA, 0);
 		expectedException(IllegalArgumentException.class, exception);
 	}
-/*
+
 	@Test
 	public void testGetAttrDefs() throws Exception {
-		throw new UnsupportedOperationException();
+		Congress congress = prepareCurrentCongress();
+		String defsString = controller.getAttrDefs();
+		String expected = "{\"Attribute Definitions\":[{\"AttrDefName\":\"party\",\"AttrDefImportance\":\"16\"}," +
+				"{\"AttrDefName\":\"religion\",\"AttrDefImportance\":\"4\"},{\"AttrDefName\":\"sex\"," +
+				"\"AttrDefImportance\":\"1\"},{\"AttrDefName\":\"sport\",\"AttrDefImportance\":\"1\"}]}";
+		JSONizer json = new JSONizer();
+		assertEquals(json.StringToJSON(expected), json.StringToJSON(defsString));
 	}
 
 	@Test
 	public void testAddOrModifyAttrDef() throws Exception {
-		throw new UnsupportedOperationException();
+		Congress congress = prepareCurrentCongress();
+		controller.addOrModifyAttrDef("{\"AttrDefName\":\"sport\",\"Importance\":\"Low\"}");
+		String expected = "{\"Attribute Definitions\":[{\"AttrDefName\":\"party\",\"AttrDefImportance\":\"16\"}," +
+				"{\"AttrDefName\":\"religion\",\"AttrDefImportance\":\"4\"},{\"AttrDefName\":\"sex\"," +
+				"\"AttrDefImportance\":\"1\"},{\"AttrDefName\":\"sport\",\"AttrDefImportance\":\"1\"}," +
+				"{\"AttrDefName\":\"sport\",\"AttrDefImportance\":\"1\"}]}";
+		JSONizer json = new JSONizer();
+		assertEquals(json.StringToJSON(expected), json.StringToJSON(controller.getAttrDefs()));
 	}
 
 	@Test
@@ -374,7 +387,7 @@ public class DomainControllerTest {
 	public void testExistsAttrDef() throws Exception {
 		throw new UnsupportedOperationException();
 	}
-*/
+
 	@Test
 	public void testSaveMainPartition() throws Exception {
 		Congress congress = prepareCurrentCongress();
@@ -707,6 +720,7 @@ public class DomainControllerTest {
 		Map<String, Set<MP>> part1 = preparePartition1();
 		Map<String, Set<MP>> part2 = preparePartition2();
 		String results = controller.compare2partitions();
+		System.out.print(results);
 		assertTrue(false);
 	}
 
@@ -736,7 +750,8 @@ public class DomainControllerTest {
 	@Test
 	public void testComputePartitionLouvian() throws Exception {
 		Congress congress = prepareCurrentCongress();
-		controller.computePartition("Louvian", null);
+		String exception = controller.computePartition("Louvian", null);
+		assertEquals("{}", exception);
 		Map<String, Set<MP>> expected = prepareLouvianPartition();
 		Map<String, Set<MP>> actual = controller.getMainPartition();
 		assertEquals(new HashSet<>(expected.values()), new HashSet<>(actual.values()));
@@ -744,7 +759,8 @@ public class DomainControllerTest {
 	@Test
 	public void testComputePartitionNewmann2() throws Exception {
 		Congress congress = prepareCurrentCongress();
-		controller.computePartition("Newmann Girvan", "2");
+		String exception = controller.computePartition("Newmann Girvan", "2");
+		assertEquals("{}", exception);
 		Map<String, Set<MP>> expected = prepareNewmann2Partition();
 		Map<String, Set<MP>> actual = controller.getMainPartition();
 		assertEquals(new HashSet<>(expected.values()), new HashSet<>(actual.values()));
@@ -752,7 +768,8 @@ public class DomainControllerTest {
 	@Test
 	public void testComputePartitionNewmann3() throws Exception {
 		Congress congress = prepareCurrentCongress();
-		controller.computePartition("Newmann Girvan", "3");
+		String exception = controller.computePartition("Newmann Girvan", "3");
+		assertEquals("{}", exception);
 		Map<String, Set<MP>> expected = prepareNewmann3Partition();
 		Map<String, Set<MP>> actual = controller.getMainPartition();
 		assertEquals(new HashSet<>(expected.values()), new HashSet<>(actual.values()));
@@ -772,7 +789,8 @@ public class DomainControllerTest {
 	@Test
 	public void testComputePartitionNClicque() throws Exception {
 		Congress congress = prepareCurrentCongress();
-		controller.computePartition("N Clique Percolation", null);
+		String exception = controller.computePartition("N Clique Percolation", null);
+		assertEquals("{}", exception);
 		Map<String, Set<MP>> expected = prepareNCliquePartition();
 		Map<String, Set<MP>> actual = controller.getMainPartition();
 		assertEquals(new HashSet<>(expected.values()), new HashSet<>(actual.values()));
@@ -835,6 +853,7 @@ public class DomainControllerTest {
 		controller.setCurrentCongress(congress);
 		return congress;
 	}
+
 	private Congress prepareCongress() {
 		Congress congress = new Congress();
 
@@ -903,6 +922,7 @@ public class DomainControllerTest {
 
 		return congress;
 	}
+
 	private Map<String, Set<MP>>  prepareMainPartition() {
 		Map<String, Set<MP>> partition = controller.getMainPartition();
 		Congress congress = controller.getCurrentCongress();
@@ -926,7 +946,6 @@ public class DomainControllerTest {
 
 		return partition;
 	}
-
 	private Map<String, Set<MP>>  prepareLouvianPartition() {
 		Map<String, Set<MP>> partition = new TreeMap<>();
 		Congress congress = controller.getCurrentCongress();
@@ -989,7 +1008,6 @@ public class DomainControllerTest {
 
 		return partition;
 	}
-
 	private Map<String, Set<MP>>  prepareNCliquePartition() {
 		Map<String, Set<MP>> partition = new TreeMap<>();
 		Congress congress = controller.getCurrentCongress();
@@ -1014,13 +1032,6 @@ public class DomainControllerTest {
 		Set<MP> comm2 = new HashSet<>();
 		Set<MP> comm3 = new HashSet<>();
 
-		MP ondrej = new MP("Ondrej", State.CA, 1);
-		MP alex = new MP("Alex", State.NY, 1);
-		MP aleix = new MP("Aleix", State.WA, 1);
-		MP miquel = new MP("Miquel", State.CO, 1);
-		MP homer = new MP("Homer", State.CO, 2);
-		MP kate = new MP("Kate", State.OH, 2);
-
 		comm1.add(congress.getMP(State.CA, 1));
 		comm1.add(congress.getMP(State.NY, 1));
 		comm1.add(congress.getMP(State.WA, 1));
@@ -1043,10 +1054,11 @@ public class DomainControllerTest {
 		Set<MP> comm2 = new HashSet<>();
 
 		comm1.add(congress.getMP(State.CA, 1));
-		comm1.add(congress.getMP(State.NY, 1));
+		//comm1.add(congress.getMP(State.NY, 1));
 		comm1.add(congress.getMP(State.WA, 1));
 		comm1.add(congress.getMP(State.CO, 1));
 		comm2.add(congress.getMP(State.CO, 1));
+		comm2.add(congress.getMP(State.CO, 2));
 		comm2.add(congress.getMP(State.OH, 2));
 
 		partition.put("Community10", comm1);
@@ -1054,6 +1066,7 @@ public class DomainControllerTest {
 
 		return partition;
 	}
+
 	private Congress prepareCongressWithWeights() {
 		Congress c = prepareCongress();
 

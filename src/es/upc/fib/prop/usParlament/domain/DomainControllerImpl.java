@@ -731,7 +731,12 @@ public class DomainControllerImpl implements DomainController
             }
             ++comm;
         }
-        ComparingAlgorithm ca = new ComparingAlgorithm(currentCongress, part1, part2);
+        ComparingAlgorithm ca;
+        try {
+            ca = new ComparingAlgorithm(currentCongress, part1, part2);
+        } catch (IllegalArgumentException e) {
+            return exceptionMaker(e);
+        }
         JSONObject jInfo = new JSONObject();
         JSONString jBest = new JSONString();
         if (ca.best == part1) jBest.setValue("Partition1");
