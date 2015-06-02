@@ -186,6 +186,11 @@ public class PresentationController {
         dc.computePartition(algorithm, argument);
     }
 
+    public boolean hasMainPartitionCommunityName(String name)
+    {
+        return dc.hasMainPartitionCommunityName(name);
+    }
+
     public List<String> getCommunityIDs(String partition) {
         JSONizer json = new JSONizer();
         JSONArray jsonIds = (JSONArray)json.StringToJSON(dc.getCommunityIDs(partition)).getJSONByKey("ids");
@@ -195,6 +200,15 @@ public class PresentationController {
         }
         return ids;
     }
+
+
+
+    public void changeMainPartitionCommunityName(String oldName,String newName)
+    {
+        dc.changeMainPartitionCommunityName(oldName,newName);
+    }
+
+
 
     public Set<JSONObject> getMPsCurrentPartition(String community) {
         JSONizer json = new JSONizer();
