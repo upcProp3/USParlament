@@ -200,7 +200,7 @@ public class PresentationController {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
                 dc.getMPsInMainPartition(String.valueOf(selectedCommunity)))
-                .getJSONByKey("Current partition Community numer " + selectedCommunity);
+                .getJSONByKey("mps");
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {
             mps.add((JSONObject)jo);
@@ -212,7 +212,7 @@ public class PresentationController {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
                 dc.getMPsInPartition1(String.valueOf(selectedCommunity)))
-                .getJSONByKey("Partition1 Community number " + selectedCommunity);
+                .getJSONByKey("mps");
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {
             mps.add((JSONObject)jo);
@@ -224,7 +224,7 @@ public class PresentationController {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
                 dc.getMPsInPartition2(String.valueOf(selectedCommunity)))
-                .getJSONByKey("Partition2 Community number " + selectedCommunity);
+                .getJSONByKey("mps");
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {
             mps.add((JSONObject)jo);
