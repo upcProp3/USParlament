@@ -91,11 +91,18 @@ public class JSONObject extends JSON
     }
 
     @Override
-    public int compareTo(JSON json) {
-        JSONObject jsonObject = (JSONObject) json;
-        if (this.equals(jsonObject)) {
-            return 0;
-        }
-        return this.stringify().compareTo(jsonObject.stringify());
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof JSONObject)) return false;
+
+        JSONObject that = (JSONObject) o;
+
+        return !(json != null ? !json.equals(that.json) : that.json != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return json != null ? json.hashCode() : 0;
     }
 }

@@ -1,6 +1,8 @@
 package es.upc.fib.prop.usParlament.misc;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by miquel on 16/05/15.
@@ -54,11 +56,20 @@ public class JSONArray extends JSON
     }
 
     @Override
-    public int compareTo(JSON json) {
-        JSONArray jsonArray = (JSONArray) json;
-        if (this.equals(jsonArray)) {
-            return 0;
-        }
-        return this.stringify().compareTo(jsonArray.stringify());
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof JSONArray)) return false;
+
+        JSONArray jsonArray = (JSONArray) o;
+
+        Set<JSON> arraySet = new HashSet<>(array);
+        Set<JSON> jsonArraySet = new HashSet<>(jsonArray.array);
+
+        return !(array != null ? !arraySet.equals(jsonArraySet) : jsonArray.array != null);
+    }
+
+    @Override
+    public int hashCode() {
+        return array != null ? array.hashCode() : 0;
     }
 }

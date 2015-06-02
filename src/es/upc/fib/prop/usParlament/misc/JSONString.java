@@ -32,25 +32,24 @@ public class JSONString extends JSON
         return this.toString();
     }
 
-    public boolean equals(Object o)
-    {
-        if(this.getClass() != o.getClass()) return false;
-        return this.value.equals(((JSONString)o).getValue());
-    }
-
-    public int hashCode()
-    {
-        return value.hashCode();
-    }
-
     public String toString()
     {
         return "\""+value+"\"";
     }
 
     @Override
-    public int compareTo(JSON json) {
-        JSONString jsonString = (JSONString) json;
-        return this.getValue().compareTo(jsonString.getValue());
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof JSONString)) return false;
+
+        JSONString that = (JSONString) o;
+
+        return !(value != null ? !value.equals(that.value) : that.value != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return value != null ? value.hashCode() : 0;
     }
 }
