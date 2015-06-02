@@ -220,10 +220,10 @@ public class PresentationController {
         return mps;
     }
 
-    public Set<JSONObject> getMPsPartition2(int selectedCommunity) {
+    public Set<JSONObject> getMPsPartition2(String selectedCommunity) {
         JSONizer json = new JSONizer();
         JSONArray jsonMPs = (JSONArray)json.StringToJSON(
-                dc.getMPsInPartition2(String.valueOf(selectedCommunity)))
+                dc.getMPsInPartition2(selectedCommunity))
                 .getJSONByKey("mps");
         Set<JSONObject> mps = new HashSet<>();
         for (JSON jo : jsonMPs.getArray()) {
@@ -236,8 +236,8 @@ public class PresentationController {
 
     public void addNewCommunity() { dc.addNewCommunity(); }
 
-    public void deleteSelectedCommunity(Integer cNumb) {
-        dc.removeCommunity(String.valueOf(cNumb));
+    public void deleteSelectedCommunity(String name) {
+        dc.removeCommunity(String.valueOf(name));
     }
 
     public JSONObject compareFunction() {
