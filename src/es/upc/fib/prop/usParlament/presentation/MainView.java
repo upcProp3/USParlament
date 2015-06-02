@@ -1017,13 +1017,13 @@ public class MainView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
             return;
         }
-        String cNumb = (String)communitiesTable.getValueAt(fila,0);
-        JFrame jf = new addMPToCommunityWindow(pc, Integer.valueOf(cNumb), this, fila);
+        String name = (String)communitiesTable.getValueAt(fila,0);
+        JFrame jf = new addMPToCommunityWindow(pc, name, this, fila);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 
-        // TODO add mp to communtiy button pressed
+        // TODO add mp to community button pressed
     }//GEN-LAST:event_addMPToCommunityButtonActionPerformed
 
     private void deleteMPfromCommunityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPfromCommunityButtonActionPerformed
@@ -1038,10 +1038,10 @@ public class MainView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
             return;
         }
-        Integer cNumb = Integer.parseInt((String)communitiesTable.getValueAt(fila1,0));
+        String name = (String)communitiesTable.getValueAt(fila1,0);
         State st = State.valueOf((String)MPsInCommunityTable.getValueAt(fila2,0));
         Integer distr = (Integer)MPsInCommunityTable.getValueAt(fila2,1);
-        pc.deleteMPFromCommunity(cNumb, st, distr);
+        pc.deleteMPFromCommunity(name, st, distr);
         updateMPsInCommunityTable();
     }//GEN-LAST:event_deleteMPfromCommunityButtonActionPerformed
 
@@ -1319,7 +1319,7 @@ public class MainView extends javax.swing.JFrame {
             return;
         }
 
-        int community = Integer.parseInt((String)communitiesTable.getValueAt(comrow,0));
+        String community = (String)communitiesTable.getValueAt(comrow,0);
 
 
 
@@ -1347,7 +1347,7 @@ public class MainView extends javax.swing.JFrame {
         model.addColumn("State");
         model.addColumn("District");
 
-        Integer selectedRow = (Integer) communityList1CommunitiesList.getSelectedValue();
+        String selectedRow = (String) communityList1CommunitiesList.getSelectedValue();
 
         if(selectedRow == null){
             MPList1Table.setModel(model);
