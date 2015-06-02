@@ -182,47 +182,68 @@ public class DomainControllerImpl implements DomainController
 
 
     public String getMPsInMainPartition(String communityID) {
-        JSONObject mps = new JSONObject();
-        JSONString js = new JSONString("Current partition Community numer " + communityID);
-        JSONArray ja = new JSONArray();
-        for (MP mp : mainPartition.get(Integer.parseInt(communityID))) {
-            JSONObject jo = new JSONObject();
-            jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
-            jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
-            ja.addElement(jo);
+        if (communityID == null) {
+            return exceptionMaker(new IllegalArgumentException("ID can not be null"));
         }
-        mps.addPair(js, ja);
-        return mps.stringify();
+        JSONObject mps = new JSONObject();
+        JSONString js = new JSONString("mps");
+        JSONArray ja = new JSONArray();
+        try {
+            for (MP mp : mainPartition.get(Integer.parseInt(communityID))) {
+                JSONObject jo = new JSONObject();
+                jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
+                jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
+                ja.addElement(jo);
+            }
+            mps.addPair(js, ja);
+            return mps.stringify();
+        } catch (NumberFormatException e) {
+            return exceptionMaker(new IllegalArgumentException("ID has to be number"));
+        }
     }
 
 
     public String getMPsInPartition1 (String communityID) {
-        JSONObject mps = new JSONObject();
-        JSONString js = new JSONString("Partition1 Community number " + communityID);
-        JSONArray ja = new JSONArray();
-        for (MP mp : partition1.get(Integer.parseInt(communityID))) {
-            JSONObject jo = new JSONObject();
-            jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
-            jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
-            ja.addElement(jo);
+        if (communityID == null) {
+            return exceptionMaker(new IllegalArgumentException("ID can not be null"));
         }
-        mps.addPair(js, ja);
-        return mps.stringify();
+        JSONObject mps = new JSONObject();
+        JSONString js = new JSONString("mps");
+        JSONArray ja = new JSONArray();
+        try {
+            for (MP mp : partition1.get(Integer.parseInt(communityID))) {
+                JSONObject jo = new JSONObject();
+                jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
+                jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
+                ja.addElement(jo);
+            }
+            mps.addPair(js, ja);
+            return mps.stringify();
+        } catch (NumberFormatException e) {
+            return exceptionMaker(new IllegalArgumentException("ID has to be number"));
+        }
     }
 
 
     public String getMPsInPartition2(String communityID) {
-        JSONObject mps = new JSONObject();
-        JSONString js = new JSONString("Partition2 Community number "+communityID);
-        JSONArray ja = new JSONArray();
-        for (MP mp : partition2.get(Integer.parseInt(communityID))) {
-            JSONObject jo = new JSONObject();
-            jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
-            jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
-            ja.addElement(jo);
+        if (communityID == null) {
+            return exceptionMaker(new IllegalArgumentException("ID can not be null"));
         }
-        mps.addPair(js, ja);
-        return mps.stringify();
+        JSONObject mps = new JSONObject();
+        JSONString js = new JSONString("mps");
+        JSONArray ja = new JSONArray();
+        try {
+            for (MP mp : partition2.get(Integer.parseInt(communityID))) {
+                JSONObject jo = new JSONObject();
+                jo.addPair(new JSONString("State"), new JSONString(mp.getState().toString()));
+                jo.addPair(new JSONString("District"), new JSONString(Integer.toString(mp.getDistrict())));
+                ja.addElement(jo);
+            }
+            mps.addPair(js, ja);
+            return mps.stringify();
+        } catch (NumberFormatException e) {
+            return exceptionMaker(new IllegalArgumentException("ID has to be number"));
+        }
     }
 
 
@@ -244,19 +265,29 @@ public class DomainControllerImpl implements DomainController
     }
 
 
-    public void removeMP(State state, int district) {
+    public String removeMP(State state, int district) {
+        if (state == null) {
+            return exceptionMaker(new IllegalArgumentException("State can not be null"));
+        }
+        if (district <= 0) {
+            return exceptionMaker(new IllegalArgumentException("District has to be greater than 0)"));
+        }
         currentCongress.removeNode(new MP("INVALID_VALUE", state, district));
+        return "{}";
     }
 
 
-    public void removeMP(String mp) {
+    public String removeMP(String mp) {
         JSONizer json = new JSONizer();
         JSONObject jMP = json.StringToJSON(mp);
+        if (!(jMP.hasKey("State") && jMP.hasKey("District"))) {
+            return exceptionMaker(new IllegalArgumentException("mp has to contain State and District"));
+        }
         JSONString key = new JSONString("State");
         JSONString jState = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
         key.setValue("District");
         JSONString jDistr = new JSONString(((JSONString)jMP.getJSONByKey(key)).getValue());
-        removeMP(State.valueOf(jState.getValue()), Integer.valueOf(jDistr.getValue()));
+        return removeMP(State.valueOf(jState.getValue()), Integer.valueOf(jDistr.getValue()));
     }
 
 
@@ -491,7 +522,10 @@ public class DomainControllerImpl implements DomainController
 
     public String saveMainPartition(String partitionName) {
         if (currentCongressName == null) {
-            return "{\"Exception\":{\"Name\":\"IllegalArgumentException\",\"Message\":\"Current congress is not loaded\"}}";
+            return exceptionMaker(new IllegalArgumentException("Current congress is not loaded"));
+        }
+        if (partitionName == null) {
+            return exceptionMaker(new IllegalArgumentException("partition name can not be null"));
         }
         JSONObject jsonPartition = new JSONObject();
         JSONArray communities = new JSONArray();
@@ -511,11 +545,17 @@ public class DomainControllerImpl implements DomainController
 
 
     public String loadPartitionInto(String partitionName, String into) {
+        if (into == null) {
+            return exceptionMaker(new IllegalArgumentException("argument into cannot be null"));
+        }
         if (currentCongressName == null) {
-            return "{\"Exception\":{\"Name\":\"IllegalArgumentException\",\"Message\":\"Current congress is not saved\"}}";
+            return exceptionMaker(new IllegalArgumentException("Current congress is not saved"));
         }
         JSONizer json = new JSONizer();
         String respond = dataController.loadPartition(currentCongressName, partitionName);
+        if (isException(respond)) {
+            return respond;
+        }
         List<Set<MP>> newPartition = new ArrayList<>();
         JSONObject jsonPartition = json.StringToJSON(respond);
         for (JSON jsonCom : ((JSONArray)jsonPartition.getJSONByKey("communities")).getArray()) {
@@ -541,7 +581,7 @@ public class DomainControllerImpl implements DomainController
                 partition2 = newPartition;
                 break;
             default:
-                throw new IllegalArgumentException("unknown partition");
+                return exceptionMaker(new IllegalArgumentException("unknown partition"));
         }
         return respond;
     }
@@ -557,7 +597,7 @@ public class DomainControllerImpl implements DomainController
 
     public String loadAllPartitionNamesInCurrentCongress() {
         if (currentCongressName == null) {
-            return "{\"Exception\":{\"Name\":\"IllegalArgumentException\",\"Message\":\"Current congress is not saved\"}}";
+            return exceptionMaker(new IllegalArgumentException("Current congress is not saved"));
         }
         return dataController.loadAllPartitionNamesOfCongress(currentCongressName);
     }
@@ -595,6 +635,9 @@ public class DomainControllerImpl implements DomainController
 
 
     public String getCommunityIDs(String partition) {
+        if (partition == null) {
+            return exceptionMaker(new IllegalArgumentException("unknown partition"));
+        }
         List<Set<MP>> part;
         switch (partition) {
             case "mainPartition" :
@@ -607,7 +650,7 @@ public class DomainControllerImpl implements DomainController
                 part = partition2;
                 break;
             default:
-                throw new IllegalArgumentException("unknown partition");
+                return exceptionMaker(new IllegalArgumentException("unknown partition"));
         }
         JSONArray ids = new JSONArray();
         for (Set comm : part) {
@@ -646,7 +689,7 @@ public class DomainControllerImpl implements DomainController
 
     public void addNewCommunity () {
         Set<MP> newComm = new HashSet<>();
-        mainPartition.add(mainPartition.size(), newComm);
+        mainPartition.add(newComm);
     }
 
 

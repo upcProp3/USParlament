@@ -89,6 +89,9 @@ public class DataControllerImpl implements DataController {
 
 	@Override
 	public String savePartition(String congressName, String partitionName, String partition) {
+		if (partitionName.length() <= 0) {
+			return exceptionMaker(new IllegalArgumentException("partition name length has to be greater than 0"));
+		}
 		CongressString congrString;
 		try {
 			congrString = loadCongressFromFile(congressName, false);
@@ -115,7 +118,11 @@ public class DataControllerImpl implements DataController {
 	public String loadPartition(String congressName, String partitionName) {
 		try {
 			CongressString congrString = loadCongressFromFile(congressName, false);
-			return congrString.partitions.get(partitionName);
+			String part = congrString.partitions.get(partitionName);
+			if (part == null) {
+				return exceptionMaker(new IllegalArgumentException("partition not found"));
+			}
+			return part;
 		} catch (IOException e) {
 			return exceptionMaker(e);
 		}
@@ -241,5 +248,13 @@ public class DataControllerImpl implements DataController {
 		String congress;
 		Map<String, String> partitions = new HashMap();
 
+		@Override
+		public String toString() {
+			return "{" +
+					"name='" + name + "\'\n" +
+					", congress='" + congress + "\'\n" +
+					", partitions=" + partitions +
+					'}';
+		}
 	}
 }
