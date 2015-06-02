@@ -317,7 +317,6 @@ public class DomainControllerImpl implements DomainController
             if(atd == null) throw new IllegalStateException("NO EXISTEIX LATRIBUT");
 
             String value = att.get("AttrValue");
-            Attribute a = new Attribute(atd,value);
             if(mpObj.hasAttribute(atd)) mpObj.removeAttribute(atd);
             mpObj.addAttribute(new Attribute(atd,value));
 
@@ -389,6 +388,17 @@ public class DomainControllerImpl implements DomainController
             currentCongress.addAttrDef(ad);
         }
     }
+
+
+
+    public void changeMainPartitionCommunityName(String oldName,String newName)
+    {
+        Set<MP> v = mainPartition.get(oldName);
+        mainPartition.remove(oldName);
+        mainPartition.put(newName,v);
+    }
+
+
 
 
     public void deleteAttrDef(String attrDefName) {
@@ -628,6 +638,12 @@ public class DomainControllerImpl implements DomainController
             partition.put("Community"+currentCommunityNumber++, mpSet);
         }
         mainPartition = partition;
+    }
+
+
+    public boolean hasMainPartitionCommunityName(String name)
+    {
+        return mainPartition.containsKey(name);
     }
 
 
