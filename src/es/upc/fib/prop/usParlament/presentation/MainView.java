@@ -1764,7 +1764,6 @@ public class MainView extends javax.swing.JFrame {
         });
     }
 
-    private ResourceBundle rb = ResourceBundle.getBundle("names_en");
     private PresentationController pc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CommunityManagement;
