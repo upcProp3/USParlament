@@ -24,7 +24,7 @@ public class ComparingAlgorithm {
      */
     public ComparingAlgorithm(Graph g, Map<Node, Integer> part1, Map<Node, Integer> part2) {
         graph = g;
-        if (!part1.keySet().containsAll(g.getNodes()))
+        if (!part1.keySet().containsAll(g.getNodes()) || !part2.keySet().containsAll(g.getNodes()))
             throw new IllegalArgumentException("The partition must" +
                     "map all nodes to a community");
         mod1 = LouvainAlgorithm.calculateModularity(g, part1);
