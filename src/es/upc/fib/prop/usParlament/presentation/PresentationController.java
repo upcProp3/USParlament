@@ -126,7 +126,7 @@ public class PresentationController {
     }
 
     public void deleteMPFromCommunity (String name, State st, Integer dt) {
-        dc.removeMPFromCommunity(name , st, dt);
+        dc.removeMPFromCommunity(name, st, dt);
     }
 
     public boolean existsAttrDef(String name)
@@ -270,6 +270,14 @@ public class PresentationController {
             names.add(((JSONString)jo).getValue());
         }
         return names;
+    }
+
+    public void removeAllSavedPartitions(String congresssName) {
+        dc.removeAllSavedPartitions(congresssName);
+    }
+
+    public boolean areSavedPartitionsCompatibleWithCurrentCongress(String congresssName) {
+        return dc.areSavedPartitionsCompatibleWithCurrentCongress(congresssName);
     }
 
     public String getCurrentCongressName() {

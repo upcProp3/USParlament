@@ -284,8 +284,68 @@ public class DomainControllerImpl implements DomainController
         if (district <= 0) {
             return exceptionMaker(new IllegalArgumentException("District has to be greater than 0)"));
         }
-        currentCongress.removeNode(new MP("INVALID_VALUE", state, district));
+        MP mpToRemove = new MP("INVALID_VALUE", state, district);
+        currentCongress.removeNode(mpToRemove);
+        for (Set<MP> mps : mainPartition.values()) {
+            mps.remove(mpToRemove);
+        }
+        for (Set<MP> mps : partition1.values()) {
+            mps.remove(mpToRemove);
+        }
+        for (Set<MP> mps : partition2.values()) {
+            mps.remove(mpToRemove);
+        }
         return "{}";
+    }
+
+    @Override
+    public boolean areSavedPartitionsCompatibleWithCurrentCongress(String congressName) {
+        if (congressName == null) {
+            return false;
+        }
+        Set<MP> mps = getCurrentCongress().getMPs();
+        String partitions = dataController.loadAllPartitionsOfCongress(congressName);
+        if (isException(partitions)) {
+            return false;
+        }
+        for(Map<String, Set<MP>> partition : getAllPartitionsFromJson(partitions)) {
+            for(Set<MP> partMPs : partition.values()) {
+                if (!mps.containsAll(partMPs)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public String removeAllSavedPartitions(String congressName) {
+        return dataController.removeAllPartitions(congressName);
+    }
+
+    private Set<Map<String, Set<MP>>> getAllPartitionsFromJson(String partitions) {
+        Set<Map<String, Set<MP>>> allPartitions = new HashSet();
+        JSONizer json = new JSONizer();
+        JSONObject jsonPartitions = json.StringToJSON(partitions);
+
+        for (JSON jPart : ((JSONArray)jsonPartitions.getJSONByKey("partitions")).getArray()) {
+            JSONObject jsonPartition = (JSONObject)jPart;
+            Map<String, Set<MP>> newPartition = new HashMap<>();
+            for (JSON jsonCom : ((JSONArray)jsonPartition.getJSONByKey("communities")).getArray()) {
+                JSONObject comObj = (JSONObject)jsonCom;
+                Set<MP> mps = new HashSet<>();
+                for (JSON j : ((JSONArray)comObj.getJSONByKey("mps")).getArray()) {
+                    JSONObject jsonMP = (JSONObject) j;
+                    State state = State.valueOf(((JSONString)jsonMP.getJSONByKey("state")).getValue());
+                    int dist = Integer.valueOf(((JSONString)jsonMP.getJSONByKey("district")).getValue());
+                    MP mp = currentCongress.getMP(state, dist);
+                    mps.add(mp);
+                }
+                newPartition.put(((JSONString) comObj.getJSONByKey("name")).getValue(), mps);
+            }
+            allPartitions.add(newPartition);
+        }
+        return allPartitions;
     }
 
 
@@ -495,6 +555,7 @@ public class DomainControllerImpl implements DomainController
             jo.addPair(new JSONString("importance"), new JSONString(Integer.toString(def.getImportance())));
             definitions.addElement(jo);
         }
+
         return dataController.saveCongress(name, congress.stringify());
     }
 
@@ -507,8 +568,12 @@ public class DomainControllerImpl implements DomainController
         if (isException(congress)) {
             return congress;
         }
-        JSONizer json = new JSONizer();
+        currentCongress = getCongressFromJson(congress);
         currentCongressName = name;
+        return congress;
+    }
+    private Congress getCongressFromJson(String congress) {
+        JSONizer json = new JSONizer();
         JSONObject jsonCongress = json.StringToJSON(congress);
         Congress newCongress = new Congress();
 
@@ -550,8 +615,7 @@ public class DomainControllerImpl implements DomainController
             rel.setValidity(valid);
             newCongress.addEdge(rel);
         }
-        currentCongress = newCongress;
-        return congress;
+        return newCongress;
     }
 
 
@@ -594,25 +658,11 @@ public class DomainControllerImpl implements DomainController
         if (currentCongressName == null) {
             return exceptionMaker(new IllegalArgumentException("Current congress is not saved"));
         }
-        JSONizer json = new JSONizer();
         String respond = dataController.loadPartition(currentCongressName, partitionName);
         if (isException(respond)) {
             return respond;
         }
-        Map<String, Set<MP>> newPartition = new TreeMap();
-        JSONObject jsonPartition = json.StringToJSON(respond);
-        for (JSON jsonCom : ((JSONArray)jsonPartition.getJSONByKey("communities")).getArray()) {
-            JSONObject comObj = (JSONObject)jsonCom;
-            Set<MP> mps = new HashSet<>();
-            for (JSON j : ((JSONArray)comObj.getJSONByKey("mps")).getArray()) {
-                JSONObject jsonMP = (JSONObject) j;
-                State state = State.valueOf(((JSONString)jsonMP.getJSONByKey("state")).getValue());
-                int dist = Integer.valueOf(((JSONString)jsonMP.getJSONByKey("district")).getValue());
-                MP mp = currentCongress.getMP(state, dist);
-                mps.add(mp);
-            }
-            newPartition.put(((JSONString) comObj.getJSONByKey("name")).getValue(), mps);
-        }
+        Map<String, Set<MP>> newPartition = getPartitionFromJson(respond);
 
         switch (into) {
             case "mainPartition" :
@@ -629,6 +679,24 @@ public class DomainControllerImpl implements DomainController
                 return exceptionMaker(new IllegalArgumentException("unknown partition"));
         }
         return respond;
+    }
+    private Map<String, Set<MP>> getPartitionFromJson(String partition) {
+        Map<String, Set<MP>> newPartition = new TreeMap();
+        JSONizer json = new JSONizer();
+        JSONObject jsonPartition = json.StringToJSON(partition);
+        for (JSON jsonCom : ((JSONArray)jsonPartition.getJSONByKey("communities")).getArray()) {
+            JSONObject comObj = (JSONObject)jsonCom;
+            Set<MP> mps = new HashSet<>();
+            for (JSON j : ((JSONArray)comObj.getJSONByKey("mps")).getArray()) {
+                JSONObject jsonMP = (JSONObject) j;
+                State state = State.valueOf(((JSONString)jsonMP.getJSONByKey("state")).getValue());
+                int dist = Integer.valueOf(((JSONString)jsonMP.getJSONByKey("district")).getValue());
+                MP mp = currentCongress.getMP(state, dist);
+                mps.add(mp);
+            }
+            newPartition.put(((JSONString) comObj.getJSONByKey("name")).getValue(), mps);
+        }
+        return newPartition;
     }
 
 

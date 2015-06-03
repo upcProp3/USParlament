@@ -34,6 +34,13 @@ public interface DomainController {
 	String saveCurrentCongress(String name);
 
 	/**
+	 * check if current congress contains all mps in partitions.
+	 * @param name  unique identificator of congress
+	 * @return  Exception string If there is exception "{}" string otherwise.
+	 */
+	boolean areSavedPartitionsCompatibleWithCurrentCongress(String name);
+
+	/**
 	 * load congress from persistent memory
 	 * @param name  identificator of congress
 	 * @return  JSON representation of congress
@@ -174,6 +181,13 @@ public interface DomainController {
 	 * @return  JSON representation of array of partitions.
 	 */
 	String loadAllPartitionsInCurrentCongress();
+
+	/**
+	 * remove all saved partitions from congress given by name
+	 * @param congressName unique identificator of congress
+	 * @return  JSON representation of array of partitions.
+	 */
+	String removeAllSavedPartitions(String congressName);
 
 	/**
 	 * get IDs of partition defined by param
