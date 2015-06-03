@@ -130,6 +130,54 @@ public class DataControllerImpl implements DataController {
 
 
 	@Override
+	public String removePartition(String congressName, String partitionName) {
+		CongressString congrString;
+		try {
+			congrString = loadCongressFromFile(congressName, false);
+		} catch (IOException e) {
+			return exceptionMaker(e);
+		}
+		congrString = editRemovePartition(congrString, partitionName);
+		try {
+			saveCongressToFile(congrString);
+		} catch (IOException e) {
+			return exceptionMaker(e);
+		} catch (SecurityException e) {
+			return exceptionMaker(e);
+		}
+		return "{}";
+	}
+	private CongressString editRemovePartition(CongressString congrString, String partitionName) {
+		congrString.partitions.remove(partitionName);
+		return congrString;
+	}
+
+
+	@Override
+	public String removeAllPartitions(String congressName) {
+		CongressString congrString;
+		try {
+			congrString = loadCongressFromFile(congressName, false);
+		} catch (IOException e) {
+			return exceptionMaker(e);
+		}
+		congrString = editRemoveAllPartitions(congrString);
+		try {
+			saveCongressToFile(congrString);
+		} catch (IOException e) {
+			return exceptionMaker(e);
+		} catch (SecurityException e) {
+			return exceptionMaker(e);
+		}
+		return "{}";
+	}
+	private CongressString editRemoveAllPartitions(CongressString congrString) {
+		congrString.partitions = new HashMap<>();
+		return congrString;
+	}
+
+
+	@Override
 	public String loadAllPartitionsOfCongress(String congressName) {
 		try {
 			CongressString congrString = loadCongressFromFile(congressName, false);

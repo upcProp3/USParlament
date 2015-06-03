@@ -11,20 +11,20 @@ public interface DataController {
 	 * @param congress  JSON representation of congress object
 	 * @return  Exception string If there is exception "{}" string otherwise.
 	 */
-	public String saveCongress(String name, String congress);
+	 String saveCongress(String name, String congress);
 
 	/**
 	 * load congress from persistent memory
 	 * @param name  identificator of congress
 	 * @return  JSON representation of congress
 	 */
-	public String loadCongress(String name);
+	 String loadCongress(String name);
 
 	/**
 	 * load names of all saved congresses
 	 * @return JSON list of all congresses
 	 */
-	public String loadAllCongressesNames();
+	 String loadAllCongressesNames();
 
 
 	/**
@@ -34,7 +34,7 @@ public interface DataController {
 	 * @param partition  JSON representation of partition object
 	 * @return  Exception string If there is exception "{}" string otherwise.
 	 */
-	public String savePartition(String congressName, String partitionName, String partition);
+	 String savePartition(String congressName, String partitionName, String partition);
 
 	/**
 	 * load saved partition from persistent memory.
@@ -42,14 +42,29 @@ public interface DataController {
 	 * @param partitionName  unique identificator in congressName scope.
 	 * @return JSON representation of partition.
 	 */
-	public String loadPartition(String congressName, String partitionName);
+	 String loadPartition(String congressName, String partitionName);
+
+	/**
+	 * remove saved partition of congress from persistent memory.
+	 * @param congressName  unique identificator of congress.
+	 * @param partitionName  unique identificator in congressName scope.
+	 * @return Exception if there is someone "{}" otherwise
+	 */
+	String removePartition(String congressName, String partitionName);
+
+	/**
+	 * remove all saved partitions of congress from persistent memory.
+	 * @param congressName  unique identificator of congress.
+	 * @return Exception if there is someone "{}" otherwise
+	 */
+	 String removeAllPartitions(String congressName);
 
 	/**
 	 * load all saved partitions of congress.
 	 * @param congressName  unique identificator of congress.
 	 * @return  JSON representation of array of partitions.
 	 */
-	public String loadAllPartitionsOfCongress(String congressName);
+	 String loadAllPartitionsOfCongress(String congressName);
 
 
 	/**
@@ -57,7 +72,7 @@ public interface DataController {
 	 * @param congressName  unique identificator of congress.
 	 * @return  JSON representation of array of names.
 	 */
-	public String loadAllPartitionNamesOfCongress(String congressName);
+	 String loadAllPartitionNamesOfCongress(String congressName);
 
 
 
