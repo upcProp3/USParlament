@@ -80,9 +80,9 @@ public class DataControllerImpl implements DataController {
 			res += "]}";
 			return res;
 		} catch (FileNotFoundException e) {
-			return exceptionMaker(e);
+			return "{\"congressesNames\":[]}";
 		} catch (IOException e) {
-			return exceptionMaker(e);
+			return "{\"congressesNames\":[]}";
 		}
 	}
 
