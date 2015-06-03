@@ -121,7 +121,6 @@ public class ShowComMPsInfoWindow extends javax.swing.JFrame {
             dtm.addColumn(s);
         }
 
-        System.out.println(pc.getMPsCurrentPartition(comN));
 
 
 
