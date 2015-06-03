@@ -10,6 +10,7 @@ import es.upc.fib.prop.usParlament.data.DataController;
 import es.upc.fib.prop.usParlament.data.DataControllerImpl;
 import es.upc.fib.prop.usParlament.misc.*;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -67,6 +68,22 @@ public class DomainControllerImpl implements DomainController
     private String exceptionMaker(Exception e) {
         String msg = e.getMessage();
         return "{\"Exception\":{\"Name\":\"" +e.getClass().getSimpleName()+ "\",\"Message\":\"" +msg+ "\"}}";
+    }
+    private Class getExceptionClass(String exception) {
+
+        JSONizer json = new JSONizer();
+        JSONObject ex = (JSONObject)json.StringToJSON(exception).getJSONByKey("Exception");
+        try {
+            String name = "java.lang."+((JSONString)ex.getJSONByKey("Name")).getValue();
+            return Class.forName(name);
+        } catch (ClassNotFoundException e) {
+            try {
+                String name = "java.io."+((JSONString)ex.getJSONByKey("Name")).getValue();
+                return Class.forName(name);
+            } catch (ClassNotFoundException exc) {
+                return null;
+            }
+        }
     }
     private boolean isException(String exception) {
         JSONizer json = new JSONizer();
@@ -306,6 +323,9 @@ public class DomainControllerImpl implements DomainController
         Set<MP> mps = getCurrentCongress().getMPs();
         String partitions = dataController.loadAllPartitionsOfCongress(congressName);
         if (isException(partitions)) {
+            if (getExceptionClass(partitions).equals(FileNotFoundException.class)) {
+                return true;
+            }
             return false;
         }
         for(Map<String, Set<MP>> partition : getAllPartitionsFromJson(partitions)) {
