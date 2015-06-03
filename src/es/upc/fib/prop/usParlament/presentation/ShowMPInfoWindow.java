@@ -147,6 +147,9 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
         ShowMPInfoTable.setModel(dtm);
         ShowMPInfoTable.getTableHeader().setReorderingAllowed(false);
 
+        ShowMPInfoTable.setAutoCreateRowSorter(true);
+        ShowMPInfoTable.getRowSorter().toggleSortOrder(0);
+
     }
 
 
