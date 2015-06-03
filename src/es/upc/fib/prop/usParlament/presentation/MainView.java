@@ -492,7 +492,7 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
-        showMPDataButton.setText("Show MP Data");
+        showMPDataButton.setText("Show MPs in community Data");
         showMPDataButton.setName("deleteMPfromCommunityButton"); // NOI18N
         showMPDataButton.addActionListener(new java.awt.event.ActionListener()
         {
@@ -1545,15 +1545,13 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyAttrDefButtonActionPerformed
 
     private void showMPDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMPDataButtonActionPerformed
-        int fila = MPsInCommunityTable.getSelectedRow();
+        int fila = communitiesTable.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(new JFrame(), "No row selected");
             return;
         }
-        String st = MPsInCommunityTable.getValueAt(fila, 0).toString();
-        String d =  MPsInCommunityTable.getValueAt(fila, 1).toString();
-        int dt = Integer.parseInt(d);
-        JFrame jf = new ShowMPInfoWindow(pc, st, dt);
+        String comN =  communitiesTable.getValueAt(fila,0).toString();
+        JFrame jf = new ShowComMPsInfoWindow(pc, comN);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_showMPDataButtonActionPerformed
