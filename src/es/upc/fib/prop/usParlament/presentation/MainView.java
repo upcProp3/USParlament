@@ -1149,6 +1149,9 @@ public class MainView extends javax.swing.JFrame {
             
         currentMPsTable.setModel(dtm);
         currentMPsTable.getTableHeader().setReorderingAllowed(false);
+        //sort ops
+        currentMPsTable.setAutoCreateRowSorter(true);
+        currentMPsTable.getRowSorter().toggleSortOrder(0);
 
     }
     
@@ -1191,6 +1194,11 @@ public class MainView extends javax.swing.JFrame {
 
             attrDefinitionsTable.setModel(adtm);
             attrDefinitionsTable.getTableHeader().setReorderingAllowed(false);
+
+        //sort ops
+        attrDefinitionsTable.setAutoCreateRowSorter(true);
+        attrDefinitionsTable.getRowSorter().toggleSortOrder(0);
+
     }
 
     public void updateCommunitiesLists() {
@@ -1237,6 +1245,7 @@ public class MainView extends javax.swing.JFrame {
                 updateMPsInCommunityTable();
             }
         });
+
     }
 
     private void compareWindowMPShortTable()
@@ -1277,6 +1286,9 @@ public class MainView extends javax.swing.JFrame {
             
             MPsCurrentCongressTable.setModel(dtm);
             MPsCurrentCongressTable.getTableHeader().setReorderingAllowed(false);
+        //sort ops
+        MPsCurrentCongressTable.setAutoCreateRowSorter(true);
+        MPsCurrentCongressTable.getRowSorter().toggleSortOrder(0);
     }
 
     public void updateMPsCurrentTable() {
@@ -1314,6 +1326,8 @@ public class MainView extends javax.swing.JFrame {
 
         MPsCurrentCongressTable.setModel(dtm);
         MPsCurrentCongressTable.getTableHeader().setReorderingAllowed(false);
+        MPsCurrentCongressTable.setAutoCreateRowSorter(true);
+        MPsCurrentCongressTable.getRowSorter().toggleSortOrder(0);
     }
 
     public void updateMPsInCommunityTable() {
@@ -1345,6 +1359,9 @@ public class MainView extends javax.swing.JFrame {
         }
         MPsInCommunityTable.setModel(model);
         MPsInCommunityTable.getTableHeader().setReorderingAllowed(false);
+
+        MPsInCommunityTable.setAutoCreateRowSorter(true);
+        MPsInCommunityTable.getRowSorter().toggleSortOrder(0);
     }
 
     public void updateCurrentLoadedCongressLabel(String name) {
@@ -1376,6 +1393,9 @@ public class MainView extends javax.swing.JFrame {
         }
         MPList1Table.setModel(model);
         MPList1Table.getTableHeader().setReorderingAllowed(false);
+
+        MPList1Table.setAutoCreateRowSorter(true);
+        MPList1Table.getRowSorter().toggleSortOrder(0);
     }
 
     public void updateMPList2Table() {
@@ -1403,6 +1423,9 @@ public class MainView extends javax.swing.JFrame {
         }
         MPList2Table.setModel(model);
         MPList2Table.getTableHeader().setReorderingAllowed(false);
+
+        MPList2Table.setAutoCreateRowSorter(true);
+        MPList2Table.getRowSorter().toggleSortOrder(0);
     }
     
     private void mainWindowStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_mainWindowStateChanged

@@ -46,9 +46,6 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        String[] s = new String[] {"State", "District", "Name"};
-
-
         ShowMPInfoTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -56,8 +53,11 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
                 {null, null, null, null},
                 {null, null, null, null}
             },
-           s
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
         ));
+        ShowMPInfoTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane1.setViewportView(ShowMPInfoTable);
 
         jLabel1.setText("MP information");
@@ -146,6 +146,9 @@ public class ShowMPInfoWindow extends javax.swing.JFrame {
         dtm.addRow(row);
         ShowMPInfoTable.setModel(dtm);
         ShowMPInfoTable.getTableHeader().setReorderingAllowed(false);
+
+        ShowMPInfoTable.setAutoCreateRowSorter(true);
+        ShowMPInfoTable.getRowSorter().toggleSortOrder(0);
 
     }
 
